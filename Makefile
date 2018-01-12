@@ -1,3 +1,6 @@
+build:
+	npm run build
+
 serve:
 	npm run dev -- --port 8000
 

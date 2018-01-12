@@ -8,8 +8,9 @@
       <nuxt-header-nav-menu />
     </div>
     <div class="Nav__Links">
-      <a href="https://github.com/guildai/guild" target="_blank">
-        <img src="~static/github_nav.svg" height="24" title="View on GitHub" />
+      <a href="https://github.com/guildai/guild" target="_blank" class="Nav__Links__Item"
+         :title="$store.state.lang.tooltips.github_repo">
+        <i class="mdi mdi-github-circle"></i>
       </a>
     </div>
   </nav>
@@ -95,14 +96,6 @@ export default {
       }
     }
   }
-  &__Lang {
-    width: 100%;
-    display: flex;
-    @media (min-width: 991px) {
-      width: 80px;
-      height: 79px;
-    }
-  }
   &__Menu {
     width: 100%;
     display: flex;
@@ -116,15 +109,24 @@ export default {
   }
   &__Links {
     width: 100%;
+    height: 60px;
     display: flex;
-    border-bottom: 1px solid #dbdfe1;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
     @media (min-width: 991px) {
       flex: 0;
       order: 4;
       height: 79px;
-      border-bottom: none;
-      align-items: center;
-      margin-left: 30px;
+      color: #fff;
+      fill: #fff;
+    }
+    &__Item {
+      font-size: 32px;
+      color: rgba(0,0,0,0.87);
+      @media (min-width: 991px) {
+        color: #fff;
+      }
     }
   }
 }

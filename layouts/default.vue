@@ -1,8 +1,8 @@
 <template>
   <div>
-    <navbar></navbar>
+    <navbar />
     <div :class="{'App--hidden': visible}">
-      <nuxt/>
+      <nuxt />
     </div>
   </div>
 </template>

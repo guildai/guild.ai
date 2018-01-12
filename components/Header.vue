@@ -37,7 +37,6 @@ export default {
   z-index: 995;
   padding: 0 15px;
   display: flex;
-  position: fixed;
   flex-direction: row;
   background-color: #3949AB;
   @media (min-width: 991px) {
