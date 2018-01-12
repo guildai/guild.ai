@@ -25,9 +25,6 @@
         {{ $store.state.lang.links.faq }}
       </nuxt-link>
     </li>
-    <li class="Menu__Item">
-      <nuxt-header-nav-menu-dropdown/>
-    </li>
   </ul>
 </nav>
 </template>
@@ -56,7 +53,7 @@ export default {
   {
     flex: 1;
     flex-wrap: nowrap;
-    padding-left: 15px;
+    padding: 0 15px;
   }
   &__Item
   {
@@ -82,6 +79,7 @@ export default {
       text-decoration: none;
       letter-spacing: 0.5px;
       color: rgba(0,0,0,0.87);
+      padding: 0 15px;
       &:hover
       {
         opacity: 0.67;

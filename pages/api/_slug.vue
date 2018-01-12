@@ -45,13 +45,6 @@ export default {
   },
   scrollToTop: true,
   head() {
-    console.log({
-      title: this.attrs.title,
-      titleTemplatHtmlParsere: '%s - Nuxt.js',
-      meta: [
-        { hid: 'description', name: 'description', content: this.attrs.description }
-      ]
-    })
     return {
       title: this.attrs.title,
       titleTemplate: '%s - Nuxt.js',

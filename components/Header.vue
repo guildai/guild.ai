@@ -1,7 +1,7 @@
 <template>
   <header class="Header">
     <nuxt-link class="Header__Logo" to="/">
-      <img class="Header__Logo__Img" src="~static/logo_nav.svg" alt="Nuxt" />
+      <img class="Header__Logo__Img" src="~static/logo_nav.svg" alt="Guild AI" />
       <h1 class="Header__Logo__Text">Guild AI</h1>
     </nuxt-link>
     <div class="Header__Toggler">
@@ -40,7 +40,6 @@ export default {
   position: fixed;
   flex-direction: row;
   background-color: #3949AB;
-  border-bottom: 1px solid #f3f3f3;
   @media (min-width: 991px) {
     height: 80px;
     padding: 0 30px;
@@ -48,11 +47,12 @@ export default {
   &__Logo {
     display: flex;
     align-items: center;
-    padding-right: 30px;
+    margin-left: -15px;
+    padding: 0 15px;
     &__Img {
-      height: 34px;
+      height: 32px;
       @media (min-width: 991px) {
-        height: 42px;
+        height: 40px;
       }
     }
     &__Text {

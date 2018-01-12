@@ -1,16 +1,17 @@
 <template>
   <nav class="Nav" :class="{'Nav--hidden': !visible}">
-    <div class="Nav__Search">
-      <nuxt-header-nav-search/>
+    <div :class="{'Nav__Spacer search': search, 'Nav__Spacer' : !search}" />
+    <div :class="{'Nav__Search search': search, 'Nav__Search' : !search}">
+      <nuxt-header-nav-search @focus="search = true" @blur="search = false" />
     </div>
     <div class="Nav__Menu">
-      <nuxt-header-nav-menu/>
+      <nuxt-header-nav-menu />
     </div>
-    <!--
-    <div class="Nav__Lang">
-      <nuxt-header-nav-lang/>
+    <div class="Nav__Links">
+      <a href="https://github.com/guildai/guild" target="_blank">
+        <img src="~static/github_nav.svg" height="24" title="View on GitHub" />
+      </a>
     </div>
-    -->
   </nav>
 </template>
 
@@ -20,6 +21,11 @@ import NuxtHeaderNavMenu from '~/components/HeaderNavMenu.vue'
 import NuxtHeaderNavLang from '~/components/HeaderNavLang.vue'
 
 export default {
+  data() {
+    return {
+      search: false
+    }
+  },
   computed: {
     visible() { return this.$store.state.visibleHeader }
   },
@@ -55,16 +61,38 @@ export default {
       display: flex;
     }
   }
+  &__Spacer {
+    width: 100%;
+    display: flex;
+    height: 0;
+    @media (min-width: 991px) {
+      flex: 1;
+      order: 2;
+      transition: flex 300ms linear;
+    }
+    &.search {
+      @media (min-width: 991px) {
+        flex: 0;
+      }
+    }
+  }
   &__Search {
     width: 100%;
     height: 60px;
     display: flex;
     border-bottom: 1px solid #dbdfe1;
     @media (min-width: 991px) {
-      flex: 3;
-      order: 1;
+      flex: 0;
+      order: 3;
       height: 79px;
+      min-width: 240px;
       border-bottom: none;
+      transition: flex 300ms linear;
+    }
+    &.search {
+      @media (min-width: 991px) {
+        flex: 1;
+      }
     }
   }
   &__Lang {
@@ -80,10 +108,23 @@ export default {
     display: flex;
     border-bottom: 1px solid #dbdfe1;
     @media (min-width: 991px) {
-      flex: 4;
-      order: 2;
+      flex: 0;
+      order: 1;
       height: 79px;
       border-bottom: none;
+    }
+  }
+  &__Links {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #dbdfe1;
+    @media (min-width: 991px) {
+      flex: 0;
+      order: 4;
+      height: 79px;
+      border-bottom: none;
+      align-items: center;
+      margin-left: 30px;
     }
   }
 }

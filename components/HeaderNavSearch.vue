@@ -1,6 +1,13 @@
 <template>
   <div class="Search">
-    <input class="Search__Input" type="text" name="search" id="algolia" required :placeholder="$store.state.lang.text.search" />
+    <input
+      class="Search__Input"
+      type="text"
+      name="search"
+      id="algolia"
+      :placeholder="$store.state.lang.text.search"
+      @focus="$emit('focus')"
+      @blur="$emit('blur')" />
   </div>
 </template>
 
@@ -11,6 +18,10 @@ let onScriptLoaded = (cb) => callbacks.push(cb)
 let scriptLoaded = () => callbacks.forEach((cb) => cb())
 
 export default {
+  props: {
+    value: Boolean
+  },
+
   mounted() {
     onScriptLoaded(() => this.addInstantSearch())
     if (scriptInjected) return
@@ -28,6 +39,7 @@ export default {
     document.getElementsByTagName('body')[0].appendChild(link)
     scriptInjected = true
   },
+
   methods: {
     addInstantSearch() {
       window.docsearch({
@@ -71,8 +83,8 @@ export default {
       border-radius: 2px;
       border-bottom: none;
       transition:
-        background-color .25s cubic-bezier(.1,.7,.1,1),
-        color .25s cubic-bezier(.1,.7,.1,1);
+        background-color 250ms,
+        color 250ms;
       &:hover {
         background-color: rgba(255,255,255,0.1);
       }
