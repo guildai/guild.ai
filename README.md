@@ -1,32 +1,22 @@
-# nuxtjs.org
+# guild.ai
 
-Universal Vue.js Application built with [Nuxt.js](https://github.com/nuxt/nuxt.js).
-
-# zh.nuxtjs.org
-
-Nuxt.js 官网 [nuxtjs.org](https://nuxtjs.org) 的简体中文版，由[凹凸实验室](https://aotu.io)负责翻译整理。
-
-欢迎关注我们的微信公众号（微信里面搜`凹凸实验室`），关于 Nuxt.js 的最新信息会通过公众号发布。
-
-Chinese translation of primary Nuxt.js documentation site. Supported by [AOTU Labs](https://aotu.io).
+This project is the website for Guild AI. It is a modified version of
+the [Nuxt.js](https://github.com/nuxt/nuxt.js) website from
+https://github.com/nuxt/nuxtjs.org.
 
 # Developing
 
-First, you need to setup the docs api server, see [https://github.com/nuxt/docs](https://github.com/nuxt/docs).
+The website is a Nuxt.js application that requires an documentation
+API server. Start the server by following the instructions here:
 
-Update your `/etc/hosts` to have the following lines:
+https://github.com/guildai/docs.
 
-```
-127.0.0.1       nuxt
-127.0.0.1       ja.nuxt
-127.0.0.1       ko.nuxt
-127.0.0.1       ru.nuxt
-127.0.0.1       zh.nuxt
-```
-
-Then on another tab, start a dev server on `http://nuxt:3000`
+Once the documentation API server is running, start the website server
+(this project) by running:
 
 ```bash
-npm install
-npm run dev
+make serve
 ```
+
+Most changes made to the website will update immediately in the
+browser. Changes to documentation require a page refresh.
