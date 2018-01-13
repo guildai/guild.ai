@@ -12,7 +12,7 @@ module.exports = {
     'normalize.css',
     'highlight.js/styles/github.css',
     'mdi/css/materialdesignicons.min.css',
-    '~assets/scss/main.scss'
+    '~/assets/scss/main.scss'
   ],
   modules: [
     ['~/modules/sentry', {

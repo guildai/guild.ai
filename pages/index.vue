@@ -17,7 +17,6 @@
         </li>
       </ul>
     </section>
-    <nuxt-footer />
   </div>
 </template>
 

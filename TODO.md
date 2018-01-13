@@ -1,0 +1,8 @@
+- [ ] Replace icons with md
+- [ ] Delete CamelCase components, once replaced by kebab case
+- [ ] Remove unused code (or otherwise reorg) lang.json (Guild docs)
+- [ ] Reduce size (esp for icons)
+  - fonts/materialdesignicons-webfont.1eccbc4.ttf (303 kB)
+  - img/materialdesignicons-webfont.5dfd79f.svg (2.3 MB)
+  - fonts/materialdesignicons-webfont.3efec83.eot (303 kB)
+  - pages/examples/_slug.65870edade2b46a50440.js (570 kB)
