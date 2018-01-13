@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import NuxtFooter from '~/components/Footer.vue'
+import NuxtFooter from '~/components/Footer.vue';
 
 export default {
   props: ['error'],
   components: {
     NuxtFooter
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

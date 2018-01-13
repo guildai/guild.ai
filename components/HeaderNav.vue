@@ -1,12 +1,16 @@
 <template>
   <nav class="Nav" :class="{'Nav--hidden': !visible}">
+
     <div :class="{'Nav__Spacer search': search, 'Nav__Spacer' : !search}" />
+
     <div :class="{'Nav__Search search': search, 'Nav__Search' : !search}">
       <nuxt-header-nav-search @focus="search = true" @blur="search = false" />
     </div>
+
     <div class="Nav__Menu">
       <nuxt-header-nav-menu />
     </div>
+
     <div class="Nav__Links">
       <a href="https://github.com/guildai/guild" target="_blank" class="Nav__Links__Item"
          :title="$store.state.lang.tooltips.github_repo">
@@ -48,6 +52,7 @@ export default {
   right: 0;
   bottom: 0;
   overflow-y: auto;
+
   @media (min-width: 991px) {
     display: flex;
     flex: 1;
@@ -56,12 +61,14 @@ export default {
     overflow-y: visible;
     position: relative;
   }
+
   &--hidden {
     display: none;
     @media (min-width: 991px) {
       display: flex;
     }
   }
+
   &__Spacer {
     width: 100%;
     display: flex;

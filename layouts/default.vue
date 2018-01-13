@@ -19,9 +19,9 @@
 -->
 
 <script>
-import SiteFooter from '~/components/site-footer.vue'
-import SiteHeader from '~/components/site-header.vue'
-import SiteMain from '~/components/site-main.vue'
+import SiteFooter from '~/components/site-footer.vue';
+import SiteHeader from '~/components/site-header.vue';
+import SiteMain from '~/components/site-main.vue';
 
 export default {
   components: {
@@ -31,25 +31,25 @@ export default {
   },
 
   head() {
-    let canonical = `https://nuxtjs.org${this.$route.path}`
+    let canonical = `https://nuxtjs.org${this.$route.path}`;
     if (this.$store.state.locale !== 'en') {
-      canonical = `https://${this.$store.state.locale}.nuxtjs.org${this.$route.path}`
+      canonical = `https://${this.$store.state.locale}.nuxtjs.org${this.$route.path}`;
     }
     let link = [
       { rel: 'canonical', href: canonical },
       { rel: 'alternate', hreflang: 'en', href: `https://nuxtjs.org${this.$route.path}` }
-    ]
+    ];
     link.forEach((l) => {
       if (l.href.slice(-1) !== '/') {
-        l.href = l.href + '/'
+        l.href = l.href + '/';
       }
-    })
+    });
     return {
       htmlAttrs: {
         lang: this.$store.state.locale
       },
       link
-    }
+    };
   },
 
   watch: {
@@ -58,21 +58,21 @@ export default {
 
   computed: {
     visible() {
-      return this.$store.state.visibleHeader
+      return this.$store.state.visibleHeader;
     }
   },
 
   methods: {
     setStore() {
       if (this.$store.state.visibleHeader) {
-        this.$store.commit('toggle', 'visibleHeader')
+        this.$store.commit('toggle', 'visibleHeader');
       }
       if (this.$store.state.visibleAffix) {
-        this.$store.commit('toggle', 'visibleAffix')
+        this.$store.commit('toggle', 'visibleAffix');
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

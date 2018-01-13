@@ -1,0 +1,23 @@
+/dist/
+
+# TODO: remove as we refactor
+
+/components/Affix.vue
+/components/CarbonAds.vue
+/components/CarbonAdsText.vue
+/components/Contribute.vue
+/components/FilesTree.vue
+/components/Header*.vue
+/components/HtmlParser.vue
+/components/RecursiveList.vue
+/modules/sentry/
+/pages/api.vue
+/pages/api/_slug.vue
+/pages/examples.vue
+/pages/examples/_slug.vue
+/pages/faq.vue
+/pages/faq/_slug.vue
+/pages/guide.vue
+/pages/guide/_slug.vue
+/pages/guide/release-notes.vue
+/start.js

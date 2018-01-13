@@ -32,4 +32,4 @@ module.exports = {
     docSearchApiKey: 'ff80fbf046ce827f64f06e16f82f1401'
   },
   loading: { color: '#41B883' }
-}
+};

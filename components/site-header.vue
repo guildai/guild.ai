@@ -1,6 +1,25 @@
+<style lang="scss" scoped>
+$mobile-break: 48em;
+
+header {
+  height: 60px;
+  background-color: #3949AB;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $mobile-break) {
+    height: 80px;
+    padding: 0 30px;
+  }
+}
+</style>
+
 <template>
   <header>
-
+    <page-content>
+      <site-toolbar />
+    </page-content>
   </header>
 
   <!--
@@ -19,17 +38,18 @@
   -->
 </template>
 
-<style>
-header {
-  height: 60px;
-  background-color: #3949AB;
-  padding: 0 15px;
-  @media (min-width: 991px) {
-    height: 80px;
-    padding: 0 30px;
+<script>
+import PageContent from './page-content.vue';
+import SiteToolbar from './site-toolbar.vue';
+
+export default {
+  components: {
+    PageContent,
+    SiteToolbar
   }
-}
-</style>
+};
+</script>
+
 
 <!--
 <script>

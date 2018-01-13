@@ -21,13 +21,11 @@
 </template>
 
 <script>
-import NuxtLogo from '~/components/VueToNuxtLogo.vue'
-import NuxtFooter from '~/components/Footer.vue'
+import NuxtLogo from '~/components/VueToNuxtLogo.vue';
 
 export default {
   components: {
-    NuxtLogo,
-    NuxtFooter
+    NuxtLogo
   },
   head() {
     return {
@@ -48,9 +46,9 @@ export default {
         { name: 'twitter:image', content: 'https://i.imgur.com/PzEm5j2.png' },
         { name: 'twitter:image:alt', content: 'Nuxt.js Logo' }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

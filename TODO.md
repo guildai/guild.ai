@@ -6,3 +6,4 @@
   - img/materialdesignicons-webfont.5dfd79f.svg (2.3 MB)
   - fonts/materialdesignicons-webfont.3efec83.eot (303 kB)
   - pages/examples/_slug.65870edade2b46a50440.js (570 kB)
+- [ ] Use View linting config (require semi-colons, etc.)
