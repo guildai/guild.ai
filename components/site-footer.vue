@@ -7,11 +7,14 @@
     <div class="bottom">
       <page-content>
         <div class="row">
-          <div class="copyright col-xs-12 col-sm-6">
+          <div class="copyright col-xs-10">
             Copyright &copy; 2017-2018 TensorHub, Inc.
           </div>
-          <div class="social-links col-xs-12 col-sm-6 end-sm">
-            <a v-for="link in socialLinks" target="_blank" :href="link.link">
+          <div class="social-links col-xs-2 end-xs">
+            <a
+              v-for="link in $store.state.lang.externalLinks"
+              target="_blank"
+              :href="link.link">
               <i :class="'mdi mdi-' + link.icon" />
             </a>
           </div>
@@ -27,17 +30,6 @@ import PageContent from './page-content.vue';
 export default {
   components: {
     PageContent
-  },
-
-  data() {
-    return {
-      socialLinks: [
-        {
-          icon: 'github-circle',
-          link: 'https://github.com/guildai/guild'
-        }
-      ]
-    };
   }
 };
 </script>

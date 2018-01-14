@@ -17,21 +17,31 @@ const store = () => new Vuex.Store({
     toggle(state, key) {
       state[key] = !state[key];
     },
+
+    setFalse(state, key) {
+      state[key] = false;
+    },
+
     setApiURI(state, apiURI) {
       state.apiURI = apiURI;
     },
+
     setDocVersion(state, docVersion) {
       state.docVersion = docVersion;
     },
+
     setGhVersion(state, ghVersion) {
       state.ghVersion = ghVersion;
     },
+
     setLocale(state, locale) {
       state.locale = locale;
     },
+
     setLang(state, lang) {
       state.lang = lang;
     },
+
     setMenu(state, menu) {
       state.menu = menu;
     }

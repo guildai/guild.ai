@@ -6,18 +6,6 @@
   </div>
 </template>
 
-<!--
-<navbar />
-  <div>
-    <navbar />
-    <div :class="{'App--hidden': visible}">
-      <nuxt />
-      <site-footer />
-    </div>
-  </div>
-
--->
-
 <script>
 import SiteFooter from '~/components/site-footer.vue';
 import SiteHeader from '~/components/site-header.vue';
@@ -53,7 +41,7 @@ export default {
   },
 
   watch: {
-    $route: 'setStore'
+    $route: 'hideMenus'
   },
 
   computed: {
@@ -63,13 +51,9 @@ export default {
   },
 
   methods: {
-    setStore() {
-      if (this.$store.state.visibleHeader) {
-        this.$store.commit('toggle', 'visibleHeader');
-      }
-      if (this.$store.state.visibleAffix) {
-        this.$store.commit('toggle', 'visibleAffix');
-      }
+    hideMenus() {
+      this.$store.commit('setFalse', 'mobileMenuOpen');
+      this.$store.commit('setFalse', 'visibleAffix');
     }
   }
 };

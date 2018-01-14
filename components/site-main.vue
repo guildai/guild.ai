@@ -4,7 +4,7 @@
 <template>
   <div class="main">
     <page-content>
-      NUXT page here
+      <nuxt />
     </page-content>
   </div>
 </template>
