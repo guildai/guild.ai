@@ -27,6 +27,9 @@ $mobile-break: 48em;
 $transition-time: 250ms;
 
 .search {
+  display: flex;
+  align-items: center;
+
   input {
     height: 60px;
     padding: 0 15px;

@@ -16,19 +16,28 @@
 </template>
 
 <style lang="scss" scoped>
+$mobile-break: 48em;
+
 .menu {
   ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
     list-style: none;
-    justify-content: space-between;
+
+    @media (min-width: $mobile-break) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 15px;
+    }
 
     li {
-      width: 100%;
       border-bottom: 1px solid #ddd;
+
+      @media (min-width: $mobile-break) {
+        border-bottom: none;
+        margin: 0 15px;
+      }
 
       a {
         width: 100%;
@@ -38,6 +47,10 @@
         justify-content: center;
         text-decoration: none;
         color: rgba(#000, 0.87);
+
+        @media (min-width: $mobile-break) {
+          color: #fff;
+        }
       }
     }
   }
