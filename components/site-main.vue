@@ -1,12 +1,9 @@
-<style lang="scss" scoped>
-</style>
-
 <template>
-  <div class="main">
-    <page-content>
+  <page-content>
+    <div class="page-wrapper">
       <nuxt />
-    </page-content>
-  </div>
+    </div>
+  </page-content>
 </template>
 
 <script>
@@ -18,3 +15,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.page-wrapper {
+  padding: 15px;
+}
+</style>

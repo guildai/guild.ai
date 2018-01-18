@@ -63,10 +63,11 @@ $mobile-break: 48em;
         align-items: center;
         justify-content: center;
         text-decoration: none;
+        letter-spacing: 0.04em;
         color: rgba(#000, 0.87);
 
         @media (min-width: $mobile-break) {
-          font-size: 20px;
+          font-size: 18px;
           color: #fff;
         }
       }

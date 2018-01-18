@@ -60,21 +60,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$mobile-break: 48em;
 
 .main {
   flex: 1;
-}
-</style>
+  margin-top: 60px;
 
-<!--
-
-.App {
-  &--hidden {
-    display: none;
-    @media (min-width: 992px) {
-      display: block;
-    }
+  @media (min-width: $mobile-break) {
+    margin-top: 80px;
   }
 }
 </style>
--->
