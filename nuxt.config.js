@@ -8,12 +8,14 @@ module.exports = {
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
+
   css: [
     'normalize.css',
     'highlight.js/styles/github.css',
     'mdi/css/materialdesignicons.min.css',
     '~/assets/scss/main.scss'
   ],
+
   modules: [
     ['~/modules/sentry', {
       project_id: process.env.SENTRY_PROJECT_ID,
@@ -21,15 +23,21 @@ module.exports = {
       private_key: process.env.SENTRY_PRIVATE_KEY
     }]
   ],
+
   plugins: [
     { src: '~/plugins/ga.js', ssr: false }
   ],
+
   build: {
     vendor: ['axios']
   },
+
   env: {
     githubToken: '4aa6bcf919d238504e7db59a66d32e78281c0ad3',
     docSearchApiKey: 'ff80fbf046ce827f64f06e16f82f1401'
   },
-  loading: { color: '#41B883' }
+
+  loading: {
+    color: '#FFEB3B'
+  }
 };

@@ -11,6 +11,21 @@
           {{ $store.state.lang.links.docs }}
         </nuxt-link>
       </li>
+      <li>
+        <nuxt-link to="/packages">
+          {{ $store.state.lang.links.packages }}
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/support">
+          {{ $store.state.lang.links.support }}
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/about">
+          {{ $store.state.lang.links.about }}
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -27,8 +42,6 @@ $mobile-break: 48em;
 
     @media (min-width: $mobile-break) {
       display: flex;
-      flex-wrap: wrap;
-      margin: 0 15px;
     }
 
     li {
@@ -37,6 +50,10 @@ $mobile-break: 48em;
       @media (min-width: $mobile-break) {
         border-bottom: none;
         margin: 0 15px;
+
+        &:first-child {
+          _margin-left: 0px;
+        }
       }
 
       a {
@@ -49,6 +66,7 @@ $mobile-break: 48em;
         color: rgba(#000, 0.87);
 
         @media (min-width: $mobile-break) {
+          font-size: 20px;
           color: #fff;
         }
       }

@@ -1,10 +1,11 @@
 <template>
   <div class="nav">
+    <div :class="'spacer ' + searchingClass" />
     <site-search
-      :class="searchClass"
+      :class="'search nav-item ' + searchingClass"
       @focus="searching = true"
       @blur="searching = false" />
-    <site-menu :class="menuClass" />
+    <site-menu :class="'menu nav-item ' + searchingClass" />
     <site-links class="links nav-item" />
   </div>
 </template>
@@ -28,16 +29,8 @@ export default {
   },
 
   computed: {
-    menuClass() {
-      return this.searching
-        ? ' menu nav-item'
-        : 'menu nav-item expanded';
-    },
-
-    searchClass() {
-      return this.searching
-        ? 'search nav-item expanded'
-        : 'search nav-item';
+    searchingClass() {
+      return this.searching ? 'searching' : '';
     }
   }
 };
@@ -66,23 +59,38 @@ $mobile-break: 48em;
     width: 100%;
 
     .nav-item {
-      margin-left: 15px;
+      margin-left: 30px;
     }
 
-    .expanded {
+    .spacer {
+      order: 1;
       flex: 1;
     }
 
-    .menu {
-      order: 1;
+    .spacer.searching {
+      _flex: 0;
     }
 
-    .search {
+    .menu {
       order: 2;
     }
 
-    .links {
+    .menu.searching {
+      display: none;
+      _flex: 1;
+    }
+
+    .search {
       order: 3;
+    }
+
+    .search.searching {
+      min-width: 640px;
+      _flex: 1;
+    }
+
+    .links {
+      order: 4;
     }
   }
 }
