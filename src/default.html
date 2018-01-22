@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block header %}
-{% include "partials/default-header.html" %}
+{% include "partials/header.html" %}
+{% endblock %}
+
+{% block main %}
+<main class="container">
+  <div class="row">
+    {% include "partials/sidebar.html" %}
+    <article class="col-md-9 main-content" role="main">
+      {{ page.content }}
+    </article>
+  </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% include "partials/footer.html" %}
 {% endblock %}

@@ -1,48 +1,47 @@
+function trySmoothScroll(href, pushHistory) {
+  if (href.charAt(0) === '#') {
+    const target = $(href);
+    if (target.length > 0) {
+      if (pushHistory) {
+        window.history.pushState(null, null, href);
+      }
+      const scrollTop = target.offset().top - target.outerHeight() - 10;
+      $('html, body').animate({scrollTop: scrollTop}, 400);
+      return true;
+    }
+  }
+  return false;
+}
 
 $(function() {
 
   "use strict";
 
+  // Smooth scroll to anchor in page load
+  trySmoothScroll(location.hash);
+
+  // Smooth scroll to page links
+  $('.toc a, .sidenav.nav a, .actions a').click(function(e) {
+    const href = e.target.getAttribute('href');
+    if (trySmoothScroll(href, true)) {
+      e.preventDefault();
+    }
+  });
+
   // Back to top
   $('#scroll-up').on('click', function() {
-    $('html, body').animate({scrollTop : 0}, 900);
+    $('html, body').animate({scrollTop : 0}, 600);
     return false;
   });
-
-  // Smooth scroll for ToC
-  $('.toc a, .sidenav.nav a').click(function(){
-    $('html, body').animate({scrollTop: $($.attr(this, 'href')).offset().top - 80}, 500);
-    return false;
-  });
-
-  // Smoothscroll to anchor in page load
-  var hash = location.hash.replace('#','');
-  if (hash != '' && $("#"+hash).length > 0) {
-    $('html, body').animate({scrollTop: $("#"+hash).offset().top-100}, 600);
-  }
-
 
   // Full height body to make sure footer will place in bottom of the page
   if ($(window).height() > $('body').height()) {
-    var min_height = $(window).height() - $('.site-header').outerHeight() - $('.site-footer').outerHeight();
+    var min_height =
+        $(window).height() -
+        $('.navbar').outerHeight() -
+        $('.site-footer').outerHeight();
     $('body > main').css('min-height', min_height);
   }
-
-  // Set the height of sidebar if it's fixed
-  // We don't set height anymore
-  //
-  /*
-  if ($('.sidenav.sticky').length > 0) {
-    var offset_top = 20;
-
-    if ( $('.site-header.sticky').length ) {
-      offset_top = 100;
-    }
-
-    var sidenav_max_height = $(window).height() - $('.sidenav.sticky').position().top - offset_top;
-    $('.sidenav.sticky').height(sidenav_max_height);
-  }
-  */
 
   //
   // Top navbar
@@ -93,24 +92,12 @@ $(function() {
 
       }
     }
-
   }
 
   // Margin top for sticky navbar without banner
   if ($('.site-header').hasClass('sticky') && $('.site-header > .banner').length == 0) {
     $('.site-header').css('padding-top', $('.site-header > .navbar').height() + 30);
   }
-
-  // Add .force-middle if navbar-brand contains image
-  // 
-  // Remove it, because it make a jump on page load
-  /*
-  if ('.navbar-brand > img') {
-    $('.navbar-brand').prepend('<span class="force-middle"></span>');
-  }
-  */
-
-
 
   //
   // Sidebar
@@ -120,18 +107,16 @@ $(function() {
     $('body').addClass('open-sidebar');
     $('body').prepend('<div class="offcanvas-backdrop"></div>');
     $('html').css('overflow', 'hidden');
-    //$('.site-header .jumbotron').slideUp(50);
   }
 
   var offcanvas_close = function() {
     $('body').removeClass('open-sidebar');
     $('.offcanvas-backdrop').remove();
     $('html').css('overflow', 'visible');
-    //$('.site-header .jumbotron').slideDown(900);
   }
 
   // Offcanvas
-  // 
+  //
   $('[data-toggle="offcanvas"]').on('click', function () {
     if ($('body').hasClass('open-sidebar')) {
       offcanvas_close();
@@ -143,36 +128,35 @@ $(function() {
 
 
   // Close offcanvas upon clicking on backdrop
-  // 
+  //
   $(document).on('click', '.offcanvas-backdrop', function() {
     offcanvas_close();
   });
 
 
   // Close offcanvas in single page layouts upon clicking on a menu
-  // 
+  //
   $('.nav.sidenav a').on('click', function() {
     offcanvas_close();
   });
 
-
   // Dropdown
-  // 
+  //
   $('.sidenav.dropable > li > a').on('click', function(e){
 
     if ( 0 < $(this).next("ul").length ) {
       e.preventDefault();
     }
-    
+
     if ( 0 == $(this).next("ul").length ) {
       return;
     }
-  
+
     if ( $(this).hasClass('open') ) {
       $(this).removeClass('open').next("ul").slideUp(300);
       return;
     }
-    
+
     $(this).closest(".sidenav").find("> li > a").removeClass('open');
     $(this).closest(".sidenav").find("ul:visible").slideUp(300);
     $(this).addClass('open').next("ul").slideDown(300, function() {
@@ -191,16 +175,16 @@ $(function() {
     if ( 0 < $(this).next("ul").length ) {
       e.preventDefault();
     }
-    
+
     if ( 0 == $(this).next("ul").length ) {
       return;
     }
-  
+
     if ( $(this).hasClass('open') ) {
       $(this).removeClass('open').next("ul").slideUp(300);
       return;
     }
-    
+
     $(this).closest("ul").find("> li > a").removeClass('open');
     $(this).closest("ul").find("> li > ul:visible").slideUp(300);
     $(this).addClass('open').next("ul").slideDown(300, function() {
@@ -245,14 +229,12 @@ $(function() {
       }
 
       // If we are in footer area
-      if ( $(window).scrollTop() + $(window).height() > $(document).height() - 80 ) {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 80) {
         $sidenav.css('bottom', '80px');
         update_scrollbar();
-      }
-      else {
+      } else {
         $sidenav.css('bottom', '40px');
       }
-
     });
   }
 
@@ -264,8 +246,6 @@ $(function() {
     var link = '<a href="#'+ $(this).attr("id") +'">'+ $(this).html() +'</a>';
     $(this).html(link);
   });
-
-
 
 
   //
@@ -297,7 +277,7 @@ $(function() {
   if ($.fn.mediaelementplayer) {
     $('video').mediaelementplayer();
   }
-  
+
   if ($.fn.fitVids) {
     $('.video').fitVids();
   }
@@ -389,7 +369,7 @@ $(function() {
     }
 
     topbar += '</div>';//.window-bar
-    
+
     $(this).children(':not(:first)').hide(0);
     $(this).children().wrapAll('<div class="window-content"></div>');
     $(this).prepend(topbar);
@@ -434,7 +414,7 @@ $(function() {
 
       topbar += '</div></div>';
     }
-    
+
     $(this).children(':not(:first)').hide(0);
     $(this).children().wrapAll('<div class="window-content"></div>');
     $(this).prepend(topbar);
@@ -453,7 +433,6 @@ $(function() {
   $('pre code').each(function(){
     $(this).html($.trim($(this).html()));
   });
-
 
   // Copy to clipboard
   $('.code-preview .clipboard-copy').remove();
@@ -477,6 +456,4 @@ $(function() {
       setTimeout(function(el){ $(el.trigger).tooltip('hide'); }, 1000, e);
     });
   }
-
-
 });

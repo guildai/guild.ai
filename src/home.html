@@ -7,10 +7,8 @@
 {% block main %}
 <main class="container">
   <div class="row">
-    <aside class="col-sm-3 sidebar">
-      {% include "partials/sidebar.html" %}
-    </aside>
-    <article class="col-md-12 main-content" role="main">
+    {% include "partials/sidebar.html" %}
+    <article class="col-md-9 main-content" role="main">
       {{ page.content }}
     </article>
   </div>

@@ -1,6 +1,6 @@
 {% set header_class = "navbar-fullwidth navbar-transparent" %}
 
-{% extends "partials/header-base.html" %}
+{% extends "partials/header.html" %}
 
 {% block banner %}
 <div
@@ -16,7 +16,7 @@
       <a
         class="btn btn-primary btn-xl"
         role="button"
-        href="{{ page.meta.banner_action_link}}"
+        href="{{ page.meta.banner_action_link }}"
       >{{ page.meta.banner_action }}</a>
     </div>
     <div class="spacer"></div>

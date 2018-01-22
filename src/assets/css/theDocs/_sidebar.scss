@@ -1,14 +1,8 @@
-.sidebar {
-  padding: 50px 0 20px;
-}
-
 .sidenav {
   list-style: none;
   //overflow-y: auto;
   min-width: 180px;
-  padding-left: 20px;
-  padding-right: 20px;
-
+  padding: 50px 0 20px;
 
   &.nav > li > a {
     padding: 0;
@@ -142,8 +136,6 @@
     }
   }
 
-  // Third level
-  //
   ul li.active ul {
     a:before {
       display: none !important;
@@ -168,14 +160,12 @@
   li.active > a {
     color: $accent-color;
   }
-
-
 }
 
-//
-// Variations
-//
-// Line beside active link
+.sidebar .sidebar-nav {
+  display: none;
+}
+
 .sidebar-line .sidenav {
 
   > li > ul:before {
@@ -204,7 +194,6 @@
     height: 25px;
     width: 2px;
   }
-
 }
 
 .sidebar-icon .sidenav {
@@ -411,7 +400,6 @@
 
 @media screen and (max-width: $break-sm) {
 
-  /* off-canvas for sidenav */
   html,
   body {
     overflow-x: hidden;
@@ -476,12 +464,9 @@
     top: 0;
     bottom: 0;
     width: 80% !important;
-    _max-width: 400px;
-    _min-width: 320px;
     height: 100%;
     left: -80% !important;
-    padding-left: 25px;
-    padding-top: 20px !important;
+    padding: 0;
     overflow-y: auto;
     background-color: $bg-color !important;
     transition: left .25s ease-out;
@@ -517,6 +502,28 @@
       display: none;
     }
 
+    .sidebar-nav {
+      display: block;
+      background-color: $accent-color;
+      padding: 10px 25px;
+
+      li > a {
+        color: rgba($color-white, 0.8);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: .2s ease;
+        padding: 10px 0;
+      }
+
+      li.active > a {
+        font-weight: 700;
+      }
+    }
+
+    .sidenav {
+      padding: 10px 25px;
+    }
   }
 
   .sidenav.dropable ul {
