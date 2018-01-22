@@ -1,5 +1,5 @@
 grunt = node_modules/.bin/grunt
-mkdocs = ./mkdocs
+mkdocs = PYTHONPATH=. mkdocs
 
 site: refresh-assets
 	$(mkdocs) build

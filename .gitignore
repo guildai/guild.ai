@@ -4,3 +4,4 @@
 /src/assets/**/*.css
 /src/assets/**/*.css.map
 /src/assets/fonts/
+*.pyc

@@ -1,0 +1,3 @@
+[mkdocs.plugins]
+
+nav_resolve = plugins:NavResolvePlugin
