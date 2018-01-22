@@ -1,8 +1,3 @@
-/*------------------------------------
-- Tabs
-------------------------------------*/
-
-// Reset default bootstrap style
 .tabs {
 
   .nav-tabs > li {
@@ -24,7 +19,6 @@
         background-color: transparent;
       }
     }
-    
   }
 
   .tab-content {
@@ -32,7 +26,6 @@
   }
 }
 
-// Text tab
 .tabs-text .nav-tabs > li {
 
   &.active {
@@ -43,10 +36,8 @@
       color: $accent-color;
     }
   }
-
 }
 
-// Icon tab
 .tabs-icon .nav-tabs > li {
 
   a {
@@ -70,10 +61,8 @@
       color: $accent-color;
     }
   }
-
 }
 
-// Button tab
 .tabs-btn .nav-tabs {
 
   border-bottom: 0;
@@ -94,12 +83,9 @@
   }
 }
 
-
-// Media queries
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $break-md) {
 
   .tabs .nav-tabs > li a {
     font-size: 12px;
   }
-
 }

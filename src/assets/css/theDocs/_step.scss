@@ -1,12 +1,8 @@
-/*------------------------------------
-- Step
-------------------------------------*/
-
 .step-text {
   list-style: none;
   padding-left: 0;
   counter-reset: toc1;
-  
+
   > li {
     position: relative;
     padding-left: 60px;
@@ -40,7 +36,7 @@
     padding-left: 60px;
     margin-bottom: 48px;
     font-weight: 300;
-    
+
 
     &:before {
       content: counter(toc1) '-' counter(toc2) '.';
@@ -158,4 +154,3 @@
     }
   }
 }
-

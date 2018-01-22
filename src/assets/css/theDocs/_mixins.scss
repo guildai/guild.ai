@@ -1,10 +1,3 @@
-// Mixins
-// --------------------------------------------------
-
-// Common
-
-
-// _alerts
 @mixin callout-variant($color) {
   border-left-color: $color;
 
@@ -14,8 +7,6 @@
   }
 }
 
-
-// _buttons
 @mixin remove-outline {
   &.active.focus,
   &.active:focus,
@@ -53,13 +44,11 @@
   border-color: $color;
 }
 
-// _jumbotron
 @mixin jumbotron-variation($bg-color, $color: $color-white) {
   background-color: $bg-color;
   color: $color;
 }
 
-// _tables
 @mixin changelog-type($name, $bg-color) {
   content: $name;
   background-color: $bg-color;

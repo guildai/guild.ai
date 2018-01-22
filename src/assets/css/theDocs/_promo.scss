@@ -1,15 +1,11 @@
-/*------------------------------------
-- Promo
-------------------------------------*/
-
 .promo {
   text-align: center;
   margin: 24px 0;
-  
+
   &.left {
     text-align: left;
   }
-  
+
   &.right {
     text-align: right;
   }
@@ -49,13 +45,13 @@
       //margin-left: 41px;
     }
   }
-  
+
   > .fa,
   > .glyphicon  {
     font-size: 90px;
     color: $accent-color;
   }
-  
+
   > h3 {
     font-weight: 500;
     font-size: 18px;
@@ -64,34 +60,32 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-  
+
   > p {
     line-height: 24px;
     color: $light-gray-text-color;
   }
-  
+
   > .btn {
     margin-top: 15px;
   }
-  
+
   > img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;
-    
+
     &.bordered {
       padding: 3px;
       border-radius: 2px;
       border: 1px solid $border-color;
     }
   }
-  
+
 }
 
-
-// Media queries
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $break-md) {
 
   .promo {
     margin-bottom: 20px;
@@ -108,5 +102,4 @@
     padding-bottom: 0;
     margin-bottom: 0;
   }
-
 }

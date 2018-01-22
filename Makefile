@@ -2,7 +2,7 @@ grunt = node_modules/.bin/grunt
 mkdocs = ./mkdocs
 
 site: refresh-assets
-	$(mkdocs) build -e dist
+	$(mkdocs) build
 
 .PHONY: dist
 

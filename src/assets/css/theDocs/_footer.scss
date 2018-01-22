@@ -1,7 +1,3 @@
-/*------------------------------------
-- Footer
-------------------------------------*/
-
 .site-footer {
   position: relative;
   background-color: $bg-color-dark;
@@ -67,8 +63,7 @@
   }
 }
 
-// Media queries
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $break-md) {
 
   .site-footer {
     text-align: center;

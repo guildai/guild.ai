@@ -1,6 +1,3 @@
-/*------------------------------------
-- Typography
-------------------------------------*/
 body {
   font-family: $font-family-body;
   color: $text-color;
@@ -132,24 +129,6 @@ h1, h2, h3 {
   }
 }
 
-/*
---Depricated
-h2[id] {
-  position: relative;
-
-  .release-date {
-    position: absolute;
-    bottom: -26px;
-    right: 0;
-    background-color: $border-color-darker;
-    color: $color-white;
-    padding: 5px 10px;
-    font-size: 15px;
-    font-weight: 500;
-  }
-}
-*/
-
 .release-date {
   margin-left: 24px;
   font-size: 15px;
@@ -163,7 +142,6 @@ h2[id] {
   }
 }
 
-// Place holder
 ::-webkit-input-placeholder {
   font-weight: 300;
 }
@@ -176,7 +154,6 @@ h2[id] {
    color: red;
 }
 
-//Contextual text color
 .text-primary { color: $color-primary; }
 .text-success { color: $color-success; }
 .text-info    { color: $color-info; }
@@ -188,8 +165,7 @@ h2[id] {
 .text-dark    { color: $color-dark; }
 .text-white   { color: $color-white; }
 
-// Media queries
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $break-md) {
 
   h1 {
     font-size: 45px;
@@ -230,15 +206,10 @@ h2[id] {
       font-size: 22px;
     }
   }
-
-
 }
 
-@media screen and (max-width: 767px) {
-
-
+@media screen and (max-width: $break-md) {
 }
-
 
 @media screen and (max-width: 460px) {
 
@@ -279,5 +250,4 @@ h2[id] {
     line-height: 20px;
     font-weight: 500;
   }
-
 }

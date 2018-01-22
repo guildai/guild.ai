@@ -1,7 +1,3 @@
-/*------------------------------------
-- Table of content
-------------------------------------*/
-
 .toc {
   position: relative;
   list-style: none;
@@ -15,14 +11,14 @@
   a {
     color: $toc-text-color;
     transition: .3s ease;
-    
+
     &:hover,
     &:active {
       text-decoration: none;
       color: $accent-color;
     }
   }
-  
+
   > li:before {
     content: counter(toc1) ". ";
     counter-increment: toc1;

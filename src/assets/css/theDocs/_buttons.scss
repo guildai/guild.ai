@@ -1,9 +1,3 @@
-/*------------------------------------
-- Buttons
-------------------------------------*/
-
-// Base styles
-// -------------------------
 .btn {
   border-radius: 2px;
   border: none;
@@ -12,7 +6,6 @@
 }
 
 .btn-lg {
-
 }
 
 .btn-xl {
@@ -47,7 +40,6 @@
 .btn-teal    { background-color: $color-teal; }
 .btn-dark    { background-color: $color-dark; }
 .btn-white   { background-color: $color-white; }
-
 
 .btn-primary {
   @include btn-bg-color($color-primary-darker);
@@ -87,9 +79,6 @@
   @include btn-color($color-dark, true);
 }
 
-
-// Outline buttons
-// ----------------------------------------------------------
 .btn-outline {
   background-color: transparent;
   border: 1px solid transparent;
@@ -116,8 +105,6 @@
 .btn-outline.btn-dark    { @include btn-text-and-border-color($color-dark); }
 .btn-outline.btn-white   { @include btn-text-and-border-color($color-white); }
 
-// Round buttons
-// ------------------------------------------------------------
 .btn-round {
   background-color: transparent;
   border: 1px solid transparent;

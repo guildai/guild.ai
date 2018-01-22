@@ -1,7 +1,3 @@
-/*------------------------------------
-- Blog
-------------------------------------*/
-
 .post {
 
   margin-bottom: 50px;
@@ -65,7 +61,7 @@
 }
 
 .post-tags {
-  
+
   padding-top: 20px;
 
   a {
@@ -88,10 +84,6 @@
   }
 }
 
-
-//
-// Widgets
-//
 .sidebar .widget:first-child {
   margin-top: 65px;
 }
@@ -158,10 +150,6 @@
   }
 }
 
-
-//
-// Comments
-//
 #comments {
   margin-top: 50px;
   border-top: 1px solid #eee;
@@ -225,7 +213,6 @@
 .comment-text {
   margin-top: 20px;
 }
-
 
 .comment-form {
   .form-control {

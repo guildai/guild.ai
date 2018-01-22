@@ -1,11 +1,7 @@
-/*------------------------------------
-- Tables
-------------------------------------*/
-
 .table-info {
 
   font-weight: 300;
-  
+
   tr > td:first-child {
     font-weight: 400;
     padding-right: 10px;
@@ -63,7 +59,6 @@
 .change-moved:after   { content: "Moved"; }
 .change-merged:after  { content: "Merged"; }
 
-// Changelog list
 .changelog {
   padding-left: 0;
   list-style: none;
@@ -102,5 +97,4 @@
   .ch-updated:before { @include changelog-type("Updated", $color-info); }
   .ch-moved:before   { @include changelog-type("Moved", $color-purple); }
   .ch-merged:before  { @include changelog-type("Merged", $color-teal); }
-
 }

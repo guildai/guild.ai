@@ -1,18 +1,14 @@
-/*------------------------------------
-- Requirements
-------------------------------------*/
-
 .require-script {
   background-color: $bg-color;
   border: 1px solid $border-color-light;
   border-radius: 3px;
   padding: 15px;
-  
+
   .css,
   .js {
     position: relative;
     padding-top: 25px;
-    
+
     &:before {
       position: absolute;
       top: 0;
@@ -23,31 +19,27 @@
       letter-spacing: 1px;
     }
   }
-  
+
   .css:before {
     content: "Required Stylesheet";
   }
-  
+
   .js:before {
     content: "Required Script";
   }
-  
+
   > p+p {
     margin-top: 20px;
   }
-  
 }
 
-// Media queries
-@media screen and (max-width: 480px) {
+@media screen and (max-width: $break-xs) {
 
   .require-script {
-    
+
     .css,
     .js {
       word-break: break-all;
     }
-    
   }
-
 }

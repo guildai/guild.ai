@@ -42,8 +42,10 @@ $color-white:           #ffffff;
 $color-white-darker:    #ffffff;
 
 // Breaks
-$break-md: 991px;
+$break-xs: 480px;
 $break-sm: 767px;
+$break-md: 991px;
+$break-lg: 1170px;
 
 // _sidebar
 $sidebar-bg-color: $bg-color-dark;

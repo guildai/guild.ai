@@ -1,7 +1,3 @@
-/*------------------------------------
-- Sidebar
-------------------------------------*/
-
 .sidebar {
   padding: 50px 0 20px;
 }
@@ -211,7 +207,6 @@
 
 }
 
-// Icon
 .sidebar-icon .sidenav {
 
   > li > ul:before,
@@ -219,15 +214,8 @@
   a.active:before {
     display: none;
   }
-
 }
 
-
-//
-// Boxed sidebar variations
-//
-
-// Default
 .sidebar-boxed {
   background-color: $sidebar-bg-color;
   padding-left: 0;
@@ -357,8 +345,7 @@
 
 }
 
-// Media queries
-@media screen and (min-width: 1170px) {
+@media screen and (min-width: $break-lg) {
 
   .sidebar-boxed {
 
@@ -372,13 +359,10 @@
       padding-left: 135px;
       padding-right: 135px;
     }
-
   }
-
-
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $break-md) {
 
   .sidebar-boxed {
     width: 240px;
@@ -417,19 +401,15 @@
         right: 240px;
         left: 0;
       }
-
     }
 
     .sidenav ul a {
       padding-left: 38px;
     }
-
   }
-
-
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $break-sm) {
 
   /* off-canvas for sidenav */
   html,
@@ -559,7 +539,7 @@
 
     .sidebar {
       left: 0 !important;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(#000, 0.2);
       z-index: 1000;
 
       .sidenav {
@@ -601,11 +581,8 @@
         }
       }
     }
-
   }
-
 }
-
 
 .offcanvas-backdrop {
   position: fixed;
@@ -613,7 +590,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba($color-white, 0.7);
   z-index: 999;
 
   &::after {
@@ -624,7 +601,7 @@
     color: $light-gray-text-color;
     opacity: .5;
     position: absolute;
-    bottom: 0;
-    right: 20px;
+    top: 0;
+    left: 20px;
   }
 }

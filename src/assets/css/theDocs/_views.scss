@@ -1,7 +1,3 @@
-/*------------------------------------
-- Views
-------------------------------------*/
-
 .list-view {
   list-style: none;
   padding: 0;
@@ -180,7 +176,7 @@
 }
 
 // Media queries
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $break-md) {
 
   .categorized-view.view-col-3 {
     li {
@@ -200,7 +196,7 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: $break-xs) {
 
   .categorized-view li,
   .grid-view li {
