@@ -476,6 +476,8 @@
     top: 0;
     bottom: 0;
     width: 80% !important;
+    _max-width: 400px;
+    _min-width: 320px;
     height: 100%;
     left: -80% !important;
     padding-left: 25px;
@@ -523,19 +525,6 @@
 
   .open-sidebar {
     overflow: hidden;
-
-    .site-header {
-      left: 80%;
-
-      .navbar {
-        left: 80% !important;
-        right: -80% !important;
-      }
-    }
-
-    > main {
-      left: 80%;
-    }
 
     .sidebar {
       left: 0 !important;
