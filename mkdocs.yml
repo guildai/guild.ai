@@ -1,0 +1,23 @@
+site_name: Guild AI
+docs_dir: pages
+
+copyright: 2017-2018 TensorHub, Inc.
+
+theme:
+  name: null
+  custom_dir: src
+
+plugins:
+  - search
+  - nav_resolve
+
+markdown_extensions:
+  - toc:
+      permalink: False
+
+pages:
+  - index.md
+  - install.md
+  - docs/index.md
+  - pkgs/index.md
+  - support.md

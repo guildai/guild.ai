@@ -1,0 +1,6 @@
+/node_modules/
+/dist/
+/site/
+/src/assets/**/*.css
+/src/assets/**/*.css.map
+/src/assets/fonts/

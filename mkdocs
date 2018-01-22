@@ -1,0 +1,43 @@
+#!/usr/bin/python
+
+import sys
+
+from pkg_resources import EntryPoint
+
+from mkdocs.__main__ import cli
+from mkdocs.plugins import BasePlugin
+
+class NavResolvePlugin(BasePlugin):
+
+    def on_nav(self, nav, config):
+        """Process nav items
+
+        We use page meta for nav title and other config settings so we
+        need to read the page source. To avoid re-reading we disable
+        the read_source function.
+        """
+        for page in nav:
+            page.read_source(config)
+            page.read_source = lambda **_kw: None
+        return nav
+
+class DistProxy(object):
+
+    def requires(self, *_args):
+        return []
+
+def _patch_plugins():
+    from mkdocs import config
+    for name, val in config.DEFAULT_SCHEMA:
+        if name == "plugins":
+            _add_nav_resolve_plugin(val.installed_plugins)
+            break
+
+def _add_nav_resolve_plugin(plugins):
+    plugins["nav_resolve"] = EntryPoint(
+        "nav_resolve", "__main__", ("NavResolvePlugin",),
+        dist=DistProxy())
+
+if __name__ == "__main__":
+    _patch_plugins()
+    sys.exit(cli())

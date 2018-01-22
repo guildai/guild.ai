@@ -1,0 +1,2 @@
+navbar: yes
+title: Support

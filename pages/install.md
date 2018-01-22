@@ -1,0 +1,3 @@
+navbar: yes
+
+# Install
