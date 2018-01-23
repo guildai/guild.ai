@@ -1,0 +1,3 @@
+sidenav: yes
+
+# Plugin API
