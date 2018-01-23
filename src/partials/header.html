@@ -14,7 +14,7 @@
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
         <ul class="nav navbar-nav navbar-right">
           {% for item in nav %}
-          {% set page = item.children and item.children[0] or item %}
+          {% set page = item.children[0] if item.children else item %}
           {% if page.meta.navbar %}
           <li class="{% if item.active %}active{% endif %}">
             <a href="{{ page.abs_url }}">{{ page.title }}</a>

@@ -109,7 +109,7 @@ $(function() {
     setTimeout(function() {
       $('html').css('overflow', 'visible');
       $('.offcanvas-backdrop').remove();
-    }, 250);
+    }, 5000);
   }
 
   // Offcanvas

@@ -415,7 +415,7 @@
 
   .site-header,
   .site-header .navbar {
-    transition: left .25s ease-out;
+    transition: left $sidebar-toggle-transition;
   }
 
   .site-header {
@@ -433,7 +433,6 @@
     left: 0;
     padding-left: 15px !important;
     padding-right: 15px !important;
-    transition: left .25s ease-out;
   }
 
   .sidebar-boxed {
@@ -473,7 +472,8 @@
     padding: 0;
     overflow-y: auto;
     background-color: $bg-color !important;
-    transition: left .25s ease-out;
+    transition: left $sidebar-toggle-transition;
+    z-index: 999;
 
     &.sidebar-boxed {
 
@@ -520,11 +520,12 @@
         float: right;
         font-weight: 300;
         margin: 0;
-        padding: 5px;
+        padding: 4px;
+        margin-top: 6px;
         border: none;
         border-radius: 2px;
         color: rgba($color-white, .8);
-        font-size: 20px;
+        font-size: 16px;
         background-color: transparent;
 
         &:hover {
@@ -584,46 +585,14 @@
     .sidebar {
       left: 0 !important;
       box-shadow: 0 0 20px rgba(#000, 0.2);
-      z-index: 1000;
 
       .sidenav {
         height: auto !important;
       }
     }
 
-    .site-footer {
-      display: none;
-    }
-
     .site-header.navbar-transparent .navbar {
       position: fixed;
-    }
-  }
-
-  .sidenav.sticky {
-    //position: static!important;
-  }
-
-  // Remove line and dots from left side of UL
-  .sidenav {
-
-    > li {
-      position: static;
-
-      &.active a::before {
-        display: none;
-      }
-
-      > ul {
-
-        &:before {
-          //display: none;
-        }
-
-        a.active {
-          position: static;
-        }
-      }
     }
   }
 }
@@ -637,7 +606,7 @@
   background-color: rgba($color-white, 0.7);
   z-index: 999;
   opacity: 0;
-  transition: opacity .25s ease-out;
+  transition: opacity $sidebar-toggle-transition;
 
   &.in {
     opacity: 1;

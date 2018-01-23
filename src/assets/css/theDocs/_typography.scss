@@ -33,13 +33,13 @@ blockquote {
 h1 {
   font-weight: 300;
   font-size: 52px;
-  line-height: 52px;
+  line-height: 1.1;
   margin-bottom: 45px;
 }
 
 h2 {
   font-size: 36px;
-  line-height: 33px;
+  line-height: 1.2;
   margin-bottom: 35px;
   margin-top: 65px;
   font-weight: 300;
@@ -64,7 +64,7 @@ h2 {
 
 h3 {
   font-size: 30px;
-  line-height: 30px;
+  line-height: 1.3;
   margin-bottom: 28px;
   margin-top: 45px;
   font-weight: 300;
@@ -73,16 +73,19 @@ h3 {
 h4 {
   font-weight: 400;
   font-size: 25px;
+  line-height: 1.4;
 }
 
 h5 {
-  font-size: 21px;
   font-weight: 400;
+  font-size: 21px;
+  line-height: 1.4;
 }
 
 h6 {
-  font-size: 18px;
   font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -190,12 +193,10 @@ h1, h2, h3 {
 
   h4 {
     font-size: 24px;
-    line-height: 28px;
   }
 
   h5 {
     font-size: 20px;
-    line-height: 25px;
   }
 
 
@@ -211,7 +212,7 @@ h1, h2, h3 {
 @media screen and (max-width: $break-xs) {
 
   h1 {
-    font-size: 32px;
+    font-size: 36px;
     margin-bottom: 10px;
   }
 
@@ -232,19 +233,16 @@ h1, h2, h3 {
 
   h4 {
     font-size: 22px;
-    line-height: 26px;
     font-weight: 300;
   }
 
   h5 {
     font-size: 19px;
-    line-height: 24px;
     font-weight: 400;
   }
 
   h6 {
     font-size: 17px;
-    line-height: 20px;
     font-weight: 500;
   }
 }

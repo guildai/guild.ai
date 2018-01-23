@@ -1,7 +1,8 @@
+title: Install
 layout: default
 navbar: yes
 
-# Install
+###### Getting started with Guild AI ads sad sad dsa dsa dsa dsa dsa dsa dsa Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semLorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla
