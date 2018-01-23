@@ -13,6 +13,15 @@ a:focus {
   text-decoration: none;
 }
 
+a.ext::after {
+  content: 'open_in_new';
+  font-family: 'Material Icons';
+  color: lighten($accent-color, 25%);
+  font-size: 0.8em;
+  margin-left: 0.3em;
+  vertical-align: middle;
+}
+
 p,
 ul {
   font-weight: 400;
