@@ -69,6 +69,8 @@ $callout-danger-color:    #f55753;
 $btn-default-bg-color:    #f5f5f5;
 
 // _code
+$code-bg-color:                     $bg-color-dark;
+$code-border-color:                 $border-color-dark;
 $code-inline-color:                 #f4645f;
 $code-inline-bg-color:              #f0f2f1;
 $code-window-bg-color:              #ebebeb;
@@ -96,4 +98,4 @@ $toc-text-color:          #888;
 $view-link-color:         #45baa3;
 
 // _tooltip
-$tooltip-bg-color:   $color-dark;
+$tooltip-bg-color:        $color-dark;

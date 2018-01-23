@@ -6,8 +6,8 @@ code {
 
 pre {
   position: relative;
-  background-color: $bg-color;
-  border-color: $border-color;
+  background-color: $code-bg-color;
+  border-color: $code-border-color;
   font-size: 13px;
   line-height: 1.4;
 }
@@ -44,13 +44,14 @@ pre:hover .clipboard-copy {
 
 pre .language-name {
   background-color: transparent;
-  color: $pale-text-color;
+  color: $light-gray-text-color;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.2px;
   font-weight: 600;
   cursor: default;
   position: absolute;
   right: 10px;
+  text-shadow: 0 1px #fff;
 }
 
 :not(pre) > code[class*="language-"],

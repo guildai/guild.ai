@@ -13,6 +13,9 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - def_list
+  - footnotes
+  - smarty
   - plugins:ExternalLinks
 
 pages:
