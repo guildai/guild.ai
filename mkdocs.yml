@@ -23,11 +23,13 @@ pages:
       - docs/models.md
       - docs/operations.md
       - docs/packages.md
+      - Tutorials:
+          - docs/tutorials/index.md
       - docs/glossary.md
-  - pkgs:
-      - pkgs/index.md
-      - pkgs/keras.md
-      - pkgs/magenta.md
-      - pkgs/tensorflow.md
-      - pkgs/tfslim.md
+  - models:
+      - models/index.md
+      - models/keras.md
+      - models/magenta.md
+      - models/tensorflow.md
+      - models/tfslim.md
   - support.md

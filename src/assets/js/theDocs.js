@@ -138,27 +138,25 @@ $(function() {
 
   // Dropdown
   //
-  $('.sidenav.dropable > li > a').on('click', function(e){
+  $('.sidenav.dropable > li > a').on('click', function(e) {
 
-    if ( 0 < $(this).next("ul").length ) {
+    if (0 < $(this).next("ul").length) {
       e.preventDefault();
     }
 
-    if ( 0 == $(this).next("ul").length ) {
+    if (0 == $(this).next("ul").length) {
       return;
     }
 
-    if ( $(this).hasClass('open') ) {
-      $(this).removeClass('open').next("ul").slideUp(300);
-      return;
+    if ($(this).hasClass('open')) {
+      $(this).removeClass('open').next("ul").slideUp(200);
+    } else {
+      $(this).closest(".sidenav").find("> li > a").removeClass('open');
+      $(this).closest(".sidenav").find("ul:visible").slideUp(200);
+      $(this).addClass('open').next("ul").slideDown(200, function() {
+        update_scrollbar();
+      });
     }
-
-    $(this).closest(".sidenav").find("> li > a").removeClass('open');
-    $(this).closest(".sidenav").find("ul:visible").slideUp(300);
-    $(this).addClass('open').next("ul").slideDown(300, function() {
-      update_scrollbar();
-    });
-
   });
 
   $('.sidenav.dropable > li > a.active').addClass('open');
@@ -190,8 +188,6 @@ $(function() {
 
   $('.sidenav .dropable a.active').addClass('open');
   $('.sidenav .dropable ul').prev('a').addClass('has-child');
-
-
 
   // Perfect scrollbar for sidebar
   $('.sidebar-boxed, .sidenav.sticky').perfectScrollbar({

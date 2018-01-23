@@ -22,16 +22,42 @@
   </div>
 
   {% if page.meta.sidenav %}
-  {% for page in nav %}
-  {% if page.active and page.children %}
+  {% for item in nav %}
+  {% if item.active and item.children %}
   <ul class="sidenav dropable sticky">
-    {% for child in page.children[1:] %}
+    {% for child in item.children %}
+    {% if child.children %}
+    <li>
+      <a href="#">{{ child.title }}</a>
+      <ul>
+        <li><a>Item 1</a></li>
+        <li class="active"><a>Item 2</a></li>
+      </ul>
+    </li>
+    {% elif not child.meta.hide_in_sidebar %}
     <li>
       <a
         class="{% if child.active %}active{% endif %}"
         href="{{ child.abs_url }}">{{ child.title }}</a>
     </li>
+    {% endif %}
     {% endfor %}
+    <li>
+      <a href="#">Layouts asd asd sad sad dsa sa da</a>
+      <ul>
+        <li><a class="active" href="layout_boxed_left-sidebar.html">Boxed - Left sidebar</a></li>
+        <li><a href="layout_boxed_right-sidebar.html">Boxed - Right sidebar</a></li>
+        <li><a href="layout_boxed_no-sidebar.html">Boxed - No sidebar</a></li>
+        <li><a href="layout_full_left-sidebar.html">Fullwidth - Left sidebar</a></li>
+        <li><a class="active" href="layout_full_right-sidebar.html">Fullwidth - Right sidebar</a></li>
+        <li><a href="layout_full_no-sidebar.html">Fullwidth - No sidebar</a></li>
+        <li><a href="layout_single-page-1.html">Single page - Sample 1</a></li>
+        <li><a href="layout_single-page-2.html">Single page - Sample 2</a></li>
+        <li><a href="layout_single-page-3.html">Single page - Sample 3</a></li>
+        <li><a href="layout_sidebar_boxed.html">Boxed sidebar</a></li>
+        <li><a href="layout_skin.html">Skins</a></li>
+      </ul>
+    </li>
   </ul>
   {% endif %}
   {% endfor %}
