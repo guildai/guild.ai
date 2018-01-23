@@ -23,8 +23,29 @@ pages:
       - docs/models.md
       - docs/operations.md
       - docs/packages.md
+      - Commands:
+          - docs/commands/check.md
+          - docs/commands/compare.md
+          - docs/commands/help.md
+          - docs/commands/index.md
+          - docs/commands/install.md
+          - docs/commands/models.md
+          - docs/commands/operations.md
+          - docs/commands/package.md
+          - docs/commands/packages.md
+          - docs/commands/resources.md
+          - docs/commands/run.md
+          - docs/commands/runs.md
+          - docs/commands/search.md
+          - docs/commands/shell.md
+          - docs/commands/sync.md
+          - docs/commands/tensorboard.md
+          - docs/commands/tensorflow.md
+          - docs/commands/train.md
+          - docs/commands/uninstall.md
+          - docs/commands/view.md
       - Tutorials:
-          - docs/tutorials/index.md
+          - docs/tutorials/guild-from-scratch.md
       - docs/glossary.md
   - models:
       - models/index.md

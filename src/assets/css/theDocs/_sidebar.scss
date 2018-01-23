@@ -512,7 +512,7 @@
       padding: 15px 25px;
 
       .sidebar-nav-brand img {
-        max-height: 24px;
+        height: 30px;
         margin: 10px 0;
       }
 
@@ -547,26 +547,29 @@
         .fa {
           vertical-align: middle;
         }
-
       }
 
-      li > a {
-        color: rgba($color-white, 0.8);
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: .2s ease;
-        padding: 10px 0;
+      .nav {
+        margin-top: 5px;
 
-        &:hover,
-        &:focus {
-          background-color: transparent;
-          color: $color-white;
+        li > a {
+          color: rgba($color-white, 0.8);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          transition: .2s ease;
+          padding: 10px 0;
+
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            color: $color-white;
+          }
         }
-      }
 
-      li.active > a {
-        font-weight: 700;
+        li.active > a {
+          font-weight: 700;
+        }
       }
     }
 
