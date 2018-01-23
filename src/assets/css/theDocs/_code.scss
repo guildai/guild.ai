@@ -8,6 +8,8 @@ pre {
   position: relative;
   background-color: $bg-color;
   border-color: $border-color;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .code-preview {
@@ -17,8 +19,8 @@ pre {
 .clipboard-copy {
   position: absolute;
   top: 5px;
-  right: 5px;
-  line-height: 20px;
+  right: 8px;
+  line-height: 1.4;
   transition: opacity .4s ease-in-out;
   opacity: 0;
   z-index: 9;
@@ -48,7 +50,6 @@ pre .language-name {
   font-weight: 600;
   cursor: default;
   position: absolute;
-  _top: 8px;
   right: 10px;
 }
 

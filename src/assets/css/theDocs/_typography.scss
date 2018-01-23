@@ -16,7 +16,7 @@ a:focus {
 a.ext::after {
   content: 'open_in_new';
   font-family: 'Material Icons';
-  color: lighten(desaturate($accent-color, 20%), 20%);
+  color: lighten(desaturate($accent-color, 10%), 30%);
   font-size: 0.8em;
   margin-left: 0.3em;
   vertical-align: middle;
