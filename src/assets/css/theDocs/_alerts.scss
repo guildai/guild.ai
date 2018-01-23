@@ -2,15 +2,34 @@
   border-radius: 2px;
 }
 
-.callout {
+.callout,
+.admonition {
   padding: 12px 20px;
   margin: 20px 0;
   border: 1px solid $callout-border-color;
   border-left-width: 3px;
   border-radius: 3px;
 
-  h4 {
+  h4,
+  .admonition-title {
     font-size: 20px;
+  }
+
+  &.success {
+    @include callout-variant($callout-success-color);
+  }
+
+  &.note,
+  &.info {
+    @include callout-variant($callout-info-color);
+  }
+
+  &.warning {
+    @include callout-variant($callout-warning-color);
+  }
+
+  &.danger {
+    @include callout-variant($callout-danger-color);
   }
 }
 

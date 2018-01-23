@@ -12,6 +12,7 @@ plugins:
   - nav_resolve
 
 markdown_extensions:
+  - admonition
   - plugins:ExternalLinks
 
 pages:
