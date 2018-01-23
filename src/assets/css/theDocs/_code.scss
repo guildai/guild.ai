@@ -16,14 +16,9 @@ pre {
 
 .clipboard-copy {
   position: absolute;
-  top: 26px;
-  right: 13px;
+  top: 5px;
+  right: 5px;
   line-height: 20px;
-  //color: $pale-text-color;
-  //text-transform: uppercase;
-  //letter-spacing: 1px;
-  //font-weight: 600;
-  //cursor: pointer;
   transition: opacity .4s ease-in-out;
   opacity: 0;
   z-index: 9;
@@ -53,8 +48,7 @@ pre .language-name {
   font-weight: 600;
   cursor: default;
   position: absolute;
-  top: 8px;
-  // Change to 56px after using clipboard
+  _top: 8px;
   right: 10px;
 }
 
@@ -82,17 +76,6 @@ pre[class*="language-"] {
 }
 
 pre[class*='language-'][data-language]::before {
-  /*
-  background-color: transparent;
-  color: $pale-text-color;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  top: 8px;
-  // Change to 56px after using clipboard
-  right: 8px;
-  */
-  // it's depricated, because we can't move it with scroll
   display: none;
 }
 
@@ -192,7 +175,6 @@ div.prism-show-language > div.prism-show-language-label {
     background-color: $color-white;
     border: none;
     margin: 0;
-    //padding-top: 0;
     padding-bottom: 8px;
   }
 
@@ -269,10 +251,6 @@ div.prism-show-language > div.prism-show-language-label {
   .languages {
     border-bottom: 1px solid $border-color;
 
-    .btn-group {
-
-    }
-
     .btn {
       padding: 10px 15px;
       background-color: $color-white;
@@ -307,36 +285,6 @@ div.prism-show-language > div.prism-show-language-label {
 
   .window-content {
     border-bottom: 1px solid $border-color-light;
-  }
-
-}
-
-@media screen and (max-width: $break-md) {
-
-  .clipboard-copy {
-    top: 8px !important;
-    right: 8px;
-    color: $pale-text-color;
-    background-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    opacity: 1;
-    padding: 0;
-
-    &:hover,
-    &:focus {
-      color: $light-text-color;
-      background-color: transparent;
-    }
-  }
-
-  pre[class*='language-'][data-language]::before {
-    right: 56px;
-  }
-
-  pre .language-name {
-    right: 56px;
   }
 }
 

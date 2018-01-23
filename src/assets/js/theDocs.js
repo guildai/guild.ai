@@ -313,7 +313,7 @@ $(function() {
     }
     topbar += '</div>';//.circles
 
-    //Languages
+    // Languages
     if ($(this).children().length > 1) {
       topbar += '<div class="languages"><div class="btn-group" data-toggle="buttons">';
 
@@ -408,7 +408,11 @@ $(function() {
 
   // Copy to clipboard
   $('.code-preview .clipboard-copy').remove();
-  $('.clipboard-copy').tooltip({placement: 'bottom', trigger: 'manual'});
+  $('.clipboard-copy').tooltip({
+    placement: 'left',
+    trigger: 'manual',
+    hide: { duration: 300 }
+  });
 
   // Move copy button when the content is scrolling
   $('.clipboard-copy').parent().on('scroll', function(){
@@ -426,7 +430,9 @@ $(function() {
     clipboardSnippets.on('success', function(e) {
       e.clearSelection();
       $(e.trigger).tooltip('show');
-      setTimeout(function(el){ $(el.trigger).tooltip('hide'); }, 1000, e);
+      setTimeout(function(el) {
+        $(el.trigger).tooltip('hide');
+      }, 1000, e);
     });
   }
 });
