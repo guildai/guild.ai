@@ -1,0 +1,5 @@
+- [ ] Replace fontawesome with mdi
+  - [ ] navbar menu
+  - [ ] sidebar close
+  - [ ] social
+  - [ ] features

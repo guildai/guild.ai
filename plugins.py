@@ -1,4 +1,5 @@
 from mkdocs.plugins import BasePlugin
+from mkdocs.nav import Page, Header
 
 class NavResolvePlugin(BasePlugin):
 
@@ -9,7 +10,14 @@ class NavResolvePlugin(BasePlugin):
         need to read the page source. To avoid re-reading we disable
         the read_source function.
         """
-        for page in nav:
-            page.read_source(config)
-            page.read_source = lambda **_kw: None
+        for item in nav:
+            self._ensure_loaded(item, config)
         return nav
+
+    def _ensure_loaded(self, item, config):
+        if isinstance(item, Header):
+            for item in item.children:
+                self._ensure_loaded(item, config)
+        elif isinstance(item, Page):
+            item.read_source(config)
+            item.read_source = lambda **_kw: None

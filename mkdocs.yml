@@ -18,6 +18,16 @@ markdown_extensions:
 pages:
   - index.md
   - install.md
-  - docs/index.md
-  - pkgs/index.md
+  - docs:
+      - docs/index.md
+      - docs/models.md
+      - docs/operations.md
+      - docs/packages.md
+      - docs/glossary.md
+  - pkgs:
+      - pkgs/index.md
+      - pkgs/keras.md
+      - pkgs/magenta.md
+      - pkgs/tensorflow.md
+      - pkgs/tfslim.md
   - support.md

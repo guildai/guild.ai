@@ -1,7 +1,6 @@
-navbar: yes
 sidenav: yes
 
-# Packages
+# Operations
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla

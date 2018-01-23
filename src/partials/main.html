@@ -1,0 +1,10 @@
+<main class="container">
+  <div class="row">
+    {% include "partials/sidebar.html" %}
+    <article
+      class="{% if page.meta.sidenav %}col-sm-9{% else %}col-sm-12{% endif %} main-content"
+      role="main">
+      {{ page.content }}
+    </article>
+  </div>
+</main>

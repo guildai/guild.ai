@@ -13,10 +13,11 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
         <ul class="nav navbar-nav navbar-right">
-          {% for page in nav %}
+          {% for item in nav %}
+          {% set page = item.children and item.children[0] or item %}
           {% if page.meta.navbar %}
-          <li class="{% if page.active %}active{% endif %} {{ page.meta.navbar_class }}">
-            <a href="{{ page.url }}">{{ page.title }}</a>
+          <li class="{% if item.active %}active{% endif %}">
+            <a href="{{ page.abs_url }}">{{ page.title }}</a>
           </li>
           {% endif %}
           {% endfor %}

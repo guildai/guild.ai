@@ -30,18 +30,9 @@ $(function() {
 
   // Back to top
   $('#scroll-up').on('click', function() {
-    $('html, body').animate({scrollTop : 0}, 600);
+    $('html, body').animate({scrollTop : 0}, 400);
     return false;
   });
-
-  // Full height body to make sure footer will place in bottom of the page
-  if ($(window).height() > $('body').height()) {
-    var min_height =
-        $(window).height() -
-        $('.navbar').outerHeight() -
-        $('.site-footer').outerHeight();
-    $('body > main').css('min-height', min_height);
-  }
 
   //
   // Top navbar
@@ -106,13 +97,19 @@ $(function() {
   var offcanvas_open = function() {
     $('body').addClass('open-sidebar');
     $('body').prepend('<div class="offcanvas-backdrop"></div>');
+    setTimeout(function() {
+      $('.offcanvas-backdrop').addClass('in');
+    }, 0);
     $('html').css('overflow', 'hidden');
   }
 
   var offcanvas_close = function() {
     $('body').removeClass('open-sidebar');
-    $('.offcanvas-backdrop').remove();
-    $('html').css('overflow', 'visible');
+    $('.offcanvas-backdrop').removeClass('in');
+    setTimeout(function() {
+      $('html').css('overflow', 'visible');
+      $('.offcanvas-backdrop').remove();
+    }, 250);
   }
 
   // Offcanvas
@@ -120,8 +117,7 @@ $(function() {
   $('[data-toggle="offcanvas"]').on('click', function () {
     if ($('body').hasClass('open-sidebar')) {
       offcanvas_close();
-    }
-    else {
+    } else {
       offcanvas_open();
     }
   });
@@ -287,7 +283,7 @@ $(function() {
   });
 
 
-  //Equal height for grid view
+  // Equal height for grid view
   $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
 
   //

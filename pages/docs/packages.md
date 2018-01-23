@@ -1,4 +1,3 @@
-navbar: yes
 sidenav: yes
 
 # Packages

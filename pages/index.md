@@ -14,8 +14,6 @@ This is some excellent advertisign for Guild AI!
 
 ---
 
-# Features
-
 <div class="row">
   <div class="col-sm-4">
     <div class="promo small-icon left">
@@ -57,6 +55,8 @@ nec erat. Fusce lorem sapien, mattis sed vestibulum sit amet, congue
 sit amet nisi. Mauris tellus eros, egestas et nisi non, iaculis tempor
 quam. Morbi id lobortis nisl, vitae rhoncus quam. Aenean fermentum
 nibh in nisi cursus finibus.
+
+---
 
 # Layouts
 

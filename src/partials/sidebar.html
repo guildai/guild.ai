@@ -1,15 +1,43 @@
-<aside class="col-sm-3 sidebar">
+<aside class="{% if page.meta.sidenav %}col-sm-3{% endif %} sidebar">
 
-  <ul class="nav sidebar-nav">
-    {% for page in nav %}
-    {% if page.meta.navbar %}
-    <li class="{% if page.active %}active{% endif %} {{ page.meta.navbar_class }}">
-      <a href="{{ page.url }}">{{ page.title }}</a>
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="{{ nav.homepage.canonical_url }}">
+        <img src="{{ base_url }}/assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav">
+      {% for item in nav %}
+      {% set page = item.children and item.children[0] or item %}
+      {% if page.meta.navbar %}
+      <li class="{% if page.active %}active{% endif %} {{ page.meta.navbar_class }}">
+        <a href="{{ page.abs_url }}">{{ page.title }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% if page.meta.sidenav %}
+  {% for page in nav %}
+  {% if page.active and page.children %}
+  <ul class="sidenav dropable sticky">
+    {% for child in page.children[1:] %}
+    <li>
+      <a
+        class="{% if child.active %}active{% endif %}"
+        href="{{ child.abs_url }}">{{ child.title }}</a>
     </li>
-    {% endif %}
     {% endfor %}
   </ul>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
 
+  <!--
   <ul class="sidenav dropable sticky">
     <li><a class="active" href="index.html">Overview</a></li>
     <li>
@@ -110,6 +138,7 @@
         <li><a href="#">Level 1</a></li>
       </ul>
     </li>
-
   </ul>
+  -->
+
 </aside>

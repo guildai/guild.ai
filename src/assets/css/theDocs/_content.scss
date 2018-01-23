@@ -1,16 +1,19 @@
-/*------------------------------------
-- Content
-------------------------------------*/
-
 body[data-spy] {
   position: relative;
 }
 
-//Article styling
 .main-content {
-  padding: 50px 50px 50px 0;
+  padding: 50px;
   font-size: 16px;
   line-height: 27px;
+
+  @media screen and (max-width: $break-md) {
+    padding: 30px;
+  }
+
+  @media screen and (max-width: $break-xs) {
+    padding: 20px 25px;
+  }
 
   &.col-md-12 {
     padding-right: 0;
@@ -40,11 +43,6 @@ body[data-spy] {
   }
 }
 
-.sidebar + .main-content {
-  padding-left: 50px;
-  padding-right: 0;
-}
-
 .container-fluid {
 
   .main-content {
@@ -65,25 +63,7 @@ body[data-spy] {
   }
 }
 
-
-// Media queries
 @media screen and (max-width: $break-md) {
-
-  .main-content {
-    padding: 50px 30px 50px 0;
-  }
-
-  .sidebar + .main-content {
-    padding-left: 30px;
-  }
-
-}
-
-@media screen and (max-width: $break-md) {
-
-  .main-content {
-    padding: 30px 20px!important;
-  }
 
   .container-fluid {
 
@@ -104,5 +84,4 @@ body[data-spy] {
       padding-left: 20px;
     }
   }
-
 }

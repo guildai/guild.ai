@@ -1,8 +1,12 @@
 .sidenav {
   list-style: none;
-  //overflow-y: auto;
   min-width: 180px;
-  padding: 50px 0 20px;
+  padding: 50px 0;
+  margin: 0;
+
+  @media screen and (max-width: $break-md) {
+    padding: 30px 0;
+  }
 
   &.nav > li > a {
     padding: 0;
@@ -505,7 +509,45 @@
     .sidebar-nav {
       display: block;
       background-color: $accent-color;
-      padding: 10px 25px;
+      padding: 15px 25px;
+
+      .sidebar-nav-brand img {
+        max-height: 24px;
+        margin: 10px 0;
+      }
+
+      .sidebar-close {
+        float: right;
+        font-weight: 300;
+        margin: 0;
+        padding: 5px;
+        border: none;
+        border-radius: 2px;
+        color: rgba($color-white, .8);
+        font-size: 20px;
+        background-color: transparent;
+
+        &:hover {
+          color: $color-white;
+          background-color: rgba($color-white, .2);
+        }
+
+        &:focus,
+        &:active {
+          background-color: transparent;
+        }
+
+        &.for-sidebar {
+          float: left;
+          margin-top: 3px;
+          padding: 14px 10px;
+        }
+
+        .fa {
+          vertical-align: middle;
+        }
+
+      }
 
       li > a {
         color: rgba($color-white, 0.8);
@@ -514,6 +556,12 @@
         letter-spacing: 1px;
         transition: .2s ease;
         padding: 10px 0;
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          color: $color-white;
+        }
       }
 
       li.active > a {
@@ -588,16 +636,10 @@
   bottom: 0;
   background-color: rgba($color-white, 0.7);
   z-index: 999;
+  opacity: 0;
+  transition: opacity .25s ease-out;
 
-  &::after {
-    content: '×';
-    font-family: $font-family-body;
-    font-weight: 100;
-    font-size: 45px;
-    color: $light-gray-text-color;
-    opacity: .5;
-    position: absolute;
-    top: 0;
-    left: 20px;
+  &.in {
+    opacity: 1;
   }
 }
