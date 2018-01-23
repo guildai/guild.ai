@@ -1,7 +1,8 @@
 /node_modules/
 /dist/
 /site/
-/src/assets/**/*.css
-/src/assets/**/*.css.map
+/src/assets/css/**/*.css
+/src/assets/css/**/*.css.map
+/src/assets/js/**/*.min.js
 /src/assets/fonts/
 *.pyc
