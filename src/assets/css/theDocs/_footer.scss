@@ -1,8 +1,12 @@
 .site-footer {
   position: relative;
-  background-color: $bg-color-dark;
+  background-color: $bg-color-darker;
   color: $gray-text-color;
-  padding: 30px 15px;
+  padding: 20px 15px;
+
+  @media screen and (max-width: $break-md) {
+    text-align: center;
+  }
 
   div > p:last-child {
     margin-bottom: 0;
@@ -17,8 +21,8 @@
     position: absolute;
     top: -47px;
     right: 0;
-    color: $pale-text-color;
-    background-color: $bg-color-dark;
+    color: $gray-text-color;
+    background-color: $bg-color-darker;
     display: inline-block;
     width: 34px;
     height: 34px;
@@ -44,6 +48,10 @@
   padding: 0;
   text-align: right;
 
+  @media screen and (max-width: $break-md) {
+    text-align: center;
+  }
+
   li {
     display: inline-block;
     padding: 0 8px;
@@ -63,15 +71,6 @@
   }
 }
 
-@media screen and (max-width: $break-md) {
-
-  .site-footer {
-    text-align: center;
-  }
-
-  .footer-menu {
-    text-align: center;
-    margin-top: 20px;
-  }
-
+.footer-cell {
+  padding: 5px 0;
 }
