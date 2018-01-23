@@ -59,7 +59,7 @@ $sidebar-dark-active-link-color: #ffffff;
 $sidebar-toggle-transition: 0.3s ease-out;
 
 // _alerts
-$callout-border-color:    #eee;
+$callout-border-color:    $border-color-dark;
 $callout-success-color:   #10cfbd;
 $callout-info-color:      #48b0f7;
 $callout-warning-color:   #f8d053;
@@ -94,3 +94,6 @@ $toc-text-color:          #888;
 
 // _views
 $view-link-color:         #45baa3;
+
+// _tooltip
+$tooltip-bg-color:   $color-dark;

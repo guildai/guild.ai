@@ -279,7 +279,7 @@ $(function() {
   // Copy to clipboard
   // It doesn't support Safari yet, and also has some minor bugs
   $('pre').each(function(index, value) {
-    $(this).prepend('<a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a>');
+    $(this).prepend('<a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied">Copy</a>');
   });
 
   // Code snippet
@@ -410,8 +410,7 @@ $(function() {
   $('.code-preview .clipboard-copy').remove();
   $('.clipboard-copy').tooltip({
     placement: 'left',
-    trigger: 'manual',
-    hide: { duration: 300 }
+    trigger: 'manual'
   });
 
   // Move copy button when the content is scrolling
@@ -432,7 +431,7 @@ $(function() {
       $(e.trigger).tooltip('show');
       setTimeout(function(el) {
         $(el.trigger).tooltip('hide');
-      }, 1000, e);
+      }, 1500, e);
     });
   }
 });
