@@ -35,13 +35,11 @@ class ExtLinkPattern(inlinepatterns.LinkPattern):
 
     def __init__(self, md):
         super(ExtLinkPattern, self).__init__(inlinepatterns.LINK_RE, md)
-        self._pattern = re.compile(r"(.*?[^ ]) ?->$")
 
     def handleMatch(self, m):
         el = super(ExtLinkPattern, self).handleMatch(m)
-        m = self._pattern.match(el.text)
-        if m:
-            el.text = m.group(1)
+        if el.text.endswith("->"):
+            el.text = el.text[:-2].rstrip()
             el.set("target", "_blank")
             el.set("class", "ext")
         return el
@@ -62,13 +60,25 @@ class ExternalLinks(Extension):
 
     Here's an external link:
 
-    >>> md.convert("[Link ->](/link)")
-    u'<p><a class="ext" href="/link" target="_blank">Link</a></p>'
+    >>> md.convert("[Link ->](#)")
+    u'<p><a class="ext" href="#" target="_blank">Link</a></p>'
 
     The default behavior is applied for non-external links:
 
-    >>> md.convert("[Link](/link)")
-    u'<p><a href="/link">Link</a></p>'
+    >>> md.convert("[Link](#)")
+    u'<p><a href="#">Link</a></p>'
+
+    Below are some edge case tests.
+
+    Space not included before marker:
+
+    >>> md.convert("[Link->](#)")
+    u'<p><a class="ext" href="#" target="_blank">Link</a></p>'
+
+    Text spans multiple lines:
+
+    >>> md.convert("[Line 1\\nLine 2 ->](#)")
+    u'<p><a class="ext" href="#" target="_blank">Line 1\\nLine 2</a></p>'
     """
 
     def extendMarkdown(self, md, _globals):
