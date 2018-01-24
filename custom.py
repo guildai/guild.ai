@@ -4,6 +4,7 @@ import re
 import shlex
 
 from markdown.extensions import Extension
+from markdown.extensions.toc import slugify
 from markdown import inlinepatterns
 from markdown import treeprocessors
 from markdown.util import etree
@@ -141,8 +142,7 @@ class FixToc(Extension):
     extension:
 
     >>> import markdown
-    >>> from markdown.extensions.toc import TocExtension
-    >>> md = markdown.Markdown(extensions=[TocExtension(), FixToc()])
+    >>> md = markdown.Markdown(extensions=["toc", FixToc()])
 
     Here's a simple document with a toc in the format we use in this
     site:
@@ -310,6 +310,42 @@ class LinkAlias(Extension):
             "link_alias",
             LinkAliasProcessor(md, self.aliases),
             ">inline")
+
+class DefIdProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, doc):
+        for dt in doc.iter("dt"):
+            dt.set("id", slugify(dt.text, "-"))
+
+class DefinitionId(Extension):
+    """Adds ids to definition terms
+
+    With ids, definition terms can be referenced within a page using
+    hashes.
+
+    Ids are generated using the toc extension's slugify function using
+    "-" as the separator.
+
+    To illustrate, let's configure markdown with DefinitionList and
+    our extension:
+
+    >>> import markdown
+    >>> md = markdown.Markdown(extensions=["def_list", DefinitionId()])
+
+    Here's a definition list:
+
+    >>> print(md.convert("foo\\n: Overused example\\n\\nbar baz\\n: See foo"))
+    <dl>
+    <dt id="foo">foo</dt>
+    <dd>Overused example</dd>
+    <dt id="bar-baz">bar baz</dt>
+    <dd>See foo</dd>
+    </dl>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("def_id", DefIdProcessor(md), "_end")
 
 def test():
     import doctest

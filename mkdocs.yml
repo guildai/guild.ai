@@ -24,6 +24,7 @@ markdown_extensions:
   - smarty
   - toc
   - custom:FixToc
+  - custom:DefinitionId
   - custom:ExternalLink
   - custom:LinkAlias:
       term:
