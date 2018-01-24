@@ -67,6 +67,7 @@ pages:
           - docs/reference/package-file.md
       - Tutorials:
           - docs/tutorials/guild-from-scratch.md
+          - docs/tutorials/transfer-learning-with-imagenet.md
       - docs/glossary.md
   - models:
       - models/index.md
@@ -75,3 +76,4 @@ pages:
       - models/tensorflow.md
       - models/tfslim.md
   - support.md
+  - about.md
