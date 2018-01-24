@@ -2,10 +2,8 @@
   position: relative;
   list-style: none;
   padding: 50px 20px 20px 30px;
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin: 20px 0 0;
   line-height: 1.7;
-  background-color: $bg-color;
   counter-reset: toc1;
 
   a {
