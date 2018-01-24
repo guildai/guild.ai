@@ -170,6 +170,23 @@
   display: none;
 }
 
+.sidebar .social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 3px 0 2px;
+  text-align: left;
+
+  li {
+    display: inline-block;
+    padding: 4px 8px;
+  }
+
+  a {
+    font-size: 18px;
+    color: $color-white;
+  }
+}
+
 .sidebar-line .sidenav {
 
   > li > ul:before {
@@ -518,15 +535,18 @@
 
       .sidebar-close {
         float: right;
-        font-weight: 300;
-        margin: 0;
-        padding: 4px;
-        margin-top: 6px;
-        border: none;
-        border-radius: 2px;
-        color: rgba($color-white, .8);
         font-size: 16px;
+        font-weight: 100;
+        margin: 6px 0 0;
+        border: none;
+        border-radius: 100%;
+        width: 32px;
+        height: 32px;
+        color: rgba($color-white, .8);
         background-color: transparent;
+        display: flex;
+        justify-content: center;
+        padding-right: 10px;
 
         &:hover {
           color: $color-white;

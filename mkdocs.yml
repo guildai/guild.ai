@@ -1,7 +1,13 @@
 site_name: Guild AI
 docs_dir: pages
 
-copyright: 2017-2018 TensorHub, Inc.
+site:
+  copyright: 2017-2018 TensorHub, Inc.
+  links:
+    - name: github
+      url: https://github.com/guildai
+    - name: twitter
+      url:  https://twitter.com/guild_ai
 
 theme:
   name: null

@@ -19,6 +19,11 @@
       {% endif %}
       {% endfor %}
     </ul>
+    <ul class="social-icons">
+      {% for link in config.site.links %}
+      <li><a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.name }}"></i></a></li>
+      {% endfor %}
+    </ul>
   </div>
 
   {% if not page.meta.hide_sidenav %}

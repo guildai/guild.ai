@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 50vh;
+  heigght: 50vh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -177,7 +177,16 @@
     }
 
     a {
+      font-size: 24px;
       color: $color-white;
+
+      @media screen and (max-width: $break-md) {
+        font-size: 21px;
+      }
+
+      @media screen and (max-width: $break-xs) {
+        font-size: 18px;
+      }
     }
   }
 }
