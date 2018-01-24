@@ -28,21 +28,15 @@
       padding-top: 6px;
       padding-bottom: 12px;
       font-size: 16px;
-      border-bottom: 1px solid $border-color-light;
+      border-bottom: 1px solid $border-color;
       position: relative;
-
-      &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        width: 42px;
-        border-bottom: 1px solid $border-color;
-      }
     }
+  }
 
-    > p {
-      //margin-left: 41px;
+  &.loud {
+    h3 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
   }
 
@@ -57,13 +51,11 @@
     font-size: 18px;
     margin-top: 30px;
     margin-bottom: 15px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
   }
 
   > p {
     line-height: 24px;
-    color: $light-gray-text-color;
+    color: $gray-text-color;
   }
 
   > .btn {
@@ -82,7 +74,6 @@
       border: 1px solid $border-color;
     }
   }
-
 }
 
 @media screen and (max-width: $break-md) {
