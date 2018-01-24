@@ -5,6 +5,8 @@ hide_sidenav: yes
 
 # Get started with Guild AI
 
+[TOC]
+
 ## Requirements
 
 Before installing Guild, review the requirements below.

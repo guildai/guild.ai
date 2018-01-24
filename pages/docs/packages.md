@@ -1,5 +1,7 @@
 # Packages
 
+[TOC]
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla
 molestie consectetur vestibulum. Nulla ut urna sed libero tincidunt
