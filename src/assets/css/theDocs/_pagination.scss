@@ -63,18 +63,20 @@
   }
 
   .previous > a > span::before {
-    content: "\f104";
+    content: "\f053";
     font-family: FontAwesome;
-    font-size: 19px;
-    margin: 0 10px 0 5px;
+    font-weight: 100;
+    font-size: 15px;
+    margin: 0 8px 0 5px;
     vertical-align: bottom;
   }
 
   .next > a > span::after {
-    content: "\f105";
+    content: '\f054';
     font-family: FontAwesome;
-    font-size: 19px;
-    margin: 0 5px 0 10px;
+    font-weight: 100;
+    font-size: 15px;
+    margin: 0 5px 0 8px;
     vertical-align: bottom;
   }
 

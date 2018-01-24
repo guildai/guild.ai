@@ -14,10 +14,10 @@ a:focus {
 }
 
 a.ext::after {
-  content: 'open_in_new';
-  font-family: 'Material Icons';
+  content: '\f08e';
+  font-family: FontAwesome;
   opacity: 0.8;
-  font-size: 0.8em;
+  font-size: 0.7em;
   margin-left: 0.3em;
   vertical-align: middle;
 }
