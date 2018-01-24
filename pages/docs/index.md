@@ -1,7 +1,6 @@
 title: Documentation
 pagenav_title: Introduction
 navbar_item: yes
-hide_in_sidenav: yes
 
 # Introduction
 
