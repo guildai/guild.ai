@@ -29,8 +29,8 @@ markdown_extensions:
       term:
         href: '/docs/glossary/#{}'
       open-an-issue:
-        href: 'https://github.com/guildai/guild/issues->'
-        text: 'open an issue on GitHub'
+        href: 'https://github.com/guildai/guild/issues'
+        text: 'open an issue on GitHub ->'
 
 pages:
   - index.md

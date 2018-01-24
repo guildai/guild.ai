@@ -34,18 +34,16 @@ class NavResolvePlugin(BasePlugin):
             item.read_source(config)
             item.read_source = lambda **_kw: None
 
-class ExtLinkPattern(inlinepatterns.LinkPattern):
+class ExtLinkProcessor(treeprocessors.Treeprocessor):
 
-    def __init__(self, md):
-        super(ExtLinkPattern, self).__init__(inlinepatterns.LINK_RE, md)
-
-    def handleMatch(self, m):
-        el = super(ExtLinkPattern, self).handleMatch(m)
-        if el.text.endswith("->"):
-            el.text = el.text[:-2].rstrip()
-            el.set("target", "_blank")
-            el.set("class", "ext")
-        return el
+    def run(self, doc):
+        for link in doc.iter("a"):
+            if link.text and link.text.endswith("->"):
+                link.text = link.text[:-2].rstrip()
+                cls = link.get("class")
+                cls = cls + " ext" if cls else "ext"
+                link.set("class", cls)
+                link.set("target", "_blank")
 
 class ExternalLink(Extension):
     """Modifies link syntax to support external links
@@ -86,7 +84,7 @@ class ExternalLink(Extension):
     """
 
     def extendMarkdown(self, md, _globals):
-        md.inlinePatterns["link"] = ExtLinkPattern(md)
+        md.treeprocessors.add("external_link", ExtLinkProcessor(md), "_end")
 
 class FixTocProcessor(treeprocessors.Treeprocessor):
 
