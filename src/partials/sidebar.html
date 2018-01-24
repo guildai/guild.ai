@@ -20,7 +20,7 @@
       {% endfor %}
     </ul>
     <ul class="social-icons">
-      {% for link in config.site.links %}
+      {% for link in config.extra.links %}
       <li><a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.name }}"></i></a></li>
       {% endfor %}
     </ul>
@@ -29,7 +29,7 @@
   {% if not page.meta.hide_sidenav %}
   {% for item in nav %}
   {% if item.active and item.children %}
-  <ul class="sidenav dropable sticky">
+  <ul class="sidenav dropable sticky_xxx">
     {% for child in item.children %}
     {% if child.children %}
     <li>
@@ -40,7 +40,7 @@
         <li>
           <a
             class="{% if child_.active %}active{% endif %}"
-            href="{{ child_.abs_url }}">{{ child_.title }}</a>
+            href="{{ child_.abs_url }}">{{ child_.meta.sidenav_title or child_.title }}</a>
         </li>
         {% endif %}
         {% endfor %}
@@ -50,7 +50,7 @@
     <li>
       <a
         class="{% if child.active %}active{% endif %}"
-        href="{{ child.abs_url }}">{{ child.title }}</a>
+        href="{{ child.abs_url }}">{{ child.meta.sidenav_title or child.title }}</a>
     </li>
     {% endif %}
     {% endfor %}

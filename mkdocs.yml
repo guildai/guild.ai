@@ -1,8 +1,8 @@
 site_name: Guild AI
 docs_dir: pages
 
-site:
-  copyright: 2017-2018 TensorHub, Inc.
+copyright: 2017-2018 TensorHub, Inc.
+extra:
   links:
     - name: github
       url: https://github.com/guildai
@@ -24,42 +24,52 @@ markdown_extensions:
   - smarty
   - toc
   - custom:FixToc
-  - custom:ExternalLinks
+  - custom:ExternalLink
+  - custom:LinkAlias:
+      term:
+        href: '/docs/glossary/#{}'
+      open-an-issue:
+        href: 'https://github.com/guildai/guild/issues->'
+        text: 'open an issue on GitHub'
 
 pages:
   - index.md
   - install.md
   - docs:
       - docs/index.md
+      - docs/overview.md
       - docs/packages.md
       - docs/models.md
       - docs/operations.md
       - docs/runs.md
       - Visualization:
+          - docs/visual/index.md
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
       - Commands:
-          - docs/commands/check.md
-          - docs/commands/compare.md
-          - docs/commands/help.md
           - docs/commands/index.md
-          - docs/commands/install.md
-          - docs/commands/models.md
-          - docs/commands/operations.md
-          - docs/commands/package.md
-          - docs/commands/packages.md
-          - docs/commands/resources.md
-          - docs/commands/run.md
-          - docs/commands/runs.md
-          - docs/commands/search.md
-          - docs/commands/shell.md
-          - docs/commands/sync.md
-          - docs/commands/tensorboard.md
-          - docs/commands/tensorflow.md
-          - docs/commands/train.md
-          - docs/commands/uninstall.md
-          - docs/commands/view.md
+          - docs/commands/check_cmd.md
+          - docs/commands/compare_cmd.md
+          - docs/commands/help_cmd.md
+          - docs/commands/index_cmd.md
+          - docs/commands/install_cmd.md
+          - docs/commands/models_cmd.md
+          - docs/commands/operations_cmd.md
+          - docs/commands/package_cmd.md
+          - docs/commands/packages_cmd.md
+          - docs/commands/resources_cmd.md
+          - docs/commands/run_cmd.md
+          - docs/commands/runs_cmd.md
+          - docs/commands/search_cmd.md
+          - docs/commands/shell_cmd.md
+          - docs/commands/sync_cmd.md
+          - docs/commands/tensorboard_cmd.md
+          - docs/commands/tensorflow_cmd.md
+          - docs/commands/train_cmd.md
+          - docs/commands/uninstall_cmd.md
+          - docs/commands/view_cmd.md
       - Plugins:
+          - docs/plugins/index.md
           - docs/plugins/cloudml.md
           - docs/plugins/cpu.md
           - docs/plugins/disk.md
@@ -74,8 +84,10 @@ pages:
           - docs/reference/model-file.md
           - docs/reference/package-file.md
       - Tutorials:
-          - docs/tutorials/guild-from-scratch.md
+          - docs/tutorials/index.md
+          - docs/tutorials/getting-started.md
           - docs/tutorials/transfer-learning-with-imagenet.md
+          - docs/tutorials/guild-from-scratch.md
       - docs/glossary.md
   - models:
       - models/index.md

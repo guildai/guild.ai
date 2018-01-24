@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import re
+import shlex
 
 from markdown.extensions import Extension
 from markdown import inlinepatterns
@@ -46,7 +47,7 @@ class ExtLinkPattern(inlinepatterns.LinkPattern):
             el.set("class", "ext")
         return el
 
-class ExternalLinks(Extension):
+class ExternalLink(Extension):
     """Modifies link syntax to support external links
 
     An external link is opened in a new window using target="_blank"
@@ -58,7 +59,7 @@ class ExternalLinks(Extension):
     To illustrate, we'll configure markdown with our extension:
 
     >>> import markdown
-    >>> md = markdown.Markdown(extensions=[ExternalLinks()])
+    >>> md = markdown.Markdown(extensions=[ExternalLink()])
 
     Here's an external link:
 
@@ -138,8 +139,8 @@ class FixToc(Extension):
     - If there's a single level 1 entry, that entry is removed end
       its child entries are promoted to level 1
 
-    To illustrate, we'll configure markdown with the TocExtension and
-    our extension:
+    To illustrate, we'll configure markdown with TocExtension and our
+    extension:
 
     >>> import markdown
     >>> from markdown.extensions.toc import TocExtension
@@ -174,6 +175,143 @@ class FixToc(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("fix_toc", FixTocProcessor(md), "_end")
+
+class LinkAliasProcessor(treeprocessors.Treeprocessor):
+
+    alias_pattern = re.compile(r"\$([^ ]+) ?(.*)$")
+
+    def __init__(self, md, aliases):
+        super(LinkAliasProcessor, self).__init__(md)
+        self.aliases = aliases
+
+    def run(self, doc):
+        for link in doc.iter("a"):
+            self._try_apply_alias(link)
+
+    def _try_apply_alias(self, link):
+        href = link.get("href")
+        m = self.alias_pattern.match(href)
+        if m:
+            try:
+                alias = self.aliases[m.group(1)]
+            except KeyError:
+                pass
+            else:
+                args = shlex.split(m.group(2))
+                padded_args = args + [""] * 10
+                self._apply_alias(link, alias, padded_args)
+
+    def _apply_alias(self, link, alias, args):
+        self._try_apply_href(link, alias, args)
+        if not link.text:
+            self._try_apply_text(link, alias, args)
+
+    @staticmethod
+    def _try_apply_href(link, alias, args):
+        try:
+            template = alias["href"]
+        except KeyError:
+            pass
+        else:
+            link.set("href", template.format(*args))
+
+    @staticmethod
+    def _try_apply_text(link, alias, args):
+        try:
+            template = alias["text"]
+        except KeyError:
+            pass
+        else:
+            link.text = template.format(*args)
+
+class LinkAlias(Extension):
+    """Provides aliases for links
+
+    Link aliases are provided as link URLs in standard Markdown
+    links. Aliases are in the format:
+
+        '$' + NAME ( + ' ' + ARG)*
+
+    Examples:
+
+        [link text]($my-alias)
+        [link text]($my-alias arg1 arg2)
+
+    Aliases are configured using a dict of alias names to alias
+    config. An alias config consists of two optional template strings:
+    'href' and 'text'. Templates are used to generate values for
+    respective link href and text properties. Templates use Python's
+    advanced string formatting (PEP 3101).
+
+    Example config:
+
+        {"my-alias": {"href": "/foo/{}", "text": "My alias"}
+
+    If provided, the 'href' template is used to generate the href
+    attribute for the link, given the alias arguments.
+
+    If the link does not have a text value (e.g. markdown is
+    "[](...)") and the 'text' template is provided, it is similarly
+    used generate the link text value.
+
+    Alias arguments are used to format values and are passed in the
+    order specified in the alias link. If there aren't enough
+    alias arguments for the template, empty strings are used.
+
+    To illustrate, we'll configure markdown with LinkAlias and some
+    sample aliases.
+
+    >>> import markdown
+    >>> aliases = {
+    ...   "foo": {"href": "/foo#{}", "text": "Foo {}"},
+    ...   "bar": {"href": "/bar/{0}/{1}", "text": "{2}"}
+    ... }
+    >>> md = markdown.Markdown(extensions=[LinkAlias(**aliases)])
+
+    We can now use '$foo' as a link alias:
+
+    >>> print(md.convert("[foo]($foo)"))
+    <p><a href="/foo#">foo</a></p>
+
+    In this case no arguments were provided and so empty strings where
+    used to format the href attribute.
+
+    Here's $foo with an argument:
+
+    >>> print(md.convert("[foo]($foo a)"))
+    <p><a href="/foo#a">foo</a></p>
+
+    Arguments that aren't used by the template are ignored:
+
+    >>> print(md.convert("[foo]($foo a b)"))
+    <p><a href="/foo#a">foo</a></p>
+
+    The bar alias uses position arguments for both link text and href.
+
+    >>> print(md.convert("[]($bar a b Bar)"))
+    <p><a href="/bar/a/b">Bar</a></p>
+
+    If the link contains text, it is preserved:
+
+    >>> print(md.convert("[My bar]($bar a b Bar)"))
+    <p><a href="/bar/a/b">My bar</a></p>
+
+    In this case, the third argument can be omitted as it's not used:
+
+    >>> print(md.convert("[My bar]($bar a b)"))
+    <p><a href="/bar/a/b">My bar</a></p>
+
+    """
+
+    def __init__(self, *args, **kw):
+        self.aliases = kw
+        super(LinkAlias, self).__init__(*args)
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add(
+            "link_alias",
+            LinkAliasProcessor(md, self.aliases),
+            ">inline")
 
 def test():
     import doctest

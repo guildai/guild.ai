@@ -1,27 +1,38 @@
 title: Documentation
-pagenav_title: Introduction
 navbar_item: yes
+hide_in_sidenav: yes
+pagenav_title: Documentation contents
 
-# Introduction
+# Documentation
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
-mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla
-molestie consectetur vestibulum. Nulla ut urna sed libero tincidunt
-imperdiet. Phasellus orci mauris, pretium et lectus at, condimentum
-sagittis sem. Nunc fermentum feugiat ligula, sed finibus purus posuere
-at. Duis at velit aliquet, ornare diam id, tempor tortor. Donec
-bibendum ultrices nulla, quis fermentum nibh tincidunt id. Ut finibus
-diam vitae dolor euismod sagittis. Aliquam erat volutpat. Nulla
-facilisi. Quisque mattis quis sapien sit amet pharetra. Sed rutrum non
-enim hendrerit congue.
+<ul class="categorized-view">
+<li>
+<h5>Concepts</h5>
+<a href="overview">Overview</a>
+<a href="packages">Packages</a>
+<a href="models">Models</a>
+<a href="operations">Operations</a>
+<a href="runs">Runs</a>
+<a href="visual">Visualization</a>
+</li>
 
-Sed mauris odio, laoreet eu neque ut, finibus lacinia sapien. Aenean
-pretium lectus quis accumsan gravida. Nunc vel lacus sed risus
-dignissim vulputate. Morbi interdum sapien ac felis tristique, at
-molestie enim mattis. Nullam feugiat sollicitudin sapien bibendum
-dignissim. Nulla nec ornare est. Sed fringilla nibh ut laoreet
-sollicitudin. Phasellus quis auctor nisl, id tristique diam. Proin in
-enim nec dui pharetra consectetur. Mauris fermentum et massa et
-interdum. Pellentesque fringilla finibus urna ut malesuada. Ut sed
-neque non ipsum mattis scelerisque id lobortis ipsum. Aenean vehicula
-finibus risus, nec imperdiet ipsum aliquam in.
+<li>
+<h5>Reference</h5>
+<a href="commands">Commands</a>
+<a href="">Plugin API</a>
+<a href="">Model file</a>
+<a href="">Package file</a>
+</li>
+
+<li>
+<h5>Developer guides</h5>
+<a href="#">Packaging</a>
+<a href="#">Plugins</a>
+</li>
+
+<li>
+<h5>Tutorials</h5>
+<a href="#">Guild from scratch</a>
+<a href="#">Transfer learning with ImageNet</a>
+</li>
+</ul>
