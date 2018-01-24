@@ -59,11 +59,11 @@ $sidebar-dark-active-link-color: #ffffff;
 $sidebar-toggle-transition: 0.3s ease-out;
 
 // _alerts
-$callout-border-color:    $border-color-dark;
-$callout-success-color:   #10cfbd;
-$callout-info-color:      #48b0f7;
-$callout-warning-color:   #f8d053;
-$callout-danger-color:    #f55753;
+$callout-border-color:    $border-color-darker;
+$callout-success-color:   $color-success-darker;
+$callout-info-color:      $color-info-darker;
+$callout-warning-color:   $color-warning-darker;
+$callout-danger-color:    $color-danger-darker;
 
 // _buttons
 $btn-default-bg-color:    #f5f5f5;
@@ -71,7 +71,7 @@ $btn-default-bg-color:    #f5f5f5;
 // _code
 $code-bg-color:                     $bg-color-dark;
 $code-border-color:                 $border-color-dark;
-$code-inline-color:                 #f4645f;
+$code-inline-color:                 #FF5722;
 $code-inline-bg-color:              #f0f2f1;
 $code-window-bg-color:              #ebebeb;
 $code-window-border-top-color:      #eaeae9;

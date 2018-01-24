@@ -2,7 +2,7 @@
   border-left-color: $color;
 
   h4,
-  a {
+  .admonition-title {
     color: $color;
   }
 }
@@ -42,11 +42,6 @@
 @mixin btn-text-and-border-color($color) {
   color: $color;
   border-color: $color;
-}
-
-@mixin jumbotron-variation($bg-color, $color: $color-white) {
-  background-color: $bg-color;
-  color: $color;
 }
 
 @mixin changelog-type($name, $bg-color) {

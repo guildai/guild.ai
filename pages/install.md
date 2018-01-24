@@ -1,9 +1,9 @@
 title: Install
-pagenav_title: Get started with Guild AI
+pagenav_title: Installing Guild AI
 navbar_item: yes
 hide_sidenav: yes
 
-# Get started with Guild AI
+# Installing Guild AI
 
 [TOC]
 
@@ -27,7 +27,7 @@ In a console, run the following:
 pip install guildai
 ```
 
-!!! note
+!!! info "Dude, car"
     You may need to run `pip` as a privileged user, in which case
     run the above command as `sudo pip install guildai`. If you
     would prefer to install Guild as an unpriviledged user, we
