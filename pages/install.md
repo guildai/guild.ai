@@ -2,6 +2,8 @@ title: Install
 pagenav_title: Installing Guild AI
 navbar_item: yes
 hide_sidenav: yes
+hide_pagenav: yes
+hide_in_pagenav: yes
 
 # Installing Guild AI
 
@@ -19,7 +21,7 @@ Guild is installed from PyPI using the `pip` command. Refer to
 [Installing pip ->](https://pip.pypa.io/en/stable/installing/) to
 ensure you have pip installed.
 
-## Installation
+## Install Guild AI
 
 In a console, run the following:
 
@@ -27,7 +29,7 @@ In a console, run the following:
 pip install guildai
 ```
 
-!!! info "Dude, car"
+!!! note
     You may need to run `pip` as a privileged user, in which case
     run the above command as `sudo pip install guildai`. If you
     would prefer to install Guild as an unpriviledged user, we
@@ -126,3 +128,11 @@ CUDA or cuCNN are not installed
   operations. Refer to [CUDA and cuDNN](#cuda-and-cudnn) amd [NVIDIA
   System Management Interface](#nvidia-system-management-interface)
   above for links to NVIDIA's website.
+
+If you continue to face issues with your Guild installation, please
+[[open_an_issue]] and we'll help!
+
+## Next steps
+
+Congratulations, you've installed Guild AI! Select one of the next
+steps below to continue.

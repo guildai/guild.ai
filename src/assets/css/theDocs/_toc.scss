@@ -1,8 +1,8 @@
-.toc > ul {
+.toc {
   position: relative;
   list-style: none;
   padding: 50px 20px 20px 30px;
-  margin: 20px 0 0;
+  margin: 0;
   line-height: 1.7;
   counter-reset: toc1;
 
@@ -22,7 +22,7 @@
     counter-increment: toc1;
   }
 
-  > li > ul {
+  > li > ol {
     counter-reset: toc2;
 
     > li:before {
@@ -30,7 +30,7 @@
       counter-increment: toc2;
     }
 
-    > li > ul {
+    > li > ol {
       counter-reset: toc3;
 
       > li:before {
@@ -38,7 +38,7 @@
         counter-increment: toc3;
       }
 
-      > li > ul {
+      > li > ol {
         counter-reset: toc4;
 
         > li:before {
@@ -49,13 +49,13 @@
     }
   }
 
-  ul {
+  ol {
     list-style: none;
     padding-left: 25px;
   }
 
   > li:before,
-  ul li:before {
+  ol li:before {
     color: $toc-text-color;
     font-weight: 500;
     font-size: 14px;

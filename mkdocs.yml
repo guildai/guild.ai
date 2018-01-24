@@ -23,7 +23,8 @@ markdown_extensions:
   - footnotes
   - smarty
   - toc
-  - plugins:ExternalLinks
+  - custom:FixToc
+  - custom:ExternalLinks
 
 pages:
   - index.md
