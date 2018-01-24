@@ -1,6 +1,6 @@
 title: Install
-layout: default
-navbar: yes
+navbar_item: yes
+hide_sidenav: yes
 
 # Get started with Guild AI
 

@@ -1,5 +1,3 @@
-sidenav: yes
-
 # Operations
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

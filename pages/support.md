@@ -1,5 +1,5 @@
-navbar: yes
-title: Support
+navbar_item: yes
+hide_sidenav: yes
 
 # Support
 

@@ -1,5 +1,3 @@
-sidenav: yes
-
 # Magenta
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

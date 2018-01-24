@@ -1,4 +1,4 @@
-<aside class="{% if page.meta.sidenav %}col-sm-3{% endif %} sidebar">
+<aside class="{% if not page.meta.hide_sidenav %}col-sm-3{% endif %} sidebar">
 
   <div class="sidebar-nav">
     <div>
@@ -12,7 +12,7 @@
     <ul class="nav">
       {% for item in nav %}
       {% set page = item.children[0] if item.children else item %}
-      {% if page.meta.navbar %}
+      {% if page.meta.navbar_item %}
       <li class="{% if item.active %}active{% endif %}">
         <a href="{{ page.abs_url }}">{{ page.title }}</a>
       </li>
@@ -21,7 +21,7 @@
     </ul>
   </div>
 
-  {% if page.meta.sidenav %}
+  {% if not page.meta.hide_sidenav %}
   {% for item in nav %}
   {% if item.active and item.children %}
   <ul class="sidenav dropable sticky">
@@ -31,15 +31,17 @@
       <a class="{% if child.active %}active{% endif %}" href="#">{{ child.title }}</a>
       <ul>
         {% for child_ in child.children %}
+        {% if not child_.meta.hide_in_sidenav %}
         <li>
           <a
             class="{% if child_.active %}active{% endif %}"
             href="{{ child_.abs_url }}">{{ child_.title }}</a>
         </li>
+        {% endif %}
         {% endfor %}
       </ul>
     </li>
-    {% elif not child.meta.hide_in_sidebar %}
+    {% elif not child.meta.hide_in_sidenav %}
     <li>
       <a
         class="{% if child.active %}active{% endif %}"

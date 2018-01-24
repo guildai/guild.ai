@@ -1,3 +1,1 @@
-sidenav: yes
-
 # runs

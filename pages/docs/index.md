@@ -1,6 +1,5 @@
-navbar: yes
-sidenav: yes
-hide_in_sidebar: yes
+navbar_item: yes
+hide_in_sidenav: yes
 
 # Documentation
 

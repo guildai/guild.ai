@@ -1,5 +1,3 @@
-sidenav: yes
-
 # Packages
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

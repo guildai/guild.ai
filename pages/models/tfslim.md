@@ -1,5 +1,3 @@
-sidenav: yes
-
 # TF Slim
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav navbar-right">
           {% for item in nav %}
           {% set page = item.children[0] if item.children else item %}
-          {% if page.meta.navbar %}
+          {% if page.meta.navbar_item %}
           <li class="{% if item.active %}active{% endif %}">
             <a href="{{ page.abs_url }}">{{ page.title }}</a>
           </li>

@@ -1,5 +1,3 @@
-sidenav: yes
-
 # Glossary
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

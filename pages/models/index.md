@@ -1,5 +1,4 @@
-navbar: yes
-sidenav: yes
+navbar_item: yes
 
 # Models
 

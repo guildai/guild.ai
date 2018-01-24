@@ -1,4 +1,4 @@
-layout: home
+layout: banner
 banner_tagline:
     Discover and apply state-of-the-art TensorFlow models
 banner_subtext:
@@ -6,10 +6,11 @@ banner_subtext:
     accelerates deep learning model development and reuse.
 banner_action: Learn more
 banner_action_link: #guild-ai
+hide_sidenav: yes
 
 # Guild AI
 
-This is some excellent advertisign for Guild AI!
+This is some excellent advertising for Guild AI!
 
 ---
 
