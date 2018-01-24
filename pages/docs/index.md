@@ -1,7 +1,9 @@
+title: Documentation
+pagenav_title: Introduction to Guild AI
 navbar_item: yes
 hide_in_sidenav: yes
 
-# Documentation
+# Introduction
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla

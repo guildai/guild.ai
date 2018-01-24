@@ -7,6 +7,8 @@ banner_subtext:
 banner_action: Learn more
 banner_action_link: #guild-ai
 hide_sidenav: yes
+hide_pagenav: yes
+hide_in_pagenav: yes
 
 # Guild AI
 

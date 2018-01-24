@@ -35,6 +35,8 @@
 
 .pager {
 
+  margin: 50px 0 20px;
+
   li > a {
     border: none;
     text-transform: uppercase;
@@ -44,6 +46,7 @@
     border-radius: 0;
     color: $gray-text-color;
     transition: .3s ease-out;
+    padding: 0 5px;
 
     &:hover {
       background-color: transparent;
@@ -51,19 +54,33 @@
     }
   }
 
-  .next > a::after {
-    content: "\f105";
+  li.previous {
+    text-align: left;
+  }
+
+  li.next {
+    text-align: right;
+  }
+
+  .previous > a > span::before {
+    content: "\f104";
     font-family: FontAwesome;
-    font-size: 20px;
-    margin-left: 8px;
+    font-size: 19px;
+    margin: 0 10px 0 5px;
     vertical-align: bottom;
   }
 
-  .previous > a::before {
-    content: "\f104";
+  .next > a > span::after {
+    content: "\f105";
     font-family: FontAwesome;
-    font-size: 20px;
-    margin-right: 8px;
+    font-size: 19px;
+    margin: 0 5px 0 10px;
     vertical-align: bottom;
+  }
+
+  aside {
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: normal;
   }
 }

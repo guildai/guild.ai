@@ -1,3 +1,5 @@
+pagenav_title: install command
+
 # install
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

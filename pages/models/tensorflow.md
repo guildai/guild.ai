@@ -1,3 +1,6 @@
+hide_in_pagenav: yes
+hide_pagenav: yes
+
 # TensorFlow
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

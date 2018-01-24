@@ -7,9 +7,10 @@ code {
 pre {
   position: relative;
   background-color: $code-bg-color;
-  border-color: $code-border-color;
   font-size: 13px;
   line-height: 1.4;
+  border: 1px solid $code-border-color;
+  border-radius: 3px;
 }
 
 .code-preview {
@@ -51,6 +52,9 @@ pre .language-name {
   cursor: default;
   position: absolute;
   right: 10px;
+  top: 11px;
+  font-size: 13px;
+  line-height: 1.4;
   text-shadow: 0 1px #fff;
 }
 

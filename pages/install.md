@@ -1,4 +1,5 @@
 title: Install
+pagenav_title: Get started with Guild AI
 navbar_item: yes
 hide_sidenav: yes
 

@@ -5,6 +5,7 @@
       class="{% if page.meta.hide_sidenav %}col-sm-12{% else %}col-sm-9{% endif %} main-content"
       role="main">
       {{ page.content }}
+      {% include "partials/pager.html" %}
     </article>
   </div>
 </main>
