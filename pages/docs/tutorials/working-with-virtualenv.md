@@ -25,8 +25,10 @@ There are a number of reasons to use virtual environments:
 
 There are some downsides to using virtual environments:
 
+- Each environment requires its own set of installed packages, which
+  may be excessively time consuming for short-lived environments
 - You must remember to activate the environment to use it
-- Using multiple virtual environments may become confusing
+- You may accidentally use the wrong environment
 
 If you don't need to isolate Guild and its dependencies or to manage
 different software versions, the added complexity of Virtualenv may be
