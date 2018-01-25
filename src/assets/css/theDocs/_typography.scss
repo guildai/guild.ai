@@ -6,7 +6,7 @@ body {
 a,
 a:focus,
 a:hover {
-  color: $accent-color;
+  color: $link-color;
 }
 
 a:focus {
@@ -147,6 +147,10 @@ h1, h2, h3 {
   }
 }
 
+ul {
+  margin-bottom: $p-margin-bottom;
+}
+
 dl {
   dt {
     font-size: $p-margin-bottom;
@@ -166,6 +170,17 @@ dl {
 
 sup {
   margin-right: 4px;
+}
+
+a.term {
+  color: inherit;
+  text-decoration: underline dotted $border-color-darker;
+  text-underline-position: under;
+
+  &:hover {
+    color: $link-color;
+    text-decoration: underline;
+  }
 }
 
 .footnote {

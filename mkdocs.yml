@@ -31,12 +31,13 @@ markdown_extensions:
       term:
         href: '/docs/glossary/#{}'
         text: '{}'
+        class: 'term'
       open-an-issue:
         href: 'https://github.com/guildai/guild/issues'
-        text: 'open an issue on GitHub ->'
-      virtualenv:
-        href: 'https://virtualenv.pypa.io/en/stable/userguide/'
-        text: 'Virtualenv ->'
+        text: 'open an issue on GitHub->'
+      virtualenv-activate:
+        href: 'https://virtualenv.pypa.io/en/stable/userguide/#activate-script'
+        text: 'Virtualenv->'
       cmd:
         href: '/docs/commands/{}_cmd'
         text: '{}'

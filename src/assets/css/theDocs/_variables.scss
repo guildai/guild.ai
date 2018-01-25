@@ -6,7 +6,8 @@ $font-family-title: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-code: Menlo,Monaco,Consolas,"Courier New",monospace;
 
 // Spacing
-$p-margin-bottom:       18px;
+$p-margin-bottom_:      18;
+$p-margin-bottom:       $p-margin-bottom_ * 1px;
 
 // Colors
 $accent-color:          #283593;
@@ -16,6 +17,7 @@ $gray-text-color:       #777;
 $light-gray-text-color: #999;
 $pale-text-color:       #ccc;
 $pale-text-color-light: #d5d5d5;
+$link-color:            $accent-color;
 
 $border-color-darker:   #aaa;
 $border-color-dark:     #ddd;

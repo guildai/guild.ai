@@ -10,10 +10,11 @@ a model, installing it, and running the `train` command.
 
 This tutorial assumes the following:
 
-- Guild AI is [installed](/install) and
-  [verified](/install#verify-your-installation)
+- Guild AI is [installed](/install) and [verified by running
+  `check`](/install#verify-your-installation)
 
-- If using []($virtualenv) your environment is active
+- If applicable, your Guild [virtual environment is
+  active->]($virtualenv-activate)
 
 - You have a working Internet connection
 
@@ -73,8 +74,22 @@ You can list the available operations by running:
 guild operations
 ```
 
-Note that each of the models provides a `train` operation. We'll run
-these in the next step.
+!!! note
+    You can just run `guild ops` as a shortcut rather than typing
+    the full command.
+
+Note that the two MNIST models provides a `train`
+operation. Operations are listed in the form
+`PACKAGE/MODEL:OPERATION`. For more information on each topic, refer
+to [*Packages*](/docs/packages/), [*Models*](/docs/models/), and
+[*Operations*](/docs/operations/) respectively.
+
+```python
+def foo():
+    print("Hello!")
+```
+
+That it, we're ready to train!
 
 ## Train the softmax model
 

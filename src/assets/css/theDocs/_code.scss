@@ -6,6 +6,16 @@ a.cmd {
   font-size: 84%;
 }
 
+a.cmd {
+  text-decoration: underline dotted $border-color-darker;
+  text-underline-position: under;
+
+  &:hover {
+    color: $link-color;
+    text-decoration: underline;
+  }
+}
+
 pre {
   position: relative;
   background-color: $code-bg-color;
@@ -13,6 +23,7 @@ pre {
   line-height: 1.4;
   border: 1px solid $code-border-color;
   border-radius: 3px;
+  margin-top: $p-margin-bottom_ + 2 * 1px;
 }
 
 .code-preview {
