@@ -254,21 +254,6 @@ $(function() {
     $('.video').fitVids();
   }
 
-  //
-  // File Tree
-  //
-  $('.file-tree li.is-file').on('click', function(e){
-    e.stopPropagation();
-  });
-
-  $('.file-tree li.is-folder').on('click', function(e){
-    $(this).find('ul:first').slideToggle(400, function(){
-      $(this).parent('li').toggleClass('open');
-    });
-    e.stopPropagation();
-  });
-
-
   // Equal height for grid view
   $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
 

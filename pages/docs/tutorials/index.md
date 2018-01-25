@@ -13,4 +13,9 @@ sidenav_title: Overview
 <h5>Advanced</h5>
 <a href="guild-from-scratch">Guild from scratch</a>
 </li>
+
+<li>
+<h5>Tools</h5>
+<a href="working-with-virtualenv">Working with Virtualenv</a>
+</li>
 </ul>

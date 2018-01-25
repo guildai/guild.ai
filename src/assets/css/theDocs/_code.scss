@@ -8,7 +8,6 @@ a.cmd {
 
 a.cmd {
   text-decoration: underline dotted $border-color-darker;
-  text-underline-position: under;
 
   &:hover {
     color: $link-color;
@@ -42,7 +41,6 @@ pre {
   z-index: 9;
 
   &:hover {
-    //color: $light-text-color;
     text-decoration: none;
   }
 }

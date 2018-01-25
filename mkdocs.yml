@@ -99,6 +99,7 @@ pages:
           - docs/tutorials/train-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/guild-from-scratch.md
+          - docs/tutorials/working-with-virtualenv.md
       - docs/glossary.md
   - models:
       - models/index.md
