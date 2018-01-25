@@ -1,6 +1,23 @@
 # guild.ai source
 
+## Requirements
+
+- Windows, Mac OS, Linux
+- make
+- npm
+- python
+- mkdocs
+
+## Note for Windows
+
+You must use `Makefile.win` for the commands below on Windows using
+this convention:
+
+    $ make -f Makefile.win [ TARGET ]
+
 ## Building
+
+## Linux and Mac OS
 
 To build the site, run:
 

@@ -1,0 +1,25 @@
+grunt = node_modules\.bin\grunt
+mkdocs = PYTHONPATH=. mkdocs
+
+site: refresh-assets
+	$(mkdocs) build
+
+.PHONY: dist
+
+dist: $(grunt)
+	$(grunt) dist
+
+$(grunt):
+	npm install
+
+serve: site
+	$(mkdocs) serve
+
+watch-assets: $(grunt) refresh-assets
+	$(grunt) watch
+
+refresh-assets: $(grunt)
+	$(grunt) dev
+
+clean:
+	@echo Not supported - manually remove site and dist directories

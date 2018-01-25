@@ -24,6 +24,8 @@ pre {
   border: 1px solid $code-border-color;
   border-radius: 3px;
   margin-top: $p-margin-bottom_ + 2 * 1px;
+  word-wrap: normal;
+  word-break: normal;
 }
 
 .code-preview {
