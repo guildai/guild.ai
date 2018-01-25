@@ -3,6 +3,10 @@
 // Fonts
 $font-family-body: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-title: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-code: Menlo,Monaco,Consolas,"Courier New",monospace;
+
+// Spacing
+$p-margin-bottom:       18px;
 
 // Colors
 $accent-color:          #283593;
@@ -62,7 +66,7 @@ $sidebar-toggle-transition: 0.3s ease-out;
 
 // _alerts
 $callout-bg-color:        $color-white;
-$callout-border-color:    $border-color-darker;
+$callout-border-color:    $border-color-dark;
 $callout-success-color:   $color-success-darker;
 $callout-info-color:      #5f5fc4;
 $callout-warning-color:   #e65100;
@@ -73,7 +77,7 @@ $btn-default-bg-color:    #f5f5f5;
 
 // _code
 $code-bg-color:                     $bg-color-dark;
-$code-border-color:                 $border-color-darker;
+$code-border-color:                 $border-color-dark;
 $code-inline-color:                 $gray-text-color;
 $code-inline-bg-color:              #f0f2f1;
 $code-window-bg-color:              #ebebeb;

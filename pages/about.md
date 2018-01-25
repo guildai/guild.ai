@@ -6,6 +6,8 @@ hide_in_pagenav: yes
 
 # Guild AI
 
+## Links
+
 [GitHub project ->](https://github.com/guildai/guild)
 
 ## History

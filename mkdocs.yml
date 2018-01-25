@@ -26,12 +26,21 @@ markdown_extensions:
   - custom:FixToc
   - custom:DefinitionId
   - custom:ExternalLink
+  - custom:TagList
   - custom:LinkAlias:
       term:
         href: '/docs/glossary/#{}'
+        text: '{}'
       open-an-issue:
         href: 'https://github.com/guildai/guild/issues'
         text: 'open an issue on GitHub ->'
+      virtualenv:
+        href: 'https://virtualenv.pypa.io/en/stable/userguide/'
+        text: 'Virtualenv ->'
+      cmd:
+        href: '/docs/commands/{}_cmd'
+        text: '{}'
+        class: 'cmd'
 
 pages:
   - index.md
@@ -86,7 +95,7 @@ pages:
           - docs/reference/package-file.md
       - Tutorials:
           - docs/tutorials/index.md
-          - docs/tutorials/getting-started.md
+          - docs/tutorials/train-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/guild-from-scratch.md
       - docs/glossary.md

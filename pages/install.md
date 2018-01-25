@@ -134,8 +134,8 @@ If you continue to face issues with your Guild installation, please
 
 ## Next steps
 
-Congratulations, you've installed Guild AI! Select one of the next
-steps below to continue.
+Congratulations, you've installed Guild AI! Below are some next steps
+if you'd like to go further.
 
 <div class="row">
 <div class="col-md-4">
@@ -147,7 +147,7 @@ Dive in and train your first model using Guild AI! It will only take a
 few minutes to become familiary with Guild and its features.
 
 </p>
-<a class="btn btn-primary" href="/docs/tutorials/getting-started">Train your first model</a>
+<a class="btn btn-primary" href="/docs/tutorials/train-your-first-model">Train your first model</a>
 </div>
 </div>
 

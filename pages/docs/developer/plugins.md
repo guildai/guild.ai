@@ -1,3 +1,3 @@
-pagenav_title: Developing plugins
+sidenav_title: Plugins
 
-# Plugins
+# Developing plugins

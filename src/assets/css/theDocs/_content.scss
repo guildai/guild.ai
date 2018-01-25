@@ -43,6 +43,28 @@ body[data-spy] {
   }
 }
 
+ul.ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+
+    &::before {
+      position: absolute;
+      content: "\f054";
+      font-family: FontAwesome;
+      top: 0;
+      left: 2px;
+      font-size: 10px;
+      color: $border-color-darker;
+    }
+  }
+}
+
 .container-fluid {
 
   .main-content {

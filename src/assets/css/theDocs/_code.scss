@@ -1,6 +1,8 @@
-code {
+code,
+a.cmd {
   color: $code-inline-color;
   background-color: $code-inline-bg-color;
+  font-family: $font-family-code;
   font-size: 84%;
 }
 
@@ -45,7 +47,7 @@ pre:hover .clipboard-copy {
 
 pre .language-name {
   background-color: transparent;
-  color: $light-gray-text-color;
+  color: $pale-text-color;
   text-transform: uppercase;
   letter-spacing: 0.2px;
   font-weight: 600;

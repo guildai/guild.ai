@@ -32,6 +32,10 @@
   &.danger {
     @include callout-variant($callout-danger-color);
   }
+
+  p:last-child {
+    margin-bottom: 12px;
+  }
 }
 
 .callout-success {
