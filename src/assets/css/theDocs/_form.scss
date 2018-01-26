@@ -1,4 +1,5 @@
 .form-control {
+
   width: 100%;
   padding: 6px 12px;
   margin-bottom: 20px;
@@ -8,7 +9,7 @@
   font-size: 15px;
   letter-spacing: 1px;
   box-shadow: none;
-  transition: .5s ease;
+  transition: $default-transition;
 
   &:focus {
     color: $gray-text-color;

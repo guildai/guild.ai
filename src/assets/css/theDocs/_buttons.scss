@@ -1,7 +1,7 @@
 .btn {
   border-radius: 2px;
   border: none;
-  transition: .3s ease;
+  transition: $default-transition;
   @include remove-outline;
 }
 

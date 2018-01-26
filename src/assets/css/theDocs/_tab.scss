@@ -13,7 +13,7 @@
       font-size: 14px;
       letter-spacing: 1px;
       font-weight: 500;
-      transition: 0.3s ease;
+      transition: $default-transition;
 
       &:hover {
         background-color: transparent;

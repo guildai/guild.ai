@@ -5,7 +5,7 @@
     border: none;
     margin: 0 4px;
     color: $gray-text-color;
-    transition: .3s ease-out;
+    transition: $default-transition;
   }
 
   .previous,
@@ -45,7 +45,7 @@
     font-weight: 600;
     border-radius: 0;
     color: $light-gray-text-color;
-    transition: .3s ease-out;
+    transition: $default-transition;
     padding: 0 5px;
 
     &:hover {

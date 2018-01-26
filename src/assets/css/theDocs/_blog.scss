@@ -73,7 +73,7 @@
     color: $gray-text-color;
     text-transform: uppercase;
     font-size: 12px;
-    transition: .3s linear;
+    transition: $default-transition;
 
     &:hover {
       text-decoration: none;
@@ -121,7 +121,7 @@
     font-size: 16px;
     line-height: 44px;
     color: $gray-text-color;
-    transition: color .2s linear;
+    transition: color $default-transition;
 
     &:hover {
       color: $accent-color;
@@ -140,7 +140,7 @@
   color: $gray-text-color;
   text-transform: uppercase;
   font-size: 12px;
-  transition: .3s linear;
+  transition: $default-transition;
 
   &:hover {
     text-decoration: none;

@@ -8,7 +8,7 @@
 
   a {
     color: $toc-text-color;
-    transition: .3s ease;
+    transition: $default-transition;
 
     &:hover,
     &:active {

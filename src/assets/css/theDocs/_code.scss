@@ -175,14 +175,12 @@ div.prism-show-language > div.prism-show-language-label {
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 500;
-        -webkit-transition: .5s ease;
-                transition: .5s ease;
+        transition: $default-transition;
 
         &.active,
         &:active {
           color: $color-info;
-          -webkit-box-shadow: none;
-                  box-shadow: none;
+          box-shadow: none;
         }
       }
 
@@ -278,7 +276,7 @@ div.prism-show-language > div.prism-show-language-label {
       font-size: 14px;
       font-weight: 500;
       letter-spacing: 1px;
-      transition: .5s ease;
+      transition: $default-transition;
 
       &.active,
       &:active {

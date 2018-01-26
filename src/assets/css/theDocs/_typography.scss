@@ -132,7 +132,7 @@ h1, h2, h3 {
     color: $accent-color;
     opacity: .3;
     content: "\e144";
-    transition: .3s ease;
+    transition: $default-transition;
     vertical-align: middle;
   }
 }
