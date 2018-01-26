@@ -12,16 +12,9 @@
         </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
-        <ul class="nav navbar-nav navbar-right">
-          {% for item in nav %}
-          {% set page = item.children[0] if item.children else item %}
-          {% if page.meta.navbar_item %}
-          <li class="{% if item.active %}active{% endif %}">
-            <a href="{{ page.abs_url }}">{{ page.title }}</a>
-          </li>
-          {% endif %}
-          {% endfor %}
-        </ul>
+        {% with nav_class = "navbar-nav navbar-right" %}
+        {% include "partials/nav.html" %}
+        {% endwith %}
       </div>
     </div>
   </nav>

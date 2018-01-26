@@ -1,0 +1,10 @@
+<ul class="nav {{ nav_class }}">
+  {% for item in nav %}
+  {% set page = item.children[0] if item.children else item %}
+  {% if page.meta.navbar_item %}
+  <li class="{% if item.active %}active{% endif %}">
+    <a href="{{ page.abs_url }}">{{ page.title }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>

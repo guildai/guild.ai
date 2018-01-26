@@ -9,21 +9,8 @@
         <img src="{{ base_url }}/assets/img/logo_nav.svg" alt="logo">
       </a>
     </div>
-    <ul class="nav">
-      {% for item in nav %}
-      {% set page = item.children[0] if item.children else item %}
-      {% if page.meta.navbar_item %}
-      <li class="{% if item.active %}active{% endif %}">
-        <a href="{{ page.abs_url }}">{{ page.title }}</a>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
-    <ul class="social-icons">
-      {% for link in config.extra.links %}
-      <li><a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.name }}"></i></a></li>
-      {% endfor %}
-    </ul>
+    {% include "partials/nav.html" %}
+    {% include "partials/social-icons.html" %}
   </div>
 
   {% if not page.meta.hide_sidenav %}

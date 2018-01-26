@@ -21,10 +21,6 @@
     </div>
     <div class="spacer"></div>
   </div>
-  <ul class="social-icons">
-    {% for link in config.extra.links %}
-    <li><a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.name }}"></i></a></li>
-    {% endfor %}
-  </ul>
+  {% include "partials/social-icons.html" %}
 </div>
 {% endblock %}
