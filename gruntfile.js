@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         sourceMap: true,
         outputStyle: 'compressed'
       },
-      css: {
+      default: {
         files: {
           'src/assets/css/theDocs.min.css': 'src/assets/css/theDocs.scss'
         }
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       options: {
         mangle: true,
       },
-      js: {
+      default: {
         files: {
           'src/assets/js/theDocs.min.js': ['src/assets/js/theDocs.js']
         }
@@ -40,32 +40,42 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      css: {
+      vendorCss: {
         files: {
-          'src/assets/css/theDocs.all.min.css': [
-            'src/assets/vendors/bootstrap/css/bootstrap.min.css',
-            'src/assets/vendors/font-awesome/css/font-awesome.min.css',
-            'src/assets/vendors/prism/prism.css',
-            'src/assets/vendors/perfect-scrollbar/css/perfect-scrollbar.min.css',
-            'src/assets/vendors/lity/lity.min.css',
-            'src/assets/css/theDocs.min.css'
+          'src/assets/css/vendor.min.css': [
+            'node_modules/bootstrap/dist/css/bootstrap.min.css',
+            'node_modules/font-awesome/css/font-awesome.min.css',
+            'node_modules/perfect-scrollbar/css/perfect-scrollbar.min.css',
           ]
         }
       },
-      js: {
+      vendorJs: {
         files: {
-          'src/assets/js/theDocs.all.min.js': [
-            'src/assets/vendors/jquery/jquery.min.js',
-            'src/assets/vendors/bootstrap/js/bootstrap.min.js',
-            'src/assets/vendors/prism/prism.js',
-            'src/assets/vendors/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js',
-            'src/assets/vendors/clipboard.js/clipboard.min.js',
-            'src/assets/vendors/lity/lity.min.js',
-            'src/assets/vendors/fitvids/jquery.fitvids.js',
-            'src/assets/vendors/matchHeight.min.js',
-            'src/assets/js/theDocs.min.js'
+          'src/assets/js/vendor.min.js': [
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/bootstrap/dist/js/bootstrap.min.js',
+            'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
+            'node_modules/clipboard/dist/clipboard.min.js',
+            'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js'
           ]
         }
+      }
+    },
+
+    copy: {
+      fonts: {
+        files: [
+          {
+            expand: true,
+            cwd: 'node_modules/bootstrap/dist/fonts',
+            src: ['**'],
+            dest: 'src/assets/fonts/'},
+          {
+            expand: true,
+            cwd: 'node_modules/font-awesome/fonts',
+            src: ['**'],
+            dest: 'src/assets/fonts/'}
+        ]
       }
     },
 
@@ -73,154 +83,31 @@ module.exports = function(grunt) {
       options: {
         force: true
       },
-      css: [
-        'src/assets/css/*.css',
-        'src/assets/css/*.css.map'
-      ],
-      js: [
-        'src/assets/js/*.min.js'
-      ],
-      site: [
-        'site'
-      ]
+      css: ['src/assets/css/*.css', 'src/assets/css/*.css.map'],
+      js: ['src/assets/js/*.min.js'],
+      fonts: ['src/assets/fonts'],
+      site: ['site']
     },
 
     watch: {
-      sass: {
+      scss: {
         files: ['src/assets/css/**/*.scss'],
-        tasks: ['sass', 'concat:css'],
-      }
-    },
-
-    browserSync: {
-      dev: {
-        bsFiles: {
-          src : [
-            'src/assets/css/*.css',
-            'src/*.html'
-          ]
-        },
-        options: {
-          watchTask: true,
-          server: 'src'
-        }
-      }
-    },
-
-    clean_old: {
-      options: {
-        force: true
+        tasks: ['sass']
       },
-      before_copy: ['dist'],
-      after_copy: {
-        src: [
-          "dist/**/theDocs.js",
-          "dist/**/theDocs.min.js",
-          "dist/**/theDocs.css",
-          "dist/**/theDocs.min.css",
-          "dist/**/*.css.map",
-          "dist/**/theDocs.scss",
-          "dist/**/css/theDocs",
-          "dist/**/vendors",
-          "dist/assets/img/*",
-          "!dist/assets/img/favicon*",
-          "!dist/assets/img/logo*",
-        ],
+      js: {
+        files: ['src/assets/js/theDocs.js'],
+        tasks: ['uglify'],
       }
-    },
-
-    replace: {
-      dist: {
-        src: ['dist/*.html'],
-        overwrite: true,
-        replacements: [{
-          from: /    <link href="assets\/css\/theDocs\.css" rel="stylesheet">\n/g,
-          to: ""
-        },
-        {
-          from: /    <script src="assets\/js\/theDocs\.js"><\/script>\n/g,
-          to: ""
-        }]
-      }
-    },
-
-    copy: {
-      dist: {
-        files: [
-          {expand: true, cwd: 'src/', src: ['**'], dest: 'dist'},
-
-        ],
-      },
-
-      dev: {
-        files: [
-          {expand: true, cwd: 'src/assets/vendors/bootstrap/fonts', src: ['**'], dest: 'src/assets/fonts/'},
-          {expand: true, cwd: 'src/assets/vendors/font-awesome/fonts', src: ['**'], dest: 'src/assets/fonts/'}
-        ]
-      }
-    },
-
-    concat_old: {
-      dist: {
-        files: {
-          'dist/assets/js/theDocs.all.js': [
-            'src/assets/js/theDocs.all.min.js',
-            'src/assets/js/theDocs.js'
-          ],
-
-          'dist/assets/js/theDocs.all.min.js': [
-            'src/assets/js/theDocs.all.min.js',
-            'src/assets/js/theDocs.min.js'
-          ],
-
-          'dist/assets/css/theDocs.all.css': [
-            'src/assets/css/theDocs.all.min.css',
-            'src/assets/css/theDocs.css'
-          ],
-
-          'dist/assets/css/theDocs.all.min.css': [
-            'src/assets/css/theDocs.all.min.css',
-            'src/assets/css/theDocs.min.css'
-          ]
-        },
-      },
-
-      dev: {
-        files: {
-          'src/assets/js/theDocs.all.min.js': [
-            'src/assets/vendors/jquery/jquery.min.js',
-            'src/assets/vendors/bootstrap/js/bootstrap.min.js',
-            'src/assets/vendors/prism/prism.js',
-            'src/assets/vendors/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js',
-            'src/assets/vendors/clipboard.js/clipboard.min.js',
-            'src/assets/vendors/lity/lity.min.js',
-            'src/assets/vendors/fitvids/jquery.fitvids.js',
-            'src/assets/vendors/matchHeight.min.js'
-          ],
-
-          'src/assets/css/theDocs.all.min.css': [
-            'src/assets/vendors/bootstrap/css/bootstrap.min.css',
-            'src/assets/vendors/font-awesome/css/font-awesome.min.css',
-            'src/assets/vendors/prism/prism.css',
-            'src/assets/vendors/perfect-scrollbar/css/perfect-scrollbar.min.css',
-            'src/assets/vendors/lity/lity.min.css'
-          ]
-        },
-      },
     },
 
     postcss: {
       options: {
         processors: [
-          autoprefixer, // add vendor prefixes
-          //require('cssnano')({zindex: false}) // minify the result
+          autoprefixer
         ]
       },
-      dist: {
-        //src: 'dist/*/assets/css/*.css'
-      },
-      dev: {
-        src: ['src/assets/css/theDocs.css', 'src/assets/css/theDocs.min.css']
+      files: {
+        src: ['src/assets/css/theDocs.min.css']
       }
     },
 
@@ -243,7 +130,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-exec');
 
   var index = function() {
@@ -255,8 +141,6 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('index', index);
-
-  grunt.registerTask('default', ['browserSync', 'watch']);
 
   grunt.registerTask('dist',
     [
@@ -287,8 +171,10 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'build', [
       'sass',
+      'postcss',
       'uglify',
       'concat',
+      'copy',
       'exec:site'
       //'exec:site',
       //'index'
