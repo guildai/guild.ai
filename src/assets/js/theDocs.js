@@ -254,8 +254,9 @@ $(function() {
     $('.video').fitVids();
   }
 
-  // Equal height for grid view
+  // Equal height
   $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
+  $('.promo').matchHeight();
 
   //
   // Code viewers

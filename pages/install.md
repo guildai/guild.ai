@@ -137,34 +137,34 @@ If you continue to face issues with your Guild installation, please
 Congratulations, you've installed Guild AI! Below are some next steps
 if you'd like to go further.
 
-<div class="row">
-<div class="col-md-4">
+<div class="row match-height">
+<div class="col col-md-4">
 <div class="promo left">
 <h3>Train your first model</h3>
-<p>
+<p class="expand">
 
 Dive in and train your first model using Guild AI! It will only take a
 few minutes to become familiary with Guild and its features.
 
 </p>
-<a class="btn btn-primary" href="/docs/tutorials/train-your-first-model">Train your first model</a>
+<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model">Train your first model</a>
 </div>
 </div>
 
-<div class="col-md-4">
+<div class="col col-md-4">
 <div class="promo left">
 <h3>Discover pre-packaged models</h3>
-<p>
+<p class="expand">
 
 Guild AI provides a catalog of state-of-the-art TensorFlow models that
 can be used to build deep learning applications!
 
 </p>
-<a class="btn btn-primary" href="/models">Discover Guild models</a>
+<a class="btn btn-primary cta" href="/models">Discover Guild models</a>
 </div>
 </div>
 
-<div class="col-md-4">
+<div class="col col-md-4">
 <div class="promo left">
 <h3>Browse the docs</h3>
 <p>
