@@ -15,40 +15,80 @@ module.exports = function(grunt) {
   });
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    banner: '/*!\n' +
-            ' * TheDocs v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-            ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under the Themeforest Standard Licenses\n' +
-            ' */\n',
 
     sass: {
-      dist: {
-        options: {
-          sourceMap: false,
-          outputStyle: 'compressed'
-        },
-        files: {
-          'src/assets/css/<%= pkg.name %>.min.css': 'src/assets/css/<%= pkg.name %>.scss'
-        }
+      options: {
+        sourceMap: true,
+        outputStyle: 'compressed'
       },
-
-      dev: {
-        options: {
-          sourceMap: true,
-          outputStyle: 'expanded'
-        },
+      css: {
         files: {
-          'src/assets/css/<%= pkg.name %>.css': 'src/assets/css/<%= pkg.name %>.scss'
+          'src/assets/css/theDocs.min.css': 'src/assets/css/theDocs.scss'
         }
       }
+    },
+
+    uglify: {
+      options: {
+        mangle: true,
+      },
+      js: {
+        files: {
+          'src/assets/js/theDocs.min.js': ['src/assets/js/theDocs.js']
+        }
+      }
+    },
+
+    concat: {
+      css: {
+        files: {
+          'src/assets/css/theDocs.all.min.css': [
+            'src/assets/vendors/bootstrap/css/bootstrap.min.css',
+            'src/assets/vendors/font-awesome/css/font-awesome.min.css',
+            'src/assets/vendors/prism/prism.css',
+            'src/assets/vendors/perfect-scrollbar/css/perfect-scrollbar.min.css',
+            'src/assets/vendors/lity/lity.min.css',
+            'src/assets/css/theDocs.min.css'
+          ]
+        }
+      },
+      js: {
+        files: {
+          'src/assets/js/theDocs.all.min.js': [
+            'src/assets/vendors/jquery/jquery.min.js',
+            'src/assets/vendors/bootstrap/js/bootstrap.min.js',
+            'src/assets/vendors/prism/prism.js',
+            'src/assets/vendors/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js',
+            'src/assets/vendors/clipboard.js/clipboard.min.js',
+            'src/assets/vendors/lity/lity.min.js',
+            'src/assets/vendors/fitvids/jquery.fitvids.js',
+            'src/assets/vendors/matchHeight.min.js',
+            'src/assets/js/theDocs.min.js'
+          ]
+        }
+      }
+    },
+
+    clean: {
+      options: {
+        force: true
+      },
+      css: [
+        'src/assets/css/*.css',
+        'src/assets/css/*.css.map'
+      ],
+      js: [
+        'src/assets/js/*.min.js'
+      ],
+      site: [
+        'site'
+      ]
     },
 
     watch: {
       sass: {
         files: ['src/assets/css/**/*.scss'],
-        tasks: ['sass:dev'],
+        tasks: ['sass', 'concat:css'],
       }
     },
 
@@ -67,7 +107,7 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: {
+    clean_old: {
       options: {
         force: true
       },
@@ -82,8 +122,6 @@ module.exports = function(grunt) {
           "dist/**/theDocs.scss",
           "dist/**/css/theDocs",
           "dist/**/vendors",
-          "dist/assets/css/custom.css",
-          "dist/assets/js/custom.js",
           "dist/assets/img/*",
           "!dist/assets/img/favicon*",
           "!dist/assets/img/logo*",
@@ -122,7 +160,7 @@ module.exports = function(grunt) {
       }
     },
 
-    concat: {
+    concat_old: {
       dist: {
         files: {
           'dist/assets/js/theDocs.all.js': [
@@ -171,24 +209,6 @@ module.exports = function(grunt) {
       },
     },
 
-    uglify: {
-      options: {
-        mangle: true,
-        //preserveComments: 'some',
-        banner: '<%= banner %>'
-      },
-      dist: {
-        files: {
-          //'dist/assets/js/<%= pkg.name %>.js': ['dist/assets/js/<%= pkg.name %>.js']
-        }
-      },
-      dev: {
-        files: {
-          'src/assets/js/theDocs.min.js': ['src/assets/js/theDocs.js']
-        }
-      }
-    },
-
     postcss: {
       options: {
         processors: [
@@ -204,19 +224,15 @@ module.exports = function(grunt) {
       }
     },
 
-    "file-creator": {
-      build: {
-        "dist/assets/js/custom.js": function(fs, fd, done) {
-          fs.writeSync(fd, '$(function() {\n\n\n\n})(jQuery);');
-          done();
-        },
-
-        "dist/assets/css/custom.css": function(fs, fd, done) {
-          fs.writeSync(fd, '');
-          done();
-        }
-      }
+    index: {
+      src: ['pages/**/*.md'],
+      dest: 'src/assets/search/lunr-index.json'
     },
+
+    exec: {
+      site: 'PYTHONPATH=. mkdocs build',
+      serve: 'PYTHONPATH=. mkdocs serve'
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -224,11 +240,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-file-creator');
   grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-exec');
+
+  var index = function() {
+    var indexPath = 'src/assets/search/lunr-index.json';
+    var config = grunt.config('index');
+    var src = grunt.file.expand(config.src);
+    // console.log(src);
+    // grunt.file.write(indexPath, JSON.stringify(index));
+  };
+
+  grunt.registerTask('index', index);
 
   grunt.registerTask('default', ['browserSync', 'watch']);
 
@@ -254,7 +280,25 @@ module.exports = function(grunt) {
       'uglify:dev',
       'postcss:dev',
       'copy:dev',
-      //'watch'
+      'index'
+    ]
+  );
+
+  grunt.registerTask(
+    'build', [
+      'sass',
+      'uglify',
+      'concat',
+      'exec:site'
+      //'exec:site',
+      //'index'
+    ]
+  );
+
+  grunt.registerTask(
+    'serve', [
+      'build',
+      'exec:serve'
     ]
   );
 };

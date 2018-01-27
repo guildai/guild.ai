@@ -6,7 +6,7 @@
 - make
 - npm
 - python
-- mkdocs
+- mkdocs (pip package)
 
 ## Note for Windows
 

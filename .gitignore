@@ -5,4 +5,5 @@
 /src/assets/css/**/*.css.map
 /src/assets/js/**/*.min.js
 /src/assets/fonts/
+/src/assets/search/
 *.pyc

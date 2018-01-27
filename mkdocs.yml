@@ -12,6 +12,13 @@ extra:
 theme:
   name: null
   custom_dir: src
+  # The following want to be in src/mkdocs_theme.yml, but mkdocs only
+  # reads that file when the theme is named/registered so we have to
+  # include them here:
+  include_search_page: false
+  search_index_only: true
+  static_templates:
+    - search.html
 
 plugins:
   - search

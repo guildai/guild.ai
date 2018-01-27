@@ -12,9 +12,9 @@
         </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
-        {% with nav_class = "navbar-nav navbar-right" %}
+        {% set nav_class = "navbar-nav navbar-right" %}
         {% include "partials/nav.html" %}
-        {% endwith %}
+        {% include "partials/search.html" %}
       </div>
     </div>
   </nav>

@@ -1,25 +1,16 @@
 grunt = node_modules/.bin/grunt
-mkdocs = PYTHONPATH=. mkdocs
 
-site: refresh-assets
-	$(mkdocs) build
+build: $(grunt)
+	$(grunt) build
 
-.PHONY: dist
+serve: $(grunt)
+	$(grunt) serve
 
-dist: $(grunt)
-	$(grunt) dist
+watch: $(grunt)
+	$(grunt) watch
+
+clean: $(grunt)
+	$(grunt) clean
 
 $(grunt):
 	npm install
-
-serve: site
-	$(mkdocs) serve
-
-watch-assets: $(grunt) refresh-assets
-	$(grunt) watch
-
-refresh-assets: $(grunt)
-	$(grunt) dev
-
-clean:
-	rm -rf dist site
