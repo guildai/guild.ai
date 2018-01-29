@@ -1,3 +1,3 @@
-pagenav_title: uninstall command
+sidenav_title: uninstall
 
-# uninstall
+# uninstall command

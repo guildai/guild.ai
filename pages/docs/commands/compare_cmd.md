@@ -1,3 +1,3 @@
-pagenav_title: compare command
+sidenav_title: compare
 
-# compare
+# compare command

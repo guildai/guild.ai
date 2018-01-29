@@ -1,3 +1,3 @@
-pagenav_title: shell command
+sidenav_title: shell
 
-# shell
+# shell command

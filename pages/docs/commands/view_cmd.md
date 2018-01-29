@@ -1,3 +1,3 @@
-pagenav_title: view command
+sidenav_title: view
 
-# view
+# view command

@@ -1,3 +1,3 @@
-pagenav_title: sync command
+sidenav_title: sync
 
-# sync
+# sync command

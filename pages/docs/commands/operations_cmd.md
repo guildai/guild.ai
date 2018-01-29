@@ -1,3 +1,3 @@
-pagenav_title: operations command
+sidenav_title: operations
 
-# operations
+# operations command

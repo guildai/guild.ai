@@ -1,3 +1,3 @@
-pagenav_title: packages command
+sidenav_title: packages
 
-# packages
+# packages command

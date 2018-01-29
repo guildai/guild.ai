@@ -1,3 +1,3 @@
-pagenav_title: tensorboard command
+sidenav_title: tensorboard
 
-# tensorboard
+# tensorboard command

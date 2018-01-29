@@ -1,3 +1,3 @@
-pagenav_title: check command
+sidenav_title: check
 
-# check
+# check command

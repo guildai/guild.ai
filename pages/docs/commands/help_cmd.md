@@ -1,3 +1,3 @@
-pagenav_title: help command
+sidenav_title: help
 
-# help
+# help command

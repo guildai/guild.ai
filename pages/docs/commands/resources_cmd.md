@@ -1,3 +1,3 @@
-pagenav_title: resources command
+sidenav_title: resources
 
-# resources
+# resources command

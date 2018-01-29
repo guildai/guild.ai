@@ -1,3 +1,3 @@
-pagenav_title: model command
+sidenav_title: model
 
-# models
+# models command

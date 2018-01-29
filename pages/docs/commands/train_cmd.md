@@ -1,3 +1,3 @@
-pagenav_title: train command
+sidenav_title: train
 
-# train
+# train command

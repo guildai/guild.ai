@@ -1,3 +1,3 @@
-pagenav_title: index command
+sidenav_title: index
 
-# index
+# index command

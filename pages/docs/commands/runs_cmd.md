@@ -1,3 +1,3 @@
-pagenav_title: runs command
+sidenav_title: runs
 
-# runs
+# runs command

@@ -1,3 +1,3 @@
-pagenav_title: search command
+sidenav_title: search
 
-# search
+# search command

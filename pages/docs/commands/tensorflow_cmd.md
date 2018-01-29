@@ -1,3 +1,3 @@
-pagenav_title: tensorflow command
+sidenav_title: tensorflow
 
-# tensorflow
+# tensorflow command

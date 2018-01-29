@@ -1,6 +1,6 @@
-pagenav_title: install command
+sidenav_title: install
 
-# install
+# install command
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem
 mauris, rutrum tempus hendrerit in, iaculis mattis mauris. Nulla
