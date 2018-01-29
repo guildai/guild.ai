@@ -34,6 +34,7 @@ markdown_extensions:
   - custom:DefinitionId
   - custom:ExternalLink
   - custom:TagList
+  #- custom:Categories
   - custom:LinkAlias:
       term:
         href: '/docs/glossary/#{}'

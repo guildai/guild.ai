@@ -5,6 +5,8 @@ pagenav_title: Documentation contents
 
 # Documentation
 
+[CATEGORIES "Concepts, Reference, Developer, Tutorials"]
+
 <ul class="categorized-view">
 <li>
 <h5>Concepts</h5>

@@ -171,6 +171,12 @@ option to the `runs info` command:
 guild runs info --files
 ```
 
+## Visualizing runs
+
+``` shell
+guild view
+```
+
 TODO cur:
 
 - Use view to visualize the run, including files
