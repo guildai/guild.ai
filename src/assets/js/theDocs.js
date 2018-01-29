@@ -400,12 +400,13 @@ $(function() {
   var search = algoliasearchHelper(client, 'guild.ai');
 
   search.on('result', function(content) {
-    searchResults(content.hits);
+    handleSearchResults(content);
   });
 
-  var searchResults = function(hits) {
+  var handleSearchResults = function(content) {
+    console.log(content);
     $('#search-results').html(function() {
-      return $.map(hits, function(hit) {
+      return $.map(content.hits, function(hit) {
         return ''
           + '<li>'
           + '<h6><a href="' + hit.location
@@ -418,20 +419,30 @@ $(function() {
     });
   };
 
+  var clearSearch = function() {
+    search.state.query = '';
+    $('#search-results').empty();
+    $('#search-input').val('');
+  }
+
   $('#search-input').on('keyup', function(e) {
     if (e.key !== 'Escape') {
       const val = $(this).val().trim();
-      if (val != search.state.query) {
+      if (!val) {
+        clearSearch();
+      } else if (val != search.state.query) {
         search.setQuery(val).search();
       }
     }
   });
 
-  // Close search and smooth scroll to internal links
-
+  // Close search and scroll to internal links
   $('#search-results').on('click', 'a', function(e) {
     const linkHref = e.target.href || '';
-    const curHref = window.location.href;
+    const curHref = ''
+          + window.location.protocol + '//'
+          + window.location.host
+          + window.location.pathname;
     if (linkHref.startsWith(curHref)) {
       const relPath = linkHref.slice(curHref.length);
       if (relPath.startsWith("#")) {
@@ -440,5 +451,10 @@ $(function() {
         return false;
       }
     }
+  });
+
+  // Set initial focus for modals
+  $('#search-modal').on('hidden.bs.modal', function () {
+    clearSearch();
   });
 });

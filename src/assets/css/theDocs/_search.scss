@@ -77,5 +77,11 @@
 
   .input-group {
     width: 100%;
+
+    input {
+      font-size: 16px;
+      height: inherit;
+      padding: 8px 12px;
+    }
   }
 }
