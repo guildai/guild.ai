@@ -417,33 +417,37 @@ $(function() {
   var pageItem = function(index, curPage) {
     return ''
       + '<li' + (index === curPage ? ' class="active"' : '') + '>'
-      + '<a href="#page' + index + '">' + (index + 1) + '</a></li>';
+      + '<a href="#nav-page-' + index + '">' + (index + 1) + '</a></li>';
   };
 
-  var pageNavItem = function(type) {
+  var pageNavItem = function(type, active) {
     return ''
-      + '<li><a href="#" class="' + type + '">'
+      + '<li class="' + (active ? '' : 'disabled') + '">'
+      + '<a href="' + (active ? '#nav-' + type : '') + '"'
+      + ' class="' + type +'"'
+      + (active ? '' : ' tabindex="-1"') + '>'
       + '<i class="fa fa-angle-' + (type === 'previous' ? 'left' : 'right')
       + '"></i></a></li>';
   };
 
   var handleSearchResults = function(content) {
-    console.log(content);
     $('#search-results').html(function() {
       return $.map(content.hits, hitItem);
     });
     $('#search-pages').html(function() {
       var items = [];
-      if (content.page > 0) {
-        items.push(pageNavItem('previous'));
-      }
-      for (var i = 0; i < content.nbPages; i++) {
+      items.push(pageNavItem('previous', content.page > 0));
+      const maxPages = 8;
+      const startPage = Math.max(
+        0, content.page - parseInt(maxPages / 2)
+          - (content.page === content.nbPages - 1 ? 1 : 0));
+      const endPage = Math.min(
+        startPage + parseInt(maxPages / 2) + 1,
+        content.nbPages - 1);
+      for (var i = startPage; i <= endPage; i++) {
         items.push(pageItem(i, content.page));
       }
-      if (content.page < content.nbPages - 1) {
-        items.push(pageNavItem('next'));
-      }
-      console.log(items);
+      items.push(pageNavItem('next', content.page < content.nbPages - 1));
       return items;
     });
   };
@@ -464,6 +468,19 @@ $(function() {
         search.setQuery(val).search();
       }
     }
+  });
+
+  $('#search-pages').on('click', 'a', function(e) {
+    const target = $(e.target).closest('a');
+    const href = target.attr('href');
+    if (href.startsWith('#nav-page')) {
+      search.setPage(href.slice(10)).search();
+    } else if (href === '#nav-previous') {
+      search.previousPage().search();
+    } else if (href === '#nav-next') {
+      search.nextPage().search();
+    }
+    return false;
   });
 
   // Close search and scroll to internal links

@@ -18,7 +18,7 @@
   > li > a:hover,
   > li > span:focus,
   > li > span:hover {
-    background-color: transparent;
+    background-color: lighten($accent-color, 50%);
     color: $accent-color;
   }
 
@@ -31,6 +31,18 @@
     background-color: $accent-color;
     border-radius: 2px;
   }
+
+  > .disabled > a,
+  > .disabled > a:focus,
+  > .disabled > a:hover,
+  > .disabled > span,
+  > .disabled > span:focus,
+  > .disabled > span:hover {
+    color: $pale-text-color;
+    cursor: unset;
+    outline: none;
+  }
+
 }
 
 .pager {
