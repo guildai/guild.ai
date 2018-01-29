@@ -18,3 +18,8 @@
     box-shadow: none;
   }
 }
+
+.input-group-addon {
+  border-radius: 0;
+  border: 1px solid $border-color;
+}

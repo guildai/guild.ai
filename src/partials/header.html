@@ -1,3 +1,7 @@
+{% block modals %}
+{% include "partials/search-modal.html" %}
+{% endblock %}
+
 <header class="site-header {{ header_class }}">
   <nav class="navbar navbar-default">
     <div class="container">
@@ -11,11 +15,12 @@
           <img src="{{ base_url }}/assets/img/logo_nav.svg" alt="logo">
         </a>
       </div>
+      <div class="spacer"></div>
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
         {% set nav_class = "navbar-nav navbar-right" %}
         {% include "partials/nav.html" %}
-        {% include "partials/search.html" %}
       </div>
+      {% include "partials/search-header.html" %}
     </div>
   </nav>
   {% block banner %}{% endblock %}

@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  var autoprefixer = require('autoprefixer')({
+  const autoprefixer = require('autoprefixer')({
     browsers: [
       'Chrome >= 35',
       'Firefox >= 31',
@@ -13,6 +13,8 @@ module.exports = function(grunt) {
       'Opera >= 12'
     ]
   });
+
+  const algoliasearch = require('algoliasearch');
 
   grunt.initConfig({
 
@@ -56,7 +58,9 @@ module.exports = function(grunt) {
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
             'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
             'node_modules/clipboard/dist/clipboard.min.js',
-            'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js'
+            'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
+            'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
+            'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js'
           ]
         }
       }
@@ -111,11 +115,6 @@ module.exports = function(grunt) {
       }
     },
 
-    index: {
-      src: ['pages/**/*.md'],
-      dest: 'src/assets/search/lunr-index.json'
-    },
-
     exec: {
       site: 'PYTHONPATH=. mkdocs build',
       serve: 'PYTHONPATH=. mkdocs serve'
@@ -127,20 +126,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-exec');
-
-  var index = function() {
-    var indexPath = 'src/assets/search/lunr-index.json';
-    var config = grunt.config('index');
-    var src = grunt.file.expand(config.src);
-    // console.log(src);
-    // grunt.file.write(indexPath, JSON.stringify(index));
-  };
-
-  grunt.registerTask('index', index);
 
   grunt.registerTask('dist',
     [
@@ -176,8 +164,6 @@ module.exports = function(grunt) {
       'concat',
       'copy',
       'exec:site'
-      //'exec:site',
-      //'index'
     ]
   );
 
@@ -187,4 +173,39 @@ module.exports = function(grunt) {
       'exec:serve'
     ]
   );
+
+  var index = function() {
+    const done = this.async();
+
+    const client = algoliasearch(
+      'I1IYALZNSK',
+      'c80940c47c99d45b08a80a592345c43c');
+    const index = client.initIndex('guild.ai');
+
+    const initIndex = function() {
+      const settings = {
+        searchableAttributes: ['title', 'text'],
+        attributesToRetrieve: ['location']
+      };
+      return index.setSettings(settings);
+    };
+
+    const clearIndex = function() {
+      return index.clearIndex();
+    };
+
+    const addObjects = function() {
+      const data = grunt.file.readJSON('./site/search/search_index.json');
+      return index.addObjects(data.docs);
+    };
+
+    initIndex()
+      .then(clearIndex)
+      .then(addObjects)
+      .then(done);
+  };
+
+  grunt.registerTask('index', index);
+
+  grunt.registerTask('build-and-index', ['build', 'index']);
 };

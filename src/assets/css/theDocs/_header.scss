@@ -1,4 +1,4 @@
-,.site-header {
+.site-header {
 
   .navbar {
     background-color: $accent-color;
@@ -65,6 +65,14 @@
     }
   }
 
+  .navbar .container {
+    display: flex;
+
+    .spacer {
+      flex: 1;
+    }
+  }
+
   &.navbar-fullwidth .navbar .container {
     width: 100%;
     margin: 0;
@@ -83,7 +91,6 @@
       z-index: 99;
     }
   }
-
 }
 
 .navbar-default .navbar-brand {

@@ -220,40 +220,6 @@ $(function() {
     });
   }
 
-  //
-  // FAQ Component
-  //
-
-  // Case insensitive contains selector
-  jQuery.expr[':'].icontains = function(a, i, m) {
-    return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-  };
-
-  // Search
-  $('.faq-search').on('keyup', function(e) {
-    var s = $(this).val().trim(),
-      result = $(this).parent().find("li");
-    if (s === '') {
-      result.show();
-      return true;
-    }
-    result.not(':icontains(' + s + ')').hide();
-    result.filter(':icontains(' + s + ')').show();
-  });
-
-  $('.faq li > h6').on('click', function() {
-    $(this).toggleClass('open').next('div').slideToggle(300);
-  });
-
-  //Taking care of video
-  if ($.fn.mediaelementplayer) {
-    $('video').mediaelementplayer();
-  }
-
-  if ($.fn.fitVids) {
-    $('.video').fitVids();
-  }
-
   // Equal height
   $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
   $('.promo').matchHeight();
@@ -420,4 +386,44 @@ $(function() {
       }, 1500, e);
     });
   }
+
+  // Set initial focus for modals
+  $('.modal').on('shown.bs.modal', function () {
+    $('.initial-focus').focus();
+  });
+
+  // Search
+
+  var client = algoliasearch('I1IYALZNSK', '4863af8e5dd6e8d374f000181f8bd352');
+  var index = client.initIndex('guild.ai');
+  var search = algoliasearchHelper(client, 'guild.ai');
+
+  search.on('result', function(content) {
+    searchResults(content.hits);
+  });
+
+  var searchResults = function(hits) {
+    $('#search-results').html(function() {
+      return $.map(hits, function(hit) {
+        return ''
+          + '<li>'
+          + '<h6><a href="' + hit.location + '">'
+          + hit._highlightResult.title.value + '</a></h6>'
+          + '<p>' + hit._highlightResult.text.value + '</p>'
+          + '</li>';
+      });
+    });
+  };
+
+  $('#search-input').on('keyup', function(e) {
+    if (e.key !== 'Escape') {
+      const val = $(this).val().trim();
+      if (val) {
+        search.setQuery(val).search();
+      } else {
+        searchResults([]);
+      }
+    }
+  });
+
 });
