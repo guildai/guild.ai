@@ -1,11 +1,12 @@
-function trySmoothScroll(href, pushHistory) {
+function trySmoothScroll(href, pushHistory, topMargin) {
   if (href.charAt(0) === '#') {
     const target = $(href);
     if (target.length > 0) {
       if (pushHistory) {
         window.history.pushState(null, null, href);
       }
-      const scrollTop = target.offset().top - target.outerHeight() - 10;
+      const fixedHeaderHeight = $('.site-header.sticky').outerHeight();
+      const scrollTop = target.offset().top - (fixedHeaderHeight || 0);
       $('html, body').animate({scrollTop: scrollTop}, 400);
       return true;
     }
@@ -18,13 +19,13 @@ $(function() {
   "use strict";
 
   // Scroll to anchor in page load
-  trySmoothScroll(location.hash);
+  trySmoothScroll(location.hash, false);
 
   // Scroll to page links
   $('.toc a, .sidenav.nav a, .actions a').click(function(e) {
     const href = e.target.getAttribute('href');
     if (trySmoothScroll(href, true)) {
-      e.preventDefault();
+      return false;
     }
   });
 
@@ -407,9 +408,11 @@ $(function() {
       return $.map(hits, function(hit) {
         return ''
           + '<li>'
-          + '<h6><a href="' + hit.location + '">'
-          + hit._highlightResult.title.value + '</a></h6>'
-          + '<p>' + hit._highlightResult.text.value + '</p>'
+          + '<h6><a href="' + hit.location
+          + '" title="' + hit.location + '">'
+          + hit._snippetResult.title.value
+          + '</a></h6>'
+          + '<p>' + hit._snippetResult.text.value + '</p>'
           + '</li>';
       });
     });
@@ -418,12 +421,24 @@ $(function() {
   $('#search-input').on('keyup', function(e) {
     if (e.key !== 'Escape') {
       const val = $(this).val().trim();
-      if (val) {
+      if (val != search.state.query) {
         search.setQuery(val).search();
-      } else {
-        searchResults([]);
       }
     }
   });
 
+  // Close search and smooth scroll to internal links
+
+  $('#search-results').on('click', 'a', function(e) {
+    const linkHref = e.target.href || '';
+    const curHref = window.location.href;
+    if (linkHref.startsWith(curHref)) {
+      const relPath = linkHref.slice(curHref.length);
+      if (relPath.startsWith("#")) {
+        $('#search-modal').modal('hide');
+        trySmoothScroll(relPath, true);
+        return false;
+      }
+    }
+  });
 });

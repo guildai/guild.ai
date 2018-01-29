@@ -5,10 +5,12 @@ banner_subtext:
     <strong>Guild AI</strong> is a developer toolkit that
     accelerates deep learning model development and reuse.
 banner_action: Learn more
-banner_action_link: #guild-ai
+banner_action_link: #learn-more
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
+
+<div id="learn-more" style="height:50px;margin-top:-50px"></div>
 
 # Guild AI
 
