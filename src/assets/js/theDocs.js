@@ -403,19 +403,48 @@ $(function() {
     handleSearchResults(content);
   });
 
+  var hitItem = function(hit) {
+    return ''
+      + '<li>'
+      + '<h6><a href="' + hit.location
+      + '" title="' + hit.location + '">'
+      + hit._snippetResult.title.value
+      + '</a></h6>'
+      + '<p>' + hit._snippetResult.text.value + '</p>'
+      + '</li>';
+  };
+
+  var pageItem = function(index, curPage) {
+    return ''
+      + '<li' + (index === curPage ? ' class="active"' : '') + '>'
+      + '<a href="#page' + index + '">' + (index + 1) + '</a></li>';
+  };
+
+  var pageNavItem = function(type) {
+    return ''
+      + '<li><a href="#" class="' + type + '">'
+      + '<i class="fa fa-angle-' + (type === 'previous' ? 'left' : 'right')
+      + '"></i></a></li>';
+  };
+
   var handleSearchResults = function(content) {
     console.log(content);
     $('#search-results').html(function() {
-      return $.map(content.hits, function(hit) {
-        return ''
-          + '<li>'
-          + '<h6><a href="' + hit.location
-          + '" title="' + hit.location + '">'
-          + hit._snippetResult.title.value
-          + '</a></h6>'
-          + '<p>' + hit._snippetResult.text.value + '</p>'
-          + '</li>';
-      });
+      return $.map(content.hits, hitItem);
+    });
+    $('#search-pages').html(function() {
+      var items = [];
+      if (content.page > 0) {
+        items.push(pageNavItem('previous'));
+      }
+      for (var i = 0; i < content.nbPages; i++) {
+        items.push(pageItem(i, content.page));
+      }
+      if (content.page < content.nbPages - 1) {
+        items.push(pageNavItem('next'));
+      }
+      console.log(items);
+      return items;
     });
   };
 
@@ -423,6 +452,7 @@ $(function() {
     search.state.query = '';
     $('#search-results').empty();
     $('#search-input').val('');
+    $('#search-pages').val('');
   }
 
   $('#search-input').on('keyup', function(e) {

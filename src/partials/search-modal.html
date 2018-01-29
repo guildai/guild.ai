@@ -9,13 +9,19 @@
       </div>
       <div class="modal-body">
         <div class="input-group">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control initial-focus"
-            placeholder="Find something">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
         </div>
         <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages" />
       </div>
     </div>
   </div>
