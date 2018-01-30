@@ -5,7 +5,10 @@ pagenav_title: Documentation contents
 
 # Documentation
 
-[CATEGORIES "Concepts, Reference, Developer, Tutorials"]
+- [Concepts](category:#concepts)
+- [Reference](category:#reference)
+- [Developer guides](category:#devguide)
+- [Tutorials](category:#tutorial)
 
 <ul class="categorized-view">
 <li>

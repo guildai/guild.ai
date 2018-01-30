@@ -14,6 +14,8 @@ import mkdocs.config as _ # work around for mkdocs import cycle
 from mkdocs.plugins import BasePlugin
 from mkdocs.nav import Page, Header
 
+NAV = None
+
 class NavResolvePlugin(BasePlugin):
 
     def on_nav(self, nav, config):
@@ -25,6 +27,7 @@ class NavResolvePlugin(BasePlugin):
         """
         for item in nav:
             self._ensure_loaded(item, config)
+        globals()["NAV"] = nav
         return nav
 
     def _ensure_loaded(self, item, config):
@@ -459,6 +462,18 @@ class Link(Extension):
             "custom_link",
             LinkProcessor(md, self._templates),
             ">inline")
+
+class CategoriesProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, doc):
+        for li in doc.iter("ul"):
+            print(etree.tostring(li))
+
+class Categories(Extension):
+    """Generates a categorized view."""
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("categories", CategoriesProcessor(md), ">inline")
 
 def test():
     import doctest

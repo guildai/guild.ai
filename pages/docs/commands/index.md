@@ -2,6 +2,13 @@ sidenav_title: Overview
 
 # Commands
 
+- [General](category:#general)
+- [Model support](category:#models)
+- [Run support](category:#runs)
+- [Package support](category:#packaging)
+- [Visualization](category:#visual)
+- [Utilities](category:#util)
+
 <ul class="categorized-view">
 <li>
 <h5>General</h5>
