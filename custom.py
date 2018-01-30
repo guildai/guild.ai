@@ -35,58 +35,6 @@ class NavResolvePlugin(BasePlugin):
             item.read_source(config)
             item.read_source = lambda **_kw: None
 
-class ExtLinkProcessor(treeprocessors.Treeprocessor):
-
-    def run(self, doc):
-        for link in doc.iter("a"):
-            if link.text and link.text.endswith("->"):
-                link.text = link.text[:-2].rstrip()
-                cls = link.get("class")
-                cls = cls + " ext" if cls else "ext"
-                link.set("class", cls)
-                link.set("target", "_blank")
-
-class ExternalLink(Extension):
-    """Modifies link syntax to support external links
-
-    An external link is opened in a new window using target="_blank"
-    and includes an "ext" class on the anchor element.
-
-    External links are denoted by adding "->" to the end of the link
-    text. This approach is compatible with other markdown processors.
-
-    To illustrate, we'll configure markdown with our extension:
-
-    >>> import markdown
-    >>> md = markdown.Markdown(extensions=[ExternalLink()])
-
-    Here's an external link:
-
-    >>> print(md.convert("[Link ->](#)"))
-    <p><a class="ext" href="#" target="_blank">Link</a></p>
-
-    The default behavior is applied for non-external links:
-
-    >>> print(md.convert("[Link](#)"))
-    <p><a href="#">Link</a></p>
-
-    Below are some edge case tests.
-
-    Space not included before marker:
-
-    >>> print(md.convert("[Link->](#)"))
-    <p><a class="ext" href="#" target="_blank">Link</a></p>
-
-    Text spans multiple lines:
-
-    >>> print(md.convert("[Line 1\\nLine 2 ->](#)"))
-    <p><a class="ext" href="#" target="_blank">Line 1
-    Line 2</a></p>
-    """
-
-    def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add("external_link", ExtLinkProcessor(md), "_end")
-
 class FixTocProcessor(treeprocessors.Treeprocessor):
 
     def run(self, doc):
@@ -174,166 +122,6 @@ class FixToc(Extension):
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("fix_toc", FixTocProcessor(md), "_end")
 
-class LinkAliasProcessor(treeprocessors.Treeprocessor):
-
-    alias_pattern = re.compile(r"\$([^ ]+) ?(.*)$")
-
-    def __init__(self, md, aliases):
-        super(LinkAliasProcessor, self).__init__(md)
-        self.aliases = aliases
-
-    def run(self, doc):
-        for link in doc.iter("a"):
-            self._try_apply_alias(link)
-
-    def _try_apply_alias(self, link):
-        href = link.get("href")
-        m = self.alias_pattern.match(href)
-        if m:
-            try:
-                alias = self.aliases[m.group(1)]
-            except KeyError:
-                pass
-            else:
-                args = shlex.split(m.group(2))
-                padded_args = args + [""] * 10
-                self._apply_alias(link, alias, padded_args)
-
-    def _apply_alias(self, link, alias, args):
-        self._try_apply_href(link, alias, args)
-        self._try_apply_class(link, alias, args)
-        if not link.text:
-            self._try_apply_text(link, alias, args)
-
-    @staticmethod
-    def _try_apply_href(link, alias, args):
-        try:
-            template = alias["href"]
-        except KeyError:
-            pass
-        else:
-            link.set("href", template.format(*args))
-
-    @staticmethod
-    def _try_apply_class(link, alias, args):
-        try:
-            template = alias["class"]
-        except KeyError:
-            pass
-        else:
-            cur_class = link.get("class", "")
-            new_class = template.format(*args)
-            cls = cur_class + " " + new_class if cur_class else new_class
-            link.set("class", cls)
-
-    @staticmethod
-    def _try_apply_text(link, alias, args):
-        try:
-            template = alias["text"]
-        except KeyError:
-            pass
-        else:
-            link.text = template.format(*args)
-
-class LinkAlias(Extension):
-    """Provides aliases for links
-
-    Link aliases are provided as link URLs in standard Markdown
-    links. Aliases are in the format:
-
-        '$' + NAME ( + ' ' + ARG)*
-
-    Examples:
-
-        [link text]($my-alias)
-        [link text]($my-alias arg1 arg2)
-
-    Aliases are configured using a dict of alias names to alias
-    config. An alias config consists of three optional template
-    strings:
-
-    - href
-    - class
-    - text
-
-    Templates are used to generate values for respective link href,
-    class and text properties. Templates use Python's advanced string
-    formatting (PEP 3101).
-
-    Example config:
-
-        {"my-alias": {"href": "/foo/{}", "text": "My alias"}
-
-    If provided, the 'href' template is used to generate the href
-    attribute for the link, given the alias arguments.
-
-    If provided, the 'class' template is used to generate a class
-    string to be added to the link's existing class.
-
-    If the link does not have a text value (e.g. markdown is
-    "[](...)") and the 'text' template is provided, it is similarly
-    used generate the link text value.
-
-    Alias arguments are used to format values and are passed in the
-    order specified in the alias link. If there aren't enough
-    alias arguments for the template, empty strings are used.
-
-    To illustrate, we'll configure markdown with LinkAlias and some
-    sample aliases.
-
-    >>> import markdown
-    >>> aliases = {
-    ...   "foo": {"href": "/foo#{}", "text": "Foo {}"},
-    ...   "bar": {"href": "/bar/{0}/{1}", "text": "{2}", "class": "bar"}
-    ... }
-    >>> md = markdown.Markdown(extensions=[LinkAlias(**aliases)])
-
-    We can now use '$foo' as a link alias:
-
-    >>> print(md.convert("[foo]($foo)"))
-    <p><a href="/foo#">foo</a></p>
-
-    In this case no arguments were provided and so empty strings where
-    used to format the href attribute.
-
-    Here's $foo with an argument:
-
-    >>> print(md.convert("[foo]($foo a)"))
-    <p><a href="/foo#a">foo</a></p>
-
-    Arguments that aren't used by the template are ignored:
-
-    >>> print(md.convert("[foo]($foo a b)"))
-    <p><a href="/foo#a">foo</a></p>
-
-    The bar alias uses position arguments for both link text and
-    href. Note also that the 'bar' class is used.
-
-    >>> print(md.convert("[]($bar a b Bar)"))
-    <p><a class="bar" href="/bar/a/b">Bar</a></p>
-
-    If the link contains text, it is preserved:
-
-    >>> print(md.convert("[My bar]($bar a b Bar)"))
-    <p><a class="bar" href="/bar/a/b">My bar</a></p>
-
-    In this case, the third argument can be omitted as it's not used:
-
-    >>> print(md.convert("[My bar]($bar a b)"))
-    <p><a class="bar" href="/bar/a/b">My bar</a></p>
-
-    """
-
-    def __init__(self, *args, **kw):
-        self.aliases = kw
-        super(LinkAlias, self).__init__(*args)
-
-    def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add(
-            "link_alias",
-            LinkAliasProcessor(md, self.aliases),
-            ">inline")
-
 class DefIdProcessor(treeprocessors.Treeprocessor):
 
     def run(self, doc):
@@ -403,6 +191,274 @@ class TagList(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("tag_list", TagListProcessor(md), "_end")
+
+class LinkTemplate(object):
+
+    def __init__(self, config):
+        self._text_pattern = self._pattern(config, 'text_pattern')
+        self._link_pattern = self._pattern(config, 'link_pattern')
+        self._text = config.get("text")
+        self._href = config.get("href")
+        self._class = config.get("class")
+        self._attrs = config
+
+    @staticmethod
+    def _pattern(config, key):
+        try:
+            pattern = config[key]
+        except KeyError:
+            return None
+        else:
+            return re.compile(pattern + "$")
+
+    def try_apply(self, link):
+        unset = object()
+        text_m = (
+            self._text_pattern.match(link.text or "")
+            if self._text_pattern
+            else unset)
+        link_m = (
+            self._link_pattern.match(link.get("href", ""))
+            if self._link_pattern
+            else unset)
+        if text_m is not None and link_m is not None:
+            args = None
+            if text_m is not unset:
+                args = text_m.groups()
+            if link_m is not unset:
+                args = (args or ()) + link_m.groups()
+            if args is not None:
+                padded_args = args + ("",) * 10
+                self._apply_text(padded_args, link)
+                self._apply_href(padded_args, link)
+                self._apply_class(padded_args, link)
+                self._apply_attrs(("target",), padded_args, link)
+
+    def _apply_text(self, args, link):
+        if self._text and (not link.text or self._text_pattern):
+            link.text = self._text.format(*args)
+
+    def _apply_href(self, args, link):
+        if self._href and (not link.get("href") or self._link_pattern):
+            link.set("href", self._href.format(*args))
+
+    def _apply_class(self, args, link):
+        if self._class:
+            cur = link.get("class")
+            formatted = self._class.format(*args)
+            link.set("class", " ".join((cur, formatted)) if cur else formatted)
+
+    def _apply_attrs(self, attrs, args, link):
+        for name in attrs:
+            try:
+                val = self._attrs[name]
+            except KeyError:
+                pass
+            else:
+                link.set(name, val.format(*args))
+
+class LinkProcessor(treeprocessors.Treeprocessor):
+
+    def __init__(self, md, templates):
+        super(LinkProcessor, self).__init__(md)
+        self._templates = [LinkTemplate(t) for t in templates]
+
+    def run(self, doc):
+        for link in doc.iter("a"):
+            for t in self._templates:
+                t.try_apply(link)
+
+    def _try_apply_alias(self, link):
+        href = link.get("href")
+        m = self.alias_pattern.match(href)
+        if m:
+            try:
+                alias = self.aliases[m.group(1)]
+            except KeyError:
+                pass
+            else:
+                args = shlex.split(m.group(2))
+                padded_args = args + [""] * 10
+                self._apply_alias(link, alias, padded_args)
+
+    def _apply_alias(self, link, alias, args):
+        self._try_apply_href(link, alias, args)
+        self._try_apply_class(link, alias, args)
+        if not link.text:
+            self._try_apply_text(link, alias, args)
+
+    @staticmethod
+    def _try_apply_href(link, alias, args):
+        try:
+            template = alias["href"]
+        except KeyError:
+            pass
+        else:
+            link.set("href", template.format(*args))
+
+    @staticmethod
+    def _try_apply_class(link, alias, args):
+        try:
+            template = alias["class"]
+        except KeyError:
+            pass
+        else:
+            cur_class = link.get("class", "")
+            new_class = template.format(*args)
+            cls = cur_class + " " + new_class if cur_class else new_class
+            link.set("class", cls)
+
+    @staticmethod
+    def _try_apply_text(link, alias, args):
+        try:
+            template = alias["text"]
+        except KeyError:
+            pass
+        else:
+            link.text = template.format(*args)
+
+class Link(Extension):
+    """Extends markdown links using simple templates.
+
+    Templates are specified as a list of attributes:
+
+    >>> templates = []
+
+    Templates match links on their text and link attributes:
+
+        [text](link)
+
+    Patterns are configued as regular expressions in the
+    `text_pattern` and `link_pattern` attributes:
+
+    >>> simple_template = {
+    ...   "text_pattern": r"\$text",
+    ...   "link_pattern": r"\$link"
+    ... }
+    >>> templates.append(simple_template)
+
+    At least one pattern is required. If both are specified, both must
+    match a link for the template to apply.
+
+    Patterns may include regular expression groups to capture values
+    from the link text and link attributes. Captured values are
+    referred to as *template arguments*. Argument order is preserved
+    based on the captured group order starting with link text followed
+    by the link attribute.
+
+    >>> arg_template = {
+    ...   "text_pattern": r"\$text (.+)",
+    ...   "link_pattern": r"\$link ([^ ]+) ([^ ]+)"
+    ... }
+    >>> templates.append(arg_template)
+
+    In this example, template arguments would be presented as three
+    values: the one captured text arg followed by the two captured
+    link args.
+
+    When a template matches a link, template attributes are applied to
+    the link. Template attributes may include:
+
+     - text
+     - href
+     - class
+     - target
+
+    >>> simple_template.update({
+    ...   "text": "a simple link",
+    ...   "href": "simple.html"
+    ... })
+
+    Attribute values may Python's advanced string formatting (PEP
+    3101) to include placeholders for argument values. Arguments
+    applied in order using Python's string `format` method.
+
+    >>> arg_template.update({
+    ...   "text": "Go to {0}",
+    ...   "href": "{1}",
+    ...   "class": "{2}"
+    ... })
+
+    If a template provides `text` but does not provide `text_pattern`
+    a special rule applies: the links original text value takes
+    precedence over the template's. Here's an example that uses
+    `link_pattern` to match and provides `text`:
+
+    >>> link_template = {
+    ...   "link_pattern": "link\.html",
+    ...   "text": "My link"
+    ... }
+    >>> templates.append(link_template)
+
+    In this case, `text` will be used only if the link text is empty,
+    otherwise the link text will be unaltered. This allows templates
+    to provide default text values that are used when the link text is
+    not provided.
+
+    The `target` attribute may be used to specify the link's
+    target. Here's a template that uses a pattern in the link text to
+    implement a link that opens in a new window/tab:
+
+    >>> ext_link_template = {
+    ...   "text_pattern": r"(.+?) ->",
+    ...   "text": "{}",
+    ...   "class": "ext",
+    ...   "target": "_blank"
+    ... }
+    >>> templates.append(ext_link_template)
+
+    Let's initialize markdown with our extension and sample templates:
+
+    >>> import markdown
+    >>> md = markdown.Markdown(extensions=[Link(templates)])
+
+    In the case of the simple template, we have to match on both text
+    and link because both patterns are provided:
+
+    >>> print(md.convert("[$text]($link)"))
+    <p><a href="simple.html">a simple link</a></p>
+
+    If either does not match, the template isn't applied:
+
+    >>> print(md.convert("[text]($link)"))
+    <p><a href="$link">text</a></p>
+
+    >>> print(md.convert("[$text](link)"))
+    <p><a href="link">$text</a></p>
+
+    The argument template also uses both text and links to match:
+
+    >>> print(md.convert("[$text Foo]($link foo bar)"))
+    <p><a class="bar" href="foo">Go to Foo</a></p>
+
+    The link template can be used with text:
+
+    >>> print(md.convert("[click here](link.html)"))
+    <p><a href="link.html">click here</a></p>
+
+    It can also be used without text, in which case the template text
+    is used:
+
+    >>> print(md.convert("[](link.html)"))
+    <p><a href="link.html">My link</a></p>
+
+    Here's an example of using a text pattern to implement an external
+    link (i.e. a link that opens in a new tab/window):
+
+    >>> print(md.convert("[Open ->](external.html)"))
+    <p><a class="ext" href="external.html" target="_blank">Open</a></p>
+
+    """
+
+    def __init__(self, templates):
+        super(Link, self).__init__()
+        self._templates = templates
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add(
+            "custom_link",
+            LinkProcessor(md, self._templates),
+            ">inline")
 
 def test():
     import doctest

@@ -13,7 +13,7 @@ This tutorial assumes the following:
 - Guild AI is [installed](/install) and [verified by running
   `check`](/install#verify-your-installation)
 - If applicable, your Guild [virtual environment is
-  active->]($virtualenv-activate)
+  active]($virtualenv-activate)
 - You have a working Internet connection
 
 ## Find the MNIST package

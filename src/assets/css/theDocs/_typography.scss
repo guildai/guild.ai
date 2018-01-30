@@ -174,11 +174,10 @@ sup {
 
 a.term {
   color: inherit;
-  text-decoration: underline dotted $border-color-darker;
+  font-style: italic;
 
   &:hover {
     color: $link-color;
-    text-decoration: underline;
   }
 }
 

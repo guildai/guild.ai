@@ -1,7 +1,13 @@
 grunt = node_modules/.bin/grunt
+mkdocs = PYTHONPATH=. mkdocs
 
 build: $(grunt)
 	$(grunt) build
+
+.PHONY: site
+
+site:
+	$(mkdocs) build
 
 index: $(grunt)
 	$(grunt) index
@@ -20,3 +26,6 @@ clean: $(grunt)
 
 $(grunt):
 	npm install
+
+test-custom:
+	python custom.py

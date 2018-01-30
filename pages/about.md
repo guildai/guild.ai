@@ -8,7 +8,7 @@ hide_in_pagenav: yes
 
 ## Links
 
-[GitHub project ->](https://github.com/guildai/guild)
+[GitHub project]($guild-github)
 
 ## History
 
