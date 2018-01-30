@@ -198,7 +198,8 @@ module.exports = function(grunt) {
 
     const addObjects = function() {
       const data = grunt.file.readJSON('./site/search/search_index.json');
-      return index.addObjects(data.docs);
+      const sections = data.docs.filter(doc => doc.location.includes('#'));
+      return index.addObjects(sections);
     };
 
     initIndex()
