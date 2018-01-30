@@ -186,7 +186,7 @@ module.exports = function(grunt) {
       const settings = {
         searchableAttributes: ['title', 'text'],
         attributesToHighlight: [],
-        attributesToSnippet: ['title', 'text:40'],
+        attributesToSnippet: ['title:10', 'text:25'],
         attributesToRetrieve: ['location']
       };
       return index.setSettings(settings);
