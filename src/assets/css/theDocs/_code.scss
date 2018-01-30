@@ -1,9 +1,24 @@
 code,
 a.cmd {
-  color: $code-inline-color;
-  background-color: $code-inline-bg-color;
   font-family: $font-family-code;
   font-size: 84%;
+  color: inherit;
+  background: inherit;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  word-spacing: -0.2em;
+  padding: 0;
+}
+
+code.lit {
+  color: $code-inline-color;
+  background-color: $code-inline-bg-color;
+  font-weight: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+  padding: 2px 4px;
+  border-radius: 1px;
+  white-space: nowrap;
 }
 
 a.cmd {
@@ -13,13 +28,19 @@ a.cmd {
 pre {
   position: relative;
   background-color: $code-bg-color;
-  font-size: 13px;
   line-height: 1.4;
   border: 1px solid $code-border-color;
   border-radius: 3px;
   margin-top: $p-margin-bottom_ + 2 * 1px;
   word-wrap: normal;
   word-break: normal;
+
+  code {
+    font-size: 93%;
+    font-weight: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
 }
 
 .code-preview {

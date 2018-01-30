@@ -11,15 +11,15 @@ hide_in_pagenav: yes
 
 ## Requirements
 
-Before installing Guild, review the requirements below.
+Guild AI has the following requirements:
 
 - Windows, Max OS, Linux
 - Python 2.7, Python 3
 - pip
 
-Guild is installed from PyPI using the `pip` command. Refer to
-[Installing pip ->](https://pip.pypa.io/en/stable/installing/) to
-ensure you have pip installed.
+Guild is installed from PyPI using `pip`. Refer to [Installing pip
+->](https://pip.pypa.io/en/stable/installing/) to ensure you have pip
+installed.
 
 ## Install Guild AI
 
@@ -31,7 +31,7 @@ pip install guildai
 
 !!! note
     You may need to run `pip` as a privileged user, in which case
-    run the above command as `sudo pip install guildai`. If you
+    run the above command as ``sudo pip install guildai``. If you
     would prefer to install Guild as an unpriviledged user, we
     recommend using a Python virtual environment. Refer to
     [Install using Virtualenv](#install-using-virtualenv) below.
@@ -50,8 +50,8 @@ pip install guildai
 
 !!! note
     If you install Guild in a virtual environment, you must activate the
-    environment before using Guild using the command `source
-    VIRTUAL_ENV_DIR/bin/activate`.
+    environment before using Guild using the command ``source
+    VIRTUAL_ENV_DIR/bin/activate``.
 
 For more information refer to the [Virtualenv documentation
 ->](https://virtualenv.pypa.io/en/stable/).
@@ -95,8 +95,8 @@ below for more information.
 ### NVIDIA System Management Interface
 
 Guild uses the NVIDIA System Management Interface on GPU systems to
-collect GPU stats. This tool is optional --- Guild will run without it
---- however, to collect GPU stats on systems with one or more GPUs,
+collect GPU stats. This tool is optional as Guild will run without
+it. However, to collect GPU stats on systems with one or more GPUs,
 ensure that `nvidia-smi` is available on your system.
 
 !!! note
@@ -129,7 +129,7 @@ CUDA or cuCNN are not installed
   System Management Interface](#nvidia-system-management-interface)
   above for links to NVIDIA's website.
 
-If you continue to face issues with your Guild installation, please
+If you continue to face issues with your Guild installation,
 []($open-an-issue) and we'll help!
 
 ## Next steps

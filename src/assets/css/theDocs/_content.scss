@@ -5,7 +5,7 @@ body[data-spy] {
 .main-content {
   padding: 50px;
   font-size: 16px;
-  line-height: 1.5em;
+  line-height: 1.3em;
 
   @media screen and (max-width: $break-md) {
     padding: 30px;
@@ -50,7 +50,7 @@ ul.ul {
 
   li {
     position: relative;
-    padding-left: 20px;
+    padding-left: 15px;
 
     &::before {
       position: absolute;

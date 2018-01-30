@@ -15,7 +15,7 @@
 }
 
 .search-modal {
-  height: 100%;
+  height: 100vh;
 
   .modal-dialog {
     height: calc(100% - 20px);
@@ -41,6 +41,10 @@
         display: flex;
         flex-direction: column;
         background-color: $color-white;
+        // Using max-height to prevent expansion of modal-body into
+        // page body on Firefox - 200px here approximates header and
+        // footer heights.
+        max-height: calc(100vh - 200px);
       }
     }
 

@@ -28,7 +28,7 @@
   > .active > span,
   > .active > span:focus,
   > .active > span:hover {
-    background-color: $accent-color;
+    background-color: ligthen($accent-color, 15%);
     border-radius: 2px;
   }
 

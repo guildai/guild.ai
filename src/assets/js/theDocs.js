@@ -22,10 +22,12 @@ $(function() {
   trySmoothScroll(location.hash, false);
 
   // Scroll to page links
-  $('.toc a, .sidenav.nav a, .actions a').click(function(e) {
+  $('a').click(function(e) {
     const href = e.target.getAttribute('href');
-    if (trySmoothScroll(href, true)) {
-      return false;
+    if (href && href !== '#') {
+      if (trySmoothScroll(href, true)) {
+        return false;
+      }
     }
   });
 
@@ -232,7 +234,7 @@ $(function() {
   // Copy to clipboard
   // It doesn't support Safari yet, and also has some minor bugs
   $('pre').each(function(index, value) {
-    $(this).prepend('<a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied">Copy</a>');
+    $(this).prepend('<a class="btn btn-sm btn-teal clipboard-copy" data-original-title="Copied">Copy</a>');
   });
 
   // Code snippet
@@ -454,9 +456,9 @@ $(function() {
 
   var clearSearch = function() {
     search.state.query = '';
-    $('#search-results').empty();
     $('#search-input').val('');
-    $('#search-pages').val('');
+    $('#search-results').empty();
+    $('#search-pages').empty();
   }
 
   $('#search-input').on('keyup', function(e) {

@@ -212,7 +212,7 @@ class LinkTemplate(object):
         except KeyError:
             return None
         else:
-            return re.compile(pattern + "$")
+            return re.compile(pattern + "$", re.DOTALL)
 
     def try_apply(self, link):
         unset = object()
@@ -467,13 +467,55 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
 
     def run(self, doc):
         for li in doc.iter("ul"):
-            print(etree.tostring(li))
+            pass
+            ##print(etree.tostring(li))
 
 class Categories(Extension):
     """Generates a categorized view."""
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("categories", CategoriesProcessor(md), ">inline")
+
+class BacktickPattern(inlinepatterns.BacktickPattern):
+
+    def __init__(self):
+        super(BacktickPattern, self).__init__(inlinepatterns.BACKTICK_RE)
+
+    def handleMatch(self, m):
+        el = super(BacktickPattern, self).handleMatch(m)
+        if m.group(4) and m.group(3) == "``":
+            el.set("class", "lit")
+
+        return el
+
+class Backtick(Extension):
+    """Replaces default backtick support with an extended version.
+
+    Guild distinguishes between single and double backticks. Single
+    backticks are used for literal text while double backticks are
+    used for code samples.
+
+    The extension preserves the use of code tags as per the markdown
+    specification but adds the class 'lit' (literal) to code tags
+    generated from double backticks.
+
+    To illustrate, we'll initialize markdown with the extension:
+
+    >>> import markdown
+    >>> md = markdown.Markdown(extensions=[Backtick()])
+
+    Here are the two code version:
+
+    >>> print(md.convert("`term`"))
+    <p><code>term</code></p>
+
+    >>> print(md.convert("``code sample``"))
+    <p><code class="lit">code sample</code></p>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.inlinePatterns["backtick"] = BacktickPattern()
 
 def test():
     import doctest

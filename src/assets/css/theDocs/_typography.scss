@@ -17,8 +17,9 @@ a.ext::after {
   content: '\f08e';
   font-family: FontAwesome;
   opacity: 0.8;
-  font-size: 0.7em;
+  font-size: 0.6em;
   margin-left: 0.3em;
+  margin-right: 0.2em;
   vertical-align: middle;
 }
 
@@ -170,10 +171,11 @@ dl {
 
 sup {
   margin-right: 4px;
+  margin-left: -2px;
 }
 
 a.term {
-  color: inherit;
+  color: $light-text-color;
   font-style: italic;
 
   &:hover {

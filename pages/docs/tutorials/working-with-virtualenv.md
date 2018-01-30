@@ -92,8 +92,8 @@ Guild:
 
 ## Virtual environments and `GUILD_HOME`
 
-Guild manages [packages]($term package), [runs]($term run), and
-[indexes]($term index) under a single directory named
+Guild manages [packages](term:package), [runs](term:run), and
+[indexes](term:index) under a single directory named
 `GUILD_HOME`. The default value of `GUILD_HOME` depends how Guild is
 run:
 

@@ -2,7 +2,7 @@
 
 [TOC]
 
-You can always refer to the [definition of package]($term package) for
+You can always refer to the [definition of package](term:package) for
 more information.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sem

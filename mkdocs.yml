@@ -34,41 +34,42 @@ markdown_extensions:
   - custom:DefinitionId
   - custom:TagList
   - custom:Categories
+  - custom:Backtick
   - custom:Link:
       templates:
-        - text_pattern: '(.+?) ?->'
+        # external links
+        - text_pattern: '(.+?)\s?->'
           text: '{}'
           class: 'ext'
           target: '_blank'
-
-        - link_pattern: '\$open-an-issue'
-          text: 'open an issue on GitHub'
-          class: 'ext'
-          target: '_blank'
-          href: 'https://github.com/guildai/guild/issues'
-
-        - link_pattern: '\$virtualenv-activate'
-          class: 'ext'
-          target: '_blank'
-          href: 'https://virtualenv.pypa.io/en/stable/userguide/#activate-script'
-          text: 'activate your virtual environment'
-
-        - link_pattern: '\$cmd (.+)'
+        # command link
+        - link_pattern: 'cmd:(.*)'
           class: 'cmd'
           href: '/docs/commands/{}_cmd'
           text: '{}'
-
+        # term link
+        - link_pattern: 'term:(.*)'
+          class: 'term'
+          text: '{}'
+          href: '/docs/glossary/#{}'
+        # alias
         - link_pattern: '\$guild-github'
           class: 'ext'
           target: '_blank'
           href: 'https://github.com/guildai/guild'
           text: 'Guild AI GitHub project'
-
-        - link_pattern: '\$term (.+)'
-          class: 'term'
-          text: '{}'
-          href: '/docs/glossary/#{}'
-
+        # alias
+        - link_pattern: '\$open-an-issue'
+          text: 'open an issue on GitHub'
+          class: 'ext'
+          target: '_blank'
+          href: 'https://github.com/guildai/guild/issues'
+        # alias
+        - link_pattern: '\$virtualenv-activate'
+          class: 'ext'
+          target: '_blank'
+          href: 'https://virtualenv.pypa.io/en/stable/userguide/#activate-script'
+          text: 'activate your virtual environment'
 
 pages:
   - index.md
