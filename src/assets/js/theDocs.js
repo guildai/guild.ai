@@ -437,7 +437,7 @@ $(function() {
     $('#search-pages').html(function() {
       var items = [];
       items.push(pageNavItem('previous', content.page > 0));
-      const maxPages = 8;
+      const maxPages = 10;
       const startPage = Math.max(
         0, content.page - parseInt(maxPages / 2)
           - (content.page === content.nbPages - 1 ? 1 : 0));
