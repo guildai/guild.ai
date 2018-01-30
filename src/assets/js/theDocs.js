@@ -500,8 +500,7 @@ $(function() {
     }
   });
 
-  // Set initial focus for modals
-  $('#search-modal').on('hidden.bs.modal', function () {
+  $('#search-modal').on('show.bs.modal', function () {
     clearSearch();
   });
 });
