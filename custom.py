@@ -23,7 +23,7 @@ nav_pages_index = None
 class NavResolvePlugin(BasePlugin):
 
     def on_nav(self, nav, config):
-        """Process nav items
+        """Process nav items.
 
         We use page meta for nav title and other config settings so we
         need to read the page source. To avoid re-reading we disable
@@ -86,7 +86,7 @@ class FixTocProcessor(treeprocessors.Treeprocessor):
                 item.tag = "ol"
 
 class FixToc(Extension):
-    """Reformats toc elements
+    """Reformats toc elements.
 
     Changes to toc:
 
@@ -138,7 +138,7 @@ class DefIdProcessor(treeprocessors.Treeprocessor):
             dt.set("id", slugify(dt.text, "-"))
 
 class DefinitionId(Extension):
-    """Adds ids to definition terms
+    """Adds ids to definition terms.
 
     With ids, definition terms can be referenced within a page using
     hashes.
@@ -175,7 +175,7 @@ class TagListProcessor(treeprocessors.Treeprocessor):
                 el.set("class", el.tag)
 
 class TagList(Extension):
-    """Adds 'ul' and 'ol' classes to ul and ol elements respectively
+    """Adds 'ul' and 'ol' classes to ul and ol elements respectively.
 
     This is used to style unordered and ordered lists.
 
@@ -567,6 +567,55 @@ class Backtick(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.inlinePatterns["backtick"] = BacktickPattern()
+
+class RefProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, doc):
+        for link in doc.iter("a"):
+            href = link.get("href", "")
+            if href.startswith("ref:"):
+                ref = href[4:]
+                link.set("href", "#" + ref)
+                link.set("class", "ref")
+                target = doc.find("*[@id='{}']".format(ref))
+                if target is not None:
+                    link.text = etree.tostring(target, method="text").strip()
+
+class Ref(Extension):
+    """Replaces link text with a referenced target text.
+
+    References are specified using a link in the format:
+
+        ref:REF
+
+    where REF is the ID of an element on the same page.
+
+    The plugin will replace the link text with that of the target
+    element. It will also add the 'ref' class to the link for optional
+    styling.
+
+    This plugin is designed to work in conjunction with the toc
+    plugin, which assigns id slugs to headers.
+
+    >>> import markdown
+    >>> md = markdown.Markdown(extensions=["toc", Ref()])
+
+    Here's a basic example of a reference:
+
+    >>> print(md.convert("[](ref:hello)\\n## hello"))
+    <p><a class="ref" href="#hello">hello</a></p>
+    <h2 id="hello">hello</h2>
+
+    Target text is stripped of its markup:
+
+    >>> print(md.convert("[](ref:hello-there)\\n## hello *there*"))
+    <p><a class="ref" href="#hello-there">hello there</a></p>
+    <h2 id="hello-there">hello <em>there</em></h2>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("ref", RefProcessor(md), "_end")
 
 def test():
     import doctest

@@ -35,6 +35,7 @@ markdown_extensions:
   - custom:TagList
   - custom:Categories
   - custom:Backtick
+  - custom:Ref
   - custom:Link:
       templates:
         # external links
