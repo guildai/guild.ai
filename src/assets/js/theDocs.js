@@ -18,9 +18,15 @@ $(function() {
 
   "use strict";
 
-  // Scroll to anchor in page load (disabling as it breaks history position -
-  // we can reinstate if there's a good fix otherwise punt)
-  // trySmoothScroll(location.hash, false);
+  if (window.performance
+      && window.performance.navigation.type
+      != window.performance.navigation.TYPE_BACK_FORWARD)
+  {
+    // We get here only when we know the user hasn't gotten to the
+    // page via next or back navigation. We don't want to scroll on
+    // navigation to preserve the historic scroll position.
+    trySmoothScroll(location.hash, false);
+  }
 
   // Scroll to page links
   $('a').click(function(e) {
