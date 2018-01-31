@@ -60,7 +60,8 @@ module.exports = function(grunt) {
             'node_modules/clipboard/dist/clipboard.min.js',
             'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
-            'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js'
+            'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
+            'node_modules/mousetrap/mousetrap.min.js'
           ]
         }
       }

@@ -500,4 +500,13 @@ $(function() {
   $('#search-modal').on('show.bs.modal', function () {
     clearSearch();
   });
+
+  Mousetrap.bind(["/"], function() {
+    if (!($('#search-modal').data('bs.modal') || {}).isShown) {
+      $('#search-modal').modal('show');
+    } else {
+      $('#search-input').focus().select();
+      return false;
+    }
+  });
 });
