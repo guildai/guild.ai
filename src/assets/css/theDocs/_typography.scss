@@ -47,8 +47,8 @@ blockquote {
 }
 
 h1 {
-  font-weight: 300;
   font-size: 52px;
+  font-weight: 300;
   line-height: 1.1;
   margin-bottom: 30px;
 }
@@ -181,6 +181,10 @@ a.term {
   &:hover {
     color: $link-color;
   }
+}
+
+a.ref {
+  font-style: italic;
 }
 
 .footnote {
