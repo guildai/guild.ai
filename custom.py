@@ -209,6 +209,7 @@ class LinkTemplate(object):
         self._text = config.get("text")
         self._href = config.get("href")
         self._class = config.get("class")
+        self._arg_maps = config.get("arg_maps", [])
         self._attrs = config
 
     @staticmethod
@@ -231,17 +232,23 @@ class LinkTemplate(object):
             if self._link_pattern
             else unset)
         if text_m is not None and link_m is not None:
-            args = None
+            m_args = None
             if text_m is not unset:
-                args = text_m.groups()
+                m_args = text_m.groups()
             if link_m is not unset:
-                args = (args or ()) + link_m.groups()
-            if args is not None:
-                padded_args = args + ("",) * 10
-                self._apply_text(padded_args, link)
-                self._apply_href(padded_args, link)
-                self._apply_class(padded_args, link)
-                self._apply_attrs(("target",), padded_args, link)
+                m_args = (m_args or ()) + link_m.groups()
+            if m_args is not None:
+                args = self._format_args(m_args)
+                self._apply_text(args, link)
+                self._apply_href(args, link)
+                self._apply_class(args, link)
+                self._apply_attrs(("target",), args, link)
+
+    def _format_args(self, args):
+        for arg, arg_map in map(None, args, self._arg_maps):
+            mapped = arg_map.get(arg, arg) if arg_map else arg
+            args += (mapped,)
+        return args + ("",) * 10
 
     def _apply_text(self, args, link):
         if self._text and (not link.text or self._text_pattern):
@@ -275,56 +282,8 @@ class LinkProcessor(treeprocessors.Treeprocessor):
     def run(self, doc):
         for link in doc.iter("a"):
             for t in self._templates:
-                t.try_apply(link)
-
-    def _try_apply_alias(self, link):
-        href = link.get("href")
-        m = self.alias_pattern.match(href)
-        if m:
-            try:
-                alias = self.aliases[m.group(1)]
-            except KeyError:
-                pass
-            else:
-                args = shlex.split(m.group(2))
-                padded_args = args + [""] * 10
-                self._apply_alias(link, alias, padded_args)
-
-    def _apply_alias(self, link, alias, args):
-        self._try_apply_href(link, alias, args)
-        self._try_apply_class(link, alias, args)
-        if not link.text:
-            self._try_apply_text(link, alias, args)
-
-    @staticmethod
-    def _try_apply_href(link, alias, args):
-        try:
-            template = alias["href"]
-        except KeyError:
-            pass
-        else:
-            link.set("href", template.format(*args))
-
-    @staticmethod
-    def _try_apply_class(link, alias, args):
-        try:
-            template = alias["class"]
-        except KeyError:
-            pass
-        else:
-            cur_class = link.get("class", "")
-            new_class = template.format(*args)
-            cls = cur_class + " " + new_class if cur_class else new_class
-            link.set("class", cls)
-
-    @staticmethod
-    def _try_apply_text(link, alias, args):
-        try:
-            template = alias["text"]
-        except KeyError:
-            pass
-        else:
-            link.text = template.format(*args)
+                if t.try_apply(link):
+                    break
 
 class Link(Extension):
     """Extends markdown links using simple templates.
@@ -416,6 +375,30 @@ class Link(Extension):
     ... }
     >>> templates.append(ext_link_template)
 
+    Templates may also provide an `arg_maps` list of dicts, which map
+    user-provided arg values to template-defined values. Items in the
+    arg maps list correspond to the positional arguments defined in
+    the templates.
+
+    Mapped arguments are appended to the list of arguments used for
+    formatting in the order corresponding to their position in the
+    `arg_maps` list. For example, if there is a single arg map, a
+    single additional mapped argument will be appended to the argument
+    list. If there are two maps, two additional arguments will be
+    appended, and so on.
+
+    Here's an example of a template that maps the first (an only)
+    argument and uses the mapped value as its text while using the
+    original value as its href attribute.
+
+    >>> arg_maps_template = {
+    ...   "link_pattern": "mapped:(.+?)",
+    ...   "href": "{0}",
+    ...   "text": "{1}",
+    ...   "arg_maps": [{ "a": "A", "b": "B", "c": "C" }]
+    ... }
+    >>> templates.append(arg_maps_template)
+
     Let's initialize markdown with our extension and sample templates:
 
     >>> import markdown
@@ -456,6 +439,11 @@ class Link(Extension):
 
     >>> print(md.convert("[Open ->](external.html)"))
     <p><a class="ext" href="external.html" target="_blank">Open</a></p>
+
+    Argument maps are applied to user-provided arguments:
+
+    >>> print(md.convert("[](mapped:a)"))
+    <p><a href="a">A</a></p>
 
     """
 
