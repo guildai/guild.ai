@@ -40,36 +40,46 @@ markdown_extensions:
         # external links
         - text_pattern: '(.+?)\s?->'
           text: '{}'
-          class: 'ext'
-          target: '_blank'
+          class: ext
+          target: _blank
         # command link
         - link_pattern: 'cmd:(.*)'
-          class: 'cmd'
+          class: cmd
           href: '/docs/commands/{}_cmd'
           text: '{}'
         # term link
         - link_pattern: 'term:(.*)'
-          class: 'term'
-          text: '{}'
-          href: '/docs/glossary/#{}'
-        # alias
-        - link_pattern: '\$guild-github'
-          class: 'ext'
-          target: '_blank'
-          href: 'https://github.com/guildai/guild'
-          text: 'Guild AI GitHub project'
-        # alias
-        - link_pattern: '\$open-an-issue'
-          text: 'open an issue on GitHub'
-          class: 'ext'
-          target: '_blank'
-          href: 'https://github.com/guildai/guild/issues'
-        # alias
-        - link_pattern: '\$virtualenv-activate'
-          class: 'ext'
-          target: '_blank'
-          href: 'https://virtualenv.pypa.io/en/stable/userguide/#activate-script'
-          text: 'activate your virtual environment'
+          class: term
+          text: '{0}'
+          href: '{1}'
+          arg_maps:
+            - control-key: https://en.wikipedia.org/wiki/Control_key
+              flag: /docs/operations/#flags
+              index: /docs/reference/guild-home/#runs-index
+              model: /docs/models/
+              operation: /docs/operations/
+              package-file: /docs/reference/package-file/
+              package: /docs/packages/
+              resource: /docs/resources/
+              run-dir: /docs/runs/#run-directory
+              run: /docs/runs/
+        # aliases
+        - link_pattern: alias:guild-github
+          class: ext
+          target: _blank
+          href: https://github.com/guildai/guild
+          text: Guild AI GitHub project
+        - link_pattern: alias:open-an-issue
+          text: open an issue on GitHub
+          class: ext
+          target: _blank
+          href: https://github.com/guildai/guild/issues
+        - link_pattern: alias:virtualenv-activate
+          href: /docs/tutorials/working-with-virtualenv/#using-a-virtual-environment
+          text: activate your virtual environment
+        - link_pattern: alias:separate-console
+          href: /docs/commands/#running-commands-in-a-separate-console
+          text: separate console
 
 pages:
   - index.md
@@ -77,7 +87,6 @@ pages:
   - docs:
       - docs/index.md
       - docs/overview.md
-      - docs/packages.md
       - docs/models.md
       - docs/operations.md
       - docs/runs.md
@@ -85,6 +94,8 @@ pages:
           - docs/visual/index.md
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
+      - docs/packages.md
+      - docs/resources.md
       - Commands:
           - docs/commands/index.md
           - docs/commands/check_cmd.md
@@ -122,6 +133,7 @@ pages:
           - docs/reference/plugin-api.md
           - docs/reference/model-file.md
           - docs/reference/package-file.md
+          - docs/reference/guild-home.md
       - Tutorials:
           - docs/tutorials/index.md
           - docs/tutorials/train-your-first-model.md

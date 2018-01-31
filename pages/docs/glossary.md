@@ -1,34 +1,39 @@
 # Glossary
 
-Dataset
-: TODO
+## Dataset
 
-Flag
-: TODO
+## Flag
 
-Index:
-: TODO
 
-Model
-: TODO
 
-  For more information, see [Models](/docs/models/).
+## Index
 
-Operation
-: TODO
 
-  For more information, see [Operations](/docs/operations/).
 
-Package
-: TODO
+## Model
 
-  For more information, see [Packages](/docs/packages/).
+For more information, see [Models](/docs/models/).
 
-Resource
-: TODO
+## Operation
 
-Run
-: TODO
+For more information, see [Operations](/docs/operations/).
 
-Run directory
-: TODO
+## Package
+
+A Guild package is a container of [models](term:model) and
+[resources](term:resource). Packages are generated using the
+[](cmd:package) command, which processes the contents of a [package
+file](term:package-file) to create package distribution. Package
+distributions may be uploaded where they can be discovered using the
+[](cmd:search) command and installed using [](cmd:install).
+
+For more information, see [Packages](/docs/packages/).
+
+## Resource
+
+
+## Run
+
+
+
+## Run directory

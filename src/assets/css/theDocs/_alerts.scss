@@ -4,7 +4,7 @@
 
 .callout,
 .admonition {
-  padding: 12px 20px 8px;
+  padding: 15px 20px 12px;
   margin: 20px 0;
   border: 1px solid $callout-border-color;
   border-left-width: 3px;
@@ -14,7 +14,7 @@
   h4,
   .admonition-title {
     font-size: 18px;
-    margin: 4px 0 10px;
+    margin: 4px 0 $p-margin-bottom;
   }
 
   &.success {
@@ -22,7 +22,8 @@
   }
 
   &.note,
-  &.info {
+  &.info,
+  &.aside {
     @include callout-variant($callout-info-color);
   }
 
