@@ -198,9 +198,33 @@ module.exports = function(grunt) {
     };
 
     const addObjects = function() {
+
+      // mkdocs generates search_index.json with both the full page
+      // content and also each section as docs. We don't want to
+      // present users both the full page and separate sections as
+      // they appear identical apart from their link. We address this
+      // by only indexing sections and not the entire document. We
+      // also change the location of the top section document to the
+      // page location to avoid using a hash location for the top of
+      // the page. We can safely do this because all of our pages have
+      // a single top-level h1 element that precedes page content.
+
       const data = grunt.file.readJSON('./site/search/search_index.json');
-      const sections = data.docs.filter(doc => doc.location.includes('#'));
-      return index.addObjects(sections);
+      const objects = [];
+      var promoteSectionLocation = null;
+      data.docs.forEach(function(doc) {
+        if (!doc.location.includes('#')) {
+          promoteSectionLocation = doc.location;
+        } else {
+          if (promoteSectionLocation) {
+            doc.location = promoteSectionLocation;
+          }
+          objects.push(doc);
+          promoteSectionLocation = null;
+        }
+      });
+      grunt.file.write("/tmp/obj.json", JSON.stringify(objects));
+      return index.addObjects(objects);
     };
 
     initIndex()
