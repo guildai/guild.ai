@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import logging
 import re
 import shlex
 
@@ -14,7 +15,10 @@ import mkdocs.config as _ # work around for mkdocs import cycle
 from mkdocs.plugins import BasePlugin
 from mkdocs.nav import Page, Header
 
-NAV = None
+log = logging.getLogger("mkdocs")
+
+nav_pages = []
+nav_pages_index = None
 
 class NavResolvePlugin(BasePlugin):
 
@@ -25,9 +29,10 @@ class NavResolvePlugin(BasePlugin):
         need to read the page source. To avoid re-reading we disable
         the read_source function.
         """
+        globals()["nav_pages"] = []
+        globals()["nav_pages_index"] = None
         for item in nav:
             self._ensure_loaded(item, config)
-        globals()["NAV"] = nav
         return nav
 
     def _ensure_loaded(self, item, config):
@@ -37,6 +42,7 @@ class NavResolvePlugin(BasePlugin):
         elif isinstance(item, Page):
             item.read_source(config)
             item.read_source = lambda **_kw: None
+            nav_pages.append(item)
 
 class FixTocProcessor(treeprocessors.Treeprocessor):
 
@@ -463,12 +469,70 @@ class Link(Extension):
             LinkProcessor(md, self._templates),
             ">inline")
 
+class PagesIndex(object):
+
+    def __init__(self,):
+        assert nav_pages, "nav_resolve plugin is required"
+        self._by_tag = {}
+        for page in nav_pages:
+            for tag in self._page_tags(page):
+                self._by_tag.setdefault(tag, []).append(page)
+
+    @staticmethod
+    def _page_tags(page):
+        return [s.strip() for s in page.meta.get("tags", "").split(",")]
+
+    def iter_pages(self, url_prefix, tag):
+        for page in self._by_tag.get(tag, []):
+            if page.abs_url.startswith(url_prefix):
+                yield page
+
 class CategoriesProcessor(treeprocessors.Treeprocessor):
 
     def run(self, doc):
-        for li in doc.iter("ul"):
-            pass
-            ##print(etree.tostring(li))
+        if nav_pages_index is None:
+            log.info("Generating nav pages index")
+            globals()["nav_pages_index"] = PagesIndex()
+        for ul in doc.iter("ul"):
+            if self._is_category_list(ul):
+                self._apply_category_list(ul, nav_pages_index)
+
+    @staticmethod
+    def _is_category_list(ul):
+        link = ul.find("li/a")
+        return link is not None and link.get("href", "").startswith("category")
+
+    def _apply_category_list(self, ul, index):
+        links = ul.findall("li/a")
+        ul.clear()
+        ul.set("class", "categorized-view")
+        categories = {}
+        for link in links:
+            cat_info = self._try_cat_info(link)
+            if not cat_info:
+                continue
+            url_prefix, cat_tag, cat_title = cat_info
+            li = etree.Element("li")
+            ul.append(li)
+            h5 = etree.Element("h5")
+            li.append(h5)
+            h5.text = cat_title
+            for page in index.iter_pages(url_prefix, cat_tag):
+                a = etree.Element("a")
+                li.append(a)
+                a.text = page.meta.get("sidenav_title") or page.title
+                a.set("href", page.abs_url)
+
+    @staticmethod
+    def _try_cat_info(link):
+        href = link.get("href", "")
+        if not href.startswith("category:"):
+            return None
+        parts = href[9:].split("#", 1)
+        if len(parts) != 2:
+            log.warning("invalid category URL: %s", href)
+            return None
+        return parts + [link.text]
 
 class Categories(Extension):
     """Generates a categorized view."""
@@ -485,7 +549,6 @@ class BacktickPattern(inlinepatterns.BacktickPattern):
         el = super(BacktickPattern, self).handleMatch(m)
         if m.group(4) and m.group(3) == "``":
             el.set("class", "lit")
-
         return el
 
 class Backtick(Extension):

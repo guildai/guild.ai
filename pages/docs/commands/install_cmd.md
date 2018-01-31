@@ -1,4 +1,5 @@
 sidenav_title: install
+tags: packaging
 
 # install command
 
