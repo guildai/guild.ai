@@ -18,8 +18,9 @@ $(function() {
 
   "use strict";
 
-  // Scroll to anchor in page load
-  trySmoothScroll(location.hash, false);
+  // Scroll to anchor in page load (disabling as it breaks history position -
+  // we can reinstate if there's a good fix otherwise punt)
+  // trySmoothScroll(location.hash, false);
 
   // Scroll to page links
   $('a').click(function(e) {
