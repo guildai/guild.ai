@@ -1,3 +1,3 @@
-pagenav_title: GPU plugin
+sidenav_title: GPU
 
-# GPU
+# GPU plugin

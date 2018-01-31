@@ -147,7 +147,8 @@ Dive in and train your first model using Guild AI! It will only take a
 few minutes to become familiary with Guild and its features.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model">Train your first model</a>
+<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model"
+  >Train your first model <i class="fa next"></i></a>
 </div>
 </div>
 
@@ -160,7 +161,8 @@ Guild AI provides a catalog of state-of-the-art TensorFlow models that
 can be used to build deep learning applications!
 
 </p>
-<a class="btn btn-primary cta" href="/models">Discover Guild models</a>
+<a class="btn btn-primary cta" href="/models"
+  >Discover Guild models <i class="fa next"></i></a>
 </div>
 </div>
 
@@ -173,7 +175,8 @@ If you're interested in a complete picture of Guild AI, start by
 browsing its comprehensives documentation.
 
 </p>
-<a class="btn btn-primary" href="/docs">Browse the docs</a>
+<a class="btn btn-primary" href="/docs"
+  >Browse the docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>

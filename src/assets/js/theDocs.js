@@ -80,11 +80,6 @@ $(function() {
     }
   }
 
-  // Margin top for sticky navbar without banner
-  if ($('.site-header').hasClass('sticky') && $('.site-header > .banner').length == 0) {
-    $('.site-header').css('padding-top', $('.site-header > .navbar').height() + 30);
-  }
-
   //
   // Sidebar
   //

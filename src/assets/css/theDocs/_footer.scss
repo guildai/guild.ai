@@ -8,6 +8,10 @@
     text-align: center;
   }
 
+  @media screen and (max-width: $break-sm) {
+    padding: 10px 5px;
+  }
+
   div > p:last-child {
     margin-bottom: 0;
   }
@@ -37,6 +41,10 @@
 
     > .fa {
       vertical-align: top;
+    }
+
+    @media screen and (max-width: $break-sm) {
+      top: -28px;
     }
   }
 }

@@ -1,3 +1,3 @@
-pagenav_title: CPU plugin
+sidenav_title: CPU
 
-# CPU
+# CPU plugin

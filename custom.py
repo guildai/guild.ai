@@ -520,7 +520,7 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
             for page in index.iter_pages(url_prefix, cat_tag):
                 a = etree.Element("a")
                 li.append(a)
-                a.text = page.meta.get("sidenav_title") or page.title
+                a.text = page.meta.get("overview_title") or page.title
                 a.set("href", page.abs_url)
 
     @staticmethod
@@ -530,7 +530,7 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
             return None
         parts = href[9:].split("#", 1)
         if len(parts) != 2:
-            log.warning("invalid category URL: %s", href)
+            log.warning("invalid category URL '%s' (missing hash)", href)
             return None
         return parts + [link.text]
 

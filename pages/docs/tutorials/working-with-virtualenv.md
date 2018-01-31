@@ -1,3 +1,5 @@
+tags: tutorial, tools
+
 # Working with Virtualenv
 
 [TOC]
@@ -65,7 +67,7 @@ where `DIRECTORY` is the file system directory that will contain the
 environment.
 
 You can specify the Python version to use in environment using the
-`-p` option. For example, to indicate that Python 2 should be used,
+``-p`` option. For example, to indicate that Python 2 should be used,
 run:
 
 ``` shell
@@ -98,10 +100,10 @@ Guild manages [packages](term:package), [runs](term:run), and
 run:
 
 - If Guild is run within a virtual environment, the value is
-  `$VIRTUAL_ENV/.guild`
+  ``$VIRTUAL_ENV/.guild``
 
 - If Guild is not run within a virtual environment, the value is
-  `$HOME/.guild`
+  ``$HOME/.guild``
 
 This behavior is designed to completely isolate Guild within a virtual
 environment. However, you may want to share packages and runs across
@@ -110,14 +112,14 @@ environment variable to the shared location. This should be done in
 the `activate` script of the environment.
 
 To share a common `GUILD_HOME` across environments, modify
-`$VIRTUAL_ENV/bin/active` for each environment and add the following
+``$VIRTUAL_ENV/bin/active`` for each environment and add the following
 line at the end of the file:
 
 ```
 export GUILD_HOME=~/.guild
 ```
 
-If you want to use a different location, change `~/.guild`
+If you want to use a different location, change ``~/.guild``
 accordingly.
 
 ## Using a virtual environment
@@ -133,18 +135,18 @@ This will configure your shell environment to use the Python runtime
 and associated packages contained in the environment. It will also set
 `GUILD_HOME` if you modified `activate` as per the instructions above.
 
-For more information, refer to [*Virtualenv User Guide - activate
-script*](https://virtualenv.pypa.io/en/stable/userguide/#activate-script).
+For more information, refer to [Virtualenv User Guide: activate
+script](https://virtualenv.pypa.io/en/stable/userguide/#activate-script).
 
 Once activated, run Guild commands as you normally would.
 
-You can verify Guild details by running `guild check`, which will
+You can verify Guild details by running ``guild check``, which will
 display `guild_home` and `guild_install_location` settings, letting
 you confirm that Guild is isolated as expected.
 
 ## Summary
 
 In this tutorial we reviewed Virtualenv and how it can be used to
-isolate Guild on a system. We also described how `GUILD_HOME` can be
-shared across virtual environments by explicitly setting an
-environment variable in the `activate` script.
+isolate Guild on a system. We described how `GUILD_HOME` can be shared
+across virtual environments by explicitly setting an environment
+variable in the `activate` script.

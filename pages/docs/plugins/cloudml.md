@@ -1,3 +1,3 @@
-pagenav_title: Cloud ML plugin
+sidenav_title: Cloud ML
 
-# Cloud ML
+# Cloud ML plugin

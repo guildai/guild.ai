@@ -1,3 +1,3 @@
-pagenav_title: Disk plugin
+sidenav_title: Disk
 
-# Disk
+# Disk plugin

@@ -1,3 +1,3 @@
-pagenav_title: Memory plugin
+sidenav_title: Memory
 
-# Memory
+# Memory plugin

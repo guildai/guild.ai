@@ -1,3 +1,5 @@
+tags: tutorial, popular, intro
+
 # Train your first model
 
 [TOC]
@@ -25,8 +27,8 @@ guild search mnist
 
 You should see a list of [packages](term:package) that include one
 named `mnist`. This package is provided as a sample and includes the
-models used in TensorFlow's [Getting
-Started->](https://www.tensorflow.org/get_started/) guide.
+models used in TensorFlow's [Getting Started
+->](https://www.tensorflow.org/get_started/).
 
 !!! note
     Guild's [](cmd:search) command is used to find a wealth of packaged
@@ -97,7 +99,7 @@ confirm the operation. The model defines two [flags](term:flag):
 - `batch-size` - the number of images to use per batch
 - `epochs` - the number of eppchs to train
 
-Accept the default values by pressing ENTER to continue.
+Accept the default values by pressing `ENTER` to continue.
 
 The operation will first satisfy any required resources (e.g. by
 downloading them) and then run a TensorFlow script to train the
@@ -134,8 +136,8 @@ this command:
 guild runs
 ```
 
-This will display the training run for the softmax model. You can see
-when the operation was started and its status.
+This will display the training run for the `softmax` model. You can
+see when the operation was started and its status.
 
 To get more information for a run, use this command:
 
@@ -150,8 +152,8 @@ alternatively use the run index:
 guild runs info 0
 ```
 
-The value `0` is the run index as displayed in the latest `guild runs`
-command. It is always associated with the latest matching run.
+The value `0` is the run index as displayed in the latest ``guild
+runs`` command. It is always associated with the latest matching run.
 
 Information associated with a run includes:
 
@@ -163,8 +165,8 @@ Information associated with a run includes:
 - Exit status
 
 Guild operations typically generate files, which are located in the
-run directory. You can list the files by including the `--files`
-option to the `runs info` command:
+run directory. You can list the files by including the ``--files``
+option to the ``runs info`` command:
 
 ``` shell
 guild runs info --files

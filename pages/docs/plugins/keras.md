@@ -1,3 +1,3 @@
-pagenav_title: Keras plugin
+sidenav_title: Keras
 
-# Keras
+# Keras plugin

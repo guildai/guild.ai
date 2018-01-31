@@ -55,6 +55,12 @@
 
   &.sticky {
 
+    padding-top: 80px;
+
+    @media screen and (max-width: $break-sm) {
+      padding-top: 0;
+    }
+
     .navbar {
       position: fixed;
       top: 0;
