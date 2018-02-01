@@ -1,3 +1,11 @@
+figure {
+  margin-bottom: $p-margin-bottom;
+}
+
+figure p + figcaption {
+  margin-top: -$p-margin-bottom_ * 0.5px;
+}
+
 figure img {
   max-width: 100%;
   height: auto;
@@ -6,7 +14,6 @@ figure img {
 }
 
 figcaption {
-  font-style: italic;
   text-align: center;
   color: $light-gray-text-color;
 }

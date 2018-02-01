@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import itertools
 import logging
 import re
 import shlex
@@ -62,16 +63,16 @@ class FixTocProcessor(treeprocessors.Treeprocessor):
 
     @staticmethod
     def _fix_tree(toc):
-        children = toc.getchildren()
+        children = list(toc)
         if len(children) != 1 or children[0].tag != "ul":
             raise AssertionError(etree.tostring(toc))
         ul = children[0]
         toc.tag = "ol"
         toc.remove(ul)
-        items = ul.getchildren()
+        items = list(ul)
         if len(items) == 1:
             item1 = items[0]
-            item1_children = item1.getchildren()
+            item1_children = list(item1)
             if (len(item1_children) != 2 or
                 item1_children[0].tag != "a" or
                 item1_children[1].tag != "ul"):
@@ -167,39 +168,50 @@ class DefinitionId(Extension):
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("def_id", DefIdProcessor(md), "_end")
 
-class TagListProcessor(treeprocessors.Treeprocessor):
+class ClassifyProcessor(treeprocessors.Treeprocessor):
+
+    def __init__(self, md, tags, class_):
+        super(ClassifyProcessor, self).__init__(md)
+        self.tags = tags
+        self.class_ = class_
 
     def run(self, doc):
         for el in doc.iter():
-            if el.tag in ["ul", "ol"] and not el.get("class"):
-                el.set("class", el.tag)
+            if not el.get("class") and el.tag in self.tags:
+                el.set("class", self.class_)
 
-class TagList(Extension):
-    """Adds 'ul' and 'ol' classes to ul and ol elements respectively.
+class Classify(Extension):
+    """Add a class to tags.
 
-    This is used to style unordered and ordered lists.
-
-    To illustrate, we'll configure markdown with our extension:
+    This is used to style elements created from markdown.
 
     >>> import markdown
-    >>> md = markdown.Markdown(extensions=[TagList()])
+    >>> md = markdown.Markdown(extensions=[Classify(tags=['ul', 'ol'])])
 
     >>> print(md.convert("- a\\n- b"))
-    <ul class="ul">
+    <ul class="md">
     <li>a</li>
     <li>b</li>
     </ul>
 
     >>> print(md.convert("1. a\\n2. b"))
-    <ol class="ol">
+    <ol class="md">
     <li>a</li>
     <li>b</li>
     </ol>
 
     """
 
+    def __init__(self, tags, **kw):
+        super(Classify, self).__init__()
+        self.tags = tags
+        self.class_ = kw.get("class", "md")
+
     def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add("tag_list", TagListProcessor(md), "_end")
+        md.treeprocessors.add(
+            "classify",
+            ClassifyProcessor(md, self.tags, self.class_),
+            "_end")
 
 class LinkTemplate(object):
 
@@ -245,10 +257,19 @@ class LinkTemplate(object):
                 self._apply_attrs(("target",), args, link)
 
     def _format_args(self, args):
-        for arg, arg_map in map(None, args, self._arg_maps):
+        for arg, arg_map in self._zip_longest(args, self._arg_maps):
             mapped = arg_map.get(arg, arg) if arg_map else arg
             args += (mapped,)
         return args + ("",) * 10
+
+    @staticmethod
+    def _zip_longest(a, b):
+        try:
+            zip_longest = itertools.zip_longest
+        except AttributeError:
+            return map(None, a, b)
+        else:
+            return zip_longest(a, b)
 
     def _apply_text(self, args, link):
         if self._text and (not link.text or self._text_pattern):
@@ -579,7 +600,11 @@ class RefProcessor(treeprocessors.Treeprocessor):
                 link.set("class", "ref")
                 target = doc.find("*[@id='{}']".format(ref))
                 if target is not None:
-                    link.text = etree.tostring(target, method="text").strip()
+                    link.text = self._el_text(target)
+
+    @staticmethod
+    def _el_text(el):
+        return etree.tostring(el, method="text").strip().decode("utf-8")
 
 class Ref(Extension):
     """Replaces link text with a referenced target text.
@@ -616,6 +641,81 @@ class Ref(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("ref", RefProcessor(md), "_end")
+
+class FigureProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, root):
+        prev = None
+        for el in root:
+            if (el.tag == "p" and
+                el.text and el.text.startswith("^ ") and
+                prev is not None):
+                self._apply_figure(prev, el, root)
+            self.run(el)
+            prev = el
+
+    @staticmethod
+    def _apply_figure(target, captionSrc, parent):
+        for i, el in zip(range(len(parent)), parent):
+            if el is target:
+                parent.remove(target)
+                parent.remove(captionSrc)
+                figure = etree.Element("figure")
+                parent.insert(i, figure)
+                figure.append(target)
+                caption = etree.Element("figcaption")
+                figure.append(caption)
+                caption.text = captionSrc.text[2:]
+                break
+        else:
+            raise AssertionError()
+
+class Figure(Extension):
+    """Support HTML figure element with captions.
+
+    Figures are designated by adding a caption below the figure
+    content. Captions must occur as a separate block and on a single
+    line starting with "^ ". For example, to create a figure for an
+    image:
+
+        ![](img.png)
+
+        ^ A sample image
+
+    Let's configure markdown with our extension:
+
+    >>> import markdown
+    >>> md = markdown.Markdown(extensions=["tables", Figure()])
+
+    We can use a caption to create a figure containing an image:
+
+    >>> print(md.convert("![](img.png)\\n\\n^ A sample image"))
+    <figure><p><img alt="" src="img.png" /></p>
+    <figcaption>A sample image</figcaption></figure>
+
+    Here's a table figure:
+
+    >>> print(md.convert("a | b\\n--- | ---\\nc | d\\n\\n^ A sample image"))
+    <figure><table>
+    <thead>
+    <tr>
+    <th>a</th>
+    <th>b</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>c</td>
+    <td>d</td>
+    </tr>
+    </tbody>
+    </table>
+    <figcaption>A sample image</figcaption></figure>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("figure", FigureProcessor(md), "_end")
 
 def test():
     import doctest

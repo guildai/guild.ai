@@ -180,11 +180,27 @@ Guild View is useful for browsing run details and viewing generating
 artifacts. TensorBoard is a tool created by the TensorFlow
 contributors for visualizing training logs.
 
+### Guild View
+
 Let's start with Guild View. In a [](alias:separate-console), run:
 
 ``` shell
 guild view
 ```
+
+Guild View will start and will open a browser window. You should see
+something like this:
+
+![Guild View](/assets/img/guild-view-1.png)
+
+^ Guild View after initial training of MNIST `softmax` model
+
+Take a moment to explore the information provided. Click the `FILES`
+tab to view the files associated with the run.
+
+You can explore the details associated with your runs, including generated files.
+
+Click the `FILES` tab to view the various files associated with the run.
 
 TODO cur:
 

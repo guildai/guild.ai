@@ -32,10 +32,12 @@ markdown_extensions:
   - toc
   - custom:FixToc
   - custom:DefinitionId
-  - custom:TagList
+  - custom:Classify:
+      tags: [ul, ol, img]
   - custom:Categories
   - custom:Backtick
   - custom:Ref
+  - custom:Figure
   - custom:Link:
       templates:
         # external links

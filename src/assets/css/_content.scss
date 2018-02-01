@@ -43,7 +43,7 @@ body[data-spy] {
   }
 }
 
-ul.ul {
+ul.md {
   padding: 0;
   margin: 0 0 $p-margin-bottom;
   list-style: none;
@@ -62,6 +62,15 @@ ul.ul {
       color: $border-color-darker;
     }
   }
+}
+
+img.md {
+  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  // box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border: 1px solid $border-color-dark;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .container-fluid {
