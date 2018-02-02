@@ -29,12 +29,15 @@ In a console, run the following:
 pip install guildai
 ```
 
-!!! note
-    You may need to run `pip` as a privileged user, in which case
-    run the above command as ``sudo pip install guildai``. If you
-    would prefer to install Guild as an unprivileged user, we
-    recommend using a Python virtual environment. Refer to
-    [Install using Virtualenv](#install-using-virtualenv) below.
+If you need to run `install` as a
+[superuser](term:https://en.wikipedia.org/wiki/Superuser), run:
+
+``` shell
+sudo pip install guildai
+```
+
+You may alternatively use a Python virtual environment. Refer to
+[Install using Virtualenv](#install-using-virtualenv) below.
 
 ### Install using Virtualenv
 

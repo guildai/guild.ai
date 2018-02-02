@@ -47,7 +47,7 @@ When the install has completed, you can list the installed packages:
 guild packages
 ```
 
-Congratulations, you've just installed your first Guild package!
+You should see the `mnist` package installed.
 
 A package provides [models](term:model). List the installed models by
 running:

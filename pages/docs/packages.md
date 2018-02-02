@@ -10,7 +10,7 @@ their work for users to discover. They let users easily find, install,
 and use models. Packages are the central feature of Guild's support
 for model collaboration, sharing and reuse.
 
-## Finding packages
+## Find packages
 
 You can find Guild packages in various ways:
 
@@ -29,7 +29,7 @@ Guild's issue tracker](alias:guild-issues).
 
 It's also easy to create and publish your own models.
 
-## Installing packages
+## Install packages
 
 
-## Creating packages
+## Create packages
