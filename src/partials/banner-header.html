@@ -8,9 +8,9 @@
   style="background-image: url({{ base_url }}/assets/img/banner.jpg);">
   <div class="container text-center">
     <div class="spacer"></div>
-    <h1>{{ page.meta.banner_tagline }}</h1>
+    <h1>{{ page.meta.tagline or config.extra.tagline }}</h1>
     <div class="spacer text"></div>
-    <h5>{{ page.meta.banner_subtext }}</h5>
+    <h5>{{ page.meta.subtext or config.extra.subtext }}</h5>
     <div class="spacer actions"></div>
     <div class="actions">
       <a

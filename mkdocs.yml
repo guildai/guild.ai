@@ -3,6 +3,10 @@ docs_dir: pages
 
 copyright: 2017-2018 TensorHub, Inc.
 extra:
+  tagline: Enabling the TensorFlow<sup>&reg;</sup> model ecosystem
+  subtext:
+    Discover, install, and apply state-of-the-art deep learning models
+    with a few simple commands!
   links:
     - name: github
       url: https://github.com/guildai
