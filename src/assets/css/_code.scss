@@ -1,22 +1,22 @@
-code,
-a.cmd {
+code, kbd, pre, samp {
   font-family: $font-family-code;
-  font-size: 84%;
   color: inherit;
   background: inherit;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  word-spacing: -0.2em;
   padding: 0;
+  font-size: 14px;
+  letter-spacing: -0.25px;
+}
+
+code,
+a.cmd {
+  font-weight: 700;
 }
 
 code.lit {
   color: $code-inline-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
-  letter-spacing: normal;
-  word-spacing: normal;
-  padding: 2px 4px;
+  padding: 2px 6px;
   border-radius: 1px;
   white-space: nowrap;
 }
@@ -35,21 +35,37 @@ h5 code {
 }
 
 pre {
-  position: relative;
-  background-color: $code-bg-color;
   line-height: 1.4;
-  border: 1px solid $code-border-color;
-  border-radius: 3px;
-  margin-top: $p-margin-bottom_ + 2 * 1px;
-  padding: 9px 12px;
   word-wrap: normal;
   word-break: normal;
+  background-color: transparent;
+  border: none;
+  padding: 0 12px;
+  color: $gray-text-color;
 
   code {
-    font-size: 93%;
     font-weight: normal;
-    letter-spacing: normal;
-    word-spacing: normal;
+  }
+}
+
+pre[class] {
+  position: relative;
+  margin-top: $p-margin-bottom_ + 2 * 1px;
+  color: $text-color;
+  background-color: $code-bg-color;
+  border: 1px solid $code-border-color;
+  border-radius: 3px;
+  padding: 9px 12px;
+}
+
+pre.output {
+  background: transparent;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  span.language-name {
+    top: 0;
   }
 }
 

@@ -233,28 +233,24 @@ $(function() {
   // Code viewers
   //
 
-  // Copy to clipboard
-  // It doesn't support Safari yet, and also has some minor bugs
-  $('pre').each(function(index, value) {
-    $(this).prepend('<a class="btn btn-sm btn-teal clipboard-copy" data-original-title="Copied">Copy</a>');
-  });
-
   // Code snippet
   $('pre').each(function(index, value) {
-    if ($(this).parents('.code-window').length || $(this).parents('.code-taps').length) {
+    if ($(this).parents('.code-window').length
+        || $(this).parents('.code-taps').length
+        || !$(this).children("code").attr('class'))
+    {
       return;
     }
-    var title = "";
-    if ($(this).children("code").attr('class')) {
-      title = $(this).children("code").attr('class');
-      title = title.replace("language-", "");
-      title = title.toLowerCase();
-      if (title == "markup") {
-        title = "html";
-      }
+
+    var title = $(this).children("code").attr('class');
+    title = title.replace("language-", "");
+    title = title.toLowerCase();
+    if (title == "markup") {
+      title = "html";
     }
-    var span = '<span class="language-name">'+ title +'</span>';
-    $(this).prepend(span);
+    $(this).closest("pre").addClass(title);
+    $(this).prepend('<a class="btn btn-sm btn-teal clipboard-copy" data-original-title="Copied">Copy</a>');
+    $(this).prepend('<span class="language-name">'+ title +'</span>');
   });
 
   $('pre .language-name').parent().on('scroll', function(){
