@@ -68,18 +68,48 @@ module.exports = function(grunt) {
     },
 
     copy: {
+      cssmaps: {
+        files: [
+          {
+            expand: true,
+            cwd: 'node_modules/bootstrap/dist/css',
+            src: ['bootstrap.min.css.map'],
+            dest: 'src/assets/css/'
+          }
+        ]
+      },
+
       fonts: {
         files: [
           {
             expand: true,
             cwd: 'node_modules/bootstrap/dist/fonts',
             src: ['**'],
-            dest: 'src/assets/fonts/'},
+            dest: 'src/assets/fonts/'
+          },
           {
             expand: true,
             cwd: 'node_modules/font-awesome/fonts',
             src: ['**'],
-            dest: 'src/assets/fonts/'}
+            dest: 'src/assets/fonts/'
+          }
+        ]
+      }
+    },
+
+    postcss: {
+      options: {
+        map: {
+          inline: false
+        },
+        processors: [
+          autoprefixer,
+        ]
+      },
+      files: {
+        src: [
+          'src/assets/css/theDocs.min.css',
+          'src/assets/css/vendor.min.css'
         ]
       }
     },
@@ -105,17 +135,6 @@ module.exports = function(grunt) {
       }
     },
 
-    postcss: {
-      options: {
-        processors: [
-          autoprefixer
-        ]
-      },
-      files: {
-        src: ['src/assets/css/theDocs.min.css']
-      }
-    },
-
     exec: {
       site: 'PYTHONPATH=. mkdocs build',
       serve: 'PYTHONPATH=. mkdocs serve'
@@ -131,39 +150,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-exec');
 
-  grunt.registerTask('dist',
-    [
-      'dev',
-      'sass:dist',
-      'clean:before_copy',
-      'copy:dist',
-      'concat:dist',
-      'replace:dist',
-      'uglify:dist',
-      'postcss:dist',
-      'clean:after_copy',
-      'file-creator'
-    ]
-  );
-
-  grunt.registerTask('dev',
-    [
-      'sass',
-      'concat:dev',
-      'uglify:dev',
-      'postcss:dev',
-      'copy:dev',
-      'index'
-    ]
-  );
-
   grunt.registerTask(
     'build', [
       'sass',
-      'postcss',
       'uglify',
       'concat',
       'copy',
+      'postcss',
       'exec:site'
     ]
   );
