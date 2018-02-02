@@ -130,7 +130,7 @@ CUDA or cuCNN are not installed
   above for links to NVIDIA's website.
 
 If you continue to face issues with your Guild installation,
-[]($open-an-issue) and we'll help!
+[](alias:guild-issues) and we'll help!
 
 ## Next steps
 

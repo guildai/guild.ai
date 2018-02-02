@@ -80,6 +80,9 @@ markdown_extensions:
         - link_pattern: alias:virtualenv-activate
           href: /docs/tutorials/working-with-virtualenv/#using-a-virtual-environment
           text: activate your virtual environment
+        - link_pattern: alias:running-commands
+          href: /docs/commands/#running-commands
+          text: running commands
         - link_pattern: alias:separate-console
           href: /docs/commands/#running-commands-in-a-separate-console
           text: separate console

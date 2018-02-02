@@ -7,7 +7,7 @@ tags: tutorial, popular, intro
 In this tutorial we'll train two models with [MNIST data
 ->](http://yann.lecun.com/exdb/mnist/). Training models with Guild AI
 is a simple process of finding a model, installing it, and running
-`train`!
+the `train` command!
 
 ## Requirements
 
@@ -20,16 +20,16 @@ This tutorial assumes the following:
 
 ## Find the MNIST package
 
-We'll start by searching for MNIST models. In a console, run:
+Let's start by searching for MNIST models. [In a
+console](alias:running-commands), run:
 
 ``` shell
 guild search mnist
 ```
 
 You should see a list of [packages](term:package) that include one
-named `mnist`. This package is provided as a sample and includes the
-models used in TensorFlow's [Getting Started
-->](https://www.tensorflow.org/get_started/).
+named `mnist`. This package is provided as a sample and includes
+models that train quickly.
 
 !!! note
     Guild's [](cmd:search) command is used to find a wealth of packaged
@@ -38,23 +38,22 @@ models used in TensorFlow's [Getting Started
 
 ## Install the MNIST package
 
-Before training the MNIST models, we need to install the package. In a
-console, run:
+Let's start by installing the `mnist` package:
 
 ``` shell
 guild install mnist
 ```
 
-This command will download and install the `mnist` package on your
-system.
+This command will download and install `mnist` on your system.
 
-You can list the installed packages by running:
+List the installed packages:
 
 ``` shell
 guild packages
 ```
 
-Packages provide [models](term:model). You can list the installed models by running:
+Packages provide [models](term:model). List the installed models by
+running:
 
 ``` shell
 guild models
@@ -62,21 +61,20 @@ guild models
 
 The `mnist` package provides two models:
 
-- `softmax` -- softmax regression classifier for MNIST
-- `cnn` -- CNN classifier for MNIST
+- `mnist-softmax` -- softmax regression classifier for MNIST
+- `mnist-cnn` -- CNN classifier for MNIST
 
-Each model in turn provides [operations](term:operation). Operations
-are run using Guild's [](cmd:run) command.
+Each model in turn provides [operations](term:operation), which are
+run using the [](cmd:run) command.
 
-You can list the available operations by running:
+List the available operations by running:
 
 ``` shell
 guild operations
 ```
 
 !!! note
-    You can just run ``guild ops`` as a shortcut rather than typing
-    the full command.
+    You can run ``guild ops`` as a shortcut for this command.
 
 Note that the two MNIST models provides a `train`
 operation. Operations are listed in the form
@@ -104,7 +102,7 @@ Accept the default values by pressing `ENTER` to continue.
 
 The operation will first satisfy any required resources (e.g. by
 downloading them) and then run a TensorFlow script to train the
-`softmax` model.
+`mnist-softmax` model.
 
 !!! aside
 
@@ -140,8 +138,8 @@ list runs:
 guild runs
 ```
 
-This will display the training run for the `softmax` model. You can
-see when the operation was started and its status.
+This will display the training run for the `mnist-softmax` model. You
+can see when the operation was started and its status.
 
 To get more information for a run:
 
@@ -193,19 +191,69 @@ something like this:
 
 ![Guild View](/assets/img/guild-view-1.png)
 
-^ Guild View after initial training of MNIST `softmax` model
+^ Guild View after initial training of MNIST `mnist-softmax` model
 
 Take a moment to explore the information provided. Click the `FILES`
 tab to view the files associated with the run.
 
-You can explore the details associated with your runs, including generated files.
+### TensorBoard
 
-Click the `FILES` tab to view the various files associated with the run.
+TensorBoard is integrated into Guild in two ways:
 
-TODO cur:
+- Link from Guild View
+- Standalone [](cmd:tensorboard) command
 
-- Use view to visualize the run, including files
-- Use tensorboard to visualize the run
+Since we have have Guild View running, let's use the integrated link
+to open TensorBoard. In the upper-left corner of Guild View, click
+this link:
+
+![View in TensorBoard](/assets/img/view-in-tensorboard.png)
+
+This will open TensorBoard in a separate tab that displays the
+TensorFlow logs for the MNIST `mnist-softmax` run.
+
+Keep Guild View and TensorBoard open running in your browser
+throughout the remained of this tutorials --- they will both update
+automatically as you continue to work!
+
+## Train the CNN model
+
+As we saw earlier, the MNIST package contains two models:
+`mnist-softmax` and `mnist-cnn`.
+
+Let's again view the operations available to run. We'll use the
+shortcut `ops` this time:
+
+``` shell
+guild ops
+```
+
+Here's the output:
+
+``` output
+mnist/mnist-cnn:train      Train the CNN
+mnist/mnist-softmax:train  Train the softmax regression
+```
+
+Let's take a moment to understand this output. Operations are
+presented in the form:
+
+    PACKAGE/MODEL:OPERATION
+
+Operations are run using the [](cmd:run) command:
+
+``` shell
+guild run MODEL:OPERATION
+```
+
+The [](cmd:train) command, which we used earlier to train the softmax
+model, is short-hand for running the `train` operation:
+
+``` shell
+guild run MODEL:train
+```
+
+Guild provides the `train` command because the operation is so common.
 
 ---
 
