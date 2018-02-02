@@ -32,7 +32,7 @@ pip install guildai
 !!! note
     You may need to run `pip` as a privileged user, in which case
     run the above command as ``sudo pip install guildai``. If you
-    would prefer to install Guild as an unpriviledged user, we
+    would prefer to install Guild as an unprivileged user, we
     recommend using a Python virtual environment. Refer to
     [Install using Virtualenv](#install-using-virtualenv) below.
 
@@ -86,7 +86,7 @@ For alternative installation method, refer to [Installing TensorFlow
 ### CUDA and cuDNN
 
 To run the GPU enabled TensorFlow package, you must also install
-Nvidia's CUDA cuDNN libraries for your system. Refer to the links
+NVIDIA's CUDA cuDNN libraries for your system. Refer to the links
 below for more information.
 
 - [CUDA Toolkit Download ->](https://developer.nvidia.com/cuda-downloads)
@@ -106,7 +106,7 @@ ensure that `nvidia-smi` is available on your system.
 
 ## Verify your installation
 
-Verify that Guild is installed propery by running the
+Verify that Guild is installed properly by running the
 [`check`](docs/commands/check) command:
 
 ``` shell
@@ -121,11 +121,11 @@ Below are some common issues with the Guild installation.
 TensorFlow is not installed
 : See [Install TensorFlow](#install-tensorflow) above.
 
-CUDA or cuCNN are not installed
+CUDA or cuDNN are not installed
 : This is not a problem if your system does not have a GPU. If your
   system does have a GPU and there are problems with CUDA or cuDNN,
   you must resolve these issues before running TensorFlow
-  operations. Refer to [CUDA and cuDNN](#cuda-and-cudnn) amd [NVIDIA
+  operations. Refer to [CUDA and cuDNN](#cuda-and-cudnn) and [NVIDIA
   System Management Interface](#nvidia-system-management-interface)
   above for links to NVIDIA's website.
 
@@ -144,7 +144,7 @@ if you'd like to go further.
 <p class="expand">
 
 Dive in and train your first model using Guild AI! It will only take a
-few minutes to become familiary with Guild and its features.
+few minutes to become familiar with Guild and its features.
 
 </p>
 <a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model"

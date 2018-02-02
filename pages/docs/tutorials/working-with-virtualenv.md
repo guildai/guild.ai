@@ -11,7 +11,7 @@ not rely on Python packages installed at the system level.
 
 You are free to create as many virtual environments as you need. Each
 environment is independent of the others and may use different
-software versions, including different verions of Python.
+software versions, including different versions of Python.
 
 Guild AI is designed to work with or without a virtual environment ---
 the choice is yours.
@@ -34,7 +34,7 @@ There are some downsides to using virtual environments:
 
 If you don't need to isolate Guild and its dependencies or to manage
 different software versions, the added complexity of Virtualenv may be
-more hinderance than help.
+more hindrance than help.
 
 ## Installing Virtualenv
 

@@ -29,3 +29,6 @@ $(grunt):
 
 test-custom:
 	python custom.py
+
+spellcheck:
+	find pages -iregex '.*\.md$$' -exec aspell -l en --home-dir . -x check '{}' \;

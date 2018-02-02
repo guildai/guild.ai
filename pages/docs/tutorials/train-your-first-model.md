@@ -20,49 +20,48 @@ This tutorial assumes the following:
 
 ## Find the MNIST package
 
-Let's start by searching for MNIST models. [In a
+Start by searching for MNIST models. [In a
 console](alias:running-commands), run:
 
 ``` shell
 guild search mnist
 ```
 
-You should see a list of [packages](term:package) that include one
-named `mnist`. This package is provided as a sample and includes
-models that train quickly.
-
-!!! note
-    Guild's [](cmd:search) command is used to find a wealth of packaged
-    models, not just MNIST! Look for it in the [other
-    tutorials](/docs/tutorials).
+You should see a list of [packages](term:package) that includes
+`mnist`. This package is provided as a sample and contains models
+that train quickly.
 
 ## Install the MNIST package
 
-Let's start by installing the `mnist` package:
+Install the `mnist` package by running:
 
 ``` shell
 guild install mnist
 ```
 
-This command will download and install `mnist` on your system.
+This command downloads and installs `mnist` on your system.
 
-List the installed packages:
+When the install has completed, you can list the installed packages:
 
 ``` shell
 guild packages
 ```
 
-Packages provide [models](term:model). List the installed models by
+Congratulations, you've just installed your first Guild package!
+
+A package provides [models](term:model). List the installed models by
 running:
 
 ``` shell
 guild models
 ```
 
-The `mnist` package provides two models:
+You should see two MNIST models:
 
-- `mnist-softmax` -- softmax regression classifier for MNIST
-- `mnist-cnn` -- CNN classifier for MNIST
+``` output
+mnist/mnist-cnn      CNN classifier for MNIST
+mnist/mnist-softmax  Softmax regression classifier for MNIST
+```
 
 Each model in turn provides [operations](term:operation), which are
 run using the [](cmd:run) command.
@@ -92,11 +91,11 @@ In a console, run:
 guild train softmax
 ```
 
-You will be prompted with informatio about the run and asked to
+You will be prompted with information about the run and asked to
 confirm the operation. The model defines two [flags](term:flag):
 
 - `batch-size` - the number of images to use per batch
-- `epochs` - the number of eppchs to train
+- `epochs` - the number of epochs to train
 
 Accept the default values by pressing `ENTER` to continue.
 
@@ -123,7 +122,7 @@ downloading them) and then run a TensorFlow script to train the
 
     You'll learn more in the steps that follow!
 
-Once the datset files are downloaded, the model will fully train in a
+Once the dataset files are downloaded, the model will fully train in a
 few seconds on most systems.
 
 Congratulations, you've trained your first Guild model!
