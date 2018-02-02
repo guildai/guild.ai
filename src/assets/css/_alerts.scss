@@ -4,56 +4,29 @@
 
 .callout,
 .admonition {
-  padding: 15px 20px 12px;
+  padding: 15px 20px 15px;
   margin: 20px 0;
   border: 1px solid $callout-border-color;
   border-left-width: 3px;
   border-radius: $default-border-radius;
-  background-color: $callout-bg-color;
 
   h4,
   .admonition-title {
-    margin: 4px 0 12px;
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: uppercase;
   }
 
-  &.success {
-    @include callout-variant($callout-success-color);
-  }
+  @include callout-variant($callout-info-color);
 
-  &.note,
-  &.info,
-  &.aside {
-    @include callout-variant($callout-info-color);
-  }
-
-  &.warning {
+  &.attention {
     @include callout-variant($callout-warning-color);
   }
 
-  &.danger {
-    @include callout-variant($callout-danger-color);
-  }
-
   p:last-child {
-    margin-bottom: 12px;
+    margin-bottom: 3px;
   }
-}
-
-.callout-success {
-  @include callout-variant($callout-success-color);
-}
-
-.callout-info {
-  @include callout-variant($callout-info-color);
-}
-
-.callout-warning {
-  @include callout-variant($callout-warning-color);
-}
-
-.callout-danger {
-  @include callout-variant($callout-danger-color);
 }
 
 @media screen and (max-width: $break-xs) {

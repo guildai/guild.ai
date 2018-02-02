@@ -1,19 +1,13 @@
 code, kbd, pre, samp {
   font-family: $font-family-code;
-  color: inherit;
+  color: $code-inline-color;
   background: inherit;
   padding: 0;
-  font-size: 14px;
   letter-spacing: -0.25px;
 }
 
-code,
-a.cmd {
-  font-weight: 700;
-}
-
 code.lit {
-  color: $code-inline-color;
+  color: $code-literal-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
   padding: 2px 6px;
