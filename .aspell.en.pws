@@ -1,4 +1,4 @@
-personal_ws-1.1 en 56 
+personal_ws-1.1 en 57 
 px
 tf
 sm
@@ -7,10 +7,11 @@ TensorBoard
 UI
 ul
 Keras
-cmd
 CLI
+cmd
 github
 GitHub
+tagline
 util
 tv
 cudnn
@@ -37,8 +38,8 @@ nvidia
 pagenav
 TOC
 sudo
-li
 md
+li
 href
 GAN
 runtime
