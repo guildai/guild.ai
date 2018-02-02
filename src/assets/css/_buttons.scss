@@ -1,5 +1,5 @@
 .btn {
-  border-radius: 2px;
+  border-radius: $default-border-radius;
   border: none;
   transition: $default-transition;
   @include remove-outline;
@@ -92,7 +92,7 @@
 .btn-outline {
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: $default-border-radius;
 
   @include btn-color($color-white, true);
 }

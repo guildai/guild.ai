@@ -249,8 +249,10 @@ $(function() {
       title = "html";
     }
     $(this).closest("pre").addClass(title);
-    $(this).prepend('<a class="btn btn-sm btn-teal clipboard-copy" data-original-title="Copied">Copy</a>');
-    $(this).prepend('<span class="language-name">'+ title +'</span>');
+    if (title !== 'output' ) {
+      $(this).prepend('<a class="btn btn-sm btn-teal clipboard-copy" data-original-title="Copied">Copy</a>');
+      $(this).prepend('<span class="language-name">'+ title +'</span>');
+    }
   });
 
   $('pre .language-name').parent().on('scroll', function(){

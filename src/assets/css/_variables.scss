@@ -61,6 +61,9 @@ $default-transition-function:       ease;
 $default-transition:                $default-transition-time
                                     $default-transition-function;
 
+// Borders
+$default-border-radius:             2px;
+
 // _sidebar
 $sidebar-bg-color:                  $bg-color-dark;
 $sidebar-active-bg-color:           $bg-color-darker;

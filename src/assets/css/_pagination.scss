@@ -29,7 +29,7 @@
   > .active > span:focus,
   > .active > span:hover {
     background-color: ligthen($accent-color, 15%);
-    border-radius: 2px;
+    border-radius: $default-border-radius;
   }
 
   > .disabled > a,
