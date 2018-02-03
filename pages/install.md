@@ -23,65 +23,62 @@ installed.
 
 ## Install Guild AI
 
-In a console, run the following:
+To install Guild AI, run the following on the command line:
 
-``` shell
+``` command
 pip install guildai
 ```
 
-If you need to run `install` as a
-[superuser](term:https://en.wikipedia.org/wiki/Superuser), run:
+If you need to run `install` as a [superuser
+->](term:https://en.wikipedia.org/wiki/Superuser), run:
 
-``` shell
+``` command
 sudo pip install guildai
 ```
 
-You may alternatively use a Python virtual environment. Refer to
-[Install using Virtualenv](#install-using-virtualenv) below.
+You may alternatively install Guild AI within a Python virtual
+environment. Refer to [Install Guild AI using
+Virtualenv](#install-guild-ai-using-virtualenv) below.
 
-### Install using Virtualenv
+### Install Guild AI using Virtualenv
 
-You may alternatively install Guild within a Python virtual
-environment. This has the advantage of isolating Guild and its
-requirements in a single directory.
+If you would like to install Guild within a Python [virtual
+environment ->](term:https://virtualenv.pypa.io), run the following:
 
-``` shell
+``` command
 virtualenv guild
 source guild/bin/activate
 pip install guildai
 ```
 
-!!! note
-    If you install Guild in a virtual environment, you must activate the
-    environment before using Guild using the command ``source
-    VIRTUAL_ENV_DIR/bin/activate``.
+This has the advantage of isolating Guild AI within a single
+directory. For more information on the advantages and disadvantages of
+this approach, see [Working with
+Virtualenv](/docs/tutorials/working-with-virtualenv/).
 
-For more information refer to the [Virtualenv documentation
-->](https://virtualenv.pypa.io/en/stable/).
 
 ## Install TensorFlow
 
 Guild requires TensorFlow but does not install it for
-you. [^tf-install] You can use `pip` to install TensorFlow by running
-this command:
+you. [^tf-install] You can use `pip` to install TensorFlow by running:
 
 [^tf-install]:
     TensorFlow is a rapidly evolving software library and is provided as
     both CPU and GPU supported packages. Guild leaves the specific package
     and version of TensorFlow up to the user.
 
-``` shell
+``` command
 pip install tensorflow
 ```
 
 If your system has a GPU, you can install the GPU enabled package by
 running:
 
-``` shell
+``` command
 pip install tensorflow-gpu
 ```
 
-For alternative installation method, refer to [Installing TensorFlow
+For alternative installation methods, refer to [Installing TensorFlow
 ->](https://www.tensorflow.org/install/).
 
 ## Install optional libraries
@@ -89,18 +86,18 @@ For alternative installation method, refer to [Installing TensorFlow
 ### CUDA and cuDNN
 
 To run the GPU enabled TensorFlow package, you must also install
-NVIDIA's CUDA cuDNN libraries for your system. Refer to the links
-below for more information.
+NVIDIA's CUDA and cuDNN libraries for your system. Refer to the links
+below for help installing the libraries.
 
 - [CUDA Toolkit Download ->](https://developer.nvidia.com/cuda-downloads)
 - [NVIDIA cuDNN ->](https://developer.nvidia.com/cudnn)
 
 ### NVIDIA System Management Interface
 
-Guild uses the NVIDIA System Management Interface on GPU systems to
-collect GPU stats. This tool is optional as Guild will run without
-it. However, to collect GPU stats on systems with one or more GPUs,
-ensure that `nvidia-smi` is available on your system.
+Guild uses the NVIDIA System Management Interface (`nvidia-smi`) on
+GPU systems to collect GPU stats. This tool is optional and Guild will
+run without it. However, to collect GPU stats on systems with one or
+more GPUs, ensure that `nvidia-smi` is available on your system.
 
 !!! note
     NVIDIA System Management Interface is typically installed with NVIDIA
@@ -112,7 +109,7 @@ ensure that `nvidia-smi` is available on your system.
 Verify that Guild is installed properly by running the
 [`check`](docs/commands/check) command:
 
-``` shell
+``` command
 guild check
 ```
 
@@ -133,12 +130,11 @@ CUDA or cuDNN are not installed
   above for links to NVIDIA's website.
 
 If you continue to face issues with your Guild installation,
-[](alias:guild-issues) and we'll help!
+[](alias:open-an-issue) and we'll help!
 
 ## Next steps
 
-Congratulations, you've installed Guild AI! Below are some next steps
-if you'd like to go further.
+Congratulations, you've installed Guild AI! Below are some next steps.
 
 <div class="row match-height">
 <div class="col col-md-4">
@@ -146,8 +142,9 @@ if you'd like to go further.
 <h3>Train your first model</h3>
 <p class="expand">
 
-Dive in and train your first model using Guild AI! It will only take a
-few minutes to become familiar with Guild and its features.
+Dive in and train your first model using Guild AI. This introductory
+tutorial will walk you through the basics of Guild and cover most of
+its features.
 
 </p>
 <a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model"
@@ -157,11 +154,12 @@ few minutes to become familiar with Guild and its features.
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Discover pre-packaged models</h3>
+<h3>Discover Guild models</h3>
 <p class="expand">
 
 Guild AI provides a catalog of state-of-the-art TensorFlow models that
-can be used to build deep learning applications!
+can be used to build deep learning applications. Start here to see
+what developers are building.
 
 </p>
 <a class="btn btn-primary cta" href="/models"
@@ -172,7 +170,7 @@ can be used to build deep learning applications!
 <div class="col col-md-4">
 <div class="promo left">
 <h3>Browse the docs</h3>
-<p>
+<p class="expand">
 
 If you're interested in a complete picture of Guild AI, start by
 browsing its comprehensives documentation.

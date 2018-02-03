@@ -1,9 +1,12 @@
-personal_ws-1.1 en 57 
+personal_ws-1.1 en 66 
 px
+py
 tf
 sm
 tensorboard
 TensorBoard
+ai
+Runnable
 UI
 ul
 Keras
@@ -26,6 +29,7 @@ dir
 PyPI
 btn
 TODO
+ResNet
 guildai
 CTRL
 cta
@@ -41,9 +45,13 @@ sudo
 md
 li
 href
+yaml
+rundir
 GAN
+parameterize
 runtime
 dataset
+datasets
 img
 TensorFlow
 tensorflow
@@ -53,6 +61,7 @@ tmux
 API
 ImageNet
 imagenet
+args
 cuda
 ENV
 virtualenv

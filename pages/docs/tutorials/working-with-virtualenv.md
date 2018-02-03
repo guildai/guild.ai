@@ -44,13 +44,13 @@ installing Virtualenv.
 
 Generally speaking though, you simply run:
 
-``` shell
+``` command
 pip install virtualenv
 ```
 
 If you need to install as a privileged user, run:
 
-``` shell
+``` command
 sudo pip install virtualenv
 ```
 
@@ -59,7 +59,7 @@ sudo pip install virtualenv
 Once Virtualenv is installed, it's easy to create new
 environments. Simply run:
 
-``` shell
+``` command
 virtualenv DIRECTORY
 ```
 
@@ -70,7 +70,7 @@ You can specify the Python version to use in environment using the
 ``-p`` option. For example, to indicate that Python 2 should be used,
 run:
 
-``` shell
+``` command
 virtualenv -p python2 DIRECTORY
 ```
 
@@ -127,7 +127,7 @@ accordingly.
 You must activate a virtual environment to use it. This is done by
 *sourcing* the script as follows:
 
-``` shell
+``` command
 source $VIRTUAL_ENV/bin/activate
 ```
 

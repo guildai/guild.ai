@@ -5,7 +5,7 @@ command line. They implement model [operations](term:operation).
 
 Scripts are run as follows:
 
-``` shell
+``` command
 python SCRIPT [ARGUMENTS]
 ```
 
@@ -36,8 +36,8 @@ if __name__ == "__main__":
     train(util.parse_args())
 ```
 
-This is a simplified example, but it illustates how most model scripts
-work:
+This simple example illustrates how model scripts typically work:
 
-- Implement `train` or other operations as Python functions
+- Runnable from the command line
+- Implement `train` and other operations as Python functions
 - Parse command line arguments and use to parameterize operations

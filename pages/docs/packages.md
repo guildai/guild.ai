@@ -19,7 +19,7 @@ You can find Guild packages in various ways:
 
 For example, to find models that support the ImageNet dataset, simply run:
 
-``` shell
+``` command
 guild search imagenet
 ```
 

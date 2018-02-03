@@ -17,12 +17,12 @@ tags: reference
 Guild commands must be executed on a command line. If you're
 unfamiliar with running commands on your system, refer to [Getting to
 Know the Command Line
-->](https://www.davidbaumgold.com/tutorials/command-line/) for a quick
+->](https://www.davidbaumgold.com/tutorials/command-line/) for a
 primer.
 
 At a command line, run a Guild command using this convention:
 
-``` shell
+``` command
 guild COMMAND
 ```
 
@@ -73,7 +73,7 @@ The Guild CLI provides two levels of help:
 
 General help is available by running:
 
-``` shell
+``` command
 guild --help
 ```
 
@@ -84,7 +84,7 @@ before the command.
 
 Command help is available by running:
 
-``` shell
+``` command
 guild COMMAND --help
 ```
 

@@ -23,7 +23,7 @@ This tutorial assumes the following:
 Start by searching for MNIST models. [In a
 console](alias:running-commands), run:
 
-``` shell
+``` command
 guild search mnist
 ```
 
@@ -35,7 +35,7 @@ models that train quickly.
 
 To install the `mnist` package, run:
 
-``` shell
+``` command
 guild install mnist
 ```
 
@@ -43,14 +43,14 @@ This command downloads and installs `mnist` on your system.
 
 When the install has completed, list the installed packages:
 
-``` shell
+``` command
 guild packages
 ```
 
 A package provides [models](term:model). You can list the installed
 models by running:
 
-``` shell
+``` command
 guild models
 ```
 
@@ -70,14 +70,14 @@ perform actions associated with the model.
 
 List the available operations by running:
 
-``` shell
+``` command
 guild operations
 ```
 
 !!! note
     You can run ``guild ops`` as a shortcut ``guild operations``.
 
-The two models earch provide a `train` operation:
+The two models each provide a `train` operation:
 
 ``` output
 mnist/mnist-cnn:train      Train the CNN
@@ -99,7 +99,7 @@ Next, we'll train one of the models by running its `train` operation.
 
 In a console, run:
 
-``` shell
+``` command
 guild train mnist-softmax
 ```
 
@@ -145,7 +145,7 @@ Guild operations produce [runs](term:run), which are artifacts that
 are available for inspection during and after the operation. You can
 list runs:
 
-``` shell
+``` command
 guild runs
 ```
 
@@ -154,14 +154,14 @@ can see when the operation was started and its status.
 
 To get more information for a run:
 
-``` shell
+``` command
 guild runs info
 ```
 
 This will display detailed information for the latest run. You can
 alternatively use the run index:
 
-``` shell
+``` command
 guild runs info 0
 ```
 
@@ -172,7 +172,7 @@ Guild operations typically generate files, which are located in the
 run directory. You can list the files by including the ``--files``
 option:
 
-``` shell
+``` command
 guild runs info --files
 ```
 
@@ -193,7 +193,7 @@ contributors for visualizing training logs.
 
 Let's start with Guild View. In a [](alias:separate-console), run:
 
-``` shell
+``` command
 guild view
 ```
 
@@ -232,10 +232,10 @@ automatically as you continue to work!
 As we saw earlier, the MNIST package contains two models:
 `mnist-softmax` and `mnist-cnn`.
 
-Let's again view the operations available to run. We'll use the
-shortcut `ops` this time:
+Let's review the operations available to run. We'll use the shortcut
+`ops` this time:
 
-``` shell
+``` command
 guild ops
 ```
 
@@ -253,14 +253,14 @@ presented in the form:
 
 Operations are run using the [](cmd:run) command:
 
-``` shell
+``` command
 guild run MODEL:OPERATION
 ```
 
 The [](cmd:train) command, which we used earlier to train the softmax
 model, is short-hand for running the `train` operation:
 
-``` shell
+``` command
 guild run MODEL:train
 ```
 
