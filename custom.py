@@ -7,6 +7,7 @@ import shlex
 
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
+from markdown.extensions import fenced_code
 from markdown import inlinepatterns
 from markdown import treeprocessors
 from markdown.util import etree
@@ -716,6 +717,15 @@ class Figure(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("figure", FigureProcessor(md), "_end")
+
+class FencedCodeProcessor(fenced_code.FencedBlockPreprocessor):
+
+    LANG_TAG = ' class="language-%s"'
+
+class FencedCode(Extension):
+
+    def extendMarkdown(self, md, _globals):
+        md.preprocessors["fenced_code_block"] = FencedCodeProcessor(md)
 
 def test():
     import doctest

@@ -35,6 +35,7 @@ markdown_extensions:
   - footnotes
   - smarty
   - toc
+  - custom:FencedCode
   - custom:FixToc
   - custom:DefinitionId
   - custom:Classify:

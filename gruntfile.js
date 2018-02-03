@@ -57,11 +57,11 @@ module.exports = function(grunt) {
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
             'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
-            'node_modules/clipboard/dist/clipboard.min.js',
             'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
             'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
-            'node_modules/mousetrap/mousetrap.min.js'
+            'node_modules/mousetrap/mousetrap.min.js',
+            'src/assets/js/prism.min.js'
           ]
         }
       }
@@ -119,7 +119,10 @@ module.exports = function(grunt) {
         force: true
       },
       css: ['src/assets/css/*.css', 'src/assets/css/*.css.map'],
-      js: ['src/assets/js/*.min.js'],
+      js: [
+        'src/assets/js/theDocs.min.js',
+        'src/assets/js/vendor.min.js'
+      ],
       fonts: ['src/assets/fonts'],
       site: ['site']
     },

@@ -5,6 +5,7 @@ code, kbd, pre, samp, a.cmd {
   padding: 0;
   letter-spacing: -0.25px;
   font-size: 14.4px;
+  hyphens: none;
 }
 
 code.lit {
@@ -38,9 +39,11 @@ pre {
   border: none;
   padding: 0 12px;
   color: $gray-text-color;
+  overflow: auto;
 
   code {
     font-weight: normal;
+    color: $code-inline-color;
   }
 }
 
@@ -54,40 +57,11 @@ pre[class] {
   padding: 9px 12px;
 }
 
-pre.output {
-  background: transparent;
-  border: none;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.code-preview {
-  padding: 16px;
-}
-
-.clipboard-copy {
-  position: absolute;
-  top: 5px;
-  right: 8px;
-  line-height: 1.4;
-  transition: opacity .4s ease-in-out;
-  opacity: 0;
-  z-index: 9;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-pre:hover .clipboard-copy {
-  opacity: 1;
-}
-
-.code-window,
-.code-tabs {
-  .clipboard-copy {
-    top: 13px;
-  }
+pre.language-output {
+  //background: transparent;
+  //border: none;
+  //padding-top: 0;
+  //padding-bottom: 0;
 }
 
 pre .language-name {
@@ -100,248 +74,12 @@ pre .language-name {
   position: absolute;
   right: 10px;
   top: 11px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.4;
   text-shadow: 0 1px #fff;
-}
+  transition: opacity $default-transition;
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background-color: $bg-color;
-  border-radius: $default-border-radius;
-  border-color: $border-color;
-  padding-bottom: 8px;
-  margin-top: 15px;
-  margin-bottom: 25px;
-  word-wrap: normal;
-}
-
-pre[class*="language-"] {
-  padding-top: 30px;
-}
-
-.line-numbers .line-numbers-rows {
-  border-right-color: $pale-text-color;
-}
-
-.line-numbers-rows > span:before {
-  color: $pale-text-color;
-}
-
-pre[class*='language-'][data-language]::before {
-  display: none;
-}
-
-div.prism-show-language > div.prism-show-language-label {
-  display: none;
-}
-
-.line-highlight {
-  background: rgba(255,255,0,.1);
-}
-
-.token.comment {
-  margin-bottom: 0;
-  display: inline-block;
-  position: static;
-}
-
-.code-window {
-
-  border: 1px solid $border-color;
-  border-radius: $default-border-radius;
-  margin: 30px 0 20px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.07);
-
-  .window-bar {
-    height: 38px;
-    border-top: 1px solid $code-window-border-top-color;
-    border-bottom: 1px solid $code-window-border-bottom-color;
-    background: $code-window-bg-color;
-
-    .circles {
-      margin: 3px 10px;
-      float: left;
-
-      .circle {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: $color-white;
-        border: 1px solid $color-white;
-      }
-
-      .circle-red {
-        background-color: $code-window-circle-red-bg;
-        border-color: $code-window-circle-red-border;
-      }
-
-      .circle-yellow {
-        background-color: $code-window-circle-yellow-bg;
-        border-color: $code-window-circle-yellow-border;
-      }
-
-      .circle-green {
-        background-color: $code-window-circle-green-bg;
-        border-color: $code-window-circle-green-border;
-      }
-
-      .window-title {
-        margin-left: 16px;
-        font-size: 13px;
-        color: $light-gray-text-color;
-      }
-    }
-
-    .languages {
-      margin: 3px 10px;
-      float: right;
-
-      .btn-group {
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
-      }
-
-      .btn {
-        padding: 2px 10px;
-        background-color: $color-white;
-        color: $pale-text-color;
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 500;
-        transition: $default-transition;
-
-        &.active,
-        &:active {
-          color: $color-info;
-          box-shadow: none;
-        }
-      }
-
-    }
-  }
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background-color: $color-white;
-    border: none;
-    margin: 0;
-    padding-bottom: 8px;
-  }
-
-  pre[class*='language-'][data-language]::before {
-    display: none;
-  }
-
-  .line-numbers .line-numbers-rows {
-    background-color: $code-window-line-bg-color;
-    border-right: none;
-    padding-bottom: 8px;
-  }
-
-  .line-numbers-rows > span:before {
-    color: $pale-text-color;
-  }
-
-  .line-numbers:after {
-    content: '';
-    background-color: $code-window-line-bg-color;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 39px;
-    height: 32px;
-  }
-
-}
-
-.code-snippet {
-  border: 1px solid $border-color;
-  border-radius: $default-border-radius;
-  margin: 30px 0 20px;
-
-  > * {
-    border-bottom: 1px solid $border-color!important;
-  }
-
-  > *:last-child {
-    border-bottom: none!important;
-  }
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    margin: 0;
-    border: 0;
-    border-radius: 0;
-  }
-
-  .code-preview {
-    position: relative;
-    padding-top: 35px;
-
-    &::before {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      color: $pale-text-color;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 11px;
-      font-weight: 600;
-      content: "Example";
-    }
-  }
-
-}
-
-.code-tabs {
-
-  margin: 20px 0;
-
-  .languages {
-    border-bottom: 1px solid $border-color;
-
-    .btn {
-      padding: 10px 15px;
-      background-color: $color-white;
-      color: $pale-text-color;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      transition: $default-transition;
-
-      &.active,
-      &:active {
-        color: $accent-color;
-        box-shadow: none;
-      }
-    }
-  }
-
-  pre {
-    margin: 0;
-    border: 0;
-    border-radius: 0;
-
-    &::before {
-      display: none!important;
-    }
-  }
-
-  .code-preview {
-    background-color: $bg-color;
-  }
-
-  .window-content {
-    border-bottom: 1px solid $border-color-light;
-  }
-}
-
-@media screen and (max-width: $break-xs) {
-
-  .code-window .window-bar .languages .btn {
-    padding: 2px 6px;
+  &.out {
+    opacity: 0;
   }
 }
