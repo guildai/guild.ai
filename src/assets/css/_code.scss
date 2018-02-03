@@ -1,9 +1,10 @@
-code, kbd, pre, samp {
+code, kbd, pre, samp, a.cmd {
   font-family: $font-family-code;
   color: $code-inline-color;
   background: inherit;
   padding: 0;
   letter-spacing: -0.25px;
+  font-size: 14.4px;
 }
 
 code.lit {
@@ -29,6 +30,7 @@ h5 code {
 }
 
 pre {
+  font-size: 13px;
   line-height: 1.4;
   word-wrap: normal;
   word-break: normal;
@@ -53,10 +55,10 @@ pre[class] {
 }
 
 pre.output {
-  _background: transparent;
-  _border: none;
-  _padding-top: 0;
-  _padding-bottom: 0;
+  background: transparent;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .code-preview {

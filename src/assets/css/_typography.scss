@@ -155,19 +155,20 @@ ul {
 }
 
 dl {
+  padding: 0 20px;
+
+  @media screen and (max-width: $break-xs) {
+    padding: 0 10px;
+  }
+
   dt {
-    font-size: $p-margin-bottom;
     font-weight: 400;
-    margin: 30px 0 20px;
+    margin: 0;
     color: $gray-text-color;
   }
 
   dd {
-    line-height: 1.67em;
-
-    @media screen and (max-width: $break-xs) {
-      padding: 0 10px;
-    }
+    margin-bottom: $p-margin-bottom;
   }
 }
 

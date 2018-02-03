@@ -13,7 +13,7 @@
   h4,
   .admonition-title {
     margin: 0 0 4px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -24,7 +24,7 @@
     @include callout-variant($callout-warning-color);
   }
 
-  p:last-child {
+  > p:last-child {
     margin-bottom: 3px;
   }
 }
