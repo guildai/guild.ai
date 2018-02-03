@@ -137,6 +137,7 @@ pages:
           - docs/plugins/gpu.md
           - docs/plugins/memory.md
       - Developer guides:
+          - docs/developer/scripts.md
           - docs/developer/packaging.md
           - docs/developer/plugins.md
       - Reference:
