@@ -122,6 +122,7 @@ pages:
           - docs/commands/resources_cmd.md
           - docs/commands/run_cmd.md
           - docs/commands/runs_cmd.md
+          - docs/commands/runs-list-cmd.md
           - docs/commands/search_cmd.md
           - docs/commands/shell_cmd.md
           - docs/commands/sync_cmd.md

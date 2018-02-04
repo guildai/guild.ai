@@ -214,9 +214,8 @@ TensorBoard is integrated into Guild in two ways:
 - Standalone [](cmd:tensorboard) command
 
 Since we have have Guild View running, let's use the integrated link
-to open TensorBoard. In the upper left of Guild View, click:
-
-![View in TensorBoard](/assets/img/view-in-tensorboard.png)
+to open TensorBoard. In the upper left of Guild View, click ![View in
+TensorBoard](/assets/img/view-in-tensorboard.png)
 
 This will open TensorBoard in a separate browser window that displays
 the TensorFlow event logs for the `mnist-softmax` run.
@@ -257,6 +256,11 @@ accuracy of the both the `mnist-softmax` and `mnist-cnn` training.
 ![](/assets/img/tb-mnist-accuracy.png)
 
 ^ MNIST accuracy in TensorBoard
+
+Expand the graph by clicking the fullscreen button
+![](/assets/img/tb-fullscreen.png)
+
+For more information, see [TensorBoard](/docs/visual/tensorboard/).
 
 ---
 
