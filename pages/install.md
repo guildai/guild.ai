@@ -18,7 +18,7 @@ Guild AI has the following requirements:
 - pip
 
 Guild is installed from PyPI using `pip`. Refer to [Installing pip
-->](https://pip.pypa.io/en/stable/installing/) to ensure you have pip
+->](https://pip.pypa.io/en/stable/installing/) to ensure you have it
 installed.
 
 ## Install Guild AI
@@ -29,16 +29,14 @@ To install Guild AI, run the following on the command line:
 pip install guildai
 ```
 
-If you need to run `install` as a [superuser
-->](term:https://en.wikipedia.org/wiki/Superuser), run:
+If you need to run `install` with administrative privileges, run:
 
 ``` command
 sudo pip install guildai
 ```
 
-You may alternatively install Guild AI within a Python virtual
-environment. Refer to [Install Guild AI using
-Virtualenv](#install-guild-ai-using-virtualenv) below.
+You may alternatively install Guild AI in a Python virtual
+environment. Refer to the next section for details.
 
 ### Install Guild AI using Virtualenv
 
@@ -56,7 +54,6 @@ directory. For more information on the advantages and disadvantages of
 this approach, see [Working with
 Virtualenv](/docs/tutorials/working-with-virtualenv/).
 
-
 ## Install TensorFlow
 
 Guild requires TensorFlow but does not install it for
@@ -71,8 +68,7 @@ you. [^tf-install] You can use `pip` to install TensorFlow by running:
 pip install tensorflow
 ```
 
-If your system has a GPU, you can install the GPU enabled package by
-running:
+If your system has a GPU, install the GPU enabled package by running:
 
 ``` command
 pip install tensorflow-gpu
@@ -83,26 +79,31 @@ For alternative installation methods, refer to [Installing TensorFlow
 
 ## Install optional libraries
 
+If you system has a GPU or other accelerator supported by TensorFlow,
+you will need to install and configure support for your hardware.
+
 ### CUDA and cuDNN
 
-To run the GPU enabled TensorFlow package, you must also install
-NVIDIA's CUDA and cuDNN libraries for your system. Refer to the links
-below for help installing the libraries.
+If you have an NVIDIA GPU and and want to use the GPU enabled
+TensorFlow package, you must install the NVIDIA CUDA and cuDNN
+libraries for your system. Refer to the links below for help
+installing the libraries.
 
 - [CUDA Toolkit Download ->](https://developer.nvidia.com/cuda-downloads)
 - [NVIDIA cuDNN ->](https://developer.nvidia.com/cudnn)
 
 ### NVIDIA System Management Interface
 
-Guild uses the NVIDIA System Management Interface (`nvidia-smi`) on
-GPU systems to collect GPU stats. This tool is optional and Guild will
-run without it. However, to collect GPU stats on systems with one or
-more GPUs, ensure that `nvidia-smi` is available on your system.
+Guild uses NVIDIA System Management Interface (`nvidia-smi`) on GPU
+accelerated systems to collect GPU metrics. This tool is optional and
+Guild will run without it. However, to collect GPU stats on systems
+with one or more GPUs, ensure that `nvidia-smi` is installed.
 
 !!! note
     NVIDIA System Management Interface is typically installed with NVIDIA
-    GPU drivers. More information is available at [NVIDIA System
-    Management Interface ->](https://developer.nvidia.com/nvidia-system-management-interface).
+    GPU drivers. Refer to [NVIDIA System Management Interface
+    ->](https://developer.nvidia.com/nvidia-system-management-interface)
+    for more information.
 
 ## Verify your installation
 
@@ -134,7 +135,8 @@ If you continue to face issues with your Guild installation,
 
 ## Next steps
 
-Congratulations, you've installed Guild AI! Below are some next steps.
+Congratulations, you've installed Guild AI! We've outlined some next
+steps for you below.
 
 <div class="row match-height">
 <div class="col col-md-4">

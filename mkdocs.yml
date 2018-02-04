@@ -7,7 +7,7 @@ extra:
     Enabling the TensorFlow<sup>&reg;</sup> model ecosystem
   subtext:
     "Discover, install, and apply state-of-the-art deep learning
-    models with Guild AI's comprehensive developer toolkit."
+    models with Guild AI's comprehensive toolkit."
   links:
     - name: github
       url: https://github.com/guildai
@@ -51,12 +51,12 @@ markdown_extensions:
           text: '{}'
           class: ext
           target: _blank
-        # command link
+        # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
           href: '/docs/commands/{}_cmd'
           text: '{}'
-        # term link
+        # term
         - link_pattern: 'term:(.*)'
           class: term
           text: '{0}'
