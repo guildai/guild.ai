@@ -10,6 +10,8 @@ import subprocess
 
 import jinja2
 
+import markdown
+
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
 from markdown.extensions import fenced_code
@@ -109,7 +111,6 @@ class FixToc(Extension):
     To illustrate, we'll configure markdown with TocExtension and our
     extension:
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=["toc", FixToc()])
 
     Here's a simple document with a toc in the format we use in this
@@ -173,7 +174,6 @@ class DefinitionId(Extension):
     To illustrate, let's configure markdown with DefinitionList and
     our extension:
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=["def_list", DefinitionId()])
 
     Here's a definition list:
@@ -208,7 +208,6 @@ class Classify(Extension):
 
     This is used to style elements created from markdown.
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=[Classify(tags=['ul', 'ol'])])
 
     >>> print(md.convert("- a\\n- b"))
@@ -445,7 +444,6 @@ class Link(Extension):
 
     Let's initialize markdown with our extension and sample templates:
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=[Link(templates)])
 
     In the case of the simple template, we have to match on both text
@@ -596,7 +594,6 @@ class Backtick(Extension):
 
     To illustrate, we'll initialize markdown with the extension:
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=[Backtick()])
 
     Here are the two code version:
@@ -645,7 +642,6 @@ class Ref(Extension):
     This plugin is designed to work in conjunction with the toc
     plugin, which assigns id slugs to headers.
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=["toc", Ref()])
 
     Here's a basic example of a reference:
@@ -707,7 +703,6 @@ class Figure(Extension):
 
     Let's configure markdown with our extension:
 
-    >>> import markdown
     >>> md = markdown.Markdown(extensions=["tables", Figure()])
 
     We can use a caption to create a figure containing an image:
@@ -749,19 +744,43 @@ class FencedCode(Extension):
     def extendMarkdown(self, md, _globals):
         md.preprocessors["fenced_code_block"] = FencedCodeProcessor(md)
 
+class CmdHelpContext(object):
+
+    def __init__(self, cmd_help):
+        self._cmd_url_base = self._init_cmd_url_base(cmd_help)
+
+    @staticmethod
+    def _init_cmd_url_base(cmd_help):
+        prog = cmd_help["usage"]["prog"]
+        cmd_path = prog.split(" ")[1:]
+        return "/docs/commands/{}".format("-".join(cmd_path))
+
+    def cmd_url(self, cmd):
+        return self._cmd_url_base + "-{}-cmd/".format(cmd)
+
 class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
-    _marker_p = re.compile(r"\[CMD-HELP (.+?)\]$")
+    _marker_re = re.compile(r"\[CMD-HELP (.+?)\]$")
+    _upper_re = re.compile(r"[A-Z\[][^a-z]+$")
+    _opt_re = re.compile(r"-[\-a-zA-Z0-9]")
+    _tokenize_re = re.compile(r"(\s|[^\w]\s)")
 
     def __init__(self, md):
         super(CmdHelpProcessor, self).__init__(md)
         env = jinja2.Environment(loader=jinja2.FileSystemLoader("src"))
+        env.filters.update({
+            "format_text": self._format_text_filter
+        })
+        self._md = markdown.Markdown(extensions=[AutoUrl()])
         self._template = env.get_template("cmd-help.html")
+
+    def _format_text_filter(self, text):
+        return self._md.convert(text)
 
     def run(self, root):
         for el in root:
             if el.tag == "p" and el.text:
-                m = self._marker_p.match(el.text)
+                m = self._marker_re.match(el.text)
                 if m:
                     self._handle_cmd(m.group(1), el, root)
 
@@ -776,35 +795,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         env = {"GUILD_HELP_JSON": "1"}
         env.update(os.environ)
         out = subprocess.check_output(help_cmd, env=env)
-        cmd_help = json.loads(out)
-        self._format_help(cmd_help)
-        return cmd_help
-
-    def _format_help(self, cmd_help):
-        self._format_options(cmd_help["options"])
-        if "commands" in cmd_help:
-            self._format_commands(
-                cmd_help["commands"],
-                self._cmd_path(cmd_help["usage"]))
-
-    @staticmethod
-    def _format_options(opts):
-        for opt in opts:
-            if opt["help"] == "Show this message and exit.":
-                opt["help"] = "Show command help."
-
-    @staticmethod
-    def _cmd_path(usage):
-        prog_parts = usage["prog"].split(" ")
-        assert prog_parts[0] == "guild", usage
-        return prog_parts[1:]
-
-    @staticmethod
-    def _format_commands(cmds, cmd_path):
-        cmd_url_base = "/docs/commands/{}".format("-".join(cmd_path))
-        for cmd in cmds:
-            cmd_name = cmd["term"].split(", ")[0]
-            cmd["url"] = "{}-{}-cmd/".format(cmd_url_base, cmd_name)
+        return json.loads(out)
 
     @staticmethod
     def _replace_el(parent, target_el, new_el):
@@ -822,6 +813,55 @@ class CmdHelp(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("cmd-help", CmdHelpProcessor(md), "_end")
+
+class UrlPattern(inlinepatterns.Pattern):
+    """Adapted from markdown-urlize.
+
+    https://github.com/r0wb0t/markdown-urlize/blob/master/mdx_urlize.py
+    """
+
+    def handleMatch(self, m):
+        url = m.group(2)
+        if url.startswith("<"):
+            url = url[1:-1]
+        text = url
+        if not url.split("://")[0] in ("http", "https", "ftp"):
+            if "@" in url and not "/" in url:
+                url = "mailto:" + url
+            else:
+                url = "http://" + url
+        el = markdown.util.etree.Element("a")
+        el.set("href", url)
+        el.text = markdown.util.AtomicString(text)
+        return el
+
+class AutoUrl(markdown.Extension):
+    """Converts URLs into links.
+
+    Adapted from markdown-urlize.
+
+    https://github.com/r0wb0t/markdown-urlize/blob/master/mdx_urlize.py
+
+    >>> md = markdown.Markdown(extensions=[AutoUrl()])
+
+    Various URLs:
+
+    >>> print(md.convert("http://food.com"))
+    <p><a href="http://food.com">http://food.com</a></p>
+
+    >>> print(md.convert("https://food.com/#bar"))
+    <p><a href="https://food.com/#bar">https://food.com/#bar</a></p>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        link_pattern = "(%s)" % "|".join([
+            r"<(?:f|ht)tps?://[^>]*>",
+            r"\b(?:f|ht)tps?://[^)<>\s]+[^.,)<>\s]",
+            r"\bwww\.[^)<>\s]+[^.,)<>\s]",
+            r"[^(<\s]+\.(?:com|net|org)\b",
+        ])
+        md.inlinePatterns["auto-link"] = UrlPattern(link_pattern, md)
 
 class MoveToc(Extension):
     """Moves toc processor to end position.

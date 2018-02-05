@@ -2,9 +2,7 @@
   <h2>Usage</h2>
   <div class="cmd-help-usage">{{ help.usage.prog }} {{ help.usage.args }}</div>
   <div class="cmd-help-text">
-    {% for par in help.help %}
-    <p>{{ par }}</p>
-    {% endfor %}
+    {{ help.help|format_text }}
   </div>
   <h2>Options</h2>
   <table class="table table-cmd-help options">
@@ -12,7 +10,7 @@
       {% for opt in help.options %}
       <tr>
         <th>{{ opt.term }}</th>
-        <td>{{ opt.help }}</td>
+        <td>{{ opt.help|format_text }}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -24,7 +22,7 @@
       {% for cmd in help.commands %}
       <tr>
         <th><a href="{{ cmd.url }}">{{ cmd.term }}</a></th>
-        <td>{{ cmd.help }}</td>
+        <td>{{ cmd.help|format_text }}</td>
       </tr>
       {% endfor %}
     </tbody>
