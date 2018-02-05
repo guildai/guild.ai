@@ -3,3 +3,7 @@ overview_title: index
 tags: util
 
 # index command
+
+[TOC]
+
+[CMD-HELP index]

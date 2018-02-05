@@ -19,6 +19,10 @@
     tbody > tr > th {
       border: none;
       font-weight: 400;
+
+      p {
+        margin: 0;
+      }
     }
 
     &.options {
