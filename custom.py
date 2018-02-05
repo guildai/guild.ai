@@ -771,7 +771,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         env.filters.update({
             "format_text": self._format_text_filter
         })
-        self._md = markdown.Markdown(extensions=[AutoUrl()])
+        self._md = markdown.Markdown(extensions=[AutoUrl(), Backtick()])
         self._template = env.get_template("cmd-help.html")
 
     def _format_text_filter(self, text):

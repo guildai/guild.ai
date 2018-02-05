@@ -4,4 +4,6 @@ tags: packaging
 
 # packages command
 
-- [Sub commands](category:/docs/commands/#packages-cmd)
+[TOC]
+
+[CMD-HELP packages]

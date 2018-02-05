@@ -3,3 +3,7 @@ overview_title: run
 tags: runs
 
 # run command
+
+[TOC]
+
+[CMD-HELP run]

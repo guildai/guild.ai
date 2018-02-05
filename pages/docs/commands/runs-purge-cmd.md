@@ -3,3 +3,7 @@ overview_title: runs purge
 tags: runs, runs-cmd
 
 # runs purge command
+
+[TOC]
+
+[CMD-HELP runs purge]

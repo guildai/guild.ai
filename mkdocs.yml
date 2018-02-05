@@ -138,6 +138,7 @@ pages:
           - docs/commands/sync-cmd.md
           - docs/commands/tensorboard-cmd.md
           - docs/commands/tensorflow-cmd.md
+          - docs/commands/tensorflow-inspect-checkpoint-cmd.md
           - docs/commands/train-cmd.md
           - docs/commands/uninstall-cmd.md
           - docs/commands/view-cmd.md

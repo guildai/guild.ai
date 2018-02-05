@@ -3,3 +3,7 @@ overview_title: shell
 tags: util
 
 # shell command
+
+[TOC]
+
+[CMD-HELP shell]

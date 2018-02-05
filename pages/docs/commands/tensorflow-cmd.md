@@ -3,3 +3,7 @@ overview_title: tensorflow
 tags: util
 
 # tensorflow command
+
+[TOC]
+
+[CMD-HELP tensorflow]
