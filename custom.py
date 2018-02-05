@@ -1,9 +1,14 @@
 from __future__ import absolute_import
 
 import itertools
+import json
 import logging
+import os
 import re
 import shlex
+import subprocess
+
+import jinja2
 
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
@@ -74,11 +79,15 @@ class FixTocProcessor(treeprocessors.Treeprocessor):
         if len(items) == 1:
             item1 = items[0]
             item1_children = list(item1)
-            if (len(item1_children) != 2 or
-                item1_children[0].tag != "a" or
-                item1_children[1].tag != "ul"):
+            if (len(item1_children) == 1 and
+                item1_children[0].tag == "a"):
+                items = []
+            elif (len(item1_children) == 2 and
+                item1_children[0].tag == "a" and
+                item1_children[1].tag == "ul"):
+                items = list(item1_children[1])
+            else:
                 raise AssertionError(etree.tostring(item1))
-            items = item1_children[1].getchildren()
         toc.extend(items)
 
     @staticmethod
@@ -92,7 +101,7 @@ class FixToc(Extension):
 
     Changes to toc:
 
-    - Outer div is replaced by ol with "toc" class
+    - Outer div is replaced with ol + "toc" class
 
     - If there's a single level 1 entry, that entry is removed end
       its child entries are promoted to level 1
@@ -127,6 +136,19 @@ class FixToc(Extension):
     <h1 id="1">1</h1>
     <h2 id="1_1">1_1</h2>
     <h3 id="1_1_1">1_1_1</h3>
+
+    A toc with one heading:
+
+    >>> print(md.convert("# 1\\n\\n[TOC]"))
+    <h1 id="1">1</h1>
+    <ol class="toc">
+    </ol>
+
+    A toc with no headings:
+
+    >>> print(md.convert("[TOC]"))
+    <ol class="toc">
+    </ol>
 
     """
 
@@ -274,16 +296,16 @@ class LinkTemplate(object):
 
     def _apply_text(self, args, link):
         if self._text and (not link.text or self._text_pattern):
-            link.text = self._text.format(*args)
+            link.text = self._text.format(*args).strip()
 
     def _apply_href(self, args, link):
         if self._href and (not link.get("href") or self._link_pattern):
-            link.set("href", self._href.format(*args))
+            link.set("href", self._href.format(*args).strip())
 
     def _apply_class(self, args, link):
         if self._class:
             cur = link.get("class")
-            formatted = self._class.format(*args)
+            formatted = self._class.format(*args).strip()
             link.set("class", " ".join((cur, formatted)) if cur else formatted)
 
     def _apply_attrs(self, attrs, args, link):
@@ -293,7 +315,7 @@ class LinkTemplate(object):
             except KeyError:
                 pass
             else:
-                link.set(name, val.format(*args))
+                link.set(name, val.format(*args).strip())
 
 class LinkProcessor(treeprocessors.Treeprocessor):
 
@@ -726,6 +748,88 @@ class FencedCode(Extension):
 
     def extendMarkdown(self, md, _globals):
         md.preprocessors["fenced_code_block"] = FencedCodeProcessor(md)
+
+class CmdHelpProcessor(treeprocessors.Treeprocessor):
+
+    _marker_p = re.compile(r"\[CMD-HELP (.+?)\]$")
+
+    def __init__(self, md):
+        super(CmdHelpProcessor, self).__init__(md)
+        env = jinja2.Environment(loader=jinja2.FileSystemLoader("src"))
+        self._template = env.get_template("cmd-help.html")
+
+    def run(self, root):
+        for el in root:
+            if el.tag == "p" and el.text:
+                m = self._marker_p.match(el.text)
+                if m:
+                    self._handle_cmd(m.group(1), el, root)
+
+    def _handle_cmd(self, cmd, target, parent):
+        cmd_help = self._get_cmd_help(cmd)
+        rendered = self._template.render(help=cmd_help)
+        help_el = etree.fromstring(rendered)
+        self._replace_el(parent, target, help_el)
+
+    def _get_cmd_help(self, cmd):
+        help_cmd = ["guild"] + shlex.split(cmd) + ["--help"]
+        env = {"GUILD_HELP_JSON": "1"}
+        env.update(os.environ)
+        out = subprocess.check_output(help_cmd, env=env)
+        cmd_help = json.loads(out)
+        self._format_help(cmd_help)
+        return cmd_help
+
+    def _format_help(self, cmd_help):
+        self._format_options(cmd_help["options"])
+        if "commands" in cmd_help:
+            self._format_commands(
+                cmd_help["commands"],
+                self._cmd_path(cmd_help["usage"]))
+
+    @staticmethod
+    def _format_options(opts):
+        for opt in opts:
+            if opt["help"] == "Show this message and exit.":
+                opt["help"] = "Show command help."
+
+    @staticmethod
+    def _cmd_path(usage):
+        prog_parts = usage["prog"].split(" ")
+        assert prog_parts[0] == "guild", usage
+        return prog_parts[1:]
+
+    @staticmethod
+    def _format_commands(cmds, cmd_path):
+        cmd_url_base = "/docs/commands/{}".format("-".join(cmd_path))
+        for cmd in cmds:
+            cmd_name = cmd["term"].split(", ")[0]
+            cmd["url"] = "{}-{}-cmd/".format(cmd_url_base, cmd_name)
+
+    @staticmethod
+    def _replace_el(parent, target_el, new_el):
+        for i, el in zip(range(len(parent)), parent):
+            if el is target_el:
+                parent.remove(target_el)
+                parent.insert(i, new_el)
+                break
+        else:
+            raise AssertionError()
+
+class CmdHelp(Extension):
+    """Replaces [CMD-HELP <cmd>] with formatted Guild command help.
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("cmd-help", CmdHelpProcessor(md), "_end")
+
+class MoveToc(Extension):
+    """Moves toc processor to end position.
+    """
+
+    def extendMarkdown(self, md, _globals):
+        toc = md.treeprocessors.pop("toc")
+        md.treeprocessors.add("toc", toc, "_end")
 
 def test():
     import doctest

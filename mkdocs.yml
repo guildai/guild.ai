@@ -34,9 +34,10 @@ markdown_extensions:
   - def_list
   - footnotes
   - smarty
-  - toc
-  - custom:FencedCode
+  - custom:CmdHelp
+  - custom:MoveToc
   - custom:FixToc
+  - custom:FencedCode
   - custom:DefinitionId
   - custom:Classify:
       tags: [ul, ol, img]
@@ -72,6 +73,7 @@ markdown_extensions:
               resource: /docs/resources/
               run-dir: /docs/runs/#run-directory
               run: /docs/runs/
+              model-def: /docs/models/#model-definition
         # aliases
         - link_pattern: alias:guild-github
           class: ext
