@@ -21,7 +21,7 @@
     <tbody>
       {% for cmd in help.commands %}
       <tr>
-        <th><a href="{{ cmd.url }}">{{ cmd.term }}</a></th>
+        <th><a href="{{ cmd|cmd_url(ctx) }}">{{ cmd.term }}</a></th>
         <td>{{ cmd.help|format_text }}</td>
       </tr>
       {% endfor %}

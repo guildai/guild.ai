@@ -761,32 +761,39 @@ class CmdHelpContext(object):
 class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
     _marker_re = re.compile(r"\[CMD-HELP (.+?)\]$")
-    _upper_re = re.compile(r"[A-Z\[][^a-z]+$")
-    _opt_re = re.compile(r"-[\-a-zA-Z0-9]")
-    _tokenize_re = re.compile(r"(\s|[^\w]\s)")
 
     def __init__(self, md):
         super(CmdHelpProcessor, self).__init__(md)
         env = jinja2.Environment(loader=jinja2.FileSystemLoader("src"))
         env.filters.update({
-            "format_text": self._format_text_filter
+            "format_text": self._format_text_filter,
+            "cmd_url": self._cmd_url_filter,
         })
-        self._md = markdown.Markdown(extensions=[AutoUrl(), Backtick()])
+        self._md = markdown.Markdown(extensions=[
+            Backtick(),
+            AutoUrl(),
+            CmdHelpUrl(),
+        ])
         self._template = env.get_template("cmd-help.html")
 
     def _format_text_filter(self, text):
         return self._md.convert(text)
 
+    def _cmd_url_filter(self, cmd, ctx):
+        cmd_name = cmd["term"].split(", ")[0]
+        return ctx.cmd_url(cmd_name)
+
     def run(self, root):
         for el in root:
-            if el.tag == "p" and el.text:
-                m = self._marker_re.match(el.text)
+            if el.tag == "p":
+                m = self._marker_re.match(el.text or "")
                 if m:
                     self._handle_cmd(m.group(1), el, root)
 
     def _handle_cmd(self, cmd, target, parent):
         cmd_help = self._get_cmd_help(cmd)
-        rendered = self._template.render(help=cmd_help)
+        ctx = CmdHelpContext(cmd_help)
+        rendered = self._template.render(help=cmd_help, ctx=ctx)
         help_el = etree.fromstring(rendered)
         self._replace_el(parent, target, help_el)
 
@@ -863,6 +870,47 @@ class AutoUrl(markdown.Extension):
         ])
         md.inlinePatterns["auto-link"] = UrlPattern(link_pattern, md)
 
+class CmdHelpUrlProcessor(treeprocessors.Treeprocessor):
+
+    cmd_re = re.compile(r"guild\s(.+?)\s--help")
+
+    def run(self, root):
+        for el in root.iter("code"):
+            m = self.cmd_re.match(el.text or "")
+            if m:
+                el.tag = "a"
+                el.set("class", "cmd")
+                cmd = " ".join(m.groups())
+                el.text = cmd
+                href = "/docs/commands/{}-cmd/".format(cmd.replace(" ", "-"))
+                el.set("href", href)
+
+class CmdHelpUrl(Extension):
+    """Creates links to help commands.
+
+    Links are checked within `<code>` blocks for the form `guild
+    CMD --help`.
+
+    Let's configure markdown with our extension along with the backtick
+    extension to support inline code syntax (``...``).
+
+    >>> md = markdown.Markdown(extensions=[Backtick(), CmdHelpUrl()])
+
+    A link to `run` help:
+
+    >>> print(md.convert("``guild run --help``"))
+    <p><a class="cmd" href="/docs/commands/run-cmd/">guild run</a></p>
+
+    A link to `runs rm` help:
+
+    >>> print(md.convert("``guild runs rm --help``"))
+    <p><a class="cmd" href="/docs/commands/runs-rm-cmd/">guild runs rm</a></p>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("cmd-help-url", CmdHelpUrlProcessor(md), "_end")
+
 class MoveToc(Extension):
     """Moves toc processor to end position.
     """
@@ -875,7 +923,9 @@ def test():
     import doctest
     import sys
     failed, _count = doctest.testmod(
-        optionflags=doctest.REPORT_ONLY_FIRST_FAILURE)
+        optionflags=(
+            doctest.REPORT_ONLY_FIRST_FAILURE |
+            doctest.NORMALIZE_WHITESPACE))
     if failed:
         sys.exit(1)
 
