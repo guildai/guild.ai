@@ -35,9 +35,15 @@
 
   padding: 10px 20px 5px;
   margin: 20px 0;
-  border: 1px solid $border-color-light;
-  background-color: $bg-color;
+  border: 1px solid $files-border-color;
+  background-color: $files-bg-color;
+  border-radius: $default-border-radius;
   font-size: 14px;
+  width: 67%;
+
+  @media screen and (max-width: $break-md) {
+    width: 100%;
+  }
 
   h5 {
     font-weight: 400;

@@ -63,7 +63,7 @@ $default-transition:                $default-transition-time
                                     $default-transition-function;
 
 // Borders
-$default-border-radius:             2px;
+$default-border-radius:             3px;
 
 // _sidebar
 $sidebar-bg-color:                  $bg-color-dark;
@@ -110,7 +110,9 @@ $header-border-color:               #f1f1f1;
 
 // _files
 $file-tree-folder-color:            $light-gray-text-color;
-$file-tree-file-color:              #cedde0;
+$file-tree-file-color:              $light-gray-text-color;
+$files-bg-color:                    $bg-color-dark;
+$files-border-color:                $border-color-dark;
 
 // _toc
 $toc-text-color:                    #888;
