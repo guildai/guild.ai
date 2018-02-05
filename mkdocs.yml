@@ -54,7 +54,7 @@ markdown_extensions:
         # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
-          href: '/docs/commands/{}_cmd'
+          href: '/docs/commands/{}-cmd'
           text: '{}'
         # term
         - link_pattern: 'term:(.*)'
@@ -110,27 +110,35 @@ pages:
       - docs/resources.md
       - Commands:
           - docs/commands/index.md
-          - docs/commands/check_cmd.md
-          - docs/commands/compare_cmd.md
-          - docs/commands/help_cmd.md
-          - docs/commands/index_cmd.md
-          - docs/commands/install_cmd.md
-          - docs/commands/models_cmd.md
-          - docs/commands/operations_cmd.md
-          - docs/commands/package_cmd.md
-          - docs/commands/packages_cmd.md
-          - docs/commands/resources_cmd.md
-          - docs/commands/run_cmd.md
-          - docs/commands/runs_cmd.md
+          - docs/commands/check-cmd.md
+          - docs/commands/compare-cmd.md
+          - docs/commands/help-cmd.md
+          - docs/commands/index-cmd.md
+          - docs/commands/install-cmd.md
+          - docs/commands/models-cmd.md
+          - docs/commands/operations-cmd.md
+          - docs/commands/package-cmd.md
+          - docs/commands/packages-cmd.md
+          - docs/commands/packages-delete-cmd.md
+          - docs/commands/packages-info-cmd.md
+          - docs/commands/packages-list-cmd.md
+          - docs/commands/resources-cmd.md
+          - docs/commands/run-cmd.md
+          - docs/commands/runs-cmd.md
+          - docs/commands/runs-delete-cmd.md
+          - docs/commands/runs-info-cmd.md
+          - docs/commands/runs-label-cmd.md
           - docs/commands/runs-list-cmd.md
-          - docs/commands/search_cmd.md
-          - docs/commands/shell_cmd.md
-          - docs/commands/sync_cmd.md
-          - docs/commands/tensorboard_cmd.md
-          - docs/commands/tensorflow_cmd.md
-          - docs/commands/train_cmd.md
-          - docs/commands/uninstall_cmd.md
-          - docs/commands/view_cmd.md
+          - docs/commands/runs-purge-cmd.md
+          - docs/commands/runs-restore-cmd.md
+          - docs/commands/search-cmd.md
+          - docs/commands/shell-cmd.md
+          - docs/commands/sync-cmd.md
+          - docs/commands/tensorboard-cmd.md
+          - docs/commands/tensorflow-cmd.md
+          - docs/commands/train-cmd.md
+          - docs/commands/uninstall-cmd.md
+          - docs/commands/view-cmd.md
       - Plugins:
           - docs/plugins/index.md
           - docs/plugins/cloudml.md

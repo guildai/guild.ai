@@ -1,5 +1,5 @@
 sidenav_title: runs list
 overview_title: runs list
-tags: runs
+tags: runs, runs-cmd
 
 # runs list command
