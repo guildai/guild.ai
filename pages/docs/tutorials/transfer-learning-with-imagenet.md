@@ -24,3 +24,45 @@ for this tutorial. To setup your environment, see
 [](alias:tut-env-setup).
 
 ## Install `slim.inception`
+
+We'll be using models from the `slim.inception` package, which support
+transfer learning via the `fine-tune` operation.
+
+Install `slim.inception` by running:
+
+``` command
+guild install slim.inception
+```
+
+When the package is installed, list the available models by running:
+
+``` command
+guild models
+```
+
+You should see this output:
+
+``` output
+slim.datasets/slim-cifar10               Support for preparing the CIFAR-10 TF-Slim dataset
+slim.datasets/slim-custom-images         Support for preparing a custom images TF-Slim dataset
+slim.datasets/slim-flowers               Support for preparing the Flickr flowers TF-Slim dataset
+slim.datasets/slim-mnist                 Support for preparing the MNIST TF-Slim dataset
+slim.inception/slim-inception-resnet-v2  Inception ResNet v2 classifier in TF-Slim
+slim.inception/slim-inception-v1         Inception v1 classifier in TF-Slim
+slim.inception/slim-inception-v2         Inception v2 classifier in TF-Slim
+slim.inception/slim-inception-v3         Inception v3 classifier in TF-Slim
+slim.inception/slim-inception-v4         Inception v4 classifier in TF-Slim
+```
+
+The `slim.inception` package provides several version of the Inception
+network:
+
+
+- [Inception v1 ->](http://arxiv.org/pdf/1409.04842)
+- [Inception v2 ->](http://arxiv.org/abs/1502.03167)
+- [Inception v3 ->](http://arxiv.org/abs/1512.00567)
+- [Inception v4 ->](http://arxiv.org/abs/1602.07261)
+
+You also see several models associated with TensorFlow Slim
+datasets. These are installed as dependencies via the `slim.datasets`
+package.

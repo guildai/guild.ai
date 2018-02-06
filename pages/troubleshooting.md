@@ -97,3 +97,26 @@ the required cuDNN version.
 For instructions on installing cuDNN for your system, see [Deep
 Learning SDK Documentation
 ->](http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html).
+
+## GPU stats
+
+### NVML library version mismatch
+
+When training on a GPU enabled system, you may see this error printed
+to the console:
+
+```
+ERROR: [guild.gpu] reading GPU stats (smi output: '[['Failed to initialize NVML: Driver/library version mismatch']]')
+```
+
+This indicates that `nvidia-smi` is installed but the CUDA library
+version is incompatible.
+
+Ensure that your version of `nvidia-smi` is compatible with the
+version of CUDA installed.
+
+You can get the CUDA version by running:
+
+``` command
+guild check | grep cuda
+```

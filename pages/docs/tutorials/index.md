@@ -43,12 +43,10 @@ environments.
 ### Setup a virtual environment on Linux or Mac OS
 
 ``` command
-echo -n "Virtualenv directory name: " \
-&& read DIR \
+echo -n "Virtualenv directory name: " && read DIR \
 && echo -n "Use GPU enabled TensorFlow: (y/n) " && read TF_GPU \
 && virtualenv $DIR \
-&& cd $DIR \
-&& source bin/activate \
+&& cd $DIR && source bin/activate \
 && pip install guildai tensorflow${TF_GPU/y/-gpu} \
 && guild check
 ```
