@@ -1,13 +1,13 @@
 <div class="cmd-help">
   <h2>Usage</h2>
-  <div class="cmd-help-usage">{{ help.usage.prog }} {{ help.usage.args }}</div>
+  <div class="cmd-help-usage">{{ cmd.usage.prog }} {{ cmd.usage.args }}</div>
   <div class="cmd-help-text">
-    {{ help.help|format_text }}
+    {{ cmd.help|format_text }}
   </div>
   <h2>Options</h2>
   <table class="table table-cmd-help options">
     <tbody>
-      {% for opt in help.options %}
+      {% for opt in cmd.options %}
       <tr>
         <th>{{ opt.term }}</th>
         <td>{{ opt.help|format_text }}</td>
@@ -15,11 +15,11 @@
       {% endfor %}
     </tbody>
   </table>
-  {% if help.commands %}
+  {% if cmd.commands %}
   <h2>Subcommands</h2>
   <table class="table table-cmd-help commands">
     <tbody>
-      {% for cmd in help.commands %}
+      {% for cmd in cmd.commands %}
       <tr>
         <th><a href="{{ cmd|cmd_url(ctx) }}">{{ cmd.term }}</a></th>
         <td>{{ cmd.help|format_text }}</td>
@@ -28,4 +28,5 @@
     </tbody>
   </table>
   {% endif %}
+  <div class="cmd-version">{{ cmd.version }}</div>
 </div>

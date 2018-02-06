@@ -1,3 +1,4 @@
+- [ ] Fix search doc titles (include parent headers ala "Food - Bar - Basket"
 - [ ] Content!
 - [ ] Footer links
 - [ ] Maybe taglines

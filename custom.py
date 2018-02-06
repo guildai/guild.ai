@@ -777,7 +777,10 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         self._template = env.get_template("cmd-help.html")
 
     def _format_text_filter(self, text):
-        return self._md.convert(text)
+        if text == "Show this message and exit.":
+            return "Show command help and exit."
+        else:
+            return self._md.convert(text)
 
     def _cmd_url_filter(self, cmd, ctx):
         cmd_name = cmd["term"].split(", ")[0]
@@ -793,7 +796,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
     def _handle_cmd(self, cmd, target, parent):
         cmd_help = self._get_cmd_help(cmd)
         ctx = CmdHelpContext(cmd_help)
-        rendered = self._template.render(help=cmd_help, ctx=ctx)
+        rendered = self._template.render(cmd=cmd_help, ctx=ctx)
         help_el = etree.fromstring(rendered)
         self._replace_el(parent, target, help_el)
 
