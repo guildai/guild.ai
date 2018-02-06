@@ -183,7 +183,7 @@ module.exports = function(grunt) {
       const settings = {
         searchableAttributes: ['title', 'text'],
         attributesToHighlight: [],
-        attributesToSnippet: ['title:10', 'text:25'],
+        attributesToSnippet: ['title:10', 'text:40'],
         attributesToRetrieve: ['location']
       };
       return index.setSettings(settings);
@@ -194,41 +194,10 @@ module.exports = function(grunt) {
     };
 
     const addObjects = function() {
-
-      // mkdocs generates search_index.json with both the full page
-      // content and also each section as docs. We don't want to
-      // present users both the full page and separate sections as
-      // they appear identical apart from their link. We address this
-      // by only indexing sections and not the entire document. We
-      // also change the location of the top section document to the
-      // page location to avoid using a hash location for the top of
-      // the page. We can safely do this because all of our pages have
-      // a single top-level h1 element that precedes page content.
-
       const data = grunt.file.readJSON('./site/search/search_index.json');
-      const objects = [];
-      var promoteSectionLocation = null;
-      var topLevelTitle = null;
-      data.docs.forEach(function(doc) {
-        if (!doc.location.includes('#')) {
-          // Top-level location (i.e. not a section)
-          promoteSectionLocation = doc.location;
-          topLevelTitle = doc.title;
-        } else {
-          if (promoteSectionLocation) {
-            // Use top-level location for first section
-            doc.location = promoteSectionLocation;
-            doc.title = topLevelTitle;
-          } else {
-            doc.title = topLevelTitle + ' - ' + doc.title;
-          }
-          promoteSectionLocation = null;
-          if (doc.text) {
-            objects.push(doc);
-          }
-        }
-      });
-      grunt.file.write("/tmp/obj.json", JSON.stringify(objects));
+      // Only index top-level docs (i.e. no sections)
+      const objects = data.docs.filter(doc => !doc.location.includes('#'));
+      grunt.file.write("/tmp/guildai-index.json", JSON.stringify(objects));
       return index.addObjects(objects);
     };
 
