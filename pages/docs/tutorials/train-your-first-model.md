@@ -18,6 +18,9 @@ This tutorial assumes the following:
   (if applicable)
 - You have a working Internet connection
 
+While it is not required, we recommend using a dedicated virtual
+environment for this tutorial. To setup your environment, see
+
 ## Find the MNIST package
 
 Start by searching for MNIST models. From a [command
