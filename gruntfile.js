@@ -135,12 +135,17 @@ module.exports = function(grunt) {
       js: {
         files: ['src/assets/js/theDocs.js'],
         tasks: ['uglify'],
+      },
+      cmd_src: {
+        files: ['../guild/guild/commands/*.py'],
+        tasks: ['exec:site', 'exec:reload_devserver'],
       }
     },
 
     exec: {
       site: 'PYTHONPATH=. mkdocs build',
-      serve: 'PYTHONPATH=. mkdocs serve'
+      serve: 'PYTHONPATH=. mkdocs serve',
+      reload_devserver: 'touch pages/.reload && sleep 1 && rm pages/.reload'
     }
   });
 

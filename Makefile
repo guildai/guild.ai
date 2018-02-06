@@ -1,5 +1,4 @@
 grunt = node_modules/.bin/grunt
-mkdocs = PYTHONPATH=. mkdocs
 
 build: $(grunt)
 	$(grunt) build
@@ -7,7 +6,7 @@ build: $(grunt)
 .PHONY: site
 
 site:
-	$(mkdocs) build
+	$(grunt) exec:site
 
 index: $(grunt)
 	$(grunt) index

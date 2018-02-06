@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import errno
 import itertools
 import json
 import logging
@@ -801,11 +802,45 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         self._replace_el(parent, target, help_el)
 
     def _get_cmd_help(self, cmd):
-        help_cmd = ["guild"] + shlex.split(cmd) + ["--help"]
-        env = {"GUILD_HELP_JSON": "1"}
-        env.update(os.environ)
-        out = subprocess.check_output(help_cmd, env=env)
-        return json.loads(out)
+        cmd_help = self._get_cached_cmd_help(cmd)
+        if cmd_help is None:
+            log.info("Generating help for '%s' command", cmd)
+            args = ["guild"] + shlex.split(cmd) + ["--help"]
+            env = {"GUILD_HELP_JSON": "1"}
+            env.update(os.environ)
+            out = subprocess.check_output(args, env=env)
+            cmd_help = json.loads(out)
+            self._cache_cmd_help(cmd, cmd_help)
+        return cmd_help
+
+    def _get_cached_cmd_help(self, cmd):
+        cache_path = self._cached_cmd_help_filename(cmd)
+        if not os.path.exists(cache_path):
+            return None
+        src_path = self._cmd_source(cmd)
+        if os.path.getmtime(src_path) > os.path.getmtime(cache_path):
+            return None
+        return json.load(open(cache_path, "r"))
+
+    @staticmethod
+    def _cached_cmd_help_filename(cmd):
+        basename = cmd.replace(" ", "-")
+        return "/tmp/guild-ai-cmd-help/{}.json".format(basename)
+
+    @staticmethod
+    def _cmd_source(cmd):
+        basename = re.sub(r"[ \-]", "_", cmd)
+        return "../guild/guild/commands/{}.py".format(basename)
+
+    def _cache_cmd_help(self, cmd, cmd_help):
+        path = self._cached_cmd_help_filename(cmd)
+        path_dir = os.path.dirname(path)
+        try:
+            os.makedirs(path_dir)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
+        json.dump(cmd_help, open(path, "w"))
 
     @staticmethod
     def _replace_el(parent, target_el, new_el):
