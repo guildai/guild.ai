@@ -685,7 +685,6 @@ class FigureProcessor(treeprocessors.Treeprocessor):
                 figure.append(caption)
                 caption.tag = "figcaption"
                 caption.text = caption.text[2:]
-                print("###", etree.tostring(caption))
                 break
         else:
             raise AssertionError()
