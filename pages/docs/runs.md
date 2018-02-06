@@ -104,7 +104,7 @@ because Guild assumes that the user is working on models defined at
 that location and is not interested in other runs, at least by
 default. This follows the pattern of command line tools such as `git`
 that apply operations locally when they find a project, repository,
-etc. in the current directoy.
+etc. in the current directory.
 
 When a command is run in local scope, Guild prints a message to
 indicate that results are limited:
@@ -171,7 +171,7 @@ guild run iris-cnn:train
 ```
 
 You can also use part of the operation specification, as long as Guild
-can uniquely identfy the operation. For example, you can start `train`
+can uniquely identify the operation. For example, you can start `train`
 by running:
 
 ```

@@ -249,30 +249,119 @@ As the model trains, let's note a few things:
   softmax model. If your system has a GPU and TensorFlow is configured
   to use it, you should notice your fans spinning up!
 
+## View training metrics using TensorBoard
+
 While the model is training, switch to TensorBoard in your browser. On
 the **SCALARS** tab, note the **accuracy** graph. This shows the
 accuracy of the both the `mnist-softmax` and `mnist-cnn` training.
 
-![](/assets/img/tb-mnist-accuracy.png)
+![MNIST accuracy](/assets/img/tb-mnist-accuracy.png)
 
 ^ MNIST accuracy in TensorBoard
 
 Expand the graph by clicking the fullscreen button
-![](/assets/img/tb-fullscreen.png)
+![fullscreen button](/assets/img/tb-fullscreen.png)
+
+Note the differences in accuracy between the two models. The CNN model
+has a significantly higher accuracy but takes longer to train.
+
+!!! tip
+    You can compare relative training times between runs by clicking
+    **RELATIVE** on the left in TensorBoard. Notice how much longer the
+    `mnist-cnn` model takes to train, even with a GPU!
+
+If your system has a GPU, you can view GPU metrics from TensorBoard
+under the **system** section on the **SCALARS** tab:
+
+![system section](/assets/img/tb-system.png)
+
+^ **system** section in TensorBoard contains system metrics including GPU
+
+The **SCALARS** tab contains a lot of information. You can filter the
+results using the **Filter tags** field at the top. For example, to
+view GPU metrics, type ``gpu``:
+
+![GPU filter](/assets/img/tb-gpu.png)
+
+^ Filter to view ``gpu`` metrics
+
+Take some time and explore the information available in TensorBoard:
+
+- **IMAGES** contains samples of images used for training and
+  validation.
+
+- **GRAPHS** displays a visual representation of the TensorFlow
+  computation graphs for each model.
+
+- **DISTRIBUTIONS** and **HISTOGRAMS** show model variable statistics
+  that can be used to debug training issues.
+
+TensorBoard supports other visualizations (e.g. text and audio) which
+are activate for other models.
 
 For more information, see [TensorBoard](/docs/visual/tensorboard/).
 
----
+## Compare models
 
-TODO next:
+When the `mnist-cnn` has finished training, run the following:
 
-- Training the cnn
-- Getting info about that run
-- Comparing runs
-- Viewing runs in TensorBoard
-- Doing something with the output
-  - Evaluate/test
-  - Deploy - Cloud ML, serving, internal server
-  - Publish the results (output from compare?)
-- Summary
-- Next steps
+``` command
+guild compare
+```
+
+This opens a live table that you can use to compare runs. Note the
+accuracy of the two models.
+
+The [](cmd:compare) command is useful for quickly comparing runs.
+
+Finally, let's export the comparison to a CSV file.
+
+Type ``q`` to exit the compare program and then run the following
+command:
+
+``` command
+guild compare --csv > mnist-compare.csv
+```
+
+Guild automatically keeps track of all your training experiments. As
+you've seen, you have quick access to run details from a variety of
+tools:
+
+- Use Guild View to browse run results
+- Use TensorBoard to visualize event logs
+- Use `compare` to compare and export results
+
+## Summary
+
+In this tutorial, we've seen how Guild reduces the complexity of the
+training life cycle to simple commands:
+
+<table class="table">
+<tr>
+<td>Find an MNIST model</td>
+<td><code class="lit">guild search mnist</code></td>
+</tr>
+<tr>
+<td>Install models</td>
+<td><code class="lit">guild install mnist</code></td>
+</tr>
+<tr>
+<td>Train models</td>
+<td><code class="lit">guild train mnist-cnn</code></td>
+</tr>
+<tr>
+<td>Visualize training runs, including<br>TensorBoard integration</td>
+<td><code class="lit">guild view</code></td>
+</tr>
+<tr>
+<td>Compare runs</td>
+<td><code class="lit">guild compare</code></td>
+</tr>
+</table>
+
+## Next steps
+
+There's a lot more in Guild to explore! Consider these next steps:
+
+- [Train your own images with transfer learning](/docs/tutorials/transfer-learning-with-imagenet/)
+- [Browse Guild AI documentation](/docs)

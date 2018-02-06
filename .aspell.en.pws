@@ -1,4 +1,5 @@
-personal_ws-1.1 en 66 
+personal_ws-1.1 en 73 
+td
 px
 py
 tf
@@ -15,13 +16,17 @@ cmd
 github
 GitHub
 tagline
+mdash
 util
 tv
+br
+metadata
 cudnn
 cuDNN
 mnist
 sidenav
 NVIDIA's
+fullscreen
 navbar
 cnn
 smi
@@ -47,6 +52,7 @@ li
 href
 yaml
 rundir
+csv
 GAN
 parameterize
 runtime
@@ -65,3 +71,4 @@ args
 cuda
 ENV
 virtualenv
+tb
