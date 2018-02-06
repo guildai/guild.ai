@@ -674,17 +674,18 @@ class FigureProcessor(treeprocessors.Treeprocessor):
             prev = el
 
     @staticmethod
-    def _apply_figure(target, captionSrc, parent):
+    def _apply_figure(target, caption, parent):
         for i, el in zip(range(len(parent)), parent):
             if el is target:
                 parent.remove(target)
-                parent.remove(captionSrc)
+                parent.remove(caption)
                 figure = etree.Element("figure")
                 parent.insert(i, figure)
                 figure.append(target)
-                caption = etree.Element("figcaption")
                 figure.append(caption)
-                caption.text = captionSrc.text[2:]
+                caption.tag = "figcaption"
+                caption.text = caption.text[2:]
+                print("###", etree.tostring(caption))
                 break
         else:
             raise AssertionError()
