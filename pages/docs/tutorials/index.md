@@ -27,21 +27,15 @@ Follow these steps to setup a virtual environment for a tutorial:
 
 - Ensure that you have Virtualenv installed --- see [Virtualenv
   Installation ->](https://virtualenv.pypa.io/en/stable/installation/)
+- Create a virtual environment: ``virtualenv DIR``
+- Active the environment: ``source DIR/bin/activate``
+- Install Guild AI: ``pip install guildai``
+- Install TensorFlow: ``pip install tensorflow`` or ``pip install
+  tensorflow-gpu``
+- Verify your setup: ``guild check``
 
-- Create a virtual environment by running ``virtualenv DIR``
-
-- Active the environment by running ``source DIR/bin/activate``
-
-- Install Guild AI by running ``pip install guildai``
-
-- Install TensorFlow by running ``pip install tensorflow`` or ``pip
-  install tensorflow-gpu``
-
-- Verify your setup by running ``guild check``
-
-Once you've activated your environment, all Guild operations will
-apply to that environment, including package installation and model
-runs.
+Once you've activated your environment, Guild operations will apply to
+that environment, including package installation and model runs.
 
 Below are scripts that you can copy-and-paste to setup your
 environments.

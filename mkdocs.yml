@@ -165,7 +165,7 @@ pages:
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/guild-from-scratch.md
           - docs/tutorials/working-with-virtualenv.md
-      - troubleshoot.md
+      - troubleshooting.md
   - models:
       - models/index.md
       - models/keras.md

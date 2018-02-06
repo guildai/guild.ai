@@ -115,23 +115,8 @@ guild check
 ```
 
 If there are problems with your installation, Guild will display the
-details and exit with an error.
-
-Below are some common issues with the Guild installation.
-
-TensorFlow is not installed
-: See [Install TensorFlow](#install-tensorflow) above.
-
-CUDA or cuDNN are not installed
-: This is not a problem if your system does not have a GPU. If your
-  system does have a GPU and there are problems with CUDA or cuDNN,
-  you must resolve these issues before running TensorFlow
-  operations. Refer to [CUDA and cuDNN](#cuda-and-cudnn) and [NVIDIA
-  System Management Interface](#nvidia-system-management-interface)
-  above for links to NVIDIA's website.
-
-If you continue to face issues with your Guild installation,
-[](alias:open-an-issue) and we'll help!
+details and exit with an error. Refer to
+[Troubleshooting](/troubleshooting) for assistance.
 
 ## Next steps
 

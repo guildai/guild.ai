@@ -1,4 +1,4 @@
-personal_ws-1.1 en 73 
+personal_ws-1.1 en 79 
 td
 px
 py
@@ -9,6 +9,7 @@ TensorBoard
 ai
 Runnable
 UI
+cd
 ul
 Keras
 CLI
@@ -23,10 +24,12 @@ br
 metadata
 cudnn
 cuDNN
+ImportError
 mnist
 sidenav
 NVIDIA's
 fullscreen
+filename
 navbar
 cnn
 smi
@@ -47,12 +50,14 @@ nvidia
 pagenav
 TOC
 sudo
+libcudnn
 md
 li
 href
 yaml
 rundir
 csv
+libcublas
 GAN
 parameterize
 runtime
@@ -69,6 +74,7 @@ ImageNet
 imagenet
 args
 cuda
+SDK
 ENV
 virtualenv
 tb
