@@ -88,6 +88,24 @@ img.md {
   }
 }
 
+.table.dl {
+
+  margin: 0 4px 16px;;
+
+  td, th {
+    border: none;
+  }
+
+  td.dt {
+    white-space: nowrap;
+  }
+
+  td.dd {
+    width: 100%;
+  }
+
+}
+
 @media screen and (max-width: $break-md) {
 
   .container-fluid {

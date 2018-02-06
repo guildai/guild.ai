@@ -20,13 +20,24 @@
 
   @include callout-variant($callout-info-color);
 
-  &.attention {
+  &.important {
     @include callout-variant($callout-warning-color);
   }
 
   > p:last-child {
     margin-bottom: 3px;
   }
+
+  > ul:last-child {
+    margin-bottom: 0;
+
+    > li:last-child {
+      p {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
 }
 
 @media screen and (max-width: $break-xs) {
@@ -34,5 +45,4 @@
   .callout {
     padding: 10px;
   }
-
 }
