@@ -107,10 +107,10 @@ guild train mnist-softmax
 You will be prompted with information about the run and asked to
 confirm the operation. The model defines two [flags](term:flag):
 
-batch-size
+`batch-size`
 : number of images to use per batch
 
-epochs
+`epochs`
 : number of epochs to train
 
 Press `ENTER` to accept the default values and continue.

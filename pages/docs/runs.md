@@ -34,7 +34,13 @@ Here is a common work flow:
 
 The work centers on *runs* --- creating, comparing, and selecting.
 
-## Run directory
+## Concepts
+
+As you work with runs in Guild it's important to understand some core
+concepts. If you'd prefer to skip this conceptual material, jump to
+[Start a run](#start-a-run) below.
+
+### Run directory
 
 A *run directory* is a file system directory (or folder) that contains
 artifacts associated with a run. Guild creates a unique run directory
@@ -54,7 +60,7 @@ Run related operations interact with run directories in various ways:
 - ``guild runs list`` enumerates run directories
 - ``guild runs delete`` deletes run directories
 
-## Limiting runs
+### Limiting runs
 
 Over time you'll generate a large number of runs. This list can become
 unwieldy, especially when you're interested in a small subset ---
@@ -66,7 +72,7 @@ to run related commands:
   directory
 - Limit to runs that match a filter
 
-### Run scope
+#### Run scope
 
 The first limit is known as *run scope*. Scope can be either *local*
 or *global*. By default, scope is local when the current directory
@@ -111,7 +117,7 @@ indicate that results are limited:
 
     Limiting runs to the current directory (use --all to include all)
 
-### Run filtering
+#### Run filtering
 
 The other limit is *run filtering*. Filters are applied with command
 line options that specify run attributes, which may include:
@@ -134,6 +140,81 @@ associated with models in the current directory otherwise it will use
 all runs. It will then filter those runs, limiting the result to those
 associated with operations containing the string "train".
 
+### Selecting runs
+
+Some run related commands let you select one or more runs:
+
+- [](category:/docs/commands/#runs-select)
+
+For these commands, runs can be specified in various ways:
+
+- Index as returned by ``guild runs`` or ``guild runs list``
+- Run ID (full or partial if unique)
+
+Additionally, a range may be specified using run indexes in the form:
+
+    [START]:[STOP]
+
+`STOP` and `START` are inclusive --- runs are selected beginning with
+the `STOP` index up to and including those with the `START` index.
+
+Both `STOP` and `START` are optional. If `START` is omitted it is
+assumed to be ``0`` (i.e. the first run in the list). If `STOP` is
+ommitted it is assumed to be the index of the last run.
+
+!!! important
+    Run indexes are relative to the list of runs returned by ``guild
+    runs`` or ``guild runs list`` for a given scope and filter (see
+    [Limiting runs](#limiting-runs) above). The run associated with index
+    ``0`` for one listing may not be the same run for another
+    listing. Always verify the selected runs before proceeding with a
+    command.
+
+    When in doubt, use a run ID to select a run.
+
+#### Examples
+
+Consider this output from ``guild runs``:
+
+```
+Limiting runs to the current directory (use --all to include all)
+[0:9734f85e]   ./slim-resnet-101:train        2017-12-14 07:56:32  terminated
+[1:d8cde0fc]   ./slim-resnet-50:export        2017-12-13 13:14:31  completed
+[2:0df943ac]   ./slim-resnet-50:predict       2017-12-06 11:51:15  completed
+[3:e150e44a]   ./slim-resnet-50:predict       2017-12-06 11:50:00  completed
+```
+
+!!! note
+    The [run scope](term:#run-scope) in the above command is *local*. If
+    the user had run ``guild runs --all`` the scope would be *global* ---
+    the list and run indexes would likely be different.
+
+Below are various operations with run selectors applied to this
+list.
+
+``guild runs rm 0``
+: Delete run `9734f85e` (you can always use index ``0`` to select the
+  most recently started run in the list)
+
+``guild runs rm 1:2``
+: Delete runs `d8cde0fc` and `0df943ac`
+
+``guild runs rm :``
+: Delete all runs
+
+``guild runs rm 0df943ac e150e44a``
+: Delete runs `0df943ac` and `e150e44a`
+
+!!! note
+    The following assumptions must hold for the above examples that use
+    run indexes:
+
+    - Commands must be executed in the same directory as the command
+      that generated the list and without scope modifiers or filters
+
+    - The runs themselves must not change --- i.e. runs cannot be deleted
+      or started
+
 ## Start a run
 
 To start a run, use the [](cmd:run) command. The basic format of a
@@ -146,8 +227,10 @@ guild run PACKAGE/MODEL:OPERATION
 ```
 
 You can list available operations using the [](cmd:operations)
-command. In general, you can omit information about an operation name
-as long as Guild can uniquely identify the operation.
+command.
+
+In general, you can omit information about an operation name as long
+as Guild can uniquely identify the operation.
 
 For example, if the output of `operations` looks like this:
 
@@ -157,22 +240,22 @@ iris/iris-cnn:fine-tune
 iris/iris-cnn:test
 ```
 
-You can start the `train` operation by running:
+You can start the `fine-tune` operation by running:
 
 ``` command
-guild run train
+guild run fine-tune
 ```
 
 You can always provide the model or package. For example, this form
-will also start `train`:
+will also start `fine-tune`:
 
 ``` command
-guild run iris-cnn:train
+guild run iris-cnn:fine-tune
 ```
 
-You can also use part of the operation specification, as long as Guild
-can uniquely identify the operation. For example, you can start `train`
-by running:
+You use part of the operation specification as long as Guild can
+uniquely identify the operation. For example, you can run the `test`
+on `iris-cnn` using:
 
 ```
 guild run cnn:train
@@ -181,11 +264,11 @@ guild run cnn:train
 ### Operation aliases
 
 Some operations are so common that Guild provides *alias*
-commands. These currently include:
+commands. Aliases currently include:
 
 - [](cmd:train)
 
-Aliases are used to start operation using these form:
+Aliases are used to start operation using these forms:
 
 ```
 guild ALIAS_CMD
@@ -193,9 +276,8 @@ guild ALIAS_CMD MODEL
 guild ALIAS_CMD PACKAGE/MODEL
 ```
 
-For example, the `train` alias is used to run the `train`
-operation. In the example above, the following commands can be used to
-train the iris model:
+The `train` alias is used to run the `train` operation. In the example
+above, the following commands can be used to train the iris model:
 
 ```
 guild train
@@ -205,9 +287,35 @@ guild train cnn
 
 ## List runs
 
-To list Guild runs, use the [](cmd:runs) or [runs list](cmd:runs-list) command.
+To list Guild runs, use the [](cmd:runs) or [runs list](cmd:runs-list)
+command.
 
 ``guild runs`` is shorthand for ``guild runs list``.
+
+When listing runs, be aware of [run scope](term:#run-scope) and [run
+filtering](term:#run-filtering) --- these effect the runs that are
+displayed.
+
+``guild runs``
+: List all runs with the run scope. If the current directory contain a
+  [model definition](term:model-def) the list is limited to runs
+  associated with the locally defined models, otherwise the list will
+  contain all runs.
+
+``foo``
+: Another thing yo.
+
+The command:
+
+```
+guild runs
+```
+
+will display different lists depending on the directory it's run
+in. If the directory contains a model definition, runs will be limited
+to those associated with the locally defined models. If the directory
+does not contain a model definition, all runs are displayed.
+
 
 ## Get run information
 
@@ -225,7 +333,17 @@ Use ``guild runs list LABEL`` to list runs with the specified label.
 
 ## Delete runs
 
-To delete a run use ``guild runs
+Delete runs using ``guild runs delete`` or ``guild runs rm``. See
+[runs delete](cmd:runs-delete) for command details.
+
+Guild will display the list of runs to be deleted and ask you to
+confirm the operation. You must type ``y`` and then press `ENTER` to
+confirm.
+
+Deleted runs can be recovered! Refer to [Recover deleted
+runs](#recover-deleted-runs) below for details.
+
+Runs may be specified using any valid runs specification.
 
 ## Recover deleted runs
 
