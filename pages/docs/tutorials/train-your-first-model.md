@@ -18,8 +18,9 @@ This tutorial assumes the following:
   (if applicable)
 - You have a working Internet connection
 
-While it is not required, we recommend using a dedicated virtual
-environment for this tutorial. To setup your environment, see
+While not required, we recommend using a dedicated virtual environment
+for this tutorial. To setup your environment, see
+[](alias:tut-env-setup).
 
 ## Find the MNIST package
 
@@ -34,7 +35,7 @@ You should see a list of [packages](term:package) that includes
 `mnist`. The `mnist` package is a sample that contains models that
 train quickly. We'll use it for this tutorial.
 
-## Install the MNIST package
+## Install `mnist`
 
 Install the `mnist` package by running:
 

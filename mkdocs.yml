@@ -94,6 +94,9 @@ markdown_extensions:
         - link_pattern: alias:separate-console
           href: /docs/commands/#running-commands-in-a-separate-console
           text: separate console
+        - link_pattern: alias:tut-env-setup
+          href: /docs/tutorials/#tutorial-virtual-environments
+          text: Tutorial virtual environments
 
 pages:
   - index.md
