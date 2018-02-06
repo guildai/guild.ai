@@ -197,6 +197,15 @@ module.exports = function(grunt) {
       const data = grunt.file.readJSON('./site/search/search_index.json');
       // Only index top-level docs (i.e. no sections)
       const objects = data.docs.filter(doc => !doc.location.includes('#'));
+      objects.forEach(doc => {
+        // Truncate text for algolia record max size (10000). See
+        // http://bit.ly/2seV0Pm for details.
+        const maxRecord = 10000;
+        const titleLocationLen = doc.title.length + doc.location.length;
+        const recordOverhead = 1000; // This has to be this high, not sure why
+        const textSize = maxRecord - titleLocationLen - recordOverhead;
+        doc.text = doc.text.slice(0, textSize);
+      });
       grunt.file.write("/tmp/guildai-index.json", JSON.stringify(objects));
       return index.addObjects(objects);
     };
