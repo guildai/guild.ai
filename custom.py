@@ -161,7 +161,8 @@ class DefIdProcessor(treeprocessors.Treeprocessor):
 
     def run(self, doc):
         for dt in doc.iter("dt"):
-            dt.set("id", slugify(dt.text, "-"))
+            if dt.text:
+                dt.set("id", slugify(dt.text, "-"))
 
 class DefinitionId(Extension):
     """Adds ids to definition terms.
@@ -545,9 +546,10 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
             url_prefix, cat_tag, cat_title = cat_info
             li = etree.Element("li")
             ul.append(li)
-            h5 = etree.Element("h5")
-            li.append(h5)
-            h5.text = cat_title
+            if cat_title:
+                h5 = etree.Element("h5")
+                li.append(h5)
+                h5.text = cat_title
             for page in index.iter_pages(url_prefix, cat_tag):
                 a = etree.Element("a")
                 li.append(a)
@@ -710,7 +712,8 @@ class Figure(Extension):
 
     >>> print(md.convert("![](img.png)\\n\\n^ A sample image"))
     <figure><p><img alt="" src="img.png" /></p>
-    <figcaption>A sample image</figcaption></figure>
+    <figcaption>A sample image</figcaption>
+    </figure>
 
     Here's a table figure:
 
@@ -729,7 +732,8 @@ class Figure(Extension):
     </tr>
     </tbody>
     </table>
-    <figcaption>A sample image</figcaption></figure>
+    <figcaption>A sample image</figcaption>
+    </figure>
 
     """
 
@@ -937,12 +941,12 @@ class CmdHelpUrl(Extension):
     A link to `run` help:
 
     >>> print(md.convert("``guild run --help``"))
-    <p><a class="cmd" href="/docs/commands/run-cmd/">guild run</a></p>
+    <p><a class="cmd" href="/docs/commands/run-cmd/">run</a></p>
 
     A link to `runs rm` help:
 
     >>> print(md.convert("``guild runs rm --help``"))
-    <p><a class="cmd" href="/docs/commands/runs-rm-cmd/">guild runs rm</a></p>
+    <p><a class="cmd" href="/docs/commands/runs-rm-cmd/">runs rm</a></p>
 
     """
 
@@ -956,6 +960,76 @@ class MoveToc(Extension):
     def extendMarkdown(self, md, _globals):
         toc = md.treeprocessors.pop("toc")
         md.treeprocessors.add("toc", toc, "_end")
+
+class DeflistToTableProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, root):
+        for dl in root.iter("dl"):
+            self._dl_to_table(dl)
+
+    def _dl_to_table(self, dl):
+        dl.tag = "table"
+        dl.set("class", "table dl")
+        rows = []
+        dl_children = iter(list(dl))
+        while True:
+            try:
+                dt = next(dl_children)
+                dd = next(dl_children)
+            except StopIteration:
+                break
+            dl.remove(dt)
+            dl.remove(dd)
+            rows.append(self._def_row(dt, dd))
+        dl.extend(rows)
+
+    @staticmethod
+    def _def_row(dt, dd):
+        row = etree.Element("tr")
+        row.append(dt)
+        row.append(dd)
+        dt.tag = "td"
+        dt.set("class", "dt")
+        dd.tag = "td"
+        dd.set("class", "dd")
+        return row
+
+class DeflistToTable(Extension):
+    """Converts deflists to tables.
+
+    Adds "dl", "dt", and "dd" classes to the table and two td elements
+    respectively.
+
+    To illustrate we'll configure markdown with both the "def_list"
+    extension and our extension.
+
+    >>> md = markdown.Markdown(extensions=["def_list", DeflistToTable()])
+
+    Here's a single term list:
+
+    >>> print(md.convert("term1\\n: term1 def"))
+    <table class="table dl">
+    <tr><td class="dt">term1</td>
+    <td class="dd">term1 def</td>
+    </tr></table>
+
+    Two terms:
+
+    >>> print(md.convert("term1\\n: term1 def\\n\\nterm2\\n: term2 def"))
+    <table class="table dl">
+    <tr><td class="dt">term1</td>
+    <td class="dd">term1 def</td>
+    </tr><tr><td class="dt">term2</td>
+    <td class="dd">term2 def</td>
+    </tr></table>
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add(
+            "deflist-to-table",
+            DeflistToTableProcessor(md),
+            "_end")
 
 def test():
     import doctest

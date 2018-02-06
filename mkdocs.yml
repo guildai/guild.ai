@@ -31,14 +31,15 @@ plugins:
 
 markdown_extensions:
   - admonition
-  - def_list
   - footnotes
   - smarty
+  - def_list
+  - custom:DefinitionId
+  - custom:DeflistToTable
   - custom:CmdHelp
   - custom:MoveToc
   - custom:FixToc
   - custom:FencedCode
-  - custom:DefinitionId
   - custom:Classify:
       tags: [ul, ol, img]
   - custom:Categories
