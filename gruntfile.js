@@ -208,15 +208,24 @@ module.exports = function(grunt) {
       const data = grunt.file.readJSON('./site/search/search_index.json');
       const objects = [];
       var promoteSectionLocation = null;
+      var topLevelTitle = null;
       data.docs.forEach(function(doc) {
         if (!doc.location.includes('#')) {
+          // Top-level location (i.e. not a section)
           promoteSectionLocation = doc.location;
+          topLevelTitle = doc.title;
         } else {
           if (promoteSectionLocation) {
+            // Use top-level location for first section
             doc.location = promoteSectionLocation;
+            doc.title = topLevelTitle;
+          } else {
+            doc.title = topLevelTitle + ' - ' + doc.title;
           }
-          objects.push(doc);
           promoteSectionLocation = null;
+          if (doc.text) {
+            objects.push(doc);
+          }
         }
       });
       grunt.file.write("/tmp/obj.json", JSON.stringify(objects));
