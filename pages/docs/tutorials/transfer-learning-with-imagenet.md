@@ -4,7 +4,7 @@ tags: tutorial, popular, intro
 
 In this tutorial we'll use a state-of-the-art image classifier that's
 been pretrained on [ImageNet ->](http://www.image-net.org/) to
-acclerate training of our own images.
+acclerate training with our own images.
 
 This process is referred to as *fine tuning* and uses a pattern in
 machine learning called *transfer learning*. It's a technique that can
@@ -23,46 +23,53 @@ While not required, we recommend using a dedicated virtual environment
 for this tutorial. To setup your environment, see
 [](alias:tut-env-setup).
 
-## Install `slim.inception`
+## Install `slim.resnet`
 
-We'll be using models from the `slim.inception` package, which support
+We'll use models from the `slim.reset` package, which support
 transfer learning via the `fine-tune` operation.
 
-Install `slim.inception` by running:
+Install `slim.resnet` by running:
 
 ``` command
-guild install slim.inception
+guild install slim.resnet
 ```
 
-When the package is installed, list the available models by running:
+When the package is installed, list the available resnet models:
 
 ``` command
-guild models
+guild models resnet
 ```
 
-You should see this output:
+Here's the output:
 
 ``` output
-slim.datasets/slim-cifar10               Support for preparing the CIFAR-10 TF-Slim dataset
-slim.datasets/slim-custom-images         Support for preparing a custom images TF-Slim dataset
-slim.datasets/slim-flowers               Support for preparing the Flickr flowers TF-Slim dataset
-slim.datasets/slim-mnist                 Support for preparing the MNIST TF-Slim dataset
-slim.inception/slim-inception-resnet-v2  Inception ResNet v2 classifier in TF-Slim
-slim.inception/slim-inception-v1         Inception v1 classifier in TF-Slim
-slim.inception/slim-inception-v2         Inception v2 classifier in TF-Slim
-slim.inception/slim-inception-v3         Inception v3 classifier in TF-Slim
-slim.inception/slim-inception-v4         Inception v4 classifier in TF-Slim
+slim.resnet/slim-resnet-101     ResNet-101 classifier for TF-Slim
+slim.resnet/slim-resnet-152     ResNet-1152 classifier for TF-Slim
+slim.resnet/slim-resnet-200     ResNet-200 classifier for TF-Slim
+slim.resnet/slim-resnet-50      ResNet-50 classifier for TF-Slim
+slim.resnet/slim-resnet-v2-101  ResNet-v2-101 classifier for TF-Slim
+slim.resnet/slim-resnet-v2-152  ResNet-v2-152 classifier for TF-Slim
+slim.resnet/slim-resnet-v2-200  ResNet-v2-200 classifier for TF-Slim
+slim.resnet/slim-resnet-v2-50   ResNet-v2-50 classifier for TF-Slim
 ```
 
-The `slim.inception` package provides several version of the Inception
-network:
+!!! tip
+    Guild packages are like shipping containers for models. After you
+    install a package, use ``guild models PACKAGE`` to list models
+    provided by that package. Packages are included in the model names in
+    the form `PACKAGE/MODEL`.
+
+All of the `slim.*` packages are implemented in [TensorFlow-Slim
+->](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim),
+which is a "lightweight library for defining, training and evaluating
+complex models in TensorFlow."
+
+The models in the `slim.resnet` package are implemented by the
+[TensorFlow-Slim image classification model library
+->](https://github.com/tensorflow/models/tree/master/research/slim).
 
 
-- [Inception v1 ->](http://arxiv.org/pdf/1409.04842)
-- [Inception v2 ->](http://arxiv.org/abs/1502.03167)
-- [Inception v3 ->](http://arxiv.org/abs/1512.00567)
-- [Inception v4 ->](http://arxiv.org/abs/1602.07261)
 
-You also see several models associated with TensorFlow Slim
-datasets. These are installed as dependencies via the `slim.datasets`
-package.
+## Train ResNet - part 1
+
+Let's dive right in and train the ResNet model.

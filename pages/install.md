@@ -134,7 +134,7 @@ tutorial will walk you through the basics of Guild and cover most of
 its features.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model"
+<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model/"
   >Train your first model <i class="fa next"></i></a>
 </div>
 </div>
@@ -149,7 +149,7 @@ can be used to build deep learning applications. Start here to see
 what developers are building.
 
 </p>
-<a class="btn btn-primary cta" href="/models"
+<a class="btn btn-primary cta" href="/models/"
   >Discover Guild models <i class="fa next"></i></a>
 </div>
 </div>
@@ -163,7 +163,7 @@ If you're interested in a complete picture of Guild AI, start by
 browsing its comprehensives documentation.
 
 </p>
-<a class="btn btn-primary" href="/docs"
+<a class="btn btn-primary" href="/docs/"
   >Browse the docs <i class="fa next"></i></a>
 </div>
 </div>

@@ -1,9 +1,18 @@
+title: Overview
+pagenav_title: Guild AI overview
 tags: concepts
 
-# Overview
+# Guild AI overview
 
-Guild AI is a command line toolkit that enhances TensorFlow model
-development and use. Once you [install Guild](/install/), you run
-commands in a console by running ``guild COMMAND`` where `COMMAND` is
-one of the supported commands. For a list of commands, run ``guild
---help``. To learn more about a command, run ``guild COMMAND --help``.
+Guild AI is a toolset for packaging and using deep learning models. It
+shares many features with traditional software package managers like
+`pip`, `npm` and `Homebrew` but provide specialized functionality for
+deep learning models.
+
+## Packages
+
+## Models
+
+## Operations
+
+## Runs

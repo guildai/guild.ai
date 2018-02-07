@@ -46,7 +46,43 @@ This is some excellent advertising for Guild AI!
 
 ---
 
-# Some header
+# Quick start
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Install Guild AI</h4>
+      <pre>
+        <code class="language-command">pip install guildai</code>
+      </pre>
+      <h4>Install a model package</h4>
+      <pre>
+        <code class="language-command">pip install guildai</code>
+      </pre>
+      <h4>Train a model</h4>
+      <pre>
+        <code class="language-command">pip install guildai</code>
+      </pre>
+      <h4>View the results</h4>
+      <pre>
+        <code class="language-command">pip install guildai</code>
+      </pre>
+      <div style="margin-top:30px">
+        <a class="btn btn-primary" href="/docs/overview/">Learn more <i class="fa next"></i></a>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding:20px">
+      <a href="/assets/img/guild-view-1.png" data-featherlight="image">
+        <img style="width:100%" src="/assets/img/guild-view-1.png">
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<p>
+
+</p>
 
 ---
 
