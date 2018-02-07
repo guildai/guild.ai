@@ -60,7 +60,7 @@ h2 {
   margin-top: 40px;
   margin-bottom: 25px;
   font-weight: 300;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.25px;
   padding-bottom: 16px;
   border-bottom: 1px solid $border-color-dark;
 
@@ -173,7 +173,6 @@ dl {
 }
 
 sup {
-  margin-right: 4px;
   margin-left: -3px;
 }
 
@@ -191,7 +190,7 @@ a.ref {
 }
 
 .footnote {
-  font-size: 83%;
+  font-size: 93%;
   color: $gray-text-color;
 
   ol {

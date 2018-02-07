@@ -32,3 +32,16 @@ figcaption {
 .lity {
   z-index: 999;
 }
+
+.featherlight {
+
+  .featherlight-content {
+    background: transparent;
+  }
+
+  .featherlight-close-icon {
+    color: $color-white;
+    background: transparent;
+    font-size: 20px;
+  }
+}
