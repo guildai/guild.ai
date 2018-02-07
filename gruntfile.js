@@ -48,6 +48,7 @@ module.exports = function(grunt) {
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/font-awesome/css/font-awesome.min.css',
             'node_modules/perfect-scrollbar/css/perfect-scrollbar.min.css',
+            'node_modules/featherlight/release/featherlight.min.css'
           ]
         }
       },
@@ -61,6 +62,7 @@ module.exports = function(grunt) {
             'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
             'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
             'node_modules/mousetrap/mousetrap.min.js',
+            'node_modules/featherlight/release/featherlight.min.js',
             'src/assets/js/prism.min.js'
           ]
         }
