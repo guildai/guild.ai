@@ -5,4 +5,5 @@ pagenav_break: yes
 
 # Guild AI models
 
-- [Categories](category:/models/#model-category)
+- [Keras](category:/models/#keras)
+- [TF Slim](category:/models/#slim)

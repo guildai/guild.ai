@@ -1,4 +1,5 @@
 grunt = node_modules/.bin/grunt
+mkdocs = PYTHONPATH=.:../guild mkdocs
 
 build: $(grunt)
 	$(grunt) build
@@ -7,6 +8,9 @@ build: $(grunt)
 
 site:
 	$(grunt) exec:site
+
+site-pdb-support:
+	$(mkdocs) build
 
 index: $(grunt)
 	$(grunt) index

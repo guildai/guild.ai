@@ -1,0 +1,121 @@
+<div class="pkg-help">
+
+  <table class="table dl">
+    <tr>
+      <th class="dt">Name</th>
+      <td class="dd">{{ pkg.name }}</td>
+    </tr>
+    <tr>
+      <th class="dt">Description</th>
+      <td class="dd">{{ pkg.description }}</td>
+    </tr>
+    <tr>
+      <th class="dt">Version</th>
+      <td class="dd">{{ pkg.version }}</td>
+    </tr>
+    <tr>
+      <th class="dt">Source</th>
+      <td class="dd"><a class="ext" href="{{ pkg.url }}" target="_blank">{{ pkg.url }}</a></td>
+    </tr>
+    <tr>
+      <th class="dt">Maintainer</th>
+      <td class="dd"><a href="mailto:{{ pkg['maintainer-email'] }}">{{ pkg.maintainer }}</a></td>
+    </tr>
+  </table>
+
+  <ul class="categorized-view">
+    <li>
+      <h5>Models</h5>
+    {% for model in models|filter_public %}
+    <a href="#{{ model.name|slugify }}">{{ model.name }}</a>
+    {% endfor %}
+    </li>
+  </ul>
+
+  {% for model in models|filter_public %}
+
+  {% set model_slug = model.name|slugify %}
+
+  <h2 id="{{ model_slug }}" class="model-name">{{ model.name }}</h2>
+
+  <div class="model-desc">{{ model.description|format_desc }}</div>
+
+  <ol class="toc model">
+    <li><a href="#{{ model_slug }}-operations">Operations</a></li>
+    {% if model.resources %}
+    <li><a href="#{{ model_slug}}-resources">Resources</a></li>
+    {% endif %}
+    {% if model.references %}
+    <li><a href="#{{ model_slug}}-references">References</a></li>
+    {% endif %}
+  </ol>
+
+  <h3 id="{{ model_slug }}-operations">Operations</h3>
+
+  <div class="model-ops">
+    {% for op in model.operations %}
+
+    <h4 id="{{ model_slug }}-{{ op.name|slugify }}" class="op-name">{{ op.name }}</h4>
+    <div class="op-desc">{{ op.description|format_desc }}</div>
+
+    <div class="op-flags">
+      <h5>Flags</h5>
+      {% if op.flags %}
+      <table class="table table-op-flags">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+        {% for flag in op.flags %}
+        <tr>
+          <td class="flag-name"><code>{{ flag.name }}</code></td>
+          <td class="flag-desc">{{ flag.description|format_desc }}</td>
+          <td class="flag-default">
+            {% if flag.default is not none %}
+            <code class="lit">{{ flag.default }}</code>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>This operation does not have flags.</p>
+      {% endif %}
+    </div>
+
+    {% else %}
+    <p>There are currently no operations defined for this model.</p>
+    {% endfor %}
+  </div>
+
+  {% if model.resources %}
+  <h3 id="{{ model_slug }}-resources">Resources</h3>
+  <div class="model-resources">
+    {% for res in model.resources %}
+    <h4 id="{{ model_slug }}-{{ res.name|slugify }}-res" class="res-name">{{ res.name }}</h4>
+    <div class="res-desc">{{ res.description|format_desc }}</div>
+    <div class="res-sources">
+      <ul>
+        {% for source in res.sources %}
+        <li>{{ source|format_resource_source }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if model.references %}
+  <h3 id="{{ model_slug }}-references">References</h3>
+  <div class="model-refs">
+    <ul>
+      {% for ref in model.references %}
+      <li><a class="ext" href="{{ ref }}" target="_blank">{{ ref|format_reference }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% endfor %}
+</div>

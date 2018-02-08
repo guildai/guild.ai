@@ -10,9 +10,9 @@ import shlex
 import subprocess
 
 import jinja2
+import yaml
 
 import markdown
-
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
 from markdown.extensions import fenced_code
@@ -21,9 +21,10 @@ from markdown import treeprocessors
 from markdown.util import etree
 
 import mkdocs.config as _ # work around for mkdocs import cycle
-
 from mkdocs.plugins import BasePlugin
 from mkdocs.nav import Page, Header
+
+from guild import modelfile
 
 log = logging.getLogger("mkdocs")
 
@@ -162,7 +163,10 @@ class DefIdProcessor(treeprocessors.Treeprocessor):
     def run(self, doc):
         for dt in doc.iter("dt"):
             if dt.text:
-                dt.set("id", slugify(dt.text, "-"))
+                dt.set("id", _slugify(dt.text, "-"))
+
+def _slugify(s):
+    return slugify(s.decode("UTF-8"), "-")
 
 class DefinitionId(Extension):
     """Adds ids to definition terms.
@@ -804,7 +808,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         ctx = CmdHelpContext(cmd_help)
         rendered = self._template.render(cmd=cmd_help, ctx=ctx)
         help_el = etree.fromstring(rendered)
-        self._replace_el(parent, target, help_el)
+        _replace_el(parent, target, help_el)
 
     def _get_cmd_help(self, cmd):
         cmd_help = self._get_cached_cmd_help(cmd)
@@ -846,15 +850,14 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
                 raise
         json.dump(cmd_help, open(path, "w"))
 
-    @staticmethod
-    def _replace_el(parent, target_el, new_el):
-        for i, el in zip(range(len(parent)), parent):
-            if el is target_el:
-                parent.remove(target_el)
-                parent.insert(i, new_el)
-                break
-        else:
-            raise AssertionError()
+def _replace_el(parent, target_el, new_el):
+    for i, el in zip(range(len(parent)), parent):
+        if el is target_el:
+            parent.remove(target_el)
+            parent.insert(i, new_el)
+            break
+    else:
+        raise AssertionError()
 
 class CmdHelp(Extension):
     """Replaces [CMD-HELP <cmd>] with formatted Guild command help.
@@ -867,6 +870,125 @@ class CmdHelp(Extension):
         md.treeprocessors.add(
             "cmd-help",
             CmdHelpProcessor(md, self._src_path),
+            "_end")
+
+class PkgHelpProcessor(treeprocessors.Treeprocessor):
+
+    _marker_re = re.compile(r"\[PKG-HELP (.+?)\]$")
+
+    def __init__(self, md, src_path):
+        super(PkgHelpProcessor, self).__init__(md)
+        self._src_path = src_path
+        env = jinja2.Environment(loader=jinja2.FileSystemLoader("src"))
+        env.filters.update({
+            "slugify": _slugify,
+            "format_desc": self._format_desc,
+            "filter_public": self._filter_public,
+            "format_reference": self._format_reference,
+            "format_resource_source": self._format_resource_source,
+        })
+        self._template = env.get_template("pkg-help.html")
+
+    @staticmethod
+    def _format_desc(desc):
+        if desc and desc[-1] != ".":
+            desc = desc + "."
+        return desc
+
+    @staticmethod
+    def _filter_public(models):
+        return [m for m in models if not m.private]
+
+    @staticmethod
+    def _format_reference(url):
+        patterns = [
+            (r"https://arxiv.org/abs/(.*)$",
+             "arXiv: {}"),
+            (r"https://github.com/([^/]+)/([^/]+)/blob/[^/]+/(.+)$",
+             "GitHub: {}/{}/{}"),
+        ]
+        for pattern, repl in patterns:
+            m = re.match(pattern, url)
+            if m:
+                return repl.format(*m.groups())
+        return url
+
+    def _format_resource_source(self, source):
+        if source.uri.startswith("operation:"):
+            return self._format_op_source(source.uri[10:], source)
+        elif source.uri.startswith("file:"):
+            return self._format_file_source(source.uri[5:])
+        else:
+            return self._format_url_source(source.uri)
+
+    def _format_op_source(self, spec, source):
+        ops = [op.strip() for op in spec.split(",")]
+        if len(ops) == 1:
+            return (
+                '<code class="lit">{}</code> from {} operation'.format(
+                    source.select, self._op_link(ops[0], source)))
+        else:
+            comma_list = ", ".join([
+                self._op_link(op, source) for op in ops[:-1]
+            ])
+            last = self._op_link(ops[-1], source)
+            return (
+                '<code class="lit">{}</code> from {} or {} operations'.format(
+                    source.select, comma_list, last))
+
+    @staticmethod
+    def _op_link(op, source):
+        op_slug = _slugify(op)
+        model_slug = _slugify(source.resdef.modeldef.name)
+        target = "{}-{}".format(model_slug, op_slug)
+        return '<a href="#{}">{}</a>'.format(target, op)
+
+    @staticmethod
+    def _format_file_source(path):
+        return '<code class="lit">{}</code>'.format(path)
+
+    @staticmethod
+    def _format_url_source(url):
+        return '<a href="{0}" class="ext" target="_blank">{0}</a>'.format(url)
+
+    def run(self, root):
+        for el in root:
+            if el.tag == "p":
+                m = self._marker_re.match(el.text or "")
+                if m:
+                    self._handle_pkg(m.group(1), el, root)
+
+    def _handle_pkg(self, path, target, parent):
+        pkg = self._get_pkg(path)
+        models = self._get_models(path)
+        rendered = self._template.render(models=models, pkg=pkg)
+        help_el = etree.fromstring(rendered)
+        _replace_el(parent, target, help_el)
+
+    def _get_models(self, path):
+        return modelfile.from_dir(os.path.join(self._src_path, path))
+
+    def _get_pkg(self, path):
+        pkg_dir = os.path.join(self._src_path, path)
+        try:
+            f = open(os.path.join(pkg_dir, "PACKAGE"))
+        except IOError as e:
+            if e.errno != errno.ENOENT:
+                raise
+            raise AssertionError("no package file in {}".format(pkg_dir))
+        return yaml.load(f)
+
+class PkgHelp(Extension):
+    """Replaces [PKG-HELP <cmd>] with formatted model help.
+    """
+
+    def __init__(self, src_path):
+        self._src_path = src_path
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add(
+            "pkg-help",
+            PkgHelpProcessor(md, self._src_path),
             "_end")
 
 class UrlPattern(inlinepatterns.Pattern):

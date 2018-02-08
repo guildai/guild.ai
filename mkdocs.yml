@@ -38,6 +38,8 @@ markdown_extensions:
   - custom:DeflistToTable
   - custom:CmdHelp:
       src_path: ../guild/guild/commands/
+  - custom:PkgHelp:
+      src_path: ../guild-packages
   - custom:MoveToc
   - custom:FixToc
   - custom:FencedCode
@@ -100,6 +102,11 @@ markdown_extensions:
         - link_pattern: alias:tut-env-setup
           href: /docs/tutorials/#tutorial-virtual-environments
           text: Tutorial virtual environments
+        - link_pattern: alias:tf-model-zoo
+          href: https://github.com/tensorflow/models
+          target: _blank
+          class: ext
+          text: TensorFlow model zoo
 
 pages:
   - index.md
@@ -174,7 +181,9 @@ pages:
       - troubleshooting.md
   - models:
       - models/index.md
-      - models/keras.md
+      - Keras:
+          - models/keras/index.md
+          - models/keras/mnist.md
       - models/magenta.md
       - models/tensorflow.md
       - TF Slim:

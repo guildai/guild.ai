@@ -8,3 +8,6 @@
     - Enabling the deep learning model ecosystem
     - Enabling the TensorFlow model ecosystem
     - Tools to package, discover, and use TensorFlow models
+- [ ] Include version info on footer
+    - Website version (specify in mkdocs.yml)
+    - Guild version (use from guild module)
