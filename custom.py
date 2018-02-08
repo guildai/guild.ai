@@ -949,7 +949,20 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
 
     @staticmethod
     def _format_url_source(url):
-        return '<a href="{0}" class="ext" target="_blank">{0}</a>'.format(url)
+        patterns = [
+            (r"https://raw.githubusercontent.com/([^/]+)/([^/]+)/[^/]+/(.+)$",
+             "https://raw.githubusercontent.com/{}/{}/.../{}"),
+        ]
+        for pattern, repl in patterns:
+            m = re.search(pattern, url)
+            if m:
+                text = repl.format(*m.groups())
+                break
+        else:
+            text = url
+        return (
+            '<a href="{}" class="ext" target="_blank">{}</a>'.format(
+                url, text))
 
     def run(self, root):
         for el in root:

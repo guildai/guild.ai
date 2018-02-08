@@ -1,11 +1,15 @@
 .pkg-help {
 
+  .pkg-attrs {
+    margin: 0 -8px;
+  }
+
   .toc.model {
     margin-top: 20px;
     padding-bottom: 20px;
 
     &:before {
-      content: 'Model links';
+      content: 'Links';
     }
   }
 
@@ -26,9 +30,21 @@
 
     .op-flags {
       margin-top: 20px;
-      padding: 0 10px;
 
       .table-op-flags {
+
+        /*
+        th:first-child,
+        td:first-child {
+          padding-left: 0;
+        }
+
+        th:last-child,
+        td:last-child {
+          padding-right: 0;
+        }
+        */
+
         th {
           font-size: 14px;
         }
@@ -36,10 +52,6 @@
 
       h5 {
         font-size: 16px;
-      }
-
-      p {
-        color: $gray-text-color;
       }
     }
   }

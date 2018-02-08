@@ -1,6 +1,6 @@
 <div class="pkg-help">
 
-  <table class="table dl">
+  <table class="table dl pkg-attrs">
     <tr>
       <th class="dt">Name</th>
       <td class="dd">{{ pkg.name }}</td>
@@ -59,11 +59,10 @@
     <div class="op-desc">{{ op.description|format_desc }}</div>
 
     <div class="op-flags">
-      <h5>Flags</h5>
       {% if op.flags %}
       <table class="table table-op-flags">
         <tr>
-          <th>Name</th>
+          <th>Flag</th>
           <th>Description</th>
           <th>Default</th>
         </tr>
@@ -80,7 +79,7 @@
         {% endfor %}
       </table>
       {% else %}
-      <p>This operation does not have flags.</p>
+      <p>This operation does not have any flags.</p>
       {% endif %}
     </div>
 
