@@ -1,6 +1,8 @@
 title: Models
 navbar_item: yes
-hide_in_pagenav: yes
-hide_pagenav: yes
+pagenav_title: Guild AI models
+pagenav_break: yes
 
-# Guild models
+# Guild AI models
+
+- [Categories](category:/models/#model-category)

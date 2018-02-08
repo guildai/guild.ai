@@ -1,4 +1,3 @@
-hide_in_pagenav: yes
-hide_pagenav: yes
+tags: model-category
 
 # TensorFlow

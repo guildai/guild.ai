@@ -1,5 +1,4 @@
-hide_in_pagenav: yes
-hide_pagenav: yes
+sidenav_title: Overview
 tags: model-category
 
 # TF Slim

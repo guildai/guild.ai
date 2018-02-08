@@ -177,7 +177,9 @@ pages:
       - models/keras.md
       - models/magenta.md
       - models/tensorflow.md
-      - models/tfslim.md
+      - TF Slim:
+          - models/slim/index.md
+          - models/slim/resnet.md
   - support.md
   - faq.md
   - about.md
