@@ -503,7 +503,7 @@ class Link(Extension):
 
 class PagesIndex(object):
 
-    def __init__(self,):
+    def __init__(self):
         assert nav_pages, "nav_resolve plugin is required"
         self._by_tag = {}
         for page in nav_pages:
@@ -767,8 +767,9 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
     _marker_re = re.compile(r"\[CMD-HELP (.+?)\]$")
 
-    def __init__(self, md):
+    def __init__(self, md, src_path):
         super(CmdHelpProcessor, self).__init__(md)
+        self._src_path = src_path
         env = jinja2.Environment(loader=jinja2.FileSystemLoader("src"))
         env.filters.update({
             "format_text": self._format_text_filter,
@@ -831,10 +832,9 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         basename = cmd.replace(" ", "-")
         return "/tmp/guild-ai-cmd-help/{}.json".format(basename)
 
-    @staticmethod
-    def _cmd_source(cmd):
+    def _cmd_source(self, cmd):
         basename = re.sub(r"[ \-]", "_", cmd)
-        return "../guild/guild/commands/{}.py".format(basename)
+        return os.path.join(self._src_path, "{}.py".format(basename))
 
     def _cache_cmd_help(self, cmd, cmd_help):
         path = self._cached_cmd_help_filename(cmd)
@@ -860,8 +860,14 @@ class CmdHelp(Extension):
     """Replaces [CMD-HELP <cmd>] with formatted Guild command help.
     """
 
+    def __init__(self, src_path):
+        self._src_path = src_path
+
     def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add("cmd-help", CmdHelpProcessor(md), "_end")
+        md.treeprocessors.add(
+            "cmd-help",
+            CmdHelpProcessor(md, self._src_path),
+            "_end")
 
 class UrlPattern(inlinepatterns.Pattern):
     """Adapted from markdown-urlize.
