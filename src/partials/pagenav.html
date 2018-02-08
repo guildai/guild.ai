@@ -1,13 +1,13 @@
 {% if not page.meta.hide_pagenav %}
 <ul class="pager">
-  {% if page.previous_page and not page.previous_page.meta.hide_in_pagenav %}
+  {% if not page.meta.pagenav_break and page.previous_page and not page.previous_page.meta.hide_in_pagenav %}
   <li class="previous">
     <a href="{{ page.previous_page.abs_url }}">
       <span>Prev</span> <aside>{{ page.previous_page.meta.pagenav_title or page.previous_page.title }}</aside>
     </a>
   </li>
   {% endif %}
-  {% if page.next_page and not page.next_page.meta.hide_in_pagenav %}
+  {% if page.next_page and not page.next_page.meta.pagenav_break and not page.next_page.meta.hide_in_pagenav %}
   <li class="next">
     <a href="{{ page.next_page.abs_url }}">
       <span>Next</span> <aside>{{ page.next_page.meta.pagenav_title or page.next_page.title }}</aside>
