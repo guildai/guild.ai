@@ -163,7 +163,7 @@ class DefIdProcessor(treeprocessors.Treeprocessor):
     def run(self, doc):
         for dt in doc.iter("dt"):
             if dt.text:
-                dt.set("id", _slugify(dt.text, "-"))
+                dt.set("id", _slugify(dt.text))
 
 def _slugify(s):
     return slugify(s.decode("UTF-8"), "-")

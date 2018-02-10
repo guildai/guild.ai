@@ -81,3 +81,7 @@ pre .language-name {
     opacity: 0;
   }
 }
+
+pre.language-command + pre.language-output {
+  margin-top: -20px;
+}

@@ -316,8 +316,19 @@ in. If the directory contains a model definition, runs will be limited
 to those associated with the locally defined models. If the directory
 does not contain a model definition, all runs are displayed.
 
-
 ## Get run information
+
+Use [runs info](cmd:runs-info) to show information about a run.
+
+By default, Guild shows information about the latest run:
+
+``` command
+guild runs info
+```
+
+You can select a specific run by providing a run ID or index.
+
+XXX
 
 ## Compare runs
 

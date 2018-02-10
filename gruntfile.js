@@ -213,7 +213,7 @@ module.exports = function(grunt) {
         // http://bit.ly/2seV0Pm for details.
         const maxRecord = 10000;
         const titleLocationLen = doc.title.length + doc.location.length;
-        const recordOverhead = 1000; // This has to be this high, not sure why
+        const recordOverhead = 2000; // Fudge factor for keeping size under 1K
         const textSize = maxRecord - titleLocationLen - recordOverhead;
         doc.text = doc.text.slice(0, textSize);
       });

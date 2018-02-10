@@ -4,7 +4,7 @@ docs_dir: pages
 copyright: 2017-2018 TensorHub, Inc.
 extra:
   tagline:
-    Enabling the TensorFlow<sup>&reg;</sup> model ecosystem
+    Enabling the TensorFlow<sup>&trade;</sup> model ecosystem
   subtext:
     Discover, install, and apply state-of-the-art deep learning
     models with a few simple commands.
