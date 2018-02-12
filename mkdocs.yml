@@ -73,6 +73,7 @@ markdown_extensions:
               model: /docs/models/
               model-def: /docs/models/#model-definition
               operation: /docs/operations/
+              operation-alias: /docs/runs/#operation-aliases
               package-file: /docs/reference/package-file/
               package: /docs/packages/
               resource: /docs/resources/
@@ -176,6 +177,7 @@ pages:
           - docs/tutorials/index.md
           - docs/tutorials/train-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
+          - docs/tutorials/training-and-prediction-with-cloudml.md
           - docs/tutorials/guild-from-scratch.md
           - docs/tutorials/working-with-virtualenv.md
       - troubleshooting.md

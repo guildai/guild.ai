@@ -11,3 +11,8 @@
 - [ ] Include version info on footer
     - Website version (specify in mkdocs.yml)
     - Guild version (use from guild module)
+- [ ] Articulate compelling developer features
+    - [ ] Run/experiment tracking
+    - [ ] Compare runs
+    - [ ] Visualize run output and logs
+    - [ ] Augment TensorBoard stats with system metrics
