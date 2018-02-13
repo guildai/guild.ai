@@ -54,6 +54,58 @@ directory. For more information on the advantages and disadvantages of
 this approach, see [Working with
 Virtualenv](/docs/tutorials/working-with-virtualenv/).
 
+### Install Guild AI from source code
+
+!!! note
+    This step is an alternative to installing Guild AI with pip
+    described above. Install Guild AI from source code if you want a
+    specific version from GitHub (e.g. an early release or development
+    branch) or if you want to contribute to the project.
+
+Additional required tools for installing from source code:
+
+- [git ->](https://help.github.com/articles/set-up-git/)
+- [npm ->](https://www.npmjs.com/get-npm)
+
+To install Guild from source, clone the repository by running:
+
+``` command
+git clone https://github.com/guildai/guild.git
+```
+
+Change to the `guild` directory and install the required pip packages:
+
+``` command
+cd guild
+pip install -r requirements.txt
+```
+
+Build Guild by running:
+
+``` command
+python setup.py build
+```
+
+Verify Guild by running:
+
+``` command
+guild/scripts/guild check
+```
+
+If see the message ``NOT INSTALLED (No module named 'tensorflow')``
+that's okay - you'll install TensorFlow in the steps below. If you see
+other errors, please [](alias:open-an-issue) and we'll help!
+
+You can run the `GUILD_SOURCE_DIR/guild/scripts/guild` executable
+directly (where `GUILD_SOURCE_DIR` is the location of your cloned
+Guild AI source repository) or modify your environment to make `guild`
+available on your PATH using one of these methods:
+
+- Add `GUILD_SOURCE_DIR/guild/scripts` directory to your `PATH` environment
+  variable, OR
+- Create a symlink to `GUILD_SOURCE_DIR/guild/scripts/guild` that is
+  available on your PATH
+
 ## Install TensorFlow
 
 Guild requires TensorFlow but does not install it for
