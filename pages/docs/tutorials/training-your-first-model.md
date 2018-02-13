@@ -1,6 +1,6 @@
 tags: tutorial, popular, intro
 
-# Train your first model
+# Training your first model
 
 [TOC]
 

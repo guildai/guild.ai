@@ -175,10 +175,11 @@ pages:
           - docs/reference/guild-home.md
       - Tutorials:
           - docs/tutorials/index.md
-          - docs/tutorials/train-your-first-model.md
+          - docs/tutorials/training-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/training-and-prediction-with-cloudml.md
-          - docs/tutorials/guild-from-scratch.md
+          - docs/tutorials/developing-a-model-from-scratch.md
+          - docs/tutorials/publishing-your-models.md
           - docs/tutorials/working-with-virtualenv.md
       - troubleshooting.md
   - models:
