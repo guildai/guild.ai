@@ -234,6 +234,18 @@ $(function() {
         if (lang == 'command') {
           pre.addClass('command-line');
           pre.attr('data-prompt', '$');
+          // Hack data-output to hide prompt for command line
+          // continuations
+          const preLines = pre.text().split('\n');
+          var outputLines = "";
+          for (var i = 0; i < preLines.length; i++) {
+            if (preLines[i].endsWith('\\')) {
+              outputLines += "," + (i + 2);
+            }
+          }
+          if (outputLines) {
+            pre.attr('data-output', outputLines.slice(1));
+          }
         }
         pre.hover(function() {
           pre.children('span.language-name').toggleClass('out');
