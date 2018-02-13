@@ -341,8 +341,13 @@ our training steps to take advantage of the scaled environment.
 guild run cloudml-train \
   bucket-name=$BUCKET \
   scale-tier=STANDARD_1 \
-  train-steps=100000 \
-  --label scaled-100000
+  train-steps=10000 \
+  --label scaled-10000
 ```
 
-Note that we increased our training steps again by 10x!
+This operation should take less time than our previous run of 10,000
+steps (label `cloud-10000`). You can check the result using Guild Compare:
+
+``` command
+guild compare
+```
