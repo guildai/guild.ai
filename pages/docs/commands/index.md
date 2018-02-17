@@ -51,18 +51,22 @@ guide.
 ### Running commands in a separate console
 
 There are some commands that will not terminate until you explicitly
-stop them by typing `CTRL-c`:
+stop them:
 
+- [](cmd:compare)
 - [](cmd:view)
 - [](cmd:tensorboard)
 
-To run other Guild commands while these are running, run them in a
-separate console. There are various strategies for managing separate
-consoles:
+To run another command while one of these is still running, run the
+new command in a separate console. There are various strategies for
+managing separate consoles:
 
-- Simply open another console/terminal
+- Open another console/terminal
 - Use a console/terminal application that supports multiple tabs
+- Use an integrated developer environment (IDE) that supports running
+  commands in different terminals
 - Use a multiplexer like [tmux ->](https://github.com/tmux/tmux/wiki)
+  (advanced)
 
 ## Command help
 

@@ -8,8 +8,9 @@ In this tutorial, we'll train a model with Google's Cloud Machine
 Learning Engine (Cloud ML) and use the trained model to make
 prediction.
 
-This tutorial mirrors the steps [Cloud ML Engine - Getting Started
-->](https://cloud.google.com/ml-engine/docs/getting-started-training-prediction) and trains
+This tutorial is based on [Cloud ML Engine - Getting Started
+->](https://cloud.google.com/ml-engine/docs/getting-started-training-prediction)
+and follows similar steps.
 
 ## Requirements
 
@@ -57,10 +58,11 @@ Train the model using 1000 steps by running:
 guild train census train-steps=1000
 ```
 
-Before proceeding, Guild lets you review the flags used in the
-run. Press `ENTER` to start training.
+Guild lets you review the flags used in the run before
+proceeding. Press `ENTER` to confirm the operation and start training.
 
-The training should finish on most systems within a minute or two.
+With only 1,000 training steps, the model should be trained on most
+systems in under a minute.
 
 After the run has finished, list it by running:
 
@@ -68,32 +70,46 @@ After the run has finished, list it by running:
 guild runs
 ```
 
+The [](cmd:runs) command is shorthand for [runs list](cmd:runs-list),
+which shows your runs. If you trained other models you'll see those
+runs in the list as well. If you'd like to limit your listing to runs
+associated with the `cloudml-census` model, use:
+
+``` command
+guild runs -o census
+```
+
+This command shows run that have an operation containing the string
+"census". Feel free to experiment with other filters to show only the
+runs you're interested in. Try ``guild runs --help`` for a
+list of filter options.
+
 ## View training results
 
-The training run generates a number of files. We can view them by
+The training run generates a number of files. Let's view them by
 running:
 
 ``` command
 guild runs info --files
 ```
 
-The [runs info](cmd:runs-info) command can be used to view information
-on any run. In this case, it shows information about the latest
-run. The ``--files`` option tells Guild to include file information in
-the output.
+[runs info](cmd:runs-info) is used to view information for a run. By
+default the command shows information for the latest run. The
+``--files`` option tells Guild to include file information in the
+output.
 
-Let's take a look at the files:
+Here's a breakdown of the files associated with our training run:
 
-`census-data/`
-: Link to census data used for training and test
+`census-data/*`
+: Census data used for training and test
 
 `checkpoint`
 : Latest TensorFlow checkpoint marker
 
-`eval_census-eval/events.out.tfevents.*.omaha`
+`eval_census-eval/events.out.tfevents.*`
 : TensorFlow event log generated during evaluation
 
-`events.out.tfevents.*.omaha`
+`events.out.tfevents.*`
 : TensorFlow event log generated during training
 
 `export/census/*/saved_model.pb`
@@ -111,10 +127,20 @@ Let's take a look at the files:
 `model.ckpt-1000.*`
 : TensorFlow checkpoint at training step 1000
 
-`trainer`
+`trainer/`
 : Link to training scripts
 
-We can also use Guild View to view this information. In a
+Run files are stored locally on your system. To view the full path to
+run files, use the ``--full-path`` option:
+
+``` command
+guild runs info --files --full-path
+```
+
+This can be useful if you want to refer to a file from the command
+line (e.g. to copy it, open it, etc.)
+
+Next we'll use Guild View to view our training results. In a
 [](alias:separate-console), run:
 
 ``` command
@@ -125,16 +151,31 @@ This opens a browser window showing you the list of runs for the
 census classifier. You can see the list of files for a run by clicking
 the **FILES** tab.
 
-You can additionally view the TensorFlow logs by clicking ![View in
+If you have runs from other models, you can filter the runs that Guild
+View displays using the ``-o`` option (short for ``--operation``). To
+limit runs for operations containing ``census``, use:
+
+``` command
+guild view -o census
+```
+
+!!! note
+    The [](cmd:view) command will not terminate until you stop it by
+    typing `CTRL-c`. To continue running Guild commands, run Guild
+    View from a separate console.
+
+From Guild View, you can open TensorBoard by clicking ![View in
 TensorBoard](/assets/img/view-in-tensorboard.png) in the upper left of
-Guild View.
+the window.
 
-You can keep these windows open as they will automatically update as
-you generate more runs.
-
-Note the model **accuracy** in TensorBoard, which can be viewed under
+In TensorBoard, note the model **accuracy**, which can be viewed under
 the **SCALARS** tab. The value for our first run should be
 approximately 80%.
+
+You may keep the Guild View and TensorBoard windows open for the
+remainder of this tutorial --- they'll automatically refresh as you
+generate runs. When you no longer need them, close the browser windows
+and stop Guild View by typing `CTRL-c`.
 
 ## Label your run
 
@@ -149,7 +190,7 @@ training steps:
 guild runs label local-1000
 ```
 
-Guild will confirm that you want to label the latest run. Press
+Guild will confirm that you want to label the latest run --- press
 `ENTER` to apply the label.
 
 You can view the new label when you list runs:
@@ -158,84 +199,104 @@ You can view the new label when you list runs:
 guild runs
 ```
 
+!!! tip
+    You can filter runs using their label by running ``guild runs -l
+    LABEL`` where `LABEL` is a label or part of a label to filter
+    on. For example, assuming we consistenly label our local runs
+    using the convention ``local-NNNN``, we could filter them using
+    ``guild runs -l local``.
+
 ## Train the model in Cloud ML
 
-Now that we've trained the model locally, let's train it in Cloud ML.
+Now that we've trained the model locally, let's train it in Cloud ML!
 
-When training in Cloud ML, you need to create a Cloud Storage
-bucket. This will contain the runs generated by Guild.
+When training in Cloud ML, we need a Cloud Storage bucket that you
+have write access to. The bucket is used to store the Cloud ML jobs.
 
-For instructions, see [Set up your Cloud Storage bucket
+For instructions on creating and configuring a bucket, see [Set up
+your Cloud Storage bucket
 ->](https://cloud.google.com/ml-engine/docs/getting-started-training-prediction#set_up_your_cloud_storage_bucket)
 in the Cloud ML Getting Started guide.
 
-We'll use the name of your Cloud Storage bucket several times in this
-tutorial so let's create a variable for it:
+We'll use the name of your Cloud Storage bucket throughout this
+tutorial so let's create a variable for it. Run this command to set
+the name of your bucket:
 
 ``` command
-BUCKET=<name-of-your-cloud-storage-bucket>
+echo -n "Google Cloud Storage bucket name: " && read BUCKET
 ```
 
-Verify that you can use `gsutil` to list the contents of your bucket:
+Verify that you can use `gsutil` to write to the bucket by running:
 
 ``` command
-guild gsutil ls $BUCKET
+echo 'It works!' | gsutil cp - gs://$BUCKET/guild_test \
+ && gsutil cat gs://$BUCKET/guild_test
 ```
 
-If you've successfully setup your bucket and have read access to it,
-the command will list the contents of your bucket.
+If you have write access to `$BUCKET` you should see:
 
-Train the census classifier in Cloud ML by running:
+``` output
+It works!
+```
+
+When you've confirmed that you can write to the Cloud Storage bucket,
+train the census classifier in Cloud ML by running:
 
 ``` command
-guild run census:cloudml-train bucket-name=$BUCKET train-steps=1000
+guild run census:cloudml-train \
+  bucket-name=$BUCKET \
+  train-steps=1000 \
+  --label cloud-1000
 ```
+
+The `cloudml-train` operation is otherwise identical to the `train`
+operation, but it's run remotely on Cloud ML rather than locally. The
+command needs `bucket-name` to know where to create the Cloud ML job.
+
+Note that we included a label for our run using the ``--label``
+option. We'll use this convention throughout the tutorial so we can
+easily idenfity our runs. In this case we're indicating that the run
+is cloud based and uses 1,000 steps.
 
 !!! note
-    In general, operations are run using the [](cmd:run)
-    command. Earlier we used the [](cmd:train) command as an
-    alternative way of running ``guild run train``. The `train`
-    command is an [alias](term:operation-alias) for the `train`
-    operation and can't be used for other operations. Because
-    `cloudml-train` doesn't have an alias, we must use the `run`
-    command.
+    Earlier we used ``guild train census`` to train our model. The
+    [](cmd:train) command is an [alias](term:operation-alias) for the
+    `train` operation so our previous command was equivalent to running
+    ``guild run train:census``. The `cloudml-train` operation doesn't
+    have an alias so we have to use the [](cmd:run) command in this
+    case.
 
-The `cloudml-train` operation is identical to the `train` operation,
-but it is run remotely on Cloud ML rather than locally. You need to
-specify the `bucket-name` flag to let Guild know where to upload the
-training files to.
+The remote operation will take longer to run because Cloud ML first
+provisions a job and waits for TensorFlow to start. This can take up
+to several minutes. You can view the run status as it progresses in
+the console.
 
-The remote operation will take longer to run because Cloud ML must
-first provision a job and wait for TensorFlow to start. This can take
-several minutes or more. You can view the run status as it progresses
-in the command line console. You can also view run status and log
-updates from Guild View and TensorBoard.
+You can also view run status from Guild View, TensorBoard, or Guild
+Compare. When viewing progress from Guild Compare, remember to press
+``r`` to refresh the display.
 
-Guild will automatically synchronize the run status with the remote
-job. This includes generated files such as TensorFlow event logs and
+Guild automatically synchronizes run status with remote jobs. This
+includes downloading generated files such as TensorFlow event logs and
 saved models.
 
-If Guild becomes disconnected from a remote job --- e.g. you terminate
-the command or lose network connectivity --- the job will still run in
-Cloud ML. You can synchornize the run status using the [](cmd:sync)
-command. If you'd like to reconnect to a running job, use the
-``--watch`` option with the command:
-
-``` command
-guild sync --watch
-```
+!!! note
+    If Guild becomes disconnected from a remote job --- for example,
+    you terminate the command by typing `CTRL-c` or lose network
+    connectivity --- the job will continue to run in Cloud ML. You can
+    synchornize run status by running ``guild sync``. If you'd like to
+    reconnect to a running job, run ``guild sync --watch``. For more
+    information, see the [](cmd:sync) command.
 
 Once TensorFlow is started in Cloud ML, the model should train in
-roughly the same time (within a few minutes).
+roughly the same time as it trained locally (within a few minutes).
 
-When the run has finished, let's label it so we can easily identify it
-later:
+When the run has finished, view the list of runs:
 
 ``` command
-guild runs label cloud-1000
+guild runs
 ```
 
-This tells us the model was trained in the cloud using 1000 steps.
+You should see that the run ``cloud-1000`` has completed.
 
 ## Compare runs
 
@@ -243,21 +304,28 @@ Each time you train a new model, you'll want to compare it to previous
 runs. Guild's [](cmd:compare) command can be used to quickly sort and
 compare training accuracies and loss.
 
-Compare your two runs by running:
+Compare your runs by running:
 
 ``` command
 guild compare
 ```
 
-!!! note
-    You don't need to wait for a run to complete to compare
-    it. If a run is still running, you can press ``r`` in Guild
-    Compare to refresh the view with the latest accuracies and loss.
-
-For a complete list of commands supported by Guild Compare, press
-``?`` while it's running.
+Note the accuracy for the two runs --- they should be very
+similar. We'd expect this because we trained the same model with the
+same flags and data --- the only difference between the runs is where
+the training occurred!
 
 To exit Guild Compare, press ``q``.
+
+!!! note
+    As with Guild View, Guild Compare will not exit until you
+    explicitly stop it.  If you want to keep it running, start the
+    command in a [](alias:separate-console) and press ``r`` (for
+    refresh) whenever you want to update the display with the latest
+    run status.
+
+    For a complete list of commands supported by Guild Compare, press
+    ``?`` while it's running.
 
 If you'd like to export the comparison data in [CSV format
 ->](https://en.wikipedia.org/wiki/Comma-separated_values) run:
@@ -266,76 +334,105 @@ If you'd like to export the comparison data in [CSV format
 guild compare --csv
 ```
 
-Next, let's compare run results in TensorBoard. If you still have
-TensorBoard open from earlier, it will automatically refresh to
-display the current training results. If you need to restart Guild
-View, run:
+To save the comparison to a file, use your shell's output redirection:
+
+``` command
+guild compare --csv > census-runs.csv
+```
+
+### Use TensorBoard to compare runs
+
+Let's now compare run results in TensorBoard. If you have TensorBoard
+open from the previous run, it will automatically refresh to display
+the current training results. If you need to restart Guild View, run:
 
 ``` command
 guild view
 ```
 
-Click **VIEW IN TENSORBOARD** to open TensorBoard.
+In Guild View, click **VIEW IN TENSORBOARD** to open TensorBoard.
 
-You can alternatively open TensorBoard directly using the
+You may alternatively open TensorBoard directly using the
 [](cmd:tensorboard) command:
 
 ``` command
 guild tensorboard
 ```
 
-The accuracies from the two runs should be similar, provided you used
-the same value for `train-steps` in both runs.
+!!! tip
+    In TensorBoard, it helps to make two changes when viewing results
+    for census training in this tutorial:
+
+    1. In the left sidebar, uncheck **Ignore outliers in chart scaling**
+    2. In the left sidebar, use the slider to set **Smoothing** to ``0``
+
+    You can also maximize the **accuracy** scalar by clicking
+    ![Maximize button](/assets/img/tb-maximize.png) under the chart.
+
+The values for **accuracy** in TensorBoard correspond to the values
+displayed in Guid Compare. TensorBoard however shows all available
+scalars for selected runs including their values at various stages of
+training.
+
+For a quick high-level summary of run results, use Guild Compare. To
+view run details, use TensorBoard.
 
 ## Improve model accuracy
 
 Let's try to improve the accuracy of the model with more training.
 
-We can train the model again in Cloud ML but this time with more
-training steps. Let's also use the ``--label`` option to label the run
-when we start it:
+Train the model again in Cloud ML, but this time with more steps:
 
 ``` command
-guild run cloudml-train bucket-name=$BUCKET train-steps=10000 --label cloud-10000
+guild run cloudml-train \
+  bucket-name=$BUCKET \
+  train-steps=10000 \
+  --label cloud-10000
 ```
 
-We've increased our training steps from 1,000 to 10,000! While this is
-a 10x increase, the training time in Cloud ML should still be under
-ten minutes.
+This command increases our training steps from 1,000 to 10,000! While
+this is a 10x increase, the training time Cloud ML should not be much
+longer than our previous cloud run.
+
+!!! note
+    The census model trains quickly even with 10,000 steps. The time
+    spent in Cloud ML is largely the setup and teardown of the
+    TensorFlow environment.
 
 You can monitor the training progress using Guild View, Guild Compare
-and TensorBoard.
+or TensorBoard.
 
-As the training proceeds, note the increase in accuracy. 1,000
-training steps should yield an accuracy of about 80%. 10,000 steps
-should yield an accuracy around 84%.
+As the training proceeds, the model accuracy should surpass that of
+the previous two runs.
 
-Use Guild Compare to confirm:
+Let's use Guild Compare to confirm. If Guild Compare is already
+running, press ``r`` to refresh the display. If it's not running,
+start it:
 
 ``` command
 guild compare
 ```
 
-You should see that the run labeled `cloud-10000` (our latest run) has
-a higher accuracy than the other runs, which used a lower `train-step`
-value.
+When you're done comparing the runs, press ``q`` to exit Guild
+Compare.
 
 ## Scale up
 
 Let's take advantage of Cloud ML's ability to scale! We can train our
-model using distributed TensorFlow and multiple workers.
-
-We can use the `scale-tier` flag to specify a different set of
-resources for running our operation.
+model using distributed TensorFlow and multiple workers by setting the
+`scale-tier` flag to a multi-worker tier.
 
 See [Scale Tier
 ->](https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs#scaletier)
 for more information on Cloud ML's supported environments.
 
-By default, our Cloud ML operations use the `BASIC` scale tier, which
-is suitable for smaller models and experimentation. Let's train again
-but this time with the `STANDARD_1` scale tier. We'll also increase
-our training steps to take advantage of the scaled environment.
+By default, Cloud ML operations in Guild AI use the `BASIC` scale
+tier, which is suitable for small models and experimentation. Let's
+train again with the `STANDARD_1` scale tier. We'll use the same
+number of training steps as our previous run (10,000) so we can
+compare the performance of the two runs.
+
+Train with the `STANDARD_1` scale tier and 10,000 steps by running:
 
 ``` command
 guild run cloudml-train \
@@ -346,8 +443,147 @@ guild run cloudml-train \
 ```
 
 This operation should take less time than our previous run of 10,000
-steps (label `cloud-10000`). You can check the result using Guild Compare:
+steps. You can check the result using Guild Compare:
 
 ``` command
 guild compare
 ```
+
+The accuracies of `cloud-10000` and `scaled-10000` should be very
+close. The training time however should be shorter for `scaled-10000`.
+
+!!! note
+    In some cases you won't see much difference in training time
+    between `cloud-10000` and `scaled-10000` --- the scaled run may
+    even be longer! This is due to job setup and teardown
+    overhead. For longer runs, the use of distributed TensorFlow in
+    multi-worker scale tiers should take considerably less time than
+    single worker training.
+
+## Hyperparameter tuning
+
+Cloud ML provides a feature known as *hyperparameter tuning*, which
+can optimize training results by automatically modifying model
+hyperparameters. A hyperparameter is a model setting that can be
+configured with flags. The census model we're training has three
+tunable hyperparameters:
+
+`first-layer-size`
+: Number of nodes in the first layer of the DNN (default is 100)
+
+`layers`
+: Number of layers in the DNN (default is 4)
+
+`scale-factor`
+: How quickly the size of the layers in the DNN decay (default is 0.7)
+
+Up to this point we've training using the default values for each
+flag. But what if we could improve our model's predictive accuracy by
+using different values?
+
+Cloud ML hyperparameter tuning tries different values for us using an
+algorithm that tries to optimize the training result. In this case
+we're interested in predictive accuracy.
+
+For more information see [Overview of Hyperparameter Tuning
+->](https://cloud.google.com/ml-engine/docs/hyperparameter-tuning-overview)
+in the Cloud ML Engine documentation.
+
+Let's see if we can improve our accuracy using Cloud ML hyperparameter
+tuning. We can use our model's `cloudml-hptune` operation for
+this.
+
+!!! important
+    The command below trains the census model 6 times, each time using
+    1,000 steps. If you're concerned about the cost of training on
+    Cloud ML for this operation, feel free to skip it.
+
+Start a hyperparameter tuning run using 1,000 training steps and a
+multi-worker scale tier by running:
+
+``` command
+guild run census:cloudml-hptune \
+  bucket-name=$BUCKET \
+  max-trials=6 \
+  train-steps=1000 \
+  --label tune-1000
+```
+
+This uses the [default tuning configuration
+->](https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/hptuning_config.yaml)
+provided by the `cloudml.census` package and changes the default
+`max-trials` count to 6 from 4. `max-trials` determines how many
+tuning trials are run during the hyperparameter tuning operation.
+
+Each trial run generated in Cloud ML is synchronized as a new Guild
+run, which you can treat like any other run.
+
+As the hyperparameter tuning operation runs, use Guild Compare to view
+the trial results. As each trial is completed, it will appear as a new
+run complete with accuracy and loss. Guild automatically labels trial
+runs so you can identify the run that generated them.
+
+If Guild Compare isn't already running, start it:
+
+``` command
+guild compare
+```
+
+As the trials are completed, press ``r`` in Guild Compare to refresh
+the display and view the trial results. You can compare the
+differences in accuracy and loss and see what hyperparamter values
+were used for each.
+
+!!! note
+    The `cloudml-hptune` itself will not have accuracy or loss. It's
+    job is limited to starting other training runs, which will have
+    accuracy and loss.
+
+!!! tip
+    In Guild Compare, you can sort any column in numeric descending
+    order by moving the cursor to the column and pressing ``1``. This
+    is useful for sorting runs by accuracy to show the most accuracy
+    model at the top of the list. You can sort in ascending order by
+    pressing ``!``, which is useful for ordering runs by loss.
+
+    You must re-order a column after you refresh the display by pressing ``r``.
+
+## Cleanup
+
+Over the course of this tutorial you generated a number of runs and
+Cloud ML jobs. If you no longer need these, you can delete them to
+free up resources.
+
+### Delete unneeded Cloud ML jobs
+
+Use the `gsutil` command to delete any jobs from your Cloud Storage
+bucket that you don't need. To delete all Guild related files, run:
+
+```
+gsutil rm -r gs://$BUCKET/guild_*
+```
+
+### Delete Guild runs
+
+If you ran the tutorials from a virtual environment, you can simply
+delete the virtual environment directory, which will free up all disk
+space used by steps from this tutorial.
+
+!!! important
+    Only delete virtual environments when you're certain you
+    no longer need them.
+
+If you want to only delete runs associated with the `cloudml-census`
+model, which was used in this tutorial, run:
+
+``` command
+guild runs delete -o cloudml-census -p
+```
+
+The ``-p`` option indicates that the delete should be
+*permanent*. This ensures that the runs no longer consume disk space.
+
+## Summary
+
+In this tutorial we worked with Google's Cloud Machine Leaning Engine
+(Cloud ML) to train and deploy a classifier.

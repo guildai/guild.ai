@@ -5,6 +5,7 @@ code, kbd, pre, samp, a.cmd {
   padding: 0;
   letter-spacing: -0.25px;
   font-size: 0.875em;
+  white-space: nowrap;
 }
 
 h1, h2, h3, h4, h5 {
@@ -17,7 +18,7 @@ code.lit {
   color: $code-literal-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
-  padding: 2px 6px;
+  padding: 1px 4px;
   border-radius: 1px;
   white-space: nowrap;
 }

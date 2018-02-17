@@ -38,6 +38,13 @@ Guild will let you confirm the list of runs before deleting them.
 You can later restore a deleted run using (cmd:runs-restpre)[runs
 restore].
 
+## Resources
+
+### If a source is referenced multiple times, does Guild download each occurrence?
+
+No, Guild will only download the source once. There is no performance
+penalty for referencing a resource source multiple times.
+
 ## Troubleshooting
 
 ### How do I know which library version I'm using?

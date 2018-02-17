@@ -6,7 +6,8 @@ tags: guide
 [TOC]
 
 - [Introductory](category:/docs/tutorials/#intro)
-- [Development](category:/docs/tutorials/#developer)
+- [Model development](category:/docs/tutorials/#developer)
+- [Creative](category:/docs/tutorials/#creative)
 - [Tools](category:/docs/tutorials/#tools)
 
 ## Tutorial virtual environments
