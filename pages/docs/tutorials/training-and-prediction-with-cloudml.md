@@ -12,6 +12,12 @@ This tutorial is based on [Cloud ML Engine - Getting Started
 ->](https://cloud.google.com/ml-engine/docs/getting-started-training-prediction)
 and follows similar steps.
 
+!!! important
+    This tutorial uses Cloud ML to train models, which will incur
+    changes to your Google Cloud account. While these charges will be
+    nominal (under $5) if you're concerned about the cost of training
+    in Cloud ML, you may skip any of the `cloudml` operations below.
+
 ## Requirements
 
 This tutorial assumes the following:
@@ -255,15 +261,15 @@ command needs `bucket-name` to know where to create the Cloud ML job.
 
 Note that we included a label for our run using the ``--label``
 option. We'll use this convention throughout the tutorial so we can
-easily idenfity our runs. In this case we're indicating that the run
+easily idenfity our runs. In this case, we're indicating that the run
 is cloud based and uses 1,000 steps.
 
 !!! note
     Earlier we used ``guild train census`` to train our model. The
     [](cmd:train) command is an [alias](term:operation-alias) for the
-    `train` operation so our previous command was equivalent to running
-    ``guild run train:census``. The `cloudml-train` operation doesn't
-    have an alias so we have to use the [](cmd:run) command in this
+    `train` operation, so our previous command was equivalent to running
+    ``guild run census:train``. The `cloudml-train` operation doesn't
+    have an alias, so we have to use the [](cmd:run) command in this
     case.
 
 The remote operation will take longer to run because Cloud ML first
@@ -271,24 +277,20 @@ provisions a job and waits for TensorFlow to start. This can take up
 to several minutes. You can view the run status as it progresses in
 the console.
 
-You can also view run status from Guild View, TensorBoard, or Guild
-Compare. When viewing progress from Guild Compare, remember to press
-``r`` to refresh the display.
+You can also view the run status from Guild View and TensorBoard,
+which will both reflect the latest information.
 
-Guild automatically synchronizes run status with remote jobs. This
-includes downloading generated files such as TensorFlow event logs and
-saved models.
+As the Cloud ML job progresses, Guild automatically synchronizes with
+it. This includes downloading generated files such as TensorFlow event
+logs and saved models as well as updating run status.
 
 !!! note
     If Guild becomes disconnected from a remote job --- for example,
     you terminate the command by typing `CTRL-c` or lose network
     connectivity --- the job will continue to run in Cloud ML. You can
-    synchornize run status by running ``guild sync``. If you'd like to
-    reconnect to a running job, run ``guild sync --watch``. For more
-    information, see the [](cmd:sync) command.
-
-Once TensorFlow is started in Cloud ML, the model should train in
-roughly the same time as it trained locally (within a few minutes).
+    synchornize with the job by running ``guild sync``. If you'd like
+    to reconnect to a running job, run ``guild sync --watch``. For
+    more information, see the [](cmd:sync) command.
 
 When the run has finished, view the list of runs:
 
@@ -300,9 +302,9 @@ You should see that the run ``cloud-1000`` has completed.
 
 ## Compare runs
 
-Each time you train a new model, you'll want to compare it to previous
-runs. Guild's [](cmd:compare) command can be used to quickly sort and
-compare training accuracies and loss.
+Each time you train a new model, you'll want to compare the results to
+those of previous runs. Guild's [](cmd:compare) command can be used to
+quickly sort and compare training accuracies and loss.
 
 Compare your runs by running:
 
@@ -310,19 +312,24 @@ Compare your runs by running:
 guild compare
 ```
 
-Note the accuracy for the two runs --- they should be very
-similar. We'd expect this because we trained the same model with the
-same flags and data --- the only difference between the runs is where
+This command starts Guild Compare, which is a spreadsheet-like
+application that displays run details. You can view run status,
+duration (time), accuracy, loss, and hyperparameters. We'll learn more
+about hyperparameters later in this tutorial.
+
+In Guild Compare, note the accuracy for the two runs --- they should
+be similar. We'd expect this because we trained the same model with
+the same flags and data. The only difference between the runs is where
 the training occurred!
 
-To exit Guild Compare, press ``q``.
+To exit Guild Compare, press ``q`` (quit).
 
 !!! note
-    As with Guild View, Guild Compare will not exit until you
-    explicitly stop it.  If you want to keep it running, start the
-    command in a [](alias:separate-console) and press ``r`` (for
-    refresh) whenever you want to update the display with the latest
-    run status.
+    As with the [](cmd:view) command, [](cmd:compare) will not exit
+    until you explicitly stop it.  If you want to keep it running,
+    start the command in a [](alias:separate-console) and press ``r``
+    (refresh) when you want to update the display with the latest run
+    status.
 
     For a complete list of commands supported by Guild Compare, press
     ``?`` while it's running.
@@ -371,7 +378,7 @@ guild tensorboard
 
 The values for **accuracy** in TensorBoard correspond to the values
 displayed in Guid Compare. TensorBoard however shows all available
-scalars for selected runs including their values at various stages of
+scalars for selected runs, including their values at various stages of
 training.
 
 For a quick high-level summary of run results, use Guild Compare. To
@@ -381,7 +388,8 @@ view run details, use TensorBoard.
 
 Let's try to improve the accuracy of the model with more training.
 
-Train the model again in Cloud ML, but this time with more steps:
+To increase the training steps, set the `train-steps` flag to a higher
+level. We'll use 10,000 steps time:
 
 ``` command
 guild run cloudml-train \
@@ -390,14 +398,13 @@ guild run cloudml-train \
   --label cloud-10000
 ```
 
-This command increases our training steps from 1,000 to 10,000! While
-this is a 10x increase, the training time Cloud ML should not be much
-longer than our previous cloud run.
+While this is a 10x increase, the training time Cloud ML should not be
+much longer than our previous cloud run.
 
 !!! note
     The census model trains quickly even with 10,000 steps. The time
-    spent in Cloud ML is largely the setup and teardown of the
-    TensorFlow environment.
+    spent in Cloud ML for fast training models like `census` is
+    primarily the setup and teardown of the Cloud ML job.
 
 You can monitor the training progress using Guild View, Guild Compare
 or TensorBoard.
@@ -443,27 +450,29 @@ guild run cloudml-train \
 ```
 
 This operation should take less time than our previous run of 10,000
-steps. You can check the result using Guild Compare:
+steps, though it may in some cases take longer (see note below). You
+can check the result using Guild Compare:
 
 ``` command
 guild compare
 ```
 
 The accuracies of `cloud-10000` and `scaled-10000` should be very
-close. The training time however should be shorter for `scaled-10000`.
+close since the model was trained with the same number of steps, flag
+values, and data.
 
 !!! note
     In some cases you won't see much difference in training time
-    between `cloud-10000` and `scaled-10000` --- the scaled run may
-    even be longer! This is due to job setup and teardown
-    overhead. For longer runs, the use of distributed TensorFlow in
-    multi-worker scale tiers should take considerably less time than
-    single worker training.
+    between `cloud-10000` and `scaled-10000` or the scaled run may
+    even be longer! This is due to job setup and teardown overhead,
+    which can add several minutes to a run. For longer training runs,
+    the use of distributed TensorFlow in multi-worker scale tiers
+    can take considerably less time than single worker training.
 
 ## Hyperparameter tuning
 
-Cloud ML provides a feature known as *hyperparameter tuning*, which
-can optimize training results by automatically modifying model
+Cloud ML provides a feature called *hyperparameter tuning*, which can
+optimize training results by automatically modifying model
 hyperparameters. A hyperparameter is a model setting that can be
 configured with flags. The census model we're training has three
 tunable hyperparameters:
@@ -482,48 +491,51 @@ flag. But what if we could improve our model's predictive accuracy by
 using different values?
 
 Cloud ML hyperparameter tuning tries different values for us using an
-algorithm that tries to optimize the training result. In this case
-we're interested in predictive accuracy.
+algorithm that attempts to optimize the training result. In this case
+we want to maximize predictive accuracy.
 
 For more information see [Overview of Hyperparameter Tuning
 ->](https://cloud.google.com/ml-engine/docs/hyperparameter-tuning-overview)
 in the Cloud ML Engine documentation.
 
-Let's see if we can improve our accuracy using Cloud ML hyperparameter
-tuning. We can use our model's `cloudml-hptune` operation for
-this.
+Let's see if we can improve model accuracy accuracy using Cloud ML
+hyperparameter tuning. We can use our model's `cloudml-hptune`
+operation for this.
 
 !!! important
     The command below trains the census model 6 times, each time using
-    1,000 steps. If you're concerned about the cost of training on
-    Cloud ML for this operation, feel free to skip it.
+    10,000 steps. While this is still a relatively low cost training
+    run, if you're concerned about the cost of this operation, you may
+    skip this command.
 
-Start a hyperparameter tuning run using 1,000 training steps and a
-multi-worker scale tier by running:
+Start a hyperparameter tuning run with 6 trials of 10,000 training
+steps each by running:
 
 ``` command
 guild run census:cloudml-hptune \
   bucket-name=$BUCKET \
   max-trials=6 \
-  train-steps=1000 \
-  --label tune-1000
+  train-steps=10000 \
+  --label tune-6x-10000
 ```
 
 This uses the [default tuning configuration
 ->](https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/hptuning_config.yaml)
 provided by the `cloudml.census` package and changes the default
-`max-trials` count to 6 from 4. `max-trials` determines how many
-tuning trials are run during the hyperparameter tuning operation.
+`max-trials` count to 6 from 4. The `max-trials` flag determines how
+many trials are run during the hyperparameter tuning operation.
 
 Each trial run generated in Cloud ML is synchronized as a new Guild
 run, which you can treat like any other run.
 
-As the hyperparameter tuning operation runs, use Guild Compare to view
-the trial results. As each trial is completed, it will appear as a new
-run complete with accuracy and loss. Guild automatically labels trial
-runs so you can identify the run that generated them.
+As the hyperparameter tuning operation progresses, use Guild Compare
+to view the trial results. As each trial is completed, it will appear
+as a new run with its own accuracy and loss. Guild automatically
+labels trial runs so you can identify the tuning run that generated
+them.
 
-If Guild Compare isn't already running, start it:
+To view trial run results while the tuning operation is running, start
+Guild Compare in a [](alias:separate-console) by running:
 
 ``` command
 guild compare
@@ -532,21 +544,21 @@ guild compare
 As the trials are completed, press ``r`` in Guild Compare to refresh
 the display and view the trial results. You can compare the
 differences in accuracy and loss and see what hyperparamter values
-were used for each.
+were used for each result.
 
 !!! note
     The `cloudml-hptune` itself will not have accuracy or loss. It's
-    job is limited to starting other training runs, which will have
-    accuracy and loss.
+    job is limited to starting other training runs (trials), which do
+    have accuracy and loss.
 
 !!! tip
     In Guild Compare, you can sort any column in numeric descending
     order by moving the cursor to the column and pressing ``1``. This
-    is useful for sorting runs by accuracy to show the most accuracy
-    model at the top of the list. You can sort in ascending order by
-    pressing ``!``, which is useful for ordering runs by loss.
+    is useful for sorting runs by accuracy --- the most accuracy model
+    will appear at the top of the list. You can sort in ascending
+    order by pressing ``!``. This is useful for sorting runs by loss,
 
-    You must re-order a column after you refresh the display by pressing ``r``.
+    Note that you must re-order a column after you refresh the display.
 
 ## Cleanup
 

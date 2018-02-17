@@ -178,6 +178,7 @@ pages:
           - docs/tutorials/training-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/training-and-prediction-with-cloudml.md
+          - docs/tutorials/training-a-keras-model.md
           - docs/tutorials/developing-a-model-from-scratch.md
           - docs/tutorials/publishing-your-models.md
           - docs/tutorials/publishing-someone-elses-models.md
