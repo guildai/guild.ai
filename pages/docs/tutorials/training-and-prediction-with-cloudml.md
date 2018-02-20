@@ -250,14 +250,14 @@ train the census classifier in Cloud ML by running:
 
 ``` command
 guild run census:cloudml-train \
-  bucket-name=$BUCKET \
+  bucket=$BUCKET \
   train-steps=1000 \
   --label cloud-1000
 ```
 
 The `cloudml-train` operation is otherwise identical to the `train`
 operation, but it's run remotely on Cloud ML rather than locally. The
-command needs `bucket-name` to know where to create the Cloud ML job.
+command needs `bucket` to know where to create the Cloud ML job.
 
 Note that we included a label for our run using the ``--label``
 option. We'll use this convention throughout the tutorial so we can
@@ -393,7 +393,7 @@ level. We'll use 10,000 steps time:
 
 ``` command
 guild run cloudml-train \
-  bucket-name=$BUCKET \
+  bucket=$BUCKET \
   train-steps=10000 \
   --label cloud-10000
 ```
@@ -443,7 +443,7 @@ Train with the `STANDARD_1` scale tier and 10,000 steps by running:
 
 ``` command
 guild run cloudml-train \
-  bucket-name=$BUCKET \
+  bucket=$BUCKET \
   scale-tier=STANDARD_1 \
   train-steps=10000 \
   --label scaled-10000
@@ -513,7 +513,7 @@ steps each by running:
 
 ``` command
 guild run census:cloudml-hptune \
-  bucket-name=$BUCKET \
+  bucket=$BUCKET \
   max-trials=6 \
   train-steps=10000 \
   --label tune-6x-10000
@@ -560,10 +560,100 @@ were used for each result.
 
     Note that you must re-order a column after you refresh the display.
 
+## Deploy a model
+
+We've trained a number of models and have compared them using Guild
+Compare. Next we'll deploy one of these models to production so we can
+use it to make predictions.
+
+Using Guild Compare, select the run with the highest accuracy. You may
+sort runs by accuracy by moving the cursor to the **accuracy** column
+and pressing ``1``. This will reorder the runs, displaying the most
+accurate run first. Note the run's ID (from the **run** column on the
+far left). We'll use this ID when deploying the generated model.
+
+Exit Guild Compare by pressing ``q``.
+
+Let's define a variable for the run you want to deploy:
+
+``` command
+echo -n "Run ID to deploy: " && read DEPLOY_RUN
+```
+
+When prompted, enter the run ID you'd like to deploy (e.g. the run
+with the highest accuracy).
+
+!!! note
+    When specifying run IDs in Guild, you don't have to provide
+    the entire run ID --- you may use a run ID prefix as long as it's
+    unique. Usually the first few characters is enough to identify a
+    run.
+
+Take a moment to verify that the specified run is the one you'd like
+to deploy. You can confirm the accuracy for `DEPLOY_RUN` by running:
+
+``` command
+guild compare $DEPLOY_RUN --table
+```
+
+You should only see the run you want to deploy in the table.
+
+Deploy the model for your selected run using the `cloudml-deploy`
+operation:
+
+``` command
+guild run cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
+```
+
+This will create a model in Cloud ML named ``census_dnn`` if one
+doesn't already exist. This name is generated using the deployed model
+name ``census-dnn``. Cloud ML doesn't allow certain characters in
+model names such as ``-`` and Guild replaces these with an underscore
+(``_``). If you want to specify a different model name, use the
+`model` flag when running the `cloudml-deploy` operation.
+
+After ensuring that a Cloud ML model exists, Guild creates a model
+version. This deploys the trained model to Cloud ML. By default, Guild
+uses a version containing the deployment timestamp. If you want to
+specify a different version, use the `version` flag when running the
+`cloudml-deploy` operation.
+
+For a complete description of model deployment in Cloud ML, see
+[Deploying Models
+->](https://cloud.google.com/ml-engine/docs/deploying-models) Cloud ML
+how-to guide.
+
+Verify the depoyed model by running:
+
+``` command
+gcloud ml-engine models list
+```
+
+You should see the `census_dnn` model and its associated version.
+
+!!! note
+    Guild does not provide a complete interface for managing deployed
+    Cloud ML models. For a details on Cloud ML models and versions,
+    see [gcloud ml-engine
+    ->](https://cloud.google.com/sdk/gcloud/reference/ml-engine/)
+    command line reference.
+
+With a deployed version, we can now use the trained model to make
+predictions!
+
+## Use a deployed model to make predictions
+
+In our final tutorial segment, we'll use our recently deployed model
+to make predictions!
+
+``` command
+guild run cloudml-predict xxx
+```
+
 ## Cleanup
 
-Over the course of this tutorial you generated a number of runs and
-Cloud ML jobs. If you no longer need these, you can delete them to
+Over the course of this tutorial we generated a number of runs and
+Cloud ML jobs. If you no longer need these, you may delete them to
 free up resources.
 
 ### Delete unneeded Cloud ML jobs
@@ -593,7 +683,11 @@ guild runs delete -o cloudml-census -p
 ```
 
 The ``-p`` option indicates that the delete should be
-*permanent*. This ensures that the runs no longer consume disk space.
+*permanent*. This ensures that the runs no longer consume disk
+space. Omit this option if you want to retain the ability to restore
+them at a later time. Note that disk space will not be freed up for
+these jobs until you premanently delete them (see the [](cmd:purge)
+command).
 
 ## Summary
 
