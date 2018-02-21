@@ -183,6 +183,7 @@ pages:
           - docs/tutorials/publishing-your-models.md
           - docs/tutorials/publishing-someone-elses-models.md
           - docs/tutorials/stylizing-images-with-magenta.md
+          - docs/tutorials/creating-a-custom-dataset.md
           - docs/tutorials/working-with-virtualenv.md
       - troubleshooting.md
   - models:

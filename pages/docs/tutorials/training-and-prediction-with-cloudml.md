@@ -16,7 +16,8 @@ and follows similar steps.
     This tutorial uses Cloud ML to train models, which will incur
     changes to your Google Cloud account. While these charges will be
     nominal (under $5) if you're concerned about the cost of training
-    in Cloud ML, you may skip any of the `cloudml` operations below.
+    in Cloud ML, feel free to skip any of the `cloudml` operations
+    below.
 
 ## Requirements
 
@@ -167,7 +168,7 @@ guild view -o census
 
 !!! note
     The [](cmd:view) command will not terminate until you stop it by
-    typing `CTRL-c`. To continue running Guild commands, run Guild
+    typing ``Ctrl-C``. To continue running Guild commands, run Guild
     View from a separate console.
 
 From Guild View, you can open TensorBoard by clicking ![View in
@@ -181,7 +182,7 @@ approximately 80%.
 You may keep the Guild View and TensorBoard windows open for the
 remainder of this tutorial --- they'll automatically refresh as you
 generate runs. When you no longer need them, close the browser windows
-and stop Guild View by typing `CTRL-c`.
+and stop Guild View by typing ``Ctrl-C``.
 
 ## Label your run
 
@@ -286,7 +287,7 @@ logs and saved models as well as updating run status.
 
 !!! note
     If Guild becomes disconnected from a remote job --- for example,
-    you terminate the command by typing `CTRL-c` or lose network
+    you terminate the command by typing ``Ctrl-C`` or lose network
     connectivity --- the job will continue to run in Cloud ML. You can
     synchornize with the job by running ``guild sync``. If you'd like
     to reconnect to a running job, run ``guild sync --watch``. For
@@ -313,9 +314,9 @@ guild compare
 ```
 
 This command starts Guild Compare, which is a spreadsheet-like
-application that displays run details. You can view run status,
-duration (time), accuracy, loss, and hyperparameters. We'll learn more
-about hyperparameters later in this tutorial.
+application that displays run details. You can view run status, time,
+accuracy, loss, and hyperparameters. We'll learn more about
+hyperparameters later in this tutorial.
 
 In Guild Compare, note the accuracy for the two runs --- they should
 be similar. We'd expect this because we trained the same model with
@@ -327,12 +328,12 @@ To exit Guild Compare, press ``q`` (quit).
 !!! note
     As with the [](cmd:view) command, [](cmd:compare) will not exit
     until you explicitly stop it.  If you want to keep it running,
-    start the command in a [](alias:separate-console) and press ``r``
-    (refresh) when you want to update the display with the latest run
-    status.
+    start the command in a [](alias:separate-console). Press ``r``
+    (refresh) whenever you want to update the display with the latest
+    run status.
 
     For a complete list of commands supported by Guild Compare, press
-    ``?`` while it's running.
+    ``?`` while running Guild Compare.
 
 If you'd like to export the comparison data in [CSV format
 ->](https://en.wikipedia.org/wiki/Comma-separated_values) run:
@@ -389,7 +390,7 @@ view run details, use TensorBoard.
 Let's try to improve the accuracy of the model with more training.
 
 To increase the training steps, set the `train-steps` flag to a higher
-level. We'll use 10,000 steps time:
+level. We'll use 10,000 steps this time:
 
 ``` command
 guild run cloudml-train \
@@ -420,8 +421,9 @@ start it:
 guild compare
 ```
 
-When you're done comparing the runs, press ``q`` to exit Guild
-Compare.
+Note the accuacy of the newly trained model --- it should be a few
+percentage points higher than the other two! When you're done
+comparing, press ``q`` to exit Guild Compare.
 
 ## Scale up
 
@@ -434,12 +436,12 @@ See [Scale Tier
 for more information on Cloud ML's supported environments.
 
 By default, Cloud ML operations in Guild AI use the `BASIC` scale
-tier, which is suitable for small models and experimentation. Let's
-train again with the `STANDARD_1` scale tier. We'll use the same
-number of training steps as our previous run (10,000) so we can
-compare the performance of the two runs.
+tier, which is suitable for small models and experimentation. We can
+alternatively use the `STANDARD_1` scale tier, which uses multiple
+workers to train the model in parallel.
 
-Train with the `STANDARD_1` scale tier and 10,000 steps by running:
+Train the model again using 10,000 steps, but this time on the
+`STANDARD_1` scale tier:
 
 ``` command
 guild run cloudml-train \
@@ -449,25 +451,27 @@ guild run cloudml-train \
   --label scaled-10000
 ```
 
-This operation should take less time than our previous run of 10,000
-steps, though it may in some cases take longer (see note below). You
-can check the result using Guild Compare:
+This operation will take a similar amount of time as the previous
+operation, despite being run on a higher scale tier. This is because
+the job setup and teardown overhead dominates the overall operation
+time.
+
+We can use TensorBoard to view the time spent in training. If
+TensorBoard isn't already running, you can start it directly by
+running the following in a [](alias:separate-console):
 
 ``` command
-guild compare
+guild tensorboard
 ```
 
-The accuracies of `cloud-10000` and `scaled-10000` should be very
-close since the model was trained with the same number of steps, flag
-values, and data.
+In TensorBoard, in the left sidebar under **Horizontal Axis**, click
+**RELATIVE**. This will plot scalars using their relative times along
+the horizontal axis. This is useful for viewing time spent actually
+training as it does not include job setup and teardown time.
 
-!!! note
-    In some cases you won't see much difference in training time
-    between `cloud-10000` and `scaled-10000` or the scaled run may
-    even be longer! This is due to job setup and teardown overhead,
-    which can add several minutes to a run. For longer training runs,
-    the use of distributed TensorFlow in multi-worker scale tiers
-    can take considerably less time than single worker training.
+Note the relative times between the last two runs. Our latest run,
+which used a higher scale tier, should be noticeably faster for the
+same number of steps.
 
 ## Hyperparameter tuning
 
@@ -503,10 +507,10 @@ hyperparameter tuning. We can use our model's `cloudml-hptune`
 operation for this.
 
 !!! important
-    The command below trains the census model 6 times, each time using
-    10,000 steps. While this is still a relatively low cost training
-    run, if you're concerned about the cost of this operation, you may
-    skip this command.
+    The command below trains the census model 6 times, each
+    time using 10,000 steps. While this is still a relatively low cost
+    training run, if you're concerned about the cost of this
+    operation, feel free to skip this command.
 
 Start a hyperparameter tuning run with 6 trials of 10,000 training
 steps each by running:
@@ -522,17 +526,16 @@ guild run census:cloudml-hptune \
 This uses the [default tuning configuration
 ->](https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/hptuning_config.yaml)
 provided by the `cloudml.census` package and changes the default
-`max-trials` count to 6 from 4. The `max-trials` flag determines how
-many trials are run during the hyperparameter tuning operation.
+`max-trials` count to 6 from 4. The `max-trials` flag determines how many
+trials are run during the hyperparameter tuning operation.
 
-Each trial run generated in Cloud ML is synchronized as a new Guild
-run, which you can treat like any other run.
+Each trial in Cloud ML is synchronized as a new Guild run, which you
+can treat like any other run.
 
-As the hyperparameter tuning operation progresses, use Guild Compare
-to view the trial results. As each trial is completed, it will appear
-as a new run with its own accuracy and loss. Guild automatically
-labels trial runs so you can identify the tuning run that generated
-them.
+As hyperparameter tuning progresses, use Guild Compare to view the
+trial results. As each trial is completed, it will appear as a new run
+with its own accuracy and loss. Guild automatically labels trial runs
+so you can identify the tuning run that generated them.
 
 To view trial run results while the tuning operation is running, start
 Guild Compare in a [](alias:separate-console) by running:
@@ -543,38 +546,40 @@ guild compare
 
 As the trials are completed, press ``r`` in Guild Compare to refresh
 the display and view the trial results. You can compare the
-differences in accuracy and loss and see what hyperparamter values
-were used for each result.
+differences in accuracy and loss to see what hyperparamter values
+provide the best result.
 
 !!! note
     The `cloudml-hptune` itself will not have accuracy or loss. It's
-    job is limited to starting other training runs (trials), which do
-    have accuracy and loss.
+    job is limited to starting training run trials, which do have
+    accuracy and loss.
 
 !!! tip
     In Guild Compare, you can sort any column in numeric descending
     order by moving the cursor to the column and pressing ``1``. This
     is useful for sorting runs by accuracy --- the most accuracy model
     will appear at the top of the list. You can sort in ascending
-    order by pressing ``!``. This is useful for sorting runs by loss,
+    order by pressing ``!``. This is useful for sorting runs by loss.
 
     Note that you must re-order a column after you refresh the display.
 
+Wait for the hyperparameter tuning operation to finish. In the next
+section we'll deploy the trial that has the highest accuracy.
+
 ## Deploy a model
 
-We've trained a number of models and have compared them using Guild
-Compare. Next we'll deploy one of these models to production so we can
-use it to make predictions.
+Now that we've tuned our hyperparameters to find an optimal model (at
+least within the six trials that we ran) it's time to deploy a model!
 
 Using Guild Compare, select the run with the highest accuracy. You may
 sort runs by accuracy by moving the cursor to the **accuracy** column
 and pressing ``1``. This will reorder the runs, displaying the most
-accurate run first. Note the run's ID (from the **run** column on the
-far left). We'll use this ID when deploying the generated model.
+accurate run first. Note its run ID (from the **run** column on the
+far left) -- we'll use this ID for deployment.
 
 Exit Guild Compare by pressing ``q``.
 
-Let's define a variable for the run you want to deploy:
+Define a variable `DEPLOY_RUN` with the run ID you selected:
 
 ``` command
 echo -n "Run ID to deploy: " && read DEPLOY_RUN
@@ -589,17 +594,18 @@ with the highest accuracy).
     unique. Usually the first few characters is enough to identify a
     run.
 
-Take a moment to verify that the specified run is the one you'd like
-to deploy. You can confirm the accuracy for `DEPLOY_RUN` by running:
+Verify that the specified run is the one you'd like to deploy. You can
+confirm the accuracy for `DEPLOY_RUN` by running:
 
 ``` command
 guild compare $DEPLOY_RUN --table
 ```
 
-You should only see the run you want to deploy in the table.
+The table should contain a single run. If it contains a run other than
+the one you want to deploy, re-enter the run ID using the step above.
 
-Deploy the model for your selected run using the `cloudml-deploy`
-operation:
+When you're ready, deploy the model for your selected run using the
+`cloudml-deploy` operation:
 
 ``` command
 guild run cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
@@ -608,47 +614,224 @@ guild run cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
 This will create a model in Cloud ML named ``census_dnn`` if one
 doesn't already exist. This name is generated using the deployed model
 name ``census-dnn``. Cloud ML doesn't allow certain characters in
-model names such as ``-`` and Guild replaces these with an underscore
+model names (e.g. ``-``) and Guild replaces these with an underscore
 (``_``). If you want to specify a different model name, use the
 `model` flag when running the `cloudml-deploy` operation.
 
 After ensuring that a Cloud ML model exists, Guild creates a model
-version. This deploys the trained model to Cloud ML. By default, Guild
-uses a version containing the deployment timestamp. If you want to
+*version*. This deploys the trained model to Cloud ML. By default,
+Guild uses a version containing the deployment run ID. If you want to
 specify a different version, use the `version` flag when running the
 `cloudml-deploy` operation.
 
-For a complete description of model deployment in Cloud ML, see
-[Deploying Models
-->](https://cloud.google.com/ml-engine/docs/deploying-models) Cloud ML
-how-to guide.
+For more information on model deployment in Cloud ML, see:
 
-Verify the depoyed model by running:
+- [Prediction Basics - Model deployment
+  ->](https://cloud.google.com/ml-engine/docs/prediction-overview#model_deployment)
+  Cloud ML concepts
+- [Deploying Models
+  ->](https://cloud.google.com/ml-engine/docs/deploying-models) Cloud
+  ML how-to guide
+
+Verify the deployed model and its version by running:
 
 ``` command
-gcloud ml-engine models list
+gcloud ml-engine versions list --model census_dnn
 ```
 
-You should see the `census_dnn` model and its associated version.
+You should see the newly deployed `census_dnn` model version.
 
 !!! note
     Guild does not provide a complete interface for managing deployed
-    Cloud ML models. For a details on Cloud ML models and versions,
-    see [gcloud ml-engine
+    Cloud ML models and versions. For a details on Cloud ML models and
+    versions, see [gcloud ml-engine
     ->](https://cloud.google.com/sdk/gcloud/reference/ml-engine/)
     command line reference.
 
-With a deployed version, we can now use the trained model to make
-predictions!
+List your current runs:
+
+``` command
+guild runs
+```
+
+Note the latest run --- it will be for the `cloudml-deploy` operation
+and have a label that contains the deployed model run ID. Deployments
+are like any other operation in Guild.
+
+Let's examine the `cloudml-deploy` run:
+
+``` command
+guild runs info
+```
+
+Note the following attributes in the output:
+
+`cloudml_model_name`
+: Name of the deployed Cloud ML model
+
+`cloudml_model_version`
+: Version of the deployed Cloud ML model
+
+`cloudml_model_binaries`
+: Google Cloud Storage location of the deployed model binaries
+
+`trained_model_run`
+: Run ID of the deployed trained model
+
+This information can be used to verify a deployment and is retained as
+an artifact of the deploy operation. In the next section, we'll see
+how this information is used to run predictions.
 
 ## Use a deployed model to make predictions
 
 In our final tutorial segment, we'll use our recently deployed model
 to make predictions!
 
+Cloud ML makes predictions by running the inference operation of
+deployed model with new data. Data are provided as one or more
+*instances*, each corresponding to a prediction that will be made
+using the trained model. You may provide instances as JSON or plain
+text format.
+
+For details on how Cloud ML makes predictions, see [Prediction Basics
+->](https://cloud.google.com/ml-engine/docs/prediction-overview) in
+Cloud ML concepts.
+
+Cloud ML can make predictions in two ways: *online* and
+*batch*. Online predictions are made immediately and returned in the
+operation result. Batch predictions are submitted to Cloud ML as a job
+that runs in the background, similar to training. When a batched
+prediction job is completed, predictions are written to a file in the
+job directory.
+
+In general, online prediction is faster if you have a small number of
+predictions to make while batch processing is faster when you need to
+make a large number of predictions. The specific performance
+characteristics will vary across models. Refer to [Online prediction
+versus batch prediction
+->](https://cloud.google.com/ml-engine/docs/prediction-overview#online_prediction_versus_batch_prediction)
+in Cloud ML Prediction Basics for more information.
+
+We'll use both techniques to see how each works.
+
+### Online prediction
+
+First, let's run an online prediction:
+
 ``` command
-guild run cloudml-predict xxx
+guild run cloudml-predict
 ```
+
+Guild will prompt you before running the operation. Press `ENTER` to
+run the operation.
+
+The prediction is made using the latest deployed version of the
+`census-dnn` model (`census_dnn` in Cloud ML). The model package
+provides sample inputs to make the prediction. You can specify your
+own using the `instances` flags.
+
+To experiment with your own inputs, download the [census prediction
+samples
+->](https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/prediction-samples.json)
+and make changes accordingly. Assuming your samples is named
+`census-inputs.json` and is located in the current directory, you can
+run a `cloudml-predict` operation using:
+
+```
+guild run cloudml-predict instances=census-inputs.json
+```
+
+For online prediction, the results are printed to the
+console. However, they are also saved as a file in the run
+directory. Let's take a look!
+
+If Guild View isn't already running, start it in a
+[](alias:separate-console) by running:
+
+``` command
+guild view
+```
+
+In Guild View, select the latest run --- it should be a
+`cloudml-predict` operation --- and click the **FILES** tab. The run
+will have two files:
+
+`prediction.inputs`
+: The inputs used in the prediction
+
+`prediction.results`
+: The prediction results
+
+Click on **`prediction.results`** to see how the instances were
+classified by the deployed model. The values correspond to the inputs
+provided in `prediction.inputs`. Click the **NEXT** button to view the
+contents of `prediction.inputs`.
+
+!!! tip
+    Guild View can be used to view the contents of some files:
+    text files, images, and audio. Look for a grey button background
+    on the file name, which can be clicked to open the file.
+
+As you can see, the `cloudml-predict` operation generates a run like
+other operations. In this case the run contains information about the
+model version used to make the prediction along with the prediction
+inputs and outputs.
+
+### Batch prediction
+
+In the previous section we performed an *online* prediction that
+returned the result immediately. In this section we'll use *batch*
+prediction. Batch prediction runs on Cloud ML as a job.
+
+We use the `cloudml-batch-predict` operation to start a prediction
+job. Start a batch prediction job by running:
+
+``` command
+guild run cloudml-batch-predict bucket=$BUCKET
+```
+
+This will use the sample prediction inputs as before. We need to
+specify `bucket` to tell Guild where to create the job.
+
+The job will take some time to complete. When finished, it will hsave
+generated a file named `prediction.results-00000-of-00001`, which you
+can view in Guild View, or inspect from the command line.
+
+When the operation has finished, view the generated files by running:
+
+``` command
+guild runs info --files --full-path
+```
+
+The ``--full-path`` option is used to show the full path to
+`prediction.results-00000-of-00001`, which you can use to copy or view
+the file.
+
+You may use online or batch predictions as needed to use your deployed
+models in Cloud ML!
+
+## Summary
+
+In this tutorial we worked with Google's Cloud Machine Leaning Engine
+(Cloud ML) to train and deploy a classifier.
+
+We covered a number of topics:
+
+- Train a model locally to sanity-check our results and then train in
+  Cloud ML to scale up
+
+- Use hyperparameter tuning in Cloud ML to optimize our predictive
+  accuracy with a set of hyperparameter values
+
+- Evaluate runs using Guild View, Guild Compare, and TensorBoard
+
+- Select an optimized model and deploy it to Cloud ML
+
+- Use a model deployed in Cloud ML to make predictions using new data
+
+Guild AI models and their operations encapsulate the complexities of
+this process, letting you focus on the high level workflow and get
+your work done faster!
 
 ## Cleanup
 
@@ -658,11 +841,36 @@ free up resources.
 
 ### Delete unneeded Cloud ML jobs
 
-Use the `gsutil` command to delete any jobs from your Cloud Storage
+Use the `gsutil` program to delete any jobs from your Cloud Storage
 bucket that you don't need. To delete all Guild related files, run:
 
-```
+``` command
 gsutil rm -r gs://$BUCKET/guild_*
+```
+
+### Delete unneeded Cloud ML model versions
+
+Use the `gcloud` program to delete any model versions you don't need.
+
+First, list the model versions:
+
+``` command
+gcloud ml-engine versions list --model census_dnn
+```
+
+For each version that you want to delete, run:
+
+``` command
+gcloud ml-engine versions delete --model census_dnn VERSION
+```
+
+where `VERSION` is the model version you want to delete.
+
+If you no longer need the model, you may delete it provided there are
+no versions associated with it:
+
+``` commamd
+gcloud ml-engine models delete census_dnn
 ```
 
 ### Delete Guild runs
@@ -689,7 +897,20 @@ them at a later time. Note that disk space will not be freed up for
 these jobs until you premanently delete them (see the [](cmd:purge)
 command).
 
-## Summary
+Finally, if you deleted any runs without using the ``-p`` option and
+you want to free up disk space consumed by them, you can can
+permanently delete them by running:
 
-In this tutorial we worked with Google's Cloud Machine Leaning Engine
-(Cloud ML) to train and deploy a classifier.
+``` command
+guild runs purge
+```
+
+!!! important
+    Review the list of runs carefully before permanently deleting
+    them!
+
+## Next steps
+
+- Read [Cloud ML Engine - Getting Started
+  ->](https://cloud.google.com/ml-engine/docs/getting-started-training-prediction)
+  to view the same workflow using lower-level Cloud ML commands
