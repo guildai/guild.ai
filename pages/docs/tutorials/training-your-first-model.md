@@ -170,7 +170,7 @@ guild runs info --files
 ```
 
 For more information on listing runs and getting run info, see [runs
-command](/docs/commands/runs_cmd/).
+info](cmd:runs-info).
 
 ## Visualize your run
 
@@ -191,24 +191,24 @@ Let's start with Guild View. In a [](alias:separate-console), run:
 guild view
 ```
 
-Guild View will start and will open a browser window. You should see
-something like this:
+Guild View will start and will open a browser window:
 
 ![Guild View](/assets/img/guild-view-1.png)
 
 ^ Guild View after initial training of MNIST `mnist-softmax` model
 
-Take a moment to explore the run.
+Let's take a moment to explore the run.
 
-- The list on the left shows the available runs. When you start to
-  generate a lot of runs, use the filter field to narrow the list.
+- The list on the left shows the available runs. Type something into
+  **Filter** to narrow the list.
 
 - The **OVERVIEW** tab contains general information about the run.
 
 - The **FILES** tab contains the list of files in the run directory.
 
-- The **VIEW IN TENSORBOARD** button in the upper left is used to view
-  the runs in TensorBoard. You'll use this feature in the next step.
+- The ![View in TensorBoard](/assets/img/view-in-tensorboard.png)
+  button in the upper left is used to view the runs in
+  TensorBoard. We'll use this in the next section.
 
 ### TensorBoard
 
@@ -218,11 +218,13 @@ TensorBoard is integrated into Guild in two ways:
 - Standalone [](cmd:tensorboard) command
 
 Since we have have Guild View running, let's use the integrated link
-to open TensorBoard. In the upper left of Guild View, click ![View in
+to open TensorBoard.
+
+In the upper left of Guild View, click ![View in
 TensorBoard](/assets/img/view-in-tensorboard.png)
 
-This will open TensorBoard in a separate browser window that displays
-the TensorFlow event logs for the `mnist-softmax` run.
+This opens TensorBoard in a separate browser window that displays the
+TensorFlow event logs for the `mnist-softmax` run.
 
 Keep Guild View and TensorBoard open running in your browser
 throughout this tutorials --- they will both update automatically as
@@ -233,14 +235,14 @@ you work!
 As we saw earlier, the `mnist` package contains two models:
 `mnist-softmax` and `mnist-cnn`.
 
-Train the `mnist-cnn` model by running:
+We'll now train the `mnist-cnn` model:
 
 ``` command
 guild train mnist-cnn
 ```
 
 You'll again be prompted with the default flag values. Press `ENTER`
-to accept the defaults and begin training the model.
+to accept the defaults and begin training.
 
 As the model trains, let's note a few things:
 
@@ -266,28 +268,34 @@ accuracy of the both the `mnist-softmax` and `mnist-cnn` training.
 Expand the graph by clicking the fullscreen button
 ![fullscreen button](/assets/img/tb-fullscreen.png)
 
+Additionally, in the top left of the window, uncheck **Ignore outliers
+in chart scaling**. This will improve the chart view.
+
 Note the differences in accuracy between the two models. The CNN model
-has a significantly higher accuracy but takes longer to train.
+has a significantly higher accuracy but takes longer to train!
 
 !!! tip
     You can compare relative training times between runs by clicking
     **RELATIVE** on the left in TensorBoard. Notice how much longer the
     `mnist-cnn` model takes to train, even with a GPU!
 
-If your system has a GPU, you can view GPU metrics from TensorBoard
-under the **system** section on the **SCALARS** tab:
+In TensorBoard on the **SCALARS** tab, you'll fine a section named
+**system**. Click **system** to expand the section. This information
+contains system metrics for CPU, GPU, memory, and I/O. Guild collects
+and logs this information as the model is trained.
 
 ![system section](/assets/img/tb-system.png)
 
-^ **system** section in TensorBoard contains system metrics including GPU
+^ **system** section in TensorBoard contains system metrics for CPU,
+GPU, memory, and I/O
 
-The **SCALARS** tab contains a lot of information. You can filter the
+The **SCALARS** tab contains a lot of information! You can filter the
 results using the **Filter tags** field at the top. For example, to
 view GPU metrics, type ``gpu``:
 
 ![GPU filter](/assets/img/tb-gpu.png)
 
-^ Filter to view ``gpu`` metrics
+^ Filter to view GPU metrics
 
 Take some time and explore the information available in TensorBoard:
 

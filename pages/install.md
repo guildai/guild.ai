@@ -66,6 +66,7 @@ Additional required tools for installing from source code:
 
 - [git ->](https://help.github.com/articles/set-up-git/)
 - [npm ->](https://www.npmjs.com/get-npm)
+- Python development library and headers for your system
 
 To install Guild from source, clone the repository by running:
 
