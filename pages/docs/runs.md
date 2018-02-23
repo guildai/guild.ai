@@ -351,10 +351,9 @@ Guild will display the list of runs to be deleted and ask you to
 confirm the operation. You must type ``y`` and then press `ENTER` to
 confirm.
 
-Deleted runs can be recovered! Refer to [Recover deleted
+Deleted runs can be recovered using the [runs
+restore](cmd:runs-restore) command. Refer to [Recover deleted
 runs](#recover-deleted-runs) below for details.
-
-Runs may be specified using any valid runs specification.
 
 ## Recover deleted runs
 

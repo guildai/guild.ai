@@ -92,7 +92,7 @@ markdown_extensions:
           target: _blank
           href: https://github.com/guildai/guild/issues
         - link_pattern: alias:virtualenv-activate
-          href: /docs/tutorials/working-with-virtualenv/#using-a-virtual-environment
+          href: /docs/tutorials/workflow-with-virtualenv/#using-a-virtual-environment
           text: activate your virtual environment
         - link_pattern: alias:running-commands
           href: /docs/commands/#running-commands
@@ -175,16 +175,15 @@ pages:
           - docs/reference/guild-home.md
       - Tutorials:
           - docs/tutorials/index.md
-          - docs/tutorials/training-your-first-model.md
+          - docs/tutorials/train-your-first-model.md
           - docs/tutorials/transfer-learning-with-imagenet.md
-          - docs/tutorials/training-and-prediction-with-cloudml.md
-          - docs/tutorials/training-a-keras-model.md
-          - docs/tutorials/developing-a-model-from-scratch.md
-          - docs/tutorials/publishing-your-models.md
-          - docs/tutorials/publishing-someone-elses-models.md
-          - docs/tutorials/stylizing-images-with-magenta.md
-          - docs/tutorials/creating-a-custom-dataset.md
-          - docs/tutorials/working-with-virtualenv.md
+          - docs/tutorials/train-and-predict-with-cloudml.md
+          - docs/tutorials/train-a-keras-model.md
+          - docs/tutorials/develop-a-model-from-scratch.md
+          - docs/tutorials/package-a-model.md
+          - docs/tutorials/stylize-images-with-magenta.md
+          - docs/tutorials/create-a-custom-dataset.md
+          - docs/tutorials/workflow-with-virtualenv.md
       - troubleshooting.md
   - models:
       - models/index.md

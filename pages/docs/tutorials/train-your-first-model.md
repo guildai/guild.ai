@@ -1,6 +1,6 @@
 tags: tutorial, popular, intro
 
-# Training your first model
+# Train your first model
 
 [TOC]
 
@@ -345,31 +345,23 @@ tools:
 
 ## Summary
 
-In this tutorial, we've seen how Guild reduces the complexity of the
-training life cycle to simple commands:
+In this tutorial we installed and trained two MNIST models. Below is a
+summary of our workflow and associated commands.
 
-<table class="table">
-<tr>
-<td>Find an MNIST model</td>
-<td><code class="lit">guild search mnist</code></td>
-</tr>
-<tr>
-<td>Install models</td>
-<td><code class="lit">guild install mnist</code></td>
-</tr>
-<tr>
-<td>Train models</td>
-<td><code class="lit">guild train mnist-cnn</code></td>
-</tr>
-<tr>
-<td>Visualize training runs, including<br>TensorBoard integration</td>
-<td><code class="lit">guild view</code></td>
-</tr>
-<tr>
-<td>Compare runs</td>
-<td><code class="lit">guild compare</code></td>
-</tr>
-</table>
+Find an MNIST model
+: ``guild search mnist``
+
+Install models
+: ``guild install mnist``
+
+Train models
+: ``guild train mnist-cnn``
+
+Visualize training runs, including TensorBoard integration
+: ``guild view``
+
+Compare runs
+: ``guild compare``
 
 ## Next steps
 

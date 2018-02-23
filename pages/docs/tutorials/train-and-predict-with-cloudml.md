@@ -1,6 +1,6 @@
 tags: tutorial, popular, intro
 
-# Training and prediction with Cloud ML
+# Train and predict with Cloud ML
 
 [TOC]
 
@@ -24,7 +24,8 @@ and follows similar steps.
 This tutorial assumes the following:
 
 - Guild AI is [installed and verified](/install)
-- [Google Cloud SDK ->](https://cloud.google.com/sdk/docs/) is installed
+- [Google Cloud SDK ->](https://cloud.google.com/sdk/docs/) is
+  installed (see verification step below)
 - Your [virtual environment is activated](alias:virtualenv-activate)
   (if applicable)
 - You have a working Internet connection
@@ -32,6 +33,15 @@ This tutorial assumes the following:
 While not required, we recommend using a dedicated virtual environment
 for this tutorial. To setup your environment, see
 [](alias:tut-env-setup).
+
+To verify you have the Google Cloud SDK `gcloud` program installed and
+configured, run the following:
+
+``` command
+gcloud ml-engine jobs list
+```
+
+If the command reports an error, resolve the issue before proceeding.
 
 ## Install the census package
 
@@ -49,24 +59,22 @@ running:
 guild ops cloudml.census
 ```
 
-``` output
-cloudml.census/census-dnn:cloudml-train  Train the classifier on Cloud ML
-cloudml.census/census-dnn:train          Train the model locally
-```
+We'll run each of these operations over the course of this tutorial.
 
 ## Train the model locally
 
-Let's first train the model locally. This will confirm that we can get
-a reasonable result locally before training in Cloud ML.
+Before we jump into training in Cloud ML, let's train our model
+locally. This will confirm that we can get a reasonable result with
+the data we're using.
 
-Train the model using 1000 steps by running:
+Train the model locally using 1,000 steps:
 
 ``` command
 guild train census train-steps=1000
 ```
 
-Guild lets you review the flags used in the run before
-proceeding. Press `ENTER` to confirm the operation and start training.
+Guild lets you review the flag values for the operation before
+started. Press `ENTER` to accept the values.
 
 With only 1,000 training steps, the model should be trained on most
 systems in under a minute.
@@ -256,6 +264,8 @@ guild run census:cloudml-train \
   --label cloud-1000
 ```
 
+Review the operation flag values and press `ENTER` to begin training.
+
 The `cloudml-train` operation is otherwise identical to the `train`
 operation, but it's run remotely on Cloud ML rather than locally. The
 command needs `bucket` to know where to create the Cloud ML job.
@@ -318,6 +328,8 @@ application that displays run details. You can view run status, time,
 accuracy, loss, and hyperparameters. We'll learn more about
 hyperparameters later in this tutorial.
 
+You can use the arrow keys to navigate to cells that you can't see.
+
 In Guild Compare, note the accuracy for the two runs --- they should
 be similar. We'd expect this because we trained the same model with
 the same flags and data. The only difference between the runs is where
@@ -378,12 +390,8 @@ guild tensorboard
     ![Maximize button](/assets/img/tb-maximize.png) under the chart.
 
 The values for **accuracy** in TensorBoard correspond to the values
-displayed in Guid Compare. TensorBoard however shows all available
-scalars for selected runs, including their values at various stages of
-training.
-
-For a quick high-level summary of run results, use Guild Compare. To
-view run details, use TensorBoard.
+displayed in Guid Compare. TensorBoard shows all available scalars for
+selected runs, including their values at various stages of training.
 
 ## Improve model accuracy
 
@@ -393,7 +401,7 @@ To increase the training steps, set the `train-steps` flag to a higher
 level. We'll use 10,000 steps this time:
 
 ``` command
-guild run cloudml-train \
+guild run census:cloudml-train \
   bucket=$BUCKET \
   train-steps=10000 \
   --label cloud-10000
@@ -444,7 +452,7 @@ Train the model again using 10,000 steps, but this time on the
 `STANDARD_1` scale tier:
 
 ``` command
-guild run cloudml-train \
+guild run census:cloudml-train \
   bucket=$BUCKET \
   scale-tier=STANDARD_1 \
   train-steps=10000 \
@@ -608,7 +616,7 @@ When you're ready, deploy the model for your selected run using the
 `cloudml-deploy` operation:
 
 ``` command
-guild run cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
+guild run census:cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
 ```
 
 This will create a model in Cloud ML named ``census_dnn`` if one
@@ -719,7 +727,7 @@ We'll use both techniques to see how each works.
 First, let's run an online prediction:
 
 ``` command
-guild run cloudml-predict
+guild run census:cloudml-predict
 ```
 
 Guild will prompt you before running the operation. Press `ENTER` to
@@ -738,7 +746,7 @@ and make changes accordingly. Assuming your samples is named
 run a `cloudml-predict` operation using:
 
 ```
-guild run cloudml-predict instances=census-inputs.json
+guild run census:cloudml-predict instances=census-inputs.json
 ```
 
 For online prediction, the results are printed to the
@@ -787,7 +795,7 @@ We use the `cloudml-batch-predict` operation to start a prediction
 job. Start a batch prediction job by running:
 
 ``` command
-guild run cloudml-batch-predict bucket=$BUCKET
+guild run census:cloudml-batch-predict bucket=$BUCKET
 ```
 
 This will use the sample prediction inputs as before. We need to
