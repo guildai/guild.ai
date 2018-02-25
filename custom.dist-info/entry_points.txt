@@ -1,3 +1,4 @@
 [mkdocs.plugins]
 
 nav_resolve = custom:NavResolvePlugin
+serve = custom:Serve

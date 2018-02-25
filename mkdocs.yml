@@ -3,9 +3,14 @@ docs_dir: pages
 
 copyright: 2017-2018 TensorHub, Inc.
 extra:
-  tagline:
-    Enabling the TensorFlow<sup>&trade;</sup> model ecosystem
+  tagline: Standardize your deep learning workflow
   subtext:
+    Train, evaluate, and deploy your TensorFlow<sup>&trade;</sup> and
+    Keras models with automatic experiment tracking and other
+    productivity features.
+  tagline_2:
+    Enabling the TensorFlow<sup>&trade;</sup> model ecosystem
+  subtext_2:
     Discover, install, and apply state-of-the-art deep learning
     models with a few simple commands.
   links:
@@ -28,6 +33,7 @@ theme:
 plugins:
   - search
   - nav_resolve
+  - serve
 
 markdown_extensions:
   - admonition

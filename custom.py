@@ -1172,6 +1172,20 @@ class DeflistToTable(Extension):
             DeflistToTableProcessor(md),
             "_end")
 
+class Server(object):
+
+    def __init__(self, server):
+        self.server = server
+
+    def serve(self, **kw):
+        kw["restart_delay"] = 2
+        self.server.serve(**kw)
+
+class Serve(BasePlugin):
+
+    def on_serve(self, server, **_kw):
+        return Server(server)
+
 def test():
     import doctest
     import sys
