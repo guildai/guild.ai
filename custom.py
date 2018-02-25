@@ -1172,19 +1172,38 @@ class DeflistToTable(Extension):
             DeflistToTableProcessor(md),
             "_end")
 
-class Server(object):
-
-    def __init__(self, server):
-        self.server = server
-
-    def serve(self, **kw):
-        kw["restart_delay"] = 2
-        self.server.serve(**kw)
-
 class Serve(BasePlugin):
 
-    def on_serve(self, server, **_kw):
-        return Server(server)
+    def on_serve(self, server, config):
+        builder = self._builder_func(server)
+        def task(ignore=None):
+            if ignore is not None:
+                ignore = self._ignore_func(ignore)
+            return {
+                "func": builder,
+                "ignore": ignore,
+                "delay": None
+            }
+        server.watcher._tasks = {
+            "mkdocs.yml": task(),
+            "pages": task(),
+            "src": task([r"\.scss$", "\.map$"])
+        }
+
+    @staticmethod
+    def _builder_func(server):
+        assert len(server.watcher._tasks)
+        task0 = server.watcher._tasks.values()[0]
+        builder = task0["func"]
+        assert builder.__name__ == "builder"
+        return builder
+
+    @staticmethod
+    def _ignore_func(patterns):
+        patterns = [re.compile(p) for p in patterns]
+        def ignore(path):
+            return any((p.search(path) for p in patterns))
+        return ignore
 
 def test():
     import doctest

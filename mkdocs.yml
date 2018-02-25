@@ -33,6 +33,7 @@ theme:
 plugins:
   - search
   - nav_resolve
+  # Modifies mkdocs server to avoid needless rebuilds
   - serve
 
 markdown_extensions:
