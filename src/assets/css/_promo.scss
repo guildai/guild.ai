@@ -43,6 +43,18 @@
     }
   }
 
+  &.very-loud {
+    h3 {
+      font-size: 28px;
+
+      .fa, .glyphicon {
+        font-size: 38px;
+        margin-right: 4px;
+        color: $accent-color;
+      }
+    }
+  }
+
   > .fa,
   > .glyphicon  {
     font-size: 90px;
