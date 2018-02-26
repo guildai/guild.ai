@@ -35,7 +35,7 @@ guild runs delete -ET
 
 Guild will let you confirm the list of runs before deleting them.
 
-You can later restore a deleted run using (cmd:runs-restpre)[runs
+You can later restore a deleted run using (cmd:runs-restore)[runs
 restore].
 
 ## Resources

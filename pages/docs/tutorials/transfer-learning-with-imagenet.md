@@ -6,7 +6,7 @@ tags: tutorial, popular, intro
 
 In this tutorial we'll use a state-of-the-art image classifier that's
 been pretrained on [ImageNet ->](http://www.image-net.org/) to
-acclerate training with our own images.
+accelerate training with our own images.
 
 This process is referred to as *fine tuning* and uses a pattern in
 machine learning called *transfer learning*. It's a technique that can

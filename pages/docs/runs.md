@@ -160,7 +160,7 @@ the `STOP` index up to and including those with the `START` index.
 
 Both `STOP` and `START` are optional. If `START` is omitted it is
 assumed to be ``0`` (i.e. the first run in the list). If `STOP` is
-ommitted it is assumed to be the index of the last run.
+omitted it is assumed to be the index of the last run.
 
 !!! important
     Run indexes are relative to the list of runs returned by ``guild

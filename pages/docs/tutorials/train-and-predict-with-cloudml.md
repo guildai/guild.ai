@@ -217,7 +217,7 @@ guild runs
 !!! tip
     You can filter runs using their label by running ``guild runs -l
     LABEL`` where `LABEL` is a label or part of a label to filter
-    on. For example, assuming we consistenly label our local runs
+    on. For example, assuming we consistently label our local runs
     using the convention ``local-NNNN``, we could filter them using
     ``guild runs -l local``.
 
@@ -272,7 +272,7 @@ command needs `bucket` to know where to create the Cloud ML job.
 
 Note that we included a label for our run using the ``--label``
 option. We'll use this convention throughout the tutorial so we can
-easily idenfity our runs. In this case, we're indicating that the run
+easily identity our runs. In this case, we're indicating that the run
 is cloud based and uses 1,000 steps.
 
 !!! note
@@ -299,7 +299,7 @@ logs and saved models as well as updating run status.
     If Guild becomes disconnected from a remote job --- for example,
     you terminate the command by typing ``Ctrl-C`` or lose network
     connectivity --- the job will continue to run in Cloud ML. You can
-    synchornize with the job by running ``guild sync``. If you'd like
+    synchronize with the job by running ``guild sync``. If you'd like
     to reconnect to a running job, run ``guild sync --watch``. For
     more information, see the [](cmd:sync) command.
 
@@ -390,7 +390,7 @@ guild tensorboard
     ![Maximize button](/assets/img/tb-maximize.png) under the chart.
 
 The values for **accuracy** in TensorBoard correspond to the values
-displayed in Guid Compare. TensorBoard shows all available scalars for
+displayed in Guild Compare. TensorBoard shows all available scalars for
 selected runs, including their values at various stages of training.
 
 ## Improve model accuracy
@@ -429,7 +429,7 @@ start it:
 guild compare
 ```
 
-Note the accuacy of the newly trained model --- it should be a few
+Note the accuracy of the newly trained model --- it should be a few
 percentage points higher than the other two! When you're done
 comparing, press ``q`` to exit Guild Compare.
 
@@ -554,7 +554,7 @@ guild compare
 
 As the trials are completed, press ``r`` in Guild Compare to refresh
 the display and view the trial results. You can compare the
-differences in accuracy and loss to see what hyperparamter values
+differences in accuracy and loss to see what hyperparameter values
 provide the best result.
 
 !!! note
@@ -801,7 +801,7 @@ guild run census:cloudml-batch-predict bucket=$BUCKET
 This will use the sample prediction inputs as before. We need to
 specify `bucket` to tell Guild where to create the job.
 
-The job will take some time to complete. When finished, it will hsave
+The job will take some time to complete. When finished, it will save
 generated a file named `prediction.results-00000-of-00001`, which you
 can view in Guild View, or inspect from the command line.
 
@@ -877,7 +877,7 @@ where `VERSION` is the model version you want to delete.
 If you no longer need the model, you may delete it provided there are
 no versions associated with it:
 
-``` commamd
+``` command
 gcloud ml-engine models delete census_dnn
 ```
 
@@ -902,7 +902,7 @@ The ``-p`` option indicates that the delete should be
 *permanent*. This ensures that the runs no longer consume disk
 space. Omit this option if you want to retain the ability to restore
 them at a later time. Note that disk space will not be freed up for
-these jobs until you premanently delete them (see the [](cmd:purge)
+these jobs until you permanently delete them (see the [](cmd:purge)
 command).
 
 Finally, if you deleted any runs without using the ``-p`` option and
