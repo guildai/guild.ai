@@ -216,8 +216,7 @@ If you're interested in a complete picture of Guild AI, start by
 browsing its comprehensives documentation.
 
 </p>
-<a class="btn btn-primary" href="/docs/"
-  >Browse the docs <i class="fa next"></i></a>
+<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>

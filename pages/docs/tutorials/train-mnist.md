@@ -1,6 +1,6 @@
 tags: tutorial, popular, intro
 
-# Train your first model
+# Train MNIST (getting started)
 
 [TOC]
 

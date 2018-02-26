@@ -178,7 +178,7 @@ pages:
           - docs/reference/guild-home.md
       - Tutorials:
           - docs/tutorials/index.md
-          - docs/tutorials/train-your-first-model.md
+          - docs/tutorials/train-mnist.md
           - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/train-and-predict-with-cloudml.md
           - docs/tutorials/train-a-keras-model.md

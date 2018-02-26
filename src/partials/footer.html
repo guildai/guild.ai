@@ -3,7 +3,10 @@
     <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
     <div class="row">
       <div class="col-md-6 col-sm-6 footer-cell">
-        <p class="copyright">Copyright &copy; {{ config.copyright }}</p>
+        <div class="copyright">Copyright &copy; {{ config.copyright }}</div>
+        {% if page.meta.attribution %}
+        <div class="attribution">{{ page.meta.attribution }}</div>
+        {% endif %}
       </div>
       <div class="col-md-6 col-sm-6 footer-cell">
         <ul class="footer-menu">

@@ -390,9 +390,11 @@ $(function() {
   // Lightbox for figure images
   $('figure img').each(function() {
     const img = $(this);
-    const wrapper = $('<a>');
-    wrapper.attr('href', img.attr('src'));
-    wrapper.attr('data-featherlight', 'image');
-    img.wrap(wrapper);
+    if (!img.hasClass("no-lightbox")) {
+      const wrapper = $('<a>');
+      wrapper.attr('href', img.attr('src'));
+      wrapper.attr('data-featherlight', 'image');
+      img.wrap(wrapper);
+    }
   });
 });
