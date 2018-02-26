@@ -2,6 +2,7 @@
   border-radius: $default-border-radius;
   border: none;
   transition: $default-transition;
+  letter-spacing: 0.03em;
   @include remove-outline;
 
   i.next {

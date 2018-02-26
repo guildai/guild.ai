@@ -53,7 +53,7 @@
     }
 
     .spacer.actions {
-      max-height: 120px;
+      max-height: 90px;
     }
 
     @media screen and (max-width: $break-sm) {
@@ -161,12 +161,10 @@
     }
 
     h5 {
-
       font-size: 28px;
       line-height: 42px;
       margin: 0;
       font-style: italic;
-      max-width: 30em;
 
       @media screen and (max-width: $break-sm) {
         font-size: 20px;
