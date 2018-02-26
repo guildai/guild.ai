@@ -76,6 +76,125 @@ work.
 
 ---
 
+# Features
+
+<div class="row">
+  <div class="col-md-8 promo left">
+    <h4>Track experiments</h4>
+    <p>
+
+Guild AI automatically saves each training run so you don't have to
+worry about losing valuable results. Everything associated with a run
+is available for study and use &mdash; saved models, TensorFlow event
+logs, generated content, and run metadata.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    <a href="/assets/img/guild-view-track.png" data-featherlight="image">
+      <img style="width:100%" src="/assets/img/guild-view-track-zoom.png">
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 promo left">
+    <h4>Compare model performance at-a-glance</h4>
+    <p>
+
+With a single command you can compare model accuracy and loss
+alongside essential metadata like model architecture, training steps,
+and hyperparameters. Use this information to make informed decisions
+about future training or deployment.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    <a href="/assets/img/guild-compare.png" data-featherlight="image">
+      <img style="width:100%;padding:10px" src="/assets/img/guild-compare-zoom.png">
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 promo left">
+    <h4>Visualize runs with TensorBoard</h4>
+    <p>
+
+Guild AI seamlessly integrates TensorBoard for visualization of
+TensorFlow event logs. Use TensorBoard to compare loss and accuracy at
+recorded steps, visualize model statistics, images, and audio, and
+explore graph definitions.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    <a href="/assets/img/tb.png" data-featherlight="image">
+      <img style="width:100%;padding:10px" src="/assets/img/tb-zoom.png">
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Enhance Keras training</h4>
+    <p>
+
+Some description.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    some image
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Explore generated artifacts</h4>
+    <p>
+
+Some description.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    some image
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Deploy to Cloud ML</h4>
+    <p>
+
+Some description.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    <a href="/assets/img/cloud-ml.png" data-featherlight="image">
+      <img style="width:100%;padding:10px" src="/assets/img/cloud-ml-zoom.png">
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>Package and distribute your models</h4>
+    <p>
+
+Some description.
+
+    </p>
+  </div>
+  <div class="col-md-4">
+    some image
+  </div>
+</div>
+
+---
+
 # Quick start
 
 If you'd like to try Guild AI, it takes just four commands to install
@@ -114,12 +233,3 @@ For more installation options, see our detailed installation guide:
     </a>
   </div>
 </div>
-
-
-<p>
-
-</p>
-
----
-
-# Another header
