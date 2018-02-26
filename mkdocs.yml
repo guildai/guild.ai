@@ -6,13 +6,9 @@ extra:
   tagline: Standardize your deep learning workflow
   subtext:
     Train, evaluate, and deploy your TensorFlow<sup>&trade;</sup> and
-    Keras models with automatic experiment tracking and other
-    productivity features.
-  tagline_2:
-    Enabling the TensorFlow<sup>&trade;</sup> model ecosystem
-  subtext_2:
-    Discover, install, and apply state-of-the-art deep learning
-    models with a few simple commands.
+    Keras in less time and with fewer errors with Guild AI&apos;s
+    streamlined developer toolkit.
+  subtext_width: 32em
   links:
     - name: github
       url: https://github.com/guildai

@@ -36,6 +36,13 @@
   Train, evaluate, and deploy your TensorFlow models with Guild AI's
   simple command line toolset
 
+## Highlighted benefits
+
+- Automatically track experiments
+- Compare model performance
+- Visualize training results
+- Deploy to Cloud ML
+- Package and distribute your models
 
 ## Status
 

@@ -10,7 +10,9 @@
     <div class="spacer"></div>
     <h1>{{ page.meta.tagline or config.extra.tagline }}</h1>
     <div class="spacer text"></div>
-    <h5>{{ page.meta.subtext or config.extra.subtext }}</h5>
+    <h5 style="max-width:{{config.extra.subtext_width}}">
+      {{ page.meta.subtext or config.extra.subtext }}
+    </h5>
     <div class="spacer actions"></div>
     <div class="actions">
       <a

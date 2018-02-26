@@ -15,51 +15,59 @@ hide_in_pagenav: yes
 # Guild AI
 
 Guild AI automates TensorFlow and Keras deep learning workflow,
-letting you focus on optimizing your model and getting it into
+letting you focus on optimizing your models and getting them into
 production as quickly as possible. The command line toolset, supports
-deep learning end-to-end --- from model acquisition, through training
-and testing, to deployment. You can even publish your models for
-others to discover if you want!
+your deep learning work end-to-end --- from model acquisition, through
+training and testing, to deployment. You can even publish your models
+for your collaborators to use!
 
 ---
 
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <div class="promo very-loud left">
       <h3><i class="fa fa-rocket"></i> Train</h3>
       <p>
-        Your documentation works on any device: desktop, tablet or
-        mobile.
+
+Guild AI automatically records each training experiment, including
+saved models, logs, generated artifacts, and run metadata. Use this
+information to compare runs and inform your next steps. Is your model
+ready to release? Do you need to train again with different data or
+hyperparameters? The information you need to make smart decisions is
+always on hand.
+
       </p>
     </div>
   </div>
 
-  <div class="col-sm-3">
-    <div class="promo very-loud left">
-      <h3><i class="fa fa-line-chart"></i> Visualize</h3>
-      <p>
-        There is a bunch of useful and necessary elements for writing
-        documentation.
-      </p>
-    </div>
-  </div>
-
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <div class="promo very-loud left">
       <h3><i class="fa fa-balance-scale"></i> Compare</h3>
       <p>
-        You can easily read, edit, and write your own code, or change
-        everything.
+
+Guild AI lets you effortlessly compare training results. In addition
+to model accuracy and loss, Guild AI provides other information
+essential to making informed comparisons including hyperparameters,
+model architecture, training steps, and data. Guild even lets you
+compare generated artifacts like images and audio to help you quickly
+assess each outcome.
+
       </p>
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-sm-4">
     <div class="promo very-loud left">
-      <h3><i class="fa fa-upload"></i> Deploy</h3>
+      <h3><i class="fa fa-upload"></i> Release</h3>
       <p>
-        There is a bunch of useful and necessary elements for writing
-        documentation.
+
+When your model is ready to release, Guild AI has a command that makes
+it easy. If you're model is destined for production, Guild lets you
+seamlessly deploy to Cloud Machine Learning Engine. If you want to
+share your results with colleagues, Guild lets you package and publish
+your model so that others can easily reproduce and learn from your
+work.
+
       </p>
     </div>
   </div>
@@ -69,6 +77,9 @@ others to discover if you want!
 ---
 
 # Quick start
+
+If you'd like to try Guild AI, it takes just four commands to install
+Guild AI, train a model, and visualize your results.
 
 <div class="row">
   <div class="col-md-6">
@@ -88,13 +99,13 @@ others to discover if you want!
     <pre>
       <code class="language-command">guild view</code>
     </pre>
-    <p>
-      With these four commands, you'll be visualizing the results of
-      your TensorFlow training, including TensorBoard support, in just
-      a few minutes!
+    <p style="margin:30px 0 0">
+
+For more installation options, see our detailed installation guide:
+
     </p>
-    <div style="margin-top:30px">
-      <a class="btn btn-primary" href="/docs/overview/">Learn more <i class="fa next"></i></a>
+    <div style="margin-top:20px">
+      <a class="btn btn-primary" href="/install">Installing Guild AI<i class="fa next"></i></a>
     </div>
   </div>
   <div class="col-md-6" style="padding:20px">
