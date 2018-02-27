@@ -18,6 +18,17 @@ index: $(grunt)
 build-and-index: $(grunt)
 	$(grunt) build-and-index
 
+stage: build-and-index
+	cp now.json.in site/now.json
+	cd site && now deploy && now alias www-staging-guild-ai
+
+promote-staging:
+	target=`now alias ls | grep www-staging-guild-ai | cut -d' ' -f3` \
+	  && now alias $$target www-staging.guild.ai
+
+clean-staging:
+	now rm www-guild-ai -sy
+
 serve: $(grunt)
 	$(grunt) serve
 
