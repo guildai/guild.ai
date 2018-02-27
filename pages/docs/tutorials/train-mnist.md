@@ -1,6 +1,4 @@
-tags: tutorial, popular, intro
-
-# Train MNIST (getting started)
+)
 
 [TOC]
 
@@ -58,7 +56,7 @@ models by running:
 guild models
 ```
 
-The list will contain two models associated with the `mnist` package:
+The list contains two models associated with the `mnist` package:
 
 ``` output
 mnist/mnist-cnn      CNN classifier for MNIST
@@ -104,8 +102,8 @@ In a console, run:
 guild train mnist-softmax
 ```
 
-You will be prompted with information about the run and asked to
-confirm the operation. The model defines two [flags](term:flag):
+Guid displays information about the run and asks you to confirm the
+operation. The model defines two [flags](term:flag):
 
 `batch-size`
 : number of images to use per batch
@@ -115,15 +113,15 @@ confirm the operation. The model defines two [flags](term:flag):
 
 Press `ENTER` to accept the default values and continue.
 
-The operation will first resolve any resources required by the model
-by downloading them. It will then run a TensorFlow script to train the
+The operation first resolves any resources required by the model by
+downloading them. It then runs a TensorFlow script to train the
 `mnist-softmax` model.
 
 As the model trains, let's note a few things:
 
 - The model requires the MNIST dataset, which is automatically
   downloaded and saved by Guild as a [](term:resource). This resource
-  will remain available for future training operations.
+  remains available for future training operations.
 
 - Guild starts and supervises a TensorFlow script, which is provided
   by the `mnist` package. Scripts are standard Python applications
@@ -135,7 +133,7 @@ As the model trains, let's note a few things:
 
 You'll learn more in the steps that follow!
 
-Once the dataset files are downloaded, the model will train in a few
+Once the dataset files are downloaded, the model trains in a few
 seconds on most systems.
 
 Congratulations, you've trained your first Guild model!
@@ -150,8 +148,8 @@ list runs as follows:
 guild runs
 ```
 
-This will display the training run for the `mnist-softmax` model. You
-can see when the operation was started and its status.
+This displays the training run for the `mnist-softmax` model. You can
+see when the operation was started and its status.
 
 To get more information for a run:
 
@@ -159,7 +157,7 @@ To get more information for a run:
 guild runs info
 ```
 
-This will display detailed information for the latest run.
+This displays detailed information for the latest run.
 
 Guild operations typically generate files, which are located in the
 run directory. You can list the files by including the ``--files``
@@ -191,7 +189,7 @@ Let's start with Guild View. In a [](alias:separate-console), run:
 guild view
 ```
 
-Guild View will start and will open a browser window:
+Guild View starts and opens a browser window:
 
 ![Guild View](/assets/img/guild-view-1.png)
 
@@ -227,8 +225,8 @@ This opens TensorBoard in a separate browser window that displays the
 TensorFlow event logs for the `mnist-softmax` run.
 
 Keep Guild View and TensorBoard open running in your browser
-throughout this tutorials --- they will both update automatically as
-you work!
+throughout this tutorials --- they both refresj automatically as you
+work!
 
 ## Train the CNN model
 
@@ -269,7 +267,7 @@ Expand the graph by clicking the fullscreen button
 ![fullscreen button](/assets/img/tb-fullscreen.png)
 
 Additionally, in the top left of the window, uncheck **Ignore outliers
-in chart scaling**. This will improve the chart view.
+in chart scaling**. This improves the chart view.
 
 Note the differences in accuracy between the two models. The CNN model
 has a significantly higher accuracy but takes longer to train!
