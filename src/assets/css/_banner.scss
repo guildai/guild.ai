@@ -151,18 +151,18 @@
 
       @media screen and (max-width: $break-md) {
         font-size: 40px;
-        line-height: 1.1;
+        line-height: 1.2;
       }
 
       @media screen and (max-width: $break-sm) {
         font-size: 30px;
-        line-height: 1.0;
+        line-height: 1.1;
       }
     }
 
     h5 {
       font-size: 28px;
-      line-height: 42px;
+      line-height: 1.5;
       margin: 0;
       font-style: italic;
 

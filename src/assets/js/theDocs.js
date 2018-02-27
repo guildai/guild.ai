@@ -5,8 +5,11 @@ function trySmoothScroll(href, pushHistory, topMargin) {
       if (pushHistory) {
         window.history.pushState(null, null, href);
       }
-      const fixedHeaderHeight = $('.site-header.sticky').outerHeight();
-      const scrollTop = target.offset().top - (fixedHeaderHeight || 0);
+      var fixedHeaderHeight = $('.site-header.sticky').outerHeight();
+      if (fixedHeaderHeight === undefined) {
+        fixedHeaderHeight = $(window).width() < 768 ? 30 : 0;
+      }
+      const scrollTop = target.offset().top - (fixedHeaderHeight || 10);
       $('html, body').animate({scrollTop: scrollTop}, 400);
       return true;
     }

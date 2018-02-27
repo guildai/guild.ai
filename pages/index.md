@@ -36,9 +36,9 @@ for your collaborators to use!
 Guild AI automatically records each training experiment, including
 saved models, logs, generated artifacts, and run metadata. Use this
 information to compare runs and inform your next steps. Is your model
-ready to release or do you need to train with more data or different
+ready to release, or do you need to train with more data or different
 hyperparameters? The information you need to make smart decisions is
-always on hand.
+always on hand!
 
       </p>
     </div>
@@ -144,7 +144,7 @@ explore graph definitions.
 
 <div class="row">
   <div class="col-md-8 promo left">
-    <h4>Enhance Keras training</h4>
+    <h4>Enhance your Keras training</h4>
     <p>
 
 If you develop your models using Keras, Guild AI provides enhanced
@@ -204,14 +204,14 @@ cloud with a single command.
     <p>
 
 Guild AI lets you package and share your models with colleagues and
-other deep learners. By making it easy to discover, install, and use
-your models, you'll receive invaluable feedback and insight from
-others as they contribute back to you.
+other deep learners. Making it easy to discover, install, and use your
+models, ecourages feedback, which can lead to unexpected insight and
+improvements.
 
     </p>
   </div>
   <div class="col-md-4 hidden-sm">
-    <img class="feature-img no-lightbox" style="width:260px;padding-left:20px" src="/assets/img/ship.svg">
+    <img class="feature-img no-lightbox" style="width:220px;padding-left:40px" src="/assets/img/ship.svg">
   </div>
 </div>
 
@@ -244,21 +244,20 @@ Guild AI, train a model, and visualize your results.
   <div class="col-md-6" style="padding:20px">
     <figure>
       <a href="/assets/img/guild-view-1.png" data-featherlight="image">
-        <img class="feature-img" src="/assets/img/guild-view-1.png">
+        <img src="/assets/img/guild-view-1.png">
       </a>
-      <figcaption>Guild View showing a single MNIST softmax training run</figcaption>
     </figure>
   </div>
 </div>
 
 ---
 
-# More information
+# Get more information
 
-<div class="row match-height">
+<div class="row match-height" style="margin-bottom:40px">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Installation guide</h3>
+<h3>Installation details</h3>
 <p class="expand">
 
 Get more information on installing Guild AI including other install
@@ -266,13 +265,13 @@ options, GPU configuration, and install verification.
 
 </p>
 <a class="btn btn-primary cta" href="/install/"
-  >Installation guide <i class="fa next"></i></a>
+  >Installation details <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>More model training</h3>
+<h3>More training</h3>
 <p class="expand">
 
 Go deeper into the Quick Start material above with a step-by-step
@@ -280,7 +279,7 @@ tutorial on training MNIST models and comparing results.
 
 </p>
 <a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
-  >More model training <i class="fa next"></i></a>
+  >More training <i class="fa next"></i></a>
 </div>
 </div>
 

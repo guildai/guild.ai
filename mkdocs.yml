@@ -6,8 +6,8 @@ extra:
   tagline: Standardize your deep learning workflow
   subtext:
     Train, evaluate, and deploy your TensorFlow<sup>&trade;</sup> and
-    Keras in less time and with fewer errors with Guild AI&apos;s
-    streamlined developer toolkit.
+    Keras in less time with fewer errors with the Guild AI
+    developer toolkit.
   subtext_width: 32em
   links:
     - name: github
