@@ -1,4 +1,4 @@
-)
+# Train MNIST (getting started)
 
 [TOC]
 

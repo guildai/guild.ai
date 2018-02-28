@@ -252,12 +252,12 @@ Guild AI, train a model, and visualize your results.
 
 ---
 
-# Get more information
+# Next steps
 
 <div class="row match-height" style="margin-bottom:40px">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Installation details</h3>
+<h3>Installation guide</h3>
 <p class="expand">
 
 Get more information on installing Guild AI including other install
@@ -265,7 +265,7 @@ options, GPU configuration, and install verification.
 
 </p>
 <a class="btn btn-primary cta" href="/install/"
-  >Installation details <i class="fa next"></i></a>
+  >Installation guide <i class="fa next"></i></a>
 </div>
 </div>
 
