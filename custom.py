@@ -10,6 +10,7 @@ import shlex
 import subprocess
 
 import jinja2
+import six
 import yaml
 
 import markdown
@@ -24,7 +25,7 @@ import mkdocs.config as _ # work around for mkdocs import cycle
 from mkdocs.plugins import BasePlugin
 from mkdocs.nav import Page, Header
 
-from guild import modelfile
+from guild import guildfile
 
 log = logging.getLogger("mkdocs")
 
@@ -166,7 +167,7 @@ class DefIdProcessor(treeprocessors.Treeprocessor):
                 dt.set("id", _slugify(dt.text))
 
 def _slugify(s):
-    return slugify(s.decode("UTF-8"), "-")
+    return slugify(six.text_type(s), "-")
 
 class DefinitionId(Extension):
     """Adds ids to definition terms.
@@ -631,7 +632,7 @@ class RefProcessor(treeprocessors.Treeprocessor):
 
     @staticmethod
     def _el_text(el):
-        return etree.tostring(el, method="text").strip().decode("utf-8")
+        return etree.tostring(el, method="text").strip().decode("UTF-8")
 
 class Ref(Extension):
     """Replaces link text with a referenced target text.
@@ -818,7 +819,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             env = {"GUILD_HELP_JSON": "1"}
             env.update(os.environ)
             out = subprocess.check_output(args, env=env)
-            cmd_help = json.loads(out)
+            cmd_help = json.loads(out.decode("UTF-8"))
             self._cache_cmd_help(cmd, cmd_help)
         return cmd_help
 
@@ -883,7 +884,6 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         env.filters.update({
             "slugify": _slugify,
             "format_desc": self._format_desc,
-            "filter_public": self._filter_public,
             "format_reference": self._format_reference,
             "format_resource_source": self._format_resource_source,
         })
@@ -894,10 +894,6 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         if desc and desc[-1] != ".":
             desc = desc + "."
         return desc
-
-    @staticmethod
-    def _filter_public(models):
-        return [m for m in models if not m.private]
 
     @staticmethod
     def _format_reference(url):
@@ -979,12 +975,13 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         _replace_el(parent, target, help_el)
 
     def _get_models(self, path):
-        return modelfile.from_dir(os.path.join(self._src_path, path))
+        gf = guildfile.from_dir(os.path.join(self._src_path, path))
+        return [gf.models[name] for name in sorted(gf.models)]
 
     def _get_pkg(self, path):
         pkg_dir = os.path.join(self._src_path, path)
         try:
-            f = open(os.path.join(pkg_dir, "PACKAGE"))
+            f = open(os.path.join(pkg_dir, "guild.yml"))
         except IOError as e:
             if e.errno != errno.ENOENT:
                 raise
@@ -1193,7 +1190,7 @@ class Serve(BasePlugin):
     @staticmethod
     def _builder_func(server):
         assert len(server.watcher._tasks)
-        task0 = server.watcher._tasks.values()[0]
+        task0 = list(server.watcher._tasks.values())[0]
         builder = task0["func"]
         assert builder.__name__ == "builder"
         return builder

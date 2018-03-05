@@ -1,6 +1,6 @@
 sidenav_title: help
 overview_title: help
-tags: general
+tags: general, models
 
 # help command
 

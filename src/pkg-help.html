@@ -3,7 +3,7 @@
   <table class="table dl pkg-attrs">
     <tr>
       <th class="dt">Name</th>
-      <td class="dd">{{ pkg.name }}</td>
+      <td class="dd">{{ pkg.package }}</td>
     </tr>
     <tr>
       <th class="dt">Description</th>
@@ -26,13 +26,13 @@
   <ul class="categorized-view">
     <li>
       <h5>Models</h5>
-    {% for model in models|filter_public %}
+    {% for model in models %}
     <a href="#{{ model.name|slugify }}">{{ model.name }}</a>
     {% endfor %}
     </li>
   </ul>
 
-  {% for model in models|filter_public %}
+  {% for model in models %}
 
   {% set model_slug = model.name|slugify %}
 

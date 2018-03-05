@@ -1,6 +1,6 @@
 sidenav_title: shell
 overview_title: shell
-tags: util
+tags:
 
 # shell command
 

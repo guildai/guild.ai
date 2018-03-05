@@ -354,3 +354,9 @@ operation:
 ``` command
 guild runs list prepare
 ```
+
+TODO:
+
+- train
+- terminate
+- resume

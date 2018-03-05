@@ -3,10 +3,19 @@ docs_dir: pages
 
 copyright: 2017-2018 TensorHub, Inc.
 extra:
-  tagline: Standardize your deep learning workflow
+
+  tagline:
+    Streamlined TensorFlow<sup>&trade;</sup> and Keras deep learning
+    development
   subtext:
+    Train, evaluate, and deploy your models in less time and with
+    fewer errors with the Guild AI developer toolkit.
+
+  _tagline:
+    Standardize your deep learning workflow
+  _subtext:
     Train, evaluate, and deploy your TensorFlow<sup>&trade;</sup> and
-    Keras in less time and with fewer errors with the Guild AI
+    Keras models in less time and with fewer errors with the Guild AI
     developer toolkit.
   subtext_width: 32em
   links:
@@ -133,7 +142,9 @@ pages:
           - docs/commands/compare-cmd.md
           - docs/commands/help-cmd.md
           - docs/commands/index-cmd.md
+          - docs/commands/init-cmd.md
           - docs/commands/install-cmd.md
+          - docs/commands/label-cmd.md
           - docs/commands/models-cmd.md
           - docs/commands/operations-cmd.md
           - docs/commands/package-cmd.md
@@ -150,12 +161,14 @@ pages:
           - docs/commands/runs-list-cmd.md
           - docs/commands/runs-purge-cmd.md
           - docs/commands/runs-restore-cmd.md
+          - docs/commands/runs-stop-cmd.md
           - docs/commands/search-cmd.md
           - docs/commands/shell-cmd.md
+          - docs/commands/stop-cmd.md
           - docs/commands/sync-cmd.md
           - docs/commands/tensorboard-cmd.md
           - docs/commands/tensorflow-cmd.md
-          - docs/commands/tensorflow-inspect-checkpoint-cmd.md
+          - docs/commands/tensorflow-inspect-cmd.md
           - docs/commands/train-cmd.md
           - docs/commands/uninstall-cmd.md
           - docs/commands/view-cmd.md

@@ -1,6 +1,6 @@
 sidenav_title: tensorflow
 overview_title: tensorflow
-tags: util
+tags:
 
 # tensorflow command
 
