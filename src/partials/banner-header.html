@@ -8,7 +8,9 @@
   style="background-image: url({{ base_url }}/assets/img/banner-lowrez.jpg);">
   <div class="container text-center">
     <div class="spacer"></div>
-    <h1>{{ page.meta.tagline or config.extra.tagline }}</h1>
+    <h1 style="max-width:{{config.extra.tagline_width}}">
+      {{ page.meta.tagline or config.extra.tagline }}
+    </h1>
     <div class="spacer text"></div>
     <h5 style="max-width:{{config.extra.subtext_width}}">
       {{ page.meta.subtext or config.extra.subtext }}

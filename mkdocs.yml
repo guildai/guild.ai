@@ -6,10 +6,11 @@ extra:
 
   tagline:
     Streamlined TensorFlow<sup>&trade;</sup> and Keras deep learning
-    development
+  tagline_width: 18em
   subtext:
     Train, evaluate, and deploy your models in less time and with
     fewer errors with the Guild AI developer toolkit.
+  subtext_width: 28em
 
   _tagline:
     Standardize your deep learning workflow
@@ -17,7 +18,8 @@ extra:
     Train, evaluate, and deploy your TensorFlow<sup>&trade;</sup> and
     Keras models in less time and with fewer errors with the Guild AI
     developer toolkit.
-  subtext_width: 32em
+  _subtext_width: 32em
+
   links:
     - name: github
       url: https://github.com/guildai
