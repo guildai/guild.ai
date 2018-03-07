@@ -3,7 +3,7 @@
   <table class="table dl pkg-attrs">
     <tr>
       <th class="dt">Name</th>
-      <td class="dd">{{ pkg.package }}</td>
+      <td class="dd">{{ pkg.name }}</td>
     </tr>
     <tr>
       <th class="dt">Description</th>
@@ -23,6 +23,7 @@
     </tr>
   </table>
 
+  {% if models %}
   <ul class="categorized-view">
     <li>
       <h5>Models</h5>
@@ -31,12 +32,24 @@
     {% endfor %}
     </li>
   </ul>
+  {% endif %}
+
+  {% if pkg.resources|public %}
+  <ul class="categorized-view">
+    <li>
+      <h5>Resources</h5>
+    {% for res in pkg.resources|public %}
+    <a href="#{{ res.name|slugify }}">{{ res.name }}</a>
+    {% endfor %}
+    </li>
+  </ul>
+  {% endif %}
 
   {% for model in models %}
 
   {% set model_slug = model.name|slugify %}
 
-  <h2 id="{{ model_slug }}" class="model-name">{{ model.name }}</h2>
+  <h2 id="{{ model_slug }}">{{ model.name }} model</h2>
 
   <div class="model-desc">{{ model.description|format_desc }}</div>
 
@@ -110,6 +123,36 @@
   <div class="model-refs">
     <ul>
       {% for ref in model.references %}
+      <li><a class="ext" href="{{ ref }}" target="_blank">{{ ref|format_reference }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% endfor %}
+
+  {% for res in pkg.resources|public %}
+
+  {% set res_slug = res.name|slugify %}
+
+  <h2 id="{{ res_slug }}">{{ res.name }} resource</h2>
+
+  <div class="res-desc">{{ res.description|format_desc }}</div>
+
+  <h3 id="{{ res_slug }}-sources">Sources</h3>
+  <div class="res-sources">
+    <ul>
+      {% for source in res.sources %}
+      <li>{{ source|format_resource_source }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% if res.references %}
+  <h3 id="{{ res_slug }}-references">References</h3>
+  <div class="res-refs">
+    <ul>
+      {% for ref in res.references %}
       <li><a class="ext" href="{{ ref }}" target="_blank">{{ ref|format_reference }}</a></li>
       {% endfor %}
     </ul>

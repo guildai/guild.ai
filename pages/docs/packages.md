@@ -4,7 +4,7 @@ tags: concepts
 
 [TOC]
 
-A ***package*** is a container for [models](term:model) and
+A Guild AI _package_ is a container for [models](term:model) and
 [resources](term:resource). Packages let developers easily publish
 their work for users to discover. They let users easily find, install,
 and use models. Packages are the central feature of Guild's support

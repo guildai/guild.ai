@@ -205,14 +205,32 @@ pages:
       - troubleshooting.md
   - models:
       - models/index.md
+      - Cloud ML:
+          - models/cloudml/index.md
+          - models/cloudml/census.md
+          - models/cloudml/datasets.md
       - Keras:
           - models/keras/index.md
+          - models/keras/deepdream.md
           - models/keras/mnist.md
-      - models/magenta.md
-      - models/tensorflow.md
+      - Magenta:
+          - models/magenta/index.md
+          - models/magenta/image.md
+          - models/magenta/music.md
+      - models/mnist.md
       - TF Slim:
           - models/slim/index.md
+          - models/slim/inception.md
           - models/slim/resnet.md
+          - models/slim/vgg.md
+      - TensorFlow:
+          - models/tensorflow/index.md
+          - models/tensorflow/mnist.md
+          - models/tensorflow/resnet.md
+          - models/tensorflow/wide-deep.md
+      - Wikipedia:
+          - models/wikipedia/index.md
+          - models/wikipedia/datasets.md
   - support.md
   - faq.md
   - about.md

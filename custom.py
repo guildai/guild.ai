@@ -886,6 +886,7 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
             "format_desc": self._format_desc,
             "format_reference": self._format_reference,
             "format_resource_source": self._format_resource_source,
+            "public": self._public,
         })
         self._template = env.get_template("pkg-help.html")
 
@@ -908,6 +909,10 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
             if m:
                 return repl.format(*m.groups())
         return url
+
+    @staticmethod
+    def _public(items):
+        return [item for item in items if not getattr(item, "private", False)]
 
     def _format_resource_source(self, source):
         if source.uri.startswith("operation:"):
@@ -971,7 +976,12 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         pkg = self._get_pkg(path)
         models = self._get_models(path)
         rendered = self._template.render(models=models, pkg=pkg)
-        help_el = etree.fromstring(rendered)
+        try:
+            help_el = etree.fromstring(rendered)
+        except Exception:
+            for i, line in enumerate(rendered.split("\n")):
+                print("%4i: %s" % (i + 1, line))
+            raise
         _replace_el(parent, target, help_el)
 
     def _get_models(self, path):
@@ -980,13 +990,10 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
 
     def _get_pkg(self, path):
         pkg_dir = os.path.join(self._src_path, path)
-        try:
-            f = open(os.path.join(pkg_dir, "guild.yml"))
-        except IOError as e:
-            if e.errno != errno.ENOENT:
-                raise
-            raise AssertionError("no package file in {}".format(pkg_dir))
-        return yaml.load(f)
+        gf = guildfile.from_dir(pkg_dir)
+        if not gf.package:
+            raise AssertionError("no package in {}".format(gf.src))
+        return gf.package
 
 class PkgHelp(Extension):
     """Replaces [PKG-HELP <cmd>] with formatted model help.

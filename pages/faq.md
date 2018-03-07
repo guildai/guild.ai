@@ -45,6 +45,19 @@ restore].
 No, Guild will only download the source once. There is no performance
 penalty for referencing a resource source multiple times.
 
+## Runtime characterisics
+
+### How much overhead does Guild incur when running an operation?
+
+Guild runs operations in a separate OS process to ensure that the
+operation is isolated. As of Guild 0.3.0, the additional overhead
+incurred when running an operation is as follows:
+
+- Additional time: typically less than 100 milliseconds but may be
+  more on slower systems or loaded systems
+
+- Additional resident RAM: less than 40 MB
+
 ## Troubleshooting
 
 ### How do I know which library version I'm using?
