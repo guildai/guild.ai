@@ -6,8 +6,9 @@ pagenav_break: yes
 # Guild AI models
 
 - [Cloud ML](category:/models/#cloudml)
+- [Guild AI](category:/models/#guild)
 - [Keras](category:/models/#keras)
 - [Magenta](category:/models/#magenta)
-- [Official TensorFlow](category:/models/#official)
+- [Official TensorFlow](category:/models/#tensorflow)
 - [TF Slim](category:/models/#slim)
 - [Wikipedia](category:/models/#wikipedia)

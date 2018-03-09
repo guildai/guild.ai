@@ -2,8 +2,13 @@ sidenav_title: Overview
 
 # Cloud ML
 
-TensorFlow Slim is a high level API to TensorFlow. There are a number
-of excellent models in the [](alias:tf-model-zoo), many of which have
-been adapted as Guild packages.
+Google's Cloud Machine Learning Engine (Cloud ML) can be used to train
+and deploy TensorFlow models. The models below are provided by the
+Cloud ML team as working examples that you can experiment and learn
+from in developing your own.
+
+Cloud ML enabled models can be trained locally or in the cloud. They
+make use of Guild AI's [Cloud ML plugin](/docs/plugins/cloudml/) to
+start and manage remote runs such as training or predicting.
 
 - [Packages](category:/models/cloudml#cloudml)

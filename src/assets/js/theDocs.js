@@ -391,7 +391,7 @@ $(function() {
   });
 
   // Lightbox for figure images
-  $('figure img').each(function() {
+  $('img.md').each(function() {
     const img = $(this);
     if (!img.hasClass("no-lightbox")) {
       const wrapper = $('<a>');

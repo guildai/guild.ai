@@ -53,15 +53,15 @@
 
   <div class="model-desc">{{ model.description|format_desc }}</div>
 
-  <ol class="toc model">
+  <ul class="toc model">
     <li><a href="#{{ model_slug }}-operations">Operations</a></li>
-    {% if model.resources %}
+    {% if model.resources|public %}
     <li><a href="#{{ model_slug}}-resources">Resources</a></li>
     {% endif %}
     {% if model.references %}
     <li><a href="#{{ model_slug}}-references">References</a></li>
     {% endif %}
-  </ol>
+  </ul>
 
   <h3 id="{{ model_slug }}-operations">Operations</h3>
 
@@ -86,6 +86,8 @@
           <td class="flag-default">
             {% if flag.default is not none %}
             <code class="lit">{{ flag.default }}</code>
+            {% elif flag.required %}
+            <em>required</em>
             {% endif %}
           </td>
         </tr>
@@ -101,10 +103,10 @@
     {% endfor %}
   </div>
 
-  {% if model.resources %}
+  {% if model.resources|public %}
   <h3 id="{{ model_slug }}-resources">Resources</h3>
   <div class="model-resources">
-    {% for res in model.resources %}
+    {% for res in model.resources|public %}
     <h4 id="{{ model_slug }}-{{ res.name|slugify }}-res" class="res-name">{{ res.name }}</h4>
     <div class="res-desc">{{ res.description|format_desc }}</div>
     <div class="res-sources">

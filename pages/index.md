@@ -219,24 +219,30 @@ improvements.
 
 # Quick start
 
-If you'd like to try Guild AI, it takes just four commands to install
-Guild AI, train a model, and visualize your results.
+If you'd like to try Guild AI, it takes just five commands to install
+Guild AI, train a model, and visualize your results. For more
+information on installing and using Guild AI, see our [installation
+guide](/install/).
 
 <div class="row">
   <div class="col-md-6">
-    <h4>Install Guild AI</h4>
+    <h4>1. Install Guild AI</h4>
     <pre>
       <code class="language-command">pip install guildai</code>
     </pre>
-    <h4>Install a model package</h4>
+    <h4>2. Initialize Guild AI</h4>
+    <pre>
+      <code class="language-command">guild init</code>
+    </pre>
+    <h4>3. Install a model package</h4>
     <pre>
       <code class="language-command">guild install mnist</code>
     </pre>
-    <h4>Train a model</h4>
+    <h4>4. Train a model</h4>
     <pre>
-      <code class="language-command">guild train mnist</code>
+      <code class="language-command">guild train mnist-softmax</code>
     </pre>
-    <h4>View the results</h4>
+    <h4>5. View the results</h4>
     <pre>
       <code class="language-command">guild view</code>
     </pre>
@@ -244,9 +250,20 @@ Guild AI, train a model, and visualize your results.
   <div class="col-md-6" style="padding:20px">
     <figure>
       <a href="/assets/img/guild-view-1.png" data-featherlight="image">
-        <img src="/assets/img/guild-view-1.png">
+        <img class="md" src="/assets/img/guild-view-1.png">
       </a>
+      <figcaption>
+
+Guild View is a part of the Guild AI toolkit. It lets you browse your
+training results, including <a href="">TensorBoard integration</a>.
+
+      </figcaption>
     </figure>
+
+    <center>
+    <a class="btn btn-primary cta" href="/install/"
+      >Get help installing Guild AI<i class="fa next"></i></a>
+    </center>
   </div>
 </div>
 
@@ -255,23 +272,10 @@ Guild AI, train a model, and visualize your results.
 # Next steps
 
 <div class="row match-height" style="margin-bottom:40px">
-<div class="col col-md-4">
-<div class="promo left">
-<h3>Installation guide</h3>
-<p class="expand">
-
-Get more information on installing Guild AI including other install
-options, GPU configuration, and install verification.
-
-</p>
-<a class="btn btn-primary cta" href="/install/"
-  >Installation guide <i class="fa next"></i></a>
-</div>
-</div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>More training</h3>
+<h3>Go deeper with Guild AI</h3>
 <p class="expand">
 
 Go deeper into the Quick Start material above with a step-by-step
@@ -279,7 +283,21 @@ tutorial on training MNIST models and comparing results.
 
 </p>
 <a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
-  >More training <i class="fa next"></i></a>
+  >Go deeper with Guild AI <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Discover the models</h3>
+<p class="expand">
+
+Guild AI supports an ever-growing ecosystem of TensorFlow and Keras
+models that you can install and train with a few simple commands.
+
+</p>
+<a class="btn btn-primary cta" href="/models/"
+  >Discover the models <i class="fa next"></i></a>
 </div>
 </div>
 

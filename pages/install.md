@@ -187,7 +187,7 @@ tutorial will walk you through the basics of Guild and cover most of
 its features.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/tutorials/train-your-first-model/"
+<a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
   >Train your first model <i class="fa next"></i></a>
 </div>
 </div>

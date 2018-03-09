@@ -1,4 +1,6 @@
-# Train MNIST (getting started)
+tags: intro
+
+# Deeper with Guild AI
 
 [TOC]
 
