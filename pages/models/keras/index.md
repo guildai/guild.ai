@@ -8,11 +8,10 @@ provides a number of excellent [models
 ->](https://github.com/keras-team/keras/tree/master/examples), many of
 which have been adapted as Guild packages.
 
-Keras models are supported without modification using Guild AI's
-[Keras plugin](/docs/plugins/keras). You can specify training epochs,
-batch size, and model hyper parameters without editing Keras
-scripts. Guild AI also enables TensorFlow event logging for models so
-you can view training metrics using
+Keras models are supported without modification. You can specify
+training epochs, batch size, and model hyper parameters without
+editing Keras scripts. Guild AI also enables TensorFlow event logging
+for models so you can view training metrics using
 [TensorBoard](/docs/visual/tensorboard/).
 
 - [Packages](category:/models/#keras)

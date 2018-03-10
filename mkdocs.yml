@@ -132,13 +132,12 @@ pages:
       - docs/overview.md
       - docs/models.md
       - docs/operations.md
+      - docs/resources.md
+      - docs/packages.md
       - docs/runs.md
       - Visualization:
-          - docs/visual/index.md
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
-      - docs/packages.md
-      - docs/resources.md
       - Commands:
           - docs/commands/index.md
           - docs/commands/check-cmd.md
@@ -175,31 +174,31 @@ pages:
           - docs/commands/train-cmd.md
           - docs/commands/uninstall-cmd.md
           - docs/commands/view-cmd.md
-      - Plugins:
-          - docs/plugins/index.md
-          - docs/plugins/cloudml.md
-          - docs/plugins/cpu.md
-          - docs/plugins/disk.md
-          - docs/plugins/keras.md
-          - docs/plugins/gpu.md
-          - docs/plugins/memory.md
-      - Developer guides:
-          - docs/developer/scripts.md
-          - docs/developer/packaging.md
-          - docs/developer/plugins.md
+      # TODO - Plugins:
+          # TODO - docs/plugins/index.md
+          # TODO - docs/plugins/cloudml.md
+          # TODO - docs/plugins/cpu.md
+          # TODO - docs/plugins/disk.md
+          # TODO - docs/plugins/keras.md
+          # TODO - docs/plugins/gpu.md
+          # TODO - docs/plugins/memory.md
+      # TODO - Developer guides:
+          # TODO - docs/developer/scripts.md
+          # TODO - docs/developer/packaging.md
+          # TODO - docs/developer/plugins.md
       - Reference:
           - docs/reference/guild-file.md
           - docs/reference/guild-home.md
-          #- docs/reference/plugin-api.md
+          # TODO - docs/reference/plugin-api.md
       - Tutorials:
           - docs/tutorials/index.md
           - docs/tutorials/train-mnist.md
-          - docs/tutorials/transfer-learning-with-imagenet.md
+          # TODO - docs/tutorials/transfer-learning-with-imagenet.md
           - docs/tutorials/train-and-predict-with-cloudml.md
-          - docs/tutorials/train-a-keras-model.md
+          # TODO - docs/tutorials/train-a-keras-model.md
           - docs/tutorials/develop-a-model-from-scratch.md
-          - docs/tutorials/package-a-model.md
-          - docs/tutorials/stylize-images-with-magenta.md
+          # TODO - docs/tutorials/package-a-model.md
+          # TODO - docs/tutorials/stylize-images-with-magenta.md
           - docs/tutorials/workflow-with-virtualenv.md
       - troubleshooting.md
   - models:

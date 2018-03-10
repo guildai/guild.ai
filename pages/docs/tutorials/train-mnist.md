@@ -367,5 +367,7 @@ Compare runs
 
 There's a lot more in Guild to explore! Consider these next steps:
 
+<!-- TODO
 - [Train your own images with transfer learning](/docs/tutorials/transfer-learning-with-imagenet/)
+-->
 - [Browse Guild AI documentation](/docs)

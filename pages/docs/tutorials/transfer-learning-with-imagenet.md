@@ -72,7 +72,7 @@ The models in the `slim.resnet` package are implemented by the
 ->](https://github.com/tensorflow/models/tree/master/research/slim).
 
 
-## Finetune ResNet -- part 1
+## Fine tune ResNet -- part 1
 
 We'll be working with the `resnet-50` model, as it's relatively
 smaller and faster to train.
@@ -88,7 +88,7 @@ guild operations resnet-50
 ``` output
 slim.resnet/slim-resnet-50:evaluate   Evaluate a trained ResNet-50 model
 slim.resnet/slim-resnet-50:export     Generate a ResNet-50 graph def
-slim.resnet/slim-resnet-50:fine tune  Finetune ResNet-50
+slim.resnet/slim-resnet-50:fine tune  Fine tune ResNet-50
 slim.resnet/slim-resnet-50:freeze     Generate a ResNet-50 graph def with checkpoint weights
 slim.resnet/slim-resnet-50:predict    Use TensorFlow label_image and ResNet-50 to classify an image
 slim.resnet/slim-resnet-50:train      Train ResNet-50
@@ -130,7 +130,7 @@ guild run resnet-50:finetune --help-op
 ``` output
 Usage: guild run [OPTIONS] slim-resnet-50:finetune [FLAG]...
 
-Finetune ResNet-50
+Fine tune ResNet-50
 
 Use 'guild run --help' for a list of options.
 

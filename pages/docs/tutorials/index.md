@@ -7,8 +7,11 @@ tags: guide
 
 - [Introductory](category:/docs/tutorials/#intro)
 - [Model development](category:/docs/tutorials/#developer)
-- [Creative](category:/docs/tutorials/#creative)
 - [Tools](category:/docs/tutorials/#tools)
+
+<!-- TODO
+- [Creative](category:/docs/tutorials/#creative)
+-->
 
 ## Tutorial virtual environments
 
