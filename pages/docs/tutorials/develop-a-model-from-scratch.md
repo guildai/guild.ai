@@ -4,25 +4,18 @@ tags: tutorial, developer
 
 [TOC]
 
-In this tutorial we'll develop a model with Guild AI from
-scratch. Model development in Guild AI follows the same general
-process as developing any Python based deep learning model:
+In this tutorial, we'll develop a model with Guild AI from
+scratch. We'll follow this general process:
 
 - Create a training script skeleton
 - Implement a model using one of the available TensorFlow model APIs
 - Obtain a training dataset
 - Iteratively train, evaluate and improve the model
 
-Guild AI provides some additional help in this process:
-
-- Automatically track training runs
-- Easily compare runs
-- Package and distribute models
-
-We'll follow the general outline presented in [Getting Started with
-TensorFlow
-->](ttps://www.tensorflow.org/get_started/premade_estimators), which
-creates a basic classifier for the Iris dataset.
+Our final goal is a trained model that predicts classes from the Iris
+dataset. We'll use the model architecture outlined in [Getting Started
+with TensorFlow
+->](https://www.tensorflow.org/get_started/premade_estimators).
 
 ## Requirements
 
@@ -41,21 +34,18 @@ for this tutorial. To setup your environment, see
 
 Guild projects are directories that contain a [Guild
 file](term:guild-file) --- i.e. a file named `guild.yml`. A Guild file
-contains information about what's in the project.
+contains information used to train models.
 
-We can use the [](cmd:init) command to initialize a new project.
-
-Since we're creating a classifier for the Iris dataset, let's call our
-project "iris" (feel free to use a different name --- just modify the
-values below accordingly).
-
-Initialize a new Guild project by running:
+Let's create a new Guild project for our iris classifier by running:
 
 ``` command
 guild init --project iris
 ```
 
-Guild generates the following project files:
+Guild asks you to confirm the operation. Press `ENTER` to initialize
+the new project.
+
+The commands creates a new directory:
 
 <div class="file-tree">
 <ul>
@@ -84,50 +74,36 @@ Press `q` to stop viewing the project help.
 
 Guild files are named `guild.yml` and are located in the project
 directory. Guild files contain the information needed to train your
-model:
+model.
 
-- Model information such as name and description
-- Model [operations](term:operation), which define actions such as "train"
-- Model [resources](term:resource) needed by operations, such as datasets
+Before we turn our attention to the model training script, let's make
+a quick change to `guild.yml`.
 
 In a text editor, open `./iris/guild.yml`.
 
 ``` yaml
 - model: iris
-  description:
-    TODO - model description
+  description: A basic model.
   operations:
     train:
-      description: Train the model
+      description: Train the model.
       cmd: train
       flags:
-        epochs:
-          description: Number of epochs to train
-          default: 20
+        train-steps:
+          description: Number of steps to train.
+          default: 1000
         batch-size:
-          description: Training batch size
+          description: Training batch size.
           default: 64
-        learning-rate:
-          description: Learning rate
-          default: 0.01
-      requires:
-        - data
-  resources:
-    data:
-      descrition: Data for training and validation
-      sources:
-        - url: http://pub.guild.ai.s3.amazonaws.com/samples/data.csv
-          sha256: 6be6b1203f3d51df0b553a70e57b8a723cd405683958204f96d23d7cd6aea659
-
 ```
 
 Modify the model `description` and replace:
 
-    TODO - model description
+    A basic model.
 
 with:
 
-    DNN classifier for Iris data
+    DNN classifier for Iris data.
 
 Save `guild.yml`.
 
@@ -156,7 +132,7 @@ working on a project. Rather than show you all of the models available
 on the system, it limits the results to models defined in the project.
 
 For the remainder of this tutorial, we'll omit this message from the
-expected output.
+expected output for brevity.
 
 Next, list the operations available:
 
@@ -164,7 +140,7 @@ Next, list the operations available:
 guild operations
 ```
 
-Guild will display the operations for our model:
+Guild displays the operations for our model:
 
 ``` output
 ./iris:train  Train the model
@@ -176,9 +152,9 @@ our Iris classifier.
 
 ## Train the sample model
 
-At this point our model is just a sample --- it doesn't train anyting
-or know about Iris data! But we can still run the `train` operation,
-which simulates the training process.
+At this point our model is just a sample --- it doesn't train anything
+or know about Iris data. However, we can still run the `train`
+operation, which simulates the training process.
 
 From a command line in the `./iris` directory, run:
 
@@ -186,204 +162,192 @@ From a command line in the `./iris` directory, run:
 guild train
 ```
 
-Guild will prompt you with this message:
+Guild prompts you with this message:
 
 ``` output
 You are about to run ./iris:train
   batch-size: 64
-  epochs: 20
-  learning-rate: 0.01
+  train-steps: 1000
 Continue? (Y/n)
 ```
 
-This prompt lets you review the [flag values](term:flag) that will be
-used for the `train` operation. These are flags defined in the sample
-model --- we'll modify them later.
+This lets you review the [flag values](term:flag) that will be used
+for the `train` operation.
 
-For now, accept the values and start the training by pressing `ENTER`.
+Accept the values and start the training by pressing `ENTER`.
 
-Guild downloads a sample data file (the file is very small and won't
-take long to download) and runs a similated training, printing status
-updates.
+Guild runs the sample training operation and exits:
 
 ``` output
-Resolving data dependency
-Starting new HTTP connection (1): pub.guild.ai.s3.amazonaws.com
-Downloading http://pub.guild.ai.s3.amazonaws.com/samples/data.csv
-Training sample model (batch-size: 64, learning-rate: 0.01): epoch 1
-...
+Sample train: step 0
+Sample train: step 100
+Sample train: step 200
+Sample train: step 300
+Sample train: step 400
+Sample train: step 500
+Sample train: step 600
+Sample train: step 700
+Sample train: step 800
+Sample train: step 900
+Sample evaluate: 0.888 accuracy
 ```
 
-Remember, this is a sample training that doesn't train anything at
-all! We'll change this later.
+Note that this is only a sample --- nothing has been actually been trained!
+
+We'll fix that next.
 
 ## Training script
 
-Let's look at `train.py`, which is the script used to train the
-model. In your text editor, open `train.py`.
+In your text editor, open `./iris/train.py`, which is the sample
+training script that Guild created when you initialized the project.
 
-Here's the script, minus some imports and comments, which are removed
-for bervity:
+Here's the script with imports and comments removed for brevity. We'll
+look at each part in turn.
 
 ``` python
 def main():
     args = parse_args()
-    model = init_model(args)
-    train(model, args)
+    data = init_data(args)
+    model = init_model(data, args)
+    train(model, data, args)
+    evaluate(model, data, args)
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", default=20, type=int)
-    parser.add_argument("--batch-size", default=64, type=int)
-    parser.add_argument("--learning-rate", default=0.01, type=float)
+    parser.add_argument('--train-steps', default=1000, type=int)
+    parser.add_argument('--batch-size', default=100, type=int)
+    parser.add_argument('--data-dir', default='data')
+    parser.add_argument('--model-dir', default='model')
     return parser.parse_args()
 
-def init_model(args):
-    return (
-        "sample model (batch-size: {}, learning-rate: {})".format(
-        args.batch_size, args.learning_rate)
-    )
+def init_data(args):
+    train_x, train_y = [], []
+    test_x, test_y = [], []
+    return (train_x, train_y), (test_x, test_y)
 
-def train(model, args):
-    for i in range(args.epochs):
-        print("Training %s: epoch %i" % (model, i + 1))
-        import time; time.sleep(0.05)
+def init_model(data, args):
+    return 'sample model'
 
-if __name__ == "__main__":
+def train(model, data, args):
+    for step in range(args.train_steps):
+        if step % 100 == 0:
+            print('Sample train: step %s' % step)
+
+def evaluate(model, data, args):
+    print('Sample evaluate: 0.888 accuracy')
+
+if __name__ == '__main__':
     main()
 ```
 
-While this is only a sample and doesn't train anything, it does
-reflect the core structure of most training scripts. Let's look at
-each part.
+### Main function
+
+``` python
+def main():
+    args = parse_args()
+    data = init_data(args)
+    model = init_model(data, args)
+    train(model, data, args)
+    evaluate(model, data, args)
+```
+
+This function orchestrates the training operation:
+
+- Parse command line arguments
+- Initialize data used for training and evaluation
+- Initialize the model
+- Train the model
+- Evaluate the model
+
+We won't modify this function because it already does what we need.
+
+### Parse command line arguments
+
+``` python
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--train-steps', default=1000, type=int)
+    parser.add_argument('--batch-size', default=100, type=int)
+    parser.add_argument('--data-dir', default='data')
+    parser.add_argument('--model-dir', default='model')
+    return parser.parse_args()
+```
+
+This function parses command line arguments passed to the script.
+
+Rather than hard-code hyperparameter values, consider using command
+line arguments. This patterm provides a couple of benefits:
+
+- Users can experiment with different hyperparameter values without
+  modifying source code.
+
+- By defining hyperparameters as command line arguments, you document
+  values that can be changed without comprimising the model
+  architecture.
+
+### Initialize the training and test data
+
+``` python
+def init_data(args):
+    train_x, train_y = [], []
+    test_x, test_y = [], []
+    return (train_x, train_y), (test_x, test_y)
+```
+
+This function is a stub for loading and initializing data. We'll
+modify this function later in this tutorial to load and prepare our
+Iris data for training and validation.
+
+### Initialize the model
+
+``` python
+def init_model(data, args):
+    return 'sample model'
+```
+
+This function is a stub for initializing the model. We'll modify it
+later in this tutorial to return a `tf.estimator.DNNClassifier` that
+can be used to train with the Iris data.
+
+
+### Train the model
+
+``` python
+def train(model, data, args):
+    for step in range(args.train_steps):
+        if step % 100 == 0:
+            print('Sample train: step %s' % step)
+```
+
+This function is a stub for the training loop. We'll modify it later
+in this tutorial to call the `train` method of our model.
+
+### Evaluate the model
+
+``` python
+def evaluate(model, data, args):
+    print('Sample evaluate: 0.888 accuracy')
+```
+
+Our final function is a stub for evaluating the trained model. We'll
+modify it later in this tutorial to call the `evaluate` method of our
+model.
 
 ### Main handler
-
-Training scripts must be runnable from the command line. Nearly all
-TensorFlow training examples support this and our sample is no
-exception.
-
-The following block checks if the module is being loaded as a script
-and, if it is, calls a `main` function.
 
 ``` python
 if __name__ == "__main__":
     main()
 ```
 
-This pattern serves two
-purposes:
+This statement calls `main` only when then module is loaded as a
+script.
+
+This pattern serves two purposes:
 
 - The script can be executed from a command line
 - The script can also be imported by other Python modules without
   automatically running
 
-The second point is important and many TensorFlow scripts, including
-the Keras sample models, don't use this pattern. Scripts that always
-execute are not reusable,[^1] short of modifying them.
-
-[^1]: It is technically possible to reuse scripts that execute on
-    import --- Guild does this in its Keras support. However, it's not
-    practical as a general pattern as it's far simpler to modify the
-    script in question to use the Main handler pattern shown above.
-
-### Main function
-
-Skipping to the top of the script, we see the `main` function:
-
-```
-def main():
-    args = parse_args()
-    model = init_model(args)
-    train(model, args)
-```
-
-This is a simple function that performs three tasks:
-
-- Parses the script command line arguments
-- Initialize the model
-- Train the model
-
-Most training scripts follow these steps, though many omit the first
-task --- parsing command line arguments. This is an important
-consideration in model development as we'll see in the next section.
-
-Model initialization is logically separate from training, and that
-distinction is reflected in our sample script by using functions ---
-`init_model` to initialize the model and `train` to train it.
-
-### Command line arguments
-
-Many TensorFlow scripts hard-code important values such as training
-epochs, batch size, learning rates, and dataset location. Hard coding
-these values makes it hard to use the model as it forces users to edit
-source code.
-
-As a model developer, it's a good idea to build scripts that can be
-used without modification. To do that effectively, you need to support
-command line argumets. Fortunately, it's easy. Here's the function in
-our sample script that handles command line arguments:
-
-``` python
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", default=20, type=int)
-    parser.add_argument("--batch-size", default=64, type=int)
-    parser.add_argument("--learning-rate", default=0.01, type=float)
-    return parser.parse_args()
-```
-
-Here we see that three arguments are supported: `epochs`,
-`batch-size`, and `leaning-rate`. Each of these variables has a
-default value that can be easily changed by the user when running the
-scripts.
-
-For example, to use a batch size of 100, a user could run:
-
-```
-python train.py --batch-size 100
-```
-
-As we proceed in this tutoral, we'll revisit this function and modify
-it to support the parameters that we need for our Iris classifier.
-
-### Model definition
-
-TensorFlow models can be defined using a variety of APIs. In [Getting
-Started with TensorFlow
-->](https://www.tensorflow.org/get_started/premade_estimators) --- our
-template for the Iris classifier --- the author uses the [TF Estimator
-->](https://www.tensorflow.org/programmers_guide/estimators) framework
-to define a simple DNN (deep neural network) model.
-
-Our sample script doesn't attempt to guess which API you want to use
-and instead provides a place-holder:
-
-``` python
-def init_model(args):
-    return (
-        "sample model (batch-size: {}, learning-rate: {})".format(
-        args.batch_size, args.learning_rate)
-    )
-```
-
-As you can see, our model is nothing more than a string! We'll fix
-this later.
-
-### Training loop
-
-Machine learning models are trained iteratively using batches of
-training data. This iteration is often referred to as a *training
-loop*. Our sample model provides a training loop simulation, which
-iterates over *epochs*, which are training iterations performed over
-all training examples.
-
-``` python
-def train(model, args):
-    for i in range(args.epochs):
-        print("Training %s: epoch %i" % (model, i + 1))
-        import time; time.sleep(0.05)
-```
-
-As with the other sample functions, our training loop is a phony!
-We'll fix that as well.
+It's a good idea to use this pattern because it allows your training
+script to be used as a module by other Python programs.
