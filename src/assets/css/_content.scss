@@ -96,8 +96,12 @@ img.md {
     border: none;
   }
 
+  td.dt {
+    color: $light-text-color;
+  }
+
   td.dd {
-    width: 100%;
+    //width: 100%;
   }
 }
 

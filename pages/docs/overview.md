@@ -37,8 +37,8 @@ Examples of operations that a model might provide include:
 `train`
 : Train a model --- nearly every model supports it!
 
-`fine-tune`
-: Fine-tune a model using a pretrained model as a starting point.
+`finetune`
+: finetune a model using a pretrained model as a starting point.
 
 `evaluate`
 : Measure model performance using a test dataset.

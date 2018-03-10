@@ -190,7 +190,7 @@ pages:
       - Reference:
           - docs/reference/guild-file.md
           - docs/reference/guild-home.md
-          - docs/reference/plugin-api.md
+          #- docs/reference/plugin-api.md
       - Tutorials:
           - docs/tutorials/index.md
           - docs/tutorials/train-mnist.md

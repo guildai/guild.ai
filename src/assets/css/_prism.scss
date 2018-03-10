@@ -3,6 +3,9 @@
 .token.doctype,
 .token.cdata {
   color: slategray;
+  position: unset;
+  display: unset;
+  margin-bottom: unset;
 }
 
 .token.punctuation {

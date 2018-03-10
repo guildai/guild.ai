@@ -53,13 +53,11 @@ $(function() {
     var navbar_lg = $('.site-header').hasClass('navbar-lg');
     $(window).on('scroll', function() {
       var offset = $('.site-header').offset().top + $('.site-header').height();
-
       if ($(window).scrollTop() > offset) {
         if (navbar_lg) {
           $('.site-header').removeClass('navbar-lg');
         }
         $('.site-header').addClass('navbar-sm');
-
       } else {
         if (navbar_lg) {
           $('.site-header').addClass('navbar-lg');

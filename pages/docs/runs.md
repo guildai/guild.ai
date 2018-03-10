@@ -18,7 +18,7 @@ When you train a model, you generate a run. That run contains the
 trained model as well as training logs and other artifacts associated
 with the operation.
 
-Similarly, when you fine-tune a model, you generate a run. When you
+Similarly, when you finetune a model, you generate a run. When you
 test a model, you generate a run. In fact, any operation that you run
 generates a distinct run. This is how Guild manages your work.
 
@@ -236,21 +236,21 @@ For example, if the output of `operations` looks like this:
 
 ``` output
 iris/iris-cnn:train
-iris/iris-cnn:fine-tune
+iris/iris-cnn:finetune
 iris/iris-cnn:test
 ```
 
-You can start the `fine-tune` operation by running:
+You can start the `finetune` operation by running:
 
 ``` command
-guild run fine-tune
+guild run finetune
 ```
 
 You can always provide the model or package. For example, this form
-will also start `fine-tune`:
+will also start `finetune`:
 
 ``` command
-guild run iris-cnn:fine-tune
+guild run iris-cnn:finetune
 ```
 
 You use part of the operation specification as long as Guild can

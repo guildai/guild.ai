@@ -192,11 +192,48 @@ Sample train: step 900
 Sample evaluate: 0.888 accuracy
 ```
 
-Note that this is only a sample --- nothing has been actually been trained!
+While this is only a stub, we did execute a training run. You can list
+runs for a project by running:
 
-We'll fix that next.
+``` command
+guild runs
+```
 
-## Training script
+You should see the completed training run.
+
+Guild runs automatically generated when you run `train`. Each run
+contains a record of the operation, which includes information about
+the operation along with files generated during the run.
+
+You can show information about the latest run by running:
+
+``` command
+guild runs info
+```
+
+This shows run details including:
+
+Run ID
+: A unique identifier for the run
+
+Run operation
+: The model operation that generated the run
+
+Start and stop time
+: When the run was started and stopped
+
+Run directory
+: The file system directory containing run files
+
+Command details
+: The command used to run the operation, its exit status (if it
+  exited) and its operation system PID (if it's still running)
+
+We'll revisit runs later in this tutorial.
+
+Next, we'll review our project's training script.
+
+## Review the training script
 
 In your text editor, open `./iris/train.py`, which is the sample
 training script that Guild created when you initialized the project.
@@ -351,3 +388,347 @@ This pattern serves two purposes:
 
 It's a good idea to use this pattern because it allows your training
 script to be used as a module by other Python programs.
+
+## Load the Iris data
+
+Let's start modifying our training script to work with Iris data.
+
+For our project, we'll use the Iris data prepared by Google for
+[Getting Started with TensorFlow
+->](https://www.tensorflow.org/get_started/premade_estimators).
+
+### Download `iris_data.py`
+
+Download <a class="ext"
+href="https://raw.githubusercontent.com/tensorflow/models/079d67d9a0b3407e8d074a200780f3835413ef99/samples/core/get_started/iris_data.py"
+download>iris_data.py</a> and save it in your `./iris` project
+directory.
+
+Once you've saved the file, your project directory should look like this:
+
+<div class="file-tree">
+<ul>
+<li class="is-folder open">./iris
+ <ul>
+ <li class="is-file">guild.yml</li>
+ <li class="is-file">iris_data.py <i><strong>Newly downloaded file</strong></i></li>
+ <li class="is-file">train.py</li>
+</ul>
+</li>
+</ul>
+</div>
+
+### Import `iris_data`
+
+In your text editor, modify `./iris/train.py` by adding the following
+line to the imports section of the file, after the line ``import
+tensorflow as tf``:
+
+``` python
+import iris_data
+```
+
+Your imports should look like this:
+
+``` python
+import argparse
+
+import tensorflow as tf
+
+import iris_data   # newly added line
+```
+
+### Modify `init_data`
+
+Next, we'll modify the `init_data` function to load the Iris data.
+
+In you text editor, modify `./iris/train.py` to change the `init_data`
+function to be this:
+
+``` python
+def init_data(_args):
+    return iris_data.load_data()
+```
+
+Note our changes:
+
+- We're passing through the call to `init_data` to our data module
+  without making additional changes to the data. Refer to
+  `iris_data.py` for details on how the data is loaded.
+
+- We're not using the `args` argument, so we rename it to
+  `_args`. Feel free to remove `args` altogether, but if you do, you
+  must also update the `main` function to use ``init_data()``.
+
+### Test your changes
+
+In your text editor, save your changes.
+
+Our script should now load the Iris data but continue the simulated
+training and evaluation without using the data. If we have problems
+here we can fix them before continuing to the next steps.
+
+From a command line in the `./iris` directory, run:
+
+``` command
+guild train -y
+```
+
+!!! note
+    We use the ``-y`` option here to bypass the prompt, saving us
+    a step.
+
+Below are some issues you might experience at this point.
+
+`ImportError: No module named iris_data`
+: Verify that you downloaded `iris_data.py` into the project
+  directory. See [Download iris_data.py](#download-iris_datapy) above
+  for help.
+
+`NameError: global name 'iris_data' is not defined`
+: Ensure that you are importing the `iris_data` module. See [Import
+  iris_data ](#import-iris_data) above for help.
+
+An error originating from `iris_data.py`
+: Verify that you `iris_data.py` was saved correctly.
+
+If the command succeeds, you should see the same result as from our
+previous run.
+
+You can list the runs by running:
+
+``` command
+guild runs
+```
+
+Next, we'll define our model.
+
+## Define the model
+
+In this step, we'll implement a simple deep neural network as
+described in [Getting Started with TensorFlow - Instantiate an
+estimator
+->](https://www.tensorflow.org/get_started/premade_estimators#instantiate_an_estimator).
+
+In your text editor, modify `./iris/train.py` and change the
+`init_model` function to be this:
+
+``` python
+def init_model(data, args):
+    train_x = data[0][0]
+    feature_columns = [
+        tf.feature_column.numeric_column(key=key)
+        for key in train_x.keys()
+    ]
+    return tf.estimator.DNNClassifier(
+        feature_columns=feature_columns,
+        hidden_units=[10, 10],
+        n_classes=3,
+        model_dir=args.model_dir)
+```
+
+This is the most complex change to our script, so let's take a moment
+to understand it.
+
+The purpose of `init_model` is to return something that can be trained
+and evaluated. In this case, we're using the [TensorFlow Estimators
+->](https://www.tensorflow.org/programmers_guide/estimators)
+high-level framework to create a DNN classifier.
+
+The classifier requires a list of feature columns, which we provide
+from the training data.
+
+We also specify `model_dir`, which tells TensorFlow to generate logs
+and save the trained model during training. We'll see this in action
+later.
+
+In your text editor, save your changes.
+
+Feel free to stop now and test your changes by running:
+
+``` command
+guild train -y
+```
+
+While we're still not yet training our model, you will see additional
+output from the command, which is generated by TensorFlow when we
+instantiate the model.
+
+## Implement train and evaluate
+
+In this step, we'll modify our `train` and `evaluate` functions to
+perform real work!
+
+In your text editor, modify `./iris/train.py` and change the `train`
+function to be:
+
+``` python
+def train(model, data, args):
+    (train_x, train_y), _ = data
+    input_fn = lambda: iris_data.train_input_fn(
+        train_x, train_y, args.batch_size)
+    model.train(input_fn=input_fn, steps=args.train_steps)
+
+```
+
+Next, change the `evaluate` function to be:
+
+``` python
+def evaluate(model, data, args):
+    _, (test_x, test_y) = data
+    input_fn = lambda: iris_data.eval_input_fn(
+        test_x, test_y, args.batch_size)
+    eval_result = model.evaluate(input_fn=input_fn)
+    print('Test set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
+```
+
+Both functions are similar:
+
+- They both call a single method on `model` to perform the work.
+
+- The both use a callback `input_fn` to read batched data.
+
+Note that we're using `args.batch_size` rather than hard-coding a
+value. This makes it easy to experiment with different values without
+changing the source code.
+
+In your text editor, save your changes.
+
+At this point our training script is ready to train the Iris data!
+
+!!! note
+    If you'd like, feel free to delete any remaining `TODO`
+    comments.
+
+## Delete the trial runs
+
+Before we proceed, let's delete all of our runs up to this point,
+which we won't use because they were just trials. From a command line,
+run:
+
+``` command
+guild runs delete
+```
+
+Guild will ask you to confirm the operation before proceeding. Press
+`ENTER` to delete the runs.
+
+!!! note
+    Guild lets you restore deleted runs using the [runs
+    restore](cmd:runs-restore) command. This can come in handy if you
+    accidentally delete something you need!
+
+## Train the DNN
+
+Let's train a real network!
+
+From a command line, run:
+
+``` command
+guild train -y
+```
+
+You should see real training progress, with updates from TensorFlow
+about training loss and other training statistics.
+
+!!! note
+    If your script doesn't run as expected, check it against
+    [train_premade.py](https://github.com/guildai/examples/blob/master/iris/train_premade.py),
+    which reflects the changes to `./iris/train.py` up to this
+    point.
+
+When the training is completed, the script prints a final accuracy,
+which is calculated using test data. It should be 0.967.
+
+Congratulations - you've just trained a respectable classifier for
+Iris data! But while 96% accuracy is good, maybe we can do better.
+
+Without changing the model architecture, let's see what we can change
+to improve accuracy.
+
+From a command line, run:
+
+``` command
+guild train --help-op
+```
+
+This command is similar to `guild help`, but shows information about a
+specific operation --- in this case the `train` operation.
+
+``` output
+Usage: guild run [OPTIONS] iris:train [FLAG]...
+
+Train the model.
+
+Use 'guild run --help' for a list of options.
+
+Flags:
+  batch-size   Training batch size (default is 64)
+  train-steps  Number of steps to train (default is 1000)
+```
+
+Let's see if we can improve accuracy with longer training.
+
+From a command line, run:
+
+``` command
+guild train train-steps=2000 -y
+```
+
+This will double the amount of training!
+
+!!! note
+    When running operations from Guild, flag values are specified
+    using `NAME=VALUE` without using a `--` prefix. So we use
+    ``train-steps=2000`` here and not ``--train-steps=2000``. These
+    values are passed through to the training script as command line
+    arguments. If you're curious to see the full command that Guild
+    uses to run an operation, use the `--print-cmd` option.
+
+When the training is completed, you should see... 0.967. No
+improvement!
+
+## Compare runs
+
+Let's dig a little deeper to compare our two runs: one using 1,000
+training steps and another using 2,000 training steps.
+
+From a command in line `./iris`, run:
+
+``` command
+guild compare
+```
+
+This commands opens Guild Compare, a spreadsheet-like application that
+lets you compare model accuraries. Use the cursor to scroll to the
+right if you can't see all of the columns.
+
+Notice that both runs have exactly the same accuracies --- `0.966667`
+--- despite using different training steps.
+
+Increasing training steps can improve model accuracy through data
+shuffling and augmentation. Our training dataset however contains only
+120 examples and is not augmented. We should expect to see the maximum
+performance after training for a few hundred steps.
+
+If we want better accuracy, we'll need to modify our model.
+
+## Define a second model
+
+In this step, we'll extend our training script to support a second
+model. We'll use the model outlined in [Creating Custom Estimators
+->](https://www.tensorflow.org/get_started/custom_estimators), which
+is a followup to [Getting Started with TensorFlow
+->](https://www.tensorflow.org/get_started/premade_estimators).
+
+While we could simply replace our current model with something else,
+we can just as easily create a second model, leaving our current model
+unchanged.
+
+In your text editor, modify './iris/train.py' by adding the following
+function just after `init_model`:
+
+``` python
+def init_model_v2(data, args):
+    pass
+```

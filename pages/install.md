@@ -110,7 +110,7 @@ available on your PATH using one of these methods:
 ## Install TensorFlow
 
 Guild requires TensorFlow but does not install it for
-you. [^tf-install] You can use `pip` to install TensorFlow by running:
+you.[^tf-install] You can use `pip` to install TensorFlow by running:
 
 [^tf-install]:
     TensorFlow is a rapidly evolving software library and is provided as

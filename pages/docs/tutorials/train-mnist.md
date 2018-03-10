@@ -1,6 +1,6 @@
 tags: intro
 
-# Deeper with Guild AI
+# Go deeper with Guild AI
 
 [TOC]
 
