@@ -620,21 +620,19 @@ Guild will ask you to confirm the operation before proceeding. Press
 
 ## Train the DNN
 
-Let's train a real network!
+!!! note
+    The full source code to the project at this point can be found here:
 
-From a command line, run:
+    - [https://github.com/guildai/examples/tree/master/iris](https://github.com/guildai/examples/tree/master/iris)
+
+Train our new DNN by running:
 
 ``` command
 guild train -y
 ```
 
-You should see real training progress, with updates from TensorFlow
-about training loss and other training statistics.
-
-!!! note
-    If your script doesn't run as expected, check it against
-    [train_premade.py](https://github.com/guildai/examples/blob/master/iris/train_checkpoint_1.py),
-    which reflects the changes to `./iris/train.py` up to this point.
+You should see real training progress this time, with updates from
+TensorFlow about training loss and other training statistics.
 
 When the training is completed, the script prints a final accuracy,
 which is calculated using test data. It should be 0.967.
@@ -692,3 +690,7 @@ In this tutoral, we saw the following:
 
 - Guild provides tools to help you evaluate runs, including
   integration with TensorBoard.
+
+## Next steps
+
+- [Browse Guild AI documentation](/docs)
