@@ -46,3 +46,6 @@ test-custom:
 
 spellcheck:
 	find pages -iregex '.*\.md$$' -exec aspell -l en --home-dir . -x check '{}' \;
+
+clean-caches:
+	rm -rf /tmp/guild-ai-cmd-help

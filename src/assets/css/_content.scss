@@ -100,8 +100,8 @@ img.md {
     color: $light-text-color;
   }
 
-  td.dd {
-    //width: 100%;
+  td.dd p:first-child {
+    margin-top: 8px;
   }
 }
 
