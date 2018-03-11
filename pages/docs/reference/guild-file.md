@@ -1,7 +1,7 @@
-pagenav_title: Guild file reference
+sidenav_title: Guild file
 tags: reference
 
-# Guild file
+# Guild file reference
 
 [TOC]
 

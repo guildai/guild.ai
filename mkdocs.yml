@@ -123,6 +123,9 @@ markdown_extensions:
           target: _blank
           class: ext
           text: TensorFlow model zoo
+        - link_pattern: alias:guild-models
+          href: /models/
+          text: Guild AI models
 
 pages:
   - index.md

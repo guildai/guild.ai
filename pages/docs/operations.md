@@ -4,6 +4,8 @@ tags: concepts
 
 [TOC]
 
+An operation is an action performed on a [](term:model).
+
 ## Flags
 
 ## Required resources

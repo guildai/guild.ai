@@ -83,8 +83,8 @@ This command has the effect of running `train_cnn.py` with the
 specified flag values as a distinct run, which can be evaluated during
 or after the operation.
 
-<a class="btn btn-primary" href="/docs/reference/guild-file/">Guild file reference<i class="fa next"></i></a>
-
+<a class="btn btn-primary" href="/docs/reference/guild-file/">Guild
+file reference<i class="fa next"></i></a>
 
 ## Packages
 

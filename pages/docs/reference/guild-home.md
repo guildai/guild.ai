@@ -1,7 +1,7 @@
-pagenav_title: Guild home reference
+sidenav_title: Guild home
 tags: reference
 
-# Guild home
+# Guild home reference
 
 [TOC]
 

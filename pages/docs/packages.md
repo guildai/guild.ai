@@ -31,5 +31,28 @@ It's also easy to create and publish your own models.
 
 ## Install packages
 
+Install a package by running:
 
-## Create packages
+``` command
+guild install PACKAGE
+```
+
+You can find package names using [](cmd:search) (see [Find
+packages](#find-packages) above).
+
+You can also browse [](alias:guild-models).
+
+## Uninstall packages
+
+## Create package
+
+Creating packages is an advanced topic that is not currently covered
+in this documentation.
+
+You may however review the package definitions at
+[https://github.com/guildai/packages
+->](https://github.com/guildai/packages) for examples of packages.
+
+If you need help creating a package, drop us a line at
+[niceperson@guild.ai](mailto:niceperson@guild.ai) and we'll be happy
+to help!
