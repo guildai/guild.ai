@@ -279,6 +279,33 @@ guild train iris-cnn
 guild train cnn
 ```
 
+## Flag values
+
+Specify operation flag values as `NAME=VALUE` arguments to [](cmd:run).
+
+To get help on available and required flags for an operation, run:
+
+``` command
+guild run OPERATION --help-op
+```
+
+You can also view help for models defined in the current directory by
+running:
+
+``` command
+guild help
+```
+
+To get help for a packaged model, run:
+
+
+``` command
+guild help PACKAGE
+```
+
+If you omit a required flag, the `run` command (or applicable alias)
+will exit with an error message.
+
 ## List runs
 
 To list Guild runs, use the [](cmd:runs) or [runs list](cmd:runs-list)
@@ -322,9 +349,34 @@ guild runs info
 
 You can select a specific run by providing a run ID or index.
 
-XXX
+Run indexes are displayed in run lists (see [List runs](#list-runs)
+above).
 
 ## Compare runs
+
+Compare runs by running:
+
+``` command
+guild compare
+```
+
+Guild Compare is spreadsheet-like application that displays runs,
+their status, and metrics such as validation accuracy and training
+loss.
+
+To display compare results as a table, use:
+
+``` command
+guild compare --table
+```
+
+To display compare results in CSV format (e.g. for use in Excel), use:
+
+``` command
+guild compare --csv
+```
+
+For more help, see the [](cmd:compare) command.
 
 ## Label runs
 
@@ -345,10 +397,61 @@ Guild will display the list of runs to be deleted and ask you to
 confirm the operation. You must type ``y`` and then press `ENTER` to
 confirm.
 
-Deleted runs can be recovered using the [runs
-restore](cmd:runs-restore) command. Refer to [Recover deleted
-runs](#recover-deleted-runs) below for details.
+Deleted runs can be restored using the [runs
+restore](cmd:runs-restore) command. Refer to [Restoring deleted
+runs](#restore-deleted-runs) below for details.
 
-## Recover deleted runs
+### Frequently used delete commands
+
+To delete all failed runs, use:
+
+``` command
+guild runs rm -E
+```
+
+To permanently delete all failed runs, use:
+
+``` command
+guild runs rm -Ep
+```
+
+!!! important
+    Permanently deleted runs cannot be recovered!
+
+To delete all failed and terminated runs, use:
+
+``` command
+guild runs -ET
+```
+
+## Restore deleted runs
+
+Deleted runs can be recovered by running:
+
+``` command
+guild runs restore [RUN...]
+```
+
+For more help, see the [runs restore](cmd:runs-restore) command.
 
 ## Purge deleted runs
+
+The disk space used by deleted runs can be recovered by permanently
+deleting them using [runs purge](cmd:runs-purge).
+
+!!! tip
+    You can show the list deleted runs using ``guild runs --deleted``.
+
+For example, to permanently delete all deleted runs, use:
+
+``` command
+guild runs purge
+```
+
+Guild will prompt you before proceeding.
+
+!!! important
+    Purging deleted runs will permanently delete them! Be certain that
+    you don't need a run before permanently deleting it.
+
+For more help, see the [runs purge](cmd:runs-purge) command.

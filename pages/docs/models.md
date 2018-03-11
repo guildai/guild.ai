@@ -149,6 +149,39 @@ For more information, see [Install
 packages](/docs/packages/#install-packages) and the [](cmd:install)
 command.
 
+## Get model help
+
+To view help for models defined in the current directory (i.e. models
+defined in `./guild.yml`) run:
+
+``` command
+guild help
+```
+
+To view help for models defined in another directory, run:
+
+``` command
+guild help DIRECTORY
+```
+
+!!! note
+    `DIRECTORY` must contain a Guild file (i.e. `guild.yml`).
+
+To view help for models defined in a package, run:
+
+``` command
+guild help PACKAGE
+```
+
+For example, to view help for the models provided by
+`tensorflow.resnet`, run:
+
+``` command
+guild help tensorflow.resnet
+```
+
+For more information, see the [](cmd:help) command.
+
 ## List models
 
 List available models by running:
