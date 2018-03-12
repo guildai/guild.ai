@@ -30,5 +30,6 @@
     "jsoncomp": "^1.6.1",
     "mousetrap": "^1.6.1",
     "perfect-scrollbar": "^0.7.1"
-  }
+  },
+  "dependencies": {}
 }
