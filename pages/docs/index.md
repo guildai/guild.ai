@@ -7,6 +7,10 @@ tags: support
 # Documentation
 
 - [Concepts](category:#concepts)
+- [Visual tools](category:#visual-tool)
 - [Reference](category:#reference)
-- [Guides](category:#guide)
 - [Popular](category:#popular)
+
+<!-- TODO
+- [Guides](category:#guide)
+-->

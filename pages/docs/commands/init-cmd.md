@@ -1,6 +1,6 @@
 sidenav_title: init
 overview_title: init
-tags: packaging
+tags: general
 
 # init command
 

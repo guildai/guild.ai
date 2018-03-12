@@ -1,4 +1,4 @@
-tags: intro
+tags: tutorial, intro, popular
 
 # Go deeper with Guild AI
 

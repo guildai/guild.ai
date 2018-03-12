@@ -1,3 +1,5 @@
+tags: visual-tool
+
 # Guild View
 
 Guild View is a visual application provided with the Guild AI

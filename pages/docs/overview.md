@@ -99,6 +99,10 @@ You can discover packages [online](/models/) or by using Guild's
 
 ## Models
 
+Guild models correspond to machine learning models. They're defined in
+Guild files with their *operations*, which can be run to perform
+training, evaluation, and other model related work.
+
 <a class="btn btn-primary" href="/docs/models/">More about models<i class="fa next"></i></a>
 
 ## Operations
@@ -139,6 +143,10 @@ next steps.
 class="fa next"></i></a>
 
 ## Resources
+
+Resources are files and software libraries required by
+operations. Models and packages may provide resources, which Guild
+makes available to operations during each run.
 
 <a class="btn btn-primary" href="/docs/resources/">More about resources <i
 class="fa next"></i></a>

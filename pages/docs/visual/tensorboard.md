@@ -1,3 +1,5 @@
+tags: visual-tool
+
 # TensorBoard
 
 ![TensorBoard](/assets/img/tb.png)

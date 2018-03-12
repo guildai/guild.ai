@@ -85,7 +85,7 @@
           <td class="flag-desc">{{ flag.description|format_desc }}</td>
           <td class="flag-default">
             {% if flag.default is not none %}
-            <code class="lit">{{ flag.default }}</code>
+            <code>{{ flag.default }}</code>
             {% elif flag.required %}
             <em>required</em>
             {% endif %}

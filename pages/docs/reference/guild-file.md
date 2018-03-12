@@ -54,7 +54,7 @@ config: my-config
 description: My config
 ```
 
-List of top-level packages:
+List of top-level objects:
 
 ``` yaml
 - package: my-package
@@ -136,7 +136,7 @@ Packages contain information used by Guild to generate Guild packages.
 `maintainer`
 : Name of individual or organization package maintainer (string)
 
-`maintainer_email`
+`maintainer-email`
 : Email of package maintainer (email address)
 
 `license`
@@ -145,7 +145,7 @@ Packages contain information used by Guild to generate Guild packages.
 `tags`
 : List of packages tags (list of strings)
 
-`python_tag`
+`python-tag`
 : Value used as the Python tag when generating the package (string)
 
 `data_files`
@@ -154,7 +154,7 @@ Packages contain information used by Guild to generate Guild packages.
 `resources`
 : List of package resources (list of [resources](#resources))
 
-`python_requires`
+`python-requires`
 : Version of Python required by the package (string)
 
 `requires`
@@ -167,7 +167,8 @@ Package definition for `slim.resnet`:
 ``` yaml
 package: slim.resnet
 version: 0.3.0
-description: TF-Slim ResNet models (50, 101, 152, and 200 layer models for ResNet v1 and v2)
+description:
+  TF-Slim ResNet models (50, 101, 152, and 200 layer models for ResNet v1 and v2)
 url: https://github.com/guildai/index/tree/master/slim/resnet
 maintainer: Guild AI
 maintainer-email: packages@guild.ai
@@ -216,14 +217,13 @@ Models may also define resources that operations require.
   <p>
   References are displayed in help text.
 
-`extra`:
+`extra`
 : Additional information used by Guild and Guild plugins
 
 ### Examples
 
-Complete example of `mnist-layers`, which is defined in the
-[`tensorflow.mnist`
-package](https://github.com/guildai/packages/tree/master/tensorflow/mnist):
+Complete example of `mnist-layers` (from
+[`tensorflow.mnist`](https://github.com/guildai/packages/tree/master/tensorflow/mnist)):
 
 ``` yaml
 - model: mnist-layers
@@ -279,7 +279,7 @@ operations:
   This may be a multi-line description.
 
 `cmd`
-: Operation command (string)
+: Operation command (required string)
   <p>
   Operation commands must be in the form `[MODULE] [ARG...]`. `MODULE`
   may reference a Python module defined in the model Guild file
@@ -292,7 +292,7 @@ operations:
   format `${FLAG_NAME}`. Such references are resolved to the current
   flag value when the command is executed.
 
-`flags`:
+`flags`
 : Operation flags (list of [flags](#flags))
   <p>
   Flags define the arguments that are passed to `cmd` when the command
@@ -329,16 +329,16 @@ attribute as named objects.
 `required`
 : Flag indicating whether or not the flag is required (boolean)
 
-`arg-name`:
+`arg-name`
 : Name of the command argument used for flag values (string)
   <p>
   Defaults to the flag name.
 
-`arg-skip`:
+`arg-skip`
 : Boolean indicating whether not to include the flag as a command
   arument (boolean)
 
-`choices`:
+`choices`
 : Allowed choices for the flag (list of [choices](#flag-choices))
 
 ## Flag choices
@@ -361,7 +361,7 @@ Flag choices may be simple values (string or number) or objects.
 
 ### Examples
 
-Operation that can train one of two model versions, defaulting to '1':
+Operation that can train one of two model versions (default is `1`):
 
 ``` yaml
 model: my-model
@@ -447,7 +447,7 @@ resources:
   <p>
   Private resources don't appear in resource lists.
 
-`references`:
+`references`
 : List of reference URLs associated with the resource (list of URLs)
   <p>
   References are displayed in help text.
