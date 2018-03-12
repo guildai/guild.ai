@@ -42,7 +42,42 @@ packages](#find-packages) above).
 
 You can also browse [](alias:guild-models).
 
+## List installed packages
+
+To list installed Guild AI packages, run:
+
+``` command
+guild packages
+```
+
+You can list specific packages using [packages
+list](cmd:packages-list):
+
+``` command
+guild packages list FILTER
+```
+
+For example, to list installed packages containing `magenta`, run:
+
+``` command
+guild packages list magenta
+```
+
 ## Uninstall packages
+
+Uninstall a package by running:
+
+``` command
+guild uninstall PACKAGE
+```
+
+Guild will prompt you before deleting package files.
+
+If you'd prefer to skip the prompt, use the `-y` option:
+
+``` command
+guild uninstall PACKAGE -y
+```
 
 ## Create package
 

@@ -10,6 +10,12 @@ hide_in_pagenav: yes
 
 [GitHub project]($guild-github)
 
-## History
-
 ## Contributing
+
+Guild AI does not currently have a contributors policy but we are
+happy to work with you to add features that you need and resolve
+issues.
+
+Before spending time on a pull requestion, please
+[](alias:open-an-issue) to let us know what problems you'd like to
+solve and we'll help identify next-steps with you!

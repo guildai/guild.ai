@@ -2,6 +2,8 @@
 
 ![TensorBoard](/assets/img/tb.png)
 
+^ TensorBoard
+
 TensorBoard is a visualization tool from the TensorFlow team. It's a
 web based application that lets you view TensorFlow event logs, which
 contain a variety of useful information associated with a run:
