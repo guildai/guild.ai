@@ -13,7 +13,7 @@ hide_in_pagenav: yes
 
 Guild AI has the following requirements:
 
-- Windows, Max OS, Linux
+- Max OS, Linux
 - Python 2.7, Python 3
 - pip
 
