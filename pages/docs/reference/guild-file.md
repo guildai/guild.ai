@@ -91,7 +91,7 @@ they extend.
 When more than one object is extended, attributes of objects later in
 the list take precedence of those higher in the list.
 
-Config objects are used exlusively for inheritance and are not
+Config objects are used exclusively for inheritance and are not
 otherwise used by Guild.
 
 ### Examples
@@ -319,7 +319,7 @@ attribute as named objects.
 ### Attributes
 
 `description`
-: Flag descrpition (string)
+: Flag description (string)
   <p>
   This may be a multi-line description.
 
@@ -336,7 +336,7 @@ attribute as named objects.
 
 `arg-skip`
 : Boolean indicating whether not to include the flag as a command
-  arument (boolean)
+  argument (boolean)
 
 `choices`
 : Allowed choices for the flag (list of [choices](#flag-choices))
@@ -391,7 +391,7 @@ in the `slim` package.
           arg-skip: yes
           choices:
             - cifar10
-            - minst
+            - mnist
             - flowers
             - value: imagenet
               args:
@@ -478,7 +478,7 @@ one of the following type attribute:
   `[PACKAGE/[MODEL:]]OPERATION`.  Multiple operation specs may be
   specified separated with a comma. By default Guild will use the
   latest completed or terminated run matching any of the operation
-  specs. Users may alterantively specify a run ID for the resource
+  specs. Users may alternatively specify a run ID for the resource
   when running the requiring operation.
 
 `module`

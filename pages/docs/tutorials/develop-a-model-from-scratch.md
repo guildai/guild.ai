@@ -313,13 +313,13 @@ def parse_args():
 This function parses command line arguments passed to the script.
 
 Rather than hard-code hyperparameter values, consider using command
-line arguments. This patterm provides a couple of benefits:
+line arguments. This pattern provides a couple of benefits:
 
 - Users can experiment with different hyperparameter values without
   modifying source code.
 
 - By defining hyperparameters as command line arguments, you document
-  values that can be changed without comprimising the model
+  values that can be changed without compromising the model
   architecture.
 
 ### Initialize the training and test data
@@ -677,7 +677,7 @@ containing the DNN Iris data classifier defined in [Getting Started
 with TensorFlow
 ->](https://www.tensorflow.org/get_started/premade_estimators).
 
-In this tutoral, we saw the following:
+In this tutorial, we saw the following:
 
 - Guild files (`guild.yml`) define models that can be trained.
 

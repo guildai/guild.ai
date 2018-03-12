@@ -104,7 +104,7 @@ In a console, run:
 guild train mnist-softmax
 ```
 
-Guid displays information about the run and asks you to confirm the
+Guild displays information about the run and asks you to confirm the
 operation. The model defines two [flags](term:flag):
 
 `batch-size`
@@ -227,7 +227,7 @@ This opens TensorBoard in a separate browser window that displays the
 TensorFlow event logs for the `mnist-softmax` run.
 
 Keep Guild View and TensorBoard open running in your browser
-throughout this tutorials --- they both refresj automatically as you
+throughout this tutorials --- they both refresh automatically as you
 work!
 
 ## Train the CNN model

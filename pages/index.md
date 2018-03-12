@@ -205,7 +205,7 @@ cloud with a single command.
 
 Guild AI lets you package and share your models with colleagues and
 other deep learners. Making it easy to discover, install, and use your
-models, ecourages feedback, which can lead to unexpected insight and
+models, encouraging feedback, which can lead to unexpected insight and
 improvements.
 
     </p>

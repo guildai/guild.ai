@@ -45,7 +45,7 @@ restore].
 No, Guild will only download the source once. There is no performance
 penalty for referencing a resource source multiple times.
 
-## Runtime characterisics
+## Runtime characteristics
 
 ### How much overhead does Guild incur when running an operation?
 

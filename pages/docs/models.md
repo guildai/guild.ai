@@ -16,7 +16,7 @@ predictive or generative capability. Other common operations include
 `evaluate`, `predict`, `deploy`, and `generate`.
 
 Guild does not implement model operations. That task is the
-responsbility of the model developer. Guild instead manages the work
+responsibility of the model developer. Guild instead manages the work
 flow associated with running operations and tracking results.
 
 Consider the following Guild command:

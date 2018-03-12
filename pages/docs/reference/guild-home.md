@@ -110,7 +110,7 @@ within virtual environments without having to re-download
 files. However, it also means that virtual environments can modify the
 user-level resource cache.
 
-If you want to isloate a virtual environment from the user-level
+If you want to isolate a virtual environment from the user-level
 cache, run the following command after you first activate the
 environment:
 
