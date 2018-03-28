@@ -186,7 +186,7 @@ for your collaborators to use!
       help.
     </p>
   </div>
-  <div class="col-md-4 console-col">
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
     <img alt="Install Guild AI" class="quick-start-img no-lightbox"
          src="/assets/img/install.gif">
     <div class="img-caption">Installing Guild AI</div>
@@ -209,7 +209,7 @@ for your collaborators to use!
       <code class="language-command">guild models</code>
     </pre>
   </div>
-  <div class="col-md-4 console-col">
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
     <img alt="Search for models" class="quick-start-img no-lightbox"
          src="/assets/img/search.gif">
     <div class="img-caption">Finding and installing models</div>
@@ -268,7 +268,7 @@ for your collaborators to use!
       <code class="language-command">guild runs</code>
     </pre>
   </div>
-  <div class="col-md-4 console-col">
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
     <img alt="Train models" class="quick-start-img no-lightbox console"
          src="/assets/img/train.gif">
     <div class="img-caption">Training MNIST</div>
@@ -296,6 +296,7 @@ for your collaborators to use!
              src="/assets/img/guild-view-zoom-2.png">
       </a>
     </p>
+    <h4>Step 4.1. Compare runs in Guild View</h4>
     <p>
       In your browser, click <img alt="Compare runs"
       src="/assets/img/compare-runs.png" class="screen"> in the left
@@ -312,6 +313,7 @@ for your collaborators to use!
       Use this view to select the run with the best performance. In
       this case, it's the CNN!
     </p>
+    <h4>Step 4.2. Compare runs in TensorBoard</h4>
     <p>
       In your browser, click <img alt="View in TensorBoard"
       class="screen" src="/assets/img/view-in-tensorboard.png"> in the
@@ -326,7 +328,7 @@ for your collaborators to use!
       </a>
     </p>
   </div>
-  <div class="col-md-4 img-col">
+  <div class="col-md-4 hidden-xs hidden-sm img-col">
     <a href="/assets/img/guild-view-1.png" data-featherlight="image">
       <img alt="Guild View" class="feature-img screen"
            src="/assets/img/guild-view-1-zoom.png">
@@ -350,58 +352,6 @@ for your collaborators to use!
     A pleasing visual
   </div>
 
-</div>
-
----
-
-# Quick start (old)
-
-If you'd like to try Guild AI, it takes just five commands to install
-Guild AI, train a model, and visualize your results. For more
-information on installing and using Guild AI, see our [installation
-guide](/install/).
-
-<div class="row">
-  <div class="col-md-6">
-    <h4>1. Install Guild AI</h4>
-    <pre>
-      <code class="language-command">pip install guildai</code>
-    </pre>
-    <h4>2. Initialize Guild AI</h4>
-    <pre>
-      <code class="language-command">guild init</code>
-    </pre>
-    <h4>3. Install a model package</h4>
-    <pre>
-      <code class="language-command">guild install mnist</code>
-    </pre>
-    <h4>4. Train a model</h4>
-    <pre>
-      <code class="language-command">guild train mnist-softmax</code>
-    </pre>
-    <h4>5. View the results</h4>
-    <pre>
-      <code class="language-command">guild view</code>
-    </pre>
-  </div>
-  <div class="col-md-6" style="padding:20px">
-    <figure>
-      <a href="/assets/img/guild-view-1.png" data-featherlight="image">
-        <img class="md" src="/assets/img/guild-view-1.png">
-      </a>
-      <figcaption>
-
-Guild View is a part of the Guild AI toolkit. It lets you browse your
-training results, including <a href="">TensorBoard integration</a>.
-
-      </figcaption>
-    </figure>
-
-    <center>
-    <a class="btn btn-primary cta" href="/install/"
-      >Get help installing Guild AI<i class="fa next"></i></a>
-    </center>
-  </div>
 </div>
 
 ---
