@@ -33,6 +33,9 @@ $(function() {
 
   // Scroll to page links
   $('a').click(function(e) {
+    if (e.target.getAttribute("role") == "tab") {
+      return true;
+    }
     const href = e.target.getAttribute('href');
     if (href && href !== '#') {
       if (trySmoothScroll(href, true)) {

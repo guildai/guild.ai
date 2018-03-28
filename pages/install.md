@@ -13,7 +13,7 @@ hide_in_pagenav: yes
 
 Guild AI has the following requirements:
 
-- Windows, Max OS, Linux
+- Max OS, Linux
 - Python 2.7, Python 3
 - pip
 
@@ -36,9 +36,9 @@ sudo pip install guildai
 ```
 
 You may alternatively install Guild AI in a Python virtual
-environment. Refer to the next section for details.
+environment. Refer to the next sections for details.
 
-### Install Guild AI using Virtualenv
+### Install Guild AI with Virtualenv
 
 If you would like to install Guild within a Python [virtual
 environment ->](term:https://virtualenv.pypa.io), run the following:
@@ -54,6 +54,20 @@ directory. For more information on the advantages and disadvantages of
 this approach, see [Working with
 Virtualenv](/docs/tutorials/working-with-virtualenv/).
 
+### Install Guild AI with Conda
+
+Guild AI can be installed in [Conda
+->](https://conda.io/docs/index.html) environments using pip.
+
+``` command
+conda create -n guild python=3.6
+source activate guild
+pip instal guildai
+```
+
+If you'd like to install Guild with a different Python version,
+replace ``3.6`` above with the version you want.
+
 ### Install Guild AI from source code
 
 !!! note
@@ -65,7 +79,7 @@ Virtualenv](/docs/tutorials/working-with-virtualenv/).
 Additional required tools for installing from source code:
 
 - [git ->](https://help.github.com/articles/set-up-git/)
-- [npm ->](https://www.npmjs.com/get-npm)
+- [npm ->](https://www.npmjs.com/get-npm) v5.8.0 or later
 - Python development library and headers for your system
 
 To install Guild from source, clone the repository by running:

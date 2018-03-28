@@ -209,6 +209,7 @@ pages:
       - Cloud ML:
           - models/cloudml/index.md
           - models/cloudml/census.md
+          - models/cloudml/mnist.md
           - models/cloudml/datasets.md
       - Guild AI:
           - models/mnist.md

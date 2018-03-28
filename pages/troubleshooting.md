@@ -12,6 +12,22 @@ check``.
 Refer to the issues below for help. If you don't see your issue,
 [](alias:open-an-issue) and we'll work with you to resolve it.
 
+## Python
+
+### AttributeError: module 'enum' has no attribute 'IntFlag'
+
+This issue may arise on some systems, in particular Mac OS. Refer to
+[Python 3.6.1 throws AttributeError: module 'enum' has no attribute
+'IntFlag'
+->](https://stackoverflow.com/questions/43124775/why-python-3-6-1-throws-attributeerror-module-enum-has-no-attribute-intflag)
+for background.
+
+The solution may be to uninstall the pip package `enum34`:
+
+``` command
+pip uninstall enum34
+```
+
 ## TensorFlow
 
 ### TensorFlow is not installed
