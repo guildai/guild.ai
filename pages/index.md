@@ -69,7 +69,7 @@ for your collaborators to use!
     </p>
     <a href="/assets/img/tb.png" data-featherlight="image">
       <img alt="TensorBoard" class="feature-grid-img"
-           style="padding-top: 10px" src="/assets/img/tb-zoom.png">
+           style="max-height:180px" src="/assets/img/tb-zoom.png">
     </a>
   </div>
 
@@ -84,10 +84,10 @@ for your collaborators to use!
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4>Explore</h4>
+    <h4>Discover</h4>
     <p>
-      Experiment with Guild AI&apos;s growing ecosystem of
-      pre-packaged models.
+      Explore state-of-the-art models in Guild AI&apos;s ever-growing
+      ecosystem.
     </p>
     <a href="/models">
       <img alt="Platform support" class="feature-grid-img no-lightbox" style=""
@@ -104,7 +104,7 @@ for your collaborators to use!
 <div class="row quick-start">
   <div class="col-md-8">
     <h3>Step 1. Install Guild AI</h3>
-    <p>Guid AI is installed
+    <p>Guild AI is installed
     using <a href="https://pip.pypa.io/en/stable/" target="_blank"
     class="ext">pip</a>. Select one of the installation methods below.
     </p>
@@ -120,19 +120,22 @@ for your collaborators to use!
           <a href="#conda" role="tab" data-toggle="tab">Conda</a>
         </li>
       </ul>
-      <div class="tab-content">
+      <div class="tab-content" style="padding-bottom:0">
         <div role="tabpanel" class="tab-pane active fade in" id="pip">
           <p>Install Guild AI using pip by running:</p>
           <pre>
             <code class="language-command">pip install guildai</code>
           </pre>
-          <p>If you are unable to install Guild AI due to permission
-            errors, you may need to run the command
-            using <code>sudo</code>:
-          </p>
-          <pre>
-            <code class="language-command">sudo pip install guildai</code>
-          </pre>
+          <div class="admonition note">
+            <p class="admonition-title">Note</p>
+            <p>If you are unable to install Guild AI due to permission
+              errors, you may need to run the command
+              using <code>sudo</code>:
+            </p>
+            <pre>
+              <code class="language-command">sudo pip install guildai</code>
+            </pre>
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="virtual-env">
           <p>Install Guild AI in a virtual environment
@@ -279,7 +282,7 @@ for your collaborators to use!
     <p>
       In this step we'll view the training
       results. <a href="/docs/commands/#running-commands-in-a-separate-console">Open
-      a separate console</a> and run:
+      a separate command line console</a> and run:
     </p>
     <pre>
       <code class="language-command">guild view</code>
@@ -338,18 +341,66 @@ for your collaborators to use!
 
   <div class="col-md-8">
     <h3>Step 5. Serve locally</h3>
-    <p>xxx</p>
+    <p>
+      In the previous step, we saw that the CNN model performs much
+      better than the softmax! Let's serve that model locally as a
+      REST prediction API.
+    </p>
+    <p>In
+    a <a href="/docs/commands/#running-commands-in-a-separate-console">new
+    command line console</a>, serve the CNN model by running:</p>
+    <pre>
+      <code class="language-command">guild serve -o mnist-cnn --host localhost --port 8083</code>
+    </pre>
+    <p>
+      This command opens a new browser window for Guild Serve, which
+      describes the REST endpoint for the trained MNIST CNN model. You
+      can build your application and test locally before deploying to
+      a production environment.
+    </p>
   </div>
   <div class="col-md-4">
-    A pleasing visual
+    <a href="/assets/img/guild-serve-1.png" data-featherlight="image">
+      <img alt="Guild Serve" class="feature-img screen"
+           src="/assets/img/guild-serve-1-zoom.png">
+    </a>
+    <div class="img-caption">Guild Serve</div>
   </div>
 
   <div class="col-md-8">
     <h3>Step 6. Deploy to Cloud ML</h3>
-    <p>xxx</p>
+    <div class="admonition note">
+      <p class="admonition-title">Note</p>
+      <p>
+        This step requires a Google Cloud Machine Learning Engine
+        account. To setup your account and environment, follow the
+        steps
+        in <a href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction"
+        target="_blank" class="ext">Cloud ML Engine - Getting
+        Started</a>
+      </p>
+    </div>
+    <p>
+      When you're ready to run your prediction service in production, you can
+      by running:
+    </p>
+    <pre>
+      <code class="language-command">guild run mnist-cnn:cloudml-deploy bucket=$BUCKET_NAME</code>
+    </pre>
+    <p>
+      <code class="lit">$BUCKET_NAME</code> should refer to a Google
+      Cloud Storage bucket that you have write permission to.
+    </p>
+    <p>
+      For a deep dive into Guild AI's Cloud ML support,
+      see <a href="http://localhost:8000/docs/tutorials/train-and-predict-with-cloudml/">Train
+      and predict with Cloud ML</a>.
+    </p>
   </div>
   <div class="col-md-4">
-    A pleasing visual
+    <img alt="Guild View" class="feature-img"
+         style="max-width:260px"
+         src="/assets/img/google-cloud-ml.png">
   </div>
 
 </div>

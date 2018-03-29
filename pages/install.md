@@ -62,7 +62,7 @@ Guild AI can be installed in [Conda
 ``` command
 conda create -n guild python=3.6
 source activate guild
-pip instal guildai
+pip install guildai
 ```
 
 If you'd like to install Guild with a different Python version,

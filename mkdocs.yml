@@ -135,9 +135,9 @@ pages:
       - docs/overview.md
       - docs/models.md
       - docs/operations.md
+      - docs/runs.md
       - docs/resources.md
       - docs/packages.md
-      - docs/runs.md
       - Visualization:
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
