@@ -29,7 +29,7 @@ for your collaborators to use!
   <div class="col-md-4 col-sm-6 promo center">
     <h4>Track</h4>
     <p>
-      Automatically save each training run for analysus and
+      Automatically save each training run for analysis and
       deployment.
     </p>
     <a href="/assets/img/guild-view-track.png" data-featherlight="image">
