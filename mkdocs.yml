@@ -4,6 +4,8 @@ docs_dir: pages
 copyright: 2017-2018 TensorHub, Inc.
 extra:
 
+  version: 0.3.1
+
   tagline:
     Streamlined TensorFlow<sup>&trade;</sup> and Keras deep learning
   tagline_width: 18em

@@ -393,7 +393,7 @@ for your collaborators to use!
     </p>
     <p>
       For a deep dive into Guild AI's Cloud ML support,
-      see <a href="http://localhost:8000/docs/tutorials/train-and-predict-with-cloudml/">Train
+      see <a href="/docs/tutorials/train-and-predict-with-cloudml/">Train
       and predict with Cloud ML</a>.
     </p>
   </div>
@@ -417,17 +417,17 @@ for your collaborators to use!
 <p class="expand">
 
 Go deeper into the Quick Start material above with a step-by-step
-tutorial on training MNIST models and comparing results.
+tutorial on training and deploying with Guild AI and Cloud ML.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
+<a class="btn btn-primary cta" href="/docs/tutorials/train-and-predict-with-cloudml/"
   >Go deeper with Guild AI <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Discover the models</h3>
+<h3>Explore models</h3>
 <p class="expand">
 
 Guild AI supports an ever-growing ecosystem of TensorFlow and Keras
