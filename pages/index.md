@@ -29,7 +29,7 @@ for your collaborators to use!
   <div class="col-md-4 col-sm-6 promo center">
     <h4>Track</h4>
     <p>
-      Automatically save each training run for later comparison or
+      Automatically save each training run for analysus and
       deployment.
     </p>
     <a href="/assets/img/guild-view-track.png" data-featherlight="image">
@@ -41,7 +41,7 @@ for your collaborators to use!
   <div class="col-md-4 col-sm-6 promo center">
     <h4>Compare</h4>
     <p>
-      Compare accuracy, loss, architecture, steps, and
+      Compare performance across runs including accuracy, loss, and
       hyperparameters.
     </p>
     <a href="/assets/img/guild-compare.png" data-featherlight="image">
@@ -65,7 +65,8 @@ for your collaborators to use!
   <div class="col-md-4 col-sm-6 promo center">
     <h4>Visualize</h4>
     <p>
-      Visualize metrics with TensorBoard and content with Guild View.
+      Visualize results across multiple runs with TensorBoard and
+      Guild View.
     </p>
     <a href="/assets/img/tb.png" data-featherlight="image">
       <img alt="TensorBoard" class="feature-grid-img"
@@ -120,7 +121,7 @@ for your collaborators to use!
           <a href="#conda" role="tab" data-toggle="tab">Conda</a>
         </li>
       </ul>
-      <div class="tab-content" style="padding-bottom:0">
+      <div class="tab-content">
         <div role="tabpanel" class="tab-pane active fade in" id="pip">
           <p>Install Guild AI using pip by running:</p>
           <pre>
@@ -170,16 +171,14 @@ for your collaborators to use!
     <p>For more information, see <a href="/install"
       target="_blank">Installing Guild AI</a>.
     </p>
-    <p>Once Guild AI is installed, initialize the Guild environment by
+    <p>When Guild AI is installed, initialize the Guild environment by
     running:</p>
     <pre>
       <code class="language-command">guild init --env</code>
     </pre>
     <p>
-      This step will verify that your environment is setup correctly
-      and prompt you to install TensorFlow if it isn't already
-      installed. Answer yes if prompted to install the TensorFlow
-      package for your system.
+      This step verifies that your environment is setup correctly and
+      prompts you to install TensorFlow if it isn't already installed.
     </p>
     <p>
       If you encounter errors at this stage,
@@ -207,7 +206,7 @@ for your collaborators to use!
     <pre>
       <code class="language-command">guild install mnist</code>
     </pre>
-    <p>List the models you installed by running:</p>
+    <p>List the models you just installed by running:</p>
     <pre>
       <code class="language-command">guild models</code>
     </pre>
@@ -220,7 +219,7 @@ for your collaborators to use!
 
   <div class="col-md-8">
     <h3>Step 3. Train the models</h3>
-    <p>In this step we'll train <code>mnist-softmax</code>
+    <p>In this step we'll train two models: <code>mnist-softmax</code>
       and <code>mnist-cnn</code>.
     </p>
     <p>First, train the softmax version by running:</p>
@@ -230,7 +229,7 @@ for your collaborators to use!
     <p>
       Review the default values and
       press <code>ENTER</code>. The <code>mnist-softmax</code> model
-      trains quickly even on systems that don't have a GPU.
+      trains quickly even on systems that don't have a GPU!
     </p>
     <p>
       Next we'll train the CNN. Choose a method based on your system
@@ -247,8 +246,8 @@ for your collaborators to use!
       </ul>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active fade in" id="gpu">
-          <p>Most GPU accelerated systems will train the CNN model in
-          a minute or two. If your system system has a GPU,
+          <p>Most GPU accelerated systems can train the CNN model in a
+          minute or two. If your system system has a GPU,
           train <code>mnist-cnn</code> for the default number of
           epochs by running:</p>
           <pre>
@@ -290,7 +289,7 @@ for your collaborators to use!
     <p>
       <a href="/docs/visual/guild-view/">Guild View</a> is a visual
       application that lets you explore runs, compare model
-      performance, and view generated files. Guild View will open
+      performance, and view generated files. Guild View opens
       automatically in your browser when run the command.
     </p>
     <p class="indent">
@@ -303,8 +302,8 @@ for your collaborators to use!
     <p>
       In your browser, click <img alt="Compare runs"
       src="/assets/img/compare-runs.png" class="screen"> in the left
-      sidebar. This will display a table containing the results of
-      your two runs.
+      sidebar. This displays a table containing the results of your
+      two runs.
     </p>
     <p class="indent">
       <a href="/assets/img/guild-view-compare.png" data-featherlight="image">
@@ -313,16 +312,16 @@ for your collaborators to use!
       </a>
     </p>
     <p>
-      Use this view to select the run with the best performance. In
-      this case, it's the CNN!
+      Use this view to find the run with the best performance. In this
+      case, it's the CNN, and by quite a margin!
     </p>
     <h4>Step 4.2. Compare runs in TensorBoard</h4>
     <p>
       In your browser, click <img alt="View in TensorBoard"
       class="screen" src="/assets/img/view-in-tensorboard.png"> in the
-      left sidebar. This will open another tab running TensorBoard,
-      which will let you view detailed training data. Use the tabs at
-      the top of TensorBoard to view different types of data.
+      left sidebar. This opens another tab running TensorBoard, which
+      lets you view detailed training data. Use the tabs at the top of
+      TensorBoard to view different types of data.
     </p>
     <p class="indent">
       <a href="/assets/img/tb.png" data-featherlight="image">
@@ -381,14 +380,14 @@ for your collaborators to use!
       </p>
     </div>
     <p>
-      When you're ready to run your prediction service in production, you can
-      by running:
+      When you're ready to run your prediction service in production,
+      you can deploy to Cloud ML by running:
     </p>
     <pre>
       <code class="language-command">guild run mnist-cnn:cloudml-deploy bucket=$BUCKET_NAME</code>
     </pre>
     <p>
-      <code class="lit">$BUCKET_NAME</code> should refer to a Google
+      <code class="lit">$BUCKET_NAME</code> must refer to a Google
       Cloud Storage bucket that you have write permission to.
     </p>
     <p>
