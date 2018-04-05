@@ -139,18 +139,18 @@ module.exports = function(grunt) {
         tasks: ['uglify'],
       },
       cmd_src: {
-        files: ['../guild/guild/commands/*.py'],
+        files: ['./guild/guild/commands/*.py'],
         tasks: ['exec:site', 'exec:reload_devserver'],
       },
       model_src: {
-        files: ['../guild-packages/**/*'],
+        files: ['./packages/**/*'],
         tasks: ['exec:site', 'exec:reload_devserver']
       }
     },
 
     exec: {
-      site: 'PYTHONPATH=.:../guild mkdocs build',
-      serve: 'PYTHONPATH=.:../guild mkdocs serve',
+      site: 'PYTHONPATH=.:./guild mkdocs build',
+      serve: 'PYTHONPATH=.:./guild mkdocs serve',
       reload_devserver: 'touch pages/.reload && sleep 1 && rm pages/.reload'
     }
   });
