@@ -149,8 +149,8 @@ module.exports = function(grunt) {
     },
 
     exec: {
-      site: 'PYTHONPATH=. mkdocs build',
-      serve: 'PYTHONPATH=. mkdocs serve',
+      site: 'PYTHONPATH=.:../guild mkdocs build',
+      serve: 'PYTHONPATH=.:../guild mkdocs serve',
       reload_devserver: 'touch pages/.reload && sleep 1 && rm pages/.reload'
     }
   });
