@@ -1,4 +1,3 @@
 PyYAML
-guildai
 mkdocs
 six
