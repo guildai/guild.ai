@@ -1,0 +1,6 @@
+[submodule "packages"]
+	path = packages
+	url = https://github.com/guildai/packages
+[submodule "guild"]
+	path = guild
+	url = https://github.com/guildai/guild

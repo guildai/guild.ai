@@ -53,9 +53,9 @@ markdown_extensions:
   - custom:DefinitionId
   - custom:DeflistToTable
   - custom:CmdHelp:
-      src_path: ../guild/guild/commands/
+      src_path: ./guild/guild/commands/
   - custom:PkgHelp:
-      src_path: ../guild-packages
+      src_path: ./packages
   - custom:MoveToc
   - custom:FixToc
   - custom:FencedCode
