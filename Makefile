@@ -2,7 +2,7 @@ grunt = node_modules/.bin/grunt
 now = /usr/local/bin/now
 now_redirect = /usr/local/bin/now-redirect
 
-mkdocs = PYTHONPATH=.:./guild mkdocs
+mkdocs = PYTHONPATH=. mkdocs
 
 build: $(grunt)
 	$(grunt) build
