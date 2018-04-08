@@ -343,7 +343,8 @@ attribute as named objects.
 
 ## Flag choices
 
-Flag choices may be simple values (string or number) or objects.
+Flag choices limit the available values for a flag. They can also be
+used to apply multiple argument to a command when specified.
 
 ### Attributes
 
@@ -355,9 +356,11 @@ Flag choices may be simple values (string or number) or objects.
 
 `args`
 : Map of argument names to values (object)
-  <p>
-  This attribute can be used to define sets of command arguments that
-  are applied when the choice is selected.
+  <p>This attribute is used to define additional arguments that are
+  applied when the choice is selected. Arguments are applied in the
+  form ``--NAME VALUE`` where `NAME` and `VALUE` correspond to the
+  respective object name value pairs. Use `arg-skip` to omit the flag
+  argument itself.
 
 ### Examples
 
@@ -376,7 +379,9 @@ operations:
 
 Snippet from the [shared
 configuration](https://github.com/guildai/packages/blob/master/slim/shared.yml)
-in the `slim` package.
+in the `slim` package. Note that when ``imagenet`` is specified, the
+arguments ``input-mean`` and ``input-std`` are included in the command
+argument.
 
 ``` yaml
 - config: slim-image-classifier
