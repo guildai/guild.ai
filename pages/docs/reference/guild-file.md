@@ -506,7 +506,7 @@ If source is a string, the value is treated as a `file` source type.
 : One or more regular expressions used to select sources from a
   directory or unpacked archive (string or list of strings)
 
-`resolution-help`
+`help`
 : Help text displayed when a source cannot be resolved (string)
   <p>
   This can be used to help a user install a missing Python module, run
