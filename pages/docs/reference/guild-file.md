@@ -520,9 +520,9 @@ If source is a string, the value is treated as a `file` source type.
   This applies to `url` sources only.
   <p>
   Commands are executed in the context of the resource cache directory
-  containing the downloaded and unpacked URL source. Commands may
-  use the `$MODEL_DIR` environment variable to reference files relative
-  to the Guild file declaring the resource.
+  containing the downloaded and unpacked URL source. Commands may use
+  the `$RESOURCE_DIR` environment variable to reference files relative
+  to the directory containing the resource declaration.
 
 `help`
 : Help text displayed when a source cannot be resolved (string)
