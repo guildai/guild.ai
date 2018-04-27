@@ -231,7 +231,7 @@ Complete example of `mnist-layers` (from
   operations:
     train:
       description: Train the CNN
-      cmd: mnist/mnist --data_dir mnist-idx-data --model_dir . --export_dir .
+      main: mnist/mnist --data_dir mnist-idx-data --model_dir . --export_dir .
       requires:
         - mnist-lib
         - mnist/dataset
@@ -266,9 +266,9 @@ Here's model with two operations, `train` and `test`:
 model: my-model
 operations:
   train:
-    cmd: train --epochs 1
+    main: train --epochs 1
   test:
-    cmd: test --data .
+    main: test --data .
 ```
 
 ### Attributes
@@ -278,8 +278,8 @@ operations:
   <p>
   This may be a multi-line description.
 
-`cmd`
-: Operation command (required string)
+`main`
+: Main command module (required string unless `plugin-op` is used)
   <p>
   Operation commands must be in the form `[MODULE] [ARG...]`. `MODULE`
   may reference a Python module defined in the model Guild file
@@ -295,13 +295,13 @@ operations:
 `flags`
 : Operation flags (list of [flags](#flags))
   <p>
-  Flags define the arguments that are passed to `cmd` when the command
+  Flags define the arguments that are passed to `main` when the command
   is executed. For more information, see [Flags](#flags).
 
 `plugin-op`
-: The name of a plugin operation to used instead of `cmd` (string)
+: The name of a plugin operation to used instead of `main` (string)
   <p>
-  `cmd` and `plugin-op` cannot both be used.
+  `main` and `plugin-op` cannot both be used.
 
 `required`
 : One or more required resources (string or list of strings)
@@ -381,7 +381,7 @@ Operation that can train one of two model versions (default is `1`):
 model: my-model
 operations:
   train:
-    cmd: train
+    main: train
     flags:
       version:
         default: 1
@@ -398,7 +398,7 @@ argument.
 - config: slim-image-classifier
   operations:
     predict:
-      cmd: label_image --graph graph.pb --labels data/labels.txt
+      main: label_image --graph graph.pb --labels data/labels.txt
       flags:
         ...
         dataset:
@@ -572,9 +572,9 @@ under `model` in the run directory:
 model: my-model
 operations:
   train:
-    cmd: train
+    main: train
   finetune:
-    cmd: finetune
+    main: finetune
     requires: trained-model
 resources:
   trained-model:
