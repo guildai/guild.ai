@@ -308,6 +308,17 @@ operations:
   <p>
   Values must be in the form `[PACKAGE_OR_MODEL/]RESOURCE`.
 
+`pre-process`
+: Pre-processing shell command
+  <p>
+  The command is executed as a shell script after required resources
+  are resolved and before the operation itself is started.
+  <p>
+  Commands are executed in the run directory and have access to the
+  same set of environment variables as the operation itself. See
+  [Operations](/docs/operations#environment-variables) for the
+  list of supported environment variables.
+
 `remote`
 : Flag indicating whether or not the operation is remote (boolean)
 
@@ -444,9 +455,6 @@ resources:
 `sources`
 : List of resource sources (list of [resource sources](#resource-sources))
 
-`post-process`
-: Shell command that is executed after all sources have been resolved (string)
-
 `private`
 : Flag indicating whether or not the resource is private (boolean)
   <p>
@@ -505,6 +513,16 @@ If source is a string, the value is treated as a `file` source type.
 `select`
 : One or more regular expressions used to select sources from a
   directory or unpacked archive (string or list of strings)
+
+`post-process`
+: Shell command executed after source has been resolved (string)
+  <p>
+  This applies to `url` sources only.
+  <p>
+  Commands are executed in the context of the resource cache directory
+  containing the downloaded and unpacked URL source. Commands may
+  use the `$MODEL_DIR` environment variable to reference files relative
+  to the Guild file declaring the resource.
 
 `help`
 : Help text displayed when a source cannot be resolved (string)

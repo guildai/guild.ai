@@ -125,8 +125,6 @@ For example, consider the operation help for
 guild run mlp:train --help-op
 ```
 
-
-
 ``` output
 Usage: guild run [OPTIONS] mnist-mlp:train [FLAG]...
 
@@ -169,3 +167,51 @@ can be specified the same way flag values are specified --- using
 required resource.
 
 Required resources are described in operation help, if applicable.
+
+## Implementing an operation
+
+Operations are implemented in Python modules. If `main` is specified,
+the module must execute when loaded, and should use this pattern:
+
+``` python
+def main():
+    "Operation code here."
+
+if __name__ == "__main__":
+    main()
+```
+
+Operations are executed in the context of the current run directory.
+
+<div id="environment-variables"></div>
+
+Operations have access to a number of environment variables.
+
+`CMD_DIR`
+: Path where the operation was run. This is the original working
+  directory that was changed to `RUN_DIR` for the operation.
+
+`GUILD_HOME`
+: Guild install location.
+
+`GUILD_OP`
+: Name of the operation including the model.
+
+`GUILD_PLUGINS`
+: Comma separated list of active Guild plugins.
+
+`LOG_LEVEL`
+: Python log level active for the run.
+
+`MODEL_DIR`
+: The directory containing the operation model definition. This is
+  where the Guild file is located and can be used to reference
+  relative files.
+
+`RUN_DIR`
+: Active run directory path. This is the working directory during an
+  operation. See `CMD_DIR` for the original working directory -
+  i.e. where the operation was run from.
+
+`RUN_ID`
+: Active run ID.
