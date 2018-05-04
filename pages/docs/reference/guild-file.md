@@ -278,6 +278,24 @@ operations:
   <p>
   This may be a multi-line description.
 
+`handle-keyboard-interrupt`
+: Handle keyboard interrupts from the user (boolean)
+  <p>
+  By default, an operation must explicitly handle keyboard interrupts,
+  which are generated when the user types ``Ctrl-C``, by catching
+  Python's ``KeyboardInterrupt`` or the process will terminate with an
+  error and a Python traceback. Set `handle-keyboard-interrupt` to
+  ``yes`` to indicate that Guild should handle ``KeyboardInterrupt``
+  and exit without printing an error message.
+  <p>
+  If the operation is run with ``--debug``, Guild will print the full
+  traceback as a log message.
+  <p>
+  Note that an operation terminated with ``Ctrl-C`` will still have a
+  status of ``terminated`` even if the interrupt is handled by
+  Guild. To indicate that the operation should be considered
+  ``completed``, set the operation's `stoppable` attribute to ``yes``.
+
 `main`
 : Main command module (required string unless `plugin-op` is used)
   <p>
@@ -295,18 +313,13 @@ operations:
 `flags`
 : Operation flags (list of [flags](#flags))
   <p>
-  Flags define the arguments that are passed to `main` when the command
-  is executed. For more information, see [Flags](#flags).
+  Flags define the arguments that are passed to `main` when the
+  command is executed. For more information, see [Flags](#flags).
 
 `plugin-op`
 : The name of a plugin operation to used instead of `main` (string)
   <p>
   `main` and `plugin-op` cannot both be used.
-
-`required`
-: One or more required resources (string or list of strings)
-  <p>
-  Values must be in the form `[PACKAGE_OR_MODEL/]RESOURCE`.
 
 `pre-process`
 : Pre-processing shell command
@@ -319,8 +332,24 @@ operations:
   [Operations](/docs/operations#environment-variables) for the
   list of supported environment variables.
 
+`required`
+: One or more required resources (string or list of strings)
+  <p>
+  Values must be in the form `[PACKAGE_OR_MODEL/]RESOURCE`.
+
 `remote`
 : Flag indicating whether or not the operation is remote (boolean)
+
+`stoppable`
+: Flag indicating that a terminated run should be considered completed
+  (boolean)
+  <p>
+  By default, a terminated run (i.e. a run stopped by typing `Ctrl-C`
+  or stopped with a `SIGTERM` signal such as that issued by the
+  [](cmd:stop) command) has a status of ``terminated``. If `stoppable`
+  is true however, the run status will be ``completed``. Set this
+  value to ``yes`` when the operation is designed to be terminated
+  explicitly by the user.
 
 ## Flags
 

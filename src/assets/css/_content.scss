@@ -100,8 +100,15 @@ img.md {
     color: $light-text-color;
   }
 
-  td.dd p:first-child {
-    margin-top: 8px;
+  td.dd {
+
+    p:first-of-type {
+      margin-top: 18px;
+    }
+
+    p:last-child {
+      margin-bottom: 8px;
+    }
   }
 }
 
