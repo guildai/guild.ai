@@ -1,4 +1,4 @@
-grunt = node_modules/.bin/grunt
+grunt = node_modules/grunt/bin/grunt
 now = /usr/local/bin/now
 now_redirect = /usr/local/bin/now-redirect
 
