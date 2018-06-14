@@ -550,8 +550,9 @@ If source is a string, the value is treated as a `file` source type.
   <p>
   Commands are executed in the context of the resource cache directory
   containing the downloaded and unpacked URL source. Commands may use
-  the `$RESOURCE_DIR` environment variable to reference files relative
-  to the directory containing the resource declaration.
+  the `$RESDEF_DIR` environment variable to reference files relative
+  to the directory containing the resource declaration (i.e. the
+  directory containing the project or package Guild file).
 
 `help`
 : Help text displayed when a source cannot be resolved (string)
