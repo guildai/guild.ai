@@ -30,13 +30,13 @@ promote-staging: $(now)
 	  && $(now) alias set $$target www.guild.ai
 
 ensure-redirect: $(now) $(now_redirect)
-	$(now-redirect) www.guild.ai && $(now) alias guild.ai
+	$(now_redirect) www.guild.ai && $(now) alias guild.ai
 
 $(now):
 	@echo -n "This operation requires now. "
 	@echo "Install it using 'npm install -g now'."
 
-$(now):
+$(now_redirect):
 	@echo -n "This operation requires now-reirect. "
 	@echo "Install it using 'npm install -g now-redirect'."
 
