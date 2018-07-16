@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Cloud ML MNIST - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../../../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../../../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class="col-sm-3 sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <ul class="sidenav dropable sticky_disabled">
+    
+    
+    <li>
+      <a
+        class=""
+        href="/models/">Models</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="active" href="#">Cloud ML</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/cloudml/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/cloudml/census/">Census Income Predictor</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/models/cloudml/mnist/">MNIST</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/cloudml/datasets/">Datasets</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Guild AI</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/mnist/">MNIST</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Keras</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/keras/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/keras/deep-dream/">Deep Dream</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/keras/mnist/">MNIST</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Magenta</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/magenta/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/magenta/image/">Image</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/magenta/music/">Music</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Official TensorFlow</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/tensorflow/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/tensorflow/mnist/">MNIST</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/tensorflow/resnet/">ResNet</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/tensorflow/wide-deep/">Wide and Deep</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">TF Slim</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/slim/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/slim/inception/">Inception</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/slim/resnet/">ResNet</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/slim/vgg/">VGG</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Wikipedia</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/models/wikipedia/datasets/">Datasets</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</aside>
+    <article
+      class="col-sm-9 main-content"
+      role="main">
+      <h1 id="cloud-ml-mnist">Cloud ML MNIST</h1>
+<div class="pkg-help">
+
+  <table class="table dl pkg-attrs">
+    <tr>
+      <th class="dt">Name</th>
+      <td class="dd">cloudml.mnist</td>
+    </tr>
+    <tr>
+      <th class="dt">Description</th>
+      <td class="dd">MNIST model for Cloud ML</td>
+    </tr>
+    <tr>
+      <th class="dt">Version</th>
+      <td class="dd">0.3.1</td>
+    </tr>
+    <tr>
+      <th class="dt">Source</th>
+      <td class="dd"><a class="ext" href="https://github.com/guildai/index/tree/master/cloudml/mnist" target="_blank">https://github.com/guildai/index/tree/master/cloudml/mnist</a></td>
+    </tr>
+    <tr>
+      <th class="dt">Maintainer</th>
+      <td class="dd"><a href="mailto:"></a></td>
+    </tr>
+  </table>
+
+  
+  <ul class="categorized-view">
+    <li>
+      <h5 id="models">Models</h5>
+    
+    <a href="#mnist-cnn">mnist-cnn</a>
+    
+    </li>
+  </ul>
+  
+
+  
+
+  
+
+  
+
+  <h2 id="mnist-cnn">mnist-cnn model</h2>
+
+  <div class="model-desc">CNN classifier for MNIST data.</div>
+
+  <ul class="toc model">
+    <li><a href="#mnist-cnn-operations">Operations</a></li>
+    
+    <li><a href="#mnist-cnn-resources">Resources</a></li>
+    
+    
+  </ul>
+
+  <h3 id="mnist-cnn-operations">Operations</h3>
+
+  <div class="model-ops">
+    
+
+    <h4 class="op-name" id="mnist-cnn-cloudml-deploy">cloudml-deploy</h4>
+    <div class="op-desc">Deploy a model to Cloud ML.</div>
+
+    <div class="op-flags">
+      
+      <table class="table table-op-flags">
+        <tr>
+          <th>Flag</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>runtime-version</code></td>
+          <td class="flag-desc">TensorFlow runtime version.</td>
+          <td class="flag-default">
+            
+            <code>1.2</code>
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+    </div>
+
+    
+
+    <h4 class="op-name" id="mnist-cnn-cloudml-predict">cloudml-predict</h4>
+    <div class="op-desc">Send a prediction request to Cloud ML.</div>
+
+    <div class="op-flags">
+      
+      <p>This operation does not have any flags.</p>
+      
+    </div>
+
+    
+
+    <h4 class="op-name" id="mnist-cnn-cloudml-train">cloudml-train</h4>
+    <div class="op-desc">Train the classifier in Cloud ML.</div>
+
+    <div class="op-flags">
+      
+      <table class="table table-op-flags">
+        <tr>
+          <th>Flag</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>runtime-version</code></td>
+          <td class="flag-desc">TensorFlow runtime version.</td>
+          <td class="flag-default">
+            
+            <code>1.2</code>
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+    </div>
+
+    
+
+    <h4 class="op-name" id="mnist-cnn-prepare-data">prepare-data</h4>
+    <div class="op-desc">Prepare the MNIST data for training.</div>
+
+    <div class="op-flags">
+      
+      <table class="table table-op-flags">
+        <tr>
+          <th>Flag</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>validation-size</code></td>
+          <td class="flag-desc">Number of examples to separate from the training data for the validation
+.</td>
+          <td class="flag-default">
+            
+            <code>5000</code>
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+    </div>
+
+    
+
+    <h4 class="op-name" id="mnist-cnn-prepare-request">prepare-request</h4>
+    <div class="op-desc">Generate a sample request file.</div>
+
+    <div class="op-flags">
+      
+      <p>This operation does not have any flags.</p>
+      
+    </div>
+
+    
+
+    <h4 class="op-name" id="mnist-cnn-train">train</h4>
+    <div class="op-desc">Train the classifier locally.</div>
+
+    <div class="op-flags">
+      
+      <table class="table table-op-flags">
+        <tr>
+          <th>Flag</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>eval-batch-size</code></td>
+          <td class="flag-desc">Batch size for evaluation steps.</td>
+          <td class="flag-default">
+            
+            <code>100</code>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>eval-steps</code></td>
+          <td class="flag-desc">Number of steps to run evalution for at each checkpoint.</td>
+          <td class="flag-default">
+            
+            <code>100</code>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>train-batch-size</code></td>
+          <td class="flag-desc">Batch size for training steps.</td>
+          <td class="flag-default">
+            
+            <code>100</code>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="flag-name"><code>train-steps</code></td>
+          <td class="flag-desc">Steps to run the training job for.</td>
+          <td class="flag-default">
+            
+            <code>10000</code>
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+    </div>
+
+    
+  </div>
+
+  
+  <h3 id="mnist-cnn-resources">Resources</h3>
+  <div class="model-resources">
+    
+    <h4 class="res-name" id="mnist-cnn-data-res">data</h4>
+    <div class="res-desc">Prepared MNIST data.</div>
+    <div class="res-sources">
+      <ul class="md">
+        
+        <li><code class="lit">['.*\\.tfrecords']</code> from <a href="#mnist-cnn-prepare-data">prepare-data</a> operation</li>
+        
+      </ul>
+    </div>
+    
+  </div>
+  
+
+  
+
+  
+
+  
+</div>
+      
+<ul class="pager">
+  
+  <li class="previous">
+    <a href="/models/cloudml/census/">
+      <span>Prev</span> <aside>Cloud ML Census Income Predictor</aside>
+    </a>
+  </li>
+  
+  
+  <li class="next">
+    <a href="/models/cloudml/datasets/">
+      <span>Next</span> <aside>Cloud ML Datasets</aside>
+    </a>
+  </li>
+  
+</ul>
+
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
+</html>

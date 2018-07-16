@@ -1,0 +1,81 @@
+.pkg-help {
+
+  .pkg-attrs {
+    margin: 0 -8px;
+  }
+
+  .toc.model {
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    &:before {
+      content: 'Model links';
+    }
+  }
+
+  .model-desc,
+  .op-desc,
+  .res-desc, {
+    color: $gray-text-color;
+  }
+
+  .model-ops {
+    padding: 0 20px;
+
+    .op-name {
+      border-bottom: 1px solid $border-color;
+      margin: 0 0 12px;
+      padding: 0 0 9px;
+    }
+
+    .op-flags {
+      margin-top: 20px;
+
+      .table-op-flags {
+
+        /*
+        th:first-child,
+        td:first-child {
+          padding-left: 0;
+        }
+
+        th:last-child,
+        td:last-child {
+          padding-right: 0;
+        }
+        */
+
+        th {
+          font-size: 14px;
+        }
+      }
+
+      h5 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .model-resources {
+    padding: 0 20px;
+
+    .res-name {
+      border-bottom: 1px solid $border-color;
+      margin: 0 0 12px;
+      padding: 0 0 9px;
+    }
+
+    .res-sources {
+      margin-top: 20px;
+    }
+  }
+
+  .model-refs,
+  .res-refs {
+    padding: 0 20px;
+
+    h5 {
+      font-size: 16px;
+    }
+  }
+}
