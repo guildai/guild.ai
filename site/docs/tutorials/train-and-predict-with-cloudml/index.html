@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Train and predict with Cloud ML - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../../../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../../../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class="col-sm-3 sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  <ul class="sidenav dropable sticky_disabled">
+    
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/overview/">Overview</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/models/">Models</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/operations/">Operations</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/runs/">Runs</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/resources/">Resources</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/packages/">Packages</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Visualization</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/guild-view/">Guild View</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/tensorboard/">TensorBoard</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Commands</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/check-cmd/">check</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/compare-cmd/">compare</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/help-cmd/">help</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/index-cmd/">index</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/init-cmd/">init</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/install-cmd/">install</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/label-cmd/">label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/models-cmd/">models</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/operations-cmd/">operations</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/package-cmd/">package</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-cmd/">packages</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-delete-cmd/">packages delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-info-cmd/">packages info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-list-cmd/">packages list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/resources-cmd/">resources</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/run-cmd/">run</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-cmd/">runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-delete-cmd/">runs delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-info-cmd/">runs info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-label-cmd/">runs label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-list-cmd/">runs list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-purge-cmd/">runs purge</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-restore-cmd/">runs restore</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/search-cmd/">search</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/shell-cmd/">shell</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/sync-cmd/">sync</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorboard-cmd/">tensorboard</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-cmd/">tensorflow</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-inspect-cmd/">tensorflow inspect</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/train-cmd/">train</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/uninstall-cmd/">uninstall</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/view-cmd/">view</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Reference</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-file/">Guild file</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-home/">Guild home</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="active" href="#">Tutorials</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/troubleshooting/">Troubleshooting</a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</aside>
+    <article
+      class="col-sm-9 main-content"
+      role="main">
+      <h1 id="train-and-predict-with-cloud-ml">Train and predict with Cloud ML</h1>
+<ol class="toc">
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#install-the-census-package">Install the census package</a></li>
+<li><a href="#train-the-model-locally">Train the model locally</a></li>
+<li><a href="#view-training-results">View training results</a></li>
+<li><a href="#label-your-run">Label your run</a></li>
+<li><a href="#train-the-model-in-cloud-ml">Train the model in Cloud ML</a></li>
+<li><a href="#compare-runs">Compare runs</a><ol class="md">
+<li><a href="#use-tensorboard-to-compare-runs">Use TensorBoard to compare runs</a></li>
+</ol>
+</li>
+<li><a href="#improve-model-accuracy">Improve model accuracy</a></li>
+<li><a href="#scale-up">Scale up</a></li>
+<li><a href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+<li><a href="#deploy-a-model">Deploy a model</a></li>
+<li><a href="#use-a-deployed-model-to-make-predictions">Use a deployed model to make predictions</a><ol class="md">
+<li><a href="#online-prediction">Online prediction</a></li>
+<li><a href="#batch-prediction">Batch prediction</a></li>
+</ol>
+</li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#cleanup">Cleanup</a><ol class="md">
+<li><a href="#delete-unneeded-cloud-ml-jobs">Delete unneeded Cloud ML jobs</a></li>
+<li><a href="#delete-unneeded-cloud-ml-model-versions">Delete unneeded Cloud ML model versions</a></li>
+<li><a href="#delete-guild-runs">Delete Guild runs</a></li>
+</ol>
+</li>
+<li><a href="#next-steps">Next steps</a></li>
+</ol>
+<p>In this tutorial, we&rsquo;ll train a model with Google&rsquo;s Cloud Machine
+Learning Engine (Cloud ML) and use the trained model to make
+prediction.</p>
+<p>This tutorial is based on <a class="ext" href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction" target="_blank">Cloud ML Engine - Getting Started</a>
+and follows similar steps.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This tutorial uses Cloud ML to train models, which will incur
+changes to your Google Cloud account. While these charges will be
+nominal (under $5) if you&rsquo;re concerned about the cost of training
+in Cloud ML, feel free to skip any of the <code>cloudml</code> operations
+below.</p>
+</div>
+<h2 id="requirements">Requirements</h2>
+<p>This tutorial assumes the following:</p>
+<ul class="md">
+<li>Guild AI is <a href="../../../install">installed and verified</a></li>
+<li><a class="ext" href="https://cloud.google.com/sdk/docs/" target="_blank">Google Cloud SDK</a> is
+  installed (see verification step below)</li>
+<li>Your <a href="../../../docs/tutorials/workflow-with-virtualenv/#using-a-virtual-environment">virtual environment is activated</a>
+  (if applicable)</li>
+<li>You have a working Internet connection</li>
+</ul>
+<p>While not required, we recommend using a dedicated virtual environment
+for this tutorial. To setup your environment, see
+<a href="../../../docs/tutorials/#tutorial-virtual-environments">Tutorial virtual environments</a>.</p>
+<p>To verify you have the Google Cloud SDK <code>gcloud</code> program installed and
+configured, run the following:</p>
+<pre><code class="language-command">gcloud ml-engine jobs list
+</code></pre>
+
+<p>If the command reports an error, resolve the issue before proceeding.</p>
+<h2 id="install-the-census-package">Install the census package</h2>
+<p>We&rsquo;ll be training a model in the <code>cloudml.census</code> package. From a
+command line, run:</p>
+<pre><code class="language-command">guild install cloudml.census
+</code></pre>
+
+<p>You can list the model operations available from the package by
+running:</p>
+<pre><code class="language-command">guild ops cloudml.census
+</code></pre>
+
+<p>We&rsquo;ll run each of these operations over the course of this tutorial.</p>
+<h2 id="train-the-model-locally">Train the model locally</h2>
+<p>Before we jump into training in Cloud ML, let&rsquo;s train our model
+locally. This will confirm that we can get a reasonable result with
+the data we&rsquo;re using.</p>
+<p>Train the model locally using 1,000 steps:</p>
+<pre><code class="language-command">guild train census train-steps=1000
+</code></pre>
+
+<p>Guild lets you review the flag values for the operation before
+started. Press <code>ENTER</code> to accept the values.</p>
+<p>With only 1,000 training steps, the model should be trained on most
+systems in under a minute.</p>
+<p>After the run has finished, list it by running:</p>
+<pre><code class="language-command">guild runs
+</code></pre>
+
+<p>The <a class="cmd" href="../../../docs/commands/runs-cmd">runs</a> command is shorthand for <a class="cmd" href="../../../docs/commands/runs-list-cmd">runs list</a>,
+which shows your runs. If you trained other models you&rsquo;ll see those
+runs in the list as well. If you&rsquo;d like to limit your listing to runs
+associated with the <code>cloudml-census</code> model, use:</p>
+<pre><code class="language-command">guild runs -o census
+</code></pre>
+
+<p>This command shows run that have an operation containing the string
+&ldquo;census&rdquo;. Feel free to experiment with other filters to show only the
+runs you&rsquo;re interested in. Try <code class="lit">guild runs --help</code> for a
+list of filter options.</p>
+<h2 id="view-training-results">View training results</h2>
+<p>The training run generates a number of files. Let&rsquo;s view them by
+running:</p>
+<pre><code class="language-command">guild runs info --files
+</code></pre>
+
+<p><a class="cmd" href="../../../docs/commands/runs-info-cmd">runs info</a> is used to view information for a run. By
+default the command shows information for the latest run. The
+<code class="lit">--files</code> option tells Guild to include file information in the
+output.</p>
+<p>Here&rsquo;s a breakdown of the files associated with our training run:</p>
+<table class="table dl">
+<tr><td class="dt"><code>census-data/*</code></td>
+<td class="dd">Census data used for training and test</td>
+</tr><tr><td class="dt"><code>checkpoint</code></td>
+<td class="dd">Latest TensorFlow checkpoint marker</td>
+</tr><tr><td class="dt"><code>eval_census-eval/events.out.tfevents.*</code></td>
+<td class="dd">TensorFlow event log generated during evaluation</td>
+</tr><tr><td class="dt"><code>events.out.tfevents.*</code></td>
+<td class="dd">TensorFlow event log generated during training</td>
+</tr><tr><td class="dt"><code>export/census/*/saved_model.pb</code></td>
+<td class="dd">TensorFlow SavedModel</td>
+</tr><tr><td class="dt"><code>export/census/*/variables/</code></td>
+<td class="dd">TensorFlow variables</td>
+</tr><tr><td class="dt"><code>graph.pbtxt</code></td>
+<td class="dd">TensorFlow GraphDef</td>
+</tr><tr><td class="dt"><code>model.ckpt-1.*</code></td>
+<td class="dd">TensorFlow checkpoint at training step 1</td>
+</tr><tr><td class="dt"><code>model.ckpt-1000.*</code></td>
+<td class="dd">TensorFlow checkpoint at training step 1000</td>
+</tr><tr><td class="dt"><code>trainer/</code></td>
+<td class="dd">Link to training scripts</td>
+</tr></table>
+<p>Run files are stored locally on your system. To view the full path to
+run files, use the <code class="lit">--full-path</code> option:</p>
+<pre><code class="language-command">guild runs info --files --full-path
+</code></pre>
+
+<p>This can be useful if you want to refer to a file from the command
+line (e.g. to copy it, open it, etc.)</p>
+<p>Next we&rsquo;ll use Guild View to view our training results. In a
+<a href="../../../docs/commands/#running-commands-in-a-separate-console">separate console</a>, run:</p>
+<pre><code class="language-command">guild view
+</code></pre>
+
+<p>This opens a browser window showing you the list of runs for the
+census classifier. You can see the list of files for a run by clicking
+the <strong>FILES</strong> tab.</p>
+<p>If you have runs from other models, you can filter the runs that Guild
+View displays using the <code class="lit">-o</code> option (short for <code class="lit">--operation</code>). To
+limit runs for operations containing <code class="lit">census</code>, use:</p>
+<pre><code class="language-command">guild view -o census
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="cmd" href="../../../docs/commands/view-cmd">view</a> command will not terminate until you stop it by
+typing <code class="lit">Ctrl-C</code>. To continue running Guild commands, run Guild
+View from a separate console.</p>
+</div>
+<p>From Guild View, you can open TensorBoard by clicking <img alt="View in
+TensorBoard" class="md" src="../../../assets/img/view-in-tensorboard.png" /> in the upper left of
+the window.</p>
+<p>In TensorBoard, note the model <strong>accuracy</strong>, which can be viewed under
+the <strong>SCALARS</strong> tab. The value for our first run should be
+approximately 80%.</p>
+<p>You may keep the Guild View and TensorBoard windows open for the
+remainder of this tutorial &mdash; they&rsquo;ll automatically refresh as you
+generate runs. When you no longer need them, close the browser windows
+and stop Guild View by typing <code class="lit">Ctrl-C</code>.</p>
+<h2 id="label-your-run">Label your run</h2>
+<p>Over time you&rsquo;ll generate a lot of runs and it&rsquo;s helpful to label them
+for easy identification. Guild provides <a class="cmd" href="../../../docs/commands/runs-label-cmd">runs label</a>,
+which associates a run with a simple string.</p>
+<p>Let&rsquo;s label our run to indicate that it was local and used 1,000
+training steps:</p>
+<pre><code class="language-command">guild runs label local-1000
+</code></pre>
+
+<p>Guild will confirm that you want to label the latest run &mdash; press
+<code>ENTER</code> to apply the label.</p>
+<p>You can view the new label when you list runs:</p>
+<pre><code class="language-command">guild runs
+</code></pre>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can filter runs using their label by running <code class="lit">guild runs -l
+LABEL</code> where <code>LABEL</code> is a label or part of a label to filter
+on. For example, assuming we consistently label our local runs
+using the convention <code class="lit">local-NNNN</code>, we could filter them using
+<code class="lit">guild runs -l local</code>.</p>
+</div>
+<h2 id="train-the-model-in-cloud-ml">Train the model in Cloud ML</h2>
+<p>Now that we&rsquo;ve trained the model locally, let&rsquo;s train it in Cloud ML!</p>
+<p>When training in Cloud ML, we need a Cloud Storage bucket that you
+have write access to. The bucket is used to store the Cloud ML jobs.</p>
+<p>For instructions on creating and configuring a bucket, see <a class="ext" href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction#set_up_your_cloud_storage_bucket" target="_blank">Set up
+your Cloud Storage bucket</a>
+in the Cloud ML Getting Started guide.</p>
+<p>We&rsquo;ll use the name of your Cloud Storage bucket throughout this
+tutorial so let&rsquo;s create a variable for it. Run this command to set
+the name of your bucket:</p>
+<pre><code class="language-command">echo -n &quot;Google Cloud Storage bucket name: &quot; &amp;&amp; read BUCKET
+</code></pre>
+
+<p>Verify that you can use <code>gsutil</code> to write to the bucket by running:</p>
+<pre><code class="language-command">echo 'It works!' | gsutil cp - gs://$BUCKET/guild_test \
+ &amp;&amp; gsutil cat gs://$BUCKET/guild_test
+</code></pre>
+
+<p>If you have write access to <code>$BUCKET</code> you should see:</p>
+<pre><code class="language-output">It works!
+</code></pre>
+
+<p>When you&rsquo;ve confirmed that you can write to the Cloud Storage bucket,
+train the census classifier in Cloud ML by running:</p>
+<pre><code class="language-command">guild run census:cloudml-train \
+  bucket=$BUCKET \
+  train-steps=1000 \
+  --label cloud-1000
+</code></pre>
+
+<p>Review the operation flag values and press <code>ENTER</code> to begin training.</p>
+<p>The <code>cloudml-train</code> operation is otherwise identical to the <code>train</code>
+operation, but it&rsquo;s run remotely on Cloud ML rather than locally. The
+command needs <code>bucket</code> to know where to create the Cloud ML job.</p>
+<p>Note that we included a label for our run using the <code class="lit">--label</code>
+option. We&rsquo;ll use this convention throughout the tutorial so we can
+easily identity our runs. In this case, we&rsquo;re indicating that the run
+is cloud based and uses 1,000 steps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Earlier we used <code class="lit">guild train census</code> to train our model. The
+<a class="cmd" href="../../../docs/commands/train-cmd">train</a> command is an <a class="term" href="../../../docs/runs/#operation-aliases">alias</a> for the
+<code>train</code> operation, so our previous command was equivalent to running
+<code class="lit">guild run census:train</code>. The <code>cloudml-train</code> operation doesn&rsquo;t
+have an alias, so we have to use the <a class="cmd" href="../../../docs/commands/run-cmd">run</a> command in this
+case.</p>
+</div>
+<p>The remote operation will take longer to run because Cloud ML first
+provisions a job and waits for TensorFlow to start. This can take up
+to several minutes. You can view the run status as it progresses in
+the console.</p>
+<p>You can also view the run status from Guild View and TensorBoard,
+which will both reflect the latest information.</p>
+<p>As the Cloud ML job progresses, Guild automatically synchronizes with
+it. This includes downloading generated files such as TensorFlow event
+logs and saved models as well as updating run status.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Guild becomes disconnected from a remote job &mdash; for example,
+you terminate the command by typing <code class="lit">Ctrl-C</code> or lose network
+connectivity &mdash; the job will continue to run in Cloud ML. You can
+synchronize with the job by running <code class="lit">guild sync</code>. If you&rsquo;d like
+to reconnect to a running job, run <code class="lit">guild sync --watch</code>. For
+more information, see the <a class="cmd" href="../../../docs/commands/sync-cmd">sync</a> command.</p>
+</div>
+<p>When the run has finished, view the list of runs:</p>
+<pre><code class="language-command">guild runs
+</code></pre>
+
+<p>You should see that the run <code class="lit">cloud-1000</code> has completed.</p>
+<h2 id="compare-runs">Compare runs</h2>
+<p>Each time you train a new model, you&rsquo;ll want to compare the results to
+those of previous runs. Guild&rsquo;s <a class="cmd" href="../../../docs/commands/compare-cmd">compare</a> command can be used to
+quickly sort and compare training accuracies and loss.</p>
+<p>Compare your runs by running:</p>
+<pre><code class="language-command">guild compare
+</code></pre>
+
+<p>This command starts Guild Compare, which is a spreadsheet-like
+application that displays run details. You can view run status, time,
+accuracy, loss, and hyperparameters. We&rsquo;ll learn more about
+hyperparameters later in this tutorial.</p>
+<p>You can use the arrow keys to navigate to cells that you can&rsquo;t see.</p>
+<p>In Guild Compare, note the accuracy for the two runs &mdash; they should
+be similar. We&rsquo;d expect this because we trained the same model with
+the same flags and data. The only difference between the runs is where
+the training occurred!</p>
+<p>To exit Guild Compare, press <code class="lit">q</code> (quit).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the <a class="cmd" href="../../../docs/commands/view-cmd">view</a> command, <a class="cmd" href="../../../docs/commands/compare-cmd">compare</a> will not exit
+until you explicitly stop it.  If you want to keep it running,
+start the command in a <a href="../../../docs/commands/#running-commands-in-a-separate-console">separate console</a>. Press <code class="lit">r</code>
+(refresh) whenever you want to update the display with the latest
+run status.</p>
+<p>For a complete list of commands supported by Guild Compare, press
+<code class="lit">?</code> while running Guild Compare.</p>
+</div>
+<p>If you&rsquo;d like to export the comparison data in <a class="ext" href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV format</a> run:</p>
+<pre><code class="language-command">guild compare --csv
+</code></pre>
+
+<p>To save the comparison to a file, use your shell&rsquo;s output redirection:</p>
+<pre><code class="language-command">guild compare --csv &gt; census-runs.csv
+</code></pre>
+
+<h3 id="use-tensorboard-to-compare-runs">Use TensorBoard to compare runs</h3>
+<p>Let&rsquo;s now compare run results in TensorBoard. If you have TensorBoard
+open from the previous run, it will automatically refresh to display
+the current training results. If you need to restart Guild View, run:</p>
+<pre><code class="language-command">guild view
+</code></pre>
+
+<p>In Guild View, click <strong>VIEW IN TENSORBOARD</strong> to open TensorBoard.</p>
+<p>You may alternatively open TensorBoard directly using the
+<a class="cmd" href="../../../docs/commands/tensorboard-cmd">tensorboard</a> command:</p>
+<pre><code class="language-command">guild tensorboard
+</code></pre>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In TensorBoard, it helps to make two changes when viewing results
+for census training in this tutorial:</p>
+<ol class="md">
+<li>In the left sidebar, uncheck <strong>Ignore outliers in chart scaling</strong></li>
+<li>In the left sidebar, use the slider to set <strong>Smoothing</strong> to <code class="lit">0</code></li>
+</ol>
+<p>You can also maximize the <strong>accuracy</strong> scalar by clicking
+<img alt="Maximize button" class="md" src="../../../assets/img/tb-maximize.png" /> under the chart.</p>
+</div>
+<p>The values for <strong>accuracy</strong> in TensorBoard correspond to the values
+displayed in Guild Compare. TensorBoard shows all available scalars for
+selected runs, including their values at various stages of training.</p>
+<h2 id="improve-model-accuracy">Improve model accuracy</h2>
+<p>Let&rsquo;s try to improve the accuracy of the model with more training.</p>
+<p>To increase the training steps, set the <code>train-steps</code> flag to a higher
+level. We&rsquo;ll use 10,000 steps this time:</p>
+<pre><code class="language-command">guild run census:cloudml-train \
+  bucket=$BUCKET \
+  train-steps=10000 \
+  --label cloud-10000
+</code></pre>
+
+<p>While this is a 10x increase, the training time Cloud ML should not be
+much longer than our previous cloud run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The census model trains quickly even with 10,000 steps. The time
+spent in Cloud ML for fast training models like <code>census</code> is
+primarily the setup and teardown of the Cloud ML job.</p>
+</div>
+<p>You can monitor the training progress using Guild View, Guild Compare
+or TensorBoard.</p>
+<p>As the training proceeds, the model accuracy should surpass that of
+the previous two runs.</p>
+<p>Let&rsquo;s use Guild Compare to confirm. If Guild Compare is already
+running, press <code class="lit">r</code> to refresh the display. If it&rsquo;s not running,
+start it:</p>
+<pre><code class="language-command">guild compare
+</code></pre>
+
+<p>Note the accuracy of the newly trained model &mdash; it should be a few
+percentage points higher than the other two! When you&rsquo;re done
+comparing, press <code class="lit">q</code> to exit Guild Compare.</p>
+<h2 id="scale-up">Scale up</h2>
+<p>Let&rsquo;s take advantage of Cloud ML&rsquo;s ability to scale! We can train our
+model using distributed TensorFlow and multiple workers by setting the
+<code>scale-tier</code> flag to a multi-worker tier.</p>
+<p>See <a class="ext" href="https://cloud.google.com/ml-engine/reference/rest/v1/projects.jobs#scaletier" target="_blank">Scale Tier</a>
+for more information on Cloud ML&rsquo;s supported environments.</p>
+<p>By default, Cloud ML operations in Guild AI use the <code>BASIC</code> scale
+tier, which is suitable for small models and experimentation. We can
+alternatively use the <code>STANDARD_1</code> scale tier, which uses multiple
+workers to train the model in parallel.</p>
+<p>Train the model again using 10,000 steps, but this time on the
+<code>STANDARD_1</code> scale tier:</p>
+<pre><code class="language-command">guild run census:cloudml-train \
+  bucket=$BUCKET \
+  scale-tier=STANDARD_1 \
+  train-steps=10000 \
+  --label scaled-10000
+</code></pre>
+
+<p>This operation will take a similar amount of time as the previous
+operation, despite being run on a higher scale tier. This is because
+the job setup and teardown overhead dominates the overall operation
+time.</p>
+<p>We can use TensorBoard to view the time spent in training. If
+TensorBoard isn&rsquo;t already running, you can start it directly by
+running the following in a <a href="../../../docs/commands/#running-commands-in-a-separate-console">separate console</a>:</p>
+<pre><code class="language-command">guild tensorboard
+</code></pre>
+
+<p>In TensorBoard, in the left sidebar under <strong>Horizontal Axis</strong>, click
+<strong>RELATIVE</strong>. This will plot scalars using their relative times along
+the horizontal axis. This is useful for viewing time spent actually
+training as it does not include job setup and teardown time.</p>
+<p>Note the relative times between the last two runs. Our latest run,
+which used a higher scale tier, should be noticeably faster for the
+same number of steps.</p>
+<h2 id="hyperparameter-tuning">Hyperparameter tuning</h2>
+<p>Cloud ML provides a feature called <em>hyperparameter tuning</em>, which can
+optimize training results by automatically modifying model
+hyperparameters. A hyperparameter is a model setting that can be
+configured with flags. The census model we&rsquo;re training has three
+tunable hyperparameters:</p>
+<table class="table dl">
+<tr><td class="dt"><code>first-layer-size</code></td>
+<td class="dd">Number of nodes in the first layer of the DNN (default is 100)</td>
+</tr><tr><td class="dt"><code>layers</code></td>
+<td class="dd">Number of layers in the DNN (default is 4)</td>
+</tr><tr><td class="dt"><code>scale-factor</code></td>
+<td class="dd">How quickly the size of the layers in the DNN decay (default is 0.7)</td>
+</tr></table>
+<p>Up to this point we&rsquo;ve training using the default values for each
+flag. But what if we could improve our model&rsquo;s predictive accuracy by
+using different values?</p>
+<p>Cloud ML hyperparameter tuning tries different values for us using an
+algorithm that attempts to optimize the training result. In this case
+we want to maximize predictive accuracy.</p>
+<p>For more information see <a class="ext" href="https://cloud.google.com/ml-engine/docs/hyperparameter-tuning-overview" target="_blank">Overview of Hyperparameter Tuning</a>
+in the Cloud ML Engine documentation.</p>
+<p>Let&rsquo;s see if we can improve model accuracy accuracy using Cloud ML
+hyperparameter tuning. We can use our model&rsquo;s <code>cloudml-hptune</code>
+operation for this.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The command below trains the census model 6 times, each
+time using 10,000 steps. While this is still a relatively low cost
+training run, if you&rsquo;re concerned about the cost of this
+operation, feel free to skip this command.</p>
+</div>
+<p>Start a hyperparameter tuning run with 6 trials of 10,000 training
+steps each by running:</p>
+<pre><code class="language-command">guild run census:cloudml-hptune \
+  bucket=$BUCKET \
+  max-trials=6 \
+  train-steps=10000 \
+  --label tune-6x-10000
+</code></pre>
+
+<p>This uses the <a class="ext" href="https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/hptuning_config.yaml" target="_blank">default tuning configuration</a>
+provided by the <code>cloudml.census</code> package and changes the default
+<code>max-trials</code> count to 6 from 4. The <code>max-trials</code> flag determines how many
+trials are run during the hyperparameter tuning operation.</p>
+<p>Each trial in Cloud ML is synchronized as a new Guild run, which you
+can treat like any other run.</p>
+<p>As hyperparameter tuning progresses, use Guild Compare to view the
+trial results. As each trial is completed, it will appear as a new run
+with its own accuracy and loss. Guild automatically labels trial runs
+so you can identify the tuning run that generated them.</p>
+<p>To view trial run results while the tuning operation is running, start
+Guild Compare in a <a href="../../../docs/commands/#running-commands-in-a-separate-console">separate console</a> by running:</p>
+<pre><code class="language-command">guild compare
+</code></pre>
+
+<p>As the trials are completed, press <code class="lit">r</code> in Guild Compare to refresh
+the display and view the trial results. You can compare the
+differences in accuracy and loss to see what hyperparameter values
+provide the best result.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>cloudml-hptune</code> itself will not have accuracy or loss. It&rsquo;s
+job is limited to starting training run trials, which do have
+accuracy and loss.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In Guild Compare, you can sort any column in numeric descending
+order by moving the cursor to the column and pressing <code class="lit">1</code>. This
+is useful for sorting runs by accuracy &mdash; the most accuracy model
+will appear at the top of the list. You can sort in ascending
+order by pressing <code class="lit">!</code>. This is useful for sorting runs by loss.</p>
+<p>Note that you must re-order a column after you refresh the display.</p>
+</div>
+<p>Wait for the hyperparameter tuning operation to finish. In the next
+section we&rsquo;ll deploy the trial that has the highest accuracy.</p>
+<h2 id="deploy-a-model">Deploy a model</h2>
+<p>Now that we&rsquo;ve tuned our hyperparameters to find an optimal model (at
+least within the six trials that we ran) it&rsquo;s time to deploy a model!</p>
+<p>Using Guild Compare, select the run with the highest accuracy. You may
+sort runs by accuracy by moving the cursor to the <strong>accuracy</strong> column
+and pressing <code class="lit">1</code>. This will reorder the runs, displaying the most
+accurate run first. Note its run ID (from the <strong>run</strong> column on the
+far left) &ndash; we&rsquo;ll use this ID for deployment.</p>
+<p>Exit Guild Compare by pressing <code class="lit">q</code>.</p>
+<p>Define a variable <code>DEPLOY_RUN</code> with the run ID you selected:</p>
+<pre><code class="language-command">echo -n &quot;Run ID to deploy: &quot; &amp;&amp; read DEPLOY_RUN
+</code></pre>
+
+<p>When prompted, enter the run ID you&rsquo;d like to deploy (e.g. the run
+with the highest accuracy).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When specifying run IDs in Guild, you don&rsquo;t have to provide
+the entire run ID &mdash; you may use a run ID prefix as long as it&rsquo;s
+unique. Usually the first few characters is enough to identify a
+run.</p>
+</div>
+<p>Verify that the specified run is the one you&rsquo;d like to deploy. You can
+confirm the accuracy for <code>DEPLOY_RUN</code> by running:</p>
+<pre><code class="language-command">guild compare $DEPLOY_RUN --table
+</code></pre>
+
+<p>The table should contain a single run. If it contains a run other than
+the one you want to deploy, re-enter the run ID using the step above.</p>
+<p>When you&rsquo;re ready, deploy the model for your selected run using the
+<code>cloudml-deploy</code> operation:</p>
+<pre><code class="language-command">guild run census:cloudml-deploy run=$DEPLOY_RUN bucket=$BUCKET
+</code></pre>
+
+<p>This will create a model in Cloud ML named <code class="lit">census_dnn</code> if one
+doesn&rsquo;t already exist. This name is generated using the deployed model
+name <code class="lit">census-dnn</code>. Cloud ML doesn&rsquo;t allow certain characters in
+model names (e.g. <code class="lit">-</code>) and Guild replaces these with an underscore
+(<code class="lit">_</code>). If you want to specify a different model name, use the
+<code>model</code> flag when running the <code>cloudml-deploy</code> operation.</p>
+<p>After ensuring that a Cloud ML model exists, Guild creates a model
+<em>version</em>. This deploys the trained model to Cloud ML. By default,
+Guild uses a version containing the deployment run ID. If you want to
+specify a different version, use the <code>version</code> flag when running the
+<code>cloudml-deploy</code> operation.</p>
+<p>For more information on model deployment in Cloud ML, see:</p>
+<ul class="md">
+<li><a class="ext" href="https://cloud.google.com/ml-engine/docs/prediction-overview#model_deployment" target="_blank">Prediction Basics - Model deployment</a>
+  Cloud ML concepts</li>
+<li><a class="ext" href="https://cloud.google.com/ml-engine/docs/deploying-models" target="_blank">Deploying Models</a> Cloud
+  ML how-to guide</li>
+</ul>
+<p>Verify the deployed model and its version by running:</p>
+<pre><code class="language-command">gcloud ml-engine versions list --model census_dnn
+</code></pre>
+
+<p>You should see the newly deployed <code>census_dnn</code> model version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Guild does not provide a complete interface for managing deployed
+Cloud ML models and versions. For a details on Cloud ML models and
+versions, see <a class="ext" href="https://cloud.google.com/sdk/gcloud/reference/ml-engine/" target="_blank">gcloud ml-engine</a>
+command line reference.</p>
+</div>
+<p>List your current runs:</p>
+<pre><code class="language-command">guild runs
+</code></pre>
+
+<p>Note the latest run &mdash; it will be for the <code>cloudml-deploy</code> operation
+and have a label that contains the deployed model run ID. Deployments
+are like any other operation in Guild.</p>
+<p>Let&rsquo;s examine the <code>cloudml-deploy</code> run:</p>
+<pre><code class="language-command">guild runs info
+</code></pre>
+
+<p>Note the following attributes in the output:</p>
+<table class="table dl">
+<tr><td class="dt"><code>cloudml_model_name</code></td>
+<td class="dd">Name of the deployed Cloud ML model</td>
+</tr><tr><td class="dt"><code>cloudml_model_version</code></td>
+<td class="dd">Version of the deployed Cloud ML model</td>
+</tr><tr><td class="dt"><code>cloudml_model_binaries</code></td>
+<td class="dd">Google Cloud Storage location of the deployed model binaries</td>
+</tr><tr><td class="dt"><code>trained_model_run</code></td>
+<td class="dd">Run ID of the deployed trained model</td>
+</tr></table>
+<p>This information can be used to verify a deployment and is retained as
+an artifact of the deploy operation. In the next section, we&rsquo;ll see
+how this information is used to run predictions.</p>
+<h2 id="use-a-deployed-model-to-make-predictions">Use a deployed model to make predictions</h2>
+<p>In our final tutorial segment, we&rsquo;ll use our recently deployed model
+to make predictions!</p>
+<p>Cloud ML makes predictions by running the inference operation of
+deployed model with new data. Data are provided as one or more
+<em>instances</em>, each corresponding to a prediction that will be made
+using the trained model. You may provide instances as JSON or plain
+text format.</p>
+<p>For details on how Cloud ML makes predictions, see <a class="ext" href="https://cloud.google.com/ml-engine/docs/prediction-overview" target="_blank">Prediction Basics</a> in
+Cloud ML concepts.</p>
+<p>Cloud ML can make predictions in two ways: <em>online</em> and
+<em>batch</em>. Online predictions are made immediately and returned in the
+operation result. Batch predictions are submitted to Cloud ML as a job
+that runs in the background, similar to training. When a batched
+prediction job is completed, predictions are written to a file in the
+job directory.</p>
+<p>In general, online prediction is faster if you have a small number of
+predictions to make while batch processing is faster when you need to
+make a large number of predictions. The specific performance
+characteristics will vary across models. Refer to <a class="ext" href="https://cloud.google.com/ml-engine/docs/prediction-overview#online_prediction_versus_batch_prediction" target="_blank">Online prediction
+versus batch prediction</a>
+in Cloud ML Prediction Basics for more information.</p>
+<p>We&rsquo;ll use both techniques to see how each works.</p>
+<h3 id="online-prediction">Online prediction</h3>
+<p>First, let&rsquo;s run an online prediction:</p>
+<pre><code class="language-command">guild run census:cloudml-predict
+</code></pre>
+
+<p>Guild will prompt you before running the operation. Press <code>ENTER</code> to
+run the operation.</p>
+<p>The prediction is made using the latest deployed version of the
+<code>census-dnn</code> model (<code>census_dnn</code> in Cloud ML). The model package
+provides sample inputs to make the prediction. You can specify your
+own using the <code>instances</code> flags.</p>
+<p>To experiment with your own inputs, download the <a class="ext" href="https://raw.githubusercontent.com/guildai/packages/master/cloudml/census/prediction-samples.json" target="_blank">census prediction
+samples</a>
+and make changes accordingly. Assuming your samples is named
+<code>census-inputs.json</code> and is located in the current directory, you can
+run a <code>cloudml-predict</code> operation using:</p>
+<pre><code>guild run census:cloudml-predict instances=census-inputs.json
+</code></pre>
+
+<p>For online prediction, the results are printed to the
+console. However, they are also saved as a file in the run
+directory. Let&rsquo;s take a look!</p>
+<p>If Guild View isn&rsquo;t already running, start it in a
+<a href="../../../docs/commands/#running-commands-in-a-separate-console">separate console</a> by running:</p>
+<pre><code class="language-command">guild view
+</code></pre>
+
+<p>In Guild View, select the latest run &mdash; it should be a
+<code>cloudml-predict</code> operation &mdash; and click the <strong>FILES</strong> tab. The run
+will have two files:</p>
+<table class="table dl">
+<tr><td class="dt"><code>prediction.inputs</code></td>
+<td class="dd">The inputs used in the prediction</td>
+</tr><tr><td class="dt"><code>prediction.results</code></td>
+<td class="dd">The prediction results</td>
+</tr></table>
+<p>Click on <strong><code>prediction.results</code></strong> to see how the instances were
+classified by the deployed model. The values correspond to the inputs
+provided in <code>prediction.inputs</code>. Click the <strong>NEXT</strong> button to view the
+contents of <code>prediction.inputs</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Guild View can be used to view the contents of some files:
+text files, images, and audio. Look for a grey button background
+on the file name, which can be clicked to open the file.</p>
+</div>
+<p>As you can see, the <code>cloudml-predict</code> operation generates a run like
+other operations. In this case the run contains information about the
+model version used to make the prediction along with the prediction
+inputs and outputs.</p>
+<h3 id="batch-prediction">Batch prediction</h3>
+<p>In the previous section we performed an <em>online</em> prediction that
+returned the result immediately. In this section we&rsquo;ll use <em>batch</em>
+prediction. Batch prediction runs on Cloud ML as a job.</p>
+<p>We use the <code>cloudml-batch-predict</code> operation to start a prediction
+job. Start a batch prediction job by running:</p>
+<pre><code class="language-command">guild run census:cloudml-batch-predict bucket=$BUCKET
+</code></pre>
+
+<p>This will use the sample prediction inputs as before. We need to
+specify <code>bucket</code> to tell Guild where to create the job.</p>
+<p>The job will take some time to complete. When finished, it will save
+generated a file named <code>prediction.results-00000-of-00001</code>, which you
+can view in Guild View, or inspect from the command line.</p>
+<p>When the operation has finished, view the generated files by running:</p>
+<pre><code class="language-command">guild runs info --files --full-path
+</code></pre>
+
+<p>The <code class="lit">--full-path</code> option is used to show the full path to
+<code>prediction.results-00000-of-00001</code>, which you can use to copy or view
+the file.</p>
+<p>You may use online or batch predictions as needed to use your deployed
+models in Cloud ML!</p>
+<h2 id="summary">Summary</h2>
+<p>In this tutorial we worked with Google&rsquo;s Cloud Machine Leaning Engine
+(Cloud ML) to train and deploy a classifier.</p>
+<p>We covered a number of topics:</p>
+<ul class="md">
+<li>
+<p>Train a model locally to sanity-check our results and then train in
+  Cloud ML to scale up</p>
+</li>
+<li>
+<p>Use hyperparameter tuning in Cloud ML to optimize our predictive
+  accuracy with a set of hyperparameter values</p>
+</li>
+<li>
+<p>Evaluate runs using Guild View, Guild Compare, and TensorBoard</p>
+</li>
+<li>
+<p>Select an optimized model and deploy it to Cloud ML</p>
+</li>
+<li>
+<p>Use a model deployed in Cloud ML to make predictions using new data</p>
+</li>
+</ul>
+<p>Guild AI models and their operations encapsulate the complexities of
+this process, letting you focus on the high level workflow and get
+your work done faster!</p>
+<h2 id="cleanup">Cleanup</h2>
+<p>Over the course of this tutorial we generated a number of runs and
+Cloud ML jobs. If you no longer need these, you may delete them to
+free up resources.</p>
+<h3 id="delete-unneeded-cloud-ml-jobs">Delete unneeded Cloud ML jobs</h3>
+<p>Use the <code>gsutil</code> program to delete any jobs from your Cloud Storage
+bucket that you don&rsquo;t need. To delete all Guild related files, run:</p>
+<pre><code class="language-command">gsutil rm -r gs://$BUCKET/guild_*
+</code></pre>
+
+<h3 id="delete-unneeded-cloud-ml-model-versions">Delete unneeded Cloud ML model versions</h3>
+<p>Use the <code>gcloud</code> program to delete any model versions you don&rsquo;t need.</p>
+<p>First, list the model versions:</p>
+<pre><code class="language-command">gcloud ml-engine versions list --model census_dnn
+</code></pre>
+
+<p>For each version that you want to delete, run:</p>
+<pre><code class="language-command">gcloud ml-engine versions delete --model census_dnn VERSION
+</code></pre>
+
+<p>where <code>VERSION</code> is the model version you want to delete.</p>
+<p>If you no longer need the model, you may delete it provided there are
+no versions associated with it:</p>
+<pre><code class="language-command">gcloud ml-engine models delete census_dnn
+</code></pre>
+
+<h3 id="delete-guild-runs">Delete Guild runs</h3>
+<p>If you ran the tutorials from a virtual environment, you can simply
+delete the virtual environment directory, which will free up all disk
+space used by steps from this tutorial.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only delete virtual environments when you&rsquo;re certain you
+no longer need them.</p>
+</div>
+<p>If you want to only delete runs associated with the <code>cloudml-census</code>
+model, which was used in this tutorial, run:</p>
+<pre><code class="language-command">guild runs delete -o cloudml-census -p
+</code></pre>
+
+<p>The <code class="lit">-p</code> option indicates that the delete should be
+<em>permanent</em>. This ensures that the runs no longer consume disk
+space. Omit this option if you want to retain the ability to restore
+them at a later time. Note that disk space will not be freed up for
+these jobs until you permanently delete them (see the <a class="cmd" href="../../../docs/commands/purge-cmd">purge</a>
+command).</p>
+<p>Finally, if you deleted any runs without using the <code class="lit">-p</code> option and
+you want to free up disk space consumed by them, you can can
+permanently delete them by running:</p>
+<pre><code class="language-command">guild runs purge
+</code></pre>
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Review the list of runs carefully before permanently deleting
+them!</p>
+</div>
+<h2 id="next-steps">Next steps</h2>
+<ul class="md">
+<li>Read <a class="ext" href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction" target="_blank">Cloud ML Engine - Getting Started</a>
+  to view the same workflow using lower-level Cloud ML commands</li>
+</ul>
+      
+<ul class="pager">
+  
+  <li class="previous">
+    <a href="/docs/tutorials/train-mnist/">
+      <span>Prev</span> <aside>Go deeper with Guild AI</aside>
+    </a>
+  </li>
+  
+  
+  <li class="next">
+    <a href="/docs/tutorials/develop-a-model-from-scratch/">
+      <span>Next</span> <aside>Develop a model from scratch</aside>
+    </a>
+  </li>
+  
+</ul>
+
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
+</html>

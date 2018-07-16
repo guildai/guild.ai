@@ -1,0 +1,17 @@
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-header {
+  position: relative;
+
+  button.close {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+  }
+}
+
+.input-group-addon {
+  color: $light-gray-text-color;
+}

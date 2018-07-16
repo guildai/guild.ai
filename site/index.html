@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Home - Guild AI</title>
+    <link href="./assets/css/vendor.min.css" rel="stylesheet">
+    <link href="./assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="./assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="./assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header navbar-transparent">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">
+          <img src="./assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+<div
+  class="banner banner-full-height overlay-black"
+  style="background-image: url(./assets/img/banner-lowrez.jpg);">
+  <div class="container text-center">
+    <div class="spacer"></div>
+    <h1 style="max-width:18em">
+      Streamlined TensorFlow<sup>&trade;</sup> and Keras deep learning
+    </h1>
+    <div class="spacer text"></div>
+    <h5 style="max-width:28em">
+      Train, evaluate, and deploy your models in less time and with fewer errors with the Guild AI developer toolkit.
+    </h5>
+    <div class="spacer actions"></div>
+    <div class="actions">
+      <a
+        class="btn btn-primary btn-xl"
+        role="button"
+        href="#learn-more"
+      >Learn more</a>
+    </div>
+    <div class="spacer version"></div>
+    <div class="version">
+      <a href="https://pypi.python.org/pypi/guildai"
+         target="_blank">Version 0.4.0</a></div>
+    <div class="spacer"></div>
+  </div>
+  <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+</div>
+
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class=" sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="./assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+</aside>
+    <article
+      class="col-sm-12 main-content"
+      role="main">
+      <div id="learn-more" style="height:50px;margin-top:-50px"></div>
+
+<h1 id="guild-ai-streamline-your-tensorflow-and-keras-development">Guild AI <small>&nbsp;streamline your TensorFlow and Keras development</small></h1>
+<p>Guild AI automates TensorFlow and Keras deep learning workflow,
+letting you focus on optimizing your models and getting them into
+production as quickly as possible. The command line toolset, supports
+your deep learning work end-to-end &mdash; from model acquisition, through
+training and testing, to deployment. You can even publish your models
+for your collaborators to use!</p>
+<div class="row match-height">
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Track</h4>
+    <p>
+      Automatically save each training run for analysis and
+      deployment.
+    </p>
+    <a href="/assets/img/guild-view-track.png" data-featherlight="image">
+      <img alt="Track experiments" class="feature-grid-img"
+           src="/assets/img/guild-view-track-zoom.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Compare</h4>
+    <p>
+      Compare performance across runs including accuracy, loss, and
+      hyperparameters.
+    </p>
+    <a href="/assets/img/guild-compare.png" data-featherlight="image">
+      <img alt="Compare runs" class="feature-grid-img"
+           src="/assets/img/guild-compare-zoom.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Deploy</h4>
+    <p>
+      Deploy your models to Cloud ML or serve them locally as a REST
+      API.
+    </p>
+    <a href="/assets/img/cloud-ml.png" data-featherlight="image">
+      <img alt="Deploy to Cloud ML" class="feature-grid-img"
+           src="/assets/img/cloud-ml-zoom.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Visualize</h4>
+    <p>
+      Visualize results across multiple runs with TensorBoard and
+      Guild View.
+    </p>
+    <a href="/assets/img/tb.png" data-featherlight="image">
+      <img alt="TensorBoard" class="feature-grid-img"
+           style="max-height:180px" src="/assets/img/tb-zoom.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Package</h4>
+    <p>
+      Package and distribute your models for others to use and learn
+      from.
+    </p>
+    <img alt="Package models" class="feature-grid-img no-lightbox" style="height:150px"
+         src="/assets/img/ship.svg">
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4>Discover</h4>
+    <p>
+      Explore state-of-the-art models in Guild AI&apos;s ever-growing
+      ecosystem.
+    </p>
+    <a href="/models">
+      <img alt="Platform support" class="feature-grid-img no-lightbox" style=""
+           src="/assets/img/platform.png">
+    </a>
+  </div>
+
+</div>
+
+<hr />
+<h1 id="quick-start">Quick start</h1>
+<div class="row quick-start">
+  <div class="col-md-8">
+    <h3>Step 1. Install Guild AI</h3>
+    <p>Guild AI is installed
+    using <a href="https://pip.pypa.io/en/stable/" target="_blank"
+    class="ext">pip</a>. Select one of the installation methods below.
+    </p>
+    <div class="tabs tabs-text">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#pip" role="tab" data-toggle="tab">Native pip</a>
+        </li>
+        <li role="presentation">
+          <a href="#virtual-env" role="tab" data-toggle="tab">Virtual env</a>
+        </li>
+        <li role="presentation">
+          <a href="#conda" role="tab" data-toggle="tab">Conda</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade in" id="pip">
+          <p>Install Guild AI using pip by running:</p>
+          <pre>
+            <code class="language-command">pip install guildai</code>
+          </pre>
+          <div class="admonition note">
+            <p class="admonition-title">Note</p>
+            <p>If you are unable to install Guild AI due to permission
+              errors, you may need to run the command
+              using <code>sudo</code>:
+            </p>
+            <pre>
+              <code class="language-command">sudo pip install guildai</code>
+            </pre>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="virtual-env">
+          <p>Install Guild AI in a virtual environment
+          named <code>guild</code> by running:</p>
+          <pre>
+            <code class="language-command">
+              virtualenv guild
+              . guild/bin/activate
+              pip install guildai
+            </code>
+          </pre>
+          <p>To install in a different virtual env,
+          replace <code class="lit">guild</code> above with the
+          alternate location.</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="conda">
+          <p>Install Guild AI in a Conda environment
+          named <code>guild</code> by running:</p>
+          <pre>
+            <code class="language-command">
+              conda create -n guild python=3.6
+              source activate guild
+              pip install guildai
+            </code>
+          </pre>
+          <p>To install in a different virtual env,
+          replace <code class="lit">guild</code> above with the
+          alternate location.</p>
+        </div>
+      </div>
+    </div>
+    <p>For more information, see <a href="/install"
+      target="_blank">Installing Guild AI</a>.
+    </p>
+    <p>When Guild AI is installed, initialize the Guild environment by
+    running:</p>
+    <pre>
+      <code class="language-command">guild init --env</code>
+    </pre>
+    <p>
+      This step verifies that your environment is setup correctly and
+      prompts you to install TensorFlow if it isn't already installed.
+    </p>
+    <p>
+      If you encounter errors at this stage,
+      see <a href="/troubleshooting">Troubleshooting</a> for more
+      information or <a href="https://github.com/guildai/guild/issues"
+      target="_blank" class="ext">open an issue on GitHub</a> to get
+      help.
+    </p>
+  </div>
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
+    <img alt="Install Guild AI" class="quick-start-img no-lightbox"
+         src="/assets/img/install.gif">
+    <div class="img-caption">Installing Guild AI</div>
+  </div>
+
+  <div class="col-md-8">
+    <h3>Step 2. Find and install models</h3>
+    <p>Guild AI lets you find and install models in seconds. Search
+    for <code class="lit">mnist</code> by running:</p>
+    <pre>
+      <code class="language-command">guild search mnist</code>
+    </pre>
+    <p>For this quick start, we'll work with the
+    base <code>mnist</code> package. Install it by running:</p>
+    <pre>
+      <code class="language-command">guild install mnist</code>
+    </pre>
+    <p>List the models you just installed by running:</p>
+    <pre>
+      <code class="language-command">guild models</code>
+    </pre>
+  </div>
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
+    <img alt="Search for models" class="quick-start-img no-lightbox"
+         src="/assets/img/search.gif">
+    <div class="img-caption">Finding and installing models</div>
+  </div>
+
+  <div class="col-md-8">
+    <h3>Step 3. Train the models</h3>
+    <p>In this step we'll train two models: <code>mnist-softmax</code>
+      and <code>mnist-cnn</code>.
+    </p>
+    <p>First, train the softmax version by running:</p>
+    <pre>
+      <code class="language-command">guild train mnist-softmax</code>
+    </pre>
+    <p>
+      Review the default values and
+      press <code>ENTER</code>. The <code>mnist-softmax</code> model
+      trains quickly even on systems that don't have a GPU!
+    </p>
+    <p>
+      Next we'll train the CNN. Choose a method based on your system
+      type.
+    </p>
+    <div class="tabs tabs-text">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#gpu" role="tab" data-toggle="tab">GPU-accelerated</a>
+        </li>
+        <li role="presentation">
+          <a href="#cpu" role="tab" data-toggle="tab">CPU only</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade in" id="gpu">
+          <p>Most GPU accelerated systems can train the CNN model in a
+          minute or two. If your system system has a GPU,
+          train <code>mnist-cnn</code> for the default number of
+          epochs by running:</p>
+          <pre>
+            <code class="language-command">guild train mnist-cnn</code>
+          </pre>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="cpu">
+          <p>If you system doesn't have a GPU,
+          the <code>mnist-cnn</code> model will train slowly. You can
+          complete this step faster by training fewer epochs. Train
+          for one epoch by running:</p>
+          <pre>
+            <code class="language-command">guild train mnist-cnn epochs=1</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+    <p>When both models are trained, view the list of runs by running:</p>
+    <pre>
+      <code class="language-command">guild runs</code>
+    </pre>
+  </div>
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
+    <img alt="Train models" class="quick-start-img no-lightbox console"
+         src="/assets/img/train.gif">
+    <div class="img-caption">Training MNIST</div>
+  </div>
+
+  <div class="col-md-8">
+    <h3>Step 4. Compare model performance</h3>
+    <p>
+      In this step we'll view the training
+      results. <a href="/docs/commands/#running-commands-in-a-separate-console">Open
+      a separate command line console</a> and run:
+    </p>
+    <pre>
+      <code class="language-command">guild view</code>
+    </pre>
+    <p>
+      <a href="/docs/visual/guild-view/">Guild View</a> is a visual
+      application that lets you explore runs, compare model
+      performance, and view generated files. Guild View opens
+      automatically in your browser when run the command.
+    </p>
+    <p class="indent">
+      <a href="/assets/img/guild-view-1.png" data-featherlight="image">
+        <img alt="Guild View" class="screen"
+             src="/assets/img/guild-view-zoom-2.png">
+      </a>
+    </p>
+    <h4>Step 4.1. Compare runs in Guild View</h4>
+    <p>
+      In your browser, click <img alt="Compare runs"
+      src="/assets/img/compare-runs.png" class="screen"> in the left
+      sidebar. This displays a table containing the results of your
+      two runs.
+    </p>
+    <p class="indent">
+      <a href="/assets/img/guild-view-compare.png" data-featherlight="image">
+        <img alt="Compare runs table" class="screen"
+             src="/assets/img/guild-view-compare-table.png">
+      </a>
+    </p>
+    <p>
+      Use this view to find the run with the best performance. In this
+      case, it's the CNN, and by quite a margin!
+    </p>
+    <h4>Step 4.2. Compare runs in TensorBoard</h4>
+    <p>
+      In your browser, click <img alt="View in TensorBoard"
+      class="screen" src="/assets/img/view-in-tensorboard.png"> in the
+      left sidebar. This opens another tab running TensorBoard, which
+      lets you view detailed training data. Use the tabs at the top of
+      TensorBoard to view different types of data.
+    </p>
+    <p class="indent">
+      <a href="/assets/img/tb.png" data-featherlight="image">
+        <img alt="TensorBoard" class="screen"
+             src="/assets/img/tb-zoom-2.png">
+      </a>
+    </p>
+  </div>
+  <div class="col-md-4 hidden-xs hidden-sm img-col">
+    <a href="/assets/img/guild-view-1.png" data-featherlight="image">
+      <img alt="Guild View" class="feature-img screen"
+           src="/assets/img/guild-view-1-zoom.png">
+    </a>
+    <div class="img-caption">Results in Guild View</div>
+  </div>
+
+  <div class="col-md-8">
+    <h3>Step 5. Serve locally</h3>
+    <p>
+      In the previous step, we saw that the CNN model performs much
+      better than the softmax! Let's serve that model locally as a
+      REST prediction API.
+    </p>
+    <p>In
+    a <a href="/docs/commands/#running-commands-in-a-separate-console">new
+    command line console</a>, serve the CNN model by running:</p>
+    <pre>
+      <code class="language-command">guild serve -o mnist-cnn --host localhost --port 8083</code>
+    </pre>
+    <p>
+      This command opens a new browser window for Guild Serve, which
+      describes the REST endpoint for the trained MNIST CNN model. You
+      can build your application and test locally before deploying to
+      a production environment.
+    </p>
+  </div>
+  <div class="col-md-4">
+    <a href="/assets/img/guild-serve-1.png" data-featherlight="image">
+      <img alt="Guild Serve" class="feature-img screen"
+           src="/assets/img/guild-serve-1-zoom.png">
+    </a>
+    <div class="img-caption">Guild Serve</div>
+  </div>
+
+  <div class="col-md-8">
+    <h3>Step 6. Deploy to Cloud ML</h3>
+    <div class="admonition note">
+      <p class="admonition-title">Note</p>
+      <p>
+        This step requires a Google Cloud Machine Learning Engine
+        account. To setup your account and environment, follow the
+        steps
+        in <a href="https://cloud.google.com/ml-engine/docs/getting-started-training-prediction"
+        target="_blank" class="ext">Cloud ML Engine - Getting
+        Started</a>
+      </p>
+    </div>
+    <p>
+      When you're ready to run your prediction service in production,
+      you can deploy to Cloud ML by running:
+    </p>
+    <pre>
+      <code class="language-command">guild run mnist-cnn:cloudml-deploy bucket=$BUCKET_NAME</code>
+    </pre>
+    <p>
+      <code class="lit">$BUCKET_NAME</code> must refer to a Google
+      Cloud Storage bucket that you have write permission to.
+    </p>
+    <p>
+      For a deep dive into Guild AI's Cloud ML support,
+      see <a href="/docs/tutorials/train-and-predict-with-cloudml/">Train
+      and predict with Cloud ML</a>.
+    </p>
+  </div>
+  <div class="col-md-4">
+    <img alt="Guild View" class="feature-img"
+         style="max-width:260px"
+         src="/assets/img/google-cloud-ml.png">
+  </div>
+
+</div>
+
+<hr />
+<h1 id="next-steps">Next steps</h1>
+<div class="row match-height" style="margin-bottom:40px">
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Go deeper with Guild AI</h3>
+<p class="expand">
+
+Go deeper into the Quick Start material above with a step-by-step
+tutorial on training and deploying with Guild AI and Cloud ML.
+
+</p>
+<a class="btn btn-primary cta" href="/docs/tutorials/train-and-predict-with-cloudml/"
+  >Go deeper with Guild AI <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Explore models</h3>
+<p class="expand">
+
+Guild AI supports an ever-growing ecosystem of TensorFlow and Keras
+models that you can install and train with a few simple commands.
+
+</p>
+<a class="btn btn-primary cta" href="/models/"
+  >Discover the models <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Browse the docs</h3>
+<p class="expand">
+
+If you're interested in a complete picture of Guild AI, start by
+browsing its comprehensives documentation.
+
+</p>
+<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+</div>
+</div>
+</div>
+      
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+        <div class="attribution"> Shipping icon by <a href="https://www.freepik.com/free-vector/logistic-icons-set-flat_1530842.htm" target="_blank">Freepik</a></div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="./assets/js/vendor.min.js" data-manual></script>
+  <script src="./assets/js/theDocs.min.js"></script>
+</html>

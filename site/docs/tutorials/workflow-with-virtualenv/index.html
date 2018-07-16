@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Workflow with Virtualenv - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../../../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../../../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class="col-sm-3 sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  <ul class="sidenav dropable sticky_disabled">
+    
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/overview/">Overview</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/models/">Models</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/operations/">Operations</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/runs/">Runs</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/resources/">Resources</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/packages/">Packages</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Visualization</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/guild-view/">Guild View</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/tensorboard/">TensorBoard</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Commands</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/check-cmd/">check</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/compare-cmd/">compare</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/help-cmd/">help</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/index-cmd/">index</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/init-cmd/">init</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/install-cmd/">install</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/label-cmd/">label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/models-cmd/">models</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/operations-cmd/">operations</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/package-cmd/">package</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-cmd/">packages</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-delete-cmd/">packages delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-info-cmd/">packages info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-list-cmd/">packages list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/resources-cmd/">resources</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/run-cmd/">run</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-cmd/">runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-delete-cmd/">runs delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-info-cmd/">runs info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-label-cmd/">runs label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-list-cmd/">runs list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-purge-cmd/">runs purge</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-restore-cmd/">runs restore</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/search-cmd/">search</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/shell-cmd/">shell</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/sync-cmd/">sync</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorboard-cmd/">tensorboard</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-cmd/">tensorflow</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-inspect-cmd/">tensorflow inspect</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/train-cmd/">train</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/uninstall-cmd/">uninstall</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/view-cmd/">view</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Reference</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-file/">Guild file</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-home/">Guild home</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="active" href="#">Tutorials</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/troubleshooting/">Troubleshooting</a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</aside>
+    <article
+      class="col-sm-9 main-content"
+      role="main">
+      <h1 id="workflow-with-virtualenv">Workflow with Virtualenv</h1>
+<ol class="toc">
+<li><a href="#when-to-use-a-virtual-environment">When to use a virtual environment</a></li>
+<li><a href="#installing-virtualenv">Installing Virtualenv</a></li>
+<li><a href="#creating-a-virtual-environment">Creating a virtual environment</a></li>
+<li><a href="#virtual-environments-and-guild_home">Virtual environments and GUILD_HOME</a></li>
+<li><a href="#using-a-virtual-environment">Using a virtual environment</a></li>
+<li><a href="#summary">Summary</a></li>
+</ol>
+<p><a class="ext" href="https://virtualenv.pypa.io" target="_blank">Virtualenv</a> is a tool that creates
+isolated environments for running Python applications. A virtual
+environment is contained in a single file system directory and does
+not rely on Python packages installed at the system level.</p>
+<p>You are free to create as many virtual environments as you need. Each
+environment is independent of the others and may use different
+software versions, including different versions of Python.</p>
+<p>Guild AI is designed to work with or without a virtual environment &mdash;
+the choice is yours.</p>
+<h2 id="when-to-use-a-virtual-environment">When to use a virtual environment</h2>
+<p>There are a number of reasons to use virtual environments:</p>
+<ul class="md">
+<li>Isolate Guild AI and is library dependencies</li>
+<li>Manage different versions of Guild AI</li>
+<li>Manage versions of Python and TensorFlow used by Guild</li>
+<li>Maintain separate model and run repositories</li>
+</ul>
+<p>There are some downsides to using virtual environments:</p>
+<ul class="md">
+<li>Each environment requires its own set of installed packages, which
+  may be excessively time consuming for short-lived environments</li>
+<li>You must remember to activate the environment to use it</li>
+<li>You may accidentally use the wrong environment</li>
+</ul>
+<p>If you don&rsquo;t need to isolate Guild and its dependencies or to manage
+different software versions, the added complexity of Virtualenv may be
+more hindrance than help.</p>
+<h2 id="installing-virtualenv">Installing Virtualenv</h2>
+<p>Refer to <a class="ext" href="https://virtualenv.pypa.io/en/stable/installation/" target="_blank">https://virtualenv.pypa.io/installation/</a> for details on
+installing Virtualenv.</p>
+<p>Generally speaking though, you simply run:</p>
+<pre><code class="language-command">pip install virtualenv
+</code></pre>
+
+<p>If you need to install as a privileged user, run:</p>
+<pre><code class="language-command">sudo pip install virtualenv
+</code></pre>
+
+<h2 id="creating-a-virtual-environment">Creating a virtual environment</h2>
+<p>Once Virtualenv is installed, it&rsquo;s easy to create new
+environments. Simply run:</p>
+<pre><code class="language-command">virtualenv DIRECTORY
+</code></pre>
+
+<p>where <code>DIRECTORY</code> is the file system directory that will contain the
+environment.</p>
+<p>You can specify the Python version to use in environment using the
+<code class="lit">-p</code> option. For example, to indicate that Python 2 should be used,
+run:</p>
+<pre><code class="language-command">virtualenv -p python2 DIRECTORY
+</code></pre>
+
+<p>Users who make extensive use of virtual environments typically create
+them in a common parent directory. Here&rsquo;s a theoretical directory
+structure that could be used to manage different configurations of
+Guild:</p>
+<div class="file-tree">
+<ul>
+<li class="is-folder open">Environments <i>Directory containing the virtual environments</i>
+ <ul>
+ <li class="is-folder">guild-python2<i>Guild installed with Python 2</i></li>
+ <li class="is-folder">guild-python3<i>Guild installed with Python 3</i></li>
+ <li class="is-folder">guild-tensorflow-gpu<i>Guild with the GPU version of TensorFlow</i></li>
+ <li class="is-folder">gans<i>Environment for work on GAN models</i></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2 id="virtual-environments-and-guild_home">Virtual environments and <code>GUILD_HOME</code></h2>
+<p>Guild manages <a class="term" href="../../../docs/packages/">packages</a>, <a class="term" href="../../../docs/runs/">runs</a>, and
+<a class="term" href="../../../docs/reference/guild-home/#runs-index">indexes</a> under a single directory named
+<code>GUILD_HOME</code>. The default value of <code>GUILD_HOME</code> depends how Guild is
+run:</p>
+<ul class="md">
+<li>
+<p>If Guild is run within a virtual environment, the value is
+  <code class="lit">$VIRTUAL_ENV/.guild</code></p>
+</li>
+<li>
+<p>If Guild is not run within a virtual environment, the value is
+  <code class="lit">$HOME/.guild</code></p>
+</li>
+</ul>
+<p>This behavior is designed to completely isolate Guild within a virtual
+environment. However, you may want to share packages and runs across
+environments. You can do this by explicitly setting the <code>GUILD_HOME</code>
+environment variable to the shared location. This should be done in
+the <code>activate</code> script of the environment.</p>
+<p>To share a common <code>GUILD_HOME</code> across environments, modify
+<code class="lit">$VIRTUAL_ENV/bin/active</code> for each environment and add the following
+line at the end of the file:</p>
+<pre><code>export GUILD_HOME=~/.guild
+</code></pre>
+
+<p>If you want to use a different location, change <code class="lit">~/.guild</code>
+accordingly.</p>
+<h2 id="using-a-virtual-environment">Using a virtual environment</h2>
+<p>You must activate a virtual environment to use it. This is done by
+<em>sourcing</em> the script as follows:</p>
+<pre><code class="language-command">source $VIRTUAL_ENV/bin/activate
+</code></pre>
+
+<p>This will configure your shell environment to use the Python runtime
+and associated packages contained in the environment. It will also set
+<code>GUILD_HOME</code> if you modified <code>activate</code> as per the instructions above.</p>
+<p>For more information, refer to <a href="https://virtualenv.pypa.io/en/stable/userguide/#activate-script">Virtualenv User Guide: activate
+script</a>.</p>
+<p>Once activated, run Guild commands as you normally would.</p>
+<p>You can verify Guild details by running <code class="lit">guild check</code>, which will
+display <code>guild_home</code> and <code>guild_install_location</code> settings, letting
+you confirm that Guild is isolated as expected.</p>
+<h2 id="summary">Summary</h2>
+<p>In this tutorial we reviewed Virtualenv and how it can be used to
+isolate Guild on a system. We described how <code>GUILD_HOME</code> can be shared
+across virtual environments by explicitly setting an environment
+variable in the <code>activate</code> script.</p>
+      
+<ul class="pager">
+  
+  <li class="previous">
+    <a href="/docs/tutorials/develop-a-model-from-scratch/">
+      <span>Prev</span> <aside>Develop a model from scratch</aside>
+    </a>
+  </li>
+  
+  
+  <li class="next">
+    <a href="/troubleshooting/">
+      <span>Next</span> <aside>Troubleshooting</aside>
+    </a>
+  </li>
+  
+</ul>
+
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
+</html>

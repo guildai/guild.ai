@@ -1,0 +1,53 @@
+figure {
+  margin: 0 0 $p-margin-bottom;
+  padding: 0 18px;
+  display: table;
+}
+
+figure p + figcaption {
+  margin-top: -$p-margin-bottom_ * 0.5px;
+}
+
+img.md {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+figcaption {
+  text-align: center;
+  color: $light-gray-text-color;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 6px;
+
+  code {
+    font-size: 13px;
+  }
+
+  a {
+    color: inherit;
+    font-weight: 700;
+  }
+}
+
+.img-shadow {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.lity {
+  z-index: 999;
+}
+
+.featherlight {
+
+  .featherlight-content {
+    background: transparent;
+  }
+
+  .featherlight-close-icon {
+    color: $color-white;
+    background: transparent;
+    font-size: 20px;
+  }
+}

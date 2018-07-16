@@ -1,0 +1,22 @@
+.tooltip.fade {
+  transition: opacity $default-transition;
+}
+
+.tooltip-inner {
+  border-radius: 1px;
+  background-color: rgba($tooltip-bg-color, 0.8);
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: rgba($tooltip-bg-color, 0.8);
+}
+.tooltip.left .tooltip-arrow {
+  border-left-color: rgba($tooltip-bg-color, 0.8);
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: rgba($tooltip-bg-color, 0.8);
+}
+.tooltip.right .tooltip-arrow {
+  border-right-color: rgba($tooltip-bg-color, 0.8);
+}

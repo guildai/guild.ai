@@ -1,0 +1,94 @@
+code, kbd, pre, samp, a.cmd {
+  font-family: $font-family-code;
+  color: $code-inline-color;
+  background: inherit;
+  padding: 0;
+  letter-spacing: -0.25px;
+  font-size: 0.875em;
+}
+
+h1, h2, h3, h4, h5 {
+  code {
+    font-size: 0.93em;
+  }
+}
+
+code.lit {
+  color: $code-literal-color;
+  background-color: $code-inline-bg-color;
+  font-weight: inherit;
+  padding: 1px 4px;
+  border-radius: 1px;
+}
+
+table.dl tr td.dt code {
+  white-space: nowrap;
+}
+
+a.cmd {
+  color: $link-color;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h3 code,
+h4 code,
+h5 code {
+  font-weight: inherit;
+}
+
+pre {
+  font-size: 0.8125em;
+  line-height: 1.4;
+  word-wrap: normal;
+  word-break: normal;
+  background-color: transparent;
+  border: none;
+  padding: 0 12px;
+  color: $gray-text-color;
+  overflow: auto;
+
+  code {
+    font-weight: normal;
+    color: $code-inline-color;
+
+    &.language-output {
+      color: $gray-text-color;
+    }
+  }
+}
+
+pre[class] {
+  position: relative;
+  margin-top: $p-margin-bottom_ + 2 * 1px;
+  color: $text-color;
+  background-color: $code-bg-color;
+  border: 1px solid $code-border-color;
+  border-radius: $default-border-radius;
+  padding: 9px 12px;
+}
+
+pre .language-name {
+  background-color: transparent;
+  color: $pale-text-color;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  cursor: default;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0 1px #fff;
+  transition: opacity $default-transition;
+
+  &.out {
+    opacity: 0;
+  }
+}
+
+pre.language-command + pre.language-output {
+  margin-top: -8px;
+}

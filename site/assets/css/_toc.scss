@@ -1,0 +1,80 @@
+.toc {
+  position: relative;
+  list-style: none;
+  padding: 30px;
+  margin: 0;
+  line-height: 1.7;
+  counter-reset: toc1;
+
+  a {
+    color: $toc-text-color;
+    transition: $default-transition;
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: $accent-color;
+    }
+  }
+
+  > li:before {
+    content: counter(toc1) ". ";
+    counter-increment: toc1;
+  }
+
+  > li > ol {
+    counter-reset: toc2;
+
+    > li:before {
+      content: counter(toc1) "." counter(toc2) ". ";
+      counter-increment: toc2;
+    }
+
+    > li > ol {
+      counter-reset: toc3;
+
+      > li:before {
+        content: counter(toc1) "." counter(toc2) ". " counter(toc3) ". ";
+        counter-increment: toc3;
+      }
+
+      > li > ol {
+        counter-reset: toc4;
+
+        > li:before {
+          content: counter(toc1) "." counter(toc2) ". " counter(toc3) ". " counter(toc4) ". ";
+          counter-increment: toc4;
+        }
+      }
+    }
+  }
+
+  ol {
+    list-style: none;
+    padding-left: 25px;
+  }
+
+  > li:before,
+  ol li:before {
+    color: $toc-text-color;
+    font-weight: 500;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    content: "Table of contents";
+    color: $pale-text-color;
+  }
+}
+
+.toc + * {
+  margin-top: 10px;
+}
