@@ -540,14 +540,6 @@
         <li>
           <a
             class=""
-            href="/docs/commands/train-cmd/">train</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
             href="/docs/commands/uninstall-cmd/">uninstall</a>
         </li>
         
@@ -664,7 +656,13 @@
       role="main">
       <h1 id="run-command">run command</h1>
 <ol class="toc">
-<li><a href="#usage">Usage</a></li>
+<li><a href="#usage">Usage</a><ol class="md">
+<li><a href="#re-running-operations">Re-running operations</a></li>
+<li><a href="#restarting-operations">Restarting operations</a></li>
+<li><a href="#alternate-run-directory">Alternate run directory</a></li>
+<li><a href="#controlling-visible-gpu-devices">Controlling visible GPU devices</a></li>
+</ol>
+</li>
 <li><a href="#options">Options</a></li>
 </ol>
 <div class="cmd-help">
@@ -680,12 +678,14 @@ current directory.</p>
 model defined in a project.</p>
 <p><code>[MODEL]:OPERATION</code> may be omitted if <code>--rerun</code> is specified, in
 which case the operation used in <code>RUN</code> will be used.</p>
+<h3 id="re-running-operations">Re-running operations</h3>
 <p>If <code>--rerun</code> is specified, the operation and flags used in <code>RUN</code>
 will be applied to the new operation. You may add or redefine
 flags in the new operation. You may also use an alternative
 operation, in which case only the flag values from <code>RUN</code> will be
 applied. <code>RUN</code> must be a run ID or unique run ID prefix or the
 special value <code class="lit">0</code>, which indicates the latest run.</p>
+<h3 id="restarting-operations">Restarting operations</h3>
 <p>If <code>--restart</code> is specified, the specified <code>RUN</code> is restarted
 in-place using its operation and flags. Unlike rerun, restart does
 not create a new run, but instead reuses the run directory of
@@ -694,6 +694,7 @@ and additional flags and may use <code class="lit">0</code> for the value of <co
 restart the latest run. <code>--run-dir</code> may not be used with
 <code>--restart</code>.</p>
 <p><code>--rerun</code> and <code>--restart</code> may not both be used.</p>
+<h3 id="alternate-run-directory">Alternate run directory</h3>
 <p>To run an operation outside of Guild's run management facility,
 use <code>--run-dir</code> or <code>--stage</code> to specify an alternative run
 directory. These options are useful when developing or debugging
@@ -703,6 +704,18 @@ when you want to verify dependency resolution and pre-processing
 or manually run an operation in a prepared directory.</p>
 <p><strong>NOTE:</strong> Runs started with <code>--run-dir</code> are not visible to Guild
 and will not appear in run listings.</p>
+<h3 id="controlling-visible-gpu-devices">Controlling visible GPU devices</h3>
+<p>By default, operations have access to all available GPU
+devices. To limit the GPU devices available to a run, use
+<code>--gpus</code>.</p>
+<p>For example, to limit visible GPU devices to <code>0</code> and <code>1</code>, run:</p>
+<pre><code>guild run --gpus 0,1 ...
+</code></pre>
+<p>To disable all available GPUs, use <code>--no-gpus</code>.</p>
+<p><strong>NOTE:</strong> <code>--gpus</code> and <code>--no-gpus</code> are used to construct the
+<code>CUDA_VISIBLE_DEVICES</code> environment variable used for the run
+process. If <code>CUDA_VISIBLE_DEVICES</code> is set, using either of these
+options will cause it to be redefined for the run.</p>
   </div>
   <h2 id="options">Options</h2>
   <table class="table table-cmd-help options">
@@ -736,6 +749,16 @@ and will not appear in run listings.</p>
       <tr>
         <th>--disable-plugins LIST</th>
         <td><p>A comma separated list of plugin names to disable. Use 'all' to disable all plugins.</p></td>
+      </tr>
+      
+      <tr>
+        <th>--gpus DEVICES</th>
+        <td><p>Limit availabe GPUs to DEVICES, a comma separated list of device IDs. By default all GPUs are available. Cannot beused with --no-gpus.</p></td>
+      </tr>
+      
+      <tr>
+        <th>--no-gpus</th>
+        <td><p>Disable GPUs for run. Cannot be used with --gpu.</p></td>
       </tr>
       
       <tr>
@@ -786,7 +809,7 @@ and will not appear in run listings.</p>
     </tbody>
   </table>
   
-  <div class="cmd-version">Guild AI version 0.4.0</div>
+  <div class="cmd-version">Guild AI version 0.5.0</div>
 </div>
       
 <ul class="pager">
