@@ -162,7 +162,7 @@ available for each run.
 
 In most cases resources are automatically resolved, but in some cases
 an operation may require that the user specify a resource. Resources
-can be specified the same way flag values are specified --- using
+can be specified the same way flag values are specified---using
 `NAME=VALUE`. In the case of a resource, `VALUE` is the name of the
 required resource.
 

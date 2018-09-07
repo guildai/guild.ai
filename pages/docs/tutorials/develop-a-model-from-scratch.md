@@ -33,7 +33,7 @@ for this tutorial. To setup your environment, see
 ## Initialize a Guild AI project
 
 Guild projects are directories that contain a [Guild
-file](term:guild-file) --- i.e. a file named `guild.yml`. A Guild file
+file](term:guild-file)---i.e. a file named `guild.yml`. A Guild file
 contains information used to train models.
 
 Let's create a new Guild project for our iris classifier by running:
@@ -108,7 +108,7 @@ with:
 Save `guild.yml`.
 
 !!! note
-    Leave `guild.yml` open in your text editor --- we'll make changes
+    Leave `guild.yml` open in your text editor---we'll make changes
     to it as we go along. If your text editor is a command line
     application, open a [](alias:separate-console) to run commands in.
 
@@ -152,7 +152,7 @@ our Iris classifier.
 
 ## Train the sample model
 
-At this point our model is just a sample --- it doesn't train anything
+At this point our model is just a sample---it doesn't train anything
 or know about Iris data. However, we can still run the `train`
 operation, which simulates the training process.
 
@@ -662,8 +662,8 @@ You can list the files associated with the latest run by running:
 guild runs info --files
 ```
 
-To see the full path to each file --- for example, to reference the
-file in another command --- use the `-P` option:
+To see the full path to each file---for example, to reference the
+file in another command---use the `-P` option:
 
 ``` command
 guild runs info --files -P

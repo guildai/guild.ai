@@ -114,7 +114,7 @@ using data. But operations can be anything at all!
 Examples of operations that a model might provide include:
 
 `train`
-: Train a model --- nearly every model supports it!
+: Train a model---nearly every model supports it!
 
 `finetune`
 : finetune a model using a pretrained model as a starting point.

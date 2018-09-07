@@ -188,7 +188,7 @@ the **SCALARS** tab. The value for our first run should be
 approximately 80%.
 
 You may keep the Guild View and TensorBoard windows open for the
-remainder of this tutorial --- they'll automatically refresh as you
+remainder of this tutorial---they'll automatically refresh as you
 generate runs. When you no longer need them, close the browser windows
 and stop Guild View by typing ``Ctrl-C``.
 
@@ -205,7 +205,7 @@ training steps:
 guild runs label local-1000
 ```
 
-Guild will confirm that you want to label the latest run --- press
+Guild will confirm that you want to label the latest run---press
 `ENTER` to apply the label.
 
 You can view the new label when you list runs:
@@ -296,9 +296,9 @@ it. This includes downloading generated files such as TensorFlow event
 logs and saved models as well as updating run status.
 
 !!! note
-    If Guild becomes disconnected from a remote job --- for example,
+    If Guild becomes disconnected from a remote job---for example,
     you terminate the command by typing ``Ctrl-C`` or lose network
-    connectivity --- the job will continue to run in Cloud ML. You can
+    connectivity---the job will continue to run in Cloud ML. You can
     synchronize with the job by running ``guild sync``. If you'd like
     to reconnect to a running job, run ``guild sync --watch``. For
     more information, see the [](cmd:sync) command.
@@ -330,7 +330,7 @@ hyperparameters later in this tutorial.
 
 You can use the arrow keys to navigate to cells that you can't see.
 
-In Guild Compare, note the accuracy for the two runs --- they should
+In Guild Compare, note the accuracy for the two runs---they should
 be similar. We'd expect this because we trained the same model with
 the same flags and data. The only difference between the runs is where
 the training occurred!
@@ -429,7 +429,7 @@ start it:
 guild compare
 ```
 
-Note the accuracy of the newly trained model --- it should be a few
+Note the accuracy of the newly trained model---it should be a few
 percentage points higher than the other two! When you're done
 comparing, press ``q`` to exit Guild Compare.
 
@@ -565,7 +565,7 @@ provide the best result.
 !!! tip
     In Guild Compare, you can sort any column in numeric descending
     order by moving the cursor to the column and pressing ``1``. This
-    is useful for sorting runs by accuracy --- the most accuracy model
+    is useful for sorting runs by accuracy---the most accuracy model
     will appear at the top of the list. You can sort in ascending
     order by pressing ``!``. This is useful for sorting runs by loss.
 
@@ -598,7 +598,7 @@ with the highest accuracy).
 
 !!! note
     When specifying run IDs in Guild, you don't have to provide
-    the entire run ID --- you may use a run ID prefix as long as it's
+    the entire run ID---you may use a run ID prefix as long as it's
     unique. Usually the first few characters is enough to identify a
     run.
 
@@ -662,7 +662,7 @@ List your current runs:
 guild runs
 ```
 
-Note the latest run --- it will be for the `cloudml-deploy` operation
+Note the latest run---it will be for the `cloudml-deploy` operation
 and have a label that contains the deployed model run ID. Deployments
 are like any other operation in Guild.
 
@@ -760,8 +760,8 @@ If Guild View isn't already running, start it in a
 guild view
 ```
 
-In Guild View, select the latest run --- it should be a
-`cloudml-predict` operation --- and click the **FILES** tab. The run
+In Guild View, select the latest run---it should be a
+`cloudml-predict` operation---and click the **FILES** tab. The run
 will have two files:
 
 `prediction.inputs`

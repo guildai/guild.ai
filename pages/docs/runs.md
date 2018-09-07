@@ -26,7 +26,7 @@ Here is a common work flow:
 - Delete runs that you're no longer interested in
 - Select successful runs for deployment or use in other operations
 
-The work centers on *runs* --- creating, comparing, and selecting.
+The work centers on *runs*---creating, comparing, and selecting.
 
 ## Concepts
 
@@ -57,7 +57,7 @@ Run related operations interact with run directories in various ways:
 ### Limiting runs
 
 Over time you'll generate a large number of runs. This list can become
-unwieldy, especially when you're interested in a small subset ---
+unwieldy, especially when you're interested in a small subset---
 e.g. runs associated with a particular model you're working with. For
 this reason, Guild provides two ways of limiting the runs that apply
 to run related commands:
@@ -149,7 +149,7 @@ Additionally, a range may be specified using run indexes in the form:
 
     [START]:[STOP]
 
-`STOP` and `START` are inclusive --- runs are selected beginning with
+`STOP` and `START` are inclusive---runs are selected beginning with
 the `STOP` index up to and including those with the `START` index.
 
 Both `STOP` and `START` are optional. If `START` is omitted it is
@@ -180,7 +180,7 @@ Limiting runs to the current directory (use --all to include all)
 
 !!! note
     The [run scope](term:#run-scope) in the above command is *local*. If
-    the user had run ``guild runs --all`` the scope would be *global* ---
+    the user had run ``guild runs --all`` the scope would be *global*---
     the list and run indexes would likely be different.
 
 Below are various operations with run selectors applied to this
@@ -206,7 +206,7 @@ list.
     - Commands must be executed in the same directory as the command
       that generated the list and without scope modifiers or filters
 
-    - The runs themselves must not change --- i.e. runs cannot be deleted
+    - The runs themselves must not change---i.e. runs cannot be deleted
       or started
 
 ## Start a run
@@ -314,7 +314,7 @@ command.
 ``guild runs`` is shorthand for ``guild runs list``.
 
 When listing runs, be aware of [run scope](term:#run-scope) and [run
-filtering](term:#run-filtering) --- these effect the runs that are
+filtering](term:#run-filtering)---these effect the runs that are
 displayed.
 
 ``guild runs``

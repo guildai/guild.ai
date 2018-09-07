@@ -21,7 +21,7 @@ attribution:
 Guild AI automates TensorFlow and Keras deep learning workflow,
 letting you focus on optimizing your models and getting them into
 production as quickly as possible. The command line toolset, supports
-your deep learning work end-to-end --- from model acquisition, through
+your deep learning work end-to-end---from model acquisition, through
 training and testing, to deployment. You can even publish your models
 for your collaborators to use!
 

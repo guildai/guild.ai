@@ -13,7 +13,7 @@ You are free to create as many virtual environments as you need. Each
 environment is independent of the others and may use different
 software versions, including different versions of Python.
 
-Guild AI is designed to work with or without a virtual environment ---
+Guild AI is designed to work with or without a virtual environment---
 the choice is yours.
 
 ## When to use a virtual environment

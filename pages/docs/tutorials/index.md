@@ -29,7 +29,7 @@ environment for each tutorial:
 
 Follow these steps to setup a virtual environment for a tutorial:
 
-- Ensure that you have Virtualenv installed --- see [Virtualenv
+- Ensure that you have Virtualenv installed---see [Virtualenv
   Installation ->](https://virtualenv.pypa.io/en/stable/installation/)
 - Create a virtual environment: ``virtualenv DIR``
 - Active the environment: ``source DIR/bin/activate``

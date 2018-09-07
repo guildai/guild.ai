@@ -79,8 +79,8 @@ Runs can be filtered using:
 
 ## Viewing run files
 
-You can browse run files --- both those used as run input and those
-generated as output --- by clicking on the **FILES** tab.
+You can browse run files---both those used as run input and those
+generated as output---by clicking on the **FILES** tab.
 
 ![Guild View - Files tab](/assets/img/guild-view-2.png)
 

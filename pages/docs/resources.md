@@ -37,12 +37,12 @@ A source object may define these attributes:
 `url`
 : Source is located on a remote server and is accessible via a
   URL. The protocols `http` and `https` are supported. `url` cannot be
-  used with either `file` or `operation` --- they are mutually
+  used with either `file` or `operation`---they are mutually
   exclusive.
 
 `file`
 : Source is a file or directory located relative to the model or
-  package file. `file` cannot be used with `url` or `operation` ---
+  package file. `file` cannot be used with `url` or `operation`---
   they are mutually exclusive.
 
 `operation`
@@ -50,7 +50,7 @@ A source object may define these attributes:
   specified as `[[PACKAGE/]MODEL:]OPERATION`. Multiple operations may
   be specified by separating them with a comma. For more information
   see [Operation output](#operation-output) below. `operation` cannot
-  be used with `url` or `file` --- they are mutually exclusive.
+  be used with `url` or `file`---they are mutually exclusive.
 
 `select`
 : A regular expression used to select files from a local directory,

@@ -47,7 +47,7 @@ operations:
 This file tells Guild that the model `mnist` has an operation `train`
 that is performed by running a Python module `train_mnist`.
 
-Here's what `train_mnist.py` --- the training module source file ---
+Here's what `train_mnist.py`---the training module source file---
 might look like:
 
 ``` python
