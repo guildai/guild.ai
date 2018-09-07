@@ -63,4 +63,5 @@ clean-caches:
 	rm -rf /tmp/guild-ai-cmd-help
 
 update-submodules:
-	git submodule update --recursive --remote
+	git submodule update guild
+	git submodule update packages
