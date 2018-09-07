@@ -61,3 +61,6 @@ spellcheck:
 
 clean-caches:
 	rm -rf /tmp/guild-ai-cmd-help
+
+update-submodules:
+	git submodule update --recursive --remote
