@@ -10,6 +10,7 @@ tags: support
 - [Visual tools](category:#visual-tool)
 - [Reference](category:#reference)
 - [Popular](category:#popular)
+- [How to](category:#howto)
 
 <!-- TODO
 - [Guides](category:#guide)

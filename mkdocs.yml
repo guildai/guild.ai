@@ -194,6 +194,9 @@ pages:
           - docs/reference/guild-file.md
           - docs/reference/guild-home.md
           # TODO - docs/reference/plugin-api.md
+      - How to:
+          - docs/howto/debug-an-operation.md
+          - docs/howto/specify-run-gpus.md
       - Tutorials:
           - docs/tutorials/index.md
           - docs/tutorials/train-mnist.md
