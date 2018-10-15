@@ -4,10 +4,6 @@ banner_action_link: #learn-more
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
-attribution:
-    Shipping icon by
-    <a href="https://www.freepik.com/free-vector/logistic-icons-set-flat_1530842.htm"
-    target="_blank">Freepik</a>
 
 <div id="learn-more" style="height:50px;margin-top:-50px"></div>
 
@@ -24,7 +20,8 @@ attribution:
 
     </p>
     <a href="#guild-projects">
-      <img class="feature-grid-img" src="/assets/img/guild-project.png">
+      <img title="guild.yml added to TensorFlow project"
+           class="feature-grid-img" src="/assets/img/guild-project.png">
     </a>
   </div>
 
@@ -40,7 +37,8 @@ attribution:
 
     </p>
     <a href="#model-operations">
-      <img class="feature-grid-image" style="margin-top:5px"
+      <img title="Running the train operation"
+           class="feature-grid-image" style="margin-top:5px"
            src="/assets/img/guild-run.png">
     </a>
   </div>
@@ -57,7 +55,8 @@ attribution:
 
     </p>
     <a href="#experiments">
-      <img class="feature-grid-img" src="/assets/img/experiments.png">
+      <img title="Each run tracked as an experiment"
+           class="feature-grid-img" src="/assets/img/experiments.png">
     </a>
   </div>
 
@@ -73,7 +72,8 @@ attribution:
 
     </p>
     <a href="#end-to-end-workflow">
-      <img class="feature-grid-img" src="/assets/img/workflow.png">
+      <img title="Operations used for end-to-end workflow"
+           class="feature-grid-img" src="/assets/img/workflow.png">
     </a>
   </div>
 
@@ -89,7 +89,8 @@ attribution:
 
     </p>
     <a href="#model-tests">
-      <img class="feature-grid-img code" style="margin-top:5px"
+      <img title="Guild file containing model tests"
+           class="feature-grid-img code" style="margin-top:5px"
            src="/assets/img/tests.png">
     </a>
   </div>
@@ -106,13 +107,177 @@ attribution:
 
     </p>
     <a href="#packages-and-code-reuse">
-      <img class="feature-grid-img" src="/assets/img/reuse.png">
+      <img title="Guild project reusing code from TensorFlow, PyPI and GitHub"
+           class="feature-grid-img" src="/assets/img/reuse.png">
     </a>
   </div>
 
 </div>
 
+# Quick start guides
+
+<div class="row match-height" style="margin-bottom:40px">
+  <div class="col col-md-4">
+    <div class="promo left">
+      <h3>Add Guild AI support to an existing project</h3>
+      <p class="expand">
+
+        Guild AI supports an ever-growing ecosystem of TensorFlow and Keras
+        models that you can install and train with a few simple commands.
+
+      </p>
+      <a class="btn btn-primary cta" href="/models/"
+         >Discover the models <i class="fa next"></i></a>
+    </div>
+  </div>
+
+  <div class="col col-md-4">
+    <div class="promo left">
+      <h3>Use models developed by others?</h3>
+      <p class="expand">
+
+        If you're interested in a complete picture of Guild AI, start by
+        browsing its comprehensives documentation.
+
+      </p>
+      <a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+    </div>
+  </div>
+
+  <div class="col col-md-4">
+    <div class="promo left">
+      <h3>Use models developed by others?</h3>
+      <p class="expand">
+
+        If you're interested in a complete picture of Guild AI, start by
+        browsing its comprehensives documentation.
+
+      </p>
+      <a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+    </div>
+  </div>
+</div>
+
 # Guild projects
+
+<div class="row quick-start">
+  <div class="col-md-8">
+    <p>
+
+      <a href="/docs/overview/#guild-files">Guild files</a> define
+      your project models and operations. Here's an example of a Guild
+      file for the
+      <a class="ext"
+      href="https://www.tensorflow.org/tutorials/keras/basic_classification">TensorFlow
+      basic image classifier</a>:
+
+      <pre>
+        <code class="language-yaml">
+  model: fashion
+  operations:
+    prepare-data:
+      main: prepare_data --output-dir .
+    train:
+      main: train --data-dir data --log-dir . --checkpoint-dir .
+      requires: prepared-data
+    predict:
+      main: predict --data-dir data --checkpoint-dir model --output-dir .
+      requires:
+        - prepared-data
+        - trained-model
+        </code>
+      </pre>
+
+    </p>
+
+    <h3>Step 1. Install Guild AI</h3>
+    <p>Guild AI is installed
+    using <a href="https://pip.pypa.io/en/stable/" target="_blank"
+    class="ext">pip</a>. Select one of the installation methods below.
+    </p>
+    <div class="tabs tabs-text">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#pip" role="tab" data-toggle="tab">Native pip</a>
+        </li>
+        <li role="presentation">
+          <a href="#virtual-env" role="tab" data-toggle="tab">Virtual env</a>
+        </li>
+        <li role="presentation">
+          <a href="#conda" role="tab" data-toggle="tab">Conda</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade in" id="pip">
+          <p>Install Guild AI using pip by running:</p>
+          <pre>
+            <code class="language-command">pip install guildai</code>
+          </pre>
+          <div class="admonition note">
+            <p class="admonition-title">Note</p>
+            <p>If you are unable to install Guild AI due to permission
+              errors, you may need to run the command
+              using <code>sudo</code>:
+            </p>
+            <pre>
+              <code class="language-command">sudo pip install guildai</code>
+            </pre>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="virtual-env">
+          <p>Install Guild AI in a virtual environment
+          named <code>guild</code> by running:</p>
+          <pre>
+            <code class="language-command">
+              virtualenv guild
+              . guild/bin/activate
+              pip install guildai
+            </code>
+          </pre>
+          <p>To install in a different virtual env,
+          replace <code class="lit">guild</code> above with the
+          alternate location.</p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="conda">
+          <p>Install Guild AI in a Conda environment
+          named <code>guild</code> by running:</p>
+          <pre>
+            <code class="language-command">
+              conda create -n guild python=3.6
+              source activate guild
+              pip install guildai
+            </code>
+          </pre>
+          <p>To install in a different virtual env,
+          replace <code class="lit">guild</code> above with the
+          alternate location.</p>
+        </div>
+      </div>
+    </div>
+    <p>For more information, see <a href="/install"
+      target="_blank">Installing Guild AI</a>.
+    </p>
+    <p>When Guild AI is installed, initialize the Guild environment by
+    running:</p>
+    <pre>
+      <code class="language-command">guild init --env</code>
+    </pre>
+    <p>
+      This step verifies that your environment is setup correctly and
+      prompts you to install TensorFlow if it isn't already installed.
+    </p>
+    <p>
+      If you encounter errors at this stage,
+      see <a href="/troubleshooting">Troubleshooting</a> for more
+      information or <a href="https://github.com/guildai/guild/issues"
+      target="_blank" class="ext">open an issue on GitHub</a> to get
+      help.
+    </p>
+  </div>
+  <div class="col-md-4 hidden-xs hidden-sm console-col">
+
+  </div>
+</div>
 
 # Model operations
 
@@ -126,7 +291,7 @@ attribution:
 
 <hr>
 
-OLD STUFF:
+************************OLD STUFF**********************
 
 
 Guild AI automates TensorFlow and Keras deep learning workflow,
