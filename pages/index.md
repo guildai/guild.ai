@@ -1,9 +1,4 @@
 layout: banner
-banner_tagline:
-    Discover and apply state-of-the-art TensorFlow models
-banner_subtext:
-    <strong>Guild AI</strong> is a developer toolkit that
-    accelerates deep learning model development and reuse.
 banner_action: Learn more
 banner_action_link: #learn-more
 hide_sidenav: yes
@@ -16,7 +11,123 @@ attribution:
 
 <div id="learn-more" style="height:50px;margin-top:-50px"></div>
 
-# Guild AI <small>&nbsp;streamline your TensorFlow and Keras development</small>
+<div class="row match-height">
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#guild-projects">Guild projects</a></h4>
+    <p>
+
+      Add <code>guild.yml</code> to your project to automate your
+      TensorFlow model operations and enable experiment tracking,
+      testing, distribution and remote training.
+
+      <a class="red-link" href="#guild-projects">Learn more</a>.
+
+    </p>
+    <a href="#guild-projects">
+      <img class="feature-grid-img" src="/assets/img/guild-project.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#model-operations">Model operations</a></h4>
+    <p>
+
+      Train your model by running the command <code class="lit">guild
+      run train</code> to generate a unique experiment that preserves
+      training files and metadata.
+
+      <a class="red-link" href="#model-operations">Learn more</a>.
+
+    </p>
+    <a href="#model-operations">
+      <img class="feature-grid-image" style="margin-top:5px"
+           src="/assets/img/guild-run.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#experiments">Experiments</a></h4>
+    <p>
+
+      Track experiments to save logs and trained models, compare
+      performance, diff files, visualize results in TensorBoard and
+      backup to the cloud.
+
+      <a class="red-link" href="#experiments">Learn more</a>.
+
+    </p>
+    <a href="#experiments">
+      <img class="feature-grid-img" src="/assets/img/experiments.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#end-to-end-workflow">End-to-end workflow</a></h4>
+    <p>
+
+      Automate your model's complete life cycle, from data collection
+      and pre-processing to training and evaluation to optimization
+      and deployment.
+
+      <a class="red-link" href="#end-to-end-workflow">Learn more</a>.
+
+    </p>
+    <a href="#end-to-end-workflow">
+      <img class="feature-grid-img" src="/assets/img/workflow.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#model-tests">Model tests</a></h4>
+    <p>
+
+      Verify all stages of your TensorFlow automation workflow with
+      tests that exercise code and check results such as expected loss
+      and accuracy ranges.
+
+      <a class="red-link" href="#model-tests">Learn more</a>.
+
+    </p>
+    <a href="#model-tests">
+      <img class="feature-grid-img code" style="margin-top:5px"
+           src="/assets/img/tests.png">
+    </a>
+  </div>
+
+  <div class="col-md-4 col-sm-6 promo center">
+    <h4><a href="#packages-and-code-reuse">Packages and code reuse</a></h4>
+    <p>
+
+      Save time and reduce errors by reusing tested, proven models and
+      operations&mdash;developed by you as well as others in the
+      TensorFlow community.
+
+      <a class="red-link" href="#packages-and-code-reuse">Learn more</a>.
+
+    </p>
+    <a href="#packages-and-code-reuse">
+      <img class="feature-grid-img" src="/assets/img/reuse.png">
+    </a>
+  </div>
+
+</div>
+
+# Guild projects
+
+# Model operations
+
+# Experiments
+
+# End-to-end workflow
+
+# Model tests
+
+# Packages and code reuse
+
+<hr>
+
+OLD STUFF:
+
 
 Guild AI automates TensorFlow and Keras deep learning workflow,
 letting you focus on optimizing your models and getting them into

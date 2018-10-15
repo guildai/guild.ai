@@ -23,6 +23,10 @@ a.ext::after {
   vertical-align: middle;
 }
 
+a.red-link {
+  color: $color-primary-darker;
+}
+
 p,
 ul {
   font-weight: 400;
