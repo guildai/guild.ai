@@ -8,7 +8,7 @@ hide_in_pagenav: yes
 
 ## Links
 
-[GitHub project]($guild-github)
+[GitHub project](alias:guild-github)
 
 ## Contributing
 

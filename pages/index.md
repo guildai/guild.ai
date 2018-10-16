@@ -1,9 +1,4 @@
 layout: banner
-banner_tagline:
-    Discover and apply state-of-the-art TensorFlow models
-banner_subtext:
-    <strong>Guild AI</strong> is a developer toolkit that
-    accelerates deep learning model development and reuse.
 banner_action: Learn more
 banner_action_link: #learn-more
 hide_sidenav: yes
