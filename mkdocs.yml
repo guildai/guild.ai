@@ -95,6 +95,9 @@ markdown_extensions:
               run-dir: /docs/runs/#run-directory
               run: /docs/runs/
         # aliases
+        - link_pattern: alias:install-guild
+          href: /install/
+          text: install Guild AI
         - link_pattern: alias:guild-github
           class: ext
           target: _blank
@@ -191,22 +194,10 @@ pages:
           - docs/reference/guild-file.md
           - docs/reference/guild-home.md
           # TODO - docs/reference/plugin-api.md
-      - How to:
 
-          # NOTE: How are these different from the other docs, which
-          # already thorougly cover all topics? Can we skip the how to
-          # section and just have topics for core concepts and
-          # tutorials for extended step-by-step guides?
-          #
-          # The core concepts should each have an examples section
-          # that can be used for copy/paste as much as possible for
-          # any given desired task.
 
-          # If we renamed Turorials to Guides, I think the guide-like
-          # topics here could be moved there.
 
-          - docs/howto/debug-an-operation.md
-          - docs/howto/specify-run-gpus.md
+      - Guides:
           # - delete failed runs
           # - reuse models
           # - create a tf lite file
@@ -229,7 +220,6 @@ pages:
           # - diffing runs
           # - diff images using Beyond Compare
 
-      - Guides:
           - docs/guides/index.md
           - docs/guides/create-a-project.md
           - docs/guides/convert-jupyter.md
@@ -238,6 +228,8 @@ pages:
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
           - docs/guides/publish-to-pypi.md
+          - docs/guides/debug-an-operation.md
+          - docs/guides/specify-run-gpus.md
 
       #- Tutorials:
       #    # - deep dive - understanding slim support

@@ -42,7 +42,7 @@ Let's create a new Guild project for our iris classifier by running:
 guild init --project iris
 ```
 
-Guild asks you to confirm the operation. Press `ENTER` to initialize
+Guild asks you to confirm the operation. Press `Enter` to initialize
 the new project.
 
 The commands creates a new directory:
@@ -174,7 +174,7 @@ Continue? (Y/n)
 This lets you review the [flag values](term:flag) that will be used
 for the `train` operation.
 
-Accept the values and start the training by pressing `ENTER`.
+Accept the values and start the training by pressing `Enter`.
 
 Guild runs the sample training operation and exits:
 
@@ -611,7 +611,7 @@ guild runs delete
 ```
 
 Guild will ask you to confirm the operation before proceeding. Press
-`ENTER` to delete the runs.
+`Enter` to delete the runs.
 
 !!! note
     Guild lets you restore deleted runs using the [runs

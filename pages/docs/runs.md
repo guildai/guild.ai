@@ -394,7 +394,7 @@ Delete runs using ``guild runs delete`` or ``guild runs rm``. See
 [runs delete](cmd:runs-delete) for command details.
 
 Guild will display the list of runs to be deleted and ask you to
-confirm the operation. You must type ``y`` and then press `ENTER` to
+confirm the operation. You must type ``y`` and then press `Enter` to
 confirm.
 
 Deleted runs can be restored using the [runs

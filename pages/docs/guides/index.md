@@ -1,5 +1,5 @@
 sidenav_title: Overview
-tags: guide
+tags: step-by-step
 
 # Guides
 
@@ -8,3 +8,5 @@ tags: guide
 - [Get started](category:/docs/guides/#get-started)
 - [Analyze](category:/docs/guides/#analyze)
 - [Remote support](category:/docs/guides/#remote)
+- [Model development](category:/docs/guides/#developer)
+- [Tips and tricks](category:/docs/guides/#tip)

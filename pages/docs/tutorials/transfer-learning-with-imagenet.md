@@ -157,7 +157,7 @@ Flags:
 !!! tip
     It's common to start typing a [](cmd:run) command and wonder "what
     flags are available and which are required?" At that point, specify
-    the ``--help-op`` option and press `ENTER`. After you've reviewed the
+    the ``--help-op`` option and press `Enter`. After you've reviewed the
     operation details, use your command history to continue from where you
     left off.
 
@@ -176,7 +176,7 @@ Guild will display the flag values that will be used in the operation
 and prompt you before starting the operation. This gives you an
 opportunity to cancel the operation and make adjustments.
 
-Let's accept the default values---go ahead press `ENTER` to start
+Let's accept the default values---go ahead press `Enter` to start
 the operation.
 
 If this is the first time you've run a `slim` operation, Guild will

@@ -113,7 +113,7 @@ operation. The model defines two [flags](term:flag):
 `epochs`
 : number of epochs to train
 
-Press `ENTER` to accept the default values and continue.
+Press `Enter` to accept the default values and continue.
 
 The operation first resolves any resources required by the model by
 downloading them. It then runs a TensorFlow script to train the
@@ -241,7 +241,7 @@ We'll now train the `mnist-cnn` model:
 guild train mnist-cnn
 ```
 
-You'll again be prompted with the default flag values. Press `ENTER`
+You'll again be prompted with the default flag values. Press `Enter`
 to accept the defaults and begin training.
 
 As the model trains, let's note a few things:

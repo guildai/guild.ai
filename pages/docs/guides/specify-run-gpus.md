@@ -1,5 +1,5 @@
 sidenav_title: Specify available GPUs
-tags: howto
+tags: tip
 
 # Specifying available GPUs for a run
 

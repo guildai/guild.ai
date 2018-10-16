@@ -74,7 +74,7 @@ guild train census train-steps=1000
 ```
 
 Guild lets you review the flag values for the operation before
-started. Press `ENTER` to accept the values.
+started. Press `Enter` to accept the values.
 
 With only 1,000 training steps, the model should be trained on most
 systems in under a minute.
@@ -206,7 +206,7 @@ guild runs label local-1000
 ```
 
 Guild will confirm that you want to label the latest run---press
-`ENTER` to apply the label.
+`Enter` to apply the label.
 
 You can view the new label when you list runs:
 
@@ -264,7 +264,7 @@ guild run census:cloudml-train \
   --label cloud-1000
 ```
 
-Review the operation flag values and press `ENTER` to begin training.
+Review the operation flag values and press `Enter` to begin training.
 
 The `cloudml-train` operation is otherwise identical to the `train`
 operation, but it's run remotely on Cloud ML rather than locally. The
@@ -730,7 +730,7 @@ First, let's run an online prediction:
 guild run census:cloudml-predict
 ```
 
-Guild will prompt you before running the operation. Press `ENTER` to
+Guild will prompt you before running the operation. Press `Enter` to
 run the operation.
 
 The prediction is made using the latest deployed version of the

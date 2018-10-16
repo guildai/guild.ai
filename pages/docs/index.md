@@ -9,9 +9,4 @@ tags: support
 - [Concepts](category:#concepts)
 - [Visual tools](category:#visual-tool)
 - [Reference](category:#reference)
-- [Popular](category:#popular)
-- [How to](category:#howto)
-
-<!-- TODO
-- [Guides](category:#guide)
--->
+- [Step by step](category:#step-by-step)

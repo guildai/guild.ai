@@ -1,5 +1,5 @@
-tags: get-started
 title: Convert a Jupyter Notebook
+tags: get-started
 
 # Convert a Jupyter Notebook to a Guild project
 

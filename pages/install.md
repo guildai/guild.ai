@@ -1,11 +1,11 @@
 title: Install
-pagenav_title: Installing Guild AI
+pagenav_title: Install Guild AI
 navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-# Installing Guild AI
+# Install Guild AI
 
 [TOC]
 
@@ -13,17 +13,19 @@ hide_in_pagenav: yes
 
 Guild AI has the following requirements:
 
-- Max OS, Linux
-- Python 2.7, Python 3
+- Max OS or Linux
+- Python 2.7 or Python 3
 - pip
 
-Guild is installed from PyPI using `pip`. Refer to [Installing pip
-->](https://pip.pypa.io/en/stable/installing/) to ensure you have it
+Guild is installed from PyPI using `pip`. Refer to *[pip Installation
+->](https://pip.pypa.io/en/stable/installing/)* to ensure you have it
 installed.
 
 ## Install Guild AI
 
-To install Guild AI, run the following on the command line:
+### Using pip
+
+To install Guild AI, run the following command:
 
 ``` command
 pip install guildai
@@ -35,40 +37,14 @@ If you need to run `install` with administrative privileges, run:
 sudo pip install guildai
 ```
 
-You may alternatively install Guild AI in a Python virtual
-environment. Refer to the next sections for details.
-
-### Install Guild AI with Virtualenv
-
-If you would like to install Guild within a Python [virtual
-environment ->](term:https://virtualenv.pypa.io), run the following:
+If you want the latest pre-release version of Guild AI, use the
+``--pre`` option:
 
 ``` command
-virtualenv guild
-source guild/bin/activate
-pip install guildai
+pip install --pre guildai
 ```
 
-This has the advantage of isolating Guild AI within a single
-directory. For more information on the advantages and disadvantages of
-this approach, see [Working with
-Virtualenv](/docs/tutorials/working-with-virtualenv/).
-
-### Install Guild AI with Conda
-
-Guild AI can be installed in [Conda
-->](https://conda.io/docs/index.html) environments using pip.
-
-``` command
-conda create -n guild python=3.6
-source activate guild
-pip install guildai
-```
-
-If you'd like to install Guild with a different Python version,
-replace ``3.6`` above with the version you want.
-
-### Install Guild AI from source code
+### From source code
 
 !!! note
     This step is an alternative to installing Guild AI with pip

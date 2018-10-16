@@ -111,7 +111,12 @@ hide_in_pagenav: yes
            class="feature-grid-img" src="/assets/img/reuse.png">
     </a>
   </div>
+</div>
 
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <a class="btn btn-primary btn-lg" href="/docs/intro/">Guild AI introduction <i class="fa next"></i></a>
+  </div>
 </div>
 
 ---

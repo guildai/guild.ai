@@ -1,5 +1,5 @@
 sidenav_title: Debug an operation
-tags: howto
+tags: developer
 
 # Debugging an operation
 
