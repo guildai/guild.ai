@@ -131,6 +131,7 @@ h1 small {
 }
 
 h1, h2, h3 {
+  /*
   a:after {
     margin-right: -30px;
     margin-left: 10px;
@@ -142,6 +143,7 @@ h1, h2, h3 {
     transition: $default-transition;
     vertical-align: middle;
   }
+  */
 }
 
 h3 a:before {

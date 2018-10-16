@@ -41,3 +41,19 @@ following in a separate process:
 To manually re-generate assets, run:
 
     $ make refresh-assets
+
+## Page attributes
+
+Page attributes are used to specify page titles and related labels.
+
+Example:
+
+``` yaml
+title: Install
+pagenav_title: Installing Guild AI
+navbar_item: yes
+hide_sidenav: yes
+hide_pagenav: yes
+hide_in_pagenav: yes
+tags: concepts, popular
+```

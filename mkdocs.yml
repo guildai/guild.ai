@@ -131,7 +131,7 @@ pages:
   - install.md
   - docs:
       - docs/index.md
-      - docs/overview.md
+      - docs/intro.md
       - docs/models.md
       - docs/operations.md
       - docs/runs.md
@@ -229,18 +229,27 @@ pages:
           # - diffing runs
           # - diff images using Beyond Compare
 
-      - Tutorials:
-          # - deep dive - understanding slim support
-          - docs/tutorials/index.md
-          - docs/tutorials/train-mnist.md
-          # TODO - docs/tutorials/transfer-learning-with-imagenet.md
-          - docs/tutorials/train-and-predict-with-cloudml.md
-          # TODO - docs/tutorials/train-a-keras-model.md
-          - docs/tutorials/develop-a-model-from-scratch.md
-          # TODO - docs/tutorials/package-a-model.md
-          # TODO - docs/tutorials/stylize-images-with-magenta.md
-          - docs/tutorials/workflow-with-virtualenv.md
-      - troubleshooting.md
+      - Guides:
+          - docs/guides/index.md
+          - docs/guides/create-a-project.md
+          - docs/guides/convert-jupyter.md
+          - docs/guides/train-on-ec2.md
+          - docs/guides/backup-to-s3.md
+          - docs/guides/compare-runs.md
+          - docs/guides/publish-to-pypi.md
+
+      #- Tutorials:
+      #    # - deep dive - understanding slim support
+      #    - docs/tutorials/index.md
+      #    - docs/tutorials/train-mnist.md
+      #    # TODO - docs/tutorials/transfer-learning-with-imagenet.md
+      #    - docs/tutorials/train-and-predict-with-cloudml.md
+      #    # TODO - docs/tutorials/train-a-keras-model.md
+      #    - docs/tutorials/develop-a-model-from-scratch.md
+      #    # TODO - docs/tutorials/package-a-model.md
+      #    # TODO - docs/tutorials/stylize-images-with-magenta.md
+      #    - docs/tutorials/workflow-with-virtualenv.md
+      #- troubleshooting.md
   - models:
       - models/index.md
       - Cloud ML:
