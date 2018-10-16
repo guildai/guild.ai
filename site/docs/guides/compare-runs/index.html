@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Overview - Guild AI</title>
-    <link href="../../assets/css/vendor.min.css" rel="stylesheet">
-    <link href="../../assets/css/theDocs.min.css" rel="stylesheet">
+    <title>Compare runs - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
-    <link rel="icon" href="../../assets/img/favicon.png">
+    <link rel="icon" href="../../../assets/img/favicon.png">
   </head>
   <body>
     
@@ -44,7 +44,7 @@
         <ul class="pagination" id="search-pages"></ul>
         <div class="algolia-link">
           <a href="https://www.algolia.com/" target="_blank">
-            <img src="../../assets/img/search-by-algolia.svg">
+            <img src="../../../assets/img/search-by-algolia.svg">
           </a>
         </div>
       </div>
@@ -62,8 +62,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../../">
-          <img src="../../assets/img/logo_nav.svg" alt="logo">
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
         </a>
       </div>
       <div class="spacer"></div>
@@ -135,7 +135,7 @@
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
       </button>
       <a class="sidebar-nav-brand" href="None">
-        <img src="../../assets/img/logo_nav.svg" alt="logo">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
       </a>
     </div>
     <ul class="nav ">
@@ -205,8 +205,8 @@
     
     <li>
       <a
-        class="active"
-        href="/docs/overview/">Overview</a>
+        class=""
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,14 +583,14 @@
     
     
     <li>
-      <a class="" href="#">Tutorials</a>
+      <a class="" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
             class=""
-            href="/docs/tutorials/">Overview</a>
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
         </li>
         
         
@@ -598,31 +598,7 @@
         <li>
           <a
             class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class=""
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="active" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -654,147 +687,20 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <h1 id="guild-ai-overview">Guild AI overview</h1>
-<ol class="toc">
-<li><a href="#guild-files">Guild files</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="#models">Models</a></li>
-<li><a href="#operations">Operations</a></li>
-<li><a href="#runs">Runs</a></li>
-<li><a href="#resources">Resources</a></li>
-</ol>
-<p>Guild AI is a toolkit that streamlines TensorFlow and Keras model
-development. It provides features that let you train, evaluate, and
-release deep learning models with less time and with fewer errors.</p>
-<p>Here&rsquo;s a training operation in Guild AI:</p>
-<pre><code class="language-command">guild train resnet-50
-</code></pre>
-
-<p>When you train a model using Guild, a number of important steps are
-performed for you:</p>
-<ul class="md">
-<li>
-<p>Guild creates a unique run directory to capture the results of the
-  training experiment.</p>
-</li>
-<li>
-<p>Guild saves details about the operation, including the model,
-  hyperparameters, environment, and command.</p>
-</li>
-<li>
-<p>Guild directs files generated by the training operation, such as
-  TensorFlow event logs and saved models, to the run directory.</p>
-</li>
-</ul>
-<p>As a result, each time you perform a training operation on a model,
-you retain the results as a unique experiment.</p>
-<p>Guild provides tools for evaluating your experiments:</p>
-<ul class="md">
-<li>
-<p>Compare training loss, validation accuracy, and other metrics across
-  runs.</p>
-</li>
-<li>
-<p>Use TensorBoard to evaluate metrics generated during the training
-  process.</p>
-</li>
-<li>
-<p>Browse training artifacts.</p>
-</li>
-<li>
-<p>Annotate runs to capture your ideas.</p>
-</li>
-</ul>
-<p>When you&rsquo;re happy with a trained model, its artifacts are available to
-deploy to production. If it&rsquo;s Cloud ML ready, you can deploy it to the
-cloud with a single command.</p>
-<h2 id="guild-files">Guild files</h2>
-<p>Guild makes use of Guild files, provide information needed to run
-operations on a model.</p>
-<p>Guild files are always named <code>guild.yml</code>.</p>
-<p>Here&rsquo;s a simple example:</p>
-<pre><code class="language-yaml">model: cifar10-cnn
-description: CNN classifier for CIFAR10 dataset
-operations:
-  train:
-    description: Train the CNN
-    cmd: train_cnn
-    flags:
-      epochs: 10000
-      batch-size: 128
-</code></pre>
-
-<p>This tells Guild that the <code>train</code> operation is implemented by a Python
-script named <code>train_cnn.py</code> and that it accepts two flags: <code>epochs</code>
-and <code>batch-size</code>.</p>
-<p>From a command line, a user can train the CIFAR10 CNN classifier by
-running:</p>
-<pre><code>guild train cifar10-cnn epochs=1000 batch-size=64
-</code></pre>
-
-<p>This command has the effect of running <code>train_cnn.py</code> with the
-specified flag values as a distinct run, which can be evaluated during
-or after the operation.</p>
-<p><a class="btn btn-primary" href="/docs/reference/guild-file/">Guild
-file reference<i class="fa next"></i></a></p>
-<h2 id="packages">Packages</h2>
-<p>Packages are containers for <a href="#models">models</a> and required
-<a href="#resources">resources</a>. They are the basis of deep learning model
-distribution in Guild AI.</p>
-<p>You can discover packages <a href="../../models/">online</a> or by using Guild&rsquo;s
-<a class="cmd" href="../../docs/commands/search-cmd">search</a> command.</p>
-<p><a class="btn btn-primary" href="/docs/packages/">More about packages<i class="fa next"></i></a></p>
-<h2 id="models">Models</h2>
-<p>Guild models correspond to machine learning models. They&rsquo;re defined in
-Guild files with their <em>operations</em>, which can be run to perform
-training, evaluation, and other model related work.</p>
-<p><a class="btn btn-primary" href="/docs/models/">More about models<i class="fa next"></i></a></p>
-<h2 id="operations">Operations</h2>
-<p>Operations are <em>actions</em> that you can perform on a model. The most
-common operation in deep learning is <code>train</code>, which optimizes a model
-using data. But operations can be anything at all!</p>
-<p>Examples of operations that a model might provide include:</p>
-<table class="table dl">
-<tr><td class="dt"><code>train</code></td>
-<td class="dd">Train a model &mdash; nearly every model supports it!</td>
-</tr><tr><td class="dt"><code>finetune</code></td>
-<td class="dd">finetune a model using a pretrained model as a starting point.</td>
-</tr><tr><td class="dt"><code>evaluate</code></td>
-<td class="dd">Measure model performance using a test dataset.</td>
-</tr><tr><td class="dt"><code>optimize</code></td>
-<td class="dd">Optimize a model for a target environment (e.g. compress the model
-  size for mobile applications)</td>
-</tr><tr><td class="dt"><code>deploy</code></td>
-<td class="dd">Deploy a model to a target environment.</td>
-</tr></table>
-<p><a class="btn btn-primary" href="/docs/operations/">More about
-operations<i class="fa next"></i></a></p>
-<h2 id="runs">Runs</h2>
-<p>A <em>run</em> is generated each time you start an operation with the
-<a class="cmd" href="../../docs/commands/run-cmd">run</a> command. Runs preserves the outcome of each experiment,
-allowing you to analyze your results and make informed decisions about
-next steps.</p>
-<p><a class="btn btn-primary" href="/docs/runs/">More about runs <i
-class="fa next"></i></a></p>
-<h2 id="resources">Resources</h2>
-<p>Resources are files and software libraries required by
-operations. Models and packages may provide resources, which Guild
-makes available to operations during each run.</p>
-<p><a class="btn btn-primary" href="/docs/resources/">More about resources <i
-class="fa next"></i></a></p>
+      <h1 id="compare-runs-with-guild">Compare runs with Guild</h1>
       
 <ul class="pager">
   
   <li class="previous">
-    <a href="/docs/">
-      <span>Prev</span> <aside>Documentation contents</aside>
+    <a href="/docs/guides/backup-to-s3/">
+      <span>Prev</span> <aside>Backup to S3</aside>
     </a>
   </li>
   
   
   <li class="next">
-    <a href="/docs/models/">
-      <span>Next</span> <aside>Models</aside>
+    <a href="/docs/guides/publish-to-pypi/">
+      <span>Next</span> <aside>Publish to PyPI</aside>
     </a>
   </li>
   
@@ -823,6 +729,6 @@ class="fa next"></i></a></p>
 </footer>
 
   </body>
-  <script src="../../assets/js/vendor.min.js" data-manual></script>
-  <script src="../../assets/js/theDocs.min.js"></script>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
 </html>

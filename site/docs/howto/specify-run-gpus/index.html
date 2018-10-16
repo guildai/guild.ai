@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Tutorials - Guild AI</title>
-    <link href="../../assets/css/vendor.min.css" rel="stylesheet">
-    <link href="../../assets/css/theDocs.min.css" rel="stylesheet">
+    <title>Specifying available GPUs for a run - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
-    <link rel="icon" href="../../assets/img/favicon.png">
+    <link rel="icon" href="../../../assets/img/favicon.png">
   </head>
   <body>
     
@@ -44,7 +44,7 @@
         <ul class="pagination" id="search-pages"></ul>
         <div class="algolia-link">
           <a href="https://www.algolia.com/" target="_blank">
-            <img src="../../assets/img/search-by-algolia.svg">
+            <img src="../../../assets/img/search-by-algolia.svg">
           </a>
         </div>
       </div>
@@ -62,8 +62,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../../">
-          <img src="../../assets/img/logo_nav.svg" alt="logo">
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
         </a>
       </div>
       <div class="spacer"></div>
@@ -135,7 +135,7 @@
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
       </button>
       <a class="sidebar-nav-brand" href="None">
-        <img src="../../assets/img/logo_nav.svg" alt="logo">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
       </a>
     </div>
     <ul class="nav ">
@@ -206,7 +206,7 @@
     <li>
       <a
         class=""
-        href="/docs/overview/">Overview</a>
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,46 +583,22 @@
     
     
     <li>
-      <a class="active" href="#">Tutorials</a>
+      <a class="active" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
+            class=""
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
             class="active"
-            href="/docs/tutorials/">Overview</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class=""
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -654,84 +687,45 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <h1 id="tutorials">Tutorials</h1>
-<ol class="toc">
-<li><a href="#introductory">Introductory</a></li>
-<li><a href="#model-development">Model development</a></li>
-<li><a href="#tools">Tools</a></li>
-<li><a href="#tutorial-virtual-environments">Tutorial virtual environments</a><ol class="md">
-<li><a href="#setup-a-virtual-environment-on-linux-or-mac-os">Setup a virtual environment on Linux or Mac OS</a></li>
-</ol>
-</li>
-</ol>
-<ul class="categorized-view">
-<li>
-<h5 id="introductory">Introductory</h5>
-<a href="../../docs/tutorials/train-mnist/">Go deeper with Guild AI</a><a href="../../docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a></li>
-<li>
-<h5 id="model-development">Model development</h5>
-<a href="../../docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a></li>
-<li>
-<h5 id="tools">Tools</h5>
-<a href="../../docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a></li>
-</ul>
-<!-- TODO
-- [Creative](category:/docs/tutorials/#creative)
--->
-
-<h2 id="tutorial-virtual-environments">Tutorial virtual environments</h2>
-<p>Each tutorial is structured to work with or without a virtual
-environment. However, there are some advantages to using a virtual
-environment for each tutorial:</p>
-<ul class="md">
-<li>
-<p>You can focus on the packages, models, and operations specific to
-  that tutorial.</p>
-</li>
-<li>
-<p>Your work on a tutorial work won&rsquo;t interfere with other projects.</p>
-</li>
-<li>
-<p>When you&rsquo;ve completed a tutorial, you can archive or delete the
-  virtual environment directory if you no longer need it.</p>
-</li>
-</ul>
-<p>Follow these steps to setup a virtual environment for a tutorial:</p>
-<ul class="md">
-<li>Ensure that you have Virtualenv installed &mdash; see <a class="ext" href="https://virtualenv.pypa.io/en/stable/installation/" target="_blank">Virtualenv
-  Installation</a></li>
-<li>Create a virtual environment: <code class="lit">virtualenv DIR</code></li>
-<li>Active the environment: <code class="lit">source DIR/bin/activate</code></li>
-<li>Install Guild AI: <code class="lit">pip install guildai</code></li>
-<li>Install TensorFlow: <code class="lit">pip install tensorflow</code> or <code class="lit">pip install
-  tensorflow-gpu</code></li>
-<li>Verify your setup: <code class="lit">guild check</code></li>
-</ul>
-<p>Once you&rsquo;ve activated your environment, Guild operations will apply to
-that environment, including package installation and model runs.</p>
-<p>Below are scripts that you can copy-and-paste to setup your
-environments.</p>
-<h3 id="setup-a-virtual-environment-on-linux-or-mac-os">Setup a virtual environment on Linux or Mac OS</h3>
-<pre><code class="language-command">echo -n &quot;Virtualenv directory name: &quot; &amp;&amp; read DIR \
-&amp;&amp; echo -n &quot;Use GPU enabled TensorFlow: (y/n) &quot; &amp;&amp; read TF_GPU \
-&amp;&amp; virtualenv $DIR \
-&amp;&amp; cd $DIR &amp;&amp; source bin/activate \
-&amp;&amp; pip install guildai tensorflow${TF_GPU/y/-gpu} \
-&amp;&amp; guild check
+      <h1 id="specifying-available-gpus-for-a-run">Specifying available GPUs for a run</h1>
+<p>To limit the GPUs available for a run, use the <code>--gpus</code> option with
+the <a class="cmd" href="../../../docs/commands/run-cmd">run</a> command. This option accepts a comma-separated list of
+GPU IDs.</p>
+<p>For example, to limit a run to GPU <code>0</code>, use:</p>
+<pre><code class="language-command">guild run train --gpus 0
 </code></pre>
+
+<p>You can disable all GPU access by using <code>--no-gpus</code>:</p>
+<pre><code class="language-command">guild run evaluate --no-gpus
+</code></pre>
+
+<p>This is useful for running operations on CPU that might otherwise fail
+(e.g. other GPUs are in use or there isn&rsquo;t enough GPU memory to run
+the operation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Operations that benefit from GPU acceleration will likely
+run considerably slower on a GPU.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The GPU options only support CUDA devices. To view the list of
+available CUDA devices and their respective IDs, use
+<code class="lit">nvidia-smi</code>&mdash;the <a class="ext" href="https://developer.nvidia.com/nvidia-system-management-interface" target="_blank">NVIDIA System Management Interface</a></p>
+</div>
       
 <ul class="pager">
   
   <li class="previous">
-    <a href="/docs/reference/guild-home/">
-      <span>Prev</span> <aside>Guild home reference</aside>
+    <a href="/docs/howto/debug-an-operation/">
+      <span>Prev</span> <aside>Debugging an operation</aside>
     </a>
   </li>
   
   
   <li class="next">
-    <a href="/docs/tutorials/train-mnist/">
-      <span>Next</span> <aside>Go deeper with Guild AI</aside>
+    <a href="/docs/guides/">
+      <span>Next</span> <aside>Guides</aside>
     </a>
   </li>
   
@@ -760,6 +754,6 @@ environments.</p>
 </footer>
 
   </body>
-  <script src="../../assets/js/vendor.min.js" data-manual></script>
-  <script src="../../assets/js/theDocs.min.js"></script>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
 </html>

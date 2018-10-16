@@ -206,7 +206,7 @@
     <li>
       <a
         class=""
-        href="/docs/overview/">Overview</a>
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,14 +583,14 @@
     
     
     <li>
-      <a class="" href="#">Tutorials</a>
+      <a class="" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
             class=""
-            href="/docs/tutorials/">Overview</a>
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
         </li>
         
         
@@ -598,31 +598,7 @@
         <li>
           <a
             class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class=""
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -704,7 +737,7 @@ generates a distinct run. This is how Guild manages your work.</p>
 <li>Delete runs that you&rsquo;re no longer interested in</li>
 <li>Select successful runs for deployment or use in other operations</li>
 </ul>
-<p>The work centers on <em>runs</em> &mdash; creating, comparing, and selecting.</p>
+<p>The work centers on <em>runs</em>&mdash;creating, comparing, and selecting.</p>
 <h2 id="concepts">Concepts</h2>
 <p>As you work with runs in Guild it&rsquo;s important to understand some core
 concepts. If you&rsquo;d prefer to skip this conceptual material, jump to
@@ -729,7 +762,7 @@ see <a href="../../docs/reference/guild-home/">Guild home</a>.</p>
 </ul>
 <h3 id="limiting-runs">Limiting runs</h3>
 <p>Over time you&rsquo;ll generate a large number of runs. This list can become
-unwieldy, especially when you&rsquo;re interested in a small subset &mdash;
+unwieldy, especially when you&rsquo;re interested in a small subset&mdash;
 e.g. runs associated with a particular model you&rsquo;re working with. For
 this reason, Guild provides two ways of limiting the runs that apply
 to run related commands:</p>
@@ -807,7 +840,7 @@ associated with operations containing the string &ldquo;train&rdquo;.</p>
 <p>Additionally, a range may be specified using run indexes in the form:</p>
 <pre><code>[START]:[STOP]
 </code></pre>
-<p><code>STOP</code> and <code>START</code> are inclusive &mdash; runs are selected beginning with
+<p><code>STOP</code> and <code>START</code> are inclusive&mdash;runs are selected beginning with
 the <code>STOP</code> index up to and including those with the <code>START</code> index.</p>
 <p>Both <code>STOP</code> and <code>START</code> are optional. If <code>START</code> is omitted it is
 assumed to be <code class="lit">0</code> (i.e. the first run in the list). If <code>STOP</code> is
@@ -834,7 +867,7 @@ command.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <a class="term" href="#run-scope">run scope</a> in the above command is <em>local</em>. If
-the user had run <code class="lit">guild runs --all</code> the scope would be <em>global</em> &mdash;
+the user had run <code class="lit">guild runs --all</code> the scope would be <em>global</em>&mdash;
 the list and run indexes would likely be different.</p>
 </div>
 <p>Below are various operations with run selectors applied to this
@@ -860,7 +893,7 @@ run indexes:</p>
   that generated the list and without scope modifiers or filters</p>
 </li>
 <li>
-<p>The runs themselves must not change &mdash; i.e. runs cannot be deleted
+<p>The runs themselves must not change&mdash;i.e. runs cannot be deleted
   or started</p>
 </li>
 </ul>
@@ -939,7 +972,7 @@ will exit with an error message.</p>
 command.</p>
 <p><code class="lit">guild runs</code> is shorthand for <code class="lit">guild runs list</code>.</p>
 <p>When listing runs, be aware of <a class="term" href="#run-scope">run scope</a> and <a class="term" href="#run-filtering">run
-filtering</a> &mdash; these effect the runs that are
+filtering</a>&mdash;these effect the runs that are
 displayed.</p>
 <table class="table dl">
 <tr><td class="dt"><code class="lit">guild runs</code></td>

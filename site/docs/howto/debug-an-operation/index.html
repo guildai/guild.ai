@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Troubleshooting - Guild AI</title>
-    <link href="../assets/css/vendor.min.css" rel="stylesheet">
-    <link href="../assets/css/theDocs.min.css" rel="stylesheet">
+    <title>Debugging an operation - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
-    <link rel="icon" href="../assets/img/favicon.png">
+    <link rel="icon" href="../../../assets/img/favicon.png">
   </head>
   <body>
     
@@ -44,7 +44,7 @@
         <ul class="pagination" id="search-pages"></ul>
         <div class="algolia-link">
           <a href="https://www.algolia.com/" target="_blank">
-            <img src="../assets/img/search-by-algolia.svg">
+            <img src="../../../assets/img/search-by-algolia.svg">
           </a>
         </div>
       </div>
@@ -62,8 +62,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="../">
-          <img src="../assets/img/logo_nav.svg" alt="logo">
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
         </a>
       </div>
       <div class="spacer"></div>
@@ -135,7 +135,7 @@
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
       </button>
       <a class="sidebar-nav-brand" href="None">
-        <img src="../assets/img/logo_nav.svg" alt="logo">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
       </a>
     </div>
     <ul class="nav ">
@@ -206,7 +206,7 @@
     <li>
       <a
         class=""
-        href="/docs/overview/">Overview</a>
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,14 +583,14 @@
     
     
     <li>
-      <a class="" href="#">Tutorials</a>
+      <a class="active" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
-            class=""
-            href="/docs/tutorials/">Overview</a>
+            class="active"
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
         </li>
         
         
@@ -598,31 +598,7 @@
         <li>
           <a
             class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class="active"
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -654,126 +687,37 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <h1 id="troubleshooting">Troubleshooting</h1>
+      <h1 id="debugging-an-operation">Debugging an operation</h1>
 <ol class="toc">
-<li><a href="#python">Python</a><ol class="md">
-<li><a href="#attributeerror-module-enum-has-no-attribute-intflag">AttributeError: module &lsquo;enum&rsquo; has no attribute &lsquo;IntFlag&rsquo;</a></li>
 </ol>
-</li>
-<li><a href="#tensorflow">TensorFlow</a><ol class="md">
-<li><a href="#tensorflow-is-not-installed">TensorFlow is not installed</a></li>
-</ol>
-</li>
-<li><a href="#cuda-and-cudnn-errors">CUDA and cuDNN errors</a><ol class="md">
-<li><a href="#missing-libcublasso">Missing libcublas.so</a></li>
-<li><a href="#missing-libcudnnso">Missing libcudnn.so</a></li>
-</ol>
-</li>
-<li><a href="#gpu-stats">GPU stats</a><ol class="md">
-<li><a href="#nvml-library-version-mismatch">NVML library version mismatch</a></li>
-</ol>
-</li>
-</ol>
-<p>This guide addresses various issues you may face when using Guild AI.</p>
-<p>Most setup related errors can be discovered by running <code class="lit">guild
-check</code>.</p>
-<p>Refer to the issues below for help. If you don&rsquo;t see your issue,
-<a class="ext" href="https://github.com/guildai/guild/issues" target="_blank">open an issue on GitHub</a> and we&rsquo;ll work with you to resolve it.</p>
-<h2 id="python">Python</h2>
-<h3 id="attributeerror-module-enum-has-no-attribute-intflag">AttributeError: module &lsquo;enum&rsquo; has no attribute &lsquo;IntFlag&rsquo;</h3>
-<p>This issue may arise on some systems, in particular Mac OS. Refer to
-<a class="ext" href="https://stackoverflow.com/questions/43124775/why-python-3-6-1-throws-attributeerror-module-enum-has-no-attribute-intflag" target="_blank">Python 3.6.1 throws AttributeError: module &lsquo;enum&rsquo; has no attribute
-&lsquo;IntFlag&rsquo;</a>
-for background.</p>
-<p>The solution may be to uninstall the pip package <code>enum34</code>:</p>
-<pre><code class="language-command">pip uninstall enum34
-</code></pre>
-
-<h2 id="tensorflow">TensorFlow</h2>
-<h3 id="tensorflow-is-not-installed">TensorFlow is not installed</h3>
-<p>When you run <code class="lit">guild check</code>, you may see this error:</p>
-<pre><code>tensorflow_version: NOT INSTALLED (No module named 'tensorflow')
-</code></pre>
-
-<p>The <code>tensorflow</code> Python module must be available for Guild training
-scripts. You can test whether this module is available directly by
-running:</p>
-<pre><code class="language-command">python -m tensorflow
-</code></pre>
-
-<p>If the command exits without an error, TensorFlow is available but is
-not visible to Guild. In this case <a class="ext" href="https://github.com/guildai/guild/issues" target="_blank">open an issue on GitHub</a> and we&rsquo;ll
-help you resolve it.</p>
-<p>If the command exits with the message <code class="lit">No module named tensorflow</code>
-you must install TensorFlow.</p>
-<p>Refer to <a class="ext" href="https://www.tensorflow.org/install/" target="_blank">Installing TensorFlow</a> for instructions for your
-system.</p>
-<p>In most cases, you can install TensorFlow by running:</p>
-<pre><code class="language-command">pip install tensorflow
-</code></pre>
-
-<p>If your system has a GPU, run:</p>
-<pre><code class="language-command">pip install tensorflow-gpu
-</code></pre>
-
-<h2 id="cuda-and-cudnn-errors">CUDA and cuDNN errors</h2>
-<h3 id="missing-libcublasso">Missing libcublas.so</h3>
-<p>When loading the <code>tensorflow</code> Python module, you may see this error:</p>
-<pre><code>ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory
-</code></pre>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The version of <code>libcublas.so</code> will differ based on the version of
-TensorFlow you&rsquo;re trying to load.</p>
-</div>
-<p>This indicates that TensorFlow cannot load NVIDIA&rsquo;s CUDA library
-because either the required version is not installed or it&rsquo;s not
-loadable from your shell environment.</p>
-<p>Note the version number in the <code>libcublas.so</code> filename. This indicates
-the required CUDA version.</p>
-<p>For instructions on installing CUDA for your system, see <a class="ext" href="http://docs.nvidia.com/cuda/index.html" target="_blank">CUDA Toolkit
-Documentation</a>.</p>
-<h3 id="missing-libcudnnso">Missing libcudnn.so</h3>
-<p>When loading the <code>tensorflow</code> Python module, you may see this error:</p>
-<pre><code>ImportError: libcudnn.so.7: cannot open shared object file: No such file or directory
-</code></pre>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The version of <code>libcudnn.so</code> will differ based on the version of
-TensorFlow you&rsquo;re trying to load.</p>
-</div>
-<p>This indicates that TensorFlow cannot load NVIDIA&rsquo;s cuDNN library
-because either the required version is not installed or it&rsquo;s not
-loadable from your shell environment.</p>
-<p>Note the version number in the <code>libcudnn.so</code> filename. This indicates
-the required cuDNN version.</p>
-<p>For instructions on installing cuDNN for your system, see <a class="ext" href="http://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html" target="_blank">Deep
-Learning SDK Documentation</a>.</p>
-<h2 id="gpu-stats">GPU stats</h2>
-<h3 id="nvml-library-version-mismatch">NVML library version mismatch</h3>
-<p>When training on a GPU enabled system, you may see this error printed
-to the console:</p>
-<pre><code>ERROR: [guild.gpu] reading GPU stats (smi output: '[['Failed to initialize NVML: Driver/library version mismatch']]')
-</code></pre>
-
-<p>This indicates that <code>nvidia-smi</code> is installed but the CUDA library
-version is incompatible.</p>
-<p>Ensure that your version of <code>nvidia-smi</code> is compatible with the
-version of CUDA installed.</p>
-<p>You can get the CUDA version by running:</p>
-<pre><code class="language-command">guild check | grep cuda
-</code></pre>
+<p>TODO</p>
+<p>Guild AI is designed to simplify complex TensorFlow operations. This
+is great when everything works as expected. But what if you need to
+know exactly what Guild is doing?</p>
+<ul class="md">
+<li>Guild philosophy of light wrapping</li>
+<li>Overview of models and operations</li>
+<li>Example of running a complex operation</li>
+<li>Use of &ndash;print-cmd to see what Guild will run</li>
+<li>Use of &ndash;print-env to see what environment variables will be used</li>
+<li>Use of &ndash;run-dir when working on a specific problem</li>
+<li>Use of &ndash;stage to setup a run directory without running</li>
+</ul>
       
 <ul class="pager">
   
   <li class="previous">
-    <a href="/docs/tutorials/workflow-with-virtualenv/">
-      <span>Prev</span> <aside>Workflow with Virtualenv</aside>
+    <a href="/docs/reference/guild-home/">
+      <span>Prev</span> <aside>Guild home reference</aside>
     </a>
   </li>
   
+  
+  <li class="next">
+    <a href="/docs/howto/specify-run-gpus/">
+      <span>Next</span> <aside>Specifying available GPUs for a run</aside>
+    </a>
+  </li>
   
 </ul>
 
@@ -800,6 +744,6 @@ version of CUDA installed.</p>
 </footer>
 
   </body>
-  <script src="../assets/js/vendor.min.js" data-manual></script>
-  <script src="../assets/js/theDocs.min.js"></script>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
 </html>

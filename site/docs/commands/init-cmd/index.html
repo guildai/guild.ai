@@ -206,7 +206,7 @@
     <li>
       <a
         class=""
-        href="/docs/overview/">Overview</a>
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,14 +583,14 @@
     
     
     <li>
-      <a class="" href="#">Tutorials</a>
+      <a class="" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
             class=""
-            href="/docs/tutorials/">Overview</a>
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
         </li>
         
         
@@ -598,31 +598,7 @@
         <li>
           <a
             class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class=""
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -657,104 +690,113 @@
       <h1 id="init-command">init command</h1>
 <ol class="toc">
 <li><a href="#usage">Usage</a><ol class="md">
-<li><a href="#environments">Environments</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#templates-and-parameters">Templates and parameters</a></li>
-<li><a href="#shared-resource-cache">Shared resource cache</a></li>
-<li><a href="#installing-tensorflow">Installing TensorFlow</a></li>
-<li><a href="#examples">Examples</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#tensorflow">TensorFlow</a></li>
+<li><a href="#guild-ai">Guild AI</a></li>
+<li><a href="#resource-cache">Resource cache</a></li>
 </ol>
 </li>
 <li><a href="#options">Options</a></li>
 </ol>
 <div class="cmd-help">
   <h2 id="usage">Usage</h2>
-  <div class="cmd-help-usage">guild init [OPTIONS] [DIR] [PARAM=VALUE...]</div>
+  <div class="cmd-help-usage">guild init [OPTIONS] [DIR]</div>
   <div class="cmd-help-text">
-    <p>Initialize an environment or project.</p>
-<p>You must specify either <code>--env</code> or <code>--prject</code>. Refer to the
-sections below for more information.</p>
-<h3 id="environments">Environments</h3>
-<p>To initialize a Guild environment in <code>DIR</code>, use <code>--env</code>. If <code>DIR</code>
-is not specified, its value is determined by whether or not the
-<code>init</code> command is executed in a Python virtual environment. If
-<code>init</code> is executed within a virtual environment, <code>DIR</code> is the
-environment variable root directory. If <code>init</code> is not executed in
-a virtual environment, <code>DIR</code> is the user's home directory.</p>
-<p>Environment files are always created in a <code>.guild</code> subdirectory of
-<code>DIR</code> and no other system files will be modified.</p>
-<p>If <code>--project</code> is used, <code>init</code> will not initialize a Guild
-environment but will instead initialize a project. See PROJECTS
-below for more information.</p>
-<h3 id="projects">Projects</h3>
-<p>To initialize a project in <code>DIR</code>, use <code>--project</code>. If <code>DIR</code>
-contains any files that would otherwise be overwritten by <code>init</code>,
-the command will exit with an error.</p>
-<p>Projects may be generated using templates. See TEMPLATES below for
-more information.</p>
-<p>Projects may alternatively be generated from installed packages by
-using <code>--from-package</code>. When using <code>--from-package</code> the use of
-<code>--project</code> is implied. If <code>PACKAGE</code> is not installed, the command
-will exit with an error.</p>
-<h3 id="templates-and-parameters">Templates and parameters</h3>
-<p>By default, the template named <code>default</code> is used to initialize
-projects. To use a different template, specify it using
-<code>--template</code>.</p>
-<p><code>--template</code> may not be used with <code>--from-package</code> for
-initializing a project.</p>
-<p>Use <code>--list-templates</code> to list available templates.</p>
-<p>Templates support parameters, some of which may be required when
-initializing a project. Use <code>--help-template</code> to list template
-parameters.</p>
-<p>Specify parameter values using <code>PARAM=VALUE</code> arguments. If the
-first argument, which would otherwise be consideted <code>DIR</code>, is in
-the form <code>PARAM=VALUE</code>, it will be treated as a paramater and not
-as `DIR.</p>
-<h3 id="shared-resource-cache">Shared resource cache</h3>
-<p>By default, when initializing an environment outside the user's
-home directory, the new environment will share cached resources
-with the user level environment (i.e. the environment in the
-user's home directory). If you want to completely isolate a new
-environment and ensure that cached resource are not shared, use
-<code>--local-resource-cache</code>.</p>
-<h3 id="installing-tensorflow">Installing TensorFlow</h3>
-<p>When initializing an environment, <code>init</code> will check if TensorFlow
-is installed and attempt to install it if it is not. This check
-can be skipped using <code>--skip-checks</code>. <code>init</code> will prompt before
-installing unless <code>--yes</code> is specified.</p>
-<h3 id="examples">Examples</h3>
-<p>Initialize the default Guild AI environment:</p>
-<pre><code>$ guild init
-</code></pre>
-<p>Initialize a new default project in the current directory:</p>
-<pre><code>$ guild init --project
-</code></pre>
-<p>Create a new project from the installed package <code>guild.mnist</code>:</p>
-<pre><code>$ guild init --from-package guild.mnist
-</code></pre>
+    <p>Initialize a Guild environment.</p>
+<p><code>init</code> initializes a Guild environment in <code>DIR</code>, which is the
+current directory by default.</p>
+<p><code>init</code> creates a virtual environment in <code>DIR</code> using <code>virtualenv</code>.</p>
+<p>Use <code>--python</code> to specify the Python interpreter to use within the
+generated virtual environment. If <code>no-venv</code> is specified,
+<code>--python</code> is ignored.</p>
+<h3 id="requirements">Requirements</h3>
+<p>By default, any required packages listed under packages.requires
+in <code>guild.yml</code> in the environment parent directory are installed
+into the environment. Use <code>--no-reqs</code> to suppress this behavior.</p>
+<p>Additionally, packages defined in <code>requirements.txt</code> in the
+environment parent directory will be installed. Use <code>--no-reqs</code> to
+suppress this behavior.</p>
+<p>Note that packages defined in <code>guild.yml</code> use Guild package names
+while packages defined in <code>requirements.txt</code> use PyPI package
+names.</p>
+<p>For information in requirements files, see:</p>
+<p><a href="https://pip.readthedocs.io/en/1.1/requirements.html">https://pip.readthedocs.io/en/1.1/requirements.html</a></p>
+<p>You may explicitly specify requirements file using <code>-r</code> or
+<code>--requirement</code>. If <code>-r, --requirement</code> is specified, Guild will
+not automatically install packages in <code>requirements.txt</code> -- that
+file must be specified explicitly in the command.</p>
+<h3 id="tensorflow">TensorFlow</h3>
+<p>By default <code>init</code> installs TensorFlow in the initialized
+environment if it's not already installed. When Guild installs
+TensorFlow, it detects GPU support on the system and selects the
+appropriate package: <code>tensorflow-gpu</code> for GPU support, otherwise
+<code>tensorflow</code>.</p>
+<p>To override the default package, use <code>--gpu</code> to install the
+<code>tensorflow-gpu</code> package or <code>--no-gpu</code> to install the <code>tensorflow</code>
+package.</p>
+<p>To skip installing TensorFlow, use <code>--no-tensorflow</code>.</p>
+<p>If TensorFlow was installed by way of a requirements file, either
+<code>requirements.txt</code> located in the environment parent directory or
+a file specified by a <code>--requirement</code> option, Guild will not
+reinstall it.</p>
+<h3 id="guild-ai">Guild AI</h3>
+<p>By default <code>init</code> installs the active version of Guild AI in the
+initialized environment. To install a different version, or to
+install a Guild wheel distribution file use the <code>--guild</code> option.</p>
+<h3 id="resource-cache">Resource cache</h3>
+<p>By default resources are cached and shared at the user level in
+<code>~/.guild/cache/resources</code> so that resources downloaded from one
+environment are available to other environments. You can modify
+this behavior to have all resources downloaded local to the
+environment by specifying <code>--local-resource-cache</code>.</p>
   </div>
   <h2 id="options">Options</h2>
   <table class="table table-cmd-help options">
     <tbody>
       
       <tr>
-        <th>-e, --env</th>
-        <td><p>Initialize an environment.</p></td>
+        <th>-n, --name NAME</th>
+        <td><p>Environment name (default is env parent directory name).</p></td>
       </tr>
       
       <tr>
-        <th>-p, --project</th>
-        <td><p>Initialize a new project.</p></td>
+        <th>--python VERSION</th>
+        <td><p>Version of Python to use for the environment.</p></td>
       </tr>
       
       <tr>
-        <th>-t, --template TEMPLATE</th>
-        <td><p>Use a template when initializing a project.</p></td>
+        <th>--guild VERSION_OR_PATH</th>
+        <td><p>Version of Guild AI to use for the environment. By default, the active version of Guild is installed. This value may alternatively be a path to a Guild wheel distribution.</p></td>
       </tr>
       
       <tr>
-        <th>--from-package PACKAGE</th>
-        <td><p>If initializing a project, use installed <code>PACKAGE</code> as a template.</p></td>
+        <th>--gpu</th>
+        <td><p>Use the GPU enabled tensorflow package for the environment.</p></td>
+      </tr>
+      
+      <tr>
+        <th>--no-gpu</th>
+        <td><p>Use the non-GPU tensorflow package for the environment.</p></td>
+      </tr>
+      
+      <tr>
+        <th>--no-tensorflow</th>
+        <td><p>Do not install TensorFlow in the environment.</p></td>
+      </tr>
+      
+      <tr>
+        <th>-r, --requirement FILE</th>
+        <td><p>Install packages defined in FILE. May be used multiple times.</p></td>
+      </tr>
+      
+      <tr>
+        <th>-p, --path DIR</th>
+        <td><p>Include DIR as a Python path in the environment.</p></td>
+      </tr>
+      
+      <tr>
+        <th>--no-reqs</th>
+        <td><p>Don't install from requirements.txt or guild.yml in environment parent directory.</p></td>
       </tr>
       
       <tr>
@@ -764,22 +806,12 @@ installing unless <code>--yes</code> is specified.</p>
       
       <tr>
         <th>-y, --yes</th>
-        <td><p>Answer yes to all prompts.</p></td>
+        <td><p>Initialize a Guild environment without prompting.</p></td>
       </tr>
       
       <tr>
-        <th>-n, --no-check</th>
-        <td><p>Don't check the environment after initialization.</p></td>
-      </tr>
-      
-      <tr>
-        <th>--list-templates</th>
-        <td><p>Show available templates and exit.</p></td>
-      </tr>
-      
-      <tr>
-        <th>--help-template TEMPLATE</th>
-        <td><p>Show help for <code>TEMPLATE</code> and exit.</p></td>
+        <th>--no-progress</th>
+        <td><p>Don't show progress when installing environment packages.</p></td>
       </tr>
       
       <tr>
@@ -790,7 +822,7 @@ installing unless <code>--yes</code> is specified.</p>
     </tbody>
   </table>
   
-  <div class="cmd-version">Guild AI version 0.5.0</div>
+  <div class="cmd-version">Guild AI version 0.5.0.dev15</div>
 </div>
       
 <ul class="pager">

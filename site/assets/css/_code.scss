@@ -92,3 +92,8 @@ pre .language-name {
 pre.language-command + pre.language-output {
   margin-top: -8px;
 }
+
+img.code {
+  border: 1px solid $code-border-color;
+  padding: 0;
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Workflow with Virtualenv - Guild AI</title>
+    <title>Publish to PyPI - Guild AI</title>
     <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
     <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
@@ -206,7 +206,7 @@
     <li>
       <a
         class=""
-        href="/docs/overview/">Overview</a>
+        href="/docs/intro/">Introduction</a>
     </li>
     
     
@@ -583,14 +583,14 @@
     
     
     <li>
-      <a class="active" href="#">Tutorials</a>
+      <a class="" href="#">How to</a>
       <ul>
         
         
         <li>
           <a
             class=""
-            href="/docs/tutorials/">Overview</a>
+            href="/docs/howto/debug-an-operation/">Debug an operation</a>
         </li>
         
         
@@ -598,31 +598,7 @@
         <li>
           <a
             class=""
-            href="/docs/tutorials/train-mnist/">Go deeper with Guild AI</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/train-and-predict-with-cloudml/">Train and predict with Cloud ML</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/tutorials/develop-a-model-from-scratch/">Develop a model from scratch</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class="active"
-            href="/docs/tutorials/workflow-with-virtualenv/">Workflow with Virtualenv</a>
+            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -632,9 +608,66 @@
     
     
     <li>
-      <a
-        class=""
-        href="/troubleshooting/">Troubleshooting</a>
+      <a class="active" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+      </ul>
     </li>
     
     
@@ -654,147 +687,16 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <h1 id="workflow-with-virtualenv">Workflow with Virtualenv</h1>
-<ol class="toc">
-<li><a href="#when-to-use-a-virtual-environment">When to use a virtual environment</a></li>
-<li><a href="#installing-virtualenv">Installing Virtualenv</a></li>
-<li><a href="#creating-a-virtual-environment">Creating a virtual environment</a></li>
-<li><a href="#virtual-environments-and-guild_home">Virtual environments and GUILD_HOME</a></li>
-<li><a href="#using-a-virtual-environment">Using a virtual environment</a></li>
-<li><a href="#summary">Summary</a></li>
-</ol>
-<p><a class="ext" href="https://virtualenv.pypa.io" target="_blank">Virtualenv</a> is a tool that creates
-isolated environments for running Python applications. A virtual
-environment is contained in a single file system directory and does
-not rely on Python packages installed at the system level.</p>
-<p>You are free to create as many virtual environments as you need. Each
-environment is independent of the others and may use different
-software versions, including different versions of Python.</p>
-<p>Guild AI is designed to work with or without a virtual environment &mdash;
-the choice is yours.</p>
-<h2 id="when-to-use-a-virtual-environment">When to use a virtual environment</h2>
-<p>There are a number of reasons to use virtual environments:</p>
-<ul class="md">
-<li>Isolate Guild AI and is library dependencies</li>
-<li>Manage different versions of Guild AI</li>
-<li>Manage versions of Python and TensorFlow used by Guild</li>
-<li>Maintain separate model and run repositories</li>
-</ul>
-<p>There are some downsides to using virtual environments:</p>
-<ul class="md">
-<li>Each environment requires its own set of installed packages, which
-  may be excessively time consuming for short-lived environments</li>
-<li>You must remember to activate the environment to use it</li>
-<li>You may accidentally use the wrong environment</li>
-</ul>
-<p>If you don&rsquo;t need to isolate Guild and its dependencies or to manage
-different software versions, the added complexity of Virtualenv may be
-more hindrance than help.</p>
-<h2 id="installing-virtualenv">Installing Virtualenv</h2>
-<p>Refer to <a class="ext" href="https://virtualenv.pypa.io/en/stable/installation/" target="_blank">https://virtualenv.pypa.io/installation/</a> for details on
-installing Virtualenv.</p>
-<p>Generally speaking though, you simply run:</p>
-<pre><code class="language-command">pip install virtualenv
-</code></pre>
-
-<p>If you need to install as a privileged user, run:</p>
-<pre><code class="language-command">sudo pip install virtualenv
-</code></pre>
-
-<h2 id="creating-a-virtual-environment">Creating a virtual environment</h2>
-<p>Once Virtualenv is installed, it&rsquo;s easy to create new
-environments. Simply run:</p>
-<pre><code class="language-command">virtualenv DIRECTORY
-</code></pre>
-
-<p>where <code>DIRECTORY</code> is the file system directory that will contain the
-environment.</p>
-<p>You can specify the Python version to use in environment using the
-<code class="lit">-p</code> option. For example, to indicate that Python 2 should be used,
-run:</p>
-<pre><code class="language-command">virtualenv -p python2 DIRECTORY
-</code></pre>
-
-<p>Users who make extensive use of virtual environments typically create
-them in a common parent directory. Here&rsquo;s a theoretical directory
-structure that could be used to manage different configurations of
-Guild:</p>
-<div class="file-tree">
-<ul>
-<li class="is-folder open">Environments <i>Directory containing the virtual environments</i>
- <ul>
- <li class="is-folder">guild-python2<i>Guild installed with Python 2</i></li>
- <li class="is-folder">guild-python3<i>Guild installed with Python 3</i></li>
- <li class="is-folder">guild-tensorflow-gpu<i>Guild with the GPU version of TensorFlow</i></li>
- <li class="is-folder">gans<i>Environment for work on GAN models</i></li>
-</ul>
-</li>
-</ul>
-</div>
-
-<h2 id="virtual-environments-and-guild_home">Virtual environments and <code>GUILD_HOME</code></h2>
-<p>Guild manages <a class="term" href="../../../docs/packages/">packages</a>, <a class="term" href="../../../docs/runs/">runs</a>, and
-<a class="term" href="../../../docs/reference/guild-home/#runs-index">indexes</a> under a single directory named
-<code>GUILD_HOME</code>. The default value of <code>GUILD_HOME</code> depends how Guild is
-run:</p>
-<ul class="md">
-<li>
-<p>If Guild is run within a virtual environment, the value is
-  <code class="lit">$VIRTUAL_ENV/.guild</code></p>
-</li>
-<li>
-<p>If Guild is not run within a virtual environment, the value is
-  <code class="lit">$HOME/.guild</code></p>
-</li>
-</ul>
-<p>This behavior is designed to completely isolate Guild within a virtual
-environment. However, you may want to share packages and runs across
-environments. You can do this by explicitly setting the <code>GUILD_HOME</code>
-environment variable to the shared location. This should be done in
-the <code>activate</code> script of the environment.</p>
-<p>To share a common <code>GUILD_HOME</code> across environments, modify
-<code class="lit">$VIRTUAL_ENV/bin/active</code> for each environment and add the following
-line at the end of the file:</p>
-<pre><code>export GUILD_HOME=~/.guild
-</code></pre>
-
-<p>If you want to use a different location, change <code class="lit">~/.guild</code>
-accordingly.</p>
-<h2 id="using-a-virtual-environment">Using a virtual environment</h2>
-<p>You must activate a virtual environment to use it. This is done by
-<em>sourcing</em> the script as follows:</p>
-<pre><code class="language-command">source $VIRTUAL_ENV/bin/activate
-</code></pre>
-
-<p>This will configure your shell environment to use the Python runtime
-and associated packages contained in the environment. It will also set
-<code>GUILD_HOME</code> if you modified <code>activate</code> as per the instructions above.</p>
-<p>For more information, refer to <a href="https://virtualenv.pypa.io/en/stable/userguide/#activate-script">Virtualenv User Guide: activate
-script</a>.</p>
-<p>Once activated, run Guild commands as you normally would.</p>
-<p>You can verify Guild details by running <code class="lit">guild check</code>, which will
-display <code>guild_home</code> and <code>guild_install_location</code> settings, letting
-you confirm that Guild is isolated as expected.</p>
-<h2 id="summary">Summary</h2>
-<p>In this tutorial we reviewed Virtualenv and how it can be used to
-isolate Guild on a system. We described how <code>GUILD_HOME</code> can be shared
-across virtual environments by explicitly setting an environment
-variable in the <code>activate</code> script.</p>
+      <h1 id="publish-to-pypi">Publish to PyPI</h1>
       
 <ul class="pager">
   
   <li class="previous">
-    <a href="/docs/tutorials/develop-a-model-from-scratch/">
-      <span>Prev</span> <aside>Develop a model from scratch</aside>
+    <a href="/docs/guides/compare-runs/">
+      <span>Prev</span> <aside>Compare runs</aside>
     </a>
   </li>
   
-  
-  <li class="next">
-    <a href="/troubleshooting/">
-      <span>Next</span> <aside>Troubleshooting</aside>
-    </a>
-  </li>
   
 </ul>
 
