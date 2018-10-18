@@ -83,17 +83,19 @@ markdown_extensions:
             - control-key: https://en.wikipedia.org/wiki/Control_key
               flag: /docs/operations/#flags
               guild-file: /docs/reference/guild-file/
+              guild-view: /docs/visual/guild-view/
               index: /docs/reference/guild-home/#runs-index
-              model: /docs/models/
               model-def: /docs/models/#model-definition
-              operation: /docs/operations/
+              model: /docs/models/
               operation-alias: /docs/runs/#operation-aliases
+              operation: /docs/operations/
               package-file: /docs/reference/package-file/
               package: /docs/packages/
-              resource: /docs/resources/
               resource-cache: /docs/reference/guild-home/#resource-cache
+              resource: /docs/resources/
               run-dir: /docs/runs/#run-directory
               run: /docs/runs/
+              tensorboard: /docs/visual/tensorboard/
         # aliases
         - link_pattern: alias:install-guild
           href: /install/

@@ -15,9 +15,9 @@ to the [completed
 project](https://github.com/guildai/examples/tree/master/fashion) for
 the full example.
 
-![Fashion MNIST](/assets/img/fashion-mnist.png)
+![Fashion-MNIST](/assets/img/fashion-mnist.png)
 
-^ Fashion MNIST images used in examples below
+^ Fashion-MNIST images used in examples below
 
 Before running any of the steps below, first [](alias:install-guild).
 
@@ -37,8 +37,8 @@ model [operations](term:operation), [resources](term:resource), and
 
 ### Example
 
-In this example, we create a simple Guild project that will serve as
-the basis for other examples in this introduction.
+In this example, we create a Guild project skeleton to illustrate the
+basics of model definition and discovery.
 
 Start by creating a project directory:
 
@@ -49,8 +49,8 @@ mkdir sample-project
 Create a file ``sample-project/guild.yml`` and modify it to be:
 
 ``` yaml
-model: fashion
-description: Basic fashion MNIST image classifier.
+- model: fashion
+  description: Basic Fashion-MNIST image classifier.
 ```
 
 Save your changes to ``guild.yml``. Confirm that the project structure
@@ -76,20 +76,19 @@ guild models
 Guild displays the project models:
 
 ``` output
-./fashion  Basic fashion MNIST image classifier.
+./fashion  Basic Fashion-MNIST image classifier.
 ```
 
-Guild models represent the models in your project. In this case, we're
-developing a model that predicts the class of an image from the MNIST
-fashion dataset. The project is only a skeleton at this point---we
-fill in the details in subsequent examples.
+Guild models represent the TensorFlow or Keras models in your
+project. In the examples that follow, we fill in details to
+create a fully functional classifier for the Fashion-MNIST dataset.
 
 ## Model operations
 
 Model operations automate model related tasks. A common operation is
 `train`, which trains a model from scratch. As we'll see later in this
 introduction, operations can be any task that you want to
-automate. These might include:
+automate. These may include:
 
 `prepare-data`
 : Prepare a dataset for training.
@@ -103,6 +102,9 @@ automate. These might include:
 `evaluate`
 : Evaluate a trained model on a hold-out dataset.
 
+`quantize`
+: Quantize a trained model to use 8 bit integers.
+
 `predict`
 : Use a trained model to make predictions.
 
@@ -110,11 +112,11 @@ automate. These might include:
 : Run a trained model as an inference server.
 
 You're free to define the operations that suit your model---Guild does
-not prescribe what a model should or should not support.
+not prescribe the operations a model may support.
 
-Once you define an operation, you run it using the [](cmd:run)
-command. As we'll see in the next section, each operation run is
-tracked as a separate experiments.
+Once an operation is defined for a model, you can run it using the
+[](cmd:run) command. As we'll see in the next section, each operation
+run is tracked as a separate experiment.
 
 ### Example
 
@@ -124,24 +126,28 @@ operation to our model and run it as an experiment.
 Modify ``guild.yml`` to be:
 
 ``` yaml
-model: fashion
-description: Basic fashion MNIST image classifier.
-operations:
-  train:
-    description: Train classifier from scratch.
-    main: train
+- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+  operations:
+    train:
+      description: Train classifier from scratch.
+      main: train
 ```
 
-In this case, we add a `train` operation with a description and a main
-module. We'll see what this means shortly.
+Here we add a `train` operation with a description and a main module.
 
 Save your changes to ``guild.yml``.
 
-We can use the [ops](cmd:operations) command to list available operations:
+Use the [operations](cmd:operations) command to list available operations:
 
 ``` command
-guild ops
+guild operations
 ```
+
+!!! tip
+
+    You can use `ops` as a short cut to the `operations` command. We use
+    `ops` through the remained of this introduction.
 
 Guild displays the newly added `train` operation:
 
@@ -149,17 +155,17 @@ Guild displays the newly added `train` operation:
 ./fashion:train  Train classifier from scratch.
 ```
 
-You can also view help for the project using the [](cmd:help) command:
+You can view help for the project using the [](cmd:help) command:
 
 ``` command
 guild help
 ```
 
 Guild automatically generates help from the Guild file. This
-information is useful for effectively working with the project,
-especially as it evolves and becomes more complex.
+information is useful for working with the project, especially as it
+becomes more complex over time.
 
-Now that we've defined our train operation, let's run it:
+Next, run the operation:
 
 ``` command
 guild run train
@@ -167,21 +173,27 @@ guild run train
 
 Press `Enter` to confirm the operation.
 
+!!! tip
+
+    You can use `-y` with the `run` command to bypass the
+    prompt. E.g. ``guild run -y train`` runs the operation
+    without prompting.
+
 The command fails with the message:
 
-``` output
+``` error
 guild: No module named train
 ```
 
-That's okay---we expect this error because our project is missing an
-important component: the `train` module!
+That's okay! We expect this error because our project is indeed
+missing the `train` module.
 
 Guild operations are implemented using Python main
-modules---i.e. modules that can be executed as a program using
-Python's `-m` option (see [Python help
-->](https://docs.python.org/3/using/cmdline.html#cmdoption-m) for more
-information). This means that any Python script can be used for a
-Guild model operation.
+modules---i.e. Python modules that can be executed as a program (see
+[Python help
+->](https://docs.python.org/3/using/cmdline.html#cmdoption-m) for
+details). This means that any Python script can be used for a Guild
+model operation.
 
 Let's create the missing module.
 
@@ -195,7 +207,7 @@ running:
 wget https://raw.githubusercontent.com/guildai/examples/master/fashion/train.py
 ```
 
-Confirm that the project structure is:
+Confirm that the project structure is now:
 
 <div class="file-tree">
 <ul>
@@ -232,10 +244,9 @@ guild run train
 
 Press `Enter` to confirm the operation.
 
-Guild runs the train operation by executing ``train.py`` as a Python
-main module---the operation is implemented entirely by that
-module. Guild however executes the module in a new directory for each
-run. We learn more about that in the next section.
+Guild runs the train operation by executing ``train`` (the module
+defined in `sample-project/train.py`) as a program---the operation is
+implemented entirely by that module.
 
 ## Experiments
 
@@ -254,15 +265,15 @@ Guild provides extensive support for managing and using runs:
 - Compare run performance
 - Diff run metadata, files, and output
 
-For more information about managing runs, see [Runs](/docs/runs/).
+For more information on managing runs, see [Runs](/docs/runs/).
 
 ### Example
 
 If you are following the examples, in this section we use Guild's run
 management facility to examine the runs generated in the previous
-section.
+example.
 
-List available runs by running:
+First, fist available runs:
 
 ``` command
 guild runs
@@ -272,25 +283,24 @@ Guild displays the runs so far. You should see two (dates and IDs will
 differ):
 
 ``` output
-[0:19c67a72]  ./fashion:train  2018-10-16 15:57:32  completed
-[1:1451e20c]  ./fashion:train  2018-10-16 15:57:23  error
+[1:19c67a72]  ./fashion:train  2018-10-16 15:57:32  completed
+[2:1451e20c]  ./fashion:train  2018-10-16 15:57:23  error
 ```
 
-The latest run, which is listed first, should have a status of
-**completed**, indicating that the operation exited without an
-error. The prior run, which is listed second, should have a status of
-**error** because the `train` module was not originally available (see
-the example above).
+The latest run (listed first) should have a status of **completed**,
+indicating that the operation exited without an error. The prior run
+(listed second) should have a status of **error** because the `train`
+module was not originally available (see previous section).
 
-Show output for the failed run:
+Next, show output for the failed run:
 
 ``` command
-guild run info --output 1
+guild run info --output 2
 ```
 
 The option ``--output`` tells Guild to include run output. The value
-``1`` tells Guild to show information for the run with index ``1``
-(see listing above).
+``2`` tells Guild to show information for the run with index `2` (see
+listing above).
 
 You should see information for the failed run (dates and IDs will
 differ):
@@ -312,26 +322,32 @@ output:
 Note the error message in the output. This information is retained as
 a part of the tracked experiment.
 
-Let's delete the failed run:
+Next, delete the failed run---we don't need it:
 
 ``` command
-guild runs rm 1
+guild runs rm 2
 ```
 
-Guild will prompt you before deleting the run. Press `Enter` to
+As with the `runs info` command, the value ``2`` is a reference to the
+second run in the list.
+
+Guild prompts you before deleting the run. Press `Enter` to
 confirm. After deleting the run, you can verify that it was deleted by
 running ``guild runs``.
 
 If you make a mistake and delete a run by accident, you can restore it
 using [runs restore](cmd:runs-restore).
 
-Let's view the files generated by the successful run:
+Next, view the files generated by the successful run:
 
 ``` command
 guild ls
 ```
 
-Guild displays these file (IDs and timestamps will differ):
+We can omit a reference to the run in this case---Guild assumes you
+want to show files for the latest run.
+
+Guild show these file (IDs and timestamps will differ):
 
 ``` output
 ~/.guild/runs/7d230c98d20811e88f52d017c2ab916f:
@@ -343,24 +359,23 @@ Guild displays these file (IDs and timestamps will differ):
   weights-0005-13.007.hdf5
 ```
 
-These are the operation logs and trained model weights for each
-training epoch. They are valuable files---are the output of our
-training experiment! Guild tracks them along with all other run
-related metadata.
+These are the log file and trained model weights. Guild tracks these
+files along with all other run related metadata.
 
-By default the [](cmd:ls) command shows relative file paths for the
-latest run. You can show full paths by including the ``-f``
-option---this is useful if you want to access a particular file on the
-file system.
+!!! tip
+
+    By default [](cmd:ls) shows relative file paths. You can show full
+    paths by including the `-f` option. This is useful if you need to
+    access a particular file on the file system.
 
 Guild provides a number of commands to help you view and understand
-runs. Try running any of these commands:
+runs. Try running any of these from the `sample-project` directory:
 
 ``guild view``
-: Open the Guild View application.
+: Open [Guild View](term:guild-view).
 
 ``guild tensorboard``
-: View TensorFlow event logs in TensorBoard.
+: View TensorFlow event logs in [TensorBoard](term:tensorboard).
 
 ``guild runs info``
 : Show basic run information (try ``guild runs info --help`` for a
@@ -371,27 +386,34 @@ runs. Try running any of these commands:
 
 ## End-to-end workflow
 
-Guild operations are used to automate any model related task. While
-`train` is a common operation, it is not typically the only operation
-that a model supports. Prior to training a model, for example, you
-might need to prepare a dataset---i.e. process raw data input into a
-format that can be used efficiently for training. Your model might
-therefore have a `prepare-data` operation. Similarly, after training
-you might need to evaluate a model using a hold-out dataset. You would
-add an `evaluate` operation.
+Guild operations are used to automate model related tasks. While
+`train` is a common operation, it's not the only operation a model may
+support. For example, prior to training a model, you may need to
+prepare a dataset by processing raw data into a format that can be
+used efficiently for training. Your model would therefore have a
+`prepare-data` operation that automated that task. Similarly, after
+training you may need to evaluate a trained model with test or
+validation data. This implies the model has an `evaluate` operation.
 
-The set of operations supported by a model are used to automate
-*workflow*.
+By running operations in various orders, you can use Guild to automate
+your workflow.
 
-Consider this sample workflow.
+Consider this worflow, which can be used to generate TensorFLow Lite
+files for deployment to mobile devices:
 
 <img style="width:400px" src="/assets/img/workflow-2.png">
 
-- Before you train your model, you run `prepare-data`, which loads raw
-  data from a database and processes it using a variety of
-  transformation. You can use operation [flags](term:flag) to specify
-  which transformations should apply and even how the examples should
-  be split between train and validate.
+Each step can be automated using a model operation. For example:
+
+- Before you train your model, run `prepare-data`, which loads raw
+  data from a database and processes it using various
+  transformations. You can use operation [flags](term:flag) to specify
+  which transformations should apply and how examples should be split
+  between train and validate.
+
+```
+guild run prepare-data transformations=all validation-split=20
+```
 
 - Once the data is prepared, you train the model by running
   `train`. This is a "train from scratch" operation, which means that
@@ -431,7 +453,7 @@ If you are following the examples, in this section we add two new
 operations to our sample model:
 
 `prepare-data`
-: Prepares the fashion MNIST images for training and prediction.
+: Prepares the Fashion-MNIST images for training and prediction.
 
 `predict`
 : Uses a trained model to make predictions using test images.
@@ -444,21 +466,21 @@ workflow:
 Modify ``guild.yml`` to be:
 
 ``` yaml
-model: fashion
-description: Basic fashion MNIST image classifier.
-operations:
-  train:
-    description: Train classifier from scratch.
-    main: train
-  predict:
-    description: Use trained model to make predictions.
-    main: predict
-    requires: trained-model
-resources:
-  trained-model:
-    path: model
-    sources:
-      - operation: train
+- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+  operations:
+    train:
+      description: Train classifier from scratch.
+      main: train
+    predict:
+      description: Use trained model to make predictions.
+      main: predict
+      requires: trained-model
+  resources:
+    trained-model:
+      path: model
+      sources:
+        - operation: train
 ```
 
 This adds a new operation `predict`. It also adds a
@@ -536,7 +558,7 @@ guild run predict
 Confirm the operation by pressing `Enter`.
 
 Guild runs the operation, which selects five images at random from the
-fashion MNIST test dataset and classifies them using the trained
+Fashion-MNIST test dataset and classifies them using the trained
 model. The result for each image is displayed in a PNG located in the
 operation run directory.
 
@@ -569,7 +591,8 @@ Each `*.png` file is an image generated by the `predict`
 operation. You can view the images by running `guild view`, clicking
 **Files**, and then clicking one of the generated image files.
 
-![Sample predicted image](/assets/img/guild-view-predict.png)
+<img class="md" style="width:100%;max-width:680px"
+     src="/assets/img/guild-view-predict.png">
 
 ^ Sample predicted image from Guild View
 
@@ -584,4 +607,147 @@ see if the model misclassifies an image.
 
 ## Model tests
 
+Guild provide a test facility that lets you verify model behavior. The
+primary method of testing a model is to run its operations and check
+the contents of generated files. Guild tests exercise model code at a
+high level and ensure that they work as expected.
+
+### Example
+
+If you are following the examples, in this section we add a test to
+our project that can be run to verify the model behavior.
+
+Modify ``guild.yml`` to be:
+
+``` yaml
+- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+  operations:
+    train:
+      description: Train classifier from scratch.
+      main: train
+    predict:
+      description: Use trained model to make predictions.
+      main: predict
+      requires: trained-model
+  resources:
+    trained-model:
+      path: model
+      sources:
+        - operation: train
+
+- test: fashion
+  steps:
+    - run-op: train
+      expect
+    - run-op: predict
+```
+
+This change adds a test named `fashion` to the Guild file. The test
+runs the model's `train` and `predict` operations. If the operations
+complete successfully the test will pass, otherwise it will fail.
+
+Save your changes to `guild.yml` and run the test:
+
+``` command
+guild test
+```
+
+Press `Enter` to run the tests. Guild will run `train` and
+`predict`---the operations should complete without error and Guild
+should display **`All tests passed`**.
+
 ## Packages and code reuse
+
+Guild lets you package and distribute your models for others to
+use. Similarly, you can install models developed by others.
+
+Guild provides a variety of methods for code reuse.
+
+### Example
+
+If you're following the examples, in this final section, we add
+package support to our project, create a package, and use that package
+to install our fashion model.
+
+First, modify `guild.yml` to be:
+
+``` yaml
+- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+  operations:
+    train:
+      description: Train classifier from scratch.
+      main: train
+    predict:
+      description: Use trained model to make predictions.
+      main: predict
+      requires: trained-model
+  resources:
+    trained-model:
+      path: model
+      sources:
+        - operation: train
+
+- test: fashion
+  steps:
+    - run-op: train
+    - run-op: predict
+
+- package: fashion
+  version: 1.0
+```
+
+This change adds a `package` named `fashion` to the Guild file. Guild
+uses this information when it generates a package.
+
+Next, generate a package by running:
+
+``` command
+guild package
+```
+
+Guild will create the file
+`dist/fashion-1.0.0-py2.py3-none-any.whl`. This is a Python
+[distribution archive
+->](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives)
+that can be used to install the fashion model.
+
+Let's test the package in isolation by using a Guild environment. A
+Guild environment is a Python virtual environment that isolates both
+packages and runs under an environment directory.
+
+Create a Guild environment:
+
+``` command
+guild init
+```
+
+Guild will prompt you before creating the environment. Press `Enter`
+to continue.
+
+To use the envionment, activate it:
+
+``` command
+source guild-env
+```
+
+Next, install the package archive:
+
+``` command
+guild install dist/fashion-1.0.0-py2.py3-none-any.whl
+```
+
+This installs the `fashion` package, which makes the any of the
+packages models available anywhere within the environment.
+
+To view available models, run:
+
+``` command
+guild models
+```
+
+Guild displays the newly installed model as `fashion/fashion`:
+
+``` output
+```
