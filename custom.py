@@ -1113,6 +1113,34 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
             self._dl_to_table(dl)
 
     def _dl_to_table(self, dl):
+        dl.tag = "div"
+        dl.set("class", "dl")
+        rows = []
+        dl_children = iter(list(dl))
+        while True:
+            try:
+                dt = next(dl_children)
+                dd = next(dl_children)
+            except StopIteration:
+                break
+            dl.remove(dt)
+            dl.remove(dd)
+            rows.append(self._def_row(dt, dd))
+        dl.extend(rows)
+
+    @staticmethod
+    def _def_row(dt, dd):
+        row = etree.Element("div")
+        row.set("class", "row")
+        row.append(dt)
+        row.append(dd)
+        dt.tag = "div"
+        dt.set("class", "dt col col-sm-4 col-lg-3")
+        dd.tag = "div"
+        dd.set("class", "dd col col-sm-8 col-lg-9")
+        return row
+
+    def _dl_to_table_old(self, dl):
         dl.tag = "table"
         dl.set("class", "table dl")
         rows = []
@@ -1129,7 +1157,7 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
         dl.extend(rows)
 
     @staticmethod
-    def _def_row(dt, dd):
+    def _def_row_old(dt, dd):
         row = etree.Element("tr")
         row.append(dt)
         row.append(dd)

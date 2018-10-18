@@ -64,10 +64,6 @@ ul.md {
   }
 }
 
-img.md {
-  border: 1px solid $border-color-dark;
-}
-
 .container-fluid {
 
   .main-content {
@@ -88,26 +84,26 @@ img.md {
   }
 }
 
-.table.dl {
+div.dl {
 
-  margin: -8px 4px 16px;
+  margin: -8px 20px 16px;
 
-  td, th {
-    border: none;
-  }
+  div.row {
+    margin-bottom: $p-margin-bottom_ * 0.5px;
 
-  td.dt {
-    color: $light-text-color;
-  }
-
-  td.dd {
-
-    p:first-of-type {
-      margin-top: 18px;
+    div.dt {
+      color: $light-text-color;
     }
 
-    p:last-child {
-      margin-bottom: 8px;
+    div.dd {
+
+      p:first-of-type {
+        margin-top: 18px;
+      }
+
+      p:last-child {
+        margin-bottom: 8px;
+      }
     }
   }
 }
