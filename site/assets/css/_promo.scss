@@ -1,5 +1,5 @@
 .promo {
-  margin: 20px 0 10px;
+  margin: 20px 0 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -171,16 +171,49 @@
   .img img {
     margin: 0 20px;
     width: calc(100% - 40px);
+    max-width: 95px;
+
+    @media screen and (max-width: $break-lg) {
+      margin: 0 10px;
+      width: calc(100% - 20px);
+    }
+
+    @media screen and (max-width: $break-md) {
+      margin: 0 5px;
+      width: calc(100% - 10px);
+    }
   }
 
   .img-bigger img {
     margin: 0 15px;
     width: calc(100% - 30px);
+    max-width: 110px;
+
+    @media screen and (max-width: $break-lg) {
+      margin: 0 5px;
+      width: calc(100% - 10px);
+    }
+
+    @media screen and (max-width: $break-md) {
+      margin: 0;
+      width: 100%;
+    }
   }
 
   .img-smaller img {
     margin: 0 30px;
     width: calc(100% - 60px);
+    max-width: 85px;
+
+    @media screen and (max-width: $break-lg) {
+      margin: 0 15px;
+      width: calc(100% - 30px);
+    }
+
+    @media screen and (max-width: $break-md) {
+      margin: 0 10px;
+      width: calc(100% - 20px);
+    }
   }
 
   .body {

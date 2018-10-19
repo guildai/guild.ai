@@ -42,7 +42,7 @@ pre {
   font-size: 0.8125em;
   line-height: 1.4;
   word-wrap: normal;
-  word-break: normal;
+  word-break: break-word;
   background-color: transparent;
   border: none;
   padding: 0 12px;
@@ -52,10 +52,6 @@ pre {
   code {
     font-weight: normal;
     color: $code-inline-color;
-
-    &.language-output {
-      color: $gray-text-color;
-    }
   }
 }
 
@@ -76,9 +72,11 @@ pre .language-name {
   letter-spacing: 0.2px;
   font-weight: 600;
   cursor: default;
-  position: absolute;
-  right: 10px;
-  top: 12px;
+  position: relative;
+  float: right;
+  right: 0;
+  top: 2px;
+  margin-left: 4px;
   font-size: 12px;
   line-height: 14px;
   text-shadow: 0 1px #fff;
@@ -96,4 +94,12 @@ pre.language-command + pre.language-output {
 img.code {
   border: 1px solid $code-border-color;
   padding: 0;
+}
+
+pre.language-error {
+  background-color: adjust-color(
+    $code-bg-color,
+    $red: 10,
+    $blue: -10,
+    $green: -10);
 }

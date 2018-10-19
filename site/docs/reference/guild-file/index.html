@@ -583,31 +583,6 @@
     
     
     <li>
-      <a class="" href="#">How to</a>
-      <ul>
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/debug-an-operation/">Debug an operation</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
-        </li>
-        
-        
-      </ul>
-    </li>
-    
-    
-    
-    <li>
       <a class="" href="#">Guides</a>
       <ul>
         
@@ -632,6 +607,14 @@
           <a
             class=""
             href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
         </li>
         
         
@@ -664,6 +647,22 @@
           <a
             class=""
             href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -815,36 +814,36 @@ model redefines its description while the second does not.</p>
 <p>A Guild file must contain at most one <code>package</code> object.</p>
 <p>Packages contain information used by Guild to generate Guild packages.</p>
 <h3 id="attributes">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>package</code></td>
-<td class="dd">Package name (required string)</td>
-</tr><tr><td class="dt"><code>description</code></td>
-<td class="dd">Project description (string)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>package</code></div>
+<div class="dd col col-sm-8 col-lg-9">Package name (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Project description (string)
   <p>
-  This may be a multi-line description.</td>
-</tr><tr><td class="dt"><code>version</code></td>
-<td class="dd">Project version (required string)<p></td>
-</tr><tr><td class="dt"><code>url</code></td>
-<td class="dd">URL to package website (URL)</td>
-</tr><tr><td class="dt"><code>maintainer</code></td>
-<td class="dd">Name of individual or organization package maintainer (string)</td>
-</tr><tr><td class="dt"><code>maintainer-email</code></td>
-<td class="dd">Email of package maintainer (email address)</td>
-</tr><tr><td class="dt"><code>license</code></td>
-<td class="dd">Name of package license (string)</td>
-</tr><tr><td class="dt"><code>tags</code></td>
-<td class="dd">List of packages tags (list of strings)</td>
-</tr><tr><td class="dt"><code>python-tag</code></td>
-<td class="dd">Value used as the Python tag when generating the package (string)</td>
-</tr><tr><td class="dt"><code>data_files</code></td>
-<td class="dd">List of additional files to include in the package (list of strings)</td>
-</tr><tr><td class="dt"><code>resources</code></td>
-<td class="dd">List of package resources (list of <a href="#resources">resources</a>)</td>
-</tr><tr><td class="dt"><code>python-requires</code></td>
-<td class="dd">Version of Python required by the package (string)</td>
-</tr><tr><td class="dt"><code>requires</code></td>
-<td class="dd">List of other packages required by the package (list of strings)</td>
-</tr></table>
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>version</code></div>
+<div class="dd col col-sm-8 col-lg-9">Project version (required string)<p></div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>url</code></div>
+<div class="dd col col-sm-8 col-lg-9">URL to package website (URL)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>maintainer</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of individual or organization package maintainer (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>maintainer-email</code></div>
+<div class="dd col col-sm-8 col-lg-9">Email of package maintainer (email address)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>license</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of package license (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>tags</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of packages tags (list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>python-tag</code></div>
+<div class="dd col col-sm-8 col-lg-9">Value used as the Python tag when generating the package (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>data_files</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of additional files to include in the package (list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>resources</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of package resources (list of <a href="#resources">resources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>python-requires</code></div>
+<div class="dd col col-sm-8 col-lg-9">Version of Python required by the package (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>requires</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of other packages required by the package (list of strings)</div>
+</div></div>
 <h3 id="examples_2">Examples</h3>
 <p>Package definition for <code>slim.resnet</code>:</p>
 <pre><code class="language-yaml">package: slim.resnet
@@ -873,24 +872,24 @@ tags: [resnet, images, model]
 command.</p>
 <p>Models may also define resources that operations require.</p>
 <h3 id="attributes_1">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>model</code></td>
-<td class="dd">Model name (required string)</td>
-</tr><tr><td class="dt"><code>description</code></td>
-<td class="dd">Model description (string)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>model</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model name (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model description (string)
   <p>
-  This may be a multi-line description.</td>
-</tr><tr><td class="dt"><code>operations</code></td>
-<td class="dd">Model operations (list of <a href="#operations">operations</a>)</td>
-</tr><tr><td class="dt"><code>resources</code></td>
-<td class="dd">Model resources (list of <a href="#resources">resources</a>)</td>
-</tr><tr><td class="dt"><code>references</code></td>
-<td class="dd">Model references (list of URLs)
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>operations</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model operations (list of <a href="#operations">operations</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>resources</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model resources (list of <a href="#resources">resources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>references</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model references (list of URLs)
   <p>
-  References are displayed in help text.</td>
-</tr><tr><td class="dt"><code>extra</code></td>
-<td class="dd">Additional information used by Guild and Guild plugins</td>
-</tr></table>
+  References are displayed in help text.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>extra</code></div>
+<div class="dd col col-sm-8 col-lg-9">Additional information used by Guild and Guild plugins</div>
+</div></div>
 <h3 id="examples_3">Examples</h3>
 <p>Complete example of <code>mnist-layers</code> (from
 <a href="https://github.com/guildai/packages/tree/master/tensorflow/mnist"><code>tensorflow.mnist</code></a>):</p>
@@ -936,13 +935,13 @@ operations:
 </code></pre>
 
 <h3 id="attributes_2">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>description</code></td>
-<td class="dd">Operation description (string)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Operation description (string)
   <p>
-  This may be a multi-line description.</td>
-</tr><tr><td class="dt"><code>handle-keyboard-interrupt</code></td>
-<td class="dd">Handle keyboard interrupts from the user (boolean)
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>handle-keyboard-interrupt</code></div>
+<div class="dd col col-sm-8 col-lg-9">Handle keyboard interrupts from the user (boolean)
   <p>
   By default, an operation must explicitly handle keyboard interrupts,
   which are generated when the user types <code class="lit">Ctrl-C</code>, by catching
@@ -957,9 +956,9 @@ operations:
   Note that an operation terminated with <code class="lit">Ctrl-C</code> will still have a
   status of <code class="lit">terminated</code> even if the interrupt is handled by
   Guild. To indicate that the operation should be considered
-  <code class="lit">completed</code>, set the operation&rsquo;s <code>stoppable</code> attribute to <code class="lit">yes</code>.</td>
-</tr><tr><td class="dt"><code>main</code></td>
-<td class="dd">Main command module (required string unless <code>plugin-op</code> is used)
+  <code class="lit">completed</code>, set the operation&rsquo;s <code>stoppable</code> attribute to <code class="lit">yes</code>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>main</code></div>
+<div class="dd col col-sm-8 col-lg-9">Main command module (required string unless <code>plugin-op</code> is used)
   <p>
   Operation commands must be in the form <code>[MODULE] [ARG...]</code>. <code>MODULE</code>
   may reference a Python module defined in the model Guild file
@@ -970,18 +969,18 @@ operations:
   <p>
   <code>ARG</code> values may contain references to <a href="#flags">#flags</a> in the
   format <code>${FLAG_NAME}</code>. Such references are resolved to the current
-  flag value when the command is executed.</td>
-</tr><tr><td class="dt"><code>flags</code></td>
-<td class="dd">Operation flags (list of <a href="#flags">flags</a>)
+  flag value when the command is executed.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>flags</code></div>
+<div class="dd col col-sm-8 col-lg-9">Operation flags (list of <a href="#flags">flags</a>)
   <p>
   Flags define the arguments that are passed to <code>main</code> when the
-  command is executed. For more information, see <a href="#flags">Flags</a>.</td>
-</tr><tr><td class="dt"><code>plugin-op</code></td>
-<td class="dd">The name of a plugin operation to used instead of <code>main</code> (string)
+  command is executed. For more information, see <a href="#flags">Flags</a>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>plugin-op</code></div>
+<div class="dd col col-sm-8 col-lg-9">The name of a plugin operation to used instead of <code>main</code> (string)
   <p>
-  <code>main</code> and <code>plugin-op</code> cannot both be used.</td>
-</tr><tr><td class="dt"><code>pre-process</code></td>
-<td class="dd">Pre-processing shell command
+  <code>main</code> and <code>plugin-op</code> cannot both be used.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>pre-process</code></div>
+<div class="dd col col-sm-8 col-lg-9">Pre-processing shell command
   <p>
   The command is executed as a shell script after required resources
   are resolved and before the operation itself is started.
@@ -989,15 +988,15 @@ operations:
   Commands are executed in the run directory and have access to the
   same set of environment variables as the operation itself. See
   <a href="../../../docs/operations#environment-variables">Operations</a> for the
-  list of supported environment variables.</td>
-</tr><tr><td class="dt"><code>required</code></td>
-<td class="dd">One or more required resources (string or list of strings)
+  list of supported environment variables.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>required</code></div>
+<div class="dd col col-sm-8 col-lg-9">One or more required resources (string or list of strings)
   <p>
-  Values must be in the form <code>[PACKAGE_OR_MODEL/]RESOURCE</code>.</td>
-</tr><tr><td class="dt"><code>remote</code></td>
-<td class="dd">Flag indicating whether or not the operation is remote (boolean)</td>
-</tr><tr><td class="dt"><code>stoppable</code></td>
-<td class="dd">Flag indicating that a terminated run should be considered completed
+  Values must be in the form <code>[PACKAGE_OR_MODEL/]RESOURCE</code>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>remote</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the operation is remote (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>stoppable</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating that a terminated run should be considered completed
   (boolean)
   <p>
   By default, a terminated run (i.e. a run stopped by typing <code>Ctrl-C</code>
@@ -1005,48 +1004,48 @@ operations:
   <a class="cmd" href="../../../docs/commands/stop-cmd">stop</a> command) has a status of <code class="lit">terminated</code>. If <code>stoppable</code>
   is true however, the run status will be <code class="lit">completed</code>. Set this
   value to <code class="lit">yes</code> when the operation is designed to be terminated
-  explicitly by the user.</td>
-</tr></table>
+  explicitly by the user.</div>
+</div></div>
 <h2 id="flags">Flags</h2>
 <p>Flags are defined for <a href="#operations">operations</a> under the <code>flags</code>
 attribute as named objects.</p>
 <h3 id="attributes_3">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>description</code></td>
-<td class="dd">Flag description (string)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag description (string)
   <p>
-  This may be a multi-line description.</td>
-</tr><tr><td class="dt"><code>default</code></td>
-<td class="dd">Default value if not specified by the user (string or number)</td>
-</tr><tr><td class="dt"><code>required</code></td>
-<td class="dd">Flag indicating whether or not the flag is required (boolean)</td>
-</tr><tr><td class="dt"><code>arg-name</code></td>
-<td class="dd">Name of the command argument used for flag values (string)
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>default</code></div>
+<div class="dd col col-sm-8 col-lg-9">Default value if not specified by the user (string or number)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>required</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the flag is required (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>arg-name</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of the command argument used for flag values (string)
   <p>
-  Defaults to the flag name.</td>
-</tr><tr><td class="dt"><code>arg-skip</code></td>
-<td class="dd">Boolean indicating whether not to include the flag as a command
-  argument (boolean)</td>
-</tr><tr><td class="dt"><code>choices</code></td>
-<td class="dd">Allowed choices for the flag (list of <a href="#flag-choices">choices</a>)</td>
-</tr></table>
+  Defaults to the flag name.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>arg-skip</code></div>
+<div class="dd col col-sm-8 col-lg-9">Boolean indicating whether not to include the flag as a command
+  argument (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>choices</code></div>
+<div class="dd col col-sm-8 col-lg-9">Allowed choices for the flag (list of <a href="#flag-choices">choices</a>)</div>
+</div></div>
 <h2 id="flag-choices">Flag choices</h2>
 <p>Flag choices limit the available values for a flag. They can also be
 used to apply multiple argument to a command when specified.</p>
 <h3 id="attributes_4">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>value</code></td>
-<td class="dd">Flag value when choice is specified (string or number)</td>
-</tr><tr><td class="dt"><code>description</code></td>
-<td class="dd">Flag choice description (string)</td>
-</tr><tr><td class="dt"><code>args</code></td>
-<td class="dd">Map of argument names to values (object)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>value</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag value when choice is specified (string or number)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag choice description (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>args</code></div>
+<div class="dd col col-sm-8 col-lg-9">Map of argument names to values (object)
   <p>This attribute is used to define additional arguments that are
   applied when the choice is selected. Arguments are applied in the
   form <code class="lit">--NAME VALUE</code> where <code>NAME</code> and <code>VALUE</code> correspond to the
   respective object name value pairs. Use <code>arg-skip</code> to omit the flag
-  argument itself.</td>
-</tr></table>
+  argument itself.</div>
+</div></div>
 <h3 id="examples_4">Examples</h3>
 <p>Operation that can train one of two model versions (default is <code>1</code>):</p>
 <pre><code class="language-yaml">model: my-model
@@ -1106,23 +1105,23 @@ resources:
 </code></pre>
 
 <h3 id="attributes_5">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>description</code></td>
-<td class="dd">Resource description (string)</td>
-</tr><tr><td class="dt"><code>path</code></td>
-<td class="dd">Relative path within the run directory where resolved sources are
-  saved (string)</td>
-</tr><tr><td class="dt"><code>sources</code></td>
-<td class="dd">List of resource sources (list of <a href="#resource-sources">resource sources</a>)</td>
-</tr><tr><td class="dt"><code>private</code></td>
-<td class="dd">Flag indicating whether or not the resource is private (boolean)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Resource description (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>path</code></div>
+<div class="dd col col-sm-8 col-lg-9">Relative path within the run directory where resolved sources are
+  saved (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>sources</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of resource sources (list of <a href="#resource-sources">resource sources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>private</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the resource is private (boolean)
   <p>
-  Private resources don&rsquo;t appear in resource lists.</td>
-</tr><tr><td class="dt"><code>references</code></td>
-<td class="dd">List of reference URLs associated with the resource (list of URLs)
+  Private resources don&rsquo;t appear in resource lists.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>references</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of reference URLs associated with the resource (list of URLs)
   <p>
-  References are displayed in help text.</td>
-</tr></table>
+  References are displayed in help text.</div>
+</div></div>
 <h2 id="resource-sources">Resource sources</h2>
 <p>A resource source defines what is resolved and therefore available to
 an operation that requires the resource.</p>
@@ -1131,38 +1130,38 @@ links.</p>
 <h3 id="source-type">Source type</h3>
 <p>Sources have a <em>type</em>, which is identified by the use of one and only
 one of the following type attribute:</p>
-<table class="table dl">
-<tr><td class="dt"><code>file</code></td>
-<td class="dd">Source is a file relative to the defining Guild file</td>
-</tr><tr><td class="dt"><code>url</code></td>
-<td class="dd">Source is a URL (<code>http</code> and <code>https</code> protocols are supported)</td>
-</tr><tr><td class="dt"><code>operation</code></td>
-<td class="dd">Source is generated from an operation
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>file</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a file relative to the defining Guild file</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>url</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a URL (<code>http</code> and <code>https</code> protocols are supported)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>operation</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is generated from an operation
   <p>
   Value is an operation spec consisting of
   <code>[PACKAGE/[MODEL:]]OPERATION</code>.  Multiple operation specs may be
   specified separated with a comma. By default Guild will use the
   latest completed or terminated run matching any of the operation
   specs. Users may alternatively specify a run ID for the resource
-  when running the requiring operation.</td>
-</tr><tr><td class="dt"><code>module</code></td>
-<td class="dd">Source is a Python module</td>
-</tr></table>
+  when running the requiring operation.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>module</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a Python module</div>
+</div></div>
 <p>If source is a string, the value is treated as a <code>file</code> source type.</p>
 <h3 id="attributes_6">Attributes</h3>
-<table class="table dl">
-<tr><td class="dt"><code>sha256</code></td>
-<td class="dd">SHA 256 hash used to verify the source (string)</td>
-</tr><tr><td class="dt"><code>unpack</code></td>
-<td class="dd">A flag indicating whether or not the source should be unpacked (boolean)
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>sha256</code></div>
+<div class="dd col col-sm-8 col-lg-9">SHA 256 hash used to verify the source (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>unpack</code></div>
+<div class="dd col col-sm-8 col-lg-9">A flag indicating whether or not the source should be unpacked (boolean)
   <p>
   By default Guild attempts to unpack files with common archive
-  extensions (<code>.zip</code>, <code>.tar</code>, <code>.tar.gz</code>, <code>.tgz</code>).</td>
-</tr><tr><td class="dt"><code>select</code></td>
-<td class="dd">One or more regular expressions used to select sources from a
-  directory or unpacked archive (string or list of strings)</td>
-</tr><tr><td class="dt"><code>post-process</code></td>
-<td class="dd">Shell command executed after source has been resolved (string)
+  extensions (<code>.zip</code>, <code>.tar</code>, <code>.tar.gz</code>, <code>.tgz</code>).</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>select</code></div>
+<div class="dd col col-sm-8 col-lg-9">One or more regular expressions used to select sources from a
+  directory or unpacked archive (string or list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>post-process</code></div>
+<div class="dd col col-sm-8 col-lg-9">Shell command executed after source has been resolved (string)
   <p>
   This applies to <code>url</code> sources only.
   <p>
@@ -1170,13 +1169,13 @@ one of the following type attribute:</p>
   containing the downloaded and unpacked URL source. Commands may use
   the <code>$RESDEF_DIR</code> environment variable to reference files relative
   to the directory containing the resource declaration (i.e. the
-  directory containing the project or package Guild file).</td>
-</tr><tr><td class="dt"><code>help</code></td>
-<td class="dd">Help text displayed when a source cannot be resolved (string)
+  directory containing the project or package Guild file).</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>help</code></div>
+<div class="dd col col-sm-8 col-lg-9">Help text displayed when a source cannot be resolved (string)
   <p>
   This can be used to help a user install a missing Python module, run
-  a required operation, etc.</td>
-</tr></table>
+  a required operation, etc.</div>
+</div></div>
 <h3 id="examples_5">Examples</h3>
 <p>File <code>data-train.csv</code> and <code>data-test.csv</code> provided as a part of <code>data</code>
 resource:</p>

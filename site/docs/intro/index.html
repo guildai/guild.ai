@@ -583,31 +583,6 @@
     
     
     <li>
-      <a class="" href="#">How to</a>
-      <ul>
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/debug-an-operation/">Debug an operation</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
-        </li>
-        
-        
-      </ul>
-    </li>
-    
-    
-    
-    <li>
       <a class="" href="#">Guides</a>
       <ul>
         
@@ -632,6 +607,14 @@
           <a
             class=""
             href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
         </li>
         
         
@@ -667,6 +650,22 @@
         </li>
         
         
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
+        </li>
+        
+        
       </ul>
     </li>
     
@@ -687,7 +686,608 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <p>Ze very important introduction.</p>
+      <h1 id="guild-ai-introduction">Guild AI introduction</h1>
+<ol class="toc">
+<li><a href="#guild-projects">Guild projects</a><ol class="md">
+<li><a href="#example">Example</a></li>
+</ol>
+</li>
+<li><a href="#model-operations">Model operations</a><ol class="md">
+<li><a href="#example_1">Example</a></li>
+</ol>
+</li>
+<li><a href="#experiments">Experiments</a><ol class="md">
+<li><a href="#example_2">Example</a></li>
+</ol>
+</li>
+</ol>
+<p>This introduction provides an overview of Guild AI core
+functionality. Feel free to follow the steps under each <strong>Example</strong>
+section below to get hands-on experience with Guild. The examples
+implement the Keras image classifier described in TensorFlow&rsquo;s <em><a class="ext" href="https://www.tensorflow.org/tutorials/keras/basic_classification" target="_blank">Train
+your first neural network: basic classification</a></em>. Refer
+to the <a href="https://github.com/guildai/examples/tree/master/fashion">completed
+project</a> for
+the full example.</p>
+<figure><p><img alt="Fashion-MNIST" class="md" src="../../assets/img/fashion-mnist.png" /></p>
+<figcaption>Fashion-MNIST images used in examples below</figcaption>
+</figure><p>Before running any of the steps below, first <a href="../../install/">install Guild AI</a>.</p>
+<h2 id="guild-projects">Guild projects</h2>
+<p>A Guild project is a standard TensorFlow or Keras source code project
+that contains a file named <code>guild.yml</code> in the root directory. We refer
+to <code>guild.yml</code> as a project <a class="term" href="../../docs/reference/guild-file/">Guild file</a>.</p>
+<p>Guild files supplement TensorFlow and Keras projects. You often don&rsquo;t
+need to modify your project source files to take advantage of Guild
+features.</p>
+<p>Guild files are YAML formatted files that define <a class="term" href="../../docs/models/">models</a>,
+model <a class="term" href="../../docs/operations/">operations</a>, <a class="term" href="../../docs/resources/">resources</a>, and
+<a class="term" href="../../docs/packages/">packages</a>.</p>
+<h3 id="example">Example</h3>
+<p>In this example, we create a Guild project skeleton to illustrate the
+basics of model definition and discovery.</p>
+<p>Start by creating a project directory:</p>
+<pre><code class="language-command">mkdir sample-project
+</code></pre>
+
+<p>Create a file <code class="lit">sample-project/guild.yml</code> and modify it to be:</p>
+<pre><code class="language-yaml">- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+</code></pre>
+
+<p>Save your changes to <code class="lit">guild.yml</code>. Confirm that the project structure
+is:</p>
+<div class="file-tree">
+<ul>
+<li class="is-folder open">sample-project
+ <ul>
+ <li class="is-file">guild.yml</li>
+ </ul>
+</li>
+</ul>
+</div>
+
+<p>Change to the project directory and list the project models:</p>
+<pre><code class="language-command">cd sample-project
+guild models
+</code></pre>
+
+<p>Guild displays the project models:</p>
+<pre><code class="language-output">./fashion  Basic Fashion-MNIST image classifier.
+</code></pre>
+
+<p>Guild models represent the TensorFlow or Keras models in your
+project. In the examples that follow, we fill in details to
+create a fully functional classifier for the Fashion-MNIST dataset.</p>
+<h2 id="model-operations">Model operations</h2>
+<p>Model operations automate model related tasks. A common operation is
+<code>train</code>, which trains a model from scratch. As we&rsquo;ll see later in this
+introduction, operations can be any task that you want to
+automate. These may include:</p>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>prepare-data</code></div>
+<div class="dd col col-sm-8 col-lg-9">Prepare a dataset for training.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>transfer-learn</code></div>
+<div class="dd col col-sm-8 col-lg-9">Train a model using transfer learning.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>finetune</code></div>
+<div class="dd col col-sm-8 col-lg-9">Fine tune a trained model.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>evaluate</code></div>
+<div class="dd col col-sm-8 col-lg-9">Evaluate a trained model on a hold-out dataset.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>quantize</code></div>
+<div class="dd col col-sm-8 col-lg-9">Quantize a trained model to use 8 bit integers.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>predict</code></div>
+<div class="dd col col-sm-8 col-lg-9">Use a trained model to make predictions.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>serve</code></div>
+<div class="dd col col-sm-8 col-lg-9">Run a trained model as an inference server.</div>
+</div></div>
+<p>You&rsquo;re free to define the operations that suit your model&mdash;Guild does
+not prescribe the operations a model may support.</p>
+<p>Once an operation is defined for a model, you can run it using the
+<a class="cmd" href="../../docs/commands/run-cmd">run</a> command. As we&rsquo;ll see in the next section, each operation
+run is tracked as a separate experiment.</p>
+<h3 id="example_1">Example</h3>
+<p>If you are following the examples, in this section we add a <code class="lit">train</code>
+operation to our model and run it as an experiment.</p>
+<p>Modify <code class="lit">guild.yml</code> to be:</p>
+<pre><code class="language-yaml">- model: fashion
+  description: Basic Fashion-MNIST image classifier.
+  operations:
+    train:
+      description: Train classifier from scratch.
+      main: train
+</code></pre>
+
+<p>Here we add a <code>train</code> operation with a description and a main module.</p>
+<p>Save your changes to <code class="lit">guild.yml</code>.</p>
+<p>Use the <a class="cmd" href="../../docs/commands/operations-cmd">operations</a> command to list available operations:</p>
+<pre><code class="language-command">guild operations
+</code></pre>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use <code>ops</code> as a short cut to the <code>operations</code> command. We use
+<code>ops</code> through the remained of this introduction.</p>
+</div>
+<p>Guild displays the newly added <code>train</code> operation:</p>
+<pre><code class="language-output">./fashion:train  Train classifier from scratch.
+</code></pre>
+
+<p>You can view help for the project using the <a class="cmd" href="../../docs/commands/help-cmd">help</a> command:</p>
+<pre><code class="language-command">guild help
+</code></pre>
+
+<p>Guild automatically generates help from the Guild file. This
+information is useful for working with the project, especially as it
+becomes more complex over time.</p>
+<p>Next, run the operation:</p>
+<pre><code class="language-command">guild run train
+</code></pre>
+
+<p>Press <code>Enter</code> to confirm the operation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use <code>-y</code> with the <code>run</code> command to bypass the
+prompt. E.g. <code class="lit">guild run -y train</code> runs the operation
+without prompting.</p>
+</div>
+<p>The command fails with the message:</p>
+<pre><code class="language-error">guild: No module named train
+</code></pre>
+
+<p>That&rsquo;s okay! We expect this error because our project is indeed
+missing the <code>train</code> module.</p>
+<p>Guild operations are implemented using Python main
+modules&mdash;i.e. Python modules that can be executed as a program (see
+<a class="ext" href="https://docs.python.org/3/using/cmdline.html#cmdoption-m" target="_blank">Python help</a> for
+details). This means that any Python script can be used for a Guild
+model operation.</p>
+<p>Let&rsquo;s create the missing module.</p>
+<p>Download <a class="ext" href="https://raw.githubusercontent.com/guildai/examples/master/fashion/train.py" target="_blank">train.py</a>
+and save it to the project directory. If you have <code>wget</code> installed,
+you can download the file directly to the project directory by
+running:</p>
+<pre><code class="language-command">wget https://raw.githubusercontent.com/guildai/examples/master/fashion/train.py
+</code></pre>
+
+<p>Confirm that the project structure is now:</p>
+<div class="file-tree">
+<ul>
+<li class="is-folder open">sample-project
+ <ul>
+ <li class="is-file">guild.yml</li>
+ <li class="is-file">train.py</li>
+ </ul>
+</li>
+</ul>
+</div>
+
+<p>The <code>train</code> module uses Keras to train a simple image classifer. The
+module is derived from the <a href="https://github.com/tensorflow/docs/blob/master/site/en/tutorials/keras/basic_classification.ipynb">TensorFlow getting started
+tutorial</a>
+and requires a few additional Python packages:</p>
+<ul class="md">
+<li>matplotlib</li>
+<li>h5py</li>
+<li>numpy</li>
+</ul>
+<p>Install those packages now:</p>
+<pre><code class="language-command">pip install matplotlib h5py numpy
+</code></pre>
+
+<p>Now that <code class="lit">train.py</code> is available, along with its required Python
+packages, run the operation again:</p>
+<pre><code class="language-command">guild run train
+</code></pre>
+
+<p>Press <code>Enter</code> to confirm the operation.</p>
+<p>Guild runs the train operation by executing <code class="lit">train</code> (the module
+defined in <code>sample-project/train.py</code>) as a program&mdash;the operation is
+implemented entirely by that module.</p>
+<h2 id="experiments">Experiments</h2>
+<p>Guild tracks each operation run as an isolated experiment using <a class="term" href="../../docs/runs/#run-directory">run
+directories</a>. Files generated by a run are written to a
+unique directory and can be accessed as normal files.</p>
+<p>Guild provides extensive support for managing and using runs:</p>
+<ul class="md">
+<li>Show run information, including metadata, files, and output</li>
+<li>List by operation, status, and label</li>
+<li>Delete, restore, and purge</li>
+<li>Export and import</li>
+<li>Tag with custom labels</li>
+<li>Push to and pull from remote environments</li>
+<li>Compare run performance</li>
+<li>Diff run metadata, files, and output</li>
+</ul>
+<p>For more information on managing runs, see <a href="../../docs/runs/">Runs</a>.</p>
+<h3 id="example_2">Example</h3>
+<p>If you are following the examples, in this section we use Guild&rsquo;s run
+management facility to examine the runs generated in the previous
+example.</p>
+<p>First, fist available runs:</p>
+<pre><code class="language-command">guild runs
+</code></pre>
+
+<p>Guild displays the runs so far. You should see two (dates and IDs will
+differ):</p>
+<pre><code class="language-output">[1:19c67a72]  ./fashion:train  2018-10-16 15:57:32  completed
+[2:1451e20c]  ./fashion:train  2018-10-16 15:57:23  error
+</code></pre>
+
+<p>The latest run (listed first) should have a status of <strong>completed</strong>,
+indicating that the operation exited without an error. The prior run
+(listed second) should have a status of <strong>error</strong> because the <code>train</code>
+module was not originally available (see previous section).</p>
+<p>Next, show output for the failed run:</p>
+<pre><code class="language-command">guild run info --output 2
+</code></pre>
+
+<p>The option <code class="lit">--output</code> tells Guild to include run output. The value
+<code class="lit">2</code> tells Guild to show information for the run with index <code>2</code> (see
+listing above).</p>
+<p>You should see information for the failed run (dates and IDs will
+differ):</p>
+<pre><code class="language-output">id: 1451e20cd18611e88f52d017c2ab916f
+operation: ./fashion:train
+status: error
+started: 2018-10-16 15:57:23
+stopped: 2018-10-16 15:57:23
+run_dir: ~/.guild/runs/1451e20cd18611e88f52d017c2ab916f
+command: /usr/bin/python -um guild.op_main train
+exit_status: 1
+pid:
+output:
+  guild: No module named train
+</code></pre>
+
+<p>Note the error message in the output. This information is retained as
+a part of the tracked experiment.</p>
+<p>Next, delete the failed run&mdash;we don&rsquo;t need it:</p>
+<pre><code class="language-command">guild runs rm 2
+</code></pre>
+
+<p>As with the <code>runs info</code> command, the value <code class="lit">2</code> is a reference to the
+second run in the list.</p>
+<p>Guild prompts you before deleting the run. Press <code>Enter</code> to
+confirm. After deleting the run, you can verify that it was deleted by
+running <code class="lit">guild runs</code>.</p>
+<p>If you make a mistake and delete a run by accident, you can restore it
+using <a class="cmd" href="../../docs/commands/runs-restore-cmd">runs restore</a>.</p>
+<p>Next, view the files generated by the successful run:</p>
+<pre><code class="language-command">guild ls
+</code></pre>
+
+<p>We can omit a reference to the run in this case&mdash;Guild assumes you
+want to show files for the latest run.</p>
+<p>Guild show these file (IDs and timestamps will differ):</p>
+<pre><code class="language-output">~/.guild/runs/7d230c98d20811e88f52d017c2ab916f:
+  events.out.tfevents.1539779455.local
+  weights-0001-13.233.hdf5
+  weights-0002-13.080.hdf5
+  weights-0003-13.031.hdf5
+  weights-0004-12.996.hdf5
+  weights-0005-13.007.hdf5
+</code></pre>
+
+<p>These are the log file and trained model weights. Guild tracks these
+files along with all other run related metadata.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By default <a class="cmd" href="../../docs/commands/ls-cmd">ls</a> shows relative file paths. You can show full
+paths by including the <code>-f</code> option. This is useful if you need to
+access a particular file on the file system.</p>
+</div>
+<p>Guild provides a number of commands to help you view and understand
+runs. Try running any of these from the <code>sample-project</code> directory:</p>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild view</code></div>
+<div class="dd col col-sm-8 col-lg-9">Open <a class="term" href="../../docs/visual/guild-view/">Guild View</a>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild tensorboard</code></div>
+<div class="dd col col-sm-8 col-lg-9">View TensorFlow event logs in <a class="term" href="../../docs/visual/tensorboard/">TensorBoard</a>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs info</code></div>
+<div class="dd col col-sm-8 col-lg-9">Show basic run information (try <code class="lit">guild runs info --help</code> for a
+  list of additional options).</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild open</code></div>
+<div class="dd col col-sm-8 col-lg-9">Open the run directory in your system file browser.</div>
+</div></div>
+<!--
+
+## End-to-end workflow
+
+Guild operations are used to automate model related tasks. While
+`train` is a common operation, it's not the only operation a model may
+support. For example, prior to training a model, you may need to
+prepare a dataset by processing raw data into a format that can be
+used efficiently for training. Your model would therefore have a
+`prepare-data` operation that automated that task. Similarly, after
+training you may need to evaluate a trained model with test or
+validation data. This implies the model has an `evaluate` operation.
+
+By running operations in various orders, you can use Guild to automate
+your workflow.
+
+Consider this worflow, which can be used to generate TensorFLow Lite
+files for deployment to mobile devices:
+
+<img style="width:400px" src="/assets/img/workflow-2.png">
+
+Each step can be automated using a model operation. For example:
+
+- Before you train your model, run `prepare-data`, which loads raw
+  data from a database and processes it using various
+  transformations. You can use operation [flags](term:flag) to specify
+  which transformations should apply and how examples should be split
+  between train and validate.
+
+    ```
+    guild run prepare-data transformations=all validation-split=20
+    ```
+
+- Once the data is prepared, you train the model by running
+  `train`. This is a "train from scratch" operation, which means that
+  model weights are initialized with their starting values
+  (e.g. randomly generated) without the benefit of prior
+  training. This is typically a long running operation that can take
+  several hour or even days. As with `prepare-data` you can use flags
+  to specify training parameters such as learning rate.
+
+- As the model trains, you run `evaluate` to check its status. This
+  can be a time consuming operation, depending on how thorough the
+  evaluation is. You run it alongside the train operation so as to not
+  slow down model training. You may decide to automate this step and
+  stop training early if it's not progressing.
+
+- Once your model is trained, you decide to fine tune it with more
+  training---but this time with a lower learning rate. You run
+  `finetune`, which initializes the model weights with the values
+  from the earlier `train` operation. As with `train` you check in on
+  the training by running `evaluate` and stop when the model is no
+  longer progressing.
+
+- Finally, it's time to deploy your model, which will be used in a
+  mobile application running [TensorFlow Lite
+  ->](https://www.tensorflow.org/lite/). You run the `tflite`
+  operation to generate a TF Lite file. The operation uses the learned
+  weights from the `finetune` operation to create a frozen inference
+  model and the corresponding TF Lite file.
+
+This is just one example of a model workflow. Your workflow will be
+different based on the type of model and the applications you build
+with it.
+
+### Example
+
+If you are following the examples, in this section we add two new
+operations to our sample model:
+
+`prepare-data`
+: Prepares the Fashion-MNIST images for training and prediction.
+
+`predict`
+: Uses a trained model to make predictions using test images.
+
+With the addition of these operations, our model supports this simple
+workflow:
+
+<img style="height:60px" src="/assets/img/workflow-3.png">
+
+Modify ``guild.yml`` to be:
+
+
+wzxhzdk:20
+
+
+This adds a new operation `predict`. It also adds a
+[resource](term:resource) named `trained-model`, which is required by
+`predict`.
+
+- `predict` requires `trained-model`, which means that all of the
+  sources defined for the `trained-model` resource are made available
+  to the `predict` operation under the resource path when `predict` is
+  run.
+
+- The `trained-model` resource defines one source, which is the output
+  generated by the `train` operation. The resource path is `model`,
+  which means that each of the resolved source files are located in
+  the `model` run subdirectory of requiring operations.
+
+- When `predict` runs, it looks for trained model files in the `model`
+  run subdirectory. It uses these to initialize the model variables
+  before making any predictions.
+
+Now that we've defined the new `predict` operation, let's download the
+Python modules that implement the operation.
+
+Download the following two files and save them to ``sample-project``:
+
+[predict.py ->](https://raw.githubusercontent.com/guildai/examples/master/fashion/predict.py)
+: Support for making predictions on test images using a trained model.
+
+[fig.py ->](https://raw.githubusercontent.com/guildai/examples/master/fashion/fig.py)
+: Support for generating plots---use by both `prepare_data` and `predict`.
+
+If you are using `wget` you can run these commands from the
+`sample-project` directory:
+
+
+wzxhzdk:21
+
+
+When all of the required files are downloaded, your project structure should be:
+
+<div class="file-tree">
+<ul>
+<li class="is-folder open">sample-project
+ <ul>
+ <li class="is-file">fig.py</li>
+ <li class="is-file">guild.yml</li>
+ <li class="is-file">predict.py</li>
+ <li class="is-file">train.py</li>
+ </ul>
+</li>
+</ul>
+</div>
+
+Save your changes to `guild.yml` and confirm that the new operations
+are available:
+
+
+wzxhzdk:22
+
+
+Guild now displays two operations:
+
+
+wzxhzdk:23
+
+
+Let's generate some sample predictions by running `predict`:
+
+
+wzxhzdk:24
+
+
+Confirm the operation by pressing `Enter`.
+
+Guild runs the operation, which selects five images at random from the
+Fashion-MNIST test dataset and classifies them using the trained
+model. The result for each image is displayed in a PNG located in the
+operation run directory.
+
+To view the generated files from the `predict` operation, run:
+
+
+wzxhzdk:25
+
+
+Guild shows a list of files that look like this (some file names will
+differ):
+
+
+wzxhzdk:26
+
+
+Each `*.png` file is an image generated by the `predict`
+operation. You can view the images by running `guild view`, clicking
+**Files**, and then clicking one of the generated image files.
+
+<img class="md" style="width:100%;max-width:680px"
+     src="/assets/img/guild-view-predict.png">
+
+^ Sample predicted image from Guild View
+
+Alternatively, run `guild open` to view the run directory in you
+system file browser. From there you can open each of the images in you
+image viewer of choice.
+
+If the model misclassifies an image, the image name contains
+``error``. Your run may not contain any errors as the images
+are randomly selected. Try running the operation a few more times to
+see if the model misclassifies an image.
+
+## Model tests
+
+Guild provide a test facility that lets you verify model behavior. The
+primary method of testing a model is to run its operations and check
+the contents of generated files. Guild tests exercise model code at a
+high level and ensure that they work as expected.
+
+### Example
+
+If you are following the examples, in this section we add a test to
+our project that can be run to verify the model behavior.
+
+Modify ``guild.yml`` to be:
+
+
+wzxhzdk:27
+
+
+This change adds a test named `fashion` to the Guild file. The test
+runs the model's `train` and `predict` operations. If the operations
+complete successfully the test will pass, otherwise it will fail.
+
+Save your changes to `guild.yml` and run the test:
+
+
+wzxhzdk:28
+
+
+Press `Enter` to run the tests. Guild will run `train` and
+`predict`---the operations should complete without error and Guild
+should display **`All tests passed`**.
+
+## Packages and code reuse
+
+Guild lets you package and distribute your models for others to
+use. Similarly, you can install models developed by others.
+
+Guild provides a variety of methods for code reuse.
+
+### Example
+
+If you're following the examples, in this final section, we add
+package support to our project, create a package, and use that package
+to install our fashion model.
+
+First, modify `guild.yml` to be:
+
+
+wzxhzdk:29
+
+
+This change adds a `package` named `fashion` to the Guild file. Guild
+uses this information when it generates a package.
+
+Next, generate a package by running:
+
+
+wzxhzdk:30
+
+
+Guild creates the file `dist/fashion-1.0.0-py2.py3-none-any.whl`. This
+is a Python [distribution archive
+->](https://packaging.python.org/tutorials/packaging-projects/#generating-distribution-archives)
+that can be used to install the fashion model.
+
+Let's test the package in isolation by using a Guild environment. A
+Guild environment is a Python virtual environment that isolates both
+packages and runs under an environment directory.
+
+Create a Guild environment:
+
+
+wzxhzdk:31
+
+
+Guild will prompt you before creating the environment. Press `Enter`
+to continue.
+
+To use the envionment, activate it:
+
+
+wzxhzdk:32
+
+
+Next, install the package archive:
+
+
+wzxhzdk:33
+
+
+This installs the `fashion` package, which makes the any of the
+packages models available anywhere within the environment.
+
+To view available models, run:
+
+
+wzxhzdk:34
+
+
+Guild displays the newly installed model as `fashion/fashion`:
+
+
+wzxhzdk:35
+
+ -->
       
 <ul class="pager">
   

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Debugging an operation - Guild AI</title>
+    <title>Specifying available GPUs for a run - Guild AI</title>
     <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
     <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
@@ -583,32 +583,7 @@
     
     
     <li>
-      <a class="active" href="#">How to</a>
-      <ul>
-        
-        
-        <li>
-          <a
-            class="active"
-            href="/docs/howto/debug-an-operation/">Debug an operation</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
-        </li>
-        
-        
-      </ul>
-    </li>
-    
-    
-    
-    <li>
-      <a class="" href="#">Guides</a>
+      <a class="active" href="#">Guides</a>
       <ul>
         
         
@@ -632,6 +607,14 @@
           <a
             class=""
             href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
         </li>
         
         
@@ -667,6 +650,22 @@
         </li>
         
         
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
+        </li>
+        
+        
       </ul>
     </li>
     
@@ -687,37 +686,41 @@
     <article
       class="col-sm-9 main-content"
       role="main">
-      <h1 id="debugging-an-operation">Debugging an operation</h1>
-<ol class="toc">
-</ol>
-<p>TODO</p>
-<p>Guild AI is designed to simplify complex TensorFlow operations. This
-is great when everything works as expected. But what if you need to
-know exactly what Guild is doing?</p>
-<ul class="md">
-<li>Guild philosophy of light wrapping</li>
-<li>Overview of models and operations</li>
-<li>Example of running a complex operation</li>
-<li>Use of &ndash;print-cmd to see what Guild will run</li>
-<li>Use of &ndash;print-env to see what environment variables will be used</li>
-<li>Use of &ndash;run-dir when working on a specific problem</li>
-<li>Use of &ndash;stage to setup a run directory without running</li>
-</ul>
+      <h1 id="specifying-available-gpus-for-a-run">Specifying available GPUs for a run</h1>
+<p>To limit the GPUs available for a run, use the <code>--gpus</code> option with
+the <a class="cmd" href="../../../docs/commands/run-cmd">run</a> command. This option accepts a comma-separated list of
+GPU IDs.</p>
+<p>For example, to limit a run to GPU <code>0</code>, use:</p>
+<pre><code class="language-command">guild run train --gpus 0
+</code></pre>
+
+<p>You can disable all GPU access by using <code>--no-gpus</code>:</p>
+<pre><code class="language-command">guild run evaluate --no-gpus
+</code></pre>
+
+<p>This is useful for running operations on CPU that might otherwise fail
+(e.g. other GPUs are in use or there isn&rsquo;t enough GPU memory to run
+the operation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Operations that benefit from GPU acceleration will likely
+run considerably slower on a GPU.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The GPU options only support CUDA devices. To view the list of
+available CUDA devices and their respective IDs, use
+<code class="lit">nvidia-smi</code>&mdash;the <a class="ext" href="https://developer.nvidia.com/nvidia-system-management-interface" target="_blank">NVIDIA System Management Interface</a></p>
+</div>
       
 <ul class="pager">
   
   <li class="previous">
-    <a href="/docs/reference/guild-home/">
-      <span>Prev</span> <aside>Guild home reference</aside>
+    <a href="/docs/guides/debug-an-operation/">
+      <span>Prev</span> <aside>Debugging an operation</aside>
     </a>
   </li>
   
-  
-  <li class="next">
-    <a href="/docs/howto/specify-run-gpus/">
-      <span>Next</span> <aside>Specifying available GPUs for a run</aside>
-    </a>
-  </li>
   
 </ul>
 

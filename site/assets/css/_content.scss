@@ -88,19 +88,15 @@ img.md {
   }
 }
 
-.table.dl {
+div.dl {
 
-  margin: -8px 4px 16px;
+  margin: -8px 0px 16px;
 
-  td, th {
-    border: none;
-  }
-
-  td.dt {
+  div.dt {
     color: $light-text-color;
   }
 
-  td.dd {
+  div.dd {
 
     p:first-of-type {
       margin-top: 18px;

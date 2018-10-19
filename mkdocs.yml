@@ -96,6 +96,7 @@ markdown_extensions:
               run-dir: /docs/runs/#run-directory
               run: /docs/runs/
               tensorboard: /docs/visual/tensorboard/
+              test: /docs/tests/
         # aliases
         - link_pattern: alias:install-guild
           href: /install/
@@ -141,6 +142,7 @@ pages:
       - docs/operations.md
       - docs/runs.md
       - docs/resources.md
+      - docs/tests.md
       - docs/packages.md
       - Visualization:
           - docs/visual/guild-view.md

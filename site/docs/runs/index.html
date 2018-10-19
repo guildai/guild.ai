@@ -583,31 +583,6 @@
     
     
     <li>
-      <a class="" href="#">How to</a>
-      <ul>
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/debug-an-operation/">Debug an operation</a>
-        </li>
-        
-        
-        
-        <li>
-          <a
-            class=""
-            href="/docs/howto/specify-run-gpus/">Specify available GPUs</a>
-        </li>
-        
-        
-      </ul>
-    </li>
-    
-    
-    
-    <li>
       <a class="" href="#">Guides</a>
       <ul>
         
@@ -632,6 +607,14 @@
           <a
             class=""
             href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
         </li>
         
         
@@ -664,6 +647,22 @@
           <a
             class=""
             href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
         </li>
         
         
@@ -872,17 +871,17 @@ the list and run indexes would likely be different.</p>
 </div>
 <p>Below are various operations with run selectors applied to this
 list.</p>
-<table class="table dl">
-<tr><td class="dt"><code class="lit">guild runs rm 0</code></td>
-<td class="dd">Delete run <code>9734f85e</code> (you can always use index <code class="lit">0</code> to select the
-  most recently started run in the list)</td>
-</tr><tr><td class="dt"><code class="lit">guild runs rm 1:2</code></td>
-<td class="dd">Delete runs <code>d8cde0fc</code> and <code>0df943ac</code></td>
-</tr><tr><td class="dt"><code class="lit">guild runs rm :</code></td>
-<td class="dd">Delete all runs</td>
-</tr><tr><td class="dt"><code class="lit">guild runs rm 0df943ac e150e44a</code></td>
-<td class="dd">Delete runs <code>0df943ac</code> and <code>e150e44a</code></td>
-</tr></table>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs rm 0</code></div>
+<div class="dd col col-sm-8 col-lg-9">Delete run <code>9734f85e</code> (you can always use index <code class="lit">0</code> to select the
+  most recently started run in the list)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs rm 1:2</code></div>
+<div class="dd col col-sm-8 col-lg-9">Delete runs <code>d8cde0fc</code> and <code>0df943ac</code></div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs rm :</code></div>
+<div class="dd col col-sm-8 col-lg-9">Delete all runs</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs rm 0df943ac e150e44a</code></div>
+<div class="dd col col-sm-8 col-lg-9">Delete runs <code>0df943ac</code> and <code>e150e44a</code></div>
+</div></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following assumptions must hold for the above examples that use
@@ -974,15 +973,15 @@ command.</p>
 <p>When listing runs, be aware of <a class="term" href="#run-scope">run scope</a> and <a class="term" href="#run-filtering">run
 filtering</a>&mdash;these effect the runs that are
 displayed.</p>
-<table class="table dl">
-<tr><td class="dt"><code class="lit">guild runs</code></td>
-<td class="dd">List all runs with the run scope. If the current directory contain a
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">guild runs</code></div>
+<div class="dd col col-sm-8 col-lg-9">List all runs with the run scope. If the current directory contain a
   <a class="term" href="../../docs/models/#model-definition">model definition</a> the list is limited to runs
   associated with the locally defined models, otherwise the list will
-  contain all runs.</td>
-</tr><tr><td class="dt"><code class="lit">foo</code></td>
-<td class="dd">Another thing yo.</td>
-</tr></table>
+  contain all runs.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code class="lit">foo</code></div>
+<div class="dd col col-sm-8 col-lg-9">Another thing yo.</div>
+</div></div>
 <p>The command:</p>
 <pre><code>guild runs
 </code></pre>
@@ -1027,7 +1026,7 @@ command.</p>
 <p>Delete runs using <code class="lit">guild runs delete</code> or <code class="lit">guild runs rm</code>. See
 <a class="cmd" href="../../docs/commands/runs-delete-cmd">runs delete</a> for command details.</p>
 <p>Guild will display the list of runs to be deleted and ask you to
-confirm the operation. You must type <code class="lit">y</code> and then press <code>ENTER</code> to
+confirm the operation. You must type <code class="lit">y</code> and then press <code>Enter</code> to
 confirm.</p>
 <p>Deleted runs can be restored using the <a class="cmd" href="../../docs/commands/runs-restore-cmd">runs
 restore</a> command. Refer to <a href="#restore-deleted-runs">Restoring deleted
