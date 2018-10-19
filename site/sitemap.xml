@@ -1,166 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
+{% for nav_item in nav %}
+    {% if nav_item.children %}
+        {% for nav_item in nav_item.children %}
     <url>
-     <loc>/</loc>
-     <lastmod>2018-10-18</lastmod>
+     <loc>{{ config.site_url }}{{ nav_item.abs_url }}</loc>
+     <lastmod>{{nav_item.update_date}}</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        {% endfor %}
+    {% else %}
     <url>
-     <loc>/install/</loc>
-     <lastmod>2018-10-18</lastmod>
+     <loc>{{ config.site_url }}{{ nav_item.abs_url }}</loc>
+     <lastmod>{{nav_item.update_date}}</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-        
-    <url>
-     <loc>/docs/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/intro/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/models/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/operations/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/runs/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/resources/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/docs/packages/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>/models/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-    <url>
-     <loc>/support/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/faq/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/about/</loc>
-     <lastmod>2018-10-18</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
+    {% endif %}
+{% endfor %}
 </urlset>

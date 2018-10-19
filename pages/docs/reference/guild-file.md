@@ -1,7 +1,6 @@
-sidenav_title: Guild file
 tags: reference
 
-# Guild file reference
+# Guild file
 
 [TOC]
 

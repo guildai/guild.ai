@@ -97,6 +97,7 @@ markdown_extensions:
               run: /docs/runs/
               tensorboard: /docs/visual/tensorboard/
               test: /docs/tests/
+              user-config: /docs/reference/user-config/
         # aliases
         - link_pattern: alias:install-guild
           href: /install/
@@ -142,13 +143,15 @@ pages:
       - docs/operations.md
       - docs/runs.md
       - docs/resources.md
-      - docs/tests.md
       - docs/packages.md
+      - docs/tests.md
+      - docs/remotes.md
       - Visualization:
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
       - Commands:
           - docs/commands/index.md
+          - docs/commands/cat-cmd.md
           - docs/commands/check-cmd.md
           - docs/commands/compare-cmd.md
           - docs/commands/help-cmd.md
@@ -164,6 +167,7 @@ pages:
           - docs/commands/packages-info-cmd.md
           - docs/commands/packages-list-cmd.md
           - docs/commands/resources-cmd.md
+          - docs/commands/remotes-cmd.md
           - docs/commands/run-cmd.md
           - docs/commands/runs-cmd.md
           - docs/commands/runs-delete-cmd.md
@@ -197,9 +201,8 @@ pages:
       - Reference:
           - docs/reference/guild-file.md
           - docs/reference/guild-home.md
+          - docs/reference/user-config.md
           # TODO - docs/reference/plugin-api.md
-
-
 
       - Guides:
           # - delete failed runs

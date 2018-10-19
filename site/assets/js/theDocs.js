@@ -10,7 +10,7 @@ function trySmoothScroll(href, pushHistory, topMargin) {
         fixedHeaderHeight = $(window).width() < 768 ? 20 : 0;
       }
       const scrollTop = target.offset().top - (fixedHeaderHeight || 10);
-      $('html, body').animate({scrollTop: scrollTop}, 400);
+      $('html, body').animate({scrollTop: scrollTop}, 300);
       return true;
     }
   }
@@ -20,16 +20,6 @@ function trySmoothScroll(href, pushHistory, topMargin) {
 $(function() {
 
   "use strict";
-
-  if (window.performance
-      && window.performance.navigation.type
-      != window.performance.navigation.TYPE_BACK_FORWARD)
-  {
-    // We get here only when we know the user hasn't gotten to the
-    // page via next or back navigation. We don't want to scroll on
-    // navigation to preserve the historic scroll position.
-    trySmoothScroll(location.hash, false);
-  }
 
   // Scroll to page links
   $('a').click(function(e) {
@@ -401,4 +391,18 @@ $(function() {
       img.wrap(wrapper);
     }
   });
+
+  // Scroll to location.hash - run this last to ensure any scripts
+  // that effect layout are run before calculating top offsets for
+  // targets.
+
+  if (window.performance
+      && window.performance.navigation.type
+      != window.performance.navigation.TYPE_BACK_FORWARD)
+  {
+    // We get here only when we know the user hasn't gotten to the
+    // page via next or back navigation. We don't want to scroll on
+    // navigation to preserve the historic scroll position.
+    trySmoothScroll(location.hash, false);
+  }
 });

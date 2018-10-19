@@ -64,10 +64,6 @@ ul.md {
   }
 }
 
-img.md {
-  border: 1px solid $border-color-dark;
-}
-
 .container-fluid {
 
   .main-content {
@@ -90,20 +86,24 @@ img.md {
 
 div.dl {
 
-  margin: -8px 0px 16px;
+  margin: 0 20px $p-margin-bottom;
 
-  div.dt {
-    color: $light-text-color;
-  }
+  div.row {
+    margin-bottom: $p-margin-bottom_ * 0.5px;
 
-  div.dd {
-
-    p:first-of-type {
-      margin-top: 18px;
+    div.dt {
+      color: $light-text-color;
     }
 
-    p:last-child {
-      margin-bottom: 8px;
+    div.dd {
+
+      p:first-of-type {
+        margin-top: 18px;
+      }
+
+      p:last-child {
+        margin-bottom: 8px;
+      }
     }
   }
 }
