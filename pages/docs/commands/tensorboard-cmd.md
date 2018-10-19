@@ -1,6 +1,6 @@
 sidenav_title: tensorboard
 overview_title: tensorboard
-tags: visual
+tags: visual, run-info
 
 # tensorboard command
 

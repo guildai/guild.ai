@@ -839,7 +839,15 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
     def _cmd_source(self, cmd):
         basename = re.sub(r"[ \-]", "_", cmd)
-        return os.path.join(self._src_path, "{}.py".format(basename))
+        patterns = [
+            os.path.join(self._src_path, "{}.py"),
+            os.path.join(self._src_path, "{}_.py"),
+        ]
+        for p in patterns:
+            path = p.format(basename)
+            if os.path.exists(path):
+                return path
+        raise AssertionError(cmd)
 
     def _cache_cmd_help(self, cmd, cmd_help):
         path = self._cached_cmd_help_filename(cmd)

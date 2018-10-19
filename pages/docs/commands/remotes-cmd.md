@@ -1,6 +1,6 @@
 sidenav_title: remotes
 overview_title: remotes
-tags: remotes
+tags: remote
 
 # remotes command
 

@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Guild file - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../../../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../../../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class="col-sm-3 sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  <ul class="sidenav dropable sticky_disabled">
+    
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/intro/">Introduction</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/models/">Models</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/operations/">Operations</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/runs/">Runs</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/resources/">Resources</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/packages/">Packages</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/tests/">Tests</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/remotes/">Remotes</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Visualization</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/guild-view/">Guild View</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/tensorboard/">TensorBoard</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Commands</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/cat-cmd/">cat</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/check-cmd/">check</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/compare-cmd/">compare</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/diff-cmd/">diff</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/download-cmd/">download</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/export-cmd/">export</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/help-cmd/">help</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/import-cmd/">import</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/index-cmd/">index</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/init-cmd/">init</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/install-cmd/">install</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/label-cmd/">label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/ls-cmd/">ls</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/models-cmd/">models</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/new-cmd/">new</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/open-cmd/">open</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/operations-cmd/">operations</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/package-cmd/">package</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-cmd/">packages</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-delete-cmd/">packages delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-info-cmd/">packages info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-list-cmd/">packages list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/pull-cmd/">pull</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/push-cmd/">push</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-cmd/">remote</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-start-cmd/">remote start</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-status-cmd/">remote status</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-stop-cmd/">remote stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remotes-cmd/">remotes</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/run-cmd/">run</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-cmd/">runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-delete-cmd/">runs delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-diff-cmd/">runs diff</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-info-cmd/">runs info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-label-cmd/">runs label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-list-cmd/">runs list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-purge-cmd/">runs purge</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-restore-cmd/">runs restore</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/search-cmd/">search</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/shell-cmd/">shell</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/sync-cmd/">sync</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorboard-cmd/">tensorboard</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-cmd/">tensorflow</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-inspect-cmd/">tensorflow inspect</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/uninstall-cmd/">uninstall</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/view-cmd/">view</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="active" href="#">Reference</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/reference/guild-file/">Guild file</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-home/">Guild home</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/user-config/">User configuration</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</aside>
+    <article
+      class="col-sm-9 main-content"
+      role="main">
+      <h1 id="guild-file">Guild file</h1>
+<ol class="toc">
+<li><a href="#top-level-objects">Top level objects</a><ol class="md">
+<li><a href="#examples">Examples</a></li>
+</ol>
+</li>
+<li><a href="#inheritance">Inheritance</a><ol class="md">
+<li><a href="#examples_1">Examples</a></li>
+</ol>
+</li>
+<li><a href="#packages">Packages</a><ol class="md">
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#examples_2">Examples</a></li>
+</ol>
+</li>
+<li><a href="#models">Models</a><ol class="md">
+<li><a href="#attributes_1">Attributes</a></li>
+<li><a href="#examples_3">Examples</a></li>
+</ol>
+</li>
+<li><a href="#operations">Operations</a><ol class="md">
+<li><a href="#attributes_2">Attributes</a></li>
+</ol>
+</li>
+<li><a href="#flags">Flags</a><ol class="md">
+<li><a href="#attributes_3">Attributes</a></li>
+</ol>
+</li>
+<li><a href="#flag-choices">Flag choices</a><ol class="md">
+<li><a href="#attributes_4">Attributes</a></li>
+<li><a href="#examples_4">Examples</a></li>
+</ol>
+</li>
+<li><a href="#resources">Resources</a><ol class="md">
+<li><a href="#attributes_5">Attributes</a></li>
+</ol>
+</li>
+<li><a href="#resource-sources">Resource sources</a><ol class="md">
+<li><a href="#source-type">Source type</a></li>
+<li><a href="#attributes_6">Attributes</a></li>
+<li><a href="#examples_5">Examples</a></li>
+</ol>
+</li>
+</ol>
+<p>Guild files are files named <code>guild.yml</code> that contain information that
+Guild needs to perform an operation.</p>
+<p>Guild files are authored in <a class="ext" href="http://yaml.org/" target="_blank">YAML</a>.</p>
+<h2 id="top-level-objects">Top level objects</h2>
+<p>Guild files may contain a single top-level object or a list of
+top-level objects.</p>
+<p>A top-level object may one of:</p>
+<ul class="md">
+<li><code>package</code></li>
+<li><code>model</code></li>
+<li><code>config</code></li>
+</ul>
+<p>Top-level objects are identified by the presence of an identifying
+attribute: <code>package</code>, <code>model</code>, or <code>config</code>. A Guild file may contain
+top-level objects that do not have one of these identifying
+attributes, but these objects are ignored by Guild.</p>
+<p>The value of identifying attributes are used as object identifiers.</p>
+<p>A top-level object must only contain one and only one identifying
+attribute.</p>
+<h3 id="examples">Examples</h3>
+<p>Top-level package:</p>
+<pre><code class="language-yaml">package: my-package
+description: My package
+</code></pre>
+
+<p>Top-level model:</p>
+<pre><code class="language-yaml">model: my-model
+description: My model
+</code></pre>
+
+<p>Top-level config:</p>
+<pre><code class="language-yaml">config: my-config
+description: My config
+</code></pre>
+
+<p>List of top-level objects:</p>
+<pre><code class="language-yaml">- package: my-package
+  description: My package
+
+- model: model-a
+  description: Model A
+
+- model: model-b
+  description: Model B
+
+- config: shared
+  description: Share config
+</code></pre>
+
+<p>Illegal top-level object (multiple identifiers):</p>
+<pre><code class="language-yaml">model: my-model
+package: my-package
+</code></pre>
+
+<h2 id="inheritance">Inheritance</h2>
+<p>Top-level objects may extend other top-level objects by specifying an
+<code>extends</code> attribute. The value of <code>extends</code> may be a string, which
+identifies a single object to extend, or a list of strings, which
+identifies multiple objects to extend.</p>
+<p>When an object extends another object, it inherits its
+attributes. Extending objects may redefine attributes of the objects
+they extend.</p>
+<p>When more than one object is extended, attributes of objects later in
+the list take precedence of those higher in the list.</p>
+<p>Config objects are used exclusively for inheritance and are not
+otherwise used by Guild.</p>
+<h3 id="examples_1">Examples</h3>
+<p>In the following example, two models extend a base config. The first
+model redefines its description while the second does not.</p>
+<pre><code class="language-yaml">- config: base
+  description: A base config
+
+- model: model-a
+  extends: base
+  description: My model
+
+- model: model-b
+  extends: base
+</code></pre>
+
+<h2 id="packages">Packages</h2>
+<p>A Guild file must contain at most one <code>package</code> object.</p>
+<p>Packages contain information used by Guild to generate Guild packages.</p>
+<h3 id="attributes">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>package</code></div>
+<div class="dd col col-sm-8 col-lg-9">Package name (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Project description (string)
+  <p>
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>version</code></div>
+<div class="dd col col-sm-8 col-lg-9">Project version (required string)<p></div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>url</code></div>
+<div class="dd col col-sm-8 col-lg-9">URL to package website (URL)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>maintainer</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of individual or organization package maintainer (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>maintainer-email</code></div>
+<div class="dd col col-sm-8 col-lg-9">Email of package maintainer (email address)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>license</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of package license (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>tags</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of packages tags (list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>python-tag</code></div>
+<div class="dd col col-sm-8 col-lg-9">Value used as the Python tag when generating the package (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>data_files</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of additional files to include in the package (list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>resources</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of package resources (list of <a href="#resources">resources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>python-requires</code></div>
+<div class="dd col col-sm-8 col-lg-9">Version of Python required by the package (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>requires</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of other packages required by the package (list of strings)</div>
+</div></div>
+<h3 id="examples_2">Examples</h3>
+<p>Package definition for <code>slim.resnet</code>:</p>
+<pre><code class="language-yaml">package: slim.resnet
+version: 0.3.0
+description:
+  TF-Slim ResNet models (50, 101, 152, and 200 layer models for ResNet v1 and v2)
+url: https://github.com/guildai/index/tree/master/slim/resnet
+maintainer: Guild AI
+maintainer-email: packages@guild.ai
+requires:
+  - slim&gt;=0.3.0.dev11
+  - slim.datasets&gt;=0.3.0.dev3
+license: Apache 2.0
+tags: [resnet, images, model]
+</code></pre>
+
+<h2 id="models">Models</h2>
+<p>Models may may be defined as top-level Guild file objects using the
+<code>model</code> identifying attribute.</p>
+<p>Here&rsquo;s a Guild file that defines two models:</p>
+<pre><code class="language-yaml">- model: model-a
+- model: model-b
+</code></pre>
+
+<p>Models define operations, which can be run using the <a class="cmd" href="../../../docs/commands/run-cmd">run</a>
+command.</p>
+<p>Models may also define resources that operations require.</p>
+<h3 id="attributes_1">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>model</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model name (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model description (string)
+  <p>
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>operations</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model operations (list of <a href="#operations">operations</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>resources</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model resources (list of <a href="#resources">resources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>references</code></div>
+<div class="dd col col-sm-8 col-lg-9">Model references (list of URLs)
+  <p>
+  References are displayed in help text.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>extra</code></div>
+<div class="dd col col-sm-8 col-lg-9">Additional information used by Guild and Guild plugins</div>
+</div></div>
+<h3 id="examples_3">Examples</h3>
+<p>Complete example of <code>mnist-layers</code> (from
+<a href="https://github.com/guildai/packages/tree/master/tensorflow/mnist"><code>tensorflow.mnist</code></a>):</p>
+<pre><code class="language-yaml">- model: mnist-layers
+  description: CNN estimator for MNIST using tf.layers
+  operations:
+    train:
+      description: Train the CNN
+      main: mnist/mnist --data_dir mnist-idx-data --model_dir . --export_dir .
+      requires:
+        - mnist-lib
+        - mnist/dataset
+      flags:
+        batch-size:
+          description: Number of images to process in a batch
+          default: 100
+        epochs:
+          description: Number of epochs to train
+          default: 40
+          arg-name: train_epochs
+  resources:
+    mnist-lib:
+      description: Python library for tensorflow.mnist
+      private: yes
+      sources:
+        - url: https://github.com/tensorflow/models/archive/v.1.6.0.zip
+          sha256: ed8fd7066bb014feccaed2cd2a46e516468ef24c40be8ef21a96a09849db7ff5
+          select: models-v.1.6.0/official/mnist
+  references:
+    - https://github.com/tensorflow/models/tree/v.1.6.0/official/mnist
+</code></pre>
+
+<h2 id="operations">Operations</h2>
+<p>Operations define commands that are run for a model. Operations are
+defined as named objects under the <code>operations</code> model attribute.</p>
+<p>Here&rsquo;s model with two operations, <code>train</code> and <code>test</code>:</p>
+<pre><code class="language-yaml">model: my-model
+operations:
+  train:
+    main: train --epochs 1
+  test:
+    main: test --data .
+</code></pre>
+
+<h3 id="attributes_2">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Operation description (string)
+  <p>
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>handle-keyboard-interrupt</code></div>
+<div class="dd col col-sm-8 col-lg-9">Handle keyboard interrupts from the user (boolean)
+  <p>
+  By default, an operation must explicitly handle keyboard interrupts,
+  which are generated when the user types <code class="lit">Ctrl-C</code>, by catching
+  Python&rsquo;s <code class="lit">KeyboardInterrupt</code> or the process will terminate with an
+  error and a Python traceback. Set <code>handle-keyboard-interrupt</code> to
+  <code class="lit">yes</code> to indicate that Guild should handle <code class="lit">KeyboardInterrupt</code>
+  and exit without printing an error message.
+  <p>
+  If the operation is run with <code class="lit">--debug</code>, Guild will print the full
+  traceback as a log message.
+  <p>
+  Note that an operation terminated with <code class="lit">Ctrl-C</code> will still have a
+  status of <code class="lit">terminated</code> even if the interrupt is handled by
+  Guild. To indicate that the operation should be considered
+  <code class="lit">completed</code>, set the operation&rsquo;s <code>stoppable</code> attribute to <code class="lit">yes</code>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>main</code></div>
+<div class="dd col col-sm-8 col-lg-9">Main command module (required string unless <code>plugin-op</code> is used)
+  <p>
+  Operation commands must be in the form <code>[MODULE] [ARG...]</code>. <code>MODULE</code>
+  may reference a Python module defined in the model Guild file
+  directory or any Python available on the system. <code>ARG</code> values are
+  passed through as arguments to the Python module.
+  <p>
+  <code>MODULE</code> must not end in <code>.py</code>.
+  <p>
+  <code>ARG</code> values may contain references to <a href="#flags">#flags</a> in the
+  format <code>${FLAG_NAME}</code>. Such references are resolved to the current
+  flag value when the command is executed.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>flags</code></div>
+<div class="dd col col-sm-8 col-lg-9">Operation flags (list of <a href="#flags">flags</a>)
+  <p>
+  Flags define the arguments that are passed to <code>main</code> when the
+  command is executed. For more information, see <a href="#flags">Flags</a>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>plugin-op</code></div>
+<div class="dd col col-sm-8 col-lg-9">The name of a plugin operation to used instead of <code>main</code> (string)
+  <p>
+  <code>main</code> and <code>plugin-op</code> cannot both be used.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>pre-process</code></div>
+<div class="dd col col-sm-8 col-lg-9">Pre-processing shell command
+  <p>
+  The command is executed as a shell script after required resources
+  are resolved and before the operation itself is started.
+  <p>
+  Commands are executed in the run directory and have access to the
+  same set of environment variables as the operation itself. See
+  <a href="../../../docs/operations#environment-variables">Operations</a> for the
+  list of supported environment variables.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>required</code></div>
+<div class="dd col col-sm-8 col-lg-9">One or more required resources (string or list of strings)
+  <p>
+  Values must be in the form <code>[PACKAGE_OR_MODEL/]RESOURCE</code>.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>remote</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the operation is remote (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>stoppable</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating that a terminated run should be considered completed
+  (boolean)
+  <p>
+  By default, a terminated run (i.e. a run stopped by typing <code>Ctrl-C</code>
+  or stopped with a <code>SIGTERM</code> signal such as that issued by the
+  <a class="cmd" href="../../../docs/commands/stop-cmd">stop</a> command) has a status of <code class="lit">terminated</code>. If <code>stoppable</code>
+  is true however, the run status will be <code class="lit">completed</code>. Set this
+  value to <code class="lit">yes</code> when the operation is designed to be terminated
+  explicitly by the user.</div>
+</div></div>
+<h2 id="flags">Flags</h2>
+<p>Flags are defined for <a href="#operations">operations</a> under the <code>flags</code>
+attribute as named objects.</p>
+<h3 id="attributes_3">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag description (string)
+  <p>
+  This may be a multi-line description.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>default</code></div>
+<div class="dd col col-sm-8 col-lg-9">Default value if not specified by the user (string or number)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>required</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the flag is required (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>arg-name</code></div>
+<div class="dd col col-sm-8 col-lg-9">Name of the command argument used for flag values (string)
+  <p>
+  Defaults to the flag name.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>arg-skip</code></div>
+<div class="dd col col-sm-8 col-lg-9">Boolean indicating whether not to include the flag as a command
+  argument (boolean)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>choices</code></div>
+<div class="dd col col-sm-8 col-lg-9">Allowed choices for the flag (list of <a href="#flag-choices">choices</a>)</div>
+</div></div>
+<h2 id="flag-choices">Flag choices</h2>
+<p>Flag choices limit the available values for a flag. They can also be
+used to apply multiple argument to a command when specified.</p>
+<h3 id="attributes_4">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>value</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag value when choice is specified (string or number)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag choice description (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>args</code></div>
+<div class="dd col col-sm-8 col-lg-9">Map of argument names to values (object)
+  <p>This attribute is used to define additional arguments that are
+  applied when the choice is selected. Arguments are applied in the
+  form <code class="lit">--NAME VALUE</code> where <code>NAME</code> and <code>VALUE</code> correspond to the
+  respective object name value pairs. Use <code>arg-skip</code> to omit the flag
+  argument itself.</div>
+</div></div>
+<h3 id="examples_4">Examples</h3>
+<p>Operation that can train one of two model versions (default is <code>1</code>):</p>
+<pre><code class="language-yaml">model: my-model
+operations:
+  train:
+    main: train
+    flags:
+      version:
+        default: 1
+        choices: [1, 2]
+</code></pre>
+
+<p>Snippet from the <a href="https://github.com/guildai/packages/blob/master/slim/shared.yml">shared
+configuration</a>
+in the <code>slim</code> package. Note that when <code class="lit">imagenet</code> is specified, the
+arguments <code class="lit">input-mean</code> and <code class="lit">input-std</code> are included in the command
+argument.</p>
+<pre><code class="language-yaml">- config: slim-image-classifier
+  operations:
+    predict:
+      main: label_image --graph graph.pb --labels data/labels.txt
+      flags:
+        ...
+        dataset:
+          description: Dataset name to use for labels and image transformation
+          required: yes
+          arg-skip: yes
+          choices:
+            - cifar10
+            - mnist
+            - flowers
+            - value: imagenet
+              args:
+                input-mean: 0.0
+                input-std: 255
+            - custom
+</code></pre>
+
+<h2 id="resources">Resources</h2>
+<p>Resources may be included in packages and models under the <code>resources</code>
+object attribute. Resources are identified by their object key.</p>
+<p>Resources may be required by operations. Required resources are known
+as <em>operation dependencies</em>.</p>
+<p>A resource must contain at least one source. Sources may be files,
+URLs, operation output, or Python modules.</p>
+<p>All required resource sources are resolved before an operation is run
+to ensure the operation has what it needs to run. Guild creates
+symbolic links to resource sources in the run directory. For more
+information, see <a href="#resource-sources">Resource sources</a> below.</p>
+<p>Here&rsquo;s a model with two resources, each with a single source file.</p>
+<pre><code class="language-yaml">model: my-model
+resources:
+  resource-a:
+    sources: [file-a]
+  resource-b:
+    sources: [file-b]
+</code></pre>
+
+<h3 id="attributes_5">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>description</code></div>
+<div class="dd col col-sm-8 col-lg-9">Resource description (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>path</code></div>
+<div class="dd col col-sm-8 col-lg-9">Relative path within the run directory where resolved sources are
+  saved (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>sources</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of resource sources (list of <a href="#resource-sources">resource sources</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>private</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not the resource is private (boolean)
+  <p>
+  Private resources don&rsquo;t appear in resource lists.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>references</code></div>
+<div class="dd col col-sm-8 col-lg-9">List of reference URLs associated with the resource (list of URLs)
+  <p>
+  References are displayed in help text.</div>
+</div></div>
+<h2 id="resource-sources">Resource sources</h2>
+<p>A resource source defines what is resolved and therefore available to
+an operation that requires the resource.</p>
+<p>Source files are provided to runs within the run directory as symbolic
+links.</p>
+<h3 id="source-type">Source type</h3>
+<p>Sources have a <em>type</em>, which is identified by the use of one and only
+one of the following type attribute:</p>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>file</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a file relative to the defining Guild file</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>url</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a URL (<code>http</code> and <code>https</code> protocols are supported)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>operation</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is generated from an operation
+  <p>
+  Value is an operation spec consisting of
+  <code>[PACKAGE/[MODEL:]]OPERATION</code>.  Multiple operation specs may be
+  specified separated with a comma. By default Guild will use the
+  latest completed or terminated run matching any of the operation
+  specs. Users may alternatively specify a run ID for the resource
+  when running the requiring operation.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>module</code></div>
+<div class="dd col col-sm-8 col-lg-9">Source is a Python module</div>
+</div></div>
+<p>If source is a string, the value is treated as a <code>file</code> source type.</p>
+<h3 id="attributes_6">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>sha256</code></div>
+<div class="dd col col-sm-8 col-lg-9">SHA 256 hash used to verify the source (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>unpack</code></div>
+<div class="dd col col-sm-8 col-lg-9">A flag indicating whether or not the source should be unpacked (boolean)
+  <p>
+  By default Guild attempts to unpack files with common archive
+  extensions (<code>.zip</code>, <code>.tar</code>, <code>.tar.gz</code>, <code>.tgz</code>).</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>select</code></div>
+<div class="dd col col-sm-8 col-lg-9">One or more regular expressions used to select sources from a
+  directory or unpacked archive (string or list of strings)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>post-process</code></div>
+<div class="dd col col-sm-8 col-lg-9">Shell command executed after source has been resolved (string)
+  <p>
+  This applies to <code>url</code> sources only.
+  <p>
+  Commands are executed in the context of the resource cache directory
+  containing the downloaded and unpacked URL source. Commands may use
+  the <code>$RESDEF_DIR</code> environment variable to reference files relative
+  to the directory containing the resource declaration (i.e. the
+  directory containing the project or package Guild file).</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>help</code></div>
+<div class="dd col col-sm-8 col-lg-9">Help text displayed when a source cannot be resolved (string)
+  <p>
+  This can be used to help a user install a missing Python module, run
+  a required operation, etc.</div>
+</div></div>
+<h3 id="examples_5">Examples</h3>
+<p>File <code>data-train.csv</code> and <code>data-test.csv</code> provided as a part of <code>data</code>
+resource:</p>
+<pre><code class="language-yaml">package: my-package
+resources:
+  data:
+    description: Data files
+    sources:
+    - data-train.csv
+    - data-test.csv
+</code></pre>
+
+<p>MNIST IDX sources as a <code>dataset</code> resource, stored under
+<code>mnist-idx-data</code> in the run directory:</p>
+<pre><code class="language-yaml">package: mnist
+resources:
+  dataset:
+    description: &quot;Yann Lecun's MNIST dataset in compressed IDX format&quot;
+    path: mnist-idx-data
+    sources:
+      - url: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+        sha256: 440fcabf73cc546fa21475e81ea370265605f56be210a4024d2ca8f203523609
+      - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+        sha256: 3552534a0a558bbed6aed32b30c495cca23d567ec52cac8be1a0730e8010255c
+      - url: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+        sha256: 8d422c7b0a1c1c79245a5bcf07fe86e33eeafee792b84584aec276f5a2dbc4e6
+      - url: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+        sha256: f7ae60f92e00ec6debd23a6088c31dbd2371eca3ffa0defaefb259924204aec6
+</code></pre>
+
+<p>Operation <code>finetune</code> depends on the output of <code>train</code>, which is stored
+under <code>model</code> in the run directory:</p>
+<pre><code class="language-yaml">model: my-model
+operations:
+  train:
+    main: train
+  finetune:
+    main: finetune
+    requires: trained-model
+resources:
+  trained-model:
+    path: model
+    sources:
+      - operation: train
+        select: checkpoint|model\.ckpt.*
+</code></pre>
+      
+<ul class="pager">
+  
+  <li class="previous">
+    <a href="/docs/commands/view-cmd/">
+      <span>Prev</span> <aside>view command</aside>
+    </a>
+  </li>
+  
+  
+  <li class="next">
+    <a href="/docs/reference/guild-home/">
+      <span>Next</span> <aside>Guild home</aside>
+    </a>
+  </li>
+  
+</ul>
+
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
+</html>

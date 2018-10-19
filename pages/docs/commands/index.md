@@ -6,8 +6,10 @@ tags: reference
 [TOC]
 
 - [General](category:/docs/commands/#general)
-- [Models](category:/docs/commands/#models)
-- [Runs](category:/docs/commands/#runs)
+- [Model info](category:/docs/commands/#models)
+- [Run management](category:/docs/commands/#runs)
+- [Runs command alias](category:/docs/commands/#runs-alias)
+- [Run info and analysis](category:/docs/commands/#run-info)
 - [Packaging and distribution](category:/docs/commands/#packaging)
 - [Remote](category:/docs/commands/#remote)
 - [Visualization](category:/docs/commands/#visual)

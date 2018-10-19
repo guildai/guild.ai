@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Install - Guild AI</title>
+    <link href="../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <img src="../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="active">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class=" sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="active">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+</aside>
+    <article
+      class="col-sm-12 main-content"
+      role="main">
+      <h1 id="install-guild-ai">Install Guild AI</h1>
+<ol class="toc">
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#install-guild-ai_1">Install Guild AI</a><ol class="md">
+<li><a href="#using-pip">Using pip</a></li>
+<li><a href="#from-source-code">From source code</a></li>
+</ol>
+</li>
+<li><a href="#install-tensorflow">Install TensorFlow</a></li>
+<li><a href="#install-optional-libraries">Install optional libraries</a><ol class="md">
+<li><a href="#cuda-and-cudnn">CUDA and cuDNN</a></li>
+<li><a href="#nvidia-system-management-interface">NVIDIA System Management Interface</a></li>
+</ol>
+</li>
+<li><a href="#verify-your-installation">Verify your installation</a></li>
+<li><a href="#next-steps">Next steps</a></li>
+</ol>
+<h2 id="requirements">Requirements</h2>
+<p>Guild AI has the following requirements:</p>
+<ul class="md">
+<li>Max OS or Linux</li>
+<li>Python 2.7 or Python 3</li>
+<li>pip</li>
+</ul>
+<p>Guild is installed from PyPI using <code>pip</code>. Refer to <em><a class="ext" href="https://pip.pypa.io/en/stable/installing/" target="_blank">pip Installation</a></em> to ensure you have it
+installed.</p>
+<h2 id="install-guild-ai_1">Install Guild AI</h2>
+<h3 id="using-pip">Using pip</h3>
+<p>To install Guild AI, run the following command:</p>
+<pre><code class="language-command">pip install guildai
+</code></pre>
+
+<p>If you need to run <code>install</code> with administrative privileges, run:</p>
+<pre><code class="language-command">sudo pip install guildai
+</code></pre>
+
+<p>If you want the latest pre-release version of Guild AI, use the
+<code class="lit">--pre</code> option:</p>
+<pre><code class="language-command">pip install --pre guildai
+</code></pre>
+
+<h3 id="from-source-code">From source code</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is an alternative to installing Guild AI with pip
+described above. Install Guild AI from source code if you want a
+specific version from GitHub (e.g. an early release or development
+branch) or if you want to contribute to the project.</p>
+</div>
+<p>Additional required tools for installing from source code:</p>
+<ul class="md">
+<li><a class="ext" href="https://help.github.com/articles/set-up-git/" target="_blank">git</a></li>
+<li><a class="ext" href="https://www.npmjs.com/get-npm" target="_blank">npm</a> v5.8.0 or later</li>
+<li>Python development library and headers for your system</li>
+</ul>
+<p>To install Guild from source, clone the repository by running:</p>
+<pre><code class="language-command">git clone https://github.com/guildai/guild.git
+</code></pre>
+
+<p>Change to the <code>guild</code> directory and install the required pip packages:</p>
+<pre><code class="language-command">cd guild
+pip install -r requirements.txt
+</code></pre>
+
+<p>Build Guild by running:</p>
+<pre><code class="language-command">python setup.py build
+</code></pre>
+
+<p>Verify Guild by running:</p>
+<pre><code class="language-command">guild/scripts/guild check
+</code></pre>
+
+<p>If see the message <code class="lit">NOT INSTALLED (No module named 'tensorflow')</code>
+that&rsquo;s okay - you&rsquo;ll install TensorFlow in the steps below. If you see
+other errors, please <a class="ext" href="https://github.com/guildai/guild/issues" target="_blank">open an issue on GitHub</a> and we&rsquo;ll help!</p>
+<p>You can run the <code>GUILD_SOURCE_DIR/guild/scripts/guild</code> executable
+directly (where <code>GUILD_SOURCE_DIR</code> is the location of your cloned
+Guild AI source repository) or modify your environment to make <code>guild</code>
+available on your PATH using one of these methods:</p>
+<ul class="md">
+<li>Add <code>GUILD_SOURCE_DIR/guild/scripts</code> directory to your <code>PATH</code> environment
+  variable, OR</li>
+<li>Create a symlink to <code>GUILD_SOURCE_DIR/guild/scripts/guild</code> that is
+  available on your PATH</li>
+</ul>
+<h2 id="install-tensorflow">Install TensorFlow</h2>
+<p>Guild requires TensorFlow but does not install it for
+you. <sup id="fnref:tf-install"><a class="footnote-ref" href="#fn:tf-install" rel="footnote">1</a></sup> You can use <code>pip</code> to install TensorFlow by running:</p>
+<pre><code class="language-command">pip install tensorflow
+</code></pre>
+
+<p>If your system has a GPU, install the GPU enabled package by running:</p>
+<pre><code class="language-command">pip install tensorflow-gpu
+</code></pre>
+
+<p>For alternative installation methods, refer to <a class="ext" href="https://www.tensorflow.org/install/" target="_blank">Installing TensorFlow</a>.</p>
+<h2 id="install-optional-libraries">Install optional libraries</h2>
+<p>If you system has a GPU or other accelerator supported by TensorFlow,
+you will need to install and configure support for your hardware.</p>
+<h3 id="cuda-and-cudnn">CUDA and cuDNN</h3>
+<p>If you have an NVIDIA GPU and and want to use the GPU enabled
+TensorFlow package, you must install the NVIDIA CUDA and cuDNN
+libraries for your system. Refer to the links below for help
+installing the libraries.</p>
+<ul class="md">
+<li><a class="ext" href="https://developer.nvidia.com/cuda-downloads" target="_blank">CUDA Toolkit Download</a></li>
+<li><a class="ext" href="https://developer.nvidia.com/cudnn" target="_blank">NVIDIA cuDNN</a></li>
+</ul>
+<h3 id="nvidia-system-management-interface">NVIDIA System Management Interface</h3>
+<p>Guild uses NVIDIA System Management Interface (<code>nvidia-smi</code>) on GPU
+accelerated systems to collect GPU metrics. This tool is optional and
+Guild will run without it. However, to collect GPU stats on systems
+with one or more GPUs, ensure that <code>nvidia-smi</code> is installed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NVIDIA System Management Interface is typically installed with NVIDIA
+GPU drivers. Refer to <a class="ext" href="https://developer.nvidia.com/nvidia-system-management-interface" target="_blank">NVIDIA System Management Interface</a>
+for more information.</p>
+</div>
+<h2 id="verify-your-installation">Verify your installation</h2>
+<p>Verify that Guild is installed properly by running the
+<a href="../docs/commands/check"><code>check</code></a> command:</p>
+<pre><code class="language-command">guild check
+</code></pre>
+
+<p>If there are problems with your installation, Guild will display the
+details and exit with an error. Refer to
+<a href="../troubleshooting">Troubleshooting</a> for assistance.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Congratulations, you&rsquo;ve installed Guild AI! We&rsquo;ve outlined some next
+steps for you below.</p>
+<div class="row match-height">
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Train your first model</h3>
+<p class="expand">
+
+Dive in and train your first model using Guild AI. This introductory
+tutorial will walk you through the basics of Guild and cover most of
+its features.
+
+</p>
+<a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
+  >Train your first model <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Discover Guild models</h3>
+<p class="expand">
+
+Guild AI provides a catalog of state-of-the-art TensorFlow models that
+can be used to build deep learning applications. Start here to see
+what developers are building.
+
+</p>
+<a class="btn btn-primary cta" href="/models/"
+  >Discover Guild models <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Browse the docs</h3>
+<p class="expand">
+
+If you're interested in a complete picture of Guild AI, start by
+browsing its comprehensives documentation.
+
+</p>
+<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+</div>
+</div>
+</div>
+
+<div class="footnote">
+<hr />
+<ol class="md">
+<li id="fn:tf-install">
+<p>TensorFlow is a rapidly evolving software library and is provided as
+both CPU and GPU supported packages. Guild leaves the specific package
+and version of TensorFlow up to the user.&#160;<a class="footnote-backref" href="#fnref:tf-install" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+      
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../assets/js/vendor.min.js" data-manual></script>
+  <script src="../assets/js/theDocs.min.js"></script>
+</html>

@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>User configuration - Guild AI</title>
+    <link href="../../../assets/css/vendor.min.css" rel="stylesheet">
+    <link href="../../../assets/css/theDocs.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto|Roboto+Mono" rel="stylesheet">
+    <link rel="icon" href="../../../assets/img/favicon.png">
+  </head>
+  <body>
+    
+    
+
+
+
+<div class="search-modal modal fade" id="search-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLabel">Search</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-wrapper">
+            <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+            <input
+              type="text"
+              id="search-input"
+              class="form-control initial-focus"
+              placeholder="Find something">
+          </div>
+        </div>
+        <ul id="search-results"></ul>
+      </div>
+      <div class="modal-footer">
+        <ul class="pagination" id="search-pages"></ul>
+        <div class="algolia-link">
+          <a href="https://www.algolia.com/" target="_blank">
+            <img src="../../../assets/img/search-by-algolia.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<header class="site-header sticky">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../">
+          <img src="../../../assets/img/logo_nav.svg" alt="logo">
+        </a>
+      </div>
+      <div class="spacer"></div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+        
+        <ul class="nav navbar-nav navbar-right">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+      </div>
+      <div class="search-header">
+  <button type="button" class="btn btn-search" data-toggle="modal" data-target="#search-modal">
+    <span class="fa fa-search fa-lg" aria-hidden="true"></span>
+  </button>
+</div>
+    </div>
+  </nav>
+  
+</header>
+
+    
+<main class="container">
+  <div class="row">
+    <aside class="col-sm-3 sidebar">
+
+  <div class="sidebar-nav">
+    <div>
+      <button type="button" class="sidebar-close" data-toggle="offcanvas">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <a class="sidebar-nav-brand" href="None">
+        <img src="../../../assets/img/logo_nav.svg" alt="logo">
+      </a>
+    </div>
+    <ul class="nav ">
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/install/">Install</a>
+  </li>
+  
+  
+  
+  
+  <li class="active">
+    <a href="/docs/">Documentation</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/models/">Models</a>
+  </li>
+  
+  
+  
+  
+  <li class="">
+    <a href="/support/">Support</a>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  <li class="">
+    <a href="/about/">About</a>
+  </li>
+  
+  
+</ul>
+    <ul class="social-icons">
+  
+  <li><a href="https://github.com/guildai" target="_blank"><i class="fa fa-github"></i></a></li>
+  
+  <li><a href="https://twitter.com/guild_ai" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  
+</ul>
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  <ul class="sidenav dropable sticky_disabled">
+    
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/intro/">Introduction</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/models/">Models</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/operations/">Operations</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/runs/">Runs</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/resources/">Resources</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/packages/">Packages</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/tests/">Tests</a>
+    </li>
+    
+    
+    
+    <li>
+      <a
+        class=""
+        href="/docs/remotes/">Remotes</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Visualization</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/guild-view/">Guild View</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/visual/tensorboard/">TensorBoard</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Commands</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/cat-cmd/">cat</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/check-cmd/">check</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/compare-cmd/">compare</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/diff-cmd/">diff</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/download-cmd/">download</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/export-cmd/">export</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/help-cmd/">help</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/import-cmd/">import</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/index-cmd/">index</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/init-cmd/">init</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/install-cmd/">install</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/label-cmd/">label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/ls-cmd/">ls</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/models-cmd/">models</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/new-cmd/">new</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/open-cmd/">open</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/operations-cmd/">operations</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/package-cmd/">package</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-cmd/">packages</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-delete-cmd/">packages delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-info-cmd/">packages info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/packages-list-cmd/">packages list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/pull-cmd/">pull</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/push-cmd/">push</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-cmd/">remote</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-start-cmd/">remote start</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-status-cmd/">remote status</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remote-stop-cmd/">remote stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/remotes-cmd/">remotes</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/run-cmd/">run</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-cmd/">runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-delete-cmd/">runs delete</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-diff-cmd/">runs diff</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-info-cmd/">runs info</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-label-cmd/">runs label</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-list-cmd/">runs list</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-purge-cmd/">runs purge</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-restore-cmd/">runs restore</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/runs-stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/search-cmd/">search</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/shell-cmd/">shell</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/stop-cmd/">stop</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/sync-cmd/">sync</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorboard-cmd/">tensorboard</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-cmd/">tensorflow</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/tensorflow-inspect-cmd/">tensorflow inspect</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/uninstall-cmd/">uninstall</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/commands/view-cmd/">view</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="active" href="#">Reference</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-file/">Guild file</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/reference/guild-home/">Guild home</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class="active"
+            href="/docs/reference/user-config/">User configuration</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+    
+    <li>
+      <a class="" href="#">Guides</a>
+      <ul>
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/">Overview</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-a-project/">Create a Guild project</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/convert-jupyter/">Convert a Jupyter Notebook</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/create-an-image-classifier/">Create an image classifier</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/train-on-ec2/">Train on EC2</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/backup-to-s3/">Backup to S3</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/compare-runs/">Compare runs</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/publish-to-pypi/">Publish to PyPI</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/debug-an-operation/">Debug an operation</a>
+        </li>
+        
+        
+        
+        <li>
+          <a
+            class=""
+            href="/docs/guides/specify-run-gpus/">Specify available GPUs</a>
+        </li>
+        
+        
+      </ul>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</aside>
+    <article
+      class="col-sm-9 main-content"
+      role="main">
+      <h1 id="user-configuration">User configuration</h1>
+<ol class="toc">
+<li><a href="#remotes">Remotes</a><ol class="md">
+<li><a href="#remote-type">Remote type</a></li>
+</ol>
+</li>
+<li><a href="#ssh-remote">ssh remote</a><ol class="md">
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#examples">Examples</a></li>
+</ol>
+</li>
+<li><a href="#ec2-remote">ec2 remote</a><ol class="md">
+<li><a href="#attributes_1">Attributes</a></li>
+<li><a href="#examples_1">Examples</a></li>
+</ol>
+</li>
+<li><a href="#s3-remote">s3 remote</a><ol class="md">
+<li><a href="#attributes_2">Attributes</a></li>
+<li><a href="#examples_2">Examples</a></li>
+</ol>
+</li>
+<li><a href="#diff">Diff</a><ol class="md">
+<li><a href="#attributes_3">Attributes</a></li>
+<li><a href="#examples_3">Examples</a></li>
+</ol>
+</li>
+</ol>
+<p>User configuration is defined in <code>~/.guild/config.yml</code>. It defines
+configuration and settings that Guild uses on a per-user basis.</p>
+<h2 id="remotes">Remotes</h2>
+<p>Remotes are defined under a top-level <code>remotes</code> object. Each remote is
+named using its <code>remotes</code> section key.</p>
+<pre><code class="language-yaml">remotes:
+  remote-1:
+    ...
+  remote-2:
+    ...
+  remote-3:
+   ...
+</code></pre>
+
+<p>For information on using remotes, see <a href="../../../docs/remotes/">Remotes</a>.</p>
+<h3 id="remote-type">Remote type</h3>
+<p>Remotes are classified by their <em>type</em>, which is specified using the
+<code>type</code> attribute. Each remote must define its type as one of the
+following values:</p>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>ssh</code></div>
+<div class="dd col col-sm-8 col-lg-9">System that is accessible over SSH (see <a href="#ssh-remote">ssh remote</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>ec2</code></div>
+<div class="dd col col-sm-8 col-lg-9">System running in Amazon EC2 (see <a href="#ec2-remote">ec2 remote</a>)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>s3</code></div>
+<div class="dd col col-sm-8 col-lg-9">Remote bucket in Amazon S3 (see <a href="#e3-remote">s3 remote</a>)</div>
+</div></div>
+<h2 id="ssh-remote">ssh remote</h2>
+<h3 id="attributes">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>host</code></div>
+<div class="dd col col-sm-8 col-lg-9">Server host name or IP address (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>port</code></div>
+<div class="dd col col-sm-8 col-lg-9">Server SSH port (number)
+  <p>
+  By default, port <code>22</code> is used for SSH connections.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>user</code></div>
+<div class="dd col col-sm-8 col-lg-9">User used when connecting over SSH (string)
+  <p>
+  By default, the active user name is used for SSH connections.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>guild-home</code></div>
+<div class="dd col col-sm-8 col-lg-9">Path to Guild home on the remote server (string)
+  <p>
+  Specify this value to use an alternative Guild home location on the
+  remote server. By default, the <code>.guild</code> relative path is
+  used. Relative paths are typically considered relative to the user
+  home directory, but this may be different depending on the active
+  user&rsquo;s SSH configuration. If <code>guild-env</code> is specified, relative
+  paths are considered relative to the Guild environment location.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>guild-env</code></div>
+<div class="dd col col-sm-8 col-lg-9">Path to Guild environment on the remote server (string)
+  <p>
+  If this value is specified, Guild will active the environment on the
+  remote server before running commands.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>use-prerelease</code></div>
+<div class="dd col col-sm-8 col-lg-9">Flag indicating whether or not to use the <code>--pre</code> flag when
+  installing required packages (boolean)
+  <p>
+  By default, Guild does not install pre-release package versions when
+  installing required packages for a run. If you want to install
+  pre-release packages, set this value to <code class="lit">yes</code>.</div>
+</div></div>
+<h3 id="examples">Examples</h3>
+<p>Remote named <code>deep-learning</code> with IP address <code>192.168.1.101</code>:</p>
+<pre><code class="language-yaml">remotes:
+  deep-learning:
+    type: ssh
+    host: 192.168.1.101
+</code></pre>
+
+<p>Remote named <code>big-server</code> that&rsquo;s accessed over the Internet over a
+non-standard port using a Guild environment:</p>
+<pre><code class="language-yaml">remotes:
+  big-server:
+    host: big01.my.co
+    port: 2202
+    user: ubuntu
+    guild-env: ~/sample-project/env
+</code></pre>
+
+<h2 id="ec2-remote">ec2 remote</h2>
+<h3 id="attributes_1">Attributes</h3>
+<p><code>ec2</code> remotes share all of the attribute of <code>ssh</code> remotes. See above
+for <code>ssh</code> attributes.</p>
+<p>In addition to the <code>ssh</code> attributes, <code>ec2</code> remotes support the following:</p>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>region</code></div>
+<div class="dd col col-sm-8 col-lg-9">AWS region used when creating the EC2 instance (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>ami</code></div>
+<div class="dd col col-sm-8 col-lg-9">AWS AMI used when creating the EC2 instance (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>instance-type</code></div>
+<div class="dd col col-sm-8 col-lg-9">EC2 instance type used when creating the EC2 instance (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>public-key</code></div>
+<div class="dd col col-sm-8 col-lg-9">Local path to SSH public key to install on the EC2 instance (string)
+  <p>
+  This value must be specified to access the remote server unless the
+  server configures a public key some other way (e.g. the key is on
+  the AMI, etc.)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>init</code></div>
+<div class="dd col col-sm-8 col-lg-9">Script to run when initializing the instance (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>init-timeout</code></div>
+<div class="dd col col-sm-8 col-lg-9">Timeout in seconds used when initializing the instance (number)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>private-key</code></div>
+<div class="dd col col-sm-8 col-lg-9">Path to private SSH key used when connecting to the instance (string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>password</code></div>
+<div class="dd col col-sm-8 col-lg-9">Password associated with <code>user</code> (string)
+  <p>
+  <strong>CAUTION:</strong> Passwords are stored in plain text and should not be
+  used for sensitive applications. To avoid revealing passwords, use
+  SSH public/private key authentication.</div>
+</div></div>
+<h3 id="examples_1">Examples</h3>
+<p>Remote named <code>k80</code> used to start a <code>p2.xlarge</code> instance in
+the <code>us-east-2</code> region:</p>
+<pre><code class="language-yaml">remotes:
+  k80:
+    type: ec2
+    region: us-east-2
+    ami: ami-4f62582a
+    instance-type: p2.xlarge
+    public-key: ~/.ssh/id_rsa.pub
+    user: ubuntu
+    init: |
+      set -ex
+      cat &gt; ~/.bashrc &lt;&lt; EOF
+      export LD_LIBRARY_PATH=/usr/local/cuda/lib64
+      EOF
+      . ~/.bashrc
+      sudo pip install --upgrade pip
+      sudo pip install --upgrade guildai
+      sudo pip install --upgrade tensorflow-gpu
+      mkdir -p ~/.guild/runs
+      guild check
+</code></pre>
+
+<h2 id="s3-remote">s3 remote</h2>
+<h3 id="attributes_2">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>bucket</code></div>
+<div class="dd col col-sm-8 col-lg-9">S3 bucket used for the remote environment (required string)</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>root</code></div>
+<div class="dd col col-sm-8 col-lg-9">Root path in the S3 bucket used for the remote environment (string)
+  <p>
+  By default the root of the bucket is used.</div>
+</div><div class="row"><div class="dt col col-sm-4 col-lg-3"><code>region</code></div>
+<div class="dd col col-sm-8 col-lg-9">Region associated with the bucket (string)
+  <p>
+  By default the environment variable <code>AWS_DEFAULT_REGION</code> is used for
+  the region.</div>
+</div></div>
+<h3 id="examples_2">Examples</h3>
+<p>Remote named <code>s3-backup</code> that uses the S3 bucket
+<code>deep-learning-backups</code>:</p>
+<pre><code class="language-yaml">remotes:
+  s3-backup:
+    bucket: deep-learning-backups
+</code></pre>
+
+<h2 id="diff">Diff</h2>
+<p>The <a class="cmd" href="../../../docs/commands/diff-cmd">diff</a> command uses the <code>diff</code> program by default. You can
+specify an alternative command by creating a <code>diff</code> top-level object.</p>
+<pre><code class="language-yaml">diff:
+  ...
+</code></pre>
+
+<h3 id="attributes_3">Attributes</h3>
+<div class="dl">
+<div class="row"><div class="dt col col-sm-4 col-lg-3"><code>command</code></div>
+<div class="dd col col-sm-8 col-lg-9">The command to use when diffing runs (string)
+  <p>
+  The command will be invoked as specified with two additional
+  arguments: the first and second run paths to diff.</div>
+</div></div>
+<h3 id="examples_3">Examples</h3>
+<p>Use <a class="ext" href="http://meldmerge.org/" target="_blank">Meld</a> to diff runs:</p>
+<pre><code class="language-yaml">diff:
+  command: meld
+</code></pre>
+
+<p>Use <a class="ext" href="https://www.colordiff.org/" target="_blank">colordiff</a> to diff runs:</p>
+<pre><code class="language-yaml">diff:
+  command: colordiff -ru
+</code></pre>
+      
+<ul class="pager">
+  
+  <li class="previous">
+    <a href="/docs/reference/guild-home/">
+      <span>Prev</span> <aside>Guild home</aside>
+    </a>
+  </li>
+  
+  
+  <li class="next">
+    <a href="/docs/guides/">
+      <span>Next</span> <aside>Guides</aside>
+    </a>
+  </li>
+  
+</ul>
+
+    </article>
+  </div>
+</main>
+
+    
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="row">
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <div class="copyright">Copyright &copy; 2017-2018 TensorHub, Inc.</div>
+        
+      </div>
+      <div class="col-md-6 col-sm-6 footer-cell">
+        <ul class="footer-menu">
+          <li><a href="mailto:niceperson@guild.ai">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+  <script src="../../../assets/js/vendor.min.js" data-manual></script>
+  <script src="../../../assets/js/theDocs.min.js"></script>
+</html>

@@ -8,14 +8,14 @@ configuration](term:user-config).
 
 Guild supports three types of remotes:
 
-*SSH*
+SSH
 : Use to run operations on a remote server over SSH.
 
-*AWS EC2*
+AWS EC2
 : Use to create AWS EC2 instances and use them to run operation over
   SSH.
 
-*AWS S3*
+AWS S3
 : Use to store and manage runs in an AWS S3 bucket.
 
 Remotes

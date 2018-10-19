@@ -1,6 +1,6 @@
 sidenav_title: label
 overview_title: label
-tags: runs
+tags: runs-alias
 
 # label command
 

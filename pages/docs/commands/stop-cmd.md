@@ -1,6 +1,6 @@
 sidenav_title: stop
 overview_title: stop
-tags: runs
+tags: runs-alias
 
 # stop command
 

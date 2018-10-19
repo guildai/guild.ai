@@ -63,5 +63,4 @@ clean-caches:
 	rm -rf /tmp/guild-ai-cmd-help
 
 update-submodules:
-	git submodule update guild
-	git submodule update packages
+	git submodule foreach git pull origin master

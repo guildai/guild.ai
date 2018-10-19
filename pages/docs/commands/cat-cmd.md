@@ -1,6 +1,6 @@
 sidenav_title: cat
 overview_title: cat
-tags: runs
+tags: run-info
 
 # cat command
 
