@@ -9,11 +9,11 @@ hide_in_pagenav: yes
 
 <div class="row match-height">
   <div class="col-md-4 col-sm-6 promo center">
-    <h4><a href="/docs/intro/#guild-projects">Guild projects</a></h4>
+    <h4><a href="/docs/intro/#guild-projects">TensorFlow projects</a></h4>
     <p>
 
-      Add <code>guild.yml</code> to your project to automate your
-      TensorFlow model operations and enable experiment tracking,
+      Add <code>guild.yml</code> to your TensorFlow or Keras project to
+      automate tasks and enable experiment tracking,
       testing, distribution and remote training.
 
       <a class="red-link" href="/docs/intro/#guild-projects">Learn more</a>.
@@ -64,9 +64,9 @@ hide_in_pagenav: yes
     <h4><a href="/docs/intro/#end-to-end-workflow">End-to-end workflow</a></h4>
     <p>
 
-      Automate your model's complete life cycle, from data collection
-      and pre-processing to training and evaluation to optimization
-      and deployment.
+      Automate your model life cycle from data collection and
+      pre-processing to training and evaluation to optimization and
+      deployment.
 
       <a class="red-link" href="/docs/intro/#end-to-end-workflow">Learn more</a>.
 
@@ -81,9 +81,9 @@ hide_in_pagenav: yes
     <h4><a href="/docs/intro/#model-tests">Model tests</a></h4>
     <p>
 
-      Verify all stages of your TensorFlow automation workflow with
-      tests that exercise code and check results such as expected loss
-      and accuracy ranges.
+      Verify all stages of your model workflow with tests that
+      exercise code and check results such as expected loss and
+      accuracy ranges.
 
       <a class="red-link" href="/docs/intro/#model-tests">Learn more</a>.
 
@@ -100,8 +100,8 @@ hide_in_pagenav: yes
     <p>
 
       Save time and reduce errors by reusing tested, proven models and
-      operations&mdash;developed by you as well as others in the
-      TensorFlow community.
+      operations&mdash;developed by you and others in the TensorFlow
+      community.
 
       <a class="red-link" href="/docs/intro/#packages-and-code-reuse">Learn more</a>.
 
