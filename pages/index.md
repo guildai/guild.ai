@@ -9,7 +9,7 @@ hide_in_pagenav: yes
 
 <div class="row match-height">
   <div class="col-md-4 col-sm-6 promo center">
-    <h4><a href="/docs/intro/#guild-projects">TensorFlow projects</a></h4>
+    <h4><a href="/docs/intro/#projects">TensorFlow projects</a></h4>
     <p>
 
       Add <code>guild.yml</code> to your TensorFlow or Keras project to

@@ -17,7 +17,7 @@ extra:
     Guild AI is a TensorFlow task runner and experiment tracker. It
     automates training, testing, deployment and use of your models.
 
-  subtext_width: 34em
+  subtext_width: 24em
 
   links:
     - name: github
