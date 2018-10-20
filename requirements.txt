@@ -1,5 +1,5 @@
 mkdocs==0.17.5
-markdown>=2.6.1
+markdown==2.6.1
 
 # req from guild - specify here to avoid having to install guildai
 #  package
