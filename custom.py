@@ -1297,4 +1297,5 @@ if __name__ == "__main__":
 
 print("###########################")
 print(os.getcwd())
-print(os.listdir("."))
+print(os.listdir("guild/guild/scripts/"))
+subprocess.call(["guild/guild/scripts/guild", "check"])
