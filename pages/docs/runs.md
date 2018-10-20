@@ -4,8 +4,6 @@ tags: concepts
 
 [TOC]
 
-## Overview
-
 Runs are generated in Guild AI by running an [](term:operation).
 
 When you train a model, you generate a *run*, which contains the

@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/install/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,55 +21,61 @@
         
     <url>
      <loc>/docs/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/intro/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/models/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/operations/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/runs/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/resources/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/packages/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/tests/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/docs/environments/</loc>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/docs/remotes/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -102,38 +108,8 @@
     
         
     <url>
-     <loc>/models/</loc>
-     <lastmod>2018-10-19</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
+     <loc>/packages/</loc>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -154,7 +130,7 @@
     
     <url>
      <loc>/support/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -162,7 +138,7 @@
     
     <url>
      <loc>/faq/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -170,7 +146,7 @@
     
     <url>
      <loc>/about/</loc>
-     <lastmod>2018-10-19</lastmod>
+     <lastmod>2018-10-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

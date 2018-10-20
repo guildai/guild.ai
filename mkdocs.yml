@@ -1,30 +1,21 @@
 site_name: Guild AI
 docs_dir: pages
-
 copyright: 2017-2018 TensorHub, Inc.
+strict: true
 extra:
-
   version: 0.5.0
-
   tagline:
-
     Automate TensorFlow tasks. Manage experiments. Reuse models.
-
   tagline_width: 18em
-
   subtext:
-
     Guild AI is a TensorFlow task runner and experiment tracker. It
     automates training, testing, deployment and use of your models.
-
   subtext_width: 24em
-
   links:
     - name: github
       url: https://github.com/guildai
     - name: twitter
       url:  https://twitter.com/guild_ai
-
 theme:
   name: null
   custom_dir: src
@@ -35,13 +26,11 @@ theme:
   search_index_only: true
   static_templates:
     - search.html
-
 plugins:
   - search
   - nav_resolve
   # Modifies mkdocs server to avoid needless rebuilds
   - serve
-
 markdown_extensions:
   - admonition
   - footnotes
@@ -132,7 +121,6 @@ markdown_extensions:
         - link_pattern: alias:guild-models
           href: /models/
           text: Guild AI models
-
 pages:
   - index.md
   - install.md
@@ -145,6 +133,7 @@ pages:
       - docs/resources.md
       - docs/packages.md
       - docs/tests.md
+      - docs/environments.md
       - docs/remotes.md
       - Visualization:
           - docs/visual/guild-view.md
@@ -269,35 +258,37 @@ pages:
       #    # TODO - docs/tutorials/stylize-images-with-magenta.md
       #    - docs/tutorials/workflow-with-virtualenv.md
       #- troubleshooting.md
-  - models:
-      - models/index.md
-      - Cloud ML:
-          - models/cloudml/index.md
-          - models/cloudml/census.md
-          - models/cloudml/mnist.md
-          - models/cloudml/datasets.md
+  - packages:
+      - packages/index.md
       - Guild AI:
-          - models/mnist.md
-      - Keras:
-          - models/keras/index.md
-          - models/keras/deep-dream.md
-          - models/keras/mnist.md
-      - Magenta:
-          - models/magenta/index.md
-          - models/magenta/image.md
-          - models/magenta/music.md
-      - Official TensorFlow:
-          - models/tensorflow/index.md
-          - models/tensorflow/mnist.md
-          - models/tensorflow/resnet.md
-          - models/tensorflow/wide-deep.md
-      - TF Slim:
-          - models/slim/index.md
-          - models/slim/inception.md
-          - models/slim/resnet.md
-          - models/slim/vgg.md
-      - Wikipedia:
-          - models/wikipedia/datasets.md
+          - packages/mnist.md
+      - Demo:
+          - packages/hello.md
+      #- Cloud ML:
+      #    - packages/cloudml/index.md
+      #    - packages/cloudml/census.md
+      #    - packages/cloudml/mnist.md
+      #    - packages/cloudml/datasets.md
+      #- Keras:
+      #    - packages/keras/index.md
+      #    - packages/keras/deep-dream.md
+      #    - packages/keras/mnist.md
+      #- Magenta:
+      #    - packages/magenta/index.md
+      #    - packages/magenta/image.md
+      #    - packages/magenta/music.md
+      #- Official TensorFlow:
+      #    - packages/tensorflow/index.md
+      #    - packages/tensorflow/mnist.md
+      #    - packages/tensorflow/resnet.md
+      #    - packages/tensorflow/wide-deep.md
+      #- TF Slim:
+      #    - packages/slim/index.md
+      #    - packages/slim/inception.md
+      #    - packages/slim/resnet.md
+      #    - packages/slim/vgg.md
+      #- Wikipedia:
+      #    - packages/wikipedia/datasets.md
   - support.md
   - faq.md
   - about.md

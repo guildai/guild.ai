@@ -932,15 +932,6 @@ created for each operation runs and can be viewed in various ways
 using Guild commands, including visualization tools for exploring runs
 and training logs.
 
-Guild supports a number of features not covered in this
-introduction. For more information about Guild, explore its
-[comprehensive documentation](/docs/) or select one of the **Next
-steps** below.
-
 ### Next steps
 
-TODO
-
-- A thing
-- Another thing
-- Yet another thing
+- [Browse Guild AI documentation](/docs/)

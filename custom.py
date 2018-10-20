@@ -935,7 +935,8 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         if len(ops) == 1:
             return (
                 '<code class="lit">{}</code> from {} operation'.format(
-                    source.select, self._op_link(ops[0], source)))
+                    ", ".join(source.select),
+                    self._op_link(ops[0], source)))
         else:
             comma_list = ", ".join([
                 self._op_link(op, source) for op in ops[:-1]
@@ -947,8 +948,13 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
 
     @staticmethod
     def _op_link(op, source):
-        op_slug = _slugify(op)
         model_slug = _slugify(source.resdef.modeldef.name)
+        op_parts = op.split(":", 1)
+        if len(op_parts) == 2:
+            op_name = op_parts[1]
+        else:
+            op_name = op_parts[0]
+        op_slug = _slugify(op_name)
         target = "{}-{}".format(model_slug, op_slug)
         return '<a href="#{}">{}</a>'.format(target, op)
 
