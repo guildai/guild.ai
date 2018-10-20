@@ -846,7 +846,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         cmd_help = self._get_cached_cmd_help(cmd)
         if cmd_help is None:
             log.info("Generating help for '%s' command", cmd)
-            args = ["guild"] + shlex.split(cmd) + ["--help"]
+            args = ["guild/guild/scipsts/guild"] + shlex.split(cmd) + ["--help"]
             env = {"GUILD_HELP_JSON": "1"}
             env.update(os.environ)
             out = subprocess.check_output(args, env=env)
