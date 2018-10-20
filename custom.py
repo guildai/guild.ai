@@ -555,11 +555,9 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
                 h5 = etree.Element("h5")
                 li.append(h5)
                 h5.text = cat_title
+                h5.set("class", "category-title")
             for page in index.iter_pages(url_prefix, cat_tag):
-                a = etree.Element("a")
-                li.append(a)
-                a.text = page.meta.get("overview_title") or page.title
-                a.set("href", page.abs_url)
+                self._apply_category_page(page, li)
 
     @staticmethod
     def _try_cat_info(link):
@@ -571,6 +569,39 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
             log.warning("invalid category URL '%s' (missing hash)", href)
             return None
         return parts + [link.text]
+
+    def _apply_category_page(self, page, parent):
+        item_div = etree.Element("div")
+        parent.append(item_div)
+        item_div.set("class", "category-item")
+        link_text, desc = self._split_overview_title(page)
+        item_div.append(self._category_link(page.abs_url, link_text))
+        if desc:
+            item_div.append(self._category_desc(desc))
+
+    @staticmethod
+    def _split_overview_title(page):
+        overview_title = page.meta.get("overview_title")
+        if overview_title:
+            parts = overview_title.split(" :: ", 1)
+            if len(parts) == 2:
+                return parts
+            else:
+                return parts[0], None
+        return page.title, None
+
+    @staticmethod
+    def _category_link(url, text):
+        a = etree.Element("a")
+        a.text = text
+        a.set("href", url)
+        return a
+
+    @staticmethod
+    def _category_desc(text):
+        span = etree.Element("span")
+        span.text = text
+        return span
 
 class Categories(Extension):
     """Generates a categorized view."""

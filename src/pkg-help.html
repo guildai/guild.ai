@@ -26,9 +26,9 @@
   {% if models %}
   <ul class="categorized-view">
     <li>
-      <h5>Models</h5>
+      <h5 class="category-title">Models</h5>
     {% for model in models %}
-    <a href="#{{ model.name|slugify }}">{{ model.name }}</a>
+    <div class="category-item"><a href="#{{ model.name|slugify }}">{{ model.name }}</a></div>
     {% endfor %}
     </li>
   </ul>
@@ -37,9 +37,9 @@
   {% if pkg.resources|public %}
   <ul class="categorized-view">
     <li>
-      <h5>Resources</h5>
+      <h5 class="category-title">Resources</h5>
     {% for res in pkg.resources|public %}
-    <a href="#{{ res.name|slugify }}">{{ res.name }}</a>
+    <div class="category-item"><a href="#{{ res.name|slugify }}">{{ res.name }}</a></div>
     {% endfor %}
     </li>
   </ul>

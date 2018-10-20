@@ -1,10 +1,9 @@
-sidenav_title: MNIST
-overview_title: MNIST
+overview_title: gpkg.mnist :: MNIST example
 tags: guild, demo
 
-# Guild AI MNIST
+# gpkg.mnist
 
-This package contains logistic regression and CNN models for training
+`gpkg.mnist` contains logistic regression and CNN models for training
 with the MNIST dataset. These are used primarily for introducing Guild
 AI and for testing.
 

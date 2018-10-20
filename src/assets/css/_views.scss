@@ -144,7 +144,7 @@
     }
   }
 
-  h5 {
+  .category-title {
     font-weight: 500;
     font-size: 15px;
     font-style: normal;
@@ -155,7 +155,7 @@
     position: relative;
   }
 
-  a {
+  .category-item {
     position: relative;
     display: block;
     margin-bottom: 10px;
@@ -168,6 +168,11 @@
       top: 4px;
       content: "\f0f6";
       font: normal normal normal 14px/1 FontAwesome;
+    }
+
+    span {
+      margin-left: 0.67em;
+      color: $gray-text-color;
     }
   }
 

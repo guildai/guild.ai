@@ -63,6 +63,10 @@ markdown_extensions:
           class: cmd
           href: '/docs/commands/{}-cmd'
           text: '{}'
+        - link_pattern: 'pkg:(.*)'
+          text: '{1}'
+          href: /packages/{1}/
+          class: pkg
         # term
         - link_pattern: 'term:(.*)'
           class: term
@@ -260,6 +264,9 @@ pages:
       #- troubleshooting.md
   - packages:
       - packages/index.md
+      - Computer vision:
+          - packages/slim.md
+          - packages/slim-models.md
       - Guild AI:
           - packages/mnist.md
       - Demo:

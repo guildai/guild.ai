@@ -1,4 +1,4 @@
-code, kbd, pre, samp, a.cmd {
+code, kbd, pre, samp, a.cmd, a.pkg {
   font-family: $font-family-code;
   color: $code-inline-color;
   background: inherit;
@@ -24,7 +24,9 @@ table.dl tr td.dt code {
   white-space: nowrap;
 }
 
-a.cmd {
+a.cmd,
+a.pkg,
+a > code {
   color: $link-color;
 }
 

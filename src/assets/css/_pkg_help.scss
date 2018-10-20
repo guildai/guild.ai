@@ -1,7 +1,18 @@
 .pkg-help {
 
+  margin-top: 30px;
+
+  h2 {
+    margin-top: 20px;
+  }
+
   .pkg-attrs {
     margin: 0 -8px;
+  }
+
+  + .toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
   }
 
   .toc.model {
