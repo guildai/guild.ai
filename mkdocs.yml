@@ -137,6 +137,7 @@ pages:
       - docs/resources.md
       - docs/packages.md
       - docs/tests.md
+      - docs/code-reuse.md
       - docs/environments.md
       - docs/remotes.md
       - Visualization:
@@ -217,6 +218,7 @@ pages:
           # TODO - docs/reference/plugin-api.md
 
       - Guides:
+          - docs/guides/index.md
           # - delete failed runs
           # - reuse models
           # - create a tf lite file
@@ -238,17 +240,17 @@ pages:
           # - test models (include tricks -m, -o -1)
           # - diffing runs
           # - diff images using Beyond Compare
-
-          - docs/guides/index.md
-          - docs/guides/create-a-project.md
+          - docs/guides/create-project.md
           - docs/guides/convert-jupyter.md
-          - docs/guides/create-an-image-classifier.md
+          - docs/guides/create-image-classifier.md
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
           - docs/guides/publish-to-pypi.md
-          - docs/guides/debug-an-operation.md
+          - docs/guides/debug-operation.md
           - docs/guides/specify-run-gpus.md
+          #- docs/guides/create-tflite-file.md
+
 
       #- Tutorials:
       #    # - deep dive - understanding slim support
