@@ -1,6 +1,4 @@
 grunt = node_modules/grunt/bin/grunt
-now = /usr/local/bin/now
-now_redirect = /usr/local/bin/now-redirect
 
 mkdocs = PYTHONPATH=.:../guild mkdocs
 
@@ -20,25 +18,6 @@ index: $(grunt)
 
 build-and-index: $(grunt)
 	$(grunt) build-and-index
-
-stage: build-and-index $(now)
-	cp now.json.in site/now.json
-	cd site && $(now) deploy && $(now) alias www-staging.guild.ai
-
-promote-staging: $(now)
-	target=`$(now) alias ls | grep www-staging.guild.ai | cut -d' ' -f3` \
-	  && $(now) alias set $$target www.guild.ai
-
-ensure-redirect: $(now) $(now_redirect)
-	$(now_redirect) www.guild.ai && $(now) alias guild.ai
-
-$(now):
-	@echo -n "This operation requires now. "
-	@echo "Install it using 'npm install -g now'."
-
-$(now_redirect):
-	@echo -n "This operation requires now-reirect. "
-	@echo "Install it using 'npm install -g now-redirect'."
 
 serve: $(grunt)
 	$(grunt) serve
