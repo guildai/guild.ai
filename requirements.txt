@@ -1,8 +1,8 @@
 mkdocs==0.17.5
 markdown==2.6.1
 
-# req from guild - specify here to avoid having to install guildai
-#  package
+# requirements from guild - specify here to avoid having to install
+# guildai package
 
 PyYAML>=2.12
 Werkzeug>=0.13
