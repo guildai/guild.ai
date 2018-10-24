@@ -5,12 +5,12 @@ strict: true
 extra:
   version: 0.5.0
   tagline:
-    Automate TensorFlow tasks. Manage experiments. Reuse models.
-  tagline_width: 18em
+    Task runner and package manager for TensorFlow.
+  tagline_width: 16em
   subtext:
-    Guild AI is a TensorFlow task runner and experiment tracker. It
-    automates training, testing, deployment and use of your models.
-  subtext_width: 24em
+    Automate training, testing, and deployment. Capture runs as
+    experiments. Install, share, and distribute your models.
+  subtext_width: 28em
   links:
     - name: github
       url: https://github.com/guildai

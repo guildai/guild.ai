@@ -727,7 +727,7 @@ Press `Enter` to confirm.
 Guild runs `train` and `predict`---the operations should complete
 without error and Guild shows **`All tests passed`**.
 
-## Packages and code reuse
+## Packages
 
 Guild supports packaging and distribution your models, which allow
 others to use your models by simply installing a package. Once

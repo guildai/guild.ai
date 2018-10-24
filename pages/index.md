@@ -96,17 +96,17 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4><a href="/docs/intro/#packages-and-code-reuse">Packages and code reuse</a></h4>
+    <h4><a href="/docs/intro/#packages">Packages</a></h4>
     <p>
 
       Save time and reduce errors by reusing tested, proven models and
       operations&mdash;developed by you and others in the TensorFlow
       community.
 
-      <a class="red-link" href="/docs/intro/#packages-and-code-reuse">Learn more</a>.
+      <a class="red-link" href="/docs/intro/#packages">Learn more</a>.
 
     </p>
-    <a href="/docs/intro/#packages-and-code-reuse">
+    <a href="/docs/intro/#packages">
       <img title="Guild project reusing code from TensorFlow, PyPI and GitHub"
            class="feature-grid-img" src="/assets/img/reuse.png">
     </a>
