@@ -1,5 +1,5 @@
 overview_title: gpkg.mnist :: MNIST example
-tags: guild, demo
+tags: demo
 
 # gpkg.mnist
 

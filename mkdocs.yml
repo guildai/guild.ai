@@ -124,9 +124,18 @@ markdown_extensions:
           target: _blank
           class: ext
           text: TensorFlow model zoo
-        - link_pattern: alias:guild-models
-          href: /models/
-          text: Guild AI models
+        - link_pattern: alias:packages
+          href: /packages/
+          text: Guild AI packages
+        - link_pattern: alias:add-guild
+          href: /docs/guides/add-guild/
+          text: Add Guild to a project
+        - link_pattern: alias:pip
+          text: pip
+          href: https://pip.pypa.io/en/stable/
+          target: _blank
+          class: ext
+
 pages:
   - index.md
   - install.md
@@ -243,14 +252,14 @@ pages:
           # - diffing runs
           # - diff images using Beyond Compare
           - docs/guides/add-guild.md
-          - docs/guides/convert-notebook.md
+          #- docs/guides/convert-notebook.md
           - docs/guides/create-image-classifier.md
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
           - docs/guides/publish-to-pypi.md
-          - docs/guides/debug-operation.md
-          - docs/guides/specify-run-gpus.md
+          #- docs/guides/debug-operation.md
+          #- docs/guides/specify-run-gpus.md
           #- docs/guides/create-tflite-file.md
 
 
@@ -271,10 +280,11 @@ pages:
       - Computer vision:
           - packages/slim.md
           - packages/slim-models.md
-      - Guild AI:
-          - packages/mnist.md
+      - Art:
+          - packages/magenta-image.md
       - Demo:
           - packages/hello.md
+          - packages/mnist.md
       #- Cloud ML:
       #    - packages/cloudml/index.md
       #    - packages/cloudml/census.md

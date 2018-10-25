@@ -78,7 +78,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4><a href="/docs/intro/#model-tests">Model tests</a></h4>
+    <h4><a href="/docs/intro/#model-tests">Automate testing</a></h4>
     <p>
 
       Verify all stages of your model workflow with tests that
@@ -152,13 +152,9 @@ hide_in_pagenav: yes
     <h3><a href="/docs/guides/backup-to-s3/">Backup runs to S3</a></h3>
     <p>
 
-
-
-      Nulla vitae urna nec est convallis malesuada non sit amet
-      orci. Aenean ut mauris id velit pretium malesuada at scelerisque
-      ante. Vestibulum eu tellus ut lectus consectetur
-      faucibus. Phasellus sodales accumsan ex et sodales. Etiam vel mi
-      eu leo tincidunt vulputate. Aliquam quis auctor massa.
+      Backup runs on S3 for safe keeping with Guild. All of Guild's
+      run management commands are supported for S3, including list,
+      delete, restore, and label.
 
     </p>
 
@@ -176,11 +172,10 @@ hide_in_pagenav: yes
     <h3><a href="/docs/visual/tensorboard/">Visualize runs with TensorBoard</a></h3>
     <p>
 
-      Nulla vitae urna nec est convallis malesuada non sit amet
-      orci. Aenean ut mauris id velit pretium malesuada at scelerisque
-      ante. Vestibulum eu tellus ut lectus consectetur
-      faucibus. Phasellus sodales accumsan ex et sodales. Etiam vel mi
-      eu leo tincidunt vulputate. Aliquam quis auctor massa.
+      TensorBoard is a powerful visualization tool for TensorFlow. Use
+      Guild to start TensorBoard to view runs with a single
+      command. Guild automatically synchronizes TensorBoard with your
+      current set of runs---you only need to start TensorBoard once.
 
     </p>
 
@@ -198,11 +193,10 @@ hide_in_pagenav: yes
     <h3><a href="/docs/guides/compare-runs/">Compare run performance and diff changes</a></h3>
     <p>
 
-      Nulla vitae urna nec est convallis malesuada non sit amet
-      orci. Aenean ut mauris id velit pretium malesuada at scelerisque
-      ante. Vestibulum eu tellus ut lectus consectetur
-      faucibus. Phasellus sodales accumsan ex et sodales. Etiam vel mi
-      eu leo tincidunt vulputate. Aliquam quis auctor massa.
+      As you run operations, Guild automatically captures run logs and
+      files so you can study and compare them. Guild seamlessly
+      indexes TensorFlow event logs to capture training and evaluation
+      metrics, letting you quickly view model performance across runs.
 
     </p>
 
@@ -220,11 +214,9 @@ hide_in_pagenav: yes
     <h3><a href="/docs/guides/publish-to-pypi/">Publish packaged models to PyPI</a></h3>
     <p>
 
-      Nulla vitae urna nec est convallis malesuada non sit amet
-      orci. Aenean ut mauris id velit pretium malesuada at scelerisque
-      ante. Vestibulum eu tellus ut lectus consectetur
-      faucibus. Phasellus sodales accumsan ex et sodales. Etiam vel mi
-      eu leo tincidunt vulputate. Aliquam quis auctor massa.
+      To share your models with other developers, Guild lets you
+      quickly generate Python packages and upload them to PyPI. Users
+      install your models using pip, Conda, or Guild.
 
     </p>
 
@@ -239,6 +231,25 @@ hide_in_pagenav: yes
 # Get started
 
 <div class="row match-height" style="margin-bottom:40px">
+
+  <div class="col col-md-6">
+    <div class="promo left">
+      <h3><a href="/docs/intro/">Guild AI introduction</a></h3>
+      <p class="expand">
+
+        If you're new to Guild AI, this introduction covers core
+        features and functionality. Start here to learn about
+        projects, models and operations, runs, end-to-end workflow,
+        automated testing and packaging.
+
+      </p>
+      <a class="btn btn-primary cta" href="/docs/intro/"
+         >Guild AI introduction <i class="fa next"></i></a>
+    </div>
+  </div>
+
+
+  <!--
   <div class="col col-md-6">
     <div class="promo left">
       <h3><a href="/docs/guides/convert-jupyter">Convert a Jupyter Notebook to a Guild project</a></h3>
@@ -253,10 +264,11 @@ hide_in_pagenav: yes
          >Convert a Jupyter Notebook <i class="fa next"></i></a>
     </div>
   </div>
+  -->
 
   <div class="col col-md-6">
     <div class="promo left">
-      <h3><a href="/docs/guides/create-a-project/">Add Guild to your TensorFlow or Keras project</a></h3>
+      <h3><a href="/docs/guides/create-a-project/">Add Guild to your project</a></h3>
       <p class="expand">
 
         If you have scripts that train your TensorFlow or Keras
@@ -265,13 +277,13 @@ hide_in_pagenav: yes
         features.
 
       </p>
-      <a class="btn btn-primary" href="/docs/guides/create-a-project/">Add Guild to a project <i class="fa next"></i></a>
+      <a class="btn btn-primary" href="/docs/guides/add-guild/">Add Guild to your project <i class="fa next"></i></a>
     </div>
   </div>
 
   <div class="col col-md-6">
     <div class="promo left">
-      <h3><a href="/docs/guides/create-an-image-classifier/">Create an image classifier</a></h3>
+      <h3><a href="/docs/guides/create-image-classifier/">Create an image classifier</a></h3>
       <p class="expand">
 
         Guild supports a variety of feature-rich packages and project
@@ -279,7 +291,7 @@ hide_in_pagenav: yes
         creating an image classifier.
 
       </p>
-      <a class="btn btn-primary" href="/docs/guides/create-an-image-classifier/">Create an image classifier <i class="fa next"></i></a>
+      <a class="btn btn-primary" href="/docs/guides/create-image-classifier/">Create an image classifier <i class="fa next"></i></a>
     </div>
   </div>
 

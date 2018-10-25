@@ -28,8 +28,15 @@ TensorBoard by running:
 guild tensorboard
 ```
 
-For more information, see [tensorboard
-command](/docs/commands/tensorboard_cmd/).
+You can also filter runs using Guild's run filtering options. For
+example, to view only runs for the `train` operation in TensorBoard,
+use:
+
+``` command
+guild tensorboard --operation train
+```
+
+For more information, see [tensorboard](cmd:tensorboard).
 
 TensorBoard is also integrated with [Guild
 View](/docs/visual/guild-view/). You can launch TensorBoard from Guild
