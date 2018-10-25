@@ -47,9 +47,9 @@ hide_in_pagenav: yes
     <h4><a href="/docs/intro/#experiments">Experiments</a></h4>
     <p>
 
-      Track experiments to save logs and trained models, compare
-      performance, diff files, visualize results in TensorBoard and
-      backup to the cloud.
+      Capture results as unique experiments by running
+      operations&mdash;compare performance, diff changes, visualize
+      with TensorBoard and backup to the cloud.
 
       <a class="red-link" href="/docs/intro/#experiments">Learn more</a>.
 
@@ -131,9 +131,10 @@ hide_in_pagenav: yes
     <h3><a href="/docs/guides/train-on-ec2/">Train remotely on Amazon EC2</a></h3>
     <p>
 
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-      vel nisi ut neque vehicula pellentesque. Donec tellus nisi,
-      ultrices sit amet felis ac, vehicula hendrerit ipsum.
+      Guild supports remote training on EC2, including setup and tear
+      down of EC2 infrastructure. If your local compute resources
+      aren't enough for a training operation, start an EC2 remote and
+      run your operation there.
 
       <p>
         <a class="red-link" href="/docs/guides/train-on-ec2/">Learn more</a>

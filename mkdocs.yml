@@ -15,7 +15,7 @@ extra:
     - name: github
       url: https://github.com/guildai
     - name: twitter
-      url:  https://twitter.com/guild_ai
+      url:  https://twitter.com/guildai
 theme:
   name: null
   custom_dir: src
@@ -75,6 +75,7 @@ markdown_extensions:
           arg_maps:
             - control-key: https://en.wikipedia.org/wiki/Control_key
               flag: /docs/operations/#flags
+              guild-env: /docs/environments/
               guild-file: /docs/reference/guild-file/
               guild-view: /docs/visual/guild-view/
               index: /docs/reference/guild-home/#runs-index
@@ -84,6 +85,7 @@ markdown_extensions:
               operation: /docs/operations/
               package-file: /docs/reference/package-file/
               package: /docs/packages/
+              remote: /docs/remotes/
               resource-cache: /docs/reference/guild-home/#resource-cache
               resource: /docs/resources/
               run-dir: /docs/runs/#run-directory
@@ -240,8 +242,8 @@ pages:
           # - test models (include tricks -m, -o -1)
           # - diffing runs
           # - diff images using Beyond Compare
-          - docs/guides/create-project.md
-          - docs/guides/convert-jupyter.md
+          - docs/guides/add-guild.md
+          - docs/guides/convert-notebook.md
           - docs/guides/create-image-classifier.md
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
