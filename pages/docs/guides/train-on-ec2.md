@@ -4,8 +4,8 @@ tags: remote
 
 [TOC]
 
-The guide describes how to run Guild operations on EC2 through Guild's
-[remote](term:remote) facility.
+This guide describes how to run Guild operations on EC2 through
+Guild's [remote](term:remote) facility.
 
 ## Requirements
 

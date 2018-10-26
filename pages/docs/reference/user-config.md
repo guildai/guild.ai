@@ -98,7 +98,7 @@ non-standard port using a Guild environment:
 ``` yaml
 remotes:
   big-server:
-    host: big01.my.co
+    host: big.my.co
     port: 2202
     user: ubuntu
     guild-env: ~/sample-project/env
@@ -168,7 +168,6 @@ remotes:
       sudo pip install --upgrade pip
       sudo pip install --upgrade guildai
       sudo pip install --upgrade tensorflow-gpu
-      mkdir -p ~/.guild/runs
       guild check
 ```
 
@@ -199,6 +198,16 @@ Remote named `s3-backup` that uses the S3 bucket
 remotes:
   s3-backup:
     bucket: deep-learning-backups
+```
+
+Project specific remote named `s3-my-project` that uses a sub-folder
+of the S3 bucket `deep-learning-backups`:
+
+``` yaml
+remotes:
+  s3-my-project:
+    bucket: deep-learning-backups
+    root: my-project
 ```
 
 ## Diff
