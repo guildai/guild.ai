@@ -281,35 +281,13 @@ pages:
           - packages/slim.md
           - packages/slim-models.md
       - Art:
+          - packages/keras-deep-dream.md
           - packages/magenta-image.md
-      - Demo:
+          - packages/magenta-music.md
+      - Example:
           - packages/hello.md
+          - packages/keras-mnist.md
           - packages/mnist.md
-      #- Cloud ML:
-      #    - packages/cloudml/index.md
-      #    - packages/cloudml/census.md
-      #    - packages/cloudml/mnist.md
-      #    - packages/cloudml/datasets.md
-      #- Keras:
-      #    - packages/keras/index.md
-      #    - packages/keras/deep-dream.md
-      #    - packages/keras/mnist.md
-      #- Magenta:
-      #    - packages/magenta/index.md
-      #    - packages/magenta/image.md
-      #    - packages/magenta/music.md
-      #- Official TensorFlow:
-      #    - packages/tensorflow/index.md
-      #    - packages/tensorflow/mnist.md
-      #    - packages/tensorflow/resnet.md
-      #    - packages/tensorflow/wide-deep.md
-      #- TF Slim:
-      #    - packages/slim/index.md
-      #    - packages/slim/inception.md
-      #    - packages/slim/resnet.md
-      #    - packages/slim/vgg.md
-      #- Wikipedia:
-      #    - packages/wikipedia/datasets.md
   - support.md
   - faq.md
   - about.md

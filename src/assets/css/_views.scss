@@ -170,9 +170,13 @@
       font: normal normal normal 14px/1 FontAwesome;
     }
 
+    a {
+      margin-right: 0.67em;
+    }
+
     span {
-      margin-left: 0.67em;
       color: $gray-text-color;
+      display: inline-block;
     }
   }
 

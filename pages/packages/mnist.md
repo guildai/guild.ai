@@ -1,5 +1,5 @@
 overview_title: gpkg.mnist :: MNIST example
-tags: demo
+tags: example
 
 # gpkg.mnist
 
@@ -7,4 +7,4 @@ tags: demo
 with the MNIST dataset. These are used primarily for introducing Guild
 AI and for testing.
 
-[PKG-HELP mnist]
+[PKG-HELP gpkg/mnist]

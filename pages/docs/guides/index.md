@@ -9,5 +9,4 @@ tags: step-by-step
 - [Analyze](category:/docs/guides/#analyze)
 - [Remote support](category:/docs/guides/#remote)
 - [Model development](category:/docs/guides/#developer)
-#- [Mobile](category:/docs/guides/#mobile)
 - [Tips and tricks](category:/docs/guides/#tip)
