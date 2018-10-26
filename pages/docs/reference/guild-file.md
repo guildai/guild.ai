@@ -684,8 +684,6 @@ A test step is an action performed for a test. When a test is run,
 Guild executes each step in the order defined for the test. If a step
 fails, the test fails.
 
-### Step type
-
 Test steps have a *type*, which is identified by the use of one and
 only one of the following type attribute:
 
@@ -717,8 +715,68 @@ only one of the following type attribute:
 
 ### `run` step attributes
 
-XXX
+`flags`
+: Map of flag names to values to use for the run.
+
+`expect`
+: List of [checks](#run-checks) to perform if the run succeeds. If a
+  check fails, the run step fails.
+
+`disable-plugins`
+: List of plugins to disable for the run. See [](cmd:run) for details
+  on disabling plugins.
+
+### run checks
+
+A run check is defines in the `run` step `expects` list. A check is
+defined by a type attribute. Guild supports the following checks:
+
+`file`
+: Check that a file exists and optionally check its contents.
+
+`output`
+: Checkout run output.
+
+#### `file` check
+
+Use a `file` check to verify that a run generated expected files. The
+value for the `file` attribute is a path or pattern of the expected
+file or files. Paths are relative to the run directory.
+
+You may also check the file contents by either comparing it to a file
+or by specifying a regular expression to check, if the expected file
+is a text file. See below for details.
+
+Additional attributes:
+
+`compare`
+: Compare the file or files to a file containing the expected
+  content. If the generated file or files differ, the check fails.
+
+`contains`
+: Search the file or files for the specified regular expression. If
+  the generated file or files do not contain the pattern, the check
+  fails.
+
+#### `output` check
+
+Use an `output` check to check the run output for a pattern. The value
+of the `output` attribute is a regular expression. If the run output
+does not contain the pettern, the check fails.
 
 ### `for-each-model` step attributes
 
-XXX
+A `for-each-model` step runs a list of steps for each model defined in
+the Guild file.
+
+Attributes:
+
+`steps`
+: A list of [test steps](#test-steps) to run for each model.
+
+`models`
+: An optional list of models to run steps for. If not specified, all
+  of the models in the Guild file are used.
+
+`except`:
+: An optional list of models to omit from the list of models.
