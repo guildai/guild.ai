@@ -9,7 +9,7 @@ existing project.
 
 To demonstrate the process, we use the [SRGAN TensorLayer project
 ->](https://github.com/tensorlayer/srgan) as our starting point and
-incementally build Guild support in each step. Our final project
+incrementally build Guild support in each step. Our final project
 supports these operations:
 
 `train`
@@ -35,7 +35,7 @@ to project code.
 
 Our goal in adding Guild support is to define project models and their
 operations in a [Guild file](ref:guild-file), which is a file named
-`guild.yml` in the project root directory. Once modela and operations
+`guild.yml` in the project root directory. Once models and operations
 are defined, project developers and users can perform these tasks
 using Guild:
 
@@ -168,7 +168,7 @@ if tl.global_flag['mode'] == 'srgan':
 elif tl.global_flag['mode'] == 'evaluate':
     evaluate()
 else:
-    raise Exception("Unknow --mode")
+    raise Exception("Unknown --mode")
 ```
 
 By looking at the source, it's clear that the project supports two

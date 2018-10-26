@@ -40,7 +40,7 @@ Running ``guild operations`` in the `my-model` project directory shows:
 ./my-model:export-and-freeze  Export an inference graph with checkpoint weights
 ./my-model:finetune           Finetune a trained model
 ./my-model:label              Classify an image using a trained model
-./my-model:tflite             Generate a TFLite file from a frozen graph
+./my-model:tflite             Generate a TF Lite file from a frozen graph
 ./my-model:train              Train model from scratch
 ./my-model:transfer-learn     Train model using transfer learning
 ```
@@ -121,7 +121,7 @@ Here are two models that each extend `model-base`:
 ```
 
 In this example, both `cnn` and `logistic-regression` inherit the
-`train` operation from `model-base`. Using pararameters, each
+`train` operation from `model-base`. Using parameters, each
 extending model defines values used by the extended configuration.
 
 ## Packaged operation modules

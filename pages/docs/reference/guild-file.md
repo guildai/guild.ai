@@ -762,7 +762,7 @@ Additional attributes:
 
 Use an `output` check to check the run output for a pattern. The value
 of the `output` attribute is a regular expression. If the run output
-does not contain the pettern, the check fails.
+does not contain the pattern, the check fails.
 
 ### `for-each-model` step attributes
 

@@ -146,7 +146,7 @@ Press `Enter` to confirm.
 
 Guild uses [Terraform ->](https://www.terraform.io/) to create and
 start the various services on AWS used by the remote. This may take
-serveral minutes.
+several minutes.
 
 Guild uses the script specified in the remote's `init` to initialize
 the server when it starts. You can customize this script as needed to

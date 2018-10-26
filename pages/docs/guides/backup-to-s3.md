@@ -268,7 +268,7 @@ guild runs -r s3-backup
 ## Manage runs in S3
 
 Guild supports the following run management commands for S3
-remotes. This includs:
+remotes. This includes:
 
 [runs delete](cmd:runs-delete)
 : Delete a run in S3 (can be undeleted using `restore`).

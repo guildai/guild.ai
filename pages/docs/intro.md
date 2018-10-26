@@ -240,7 +240,7 @@ Confirm that the project structure is now:
 </ul>
 </div>
 
-The `train` module uses Keras to train a simple image classifer. The
+The `train` module uses Keras to train a simple image classifier. The
 module is derived from the [TensorFlow getting started tutorial
 Notebook
 ->](https://github.com/tensorflow/docs/blob/master/site/en/tutorials/keras/basic_classification.ipynb). The
@@ -444,7 +444,7 @@ have an *evaluate* operation.
 By running various operations, you use Guild to automate your
 workflow.
 
-Consider the following worflow, which generates TensorFLow Lite files
+Consider the following worflow, which generates TensorFlow Lite files
 for deployment to mobile devices:
 
 <img class="md" style="width:400px" src="/assets/img/workflow-2.png">
@@ -871,7 +871,7 @@ guild test fashion
 
 In this case you must specify the package to test.
 
-Press `Enter` to continue. Guild runs the two operations assoicated
+Press `Enter` to continue. Guild runs the two operations associated
 with test.
 
 When the two operations are completed, you may use the various Guild
