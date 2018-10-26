@@ -16,13 +16,14 @@ top-level objects.
 
 A top-level object may one of:
 
-- `package`
 - `model`
+- `package`
 - `config`
+- `test`
 
 Top-level objects are identified by the presence of an identifying
-attribute: `package`, `model`, or `config`. A Guild file may contain
-top-level objects that do not have one of these identifying
+attribute: `model`, `package`, `config`, or `test`. A Guild file may
+contain top-level objects that do not have one of these identifying
 attributes, but these objects are ignored by Guild.
 
 The value of identifying attributes are used as object identifiers.
@@ -31,13 +32,6 @@ A top-level object must only contain one and only one identifying
 attribute.
 
 ### Examples
-
-Top-level package:
-
-```yaml
-package: my-package
-description: My package
-```
 
 Top-level model:
 
@@ -51,6 +45,13 @@ Top-level config:
 ```yaml
 config: my-config
 description: My config
+```
+
+Top-level package:
+
+```yaml
+package: my-package
+description: My package
 ```
 
 List of top-level objects:
@@ -67,6 +68,9 @@ List of top-level objects:
 
 - config: shared
   description: Share config
+
+- test: all
+  description: Test all models
 ```
 
 Illegal top-level object (multiple identifiers):
@@ -108,74 +112,6 @@ model redefines its description while the second does not.
 
 - model: model-b
   extends: base
-```
-
-## Packages
-
-A Guild file must contain at most one `package` object.
-
-Packages contain information used by Guild to generate Guild packages.
-
-### Attributes
-
-`package`
-: Package name (required string)
-
-`description`
-: Project description (string)
-  <p>
-  This may be a multi-line description.
-
-`version`
-: Project version (required string)<p>
-
-`url`
-: URL to package website (URL)
-
-`maintainer`
-: Name of individual or organization package maintainer (string)
-
-`maintainer-email`
-: Email of package maintainer (email address)
-
-`license`
-: Name of package license (string)
-
-`tags`
-: List of packages tags (list of strings)
-
-`python-tag`
-: Value used as the Python tag when generating the package (string)
-
-`data_files`
-: List of additional files to include in the package (list of strings)
-
-`resources`
-: List of package resources (list of [resources](#resources))
-
-`python-requires`
-: Version of Python required by the package (string)
-
-`requires`
-: List of other packages required by the package (list of strings)
-
-### Examples
-
-Package definition for `slim.resnet`:
-
-``` yaml
-package: slim.resnet
-version: 0.3.0
-description:
-  TF-Slim ResNet models (50, 101, 152, and 200 layer models for ResNet v1 and v2)
-url: https://github.com/guildai/index/tree/master/slim/resnet
-maintainer: Guild AI
-maintainer-email: packages@guild.ai
-requires:
-  - slim>=0.3.0.dev11
-  - slim.datasets>=0.3.0.dev3
-license: Apache 2.0
-tags: [resnet, images, model]
 ```
 
 ## Models
@@ -483,11 +419,6 @@ resources:
 `sources`
 : List of resource sources (list of [resource sources](#resource-sources))
 
-`private`
-: Flag indicating whether or not the resource is private (boolean)
-  <p>
-  Private resources don't appear in resource lists.
-
 `references`
 : List of reference URLs associated with the resource (list of URLs)
   <p>
@@ -612,3 +543,182 @@ resources:
       - operation: train
         select: checkpoint|model\.ckpt.*
 ```
+
+## Packages
+
+A Guild file may contain at most one `package` object.
+
+Packages contain information used by Guild to generate Guild packages.
+
+### Attributes
+
+`package`
+: Package name (required string)
+
+`description`
+: Project description (string)
+  <p>
+  This may be a multi-line description.
+
+`version`
+: Project version (required string)<p>
+
+`url`
+: URL to package website (URL)
+
+`maintainer`
+: Name of individual or organization package maintainer (string)
+
+`maintainer-email`
+: Email of package maintainer (email address)
+
+`license`
+: Name of package license (string)
+
+`tags`
+: List of packages tags (list of strings)
+
+`python-tag`
+: Value used as the Python tag when generating the package (string)
+
+`data_files`
+: List of additional files to include in the package (list of strings)
+
+`resources`
+: List of package resources (list of [resources](#resources))
+
+`python-requires`
+: Version of Python required by the package (string)
+
+`requires`
+: List of other packages required by the package (list of strings)
+
+### Examples
+
+Package definition for `slim.resnet`:
+
+``` yaml
+package: gpkg.slim.models
+version: 0.5.0
+description:
+  TF-Slim models including support for Inception, ResNet, VGG,
+  MobileNet, NASNet, and PNASNet
+url: https://github.com/guildai/packages/tree/master/slim/models
+author: Guild AI
+author-email: packages@guild.ai
+license: Apache 2.0
+requires:
+  - gpkg.slim
+  - gpkg.tflite
+```
+
+## Tests
+
+A Guild file may contain multiple `test` top-level objects. A test
+defines steps used by the [](cmd:test) command.
+
+### Attributes
+
+`test`
+: Test name (required string)
+
+`description`
+: Test description (string)
+  <p>
+  This may be a multi-line description.
+
+`steps`
+: Test steps (list of [test steps](#test-steps))
+
+### Examples
+
+Tests defined in `gpkg.slim.models:
+
+``` yaml
+- test: package-help
+  description: Check package help
+  steps:
+    - compare-help: test/help
+
+- test: models
+  description: Basic test of package models
+  steps:
+    - run: images:prepare
+      flags:
+        images: test/sample-images
+        random-seed: 801
+      expected:
+        - file: data/train-weights.txt
+          compare: test/sample-images/train-weights.txt
+    - for-each-model:
+        except:
+          - images
+        steps:
+          - run: transfer-learn
+            flags:
+              auto-scale: no
+              clone_on_cpu: 'True'
+              train-steps: 1
+            expect:
+              - file: train/checkpoint
+              - file: train/graph.pbtxt
+          - run: evaluate
+            flags:
+              eval-batches: 1
+              batch-size: 5
+            expect:
+              - output: eval/Accuracy\[.+\]
+              - output: eval/Recall_5\[1\]
+          - run: export-and-freeze
+            expect:
+              - file: graph.pb
+              - file: frozen_graph.pb
+          - run: tflite
+            expect:
+              - file: model.tflite
+```
+
+## Test steps
+
+A test step is an action performed for a test. When a test is run,
+Guild executes each step in the order defined for the test. If a step
+fails, the test fails.
+
+### Step type
+
+Test steps have a *type*, which is identified by the use of one and
+only one of the following type attribute:
+
+`compare-help`
+: Compares help generated for the Guild file with the contents of a
+  text file. The value of the `compare-help` attribute is a path to
+  the text file that contains the expected help. The step fails if the
+  generated help does not match the contents of the text file.
+  <p>
+  To generate the text file, use ``guild help > PATH`` where `PATH` is
+  a location relative to the Guild file (e.g. ``test/help``).
+
+`run`
+: Runs an operation and optionally verifies its output. The value of
+  the `run` attribute is the name of the operation to run. If the
+  Guild file contains more than one more and the operation applies to
+  a non-default model, the model must be included in the value in the
+  form `MODEL:OPERATION`.
+  <p>
+  See [run step attributes](#run-step-attributes) for a list of
+  supported attributes.
+
+`for-each-model`
+: Performs a list of steps for each model defined in the Guild file.
+  <p>
+  See [for-each-model step
+  attributes](#for-each-model-step-attributes) for a list of supported
+  attributes.
+
+### `run` step attributes
+
+XXX
+
+### `for-each-model` step attributes
+
+XXX

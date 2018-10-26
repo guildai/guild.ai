@@ -6,7 +6,8 @@ tags: support
 
 # Documentation
 
+- [Get started](category:#get-started)
 - [Concepts](category:#concepts)
 - [Visual tools](category:#visual-tool)
 - [Reference](category:#reference)
-- [Step by step](category:#step-by-step)
+- [Popular](category:#popular)

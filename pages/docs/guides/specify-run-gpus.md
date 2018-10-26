@@ -1,7 +1,7 @@
 sidenav_title: Specify available GPUs
-tags: tip
+tags: tips
 
-# Specifying available GPUs for a run
+# Specify available GPUs for a run
 
 To limit the GPUs available for a run, use the `--gpus` option with
 the [](cmd:run) command. This option accepts a comma-separated list of
@@ -13,7 +13,13 @@ For example, to limit a run to GPU `0`, use:
 guild run train --gpus 0
 ```
 
-You can disable all GPU access by using `--no-gpus`:
+To limit a run to GPUs `0` and `1`, use:
+
+``` command
+guild run train --gpus 0,1
+```
+
+To disable all GPU access, use `--no-gpus`:
 
 ``` command
 guild run evaluate --no-gpus
@@ -24,11 +30,11 @@ This is useful for running operations on CPU that might otherwise fail
 the operation.
 
 !!! note
-    Operations that benefit from GPU acceleration will likely
-    run considerably slower on a GPU.
+    Operations that benefit from GPU acceleration will run
+    considerably slower on a GPU.
 
 !!! note
-    The GPU options only support CUDA devices. To view the list of
-    available CUDA devices and their respective IDs, use
-    ``nvidia-smi``---the [NVIDIA System Management Interface
-    ->](https://developer.nvidia.com/nvidia-system-management-interface)
+    The GPU options only support CUDA devices. To view the list
+    of available CUDA devices and their respective IDs, use
+    ``nvidia-smi`` ([NVIDIA System Management Interface
+    ->](https://developer.nvidia.com/nvidia-system-management-interface))

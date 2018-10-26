@@ -1,4 +1,4 @@
-tags: get-started
+tags: get-started, guide
 
 # Add Guild to a project
 

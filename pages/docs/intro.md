@@ -1,5 +1,5 @@
 title: Introduction
-tags: concepts
+tags: get-started
 
 # Guild AI introduction
 

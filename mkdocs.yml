@@ -10,7 +10,7 @@ extra:
   subtext:
     Automate training, testing, and deployment. Capture runs as
     experiments. Install, share, and distribute your models.
-  subtext_width: 28em
+  subtext_width: 26em
   links:
     - name: github
       url: https://github.com/guildai
@@ -258,8 +258,8 @@ pages:
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
           - docs/guides/publish-to-pypi.md
+          - docs/guides/specify-run-gpus.md
           #- docs/guides/debug-operation.md
-          #- docs/guides/specify-run-gpus.md
           #- docs/guides/create-tflite-file.md
 
 

@@ -151,14 +151,14 @@ Additionally, a range may be specified using run indexes in the form:
 the `STOP` index up to and including those with the `START` index.
 
 Both `STOP` and `START` are optional. If `START` is omitted it is
-assumed to be ``0`` (i.e. the first run in the list). If `STOP` is
+assumed to be ``1`` (i.e. the first run in the list). If `STOP` is
 omitted it is assumed to be the index of the last run.
 
 !!! important
     Run indexes are relative to the list of runs returned by ``guild
     runs`` or ``guild runs list`` for a given scope and filter (see
     [Limiting runs](#limiting-runs) above). The run associated with index
-    ``0`` for one listing may not be the same run for another
+    ``1`` for one listing may not be the same run for another
     listing. Always verify the selected runs before proceeding with a
     command.
 
@@ -170,10 +170,10 @@ Consider this output from ``guild runs``:
 
 ```
 Limiting runs to the current directory (use --all to include all)
-[0:9734f85e]   ./slim-resnet-101:train        2017-12-14 07:56:32  terminated
-[1:d8cde0fc]   ./slim-resnet-50:export        2017-12-13 13:14:31  completed
-[2:0df943ac]   ./slim-resnet-50:predict       2017-12-06 11:51:15  completed
-[3:e150e44a]   ./slim-resnet-50:predict       2017-12-06 11:50:00  completed
+[1:9734f85e]   ./slim-resnet-101:train        2017-12-14 07:56:32  terminated
+[2:d8cde0fc]   ./slim-resnet-50:export        2017-12-13 13:14:31  completed
+[3:0df943ac]   ./slim-resnet-50:predict       2017-12-06 11:51:15  completed
+[4:e150e44a]   ./slim-resnet-50:predict       2017-12-06 11:50:00  completed
 ```
 
 !!! note
@@ -184,11 +184,11 @@ Limiting runs to the current directory (use --all to include all)
 Below are various operations with run selectors applied to this
 list.
 
-``guild runs rm 0``
-: Delete run `9734f85e` (you can always use index ``0`` to select the
+``guild runs rm 1``
+: Delete run `9734f85e` (you can always use index ``1`` to select the
   most recently started run in the list)
 
-``guild runs rm 1:2``
+``guild runs rm 2:3``
 : Delete runs `d8cde0fc` and `0df943ac`
 
 ``guild runs rm :``

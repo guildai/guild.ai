@@ -12,4 +12,4 @@ or provide model for models. Packages are installed using either
 
 - [Computer vision](category:/packages/#cv)
 - [Art](category:/packages/#art)
-- [Example](category:/packages/#example)
+- [Examples](category:/packages/#example)

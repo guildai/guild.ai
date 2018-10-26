@@ -1,3 +1,3 @@
-tags: get-started
+tags: popular, models
 
 # Create an image classifier

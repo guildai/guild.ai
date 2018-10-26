@@ -1,4 +1,4 @@
-tags: remote
+tags: remote, popular
 
 # Train on EC2
 

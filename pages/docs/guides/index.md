@@ -1,12 +1,15 @@
+title: All guides
 sidenav_title: Overview
-tags: step-by-step
+pagenav_title: Guides
+tags: popular
 
 # Guides
 
 [TOC]
 
 - [Get started](category:/docs/guides/#get-started)
+- [Build models](category:/docs/guides/#models)
 - [Analyze](category:/docs/guides/#analyze)
-- [Remote support](category:/docs/guides/#remote)
-- [Model development](category:/docs/guides/#developer)
-- [Tips and tricks](category:/docs/guides/#tip)
+- [Remote](category:/docs/guides/#remote)
+- [Packaging](category:/docs/guides/#packaging)
+- [Tips](category:/docs/guides/#tips)
