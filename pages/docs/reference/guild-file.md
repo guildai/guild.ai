@@ -766,11 +766,6 @@ does not contain the pettern, the check fails.
 
 ### `for-each-model` step attributes
 
-A `for-each-model` step runs a list of steps for each model defined in
-the Guild file.
-
-Attributes:
-
 `steps`
 : A list of [test steps](#test-steps) to run for each model.
 

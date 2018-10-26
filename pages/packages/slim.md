@@ -32,4 +32,6 @@ models directly, install [gpkg.slim.models](pkg:slim-models).
 
 ## Create TF-Slim based classifier
 
-TODO
+See the guide [Create an image
+classifier](/docs/guides/create-image-classifier/) for step-by-step
+instructions.

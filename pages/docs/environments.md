@@ -14,6 +14,4 @@ benefits:
 - Isolate runs associated with a particular project or worflow
 - Minimize software package version conflicts and broken dependencies
 
-## Blah
-
-[](/broken/link)
+XXX

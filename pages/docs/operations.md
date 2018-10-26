@@ -183,6 +183,12 @@ if __name__ == "__main__":
 
 Operations are executed in the context of the current run directory.
 
+Run [flags](term:flag) are provided to the main module as command
+arguments, which are accessible in the Python `sys.argv` list. You can
+use the Python [argparse
+->](https://docs.python.org/library/argparse.html) module to parse
+arguments.
+
 <div id="environment-variables"></div>
 
 Operations have access to a number of environment variables.
