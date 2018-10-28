@@ -100,13 +100,13 @@ markdown_extensions:
         - link_pattern: alias:guild-github
           class: ext
           target: _blank
-          href: https://github.com/guildai/guild
+          href: https://github.com/guildai/guildai
           text: Guild AI GitHub project
         - link_pattern: alias:open-an-issue
           text: open an issue on GitHub
           class: ext
           target: _blank
-          href: https://github.com/guildai/guild/issues
+          href: https://github.com/guildai/guildai/issues
         - link_pattern: alias:virtualenv-activate
           href: /docs/tutorials/workflow-with-virtualenv/#using-a-virtual-environment
           text: activate your virtual environment
@@ -251,9 +251,10 @@ pages:
           # - test models (include tricks -m, -o -1)
           # - diffing runs
           # - diff images using Beyond Compare
-          - docs/guides/add-guild.md
           #- docs/guides/convert-notebook.md
+          - docs/guides/add-guild.md
           - docs/guides/create-image-classifier.md
+          - docs/guides/create-object-detector.md
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
@@ -278,6 +279,8 @@ pages:
   - packages:
       - packages/index.md
       - Computer vision:
+          - packages/object-detect.md
+          - packages/object-detect-models.md
           - packages/slim.md
           - packages/slim-models.md
       - Art:

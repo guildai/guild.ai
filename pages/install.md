@@ -61,7 +61,7 @@ Additional required tools for installing from source code:
 To install Guild from source, clone the repository by running:
 
 ``` command
-git clone https://github.com/guildai/guild.git
+git clone https://github.com/guildai/guildai.git
 ```
 
 Change to the `guild` directory and install the required pip packages:
