@@ -1249,6 +1249,33 @@ class DeflistToTable(Extension):
             DeflistToTableProcessor(md),
             "_end")
 
+class NonbreakingHyphensProcessor(treeprocessors.Treeprocessor):
+
+    def run(self, root):
+        for code in root.iter("code"):
+            self._replace_hyphens(code)
+
+    @staticmethod
+    def _replace_hyphens(code):
+        if code.text:
+            code.text = code.text.replace("--", u"\u2011\u2011")
+
+class NonbreakingHyphens(Extension):
+    """Replace cases of `--` in code blocks with two non-breaking hyphens.
+
+    >>> md = markdown.Markdown(extensions=[NonbreakingHyphens()])
+
+    Here's a basic example of a reference:
+
+    >>> out = md.convert("`a --foo b`")
+    >>> [ord(c) for c in out[9:14]]
+    [97, 32, 8209, 8209, 102]
+
+    """
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add("nbhyph", NonbreakingHyphensProcessor(md), "_end")
+
 class Serve(BasePlugin):
 
     def on_serve(self, server, config):

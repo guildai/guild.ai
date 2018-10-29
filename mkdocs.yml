@@ -51,6 +51,7 @@ markdown_extensions:
   - custom:Backtick
   - custom:Ref
   - custom:Figure
+  - custom:NonbreakingHyphens
   - custom:Link:
       templates:
         # external links
