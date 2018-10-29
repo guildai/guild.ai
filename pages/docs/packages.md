@@ -7,31 +7,52 @@ tags: concepts
 A Guild AI _package_ is a container for [models](term:model) and
 [resources](term:resource). Packages let developers easily publish
 their work for users to discover. They let users easily find, install,
-and use models. Packages are the central feature of Guild's support
-for model collaboration, sharing and reuse.
+and use models. Packages are a central feature of Guild's support for
+model collaboration, sharing and reuse.
+
+## Create a package
+
+To createa a package, add a `package` top-level object to a project
+[Guild file](term:guild-file).
+
+Here's an example of a basic package definition in a file:
+
+``` yaml
+- package: my-package
+  version: 1.0
+```
+
+To create a package distribution, use the [](cmd:package) command from
+the project directory:
+
+``` command
+guild package
+```
+
+This generates a file `dist/NAME-VERSION-py2.py3-none-any.whl` that
+can be shared with colleagues or [published to
+PyPI](/docs/guides/publish-to-pypi/).
 
 ## Find packages
 
-You can find Guild packages in various ways:
+Guild packages are standard Python packages that can be searched using
+`pip search`.
 
-- Visit Guild's [model repository](/models/)
-- Search for a model using the [](cmd:search) command
+Guild provides a [](cmd:search) command that searches for packages
+created using [guild package](cmd:package).
 
-For example, to find models that support the ImageNet dataset, simply run:
+For example, to search for Guild packages containing ``resnet-50`` in
+their description or keywords, run:
 
 ``` command
-guild search imagenet
+guild search resnet-50
 ```
-
-New models are being published all the time so if you don't find what
-you're looking for, let the community know by [submitting a request on
-Guild's issue tracker](alias:guild-issues).
-
-It's also easy to create and publish your own models.
 
 ## Install packages
 
-Install a package by running:
+Packages can be installed using pip or Guild.
+
+To use Guild to install a package, use the [](cmd:install) command:
 
 ``` command
 guild install PACKAGE
@@ -40,7 +61,7 @@ guild install PACKAGE
 You can find package names using [](cmd:search) (see [Find
 packages](#find-packages) above).
 
-You can also browse [](alias:guild-models).
+You can also browse [](alias:packages).
 
 ## List installed packages
 
