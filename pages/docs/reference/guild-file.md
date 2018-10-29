@@ -647,7 +647,7 @@ Tests defined in `gpkg.slim.models:
       flags:
         images: test/sample-images
         random-seed: 801
-      expected:
+      expect:
         - file: data/train-weights.txt
           compare: test/sample-images/train-weights.txt
     - for-each-model:

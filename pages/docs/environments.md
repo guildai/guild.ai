@@ -58,7 +58,7 @@ packages. They do not use system or user site packages.
 
 Initial packages include:
 
-`pip`, `setuptooles`, `wheel`
+`pip`, `setuptools`, `wheel`
 : Core Python packages needed to install additional packages.
 
 `guildai`
@@ -82,7 +82,7 @@ Guild installs additional packages if any of the following are true:
 - The environment parent directory contains `guild.yml` and that file
   contains a `package` with a list of required packages. In this case,
   Guild installs each of the required packages defined in `guild.yml.`
-  It also rescursively installs required packages defined in inherited
+  It also recursively installs required packages defined in inherited
   Guild files---i.e. Guild files containing model or config
   definitions that are extended in the initial Guild file.
 
@@ -95,7 +95,7 @@ By default, TensorFlow is installed in new environments. Guild detects
 whether the system supports GPU acceleration and installs the
 corresponding Python package.
 
-The following options can be used to change this behvior:
+The following options can be used to change this behavior:
 
 `--no-tensorflow`
 : Do not install TensorFlow in the environment. Note that you will
