@@ -643,6 +643,9 @@ class Backtick(Extension):
     >>> print(md.convert("``code sample``"))
     <p><code class="lit">code sample</code></p>
 
+    Guild also replaces hyphens with non-breaking hyphens to ensure
+    that command line options are not broken at hyphens when wrapped.
+
     """
 
     def extendMarkdown(self, md, _globals):
@@ -1213,10 +1216,7 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
         return row
 
 class DeflistToTable(Extension):
-    """Converts deflists to tables.
-
-    Adds "dl", "dt", and "dd" classes to the table and two td elements
-    respectively.
+    """Converts deflists to table-like structure.
 
     To illustrate we'll configure markdown with both the "def_list"
     extension and our extension.
@@ -1226,20 +1226,20 @@ class DeflistToTable(Extension):
     Here's a single term list:
 
     >>> print(md.convert("term1\\n: term1 def"))
-    <table class="table dl">
-    <tr><td class="dt">term1</td>
-    <td class="dd">term1 def</td>
-    </tr></table>
+    <div class="dl">
+    <div class="row"><div class="dt col col-sm-4 col-lg-3">term1</div>
+    <div class="dd col col-sm-8 col-lg-9">term1 def</div>
+    </div></div>
 
     Two terms:
 
     >>> print(md.convert("term1\\n: term1 def\\n\\nterm2\\n: term2 def"))
-    <table class="table dl">
-    <tr><td class="dt">term1</td>
-    <td class="dd">term1 def</td>
-    </tr><tr><td class="dt">term2</td>
-    <td class="dd">term2 def</td>
-    </tr></table>
+    <div class="dl">
+    <div class="row"><div class="dt col col-sm-4 col-lg-3">term1</div>
+    <div class="dd col col-sm-8 col-lg-9">term1 def</div>
+    </div><div class="row"><div class="dt col col-sm-4 col-lg-3">term2</div>
+    <div class="dd col col-sm-8 col-lg-9">term2 def</div>
+    </div></div>
 
     """
 
