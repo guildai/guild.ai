@@ -171,7 +171,7 @@ pages:
           - docs/commands/label-cmd.md
           - docs/commands/ls-cmd.md
           - docs/commands/models-cmd.md
-          - docs/commands/new-cmd.md
+          # - docs/commands/new-cmd.md
           - docs/commands/open-cmd.md
           - docs/commands/operations-cmd.md
           - docs/commands/package-cmd.md
