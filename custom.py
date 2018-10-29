@@ -1253,23 +1253,18 @@ class NonbreakingHyphensProcessor(treeprocessors.Treeprocessor):
 
     def run(self, root):
         for code in root.iter("code"):
-            self._replace_hyphens(code)
-
-    @staticmethod
-    def _replace_hyphens(code):
-        if code.text:
-            code.text = code.text.replace("--", u"\u2011\u2011")
+            code.text = code.text.replace("-", u"\u2011")
 
 class NonbreakingHyphens(Extension):
-    """Replace cases of `--` in code blocks with two non-breaking hyphens.
+    """Replace hyphens in code blocks with a non-breaking hyphen.
 
     >>> md = markdown.Markdown(extensions=[NonbreakingHyphens()])
 
     Here's a basic example of a reference:
 
-    >>> out = md.convert("`a --foo b`")
-    >>> [ord(c) for c in out[9:14]]
-    [97, 32, 8209, 8209, 102]
+    >>> out = md.convert("`a-b --foo c -d`")
+    >>> [ord(c) for c in out[9:]] # doctest: +ELLIPSIS
+    [97, 8209, 98, 32, 8209, 8209, 102, 111, 111, 32, 99, 32, 8209, 100, ...]
 
     """
 
