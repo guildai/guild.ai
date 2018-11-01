@@ -145,6 +145,10 @@ module.exports = function(grunt) {
       model_src: {
         files: ['./packages/**/*'],
         tasks: ['exec:site', 'exec:reload_devserver']
+      },
+      includes: {
+        files: ['./include/*'],
+        tasks: ['exec:site', 'exec:reload_devserver']
       }
     },
 

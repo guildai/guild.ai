@@ -36,6 +36,8 @@ markdown_extensions:
   - footnotes
   - smarty
   - def_list
+  - markdown_include.include:
+      base_path: include
   - custom:DefinitionId
   - custom:DeflistToTable
   - custom:CmdHelp:
