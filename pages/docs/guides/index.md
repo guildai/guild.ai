@@ -11,5 +11,4 @@ tags: popular
 - [Build models](category:/docs/guides/#models)
 - [Analyze](category:/docs/guides/#analyze)
 - [Remote](category:/docs/guides/#remote)
-- [Packaging](category:/docs/guides/#packaging)
 - [Tips](category:/docs/guides/#tips)

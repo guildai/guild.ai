@@ -211,7 +211,7 @@ hide_in_pagenav: yes
     <img title="PyPI" src="/assets/img/pypi-feature.jpg">
   </div>
   <div class="body col col-xs-12 col-sm-10">
-    <h3><a href="/docs/guides/publish-to-pypi/">Publish packaged models to PyPI</a></h3>
+    <h3><a href="/docs/packages/">Publish packaged models to PyPI</a></h3>
     <p>
 
       To share your models with other developers, Guild lets you

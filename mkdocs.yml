@@ -261,7 +261,6 @@ pages:
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
-          - docs/guides/publish-to-pypi.md
           - docs/guides/specify-run-gpus.md
           #- docs/guides/debug-operation.md
           #- docs/guides/create-tflite-file.md

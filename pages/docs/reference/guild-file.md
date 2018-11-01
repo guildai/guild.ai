@@ -581,7 +581,7 @@ Packages contain information used by Guild to generate Guild packages.
 `python-tag`
 : Value used as the Python tag when generating the package (string)
 
-`data_files`
+`data-files`
 : List of additional files to include in the package (list of strings)
 
 `resources`
