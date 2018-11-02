@@ -1,0 +1,7 @@
+- config: c1
+  tags: [a, b]
+  description: Config c1
+
+- config: c2
+  tags: [b]
+  description: Config c2

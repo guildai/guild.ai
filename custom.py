@@ -11,7 +11,6 @@ import subprocess
 
 import jinja2
 import six
-import yaml
 
 import markdown
 from markdown.extensions import Extension
@@ -21,7 +20,8 @@ from markdown import inlinepatterns
 from markdown import treeprocessors
 from markdown.util import etree
 
-import mkdocs.config as _ # work around for mkdocs import cycle
+import mkdocs.config as _ # pylint: disable=unused-import
+                          # work around for mkdocs import cycle
 from mkdocs.plugins import BasePlugin
 from mkdocs.nav import Page, Header
 
@@ -350,8 +350,8 @@ class Link(Extension):
     `text_pattern` and `link_pattern` attributes:
 
     >>> simple_template = {
-    ...   "text_pattern": r"\$text",
-    ...   "link_pattern": r"\$link"
+    ...   "text_pattern": "\\$text",
+    ...   "link_pattern": "\\$link"
     ... }
     >>> templates.append(simple_template)
 
@@ -365,8 +365,8 @@ class Link(Extension):
     by the link attribute.
 
     >>> arg_template = {
-    ...   "text_pattern": r"\$text (.+)",
-    ...   "link_pattern": r"\$link ([^ ]+) ([^ ]+)"
+    ...   "text_pattern": "\\$text (.+)",
+    ...   "link_pattern": "\\$link ([^ ]+) ([^ ]+)"
     ... }
     >>> templates.append(arg_template)
 
@@ -403,7 +403,7 @@ class Link(Extension):
     `link_pattern` to match and provides `text`:
 
     >>> link_template = {
-    ...   "link_pattern": "link\.html",
+    ...   "link_pattern": "link\\.html",
     ...   "text": "My link"
     ... }
     >>> templates.append(link_template)
@@ -543,7 +543,6 @@ class CategoriesProcessor(treeprocessors.Treeprocessor):
         links = ul.findall("li/a")
         ul.clear()
         ul.set("class", "categorized-view")
-        categories = {}
         for link in links:
             cat_info = self._try_cat_info(link)
             if not cat_info:
@@ -827,7 +826,8 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         else:
             return self._md.convert(text)
 
-    def _cmd_url_filter(self, cmd, ctx):
+    @staticmethod
+    def _cmd_url_filter(cmd, ctx):
         cmd_name = cmd["term"].split(", ")[0]
         return ctx.cmd_url(cmd_name)
 
@@ -907,6 +907,7 @@ class CmdHelp(Extension):
     """
 
     def __init__(self, src_path):
+        super(CmdHelp, self).__init__()
         self._src_path = src_path
 
     def extendMarkdown(self, md, _globals):
@@ -1044,10 +1045,11 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         return gf.package
 
 class PkgHelp(Extension):
-    """Replaces [PKG-HELP <cmd>] with formatted model help.
+    """Replaces [PKG-HELP <pkg-path>] with formatted model help.
     """
 
     def __init__(self, src_path):
+        super(PkgHelp, self).__init__()
         self._src_path = src_path
 
     def extendMarkdown(self, md, _globals):
@@ -1067,8 +1069,8 @@ class UrlPattern(inlinepatterns.Pattern):
         if url.startswith("<"):
             url = url[1:-1]
         text = url
-        if not url.split("://")[0] in ("http", "https", "ftp"):
-            if "@" in url and not "/" in url:
+        if url.split("://")[0] not in ("http", "https", "ftp"):
+            if "@" in url and "/" not in url:
                 url = "mailto:" + url
             else:
                 url = "http://" + url
@@ -1271,8 +1273,91 @@ class NonbreakingHyphens(Extension):
     def extendMarkdown(self, md, _globals):
         md.treeprocessors.add("nbhyph", NonbreakingHyphensProcessor(md), "_end")
 
+class PkgConfigListProcessor(treeprocessors.Treeprocessor):
+
+    _marker_re = re.compile(r"\[PKG-CONFIG-LIST (.+?) (.+?)\]$")
+
+    def __init__(self, md, src_path):
+        super(PkgConfigListProcessor, self).__init__(md)
+        self._src_path = src_path
+
+    def run(self, root):
+        for el in root:
+            if el.tag == "p":
+                m = self._marker_re.match(el.text or "")
+                if m:
+                    self._handle_config_list(m.group(1), m.group(2), el, root)
+
+    def _handle_config_list(self, path, tag, target, parent):
+        dl_el = etree.Element("dl")
+        for name, desc in self._get_sorted_configs(path, tag):
+            dt_el = etree.Element("dt")
+            dl_el.append(dt_el)
+            code_el = etree.Element("code")
+            dt_el.append(code_el)
+            code_el.text = name
+            dd_el = etree.Element("dd")
+            dl_el.append(dd_el)
+            dd_el.text = desc
+        _replace_el(parent, target, dl_el)
+
+    def _get_sorted_configs(self, path, tag):
+        pkg_dir = os.path.join(self._src_path, path)
+        gf = guildfile.from_dir(pkg_dir)
+        configs = []
+        for obj in gf.data:
+            try:
+                config_name = obj["config"]
+            except KeyError:
+                continue
+            else:
+                if tag in obj.get("tags", []):
+                    configs.append((config_name, obj.get("description", "")))
+        configs.sort()
+        return configs
+
+class PkgConfigList(Extension):
+    """Replaces [PKG-CONFIG-LIST <pkg-path> <tag>] with a config list.
+
+    A config list is a definition list that uses the `config` and
+    `description` attrs for top-level Guild file objects for term and
+    and definition respectively. Config objects must have one item in
+    a `tag` list that matches `<tag>` to be included in the list.
+
+    Config objects are displayed in ascending order by term value.
+
+    >>> md = markdown.Markdown(extensions=[PkgConfigList("test/packages")])
+
+    Here's a list for config from `pkg-1` with tag `a`:
+
+    >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 a]"))
+    <dl><dt>c1</dt><dd>Config c1</dd></dl>
+
+    And tag `b`:
+
+    >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 b]"))
+    <dl><dt>c1</dt><dd>Config c1</dd><dt>c2</dt><dd>Config c2</dd></dl>
+
+    And tag `c` (doesn't exit):
+
+    >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 c]"))
+    <dl></dl>
+
+    """
+
+    def __init__(self, src_path):
+        super(PkgConfigList, self).__init__()
+        self._src_path = src_path
+
+    def extendMarkdown(self, md, _globals):
+        md.treeprocessors.add(
+            "pkg-config-list",
+            PkgConfigListProcessor(md, self._src_path),
+            "_end")
+
 class Serve(BasePlugin):
 
+    # pylint: disable=unused-argument
     def on_serve(self, server, config):
         builder = self._builder_func(server)
         def task(ignore=None):
@@ -1286,7 +1371,7 @@ class Serve(BasePlugin):
         server.watcher._tasks = {
             "mkdocs.yml": task(),
             "pages": task(),
-            "src": task([r"\.scss$", "\.map$"])
+            "src": task([r"\.scss$", r"\.map$"])
         }
 
     @staticmethod

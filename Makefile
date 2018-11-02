@@ -32,7 +32,7 @@ $(grunt):
 	npm install
 
 test-custom:
-	python custom.py
+	PYTHONPATH=guild python custom.py
 
 spellcheck:
 	find pages -iregex '.*\.md$$' \
@@ -43,3 +43,6 @@ clean-caches:
 
 update-submodules:
 	git submodule foreach git pull origin master
+
+lint:
+	PYTHONPATH=guild pylint -rn -f parseable *.py

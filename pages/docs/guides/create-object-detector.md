@@ -10,19 +10,12 @@ Guild features that accelerate model development and automate
 workflow:
 
 - Reuse high-level model configuration from `gpkg.object-detect`
-- Automate workflow steps used to train, finetune and deploy a
+- Automate workflow steps used to train, evaluate and deploy a
   state-of-the-art object detector
 
 ## Requirements
 
-- [Install Guild AI](alias:install-guild)
-- GPU accelerated system
-
-!!! note
-    Many of the operations run in this guide are not feasible
-    without a GPU accelerated system. If you don't have access to a
-    GPU, consider using a GPU accelerated server or container from
-    AWS, Google Cloud, Microsoft Azure, and others.
+{!guide-gpu-requirements.md!}
 
 ## Create a new project
 
@@ -31,7 +24,7 @@ directory that contains a [Guild file](term:guild-file), which is
 named `guild.yml` and located in the project root directory.
 
 For the examples, we use the environment variable `PROJECT` to
-represent the project directory. For our example, we will create the
+represent the project directory. For our example, we create the
 project in ``~/sample-object-detector``. Feel free to create the
 project in another location. If you use a different location, define
 `PROJECT` accordingly.
@@ -88,80 +81,34 @@ guild operations
     guide.
 
 Guild doesn't show anything because model doesn't currently define any
-operations. Later we modify the model to add operations. Before we
+operations. Below we modify the model to add operations. Before we
 modify the model, however, we need to install required software into a
 project environment.
 
 ## Initialize a project environment
 
-For our work in this guide, we'll use a project [Guild
-environment](term:guild-env). Environments isolate both installed
-packages and runs from the system, ensuring that your work in this
-guide is visible only from the project environment.
+{!guide-init-project-env.md!}
 
-From the project directory, initialize a Guild environment:
+## Install *gpkg.object-detect* package
 
-``` command
-guild init
-```
-
-Press `Enter` to confirm.
-
-Guild creates a new Python virtual environment in the project
-directory under `env`. The `env` project directory contains the Python
-runtime, installed Python packages, and the project's [Guild
-home](term:guild-home), which contains runs generated when the
-environment is active.
-
-At this point the environment is created but is not activated. To use
-the environment, you must first activate it.
-
-From the project directory, activate the environment:
-
-``` command
-source guild-env
-```
-
-!!! note
-    The command prompt changes when the environment is activated
-    to include the environment name. This value is the name of the
-    project directory by default but can be set using `--name` when
-    running `guild init`.
-
-!!! note
-    You must activate the project environment using ``source
-    guild-env`` each time you start a new command line session for
-    project work.
-
-Before proceeding to the next section, verify the environment using
-the [](cmd:check) command:
-
-``` command
-guild check
-```
-
-Verify that `guild_home` is in the project directory under
-``env/.guild``. If `guild_home` is in a different location, verify the
-steps above to ensure that your project environment is initialized and
-activated.
-
-## Install `gpkg.object-detect`
-
-The sample object detector we create in this guide uses model support
-defined in the Guild package `gpkg.object-detect.`
+The object detector we create in this guide uses model support defined
+in the Guild package `gpkg.object-detect.`
 
 Guild packages are standard Python packages that can be installed
 using pip or [guild install](cmd:install).
 
-In this case we'll use Guild. Install `gpkg.object-detect` by running:
+{!guide-verify-activated-env.md!}
+
+Verify that your environment is activated and install
+`gpkg.object-detect` using Guild:
 
 ``` command
 guild install gpkg.object-detect
 ```
 
-Guild installs `gpkg.object-detect` along with its required packages.
+Guild installs `gpkg.object-detect` along with its dependencies.
 
-List all installed Guild packages by running:
+List installed Guild packages by running:
 
 ``` command
 guild packages
@@ -169,27 +116,20 @@ guild packages
 
 Guild shows the installed `gpkg.object-detect` package.
 
-With `gpkg.object-detect` available, we can use it to extend our model
+With `gpkg.object-detect` available, we use it to extend our model
 with a detector model configuration.
 
 ## Extend a model configuration
 
-In this step we will modify our sample detector to extend one of the
-model configurations defined in the `gpkg.object-detect` package.
+In this step we modify our sample detector to extend one of the model
+configurations defined in the `gpkg.object-detect` package.
 
 `gpkg.object-detect` supports the following configurations:
 
-`faster-rcnn-resnet-50`
-: Faster RCNN detector with ResNet-50 backbone.
-
-`faster-rcnn-resnet-101`
-: Faster RCNN detector with ResNet-101 backbone.
-
-`ssd-mobilenet-v2`
-: SSD detector with MobileNet v1 backbone.
+[PKG-CONFIG-LIST gpkg/object_detect model-config]
 
 We can apply any of these configurations to our sample detector by
-extending it. We'll use `faster-rcnn-renset-50` for our example.
+extending it. We use `faster-rcnn-renset-50` for our detector.
 
 Modify `guild.yml` in the project directory to be:
 
@@ -222,41 +162,43 @@ Guild shows the following operations:
 ./detector:transfer-learn     Train detector using transfer learning
 ```
 
-Operations are run in this order:
+These operations are inherited from the model configuration in the
+`gpkg.object-detect` package. This is an example of [code
+reuse](/docs/code-reuse/) in Guild AI.
 
-- `train` or `transfer-learn` - train a model
-- `evaluate` - evaluate model performance using validation data
-- `detect` - use a trained model to detect objects in am image
+We can use these operation to build a trained object detect. We run in
+this order:
 
-Before we can use the model, however, we need to add support for the
-dataset we'll train and validate with.
+- `train` or `transfer-learn` to train a model
+- `evaluate` to evaluate model performance using validation data
+- `detect` to use a trained model to detect objects in am image
+
+Before we use the model, however, we must add support for the dataset
+used to train and validate.
 
 ## Add dataset support
 
-Before we can train our detector, we need to modify our model with
-dataset support. Dataset support entails two components:
+Before we train our detector, we must modify our model with dataset
+support. Dataset support has two components:
 
-- An operation that prepares the dataset for training and validation
-
-- Information about the prepared data, including the number of
-  classes, file patterns for train and validation examples, and human
-  readable labels for each example class
+- Model operation that prepares the dataset for training and
+  validation
+- Information about the prepared data including dataset files and
+  class labels
 
 Dataset support in `gpkg.object-detect` is flexible---you're free to
 provide data from any source, provided the data is prepared as TF
-Records split between files for training and validation.
+Records that are split between files for training and validation.
 
-For our detector, we'll implement support for preparing images with
-Pascal VOC formatted annotations. As input, we need to provide two
-directories:
+For our detector, we implement support for images with Pascal VOC
+formatted annotations. As input, we need to provide two directories:
 
-- Directory containing JPG, PNG, or GIF encoded images
-- Directory containing Pascal VOC XML formatted annotations
+- Directory of JPG, PNG, or GIF images
+- Directory of Pascal VOC XML formatted annotations for each image
 
-To add support for preparing a dataset using Pascal VOC formatted
-images, we can add
-`gpkg.object-detect/voc-annotated-images-directory-support` to our
-model's `extends` list.
+To support this type of dataset, we add
+*voc-annotated-images-directory-support* to our model's `extends`
+list.
 
 Modify `guild.yml` to be:
 
@@ -285,22 +227,21 @@ List model operations:
 guild ops
 ```
 
-The `prepare` operation is now available:
+Guild shows the list of operations, which now includes:
 
 ``` output
-./detector:prepare  Prepare images annotated using Pascal VOC format for training
+./detector:prepare  Prepare images annotated using Pascal VOC format
 ```
 
-Later, we use this operation to prepare our annotated images for
-training and validation. First we must obtain some annotated images.
+We use this operation to prepare annotated images for training and
+validation. First we must obtain some annotated images.
 
 ## Obtain annotated images
 
 If you have Pascal VOC annotated images, you may use them to train
 your detector.
 
-If you don't have images, you can download one of these datasets (you
-need both images and annotations):
+If you don't have images, you can download one of these datasets:
 
 <table class="table">
   <tr>
@@ -308,7 +249,7 @@ need both images and annotations):
       <a href="http://www.robots.ox.ac.uk/~vgg/data/pets/">The Oxford-IIIT Pet Dataset</a>
     </td>
     <td>
-      <a href="http://www.robots.ox.ac.uk/~vgg/data/pets/data/images.tar.gz">images</a>,
+      <a href="http://www.robots.ox.ac.uk/~vgg/data/pets/data/images.tar.gz">images</a><br>
       <a href="http://www.robots.ox.ac.uk/~vgg/data/pets/data/annotations.tar.gz">annotations</a>
     </td>
   </tr>
@@ -322,9 +263,15 @@ need both images and annotations):
   </tr>
 </table>
 
-Once you have obtained annotated images, note the locations of the
-image files (e.g. JPG, PNG, GIF files) and of the annotations
-(e.g. XML files).
+!!! note
+    You need both images and their associated annotations. If you
+    select a dataset that separates images and annotations, ensure
+    that you download both source files. If the dataset combines both
+    images and annotations, just just need the combined source file.
+
+Once you have the annotated images, note the locations of the image
+files (i.e. JPG, PNG, and GIF files) and of the annotations (i.e. XML
+files).
 
 Set the following variables:
 
@@ -354,7 +301,7 @@ training data (e.g. `train` or `transfer-learn`) or validation data
 ## Train a detector using transfer learning
 
 Let's begin training our detector using our prepared dataset. To save
-time, we'll use transfer learning with model weights that were learned
+time, we use transfer learning with model weights that were learned
 from training on the ImageNet dataset.
 
 Start the `transfer-learn` operation using this command:
@@ -364,10 +311,9 @@ guild run transfer-learn --gpus 0
 ```
 
 !!! note
-    The use of ``--gpus 0`` ensures that the operation will only
-    use the first GPU on the system (ID of `0`). If your system has
-    more than one GPU, you'll be able to use it later when running
-    `evaluate`.
+    The use of ``--gpus 0`` ensures that the operation only uses
+    the first GPU on the system (ID of `0`). If your system has more
+    than one GPU, you can use it later when running `evaluate`.
 
 Press `Enter` to confirm.
 
@@ -443,12 +389,12 @@ guild run evaluate --gpus 1
 
 !!! note
     The use of ``--gpus 1`` in the command ensures that the
-    operation will only see the second GPU and not try to allocate
+    operation only sees the second GPU and not try to allocate
     memory on other GPUs.
     <p>
     If you don't explicitly control the visible GPUs with
-    `--gpus` and `--no-gpus` options, each TensorFlow operation will
-    preemptively consume the memory on all visible GPUs, even if
+    `--gpus` and `--no-gpus` options, each TensorFlow operation
+    preemptively consumes the memory on all visible GPUs, even if
     they're not used.
 
 The evaluate operation uses the validation records from the prepared
@@ -479,7 +425,7 @@ Exit Guild Compare by pressing `q`.
 
 ## Monitor progress with TensorBoard
 
-In this section we will use TensorBoard to monitor the transfer learn
+In this section we use TensorBoard to monitor the transfer learn
 operation and determine when to stop training.
 
 Using your second command console, from the project directory, start
@@ -620,8 +566,8 @@ we can now detect objects in an image.
 Create a new directory containing one or more images that you want to
 detect.
 
-For this example, we will create a directory in `/tmp`---feel free to
-use another location.
+For this example, we create a directory in `/tmp`---feel free to use
+another location.
 
 ``` command
 DETECT_IMAGES=/tmp/sample-detect-images
@@ -670,8 +616,8 @@ provides a number of helpful features:
 
 Click the **FILES** tab of a `detect` run and click one of the
 detected images. Guild opens the image in a file viewer. If the image
-contains detected objects, the objects will appear in a bounding box
-with the detected class.
+contains detected objects, the objects appear in a bounding box with
+the detected class.
 
 ![](/assets/img/detected-image.png)
 

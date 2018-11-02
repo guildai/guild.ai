@@ -39,11 +39,13 @@ markdown_extensions:
   - markdown_include.include:
       base_path: include
   - custom:DefinitionId
-  - custom:DeflistToTable
   - custom:CmdHelp:
       src_path: ./guild/guild/commands/
   - custom:PkgHelp:
       src_path: ./packages
+  - custom:PkgConfigList:
+      src_path: ./packages
+  - custom:DeflistToTable
   - custom:MoveToc
   - custom:FixToc
   - custom:FencedCode
