@@ -133,7 +133,7 @@ configurations defined in the `gpkg.object-detect` package.
 [PKG-CONFIG-LIST gpkg/object_detect model-config]
 
 We can apply any of these configurations to our sample detector by
-extending it. We use `faster-rcnn-renset-50` for our detector.
+extending it. We use `faster-rcnn-resnet-50` for our detector.
 
 Modify `guild.yml` in the project directory to be:
 
@@ -214,7 +214,7 @@ Modify `guild.yml` to be:
 
 !!! important
     The order that items appear in `extends` is important as
-    configuration appearing earlier in the list takes precedance over
+    configuration appearing earlier in the list takes precedence over
     configuration appearing later. In the case of our model,
     `voc-annotated-images-directory-support` must appear before
     `faster-rcnn-resnet-50`.
@@ -459,7 +459,7 @@ If your system only has one GPU, you can't use a GPU for the
 guild run evaluate --no-gpus
 ```
 
-Evaluating a model without GPU accleration can take a long time on
+Evaluating a model without GPU acceleration can take a long time on
 large datasets. To reduce the evaluation time, try setting
 `eval-examples` to a number less than 1000. For example:
 
@@ -515,7 +515,7 @@ pressing `Enter`. Exit the run detail screen by pressing `q`.
 
 Exit Guild Compare by pressing `q`.
 
-While the model continues to trian, we monitor its progress with
+While the model continues to train, we monitor its progress with
 TensorBoard next.
 
 ## Monitor progress with TensorBoard
@@ -621,7 +621,7 @@ run (i.e. the latest `transfer-learn` operation) to generate the
 frozen inference graph.
 
 You can specify different runs or checkpoint steps with
-`trained-model` and `step` flags repectively.
+`trained-model` and `step` flags respectively.
 
 To get help for the `export-and-freeze` operation, run:
 

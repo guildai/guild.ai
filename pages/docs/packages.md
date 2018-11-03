@@ -12,7 +12,7 @@ model collaboration, sharing and reuse.
 
 ## Create a package
 
-To createa a package, add a `package` top-level object to a project
+To create a package, add a `package` top-level object to a project
 [Guild file](term:guild-file).
 
 Here's an example of a basic package definition in a file:
@@ -160,7 +160,7 @@ The following package definition illustrates the use of `requires`:
 
 ### Using `setuptools` to create a package
 
-As an alterantive to Guild's packaging facility, you may use Python's
+As an alternative to Guild's packaging facility, you may use Python's
 standard method of creating packages, which uses typically uses
 `setup.py` and the `setuptools` module.
 
@@ -226,7 +226,7 @@ Guild supports the following additional upload parameters:
 
 - Repository URL
 - PyPI user name
-- PyPI user passowrd
+- PyPI user password
 - GPG identity used to sign the published package
 
 For more information, see [](cmd:package) command.

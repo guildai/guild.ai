@@ -1,4 +1,4 @@
-personal_ws-1.1 en 282 
+personal_ws-1.1 en 296 
 mnist
 TensorBoard
 tensorboard
@@ -41,10 +41,12 @@ args
 ffa
 tfserve
 hyperparameter
+ffc
 argv
 adam
 dnn
 toolset
+IIIT
 TOC
 debd
 featherlight
@@ -78,6 +80,7 @@ mdash
 sys
 URI
 url
+voc
 RSGAN
 IAM
 matplotlib
@@ -95,6 +98,7 @@ enum
 FileNotFoundError
 Runnable
 Terraform
+GPG
 adagrad
 conda
 attrs
@@ -125,6 +129,7 @@ pypi
 PyPI
 bashrc
 dataset
+TestPyPI
 rmsprop
 ArgumentParser
 aa
@@ -139,6 +144,8 @@ libcublas
 localhost
 symlink
 cd
+da
+mAP
 de
 df
 srgan
@@ -153,6 +160,7 @@ ef
 cp
 eval
 fb
+dl
 fc
 fd
 fe
@@ -160,6 +168,7 @@ virtualenv
 cv
 mkdir
 gitignore
+dt
 Ep
 fn
 MobileNet
@@ -169,6 +178,7 @@ xlarge
 nav
 lightbox
 IP
+PackageModel
 softmax
 LD
 wikipedia
@@ -177,6 +187,7 @@ PetImages
 md
 li
 accuracies
+namespace
 colordiff
 outliers
 util
@@ -184,10 +195,12 @@ mlp
 subdirectory
 ML's
 pb
+rcnn
 GraphDef
-ResNet
 resnet
+ResNet
 datasets
+tfrecord
 argparse
 google
 SIGTERM
@@ -281,3 +294,4 @@ TODO
 TensorLayer
 tensorlayer
 BMP
+abcd

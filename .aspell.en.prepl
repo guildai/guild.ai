@@ -1,6 +1,7 @@
 personal_repl-1.1 en 0 
 pettern pattern
 accuracies accuracy
+renset resnet
 tenorflow tensorflow
 patterm pattern
 requestion request
@@ -12,6 +13,7 @@ commamd command
 cucnn cuDNN
 directoy directory
 tflite TF Lite
+trian train
 hyperparamter hyperparameter
 losest lowest
 rescursively recursively
