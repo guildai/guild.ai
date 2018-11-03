@@ -140,6 +140,11 @@ markdown_extensions:
           href: https://pip.pypa.io/en/stable/
           target: _blank
           class: ext
+        - link_pattern: alias:tmux
+          text: tmux
+          href: https://en.wikipedia.org/wiki/Tmux
+          target: _blank
+          class: ext
 
 pages:
   - index.md

@@ -5,3 +5,9 @@
     `(<env name>) <default prompt>`. If it does not run ``source
     guild-env`` from the project directory to activate the
     environment.
+    <p>
+    When a Python package and its dependencies are installed in
+    an activated environment, the packages are installed within the
+    environment directory rather than a user or system directory. They
+    are not visible to other environments, which avoids package
+    version conflicts.

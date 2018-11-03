@@ -9,26 +9,24 @@ At a command prompt, ensure that you're in the project directory:
 cd $PROJECT
 ```
 
-Use the [guild init](cmd:init) command to initialize a Guild
-environment:
+Use the [init](cmd:init) command to initialize a Guild environment:
 
 ``` command
 guild init
 ```
 
-Guild prompts you before initialzing the environment. It prepares to
-initialize an environment in the project `env` directory using the
-default Python runtime and TensorFlow version for your system.
+Guild prompts you before initialzing the environment in the project
+`env` directory with the default Python runtime and TensorFlow version
+for your system.
 
 Press `Enter` to confirm.
 
 Guild creates a new Python virtual environment in the project
-directory under env. The env project directory contains the Python
-runtime, installed Python packages, and the project’s Guild home,
-which contains runs generated when the environment is active.
+directory under `env`, which contains the Python runtime, installed
+Python packages, and project [Guild home](term:guild-home).
 
-An environment must be activated using the operation system `source`
-command.
+A project environment must be activated using the operation system
+`source` command.
 
 Activate the project environment:
 
@@ -39,12 +37,13 @@ source guild-env
 When an environment is activated in a command console, the command
 prompt shows the environment name in the format `(<env name>) <default
 prompt>`. The environment name is the project directory name by
-default but can be set using `--name` with the `init` command.
+default but can be set using the `--name` when running [guild
+init](cmd:init).
 
 !!! note
     You must activate the project environment using ``source
-    guild‑env`` each time you start a new command line session for
-    project work.
+    guild‑env`` each time you open a new command console for project
+    work.
 
 Verify that the environment is activated using the [check](cmd:check)
 command:
