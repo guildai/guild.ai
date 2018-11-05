@@ -2,6 +2,8 @@ tags: get-started, guide
 
 # Add Guild to a project
 
+<!-- XXX replace with simpler Keras project -->
+
 [TOC]
 
 This guide provides instructions for adding Guild AI support to an
@@ -584,4 +586,4 @@ any of these commands:
 [guild runs rm -E](cmd:runs-delete)
 : Delete failed runs.
 
-XXX
+<!-- XXX finish story -->

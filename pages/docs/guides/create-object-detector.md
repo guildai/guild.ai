@@ -134,7 +134,7 @@ configurations defined in the `gpkg.object-detect` package.
 [PKG-CONFIG-LIST gpkg/object_detect model-config]
 
 We can apply any of these configurations to our sample detector by
-extending it. We use `faster-rcnn-resnet-50` for our detector.
+extending it. We use `ssd-mobilenet-v2` for our detector.
 
 Modify `guild.yml` in the project directory to be:
 
@@ -142,12 +142,12 @@ Modify `guild.yml` in the project directory to be:
 - model: detector
   description: Sample object detector
   extends:
-    - gpkg.object-detect/faster-rcnn-resnet-50
+    - gpkg.object-detect/ssd-mobilenet-v2
 ```
 
 Save your changes to `guild.yml`.
 
-By extending `faster-rcnn-resnet-50`, our model inherits its
+By extending `ssd-mobilenet-v2`, our model inherits its
 operations, which support a complete full workflow for building RCNN
 object detectors with a ResNet-50 backbone.
 
@@ -210,7 +210,7 @@ Modify `guild.yml` to be:
   description: Sample object detector
   extends:
     - gpkg.object-detect/voc-annotated-images-directory-support
-    - gpkg.object-detect/faster-rcnn-resnet-50
+    - gpkg.object-detect/ssd-mobilenet-v2
 ```
 
 !!! important
@@ -218,7 +218,7 @@ Modify `guild.yml` to be:
     configuration appearing earlier in the list takes precedence over
     configuration appearing later. In the case of our model,
     `voc-annotated-images-directory-support` must appear before
-    `faster-rcnn-resnet-50`.
+    `ssd-mobilenet-v2`.
 
 Save your changes to `guild.yml`.
 
@@ -812,11 +812,11 @@ The final Guild project is very simple:
   description: Sample object detector
   extends:
     - gpkg.object-detect/voc-annotated-images-directory-support
-    - gpkg.object-detect/faster-rcnn-resnet-50
+    - gpkg.object-detect/ssd-mobilenet-v2
 ```
 
 The `detect` model extends two model configurations:
-`voc-annotated-images-directory-support` and `faster-rcnn-resnet-50`,
+`voc-annotated-images-directory-support` and `ssd-mobilenet-v2`,
 which are both defined in the `gpkg.object-detect` package. These
 extensions add various operations to the model that support a workflow
 for training, evaluating, and deploying an object detector.
