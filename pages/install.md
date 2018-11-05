@@ -37,6 +37,13 @@ If you need to run `install` with administrative privileges, run:
 sudo pip install guildai
 ```
 
+Alternatively, install to the user install directory using the
+`--user` option:
+
+``` command
+pip install --user guildai
+```
+
 If you want the latest pre-release version of Guild AI, use the
 ``--pre`` option:
 
@@ -169,31 +176,29 @@ steps for you below.
 <div class="row match-height">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Train your first model</h3>
+<h3>Guild AI introduction</h3>
 <p class="expand">
 
-Dive in and train your first model using Guild AI. This introductory
-tutorial will walk you through the basics of Guild and cover most of
-its features.
+Start here to learn about projects, models and operations, runs,
+end-to-end workflow, automated testing and packaging.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/tutorials/train-mnist/"
-  >Train your first model <i class="fa next"></i></a>
+<a class="btn btn-primary cta" href="/docs/intro/"
+  >Guild AI introduction <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Discover Guild models</h3>
+<h3>Discover Guild AI packages</h3>
 <p class="expand">
 
-Guild AI provides a catalog of state-of-the-art TensorFlow models that
-can be used to build deep learning applications. Start here to see
-what developers are building.
+Guild AI provides a catalog of packages with support for
+state-of-the-art TensorFlow models and supporting utilities.
 
 </p>
-<a class="btn btn-primary cta" href="/models/"
-  >Discover Guild models <i class="fa next"></i></a>
+<a class="btn btn-primary cta" href="/packages/"
+  >Discover Guild packages <i class="fa next"></i></a>
 </div>
 </div>
 

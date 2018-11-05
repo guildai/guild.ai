@@ -6,11 +6,11 @@ tags: popular, models
 
 In this guide we create an object detector using support from
 [gpkg.object-detect](pkg:object-detect). We demonstrate a number of
-Guild features that accelerate model development and automate
+Guild AI features that accelerate model development and automate
 workflow:
 
 - Reuse high-level model configuration from `gpkg.object-detect`
-- Automate workflow steps used to train, evaluate and deploy a
+- Automate workflow steps used to train, evaluate, and deploy a
   state-of-the-art object detector
 
 ## Requirements
@@ -104,11 +104,16 @@ using pip or [guild install](cmd:install).
 {!guide-verify-activated-env.md!}
 
 After Verifying that your environment is activated, install
-`gpkg.object-detect` the [](cmd:install) command:
+`gpkg.object-detect`:
 
 ``` command
-guild install gpkg.object-detect
+pip install cython && pip install gpkg.object-detect
 ```
+
+!!! important
+    There is dependency on Cython from one of the packages
+    required by `gpkg.object-detect`. You must first install the
+    `cython` package before installing `gpkg.object-detect`.
 
 Guild installs `gpkg.object-detect` along with its dependencies.
 
@@ -126,7 +131,7 @@ with a detector model configuration.
 
 ## Extend a model configuration
 
-In this step we modify our detector to extend one of the model
+In this section, we modify our detector to extend one of the model
 configurations defined in the `gpkg.object-detect` package.
 
 `gpkg.object-detect` supports the following configurations:
@@ -145,11 +150,11 @@ Modify `guild.yml` in the project directory to be:
     - gpkg.object-detect/ssd-mobilenet-v2
 ```
 
-Save your changes to `guild.yml`.
+By extending `ssd-mobilenet-v2`, our model inherits its operations,
+which support a workflow for building SSD object detectors with a
+MobileNet v2 backbone.
 
-By extending `ssd-mobilenet-v2`, our model inherits its
-operations, which support a complete full workflow for building RCNN
-object detectors with a ResNet-50 backbone.
+Save your changes to `guild.yml`.
 
 List the model operations again:
 
@@ -220,12 +225,12 @@ Modify `guild.yml` to be:
     `voc-annotated-images-directory-support` must appear before
     `ssd-mobilenet-v2`.
 
-Save your changes to `guild.yml`.
-
 By extending `voc-annotated-images-directory-support` our model
 inherits a `prepare` operation.
 
-List model operations:
+Save your changes to `guild.yml`.
+
+List model operations again:
 
 ``` command
 guild ops
@@ -244,7 +249,7 @@ Before running `prepare`, we need some annotated images.
 
 ## Obtain annotated images
 
-If you have Pascal VOC annotated images, you may use them to train
+If you have Pascal VOC annotated images, you can use them to train
 your detector.
 
 If you don't have images, download one of these datasets:
@@ -275,8 +280,8 @@ If you don't have images, download one of these datasets:
     that you download both source files. If the dataset combines both
     images and annotations, just just need the combined source file.
 
-Once you have the annotated images, note the locations of the image
-files (i.e. JPG, PNG, and GIF files) and of the annotations (i.e. XML
+Unpack any downloaded files and note the locations of the image files
+(i.e. JPG, PNG, and GIF files) and of the annotations (i.e. XML
 files).
 
 Set the following variables:
@@ -312,18 +317,26 @@ When you run an operation, Guild generates a [run](term:run), which is
 a file system artifact containing run details, run output, and files
 created by the run.
 
-List runs using `guild runs`:
+List runs using [guild runs](cmd:runs):
 
 ``` command
 guild runs
 ```
 
-Guild shows available runs for the project (IDs and dates will
-differ):
+Guild shows available runs for the project (ID and date will differ):
 
 ``` output
 [1:81998e28]  ./detector:prepare  2018-11-02 11:15:25  completed
 ```
+
+If there are any failed runs in the list, you can delete them by
+running:
+
+``` command
+guild runs rm --error
+```
+
+Guild prompts you before deleting any runs.
 
 Guild provides a host of run management and discovery features. Refer
 to [Runs](/docs/runs) for details.
@@ -338,7 +351,6 @@ Guild shows files associated with the `prepare` operation (files will
 differ based on the dataset you prepared):
 
 ``` output
-~/sample-object-detector/env/.guild/runs/81998e28deba11e8ac6b107b44920855:
   dataset.yml
   deployment/
   labels.pbtxt
@@ -353,9 +365,9 @@ differ based on the dataset you prepared):
   val-0974-1528.tfrecord
 ```
 
-The generated TF records files are those files matching
-`train-*.tfrecord` (used for training) and `val-*.tfrecord` (used for
-validation). These contain the processed images and annotations.
+The generated TF records files are those matching `train-*.tfrecord`
+(used for training) and `val-*.tfrecord` (used for validation). These
+contain the processed images and annotations.
 
 `dataset.yml` contains information about the prepared dataset,
 including the number of processed examples, the number of classes, and
@@ -367,7 +379,9 @@ View `dataset.yml` using the [](cmd:cat) command:
 guild cat dataset.yml
 ```
 
-Guild shows the contents of `dataset.yml`.
+Guild shows the contents of `dataset.yml`. For information about
+object detection configuration, see [gpkg.object-detect
+Configuration](/packages/object-detect/#configuration).
 
 `labels.pbtxt` is a map of annotated object labels to the numeric
 values stored in the TF records.
@@ -405,15 +419,16 @@ guild run transfer-learn --gpus 0
 !!! note
     The use of ``--gpus 0`` ensures that the operation only uses
     the first GPU on the system (ID of `0`). If your system has more
-    than one GPU, you can use it later when running `evaluate`.
+    than one GPU, you can use a second GPU later when running
+    `evaluate`.
 
 Press `Enter` to accept the default settings and start the operation.
 
-The operation is configured to train indefinitely by default. It's
-common practice to let models train indefinitely without prescribing a
-fixed number of training steps or epochs. While the operation runs,
-you can routinely evaluate its performance and stop the operation when
-it's clear that further training is not needed.
+The trains indefinitely by default. It's common practice to let models
+train indefinitely without prescribing a fixed number of training
+steps or epochs. While the operation runs, you can routinely evaluate
+model performance and stop the operation when it's clear that further
+training is not needed.
 
 You can stop any operation by pressing `Ctrl-C` in the command console
 where the operation is running. Alternatively you can run [guild
@@ -431,7 +446,7 @@ the project:
 
 From the activated project directory, list project runs:
 
-```
+``` command
 guild runs
 ```
 
@@ -447,7 +462,7 @@ If you don't see these runs, confirm that the working directory is
 `$PROJECT` and that you have activated the project environment by
 running ``source guild-env`` from that directory.
 
-Next, run the `evaluate` operation, which evaluates the latest
+Next, we run the `evaluate` operation, which evaluates the latest
 checkpoint saved by the `transfer-learn` operation (run `1` above)
 using the validation data from the latest `prepare` operation (run `2`
 above).
@@ -484,11 +499,11 @@ guild run evaluate --gpus 1
 
 !!! note
     The use of ``--gpus 1`` in the command ensures that the
-    operation only sees the second GPU and not try to allocate memory
-    on other GPUs. If you don't explicitly control the visible GPUs
-    with `--gpus` and `--no-gpus` options, each TensorFlow operation
-    preemptively consumes the memory on all visible GPUs, even if
-    they're not used.
+    operation only sees the second GPU and that it will not try to
+    allocate memory on other GPUs. If you don't explicitly control the
+    visible GPUs with `--gpus` and `--no-gpus` options, each
+    TensorFlow operation preemptively consumes the memory on all
+    visible GPUs, even if they're not used.
 
 The evaluate operation uses the validation records from the prepared
 dataset to measure model performance. As we are training an object
@@ -499,9 +514,9 @@ detector, performance is measured using COCO mAP metrics.[^mAP]
     ->](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173)*
     for an overview of measuring accuracy in object detectors.
 
-Each time you run `evaluate`, Guild generates a new run that serves as
-a record of your measurement. The run saves accuracy metrics that can
-be viewed in TensorBoard and used by other programs.
+Each time you run `evaluate`, Guild generates a new run that records
+your measurement. The run saves accuracy metrics that can be viewed in
+TensorBoard and used by other programs.
 
 Use [guild compare](cmd:compare) to view run performance, including
 loss and accuracy:
@@ -539,10 +554,10 @@ If you run the `tensorboard` command on a remote server, Guild does
 not open TensorBoard in your browser. You must open the link that
 Guild shows in the remote command console in your browser manually. If
 Guild starts TensorBoard on a port that you cannot access---e.g. due
-to firewall restrictions---quit the `tensorboard` command by pressing
-`Ctrl-C` and run the command again, specifying a port that you can
-access using the `--port` option. For example, if you can access port
-`8080` on the remote server, start TensorBoard by running:
+to firewall restrictions---terminate the `tensorboard` command by
+pressing `Ctrl-C` and run the command again, specifying a port that
+you can access using the `--port` option. For example, if you can
+access port `8080` on the remote server, start TensorBoard by running:
 
 ``` command
 guild tensorboard --port 8080
@@ -571,7 +586,7 @@ stopping the transfer learn operation---more training will not likely
 improve model performance.
 
 You can stop training at any point, however we recommend training for
-at least 10K-20K steps to give the model a chance to transfer
+at least 5K-10K steps to give the model a chance to transfer
 learn. Use `evaluate` (see [Check model
 accuracy](#check-model-accuracy) above) to calculate model precision
 to confirm before stopping.
@@ -584,10 +599,12 @@ quit TensorBoard.
 
 Stop the transfer learn operation using one of these two methods:
 
-- In the first command console where the `transfer-learn` operation is
+- In the command console where the `transfer-learn` operation is
   running, press `Ctrl-C`
 
-- Or, in the second command console, use the [stop](cmd:runs-stop)
+or
+
+- In a second command console, use the [stop](cmd:runs-stop)
   command:
 
 ``` command
@@ -599,8 +616,21 @@ Press `y` and `Enter` to confirm that you want to stop the
 
 Guild stops the transfer learn operation.
 
-Now that we have a trained object detector, we can use it to detect
-objects. First, we need to generate a frozen inference graph.
+When you stop a run, the run exits with a status of `terminated`. A
+terminated training operation does not indicate failure---only that
+the training was stopped. In this case, the operation is designed to
+run until it's explicitly stopped.
+
+List the files associated with the transfer learn operation:
+
+``` command
+guild ls --operation transfer-learn
+```
+
+Guild shows a number of files, including files under a `train`
+subdirectory. The files under `train` represent the trained model
+checkpoints associated with various steps. As we'll see in the next
+section, checkpoints are used to create a frozen inference model.
 
 ## Export and freeze a trained model
 
@@ -656,24 +686,21 @@ guild run export-and-freeze trained-model=<run ID> step=<step>
 Replace `<run ID>` with the run ID associated with the trained model
 and replace `<step>` with the checkpoint step.
 
-To view the available checkpoints for a run using the [](cmd:ls)
-command:
+To view the available checkpoints for a transfer learn operation, run:
 
 ``` command
 guild ls --operation transfer-learn --path train/model
 ```
 
-The use of `--operation` tells Guild to list files for the latest
-`transfer-learn` operation and the use of `--path` limits the file
-listing to the trained model checkpoints.
+The use of `--path` limits the file listing to the trained model
+checkpoints.
 
 Checkpoint steps are shown in files named `train/model.ckpt-STEP.*`
 where `STEP` is the available checkpoint step.
 
 ## Detect objects in an image
 
-With the frozen inference graph generated in the previous section, we
-can detect objects in an image.
+With a frozen inference graph, we can detect objects in an image.
 
 Create a new directory containing one or more images that you want to
 detect.
@@ -697,14 +724,15 @@ want to detect:
 guild run detect images=$DETECT_IMAGES
 ```
 
-Guild uses the inference from the latest `export-and-freeze` operation
-to load and initialize the object detector. It runs each image in
-`$DETECT_IMAGES` through the model to both classify and locate objects
-with bounding boxes.
+Guild uses the frozen inference graph from the latest
+`export-and-freeze` operation to load and initialize the object
+detector. It runs each image in `$DETECT_IMAGES` through the model to
+both classify and locate objects with bounding boxes.
 
 When the detect operation finishes, you can view the detected objects
-using either Guild View---a Guild AI application used to view
-runs---or an image viewer installed on your system.
+using either [Guild View](/docs/visual/guild-view/)---a Guild AI
+application used to view runs---or an image viewer installed on your
+system.
 
 Start Guild View:
 
@@ -751,7 +779,7 @@ explorer to view run files. To view the run directory of the latest
 `detect` operation, run:
 
 ``` command
-guild open --operation detect
+guild open --operation detect --path detected
 ```
 
 From your system file explorer, you can browse detected images and
@@ -791,7 +819,9 @@ directory of the latest `export-and-freeze` run.
 You can use the `--full-path` option to show full paths for each file:
 
 ``` command
-guild ls --operation export-and-freeze --path graph --full-path
+guild ls --operation export-and-freeze \
+         --path graph/frozen_inference_graph \
+         --full-path
 ```
 
 !!! note
