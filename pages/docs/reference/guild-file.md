@@ -309,12 +309,29 @@ attribute as named objects.
   <p>
   Defaults to the flag name.
 
+`arg-switch`
+: Value that, when specified, causes the flag to be used as a command
+  line switch
+  <p>
+  A command line switch appears as an option without a value.
+  <p>
+  For example, if `arg-switch` for flag `continuous` is `yes`, then
+  the command line option `--continuous` will be used when the flag
+  value is `yes` and will not be used for any other value. `arg-name`
+  can be used to specify the argument name used when the switch is
+  applied.
+
 `arg-skip`
 : Boolean indicating whether not to include the flag as a command
   argument (boolean)
 
 `choices`
 : Allowed choices for the flag (list of [choices](#flag-choices))
+
+`null-label`
+: String used to represent a `null` flag value
+  <p>
+  Defaults to `default`.
 
 ## Flag choices
 

@@ -17,11 +17,12 @@ workflow:
 
 {!guide-gpu-requirements.md!}
 
-## Create a new project
+## Create a Guild AI project
 
-In this section we create a new Guild project. A Guild project is a
-directory that contains a [Guild file](term:guild-file), which is
-named `guild.yml` and located in the project root directory.
+In this section we create a Guild AI project that will define an
+object detector model.
+
+{!guild-project-intro.md!}
 
 For the examples, we use the environment variable `PROJECT` to
 represent the project directory. For our example, we create the
@@ -92,7 +93,7 @@ to install required software in a project environment.
 
 {!guide-init-project-env.md!}
 
-## Install *gpkg.object-detect*
+## Install `gpkg.object-detect`
 
 The object detector we create in this guide uses model support defined
 in the Guild package `gpkg.object-detect.`

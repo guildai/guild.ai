@@ -145,6 +145,9 @@ markdown_extensions:
           href: https://en.wikipedia.org/wiki/Tmux
           target: _blank
           class: ext
+        - link_pattern: alias:create-object-detector
+          text: Create an object detector
+          href: /docs/guides/create-object-detector/
 
 pages:
   - index.md
@@ -242,7 +245,6 @@ pages:
           - docs/guides/index.md
           # - delete failed runs
           # - reuse models
-          # - create a tf lite file
           # - serve a trained model
           # - delete all runs
           # - archive runs
@@ -268,6 +270,7 @@ pages:
           - docs/guides/train-on-ec2.md
           - docs/guides/backup-to-s3.md
           - docs/guides/compare-runs.md
+          - docs/guides/create-tflite-file.md
           - docs/guides/specify-run-gpus.md
           #- docs/guides/debug-operation.md
           #- docs/guides/create-tflite-file.md

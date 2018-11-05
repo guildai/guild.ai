@@ -1,6 +1,6 @@
 grunt = node_modules/grunt/bin/grunt
 
-mkdocs = PYTHONPATH=.:../guild mkdocs
+mkdocs = PYTHONPATH=.:guild:packages mkdocs
 
 build: $(grunt)
 	$(grunt) build

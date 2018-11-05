@@ -1177,6 +1177,7 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
             dl.remove(dd)
             rows.append(self._def_row(dt, dd))
         dl.extend(rows)
+        self._set_col_widths(rows)
 
     @staticmethod
     def _def_row(dt, dd):
@@ -1185,37 +1186,35 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
         row.append(dt)
         row.append(dd)
         dt.tag = "div"
-        dt.set("class", "dt col col-sm-4 col-lg-3")
+        dt.set("class", "dt col")
         dd.tag = "div"
-        dd.set("class", "dd col col-sm-8 col-lg-9")
+        dd.set("class", "dd col")
         return row
 
-    def _dl_to_table_old(self, dl):
-        dl.tag = "table"
-        dl.set("class", "table dl")
-        rows = []
-        dl_children = iter(list(dl))
-        while True:
-            try:
-                dt = next(dl_children)
-                dd = next(dl_children)
-            except StopIteration:
-                break
-            dl.remove(dt)
-            dl.remove(dd)
-            rows.append(self._def_row(dt, dd))
-        dl.extend(rows)
+    def _set_col_widths(self, rows):
+        max_dt_len = max([self._dt_len(row) for row in rows])
+        if max_dt_len < 25:
+            dt_col_class = "col-sm-4 col-lg-3"
+            dd_col_class = "col-sm-8 col-lg-9"
+        elif max_dt_len < 35:
+            dt_col_class = "col-sm-6 col-lg-5"
+            dd_col_class = "col-sm-6 col-lg-7"
+        else:
+            dt_col_class = "col-sm-8 col-lg-6"
+            dd_col_class = "col-sm-4 col-lg-6"
+        for row in rows:
+            self._apply_col_classes(row, dt_col_class, dd_col_class)
 
     @staticmethod
-    def _def_row_old(dt, dd):
-        row = etree.Element("tr")
-        row.append(dt)
-        row.append(dd)
-        dt.tag = "td"
-        dt.set("class", "dt")
-        dd.tag = "td"
-        dd.set("class", "dd")
-        return row
+    def _dt_len(row):
+        dt, _dd = row.getchildren()
+        return len(" ".join(dt.itertext()))
+
+    @staticmethod
+    def _apply_col_classes(row, dt_col_class, dd_col_class):
+        dt, dd = row.getchildren()
+        dt.set("class", "%s %s" % (dt.get("class"), dt_col_class))
+        dd.set("class", "%s %s" % (dd.get("class"), dd_col_class))
 
 class DeflistToTable(Extension):
     """Converts deflists to table-like structure.
