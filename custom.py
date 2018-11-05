@@ -1193,15 +1193,18 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
 
     def _set_col_widths(self, rows):
         max_dt_len = max([self._dt_len(row) for row in rows])
-        if max_dt_len < 25:
+        if max_dt_len <= 15:
             dt_col_class = "col-sm-4 col-lg-3"
             dd_col_class = "col-sm-8 col-lg-9"
-        elif max_dt_len < 35:
+        elif max_dt_len <= 30:
+            dt_col_class = "col-sm-5 col-lg-4"
+            dd_col_class = "col-sm-7 col-lg-8"
+        elif max_dt_len <= 40:
             dt_col_class = "col-sm-6 col-lg-5"
             dd_col_class = "col-sm-6 col-lg-7"
         else:
-            dt_col_class = "col-sm-8 col-lg-6"
-            dd_col_class = "col-sm-4 col-lg-6"
+            dt_col_class = "col-sm-7 col-lg-6"
+            dd_col_class = "col-sm-5 col-lg-6"
         for row in rows:
             self._apply_col_classes(row, dt_col_class, dd_col_class)
 
