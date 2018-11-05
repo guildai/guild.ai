@@ -140,7 +140,7 @@ Modify `guild.yml` to be:
 ```
 
 This adds `tflite-support` to the list of model extensions. By
-including `tflite-support` we inerit a new operation, `tflite`, which
+including `tflite-support` we inherit a new operation, `tflite`, which
 is used to generate a TensorFlow Lite file from a frozen inference
 graph.
 

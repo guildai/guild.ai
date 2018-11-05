@@ -1,4 +1,4 @@
-personal_ws-1.1 en 296 
+personal_ws-1.1 en 303 
 mnist
 TensorBoard
 tensorboard
@@ -10,6 +10,7 @@ eca
 workflows
 CLI
 cmd
+rms
 RESDEF
 dev
 nvidia
@@ -46,6 +47,7 @@ argv
 adam
 dnn
 toolset
+ssd
 IIIT
 TOC
 debd
@@ -61,6 +63,7 @@ params
 json
 tabpanel
 config
+programmatically
 vgg
 svg
 EOF
@@ -115,6 +118,7 @@ nbsp
 img
 ckpt
 multi
+protobuf
 basename
 NVIDIA's
 datapy
@@ -130,6 +134,7 @@ PyPI
 bashrc
 dataset
 TestPyPI
+proto
 rmsprop
 ArgumentParser
 aa
@@ -171,6 +176,7 @@ gitignore
 dt
 Ep
 fn
+mobilenet
 MobileNet
 figcaption
 NVML
@@ -283,6 +289,7 @@ dbd
 ginit
 quantization
 SDK
+TFLite
 tflite
 arg
 sgd
