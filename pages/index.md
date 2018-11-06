@@ -38,7 +38,7 @@ hide_in_pagenav: yes
     </p>
     <a href="/docs/intro/#model-operations">
       <img title="Running the train operation"
-           class="feature-grid-image" style="margin-top:5px"
+           class="feature-grid-image" style="margin-top:5px;max-width:100%"
            src="/assets/img/guild-run.png">
     </a>
   </div>
@@ -247,24 +247,6 @@ hide_in_pagenav: yes
          >Guild AI introduction <i class="fa next"></i></a>
     </div>
   </div>
-
-
-  <!--
-  <div class="col col-md-6">
-    <div class="promo left">
-      <h3><a href="/docs/guides/convert-jupyter">Convert a Jupyter Notebook to a Guild project</a></h3>
-      <p class="expand">
-
-        If your TensorFlow training code is in a Jupyter Notebook, use
-        Guild to create a reusable project that supports experiment
-        tracking, remote training, and detailed run comparison.
-
-      </p>
-      <a class="btn btn-primary cta" href="/docs/guides/convert-jupyter/"
-         >Convert a Jupyter Notebook <i class="fa next"></i></a>
-    </div>
-  </div>
-  -->
 
   <div class="col col-md-6">
     <div class="promo left">
