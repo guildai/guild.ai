@@ -6,10 +6,10 @@ tags: get-started
 [TOC]
 
 This introduction provides an overview of Guild AI core
-functionality. Follow the steps under the each **Example** section
-below to get hands-on experience with Guild. By following the
-examples, you will implement a Keras image classifier as described in
-TensorFlow's *[Train your first neural network: basic classification
+functionality. Follow the steps under the each *Example* section below
+to get hands-on experience with Guild. By following the examples, you
+will implement a Keras image classifier as described in TensorFlow's
+*[Train your first neural network: basic classification
 ->](https://www.tensorflow.org/tutorials/keras/basic_classification)*.
 
 Refer to the [completed
@@ -48,10 +48,9 @@ mkdir sample-project
 ```
 
 !!! tip
-
-    In any command example, you can click the word **`COMMAND`** in the
-    upper right corner to copy the example text to your clipboard, which
-    you can paste into your console.
+    In any command example, you can click the word *`COMMAND`* in
+    the upper right corner to copy the example text to your clipboard,
+    which you can paste into your console.
 
 Create the file ``sample-project/guild.yml`` and modify it to be:
 
@@ -61,10 +60,9 @@ Create the file ``sample-project/guild.yml`` and modify it to be:
 ```
 
 !!! tip
-
-    As with command examples, you can click the word **`YAML`** to copy
-    the example to your clipboard, which you can paste into your text
-    editor.
+    As with command examples, you can click the word *`YAML`* to
+    copy the example to your clipboard, which you can paste into your
+    text editor.
 
 Save your changes to ``guild.yml``.
 
@@ -327,9 +325,9 @@ differ):
 ```
 
 The latest run is listed first and should have a status of
-**completed**, indicating that the operation exited without an
+`completed`, indicating that the operation exited without an
 error. The previous run is listed second and should have a status of
-**error** because the `train` module was not originally available (see
+`error` because the `train` module was not originally available (see
 previous section).
 
 Next, show output for the failed run:
@@ -725,7 +723,7 @@ guild test
 Press `Enter` to confirm.
 
 Guild runs `train` and `predict`---the operations should complete
-without error and Guild shows **`All tests passed`**.
+without error and Guild shows ``All tests passed``.
 
 ## Packages
 
