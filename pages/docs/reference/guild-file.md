@@ -153,7 +153,21 @@ Models may also define resources that operations require.
   References are displayed in help text.
 
 `extra`
-: Additional information used by Guild and Guild plugins
+: Additional information used by Guild and Guild plugins (see [Guild
+  supported extra attributes](#guild-supported-extra-attributes))
+
+### Guild supported extra attributes
+
+`scalar-aliases`
+: Scalar key aliases (map of aliases to one or more key patterns)
+  <p>
+  If a logged scalar key matches a pattern associated with an alias,
+  that alias included in the run index with the same value. This is
+  used to normalize logged scalar keys to common keys such as `loss`,
+  `loss_step`, and `val_acc`.
+  <p>
+  A single pattern or a list of patterns may be specified for each
+  alias.
 
 ### Examples
 
@@ -188,6 +202,16 @@ Complete example of `mnist-layers` (from
           select: models-v.1.6.0/official/mnist
   references:
     - https://github.com/tensorflow/models/tree/v.1.6.0/official/mnist
+```
+
+The example below defines aliases for `loss` and `loss_step`.
+
+``` yaml
+model: sample
+extra:
+  scalar-aliases:
+    loss: .*/cross_entropy
+    loss_step: .*/cross_entropy_1_step
 ```
 
 ## Operations
@@ -286,6 +310,35 @@ operations:
   value to ``yes`` when the operation is designed to be terminated
   explicitly by the user.
 
+`label`
+: Template used to generate an operation label.
+  <p>
+
+  Labels may use flag values in the form `${NAME}`. In addition, they
+  may apply template functions to values using
+  `{$NAME|FUNCTION[|FUNCTION]...}`. See [Template label
+  functions](#template-label-functions) for a list of supported
+  functions.
+
+### Template label functions
+
+Template labels may use functions to transform flag values. Functions
+are applied to a value using the ``|`` (pipe) character. Multiple
+functions may be chained using additional applications with ``|``.
+
+Functions support arguments in the form `FUNCTION:ARG`.
+
+`default`
+: Provide a value if the flag value is null or an empty
+  string
+  <p>
+  Example: ``${model|default:default model}``
+
+`basename`
+: Return the base name for a file
+  <p>
+  Example: ``${images-dir|basename}``
+
 ## Flags
 
 Flags are defined for [operations](#operations) under the `flags`
@@ -302,7 +355,10 @@ attribute as named objects.
 : Default value if not specified by the user (string or number)
 
 `required`
-: Flag indicating whether or not the flag is required (boolean)
+: Indicates whether or not the flag is required (boolean)
+
+`type`
+: Indicates the type of legal values for the flag ([flag type](#flag-types))
 
 `arg-name`
 : Name of the command argument used for flag values (string)
@@ -332,6 +388,35 @@ attribute as named objects.
 : String used to represent a `null` flag value
   <p>
   Defaults to `default`.
+
+## Flag types
+
+A type may be specified for a flag, indicating the set of values that
+may be used for the flag. By defaut, flag values are applied as
+provided, either as default values or as command line arguments.
+
+Supported types are:
+
+`string`
+: Flag is a string.
+
+`int`
+: Flag is an integer.
+
+`float`
+: Flag is a float.
+
+`number`
+: Flag is either an integer or a float.
+
+`path`
+: Flag is a path. If a provided value is a relative path, it is
+  converted to an absolute path relative to the working directory.
+
+`existing-path`
+: Flag is an existing path. Such a flag is identical to `path` type
+  but must also exist when an operation is run, otherwise an error is
+  generated.
 
 ## Flag choices
 
