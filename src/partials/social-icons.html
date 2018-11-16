@@ -1,5 +1,11 @@
 <ul class="social-icons">
   {% for link in config.extra.links %}
-  <li><a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.name }}"></i></a></li>
+  <li>
+    <a title="{{ link.title }}"
+       href="{{ link.url }}"
+       target="_blank">
+      <i class="fa fa-{{ link.name }}"></i>
+    </a>
+  </li>
   {% endfor %}
 </ul>

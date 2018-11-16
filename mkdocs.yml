@@ -14,8 +14,14 @@ extra:
   links:
     - name: github
       url: https://github.com/guildai
+      title: Guild AI on GitHub
+    - name: slack
+      url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
+      title: Guild AI Slack Channel
     - name: twitter
       url:  https://twitter.com/guildai
+      title: Guild AI on Twitter
+
 theme:
   name: null
   custom_dir: src
