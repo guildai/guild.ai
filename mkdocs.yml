@@ -3,9 +3,9 @@ docs_dir: pages
 copyright: 2017-2018 TensorHub, Inc.
 strict: true
 extra:
-  version: 0.5.3
+  version: 0.5.4
   tagline:
-    Task runner and package manager for TensorFlow.
+    Open source toolkit for reproducible machine learning
   tagline_width: 16em
   subtext:
     Automate training, testing, and deployment. Capture runs as
