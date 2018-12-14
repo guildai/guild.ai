@@ -263,6 +263,22 @@ hide_in_pagenav: yes
     </div>
   </div>
 
+  <!--
+  <div class="col col-md-6">
+    <div class="promo left">
+      <h3><a href="/docs/guides/guild-for-research/">Guild for research</a></h3>
+      <p class="expand">
+
+        As an experiment management toolkit, Guild is tailor made for
+        researchers. This guide provides step-by-step instructions
+        using Guild in your research.
+
+      </p>
+      <a class="btn btn-primary" href="/docs/guides/guild-for-research/">Guild for research <i class="fa next"></i></a>
+    </div>
+  </div>
+  -->
+
   <div class="col col-md-6">
     <div class="promo left">
       <h3><a href="/docs/guides/create-image-classifier/">Create an image classifier</a></h3>

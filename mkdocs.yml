@@ -271,6 +271,7 @@ pages:
           # - diff images using Beyond Compare
           #- docs/guides/convert-notebook.md
           - docs/guides/add-guild.md
+          #- docs/guides/guild-for-research.md
           - docs/guides/create-image-classifier.md
           - docs/guides/create-object-detector.md
           - docs/guides/train-on-ec2.md
