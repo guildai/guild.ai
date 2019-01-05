@@ -1,0 +1,35 @@
+{% set header_class = "navbar-transparent" %}
+
+{% extends "partials/header.html" %}
+
+{% block banner %}
+
+<div
+  class="banner banner-full-height overlay-black"
+  style="background-image: url({{ base_url }}/assets/img/banner-lowrez.jpg);">
+  <div class="container text-center">
+    <div class="spacer"></div>
+    <h1 style="max-width:{{config.extra.tagline_width}}">
+      {{ page.meta.tagline or config.extra.tagline }}
+    </h1>
+    <div class="spacer text"></div>
+    <h5 style="max-width:{{config.extra.subtext_width}}">
+      {{ page.meta.subtext or config.extra.subtext }}
+    </h5>
+    <div class="spacer actions"></div>
+    <div class="actions">
+      <a
+        class="btn btn-primary btn-xl"
+        role="button"
+        href="{{ page.meta.banner_action_link }}"
+      >{{ page.meta.banner_action }}</a>
+    </div>
+    <div class="spacer version"></div>
+    <div class="version">
+      <a href="https://pypi.python.org/pypi/guildai"
+         target="_blank">Version {{ config.extra.version }}</a></div>
+    <div class="spacer"></div>
+  </div>
+  {% include "partials/social-icons.html" %}
+</div>
+{% endblock %}

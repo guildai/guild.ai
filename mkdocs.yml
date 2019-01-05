@@ -3,14 +3,18 @@ docs_dir: pages
 copyright: 2017-2018 TensorHub, Inc.
 strict: true
 extra:
-  version: 0.5.4
-  tagline:
-    Open source experiment tracking for TensorFlow and Keras
+  version: 0.6.0
   tagline_width: 16em
+  tagline:
+
+    Experiment automation for AI researchers and engineers
+
+  subtext_width: 22em
   subtext:
-    Automate training, testing, and deployment. Capture runs as
-    experiments. Install, share, and distribute your models.
-  subtext_width: 26em
+
+    Optimize your models with systematic training and fast
+    hyperparameter tuning.
+
   links:
     - name: github
       url: https://github.com/guildai

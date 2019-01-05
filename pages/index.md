@@ -1,4 +1,4 @@
-layout: banner
+layout: front-page
 banner_action: Learn more
 banner_action_link: #learn-more
 hide_sidenav: yes
