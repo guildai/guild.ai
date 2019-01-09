@@ -7,13 +7,12 @@ extra:
   tagline_width: 16em
   tagline:
 
-    Experiment automation for AI researchers and engineers
+    Experiment optimization for TensorFlow, PyTorch, and Keras
 
-  subtext_width: 22em
+  subtext_width: 30em
   subtext:
 
-    Optimize your models with systematic training and fast
-    hyperparameter tuning.
+    Train smarter with run automation and hyperparameter tuning.
 
   links:
     - name: github
