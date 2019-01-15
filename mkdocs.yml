@@ -5,9 +5,10 @@ strict: true
 extra:
   version: 0.6.0
   tagline_width: 16em
+  #tagline: Experiment optimization for TensorFlow, PyTorch, and Keras
   tagline:
 
-    Experiment optimization for TensorFlow, PyTorch, and Keras
+    Experiment runner for TensorFlow, PyTorch, and Keras
 
   subtext_width: 30em
   subtext:

@@ -10,12 +10,12 @@ hide_in_pagenav: yes
 <div class="row match-height">
 
   <div class="col-md-4 col-sm-6 promo center">
-
-    <h4>Maximize the value of each experiment</h4>
+    <h4>Run more experiments, more effectively</h4>
     <p>
 
-      Track each experiment, capturing logs, summary stats, and
-      checkpoints---information critical to improving your model.
+      Automate training runs to generate more experiments in less
+      time. With more data, you make better decisions and get better
+      results.
 
     </p>
     <img title="200x100"
@@ -23,12 +23,12 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4>Run more experiments, more effectively</h4>
+
+    <h4>Maximize the value of your experiments</h4>
     <p>
 
-      Automate training runs to generate more experiments in less
-      time. With more data, you make better decisions and get better
-      results.
+      Track each experiment, capturing logs, summary stats, and
+      checkpoints---information critical to improving your model.
 
     </p>
     <img title="200x100"

@@ -1,0 +1,28 @@
+.text-editor-wrap {
+  display: block;
+  margin: 0 auto 60px;
+  width: 50em;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.5) 8px 12px 25px;
+  clear: both;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+
+  .text-body {
+    background-color: rgba(10, 10, 10, 0.8);
+    padding: 10px;
+    color: #f0f0f0;
+    text-shadow: #000 0px 1px 0px;
+    font-family: "Consolas", "Courier New", "Courier";
+    font-size: 1.45em;
+    line-height: 1.40em;
+    font-weight: 500;
+    text-align: left;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+  }
+}

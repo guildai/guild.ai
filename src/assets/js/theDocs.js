@@ -21,6 +21,28 @@ $(function() {
 
   "use strict";
 
+  // Typed.js
+
+  var typed = new Typed('#typed', {
+    strings: [
+      "guild run train.py",
+      "guild run <span>train.py learning-rate=0.01</span>",
+      "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
+      "guild run <span>train.py</span> --minimize loss",
+      "guild compare --columns loss,accuracy",
+      "guild tensorboard",
+      "guild runs label 7a9c2de0 'best accuracy'",
+      "guild runs export /mnt/Archive",
+      "guild push s3-backup",
+    ],
+    typeSpeed: 45,
+    backSpeed: 20,
+    backDelay: 1500,
+    loop: true,
+    showCursor: false,
+    smartBackspace: true
+  });
+
   // Scroll to page links
   $('a').click(function(e) {
     if (e.target.getAttribute("role") == "tab") {

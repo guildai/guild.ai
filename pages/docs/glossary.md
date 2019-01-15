@@ -43,9 +43,19 @@ A flag value that specifies a range within minimim and maximum values.
 An operation system process, which may or may not be running, with
 associated run directory and metadata. When the operating system
 process is running, the run is considered *running*. When the
-operating system process is not running, the run is considere stopped
-in one of three states depending on the process exit code:
-*completed*, *terminated*, or *error*.
+operating system process is not running, the run is in one of two
+states: *pending* or stopped.
+
+If stopped, the status depends on the process exit code. If the
+process exited successfully---that is, with a ``0`` exit code---it is
+*completed*. If the process was terminated by a user or system
+generated interrupt, it is *terminated*. Otherwise a stopped process
+has an *error*.
+
+Pending runs have been started but are not yet running their target
+operation. Pending runs may be performing preparation steps such as
+downloading files or running `pre-exec` steps, or they may be part of
+a batch run and waiting on other runs to finish.
 
 ## Trial
 

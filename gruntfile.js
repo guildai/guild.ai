@@ -63,6 +63,7 @@ module.exports = function(grunt) {
             'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
             'node_modules/mousetrap/mousetrap.min.js',
             'node_modules/featherlight/release/featherlight.min.js',
+            'node_modules/typed.js/lib/typed.min.js',
             'src/assets/js/prism.min.js'
           ]
         }
