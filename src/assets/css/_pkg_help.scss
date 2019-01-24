@@ -54,7 +54,11 @@
         td:last-child {
           padding-right: 0;
         }
-        */
+         */
+
+        td {
+          word-break: normal;
+        }
 
         th {
           font-size: 14px;
