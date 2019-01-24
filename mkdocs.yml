@@ -8,12 +8,13 @@ extra:
   #tagline: Experiment optimization for TensorFlow, PyTorch, and Keras
   tagline:
 
-    Experiment runner for TensorFlow, PyTorch, and Keras
+    Experiment optimization for TensorFlow, PyTorch, and Keras
 
-  subtext_width: 30em
+  subtext_width: 24em
   subtext:
 
-    Train smarter with run automation and hyperparameter tuning.
+    Train smarter with run automation, hyperparameter tuning, and
+    performance analytics.
 
   links:
     - name: github

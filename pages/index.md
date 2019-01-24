@@ -1,11 +1,11 @@
 layout: front-page
-banner_action: Get started
-banner_action_link: #get-started
+banner_action: Learn more
+banner_action_link: #learn-more
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-<div id="learn-more" style="height:50px;margin-top:-50px"></div>
+<div style="height:50px;margin-top:-50px"></div>
 
 <div class="row match-height">
 
@@ -49,5 +49,7 @@ hide_in_pagenav: yes
   </div>
 
 </div>
+
+<div id="learn-more"></div>
 
 # Get started
