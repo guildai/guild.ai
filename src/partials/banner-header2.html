@@ -16,26 +16,11 @@
     <h5 style="max-width:{{config.extra.subtext_width}}">
       {{ page.meta.subtext or config.extra.subtext }}
     </h5>
-
-    <div class="text-editor-wrap">
+    <div class="text-editor banner">
       <div class="text-body">
         $ <span id="typed"></span><span class="typed-cursor">|</span>
       </div>
     </div>
-
-    <div class="spacer actions"></div>
-    <div class="actions">
-      <a
-        class="btn btn-primary btn-xl"
-        role="button"
-        href="{{ page.meta.banner_action_link }}"
-      >{{ page.meta.banner_action }}</a>
-    </div>
-    <div class="spacer version"></div>
-    <div class="version">
-      <a href="https://pypi.python.org/pypi/guildai"
-         target="_blank">Version {{ config.extra.version }}</a></div>
-    <div class="spacer"></div>
   </div>
   {% include "partials/social-icons.html" %}
 </div>

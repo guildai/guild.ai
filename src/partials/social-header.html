@@ -1,0 +1,11 @@
+<div class="social-icons">
+  {% for link in config.extra.links %}
+    {% if link.header %}
+    <a title="{{ link.title }}"
+       href="{{ link.url }}"
+       target="_blank">
+      <i class="fa fa-{{ link.name }}"></i>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>

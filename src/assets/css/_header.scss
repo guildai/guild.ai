@@ -170,6 +170,18 @@
   }
 }
 
+.navbar-default .social-icons {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+
+  a {
+    padding: 0 15px;
+    color: white;
+    font-size: 22px;
+  }
+}
+
 .nav .dropdown-menu {
   & {
     box-shadow: none;

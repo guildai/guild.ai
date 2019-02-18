@@ -4,22 +4,22 @@ copyright: 2017-2018 TensorHub, Inc.
 strict: true
 extra:
   version: 0.6.0
-  tagline_width: 16em
-  #tagline: Experiment optimization for TensorFlow, PyTorch, and Keras
+  tagline_width: 20em
   tagline:
 
-    Experiment optimization for TensorFlow, PyTorch, and Keras
+    The easiest way to run, track, and compare
+    machine learning experiments
 
-  subtext_width: 24em
+  subtext_width: 30em
   subtext:
 
-    Train smarter with run automation, hyperparameter tuning, and
-    performance analytics.
+    Get better results faster with systematic machine learning.
 
   links:
     - name: github
-      url: https://github.com/guildai
+      url: https://github.com/guildai/guildai
       title: Guild AI on GitHub
+      header: yes
     - name: slack
       url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
       title: Guild AI Slack Channel
