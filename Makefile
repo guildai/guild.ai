@@ -41,6 +41,9 @@ spellcheck:
 clean-caches:
 	rm -rf /tmp/guild-ai-cmd-help
 
+clean-all: clean
+	rm -rf node_modules
+
 update-submodules:
 	git submodule foreach git pull origin master
 

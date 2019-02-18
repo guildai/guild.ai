@@ -7,18 +7,12 @@
   overflow: hidden;
   transition: all 0.5s ease-out;
 
-  &.banner {
-    width: 100%;
-    max-width: 50em;
-  }
-
   .text-body {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,0.8);
     padding: 10px;
     color: #f0f0f0;
-    text-shadow: #000 0px 1px 0px;
+    font-size: 16px;
     font-family: "Consolas", "Courier New", "Courier";
-    font-size: 20px;
     line-height: 24px;
     font-weight: 500;
     text-align: left;
@@ -28,25 +22,28 @@
     -ms-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
-
-    @media screen and (max-width: $break-lg) {
-      font-size: 20px;
-    }
-
-    @media screen and (max-width: $break-md) {
-      font-size: 18px;
-    }
-
-    @media screen and (max-width: $break-sm) {
-      font-size: 16px;
-    }
   }
 
-  &.feature {
+  &.banner {
     width: 100%;
+    max-width: 50em;
 
     .text-body {
-      font-size: 14px;
+      background-color: rgba(0,0,0,0.7);
+      text-shadow: #000 0px 1px 0px;
+      font-size: 20px;
+
+      @media screen and (max-width: $break-lg) {
+        font-size: 20px;
+      }
+
+      @media screen and (max-width: $break-md) {
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: $break-sm) {
+        font-size: 16px;
+      }
     }
   }
 }

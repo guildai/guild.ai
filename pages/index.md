@@ -8,8 +8,9 @@ hide_in_pagenav: yes
 <div class="row match-height">
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4>Automatically track each experiment, capturing model
-      performance, logs, and source code</h4>
+    <h4 style="white-space:nowrap">Track Experiments</h4>
+    <p>Automatically track each experiment, capturing model
+      performance, logs, and source code</p>
     <img title="200x100"
          class="feature-grid-img"
          style="width:80%"
@@ -17,8 +18,9 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4>Learn from each experiment to optimize your model in less time
-      &mdash; either manually or with AutoML</h4>
+    <h4 style="white-space:nowrap">Analyze, Compare, Optimize</h4>
+    <p>Learn from each experiment to optimize your model in less time
+      &mdash; either manually or with AutoML</p>
     <img title="Hyperparameter optimization"
          class="feature-grid-img"
          style="width:80%"
@@ -26,9 +28,10 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4>Use your existing training scripts without modification
+    <h4 style="white-space:nowrap">Easy to Get Started</h4>
+    <p>Use your existing training scripts without modification
       &mdash; no need to adopt yet-another-framework
-    </h4>
+    </p>
     <img title="Use your code without modification"
          class="feature-grid-img"
          style="width:80%"
@@ -37,30 +40,43 @@ hide_in_pagenav: yes
 
 </div>
 
-<div id="learn-more"></div>
+## Run your scripts without modification
 
-# Get started
+<div class="row">
+  <div class="col-lg-9">
+    <p>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-tincidunt felis vitae volutpat interdum. Aliquam eget aliquam purus,
-in accumsan dolor. Phasellus imperdiet pellentesque ornare. Orci
-varius natoque penatibus et magnis dis parturient montes, nascetur
-ridiculus mus. Sed feugiat risus et augue pharetra dapibus. In ac
-ipsum sed orci lacinia vestibulum. Phasellus euismod maximus ipsum ut
-porttitor. Sed elementum rutrum rhoncus. Ut ultricies ac turpis et
-tincidunt. Proin tristique finibus ligula, ac fermentum magna iaculis
-a. Nam vulputate, libero vel bibendum porttitor, augue ex vulputate
-nibh, quis placerat metus enim vitae ex. Maecenas pharetra dui
-lobortis, lacinia orci ac, fringilla magna. Etiam ut maximus dui.
+    </p>
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">guild run train.py</span>
+      </div>
+    </div>
 
-Nulla lobortis, metus sit amet elementum pellentesque, augue sem
-maximus purus, aliquet scelerisque nibh diam et augue. Integer aliquet
-quam at nulla hendrerit tristique. Suspendisse euismod accumsan nisl,
-at eleifend elit rhoncus ac. Aliquam erat volutpat. Nullam bibendum
-tortor tortor, quis tempor justo molestie eget. Curabitur tristique
-turpis at arcu sollicitudin, et venenatis mauris eleifend. Donec
-porttitor cursus nisl, ut ornare metus fringilla at. Nunc sed tempus
-mi. Aliquam porttitor mauris sit amet consequat
+    <ul>
+      <li>Xxx</li>
+      <li>Yyy</li>
+      <li>Zzz</li>
+    </ul>
+  </div>
+
+  <div class="col-lg-3">
+    Nulla lobortis, metus sit amet elementum pellentesque, augue sem
+    maximus purus, aliquet scelerisque nibh diam et augue. Integer
+    aliquet quam at nulla hendrerit tristique. Suspendisse euismod
+    accumsan nisl, at eleifend elit rhoncus ac. Aliquam erat
+    volutpat. Nullam bibendum tortor tortor, quis tempor justo
+    molestie eget.
+  </div>
+</div>
+
+## Run your scripts without modification
+
+---
+
+Curabitur tristique turpis at arcu sollicitudin, et venenatis mauris
+eleifend. Donec porttitor cursus nisl, ut ornare metus fringilla
+at. Nunc sed tempus mi. Aliquam porttitor mauris sit amet consequat
 condimentum. Vestibulum semper ultricies lobortis. Ut hendrerit non
 velit quis sagittis. Vestibulum eu mi sapien. In vitae arcu nec justo
 dictum convallis. Aliquam erat volutpat. Ut id quam rhoncus, facilisis
