@@ -186,6 +186,8 @@ hide_in_pagenav: yes
 
 # Analyze and Compare Results
 
+### Compare experiments
+
 <div class="row">
   <div class="col-lg-8">
     <div class="text-editor inline">
@@ -194,6 +196,44 @@ hide_in_pagenav: yes
       </div>
     </div>
     <div>--screen shot of compare--</div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Curabitur tristique turpis at arcu sollicitudin, et venenatis
+    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+    fringilla at. Nunc sed tempus mi.
+  </div>
+</div>
+
+### Visualize metrics and generated output
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild view</span>
+      </div>
+    </div>
+    <div>--screen shots of source TensorBoard and Guild View--</div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Curabitur tristique turpis at arcu sollicitudin, et venenatis
+    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+    fringilla at. Nunc sed tempus mi.
+  </div>
+</div>
+
+### Diff changes across experiments
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild diff</span>
+      </div>
+    </div>
+    <div>--screen shot of source code diff--</div>
   </div>
 
   <div class="col-lg-4 cmd-highlight-sidebar">
