@@ -39,7 +39,7 @@ hide_in_pagenav: yes
 ---
 
 <div class="row match-height logos">
-  <img src="/assets/img/tensorflow-logo.png" width="140">
+  <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">
   <img src="/assets/img/keras-logo.png" width="110">
   <img src="/assets/img/scikit-learn-logo.png" width="95">
@@ -83,7 +83,7 @@ hide_in_pagenav: yes
     <h4>How is Guild AI different?</h4>
   </div>
   <div class="col-lg-8">
-    <p>Traditional experiment management frameworks require that you
+    <p style="margin-bottom:0">Traditional experiment management frameworks require that you
       modify your training scripts to use their APIs for getting
       hyperparameters, logging output, and writing files. Guild
       requires no such changes. It works with your existing scripts as
@@ -106,7 +106,7 @@ hide_in_pagenav: yes
 
 ---
 
-# Generating experiments
+# Run experiments
 
 ### Run a single trial using your unmodified training script
 
@@ -114,27 +114,7 @@ hide_in_pagenav: yes
   <div class="col-lg-8">
     <div class="text-editor inline">
       <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">guild run train.py learning-rate=0.1</span>
-      </div>
-    </div>
-    <div class="row cmd-highlight">
-      <div class="col-sm-4 col">
-        <i class="fal fa-file-import" style="display:block;padding-right:15px"></i>
-        <p style="max-width:20em;margin:5px auto">Capture results including logs, metrics, and generated
-        files as a unique experiment
-        </p>
-      </div>
-      <div class="col-sm-4 col">
-        <i class="fal fa-table"></i>
-        <p>
-          Capture results of multiple experiments over time
-        </p>
-      </div>
-      <div class="col-sm-4 col">
-        <i class="fal fa-balance-scale-right"></i>
-        <p>
-          Analyze and copmare results to refine and optimize your model
-        </p>
+        $ <span class="typed-cursor">guild run train.py learning-rate=0.1</span>
       </div>
     </div>
   </div>
@@ -152,7 +132,7 @@ hide_in_pagenav: yes
   <div class="col-lg-8">
     <div class="text-editor inline">
       <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">guild run train.py learning-rate=[0.1,0.2,0.3]</span>
+        $ <span class="typed-cursor">guild run train.py learning-rate=[0.1,0.2,0.3]</span>
       </div>
     </div>
   </div>
@@ -170,7 +150,7 @@ hide_in_pagenav: yes
   <div class="col-lg-8">
     <div class="text-editor inline">
       <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">guild run
+        $ <span class="typed-cursor">guild run
         train.py learning-rate=[0.1:0.3] --max-trials 10</span>
       </div>
     </div>
@@ -189,7 +169,7 @@ hide_in_pagenav: yes
   <div class="col-lg-8">
     <div class="text-editor inline">
       <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">guild run
+        $ <span class="typed-cursor">guild run
         train.py learning-rate=[0.1:0.3] --optimizer bayesian</span>
       </div>
     </div>
@@ -203,6 +183,29 @@ hide_in_pagenav: yes
 </div>
 
 ---
+
+# Analyze and Compare Results
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild compare</span>
+      </div>
+    </div>
+    <div>--screen shot of compare--</div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Curabitur tristique turpis at arcu sollicitudin, et venenatis
+    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+    fringilla at. Nunc sed tempus mi.
+  </div>
+</div>
+
+---
+
+# Other fun stuff, in Latin?
 
 Curabitur tristique turpis at arcu sollicitudin, et venenatis mauris
 eleifend. Donec porttitor cursus nisl, ut ornare metus fringilla

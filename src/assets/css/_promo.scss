@@ -255,8 +255,7 @@
 }
 
 .cmd-highlight-sidebar {
-  //font-size: 18px;
-  //color: #777;
+  margin-top: -5px;
 }
 
 .logos {
@@ -274,7 +273,8 @@
 }
 
 .top-features {
-  margin-top: -25px;
+  margin-top: -20px;
+  margin-bottom: -10px;
 
   @media screen and (max-width: $break-md) {
     margin-top: -15px;
