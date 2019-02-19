@@ -3,7 +3,14 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-<div style="height:50px;margin-top:-50px"></div>
+<div class="row match-height logos">
+  <img src="/assets/img/tensorflow-logo.png" width="160">
+  <img src="/assets/img/pytorch-logo.png" width="160">
+  <img src="/assets/img/keras-logo.png" width="145">
+  <img src="/assets/img/scikit-learn-logo.png" width="130">
+  <img src="/assets/img/mxnet-logo.png" width="130">
+  <img src="/assets/img/xgboost-logo.png" width="130">
+</div>
 
 <div class="row match-height">
 
@@ -55,7 +62,22 @@ hide_in_pagenav: yes
 
 <div class="row" style="margin-top:0">
   <div class="col-lg-4">
-    <h4 style="margin-top:0;text-align:right">How is Guild different from other experiment management systems?</h4>
+    <h4 style="margin-top:0;text-align:right">How can Guild AI help me?</h4>
+  </div>
+  <div class="col-lg-8">
+    <p>
+      Guild will help you train better models in less time. Effective
+      machine learning is a function of systematic
+      experimentation&mdash;one experiment leads to another until you
+      achieve your goals. The faster and more effective you can apply
+      experiments, the sooner you'll complete your work.
+    </p>
+  </div>
+</div>
+
+<div class="row" style="margin-top:0">
+  <div class="col-lg-4">
+    <h4 style="margin-top:0;text-align:right">How is Guild AI different?</h4>
   </div>
   <div class="col-lg-8">
     <p>Traditional experiment management frameworks require that you
@@ -70,6 +92,14 @@ hide_in_pagenav: yes
 ---
 
 # Features
+
+- Generate Experiments
+- Optimize Model Architecture and Hyperparameters
+- Learn End-to-End
+- Troubleshoot Training Issues
+- Backup and Share Results
+- Train Locally or Remotely
+- Supports All Machine Learning Platforms
 
 ---
 
