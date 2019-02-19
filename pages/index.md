@@ -8,7 +8,7 @@ hide_in_pagenav: yes
 <div class="row match-height">
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4 style="white-space:nowrap">Track Experiments</h4>
+    <h3 style="white-space:nowrap">Track Experiments</h3>
     <p>Automatically track each experiment, capturing model
       performance, logs, and source code</p>
     <img title="200x100"
@@ -18,7 +18,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4 style="white-space:nowrap">Analyze, Compare, Optimize</h4>
+    <h3 style="white-space:nowrap">Analyze, Compare, Optimize</h3>
     <p>Learn from each experiment to optimize your model in less time
       &mdash; either manually or with AutoML</p>
     <img title="Hyperparameter optimization"
@@ -28,7 +28,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4 style="white-space:nowrap">Works with Your Code</h4>
+    <h3 style="white-space:nowrap">Easy to Get Started</h3>
     <p>Use your current training scripts without modification
       &mdash; no need to adopt another framework
     </p>
@@ -39,52 +39,135 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-### Who is Guild AI for?
-
-Mauris congue, sem sed posuere imperdiet, massa justo suscipit mi,
-quis semper tellus purus in odio.
-
-
-## Run your unmodified scripts to generate experiments
-
-<div class="row">
-  <div class="col-lg-9">
-    <div class="text-editor inline">
-      <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">guild run train.py</span>
-      </div>
-    </div>
-    <div class="row cmd-highlight">
-      <div class="col-lg-4 col">
-        <i class="fal fa-file-import" style="display:block;padding-right:15px"></i>
-        <p>
-          Capture output, logs, and generated files
-        </p>
-      </div>
-      <div class="col-lg-4 col">
-        <i class="fal fa-chart-line-down"></i>
-        <p>
-          Automatically log scalars like loss and accuracy
-        </p>
-      </div>
-      <div class="col-lg-4 col">
-        <i class="fal fa-balance-scale-right"></i>
-        <p>
-          Compare results to find the best run
-        </p>
-      </div>
-    </div>
+<div class="row" style="margin-top:30px">
+  <div class="col-lg-4">
+    <h4 style="margin-top:0;text-align:right">Who uses Guild AI?</h4>
   </div>
-
-  <div class="col-lg-3 cmd-highlight-sidebar">
-    Guild AI is a command line tool, not a Python library. You don't
-    need to adopt a new framework to capture track&mdash;just run your
-    script using Guild instead of Python.
+  <div class="col-lg-8">
+    <p>Guild AI is used by machine learning engineers and researchers
+      to run, track, and compare experiments. Each experiment yields
+      valuable information that is captured and used to inform next
+      steps. Scientists and developers leverage their experiment
+      results to build deeper intuition, troubleshoot issues, and
+      automate model architecture and hyperparameter optimization.</p>
   </div>
 </div>
 
+<div class="row" style="margin-top:0">
+  <div class="col-lg-4">
+    <h4 style="margin-top:0;text-align:right">How is Guild different from other experiment management systems?</h4>
+  </div>
+  <div class="col-lg-8">
+    <p>Traditional experiment management frameworks require that you
+      modify your training scripts to use their APIs for getting
+      hyperparameters, logging output, and writing files. Guild
+      requires no such changes. It works with your existing scripts as
+      an external command line tool, using standard operating systems
+      conventions to provide hyperparameters and capture results.</p>
+  </div>
+</div>
 
-## Some other cool thing
+---
+
+# Features
+
+---
+
+# Generating experiments
+
+### Run a single trial using your unmodified training script
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">guild run train.py learning-rate=0.1</span>
+      </div>
+    </div>
+    <div class="row cmd-highlight">
+      <div class="col-sm-4 col">
+        <i class="fal fa-file-import" style="display:block;padding-right:15px"></i>
+        <p style="max-width:20em;margin:5px auto">Capture results including logs, metrics, and generated
+        files as a unique experiment
+        </p>
+      </div>
+      <div class="col-sm-4 col">
+        <i class="fal fa-table"></i>
+        <p>
+          Capture results of multiple experiments over time
+        </p>
+      </div>
+      <div class="col-sm-4 col">
+        <i class="fal fa-balance-scale-right"></i>
+        <p>
+          Analyze and copmare results to refine and optimize your model
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Simply run your training scripts with Guild to automatically
+    capture output, tracking each result in a repository of
+    experiments.
+  </div>
+</div>
+
+### Run trials over a set of choices (grid search)
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">guild run train.py learning-rate=[0.1,0.2,0.3]</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Run multiple experiments with one command by specifying a list of
+    hyperparameter values. Guild performs a grid search over the
+    Cartesian product of specified values.
+  </div>
+</div>
+
+### Run trials over a range of values (random search)
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">guild run
+        train.py learning-rate=[0.1:0.3] --max-trials 10</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    Performa a random search over a specified range for a number of
+    trials. Random search is a surprisingly effective way of finding
+    optimal hyperparameters if you run enough experiments.
+  </div>
+</div>
+
+### Find the best values over a range (Bayesian optimization)
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">guild run
+        train.py learning-rate=[0.1:0.3] --optimizer bayesian</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 cmd-highlight-sidebar">
+    For an intractably large search space or very long training times
+    (e.g. deep neural networks) Bayesian optimization is a remarkably
+    efficient way to find optimal hyperparameters.
+  </div>
+</div>
 
 ---
 

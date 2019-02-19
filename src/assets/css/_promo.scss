@@ -75,7 +75,7 @@
   }
 
   > p {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 28px;
     color: $gray-text-color;
   }
@@ -234,6 +234,7 @@
 .cmd-highlight {
 
   padding: 0 20px;
+  margin-bottom: 10px;
 
   .col {
     text-align: center;
@@ -241,19 +242,19 @@
     p {
       font-size: 18px;
       color: #777;
-      margin: 10px 0;
-      line-height: 27px;
+      margin: 10px auto;
+      max-width: 16em;
     }
   }
 
   i {
-    font-size: 64px;
-    color: #888;
+    font-size: 58px;
+    color: #666;
 
   }
 }
 
 .cmd-highlight-sidebar {
-  font-size: 18px;
-  color: #777;
+  //font-size: 18px;
+  //color: #777;
 }
