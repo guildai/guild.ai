@@ -20,12 +20,15 @@ extra:
       url: https://github.com/guildai/guildai
       title: Guild AI on GitHub
       header: yes
+      icon_class: 'fab fa-github'
     - name: slack
       url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
       title: Guild AI Slack Channel
+      icon_class: 'fab fa-twitter'
     - name: twitter
       url:  https://twitter.com/guildai
       title: Guild AI on Twitter
+      icon_class: 'fab fa-slack-hash'
 
 theme:
   name: null

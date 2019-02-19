@@ -65,7 +65,7 @@
   > h3,
   > h4 {
     font-weight: 500;
-    margin: 0 0 15px;
+    margin: 0 0 7px;
     font-size: 28px;
 
     @media screen and (max-width: $break-sm) {
@@ -112,7 +112,7 @@
 
 .feature-grid-img {
   width: 100%;
-  padding: 0 10px 20px;
+  padding: 0 10px;
   max-width: 500px;
 }
 
@@ -229,4 +229,31 @@
       margin-bottom: $p-margin-bottom_ * 0.5px;
     }
   }
+}
+
+.cmd-highlight {
+
+  padding: 0 20px;
+
+  .col {
+    text-align: center;
+
+    p {
+      font-size: 18px;
+      color: #777;
+      margin: 10px 0;
+      line-height: 27px;
+    }
+  }
+
+  i {
+    font-size: 64px;
+    color: #888;
+
+  }
+}
+
+.cmd-highlight-sidebar {
+  font-size: 18px;
+  color: #777;
 }

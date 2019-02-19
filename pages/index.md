@@ -28,49 +28,63 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h4 style="white-space:nowrap">Easy to Get Started</h4>
-    <p>Use your existing training scripts without modification
-      &mdash; no need to adopt yet-another-framework
+    <h4 style="white-space:nowrap">Works with Your Code</h4>
+    <p>Use your current training scripts without modification
+      &mdash; no need to adopt another framework
     </p>
     <img title="Use your code without modification"
          class="feature-grid-img"
          style="width:80%"
          src="/assets/img/own-code-sm.jpg">
   </div>
-
 </div>
 
-## Run your scripts without modification
+### Who is Guild AI for?
+
+Mauris congue, sem sed posuere imperdiet, massa justo suscipit mi,
+quis semper tellus purus in odio.
+
+
+## Run your unmodified scripts to generate experiments
 
 <div class="row">
   <div class="col-lg-9">
-    <p>
-
-    </p>
     <div class="text-editor inline">
       <div class="text-body">
         $ <span id="typed"></span><span class="typed-cursor">guild run train.py</span>
       </div>
     </div>
-
-    <ul>
-      <li>Xxx</li>
-      <li>Yyy</li>
-      <li>Zzz</li>
-    </ul>
+    <div class="row cmd-highlight">
+      <div class="col-lg-4 col">
+        <i class="fal fa-file-import" style="display:block;padding-right:15px"></i>
+        <p>
+          Capture output, logs, and generated files
+        </p>
+      </div>
+      <div class="col-lg-4 col">
+        <i class="fal fa-chart-line-down"></i>
+        <p>
+          Automatically log scalars like loss and accuracy
+        </p>
+      </div>
+      <div class="col-lg-4 col">
+        <i class="fal fa-balance-scale-right"></i>
+        <p>
+          Compare results to find the best run
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div class="col-lg-3">
-    Nulla lobortis, metus sit amet elementum pellentesque, augue sem
-    maximus purus, aliquet scelerisque nibh diam et augue. Integer
-    aliquet quam at nulla hendrerit tristique. Suspendisse euismod
-    accumsan nisl, at eleifend elit rhoncus ac. Aliquam erat
-    volutpat. Nullam bibendum tortor tortor, quis tempor justo
-    molestie eget.
+  <div class="col-lg-3 cmd-highlight-sidebar">
+    Guild AI is a command line tool, not a Python library. You don't
+    need to adopt a new framework to capture track&mdash;just run your
+    script using Guild instead of Python.
   </div>
 </div>
 
-## Run your scripts without modification
+
+## Some other cool thing
 
 ---
 

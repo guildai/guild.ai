@@ -113,12 +113,12 @@
     font-family: $font-family-title;
     color: #ffeb3b;
     opacity: 1;
-    font-size: 34px;
+    font-size: 32px;
     line-height: 1.1;
     margin: 10px 0 60px;
 
     @media screen and (max-width: $break-lg) {
-      font-size: 32px;
+      font-size: 30px;
     }
 
     @media screen and (max-width: $break-md) {
@@ -126,7 +126,7 @@
     }
 
     @media screen and (max-width: $break-sm) {
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 
