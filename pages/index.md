@@ -3,17 +3,7 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-<div class="row match-height logos">
-  <img src="/assets/img/tensorflow-logo.png" width="160">
-  <img src="/assets/img/pytorch-logo.png" width="160">
-  <img src="/assets/img/keras-logo.png" width="145">
-  <img src="/assets/img/scikit-learn-logo.png" width="130">
-  <img src="/assets/img/mxnet-logo.png" width="130">
-  <img src="/assets/img/xgboost-logo.png" width="130">
-</div>
-
-<div class="row match-height">
-
+<div class="row match-height top-features">
   <div class="col-md-4 col-sm-6 promo center">
     <h3 style="white-space:nowrap">Track Experiments</h3>
     <p>Automatically track each experiment, capturing model
@@ -46,9 +36,22 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="row" style="margin-top:30px">
+---
+
+<div class="row match-height logos">
+  <img src="/assets/img/tensorflow-logo.png" width="140">
+  <img src="/assets/img/pytorch-logo.png" width="140">
+  <img src="/assets/img/keras-logo.png" width="110">
+  <img src="/assets/img/scikit-learn-logo.png" width="95">
+  <img src="/assets/img/mxnet-logo.png" width="105">
+  <img src="/assets/img/xgboost-logo.png" width="105">
+</div>
+
+---
+
+<div class="row qa" style="margin-top:30px">
   <div class="col-lg-4">
-    <h4 style="margin-top:0;text-align:right">Who uses Guild AI?</h4>
+    <h4>Who uses Guild AI?</h4>
   </div>
   <div class="col-lg-8">
     <p>Guild AI is used by machine learning engineers and researchers
@@ -60,9 +63,9 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="row" style="margin-top:0">
+<div class="row qa" style="margin-top:0">
   <div class="col-lg-4">
-    <h4 style="margin-top:0;text-align:right">How can Guild AI help me?</h4>
+    <h4>How can Guild AI help me?</h4>
   </div>
   <div class="col-lg-8">
     <p>
@@ -75,9 +78,9 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="row" style="margin-top:0">
+<div class="row qa" style="margin-top:0">
   <div class="col-lg-4">
-    <h4 style="margin-top:0;text-align:right">How is Guild AI different?</h4>
+    <h4>How is Guild AI different?</h4>
   </div>
   <div class="col-lg-8">
     <p>Traditional experiment management frameworks require that you

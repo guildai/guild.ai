@@ -113,7 +113,7 @@
 .feature-grid-img {
   width: 100%;
   padding: 0 10px;
-  max-width: 500px;
+  max-width: 300px !important;
 }
 
 .quick-start-img {
@@ -260,10 +260,23 @@
 }
 
 .logos {
-  margin-bottom: 20px;
   text-align: center;
 
   img {
-    margin: 0 10px;
+    margin: 5px 15px;
+  }
+}
+
+.qa {
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.top-features {
+  margin-top: -25px;
+
+  @media screen and (max-width: $break-md) {
+    margin-top: -15px;
   }
 }
