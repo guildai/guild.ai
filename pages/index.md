@@ -96,89 +96,137 @@ hide_in_pagenav: yes
 
 # Features
 
-- Generate Experiments
-- Optimize Model Architecture and Hyperparameters
-- Learn End-to-End
-- Troubleshoot Training Issues
-- Backup and Share Results
-- Train Locally or Remotely
-- Supports All Machine Learning Platforms
+<div class="row match-height other-features">
+  <div class="col-lg-4">
+    <i class="far fa-box-check"></i>
+    <h4>Experiment management</h4>
+    <p>Guild is a feature-rich toolkit for running, tracking, and
+    comparing experiments. All of the features in this list stem from
+    this core functionality.</p>
+  </div>
+  <div class="col-lg-4">
+    <i class="far fa-bullseye-arrow"></i>
+    <h4>AutoML</h4>
+    <p>Guild makes it easy to optimize hyperparameters&mdash;and even
+    model architecture.</p>
+  </div>
+  <div class="col-lg-4">
+    <i class="far fa-route"></i>
+    <h4>End-to-end learning</h4>
+    <p>
+      Curabitur tristique turpis at arcu sollicitudin, et venenatis
+      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+      fringilla at. Nunc sed tempus mi.
+    </p>
+  </div>
+</div>
+
+<div class="row match-height other-features">
+  <div class="col-lg-4">
+    <i class="far fa-balance-scale"></i>
+    <h4>Reproducibility</h4>
+    <p>
+      Curabitur tristique turpis at arcu sollicitudin, et venenatis
+      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+      fringilla at. Nunc sed tempus mi.
+    </p>
+  </div>
+  <div class="col-lg-4">
+    <i class="far fa-analytics"></i>
+
+    <h4>Analytics</h4>
+    <p>
+      Curabitur tristique turpis at arcu sollicitudin, et venenatis
+      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+      fringilla at. Nunc sed tempus mi.
+    </p>
+  </div>
+  <div class="col-lg-4">
+    <i class="far fa-chart-network"></i>
+    <h4>Remote training and backups</h4>
+    <p>
+      Curabitur tristique turpis at arcu sollicitudin, et venenatis
+      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
+      fringilla at. Nunc sed tempus mi.
+    </p>
+  </div>
+</div>
 
 ---
 
 # Run experiments
 
-### Run a single trial using your unmodified training script
+### Capture a detailed record of your training run
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run train.py learning-rate=0.1</span>
       </div>
     </div>
-  </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Simply run your training scripts with Guild to automatically
-    capture output, tracking each result in a repository of
-    experiments.
+    <ul class="md features">
+      <li>Guild runs your script directly &mdash; no need to change
+        anything</li>
+      <li>Captures <i>files</i>, <i>metrics</i>, <i>output</i>, and
+        <i>logs</i></li>
+    </ul>
   </div>
 </div>
 
-### Run trials over a set of choices (grid search)
+### Run multiple trials over a set of choices (Grid search)
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run train.py learning-rate=[0.1,0.2,0.3]</span>
       </div>
     </div>
-  </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Run multiple experiments with one command by specifying a list of
-    hyperparameter values. Guild performs a grid search over the
-    Cartesian product of specified values.
+    <ul class="md features">
+      <li><code>[0.1,0.2,0.3]</code> is a list of three values &mdash; Guild runs a trial for each</li>
+      <li>Runs trials over the Cartesian product of all values &mdash;
+      i.e. runs a <i>grid search</i></li>
+    </ul>
   </div>
 </div>
 
-### Run trials over a range of values (random search)
+### Run trials over a range (Random search)
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run
         train.py learning-rate=[0.1:0.3] --max-trials 10</span>
       </div>
     </div>
-  </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Performa a random search over a specified range for a number of
-    trials. Random search is a surprisingly effective way of finding
-    optimal hyperparameters if you run enough experiments.
+    <ul class="md features">
+      <li><code>[0.1:0.3]</code> is a range of values &mdash; from
+      minimum to maximum</li>
+      <li>In this example Guild runs ten trials, selecting values at
+      random over a uniform distribution</li>
+    </ul>
   </div>
 </div>
 
-### Find the best values over a range (Bayesian optimization)
+### Run trials using Bayesian optimization
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run
         train.py learning-rate=[0.1:0.3] --optimizer bayesian</span>
       </div>
     </div>
-  </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    For an intractably large search space or very long training times
-    (e.g. deep neural networks) Bayesian optimization is a remarkably
-    efficient way to find optimal hyperparameters.
+    <ul class="md features">
+      <li>Use <code>--optimizer</code> to minimize (or maximize) an objective</li>
+      <li>Guild supports the latest Bayesian optimizers including
+      gaussian process, decision trees, and gradient boosted
+        trees</li>
+      <li>Easy support for implementing your own optimizers</li>
+    </ul>
   </div>
 </div>
 

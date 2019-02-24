@@ -280,3 +280,31 @@
     margin-top: -15px;
   }
 }
+
+.other-features {
+  i {
+    margin-right: 7px;
+    color: $gray-text-color;
+    font-size: 36px;
+    float: left;
+  }
+
+  h4 {
+    padding-left: 60px;
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
+  p {
+    padding-left: 60px;
+  }
+}
+
+ul.features {
+  font-size: 20px;
+  margin: 30px 60px 30px 30px;
+
+  li {
+    margin-bottom: 12px;
+  }
+}
