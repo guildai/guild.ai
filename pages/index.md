@@ -25,7 +25,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h3 style="white-space:nowrap">Easy to Get Started</h3>
+    <h3 style="white-space:nowrap">Run Your Code, Unmodified</h3>
     <p>Use your current training scripts without modification
       &mdash; no need to adopt another framework
     </p>
@@ -156,7 +156,7 @@ hide_in_pagenav: yes
 
 # Run experiments
 
-### Capture a detailed record of your training run
+### Run your training script, unmodified
 
 <div class="row">
   <div class="col-lg-10">
@@ -169,12 +169,12 @@ hide_in_pagenav: yes
       <li>Guild runs your script directly &mdash; no need to change
         anything</li>
       <li>Captures <i>files</i>, <i>metrics</i>, <i>output</i>, and
-        <i>logs</i></li>
+        <i>logs</i> as a unique experiment</li>
     </ul>
   </div>
 </div>
 
-### Run multiple trials over a set of choices (Grid search)
+### Run multiple trials for a set of choices (Grid search)
 
 <div class="row">
   <div class="col-lg-10">
@@ -186,12 +186,12 @@ hide_in_pagenav: yes
     <ul class="md features">
       <li><code>[0.1,0.2,0.3]</code> is a list of three values &mdash; Guild runs a trial for each</li>
       <li>Runs trials over the Cartesian product of all values &mdash;
-      i.e. runs a <i>grid search</i></li>
+      i.e. performs a <i>grid search</i></li>
     </ul>
   </div>
 </div>
 
-### Run trials over a range (Random search)
+### Run trials for a range (Random search)
 
 <div class="row">
   <div class="col-lg-10">
@@ -204,13 +204,13 @@ hide_in_pagenav: yes
     <ul class="md features">
       <li><code>[0.1:0.3]</code> is a range of values &mdash; from
       minimum to maximum</li>
-      <li>In this example Guild runs ten trials, selecting values at
+      <li>In this example Guild runs 10 trials, selecting values at
       random over a uniform distribution</li>
     </ul>
   </div>
 </div>
 
-### Run trials using Bayesian optimization
+### Find the best hyperparameters using Bayesian optimization
 
 <div class="row">
   <div class="col-lg-10">
@@ -223,9 +223,8 @@ hide_in_pagenav: yes
     <ul class="md features">
       <li>Use <code>--optimizer</code> to minimize (or maximize) an objective</li>
       <li>Guild supports the latest Bayesian optimizers including
-      gaussian process, decision trees, and gradient boosted
-        trees</li>
-      <li>Easy support for implementing your own optimizers</li>
+      <i>gaussian process</i>, <i>decision trees</i>, and <i>gradient boosted
+        trees</i></li>
     </ul>
   </div>
 </div>
@@ -237,19 +236,13 @@ hide_in_pagenav: yes
 ### Compare experiments
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-10">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild compare</span>
       </div>
     </div>
     <div>--screen shot of compare--</div>
-  </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Curabitur tristique turpis at arcu sollicitudin, et venenatis
-    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-    fringilla at. Nunc sed tempus mi.
   </div>
 </div>
 

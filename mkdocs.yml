@@ -13,7 +13,7 @@ extra:
   subtext_width: 30em
   subtext:
 
-    Model optimization. Reproducibility. End-to-end learning.
+    Reproducibility. Model optimization. End-to-end learning.
 
   links:
     - name: github
