@@ -100,19 +100,23 @@ hide_in_pagenav: yes
   <div class="col-lg-4">
     <i class="far fa-box-check"></i>
     <h4>Experiment management</h4>
-    <p>Guild is a feature-rich toolkit for running, tracking, and
-    comparing experiments. All of the features in this list stem from
-    this core functionality.</p>
+    <p>
+      When you run your training scripts with Guild, you get
+      experiment management automatically. Use the results to make
+      informed decisions about your models.
+    </p>
   </div>
   <div class="col-lg-4">
     <i class="far fa-bullseye-arrow"></i>
     <h4>AutoML</h4>
-    <p>Guild makes it easy to optimize hyperparameters&mdash;and even
-    model architecture.</p>
+    <p>
+      Guild makes it easy to optimize hyperparameters&mdash;and even
+      model architecture.
+    </p>
   </div>
   <div class="col-lg-4">
-    <i class="far fa-route"></i>
-    <h4>End-to-end learning</h4>
+    <i class="far fa-balance-scale"></i>
+    <h4>Reproducibility</h4>
     <p>
       Curabitur tristique turpis at arcu sollicitudin, et venenatis
       mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
@@ -123,8 +127,9 @@ hide_in_pagenav: yes
 
 <div class="row match-height other-features">
   <div class="col-lg-4">
-    <i class="far fa-balance-scale"></i>
-    <h4>Reproducibility</h4>
+    <i class="far fa-analytics"></i>
+
+    <h4>Analytics</h4>
     <p>
       Curabitur tristique turpis at arcu sollicitudin, et venenatis
       mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
@@ -132,9 +137,8 @@ hide_in_pagenav: yes
     </p>
   </div>
   <div class="col-lg-4">
-    <i class="far fa-analytics"></i>
-
-    <h4>Analytics</h4>
+    <i class="far fa-route"></i>
+    <h4>End-to-end learning</h4>
     <p>
       Curabitur tristique turpis at arcu sollicitudin, et venenatis
       mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
