@@ -410,7 +410,7 @@ $(function() {
     const img = $(this);
     if (!img.hasClass("no-lightbox")) {
       const wrapper = $('<a>');
-      wrapper.attr('href', img.attr('src'));
+      wrapper.attr('href', img.attr('src') || img.attr('data-src'));
       wrapper.attr('data-featherlight', 'image');
       img.wrap(wrapper);
     }

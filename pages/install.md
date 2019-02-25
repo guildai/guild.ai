@@ -168,6 +168,8 @@ If there are problems with your installation, Guild will display the
 details and exit with an error. Refer to
 [Troubleshooting](/troubleshooting) for assistance.
 
+<!--
+
 ## Next steps
 
 Congratulations, you've installed Guild AI! We've outlined some next
@@ -215,3 +217,5 @@ browsing its comprehensives documentation.
 </div>
 </div>
 </div>
+
+-->

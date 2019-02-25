@@ -260,9 +260,10 @@
 
 .logos {
   text-align: center;
+  margin: -10px 0;
 
   img {
-    margin: 5px 15px;
+    margin: 10px 15px;
   }
 }
 
@@ -292,11 +293,25 @@
   h4 {
     padding-left: 60px;
     margin-top: 0;
-    white-space: nowrap;
   }
 
   p {
     padding-left: 60px;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    i {
+      margin-right: 10px;
+    }
+
+    h4 {
+      padding-left: 0;
+    }
+
+    p {
+      padding-left: 0;
+      margin-top: 15px;
+    }
   }
 }
 
@@ -306,5 +321,9 @@ ul.features {
 
   li {
     margin-bottom: 12px;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    margin: 30px 10px;
   }
 }

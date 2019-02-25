@@ -3,9 +3,13 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
+<!--
+-->
+
+
 <div class="row match-height top-features">
   <div class="col-md-4 col-sm-6 promo center">
-    <h3 style="white-space:nowrap">Track Experiments</h3>
+    <h3>Track Experiments</h3>
     <p>Automatically track each experiment, capturing model
       performance, logs, and source code</p>
     <img title="200x100"
@@ -15,7 +19,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h3 style="white-space:nowrap">Analyze, Compare, Optimize</h3>
+    <h3>Analyze, Compare, Optimize</h3>
     <p>Learn from each experiment to optimize your model in less time
       &mdash; either manually or with AutoML</p>
     <img title="Hyperparameter optimization"
@@ -25,7 +29,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-6 promo center">
-    <h3 style="white-space:nowrap">Run Your Code, Unmodified</h3>
+    <h3>Run Your Code, Unmodified</h3>
     <p>Use your current training scripts without modification
       &mdash; no need to adopt another framework
     </p>
@@ -214,6 +218,7 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+
 ### Find the best hyperparameters using Bayesian optimization
 
 <div class="row">
@@ -289,7 +294,7 @@ hide_in_pagenav: yes
       </div>
     </div>
     <p>Run <code>guild view</code> to start a browser based
-    application to explore and compare experiment results.</p>
+      application to explore and compare experiment results.</p>
   </div>
   <div class="col-lg-6">
     <figure>
@@ -340,6 +345,7 @@ hide_in_pagenav: yes
     </ul>
   </div>
 </div>
+
 
 ### Diff changes across experiments
 
