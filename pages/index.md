@@ -250,7 +250,7 @@ hide_in_pagenav: yes
     launch an interactive spreadsheet-like application to explore,
     sort, and compare results.</p>
     <figure>
-      <p><img class="md terminal" src="/assets/img/compare-list-1.jpg" /></p>
+      <p><img class="md terminal lozad" data-src="/assets/img/compare-list-1.jpg" /></p>
       <figcaption class="under-shadow">Interactive compare application</figcaption>
     </figure>
     <ul class="md features">
@@ -293,13 +293,13 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/view-files.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/view-files.jpg" /></p>
       <figcaption class="under-shadow">Files associated with a trial</figcaption>
     </figure>
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/view-output.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/view-output.jpg" /></p>
       <figcaption class="under-shadow">Trial output</figcaption>
     </figure>
   </div>
@@ -322,13 +322,13 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/tb-feature.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/tb-feature.jpg" /></p>
       <figcaption class="under-shadow">Compare experiment results in TensorBoard</figcaption>
     </figure>
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/tb-feature-2.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/tb-feature-2.jpg" /></p>
       <figcaption class="under-shadow">View and compare model architecture</figcaption>
     </figure>
   </div>
@@ -354,13 +354,13 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/meld.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/meld.jpg" /></p>
       <figcaption class="under-shadow">Detailed diff of two runs (trials)</figcaption>
     </figure>
   </div>
   <div class="col-lg-6">
     <figure>
-      <p><img class="md shadow" src="/assets/img/meld-diff.jpg" /></p>
+      <p><img class="md shadow lozad" data-src="/assets/img/meld-diff.jpg" /></p>
       <figcaption class="under-shadow">Diff source code changes between two runs</figcaption>
     </figure>
   </div>

@@ -28,8 +28,10 @@
     "jquery": "^3.3.1",
     "jquery-match-height": "^0.7.2",
     "jsoncomp": "^1.6.1",
+    "lozad": "^1.9.0",
     "mousetrap": "^1.6.1",
     "perfect-scrollbar": "^0.7.1",
     "typed.js": "^2.0.9"
-  }
+  },
+  "dependencies": {}
 }

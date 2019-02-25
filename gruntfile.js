@@ -57,6 +57,7 @@ module.exports = function(grunt) {
           'src/assets/js/vendor.min.js': [
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
+            'node_modules/lozad/dist/lozad.min.js',
             'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
             'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             'node_modules/algoliasearch/dist/algoliasearchLite.min.js',

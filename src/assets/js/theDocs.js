@@ -21,6 +21,10 @@ $(function() {
 
   "use strict";
 
+  // Lazy image loading (lozad)
+
+  lozad().observe();
+
   // Typed.js
 
   var typed = new Typed('#typed', {
