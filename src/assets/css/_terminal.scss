@@ -47,3 +47,10 @@
     }
   }
 }
+
+img.terminal {
+  padding: 8px 10px;
+  background-color: $bg-color-terminal;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.5) 8px 12px 25px;
+}

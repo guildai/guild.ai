@@ -159,7 +159,7 @@ hide_in_pagenav: yes
 ### Run your training script, unmodified
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run train.py learning-rate=0.1</span>
@@ -177,7 +177,7 @@ hide_in_pagenav: yes
 ### Run multiple trials for a set of choices (Grid search)
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run train.py learning-rate=[0.1,0.2,0.3]</span>
@@ -194,7 +194,7 @@ hide_in_pagenav: yes
 ### Run trials for a range (Random search)
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run
@@ -213,7 +213,7 @@ hide_in_pagenav: yes
 ### Find the best hyperparameters using Bayesian optimization
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run
@@ -236,51 +236,139 @@ hide_in_pagenav: yes
 ### Compare experiments
 
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild compare</span>
       </div>
     </div>
-    <div>--screen shot of compare--</div>
+    <p>After running experiments, use <code>guild compare</code> to
+    launch an interactive spreadsheet-like application to explore,
+    sort, and compare results.</p>
+    <figure>
+      <p><img class="md terminal" src="/assets/img/compare-list-1.jpg" /></p>
+      <figcaption class="under-shadow">Interactive compare application</figcaption>
+    </figure>
+    <ul class="md features">
+      <li>Spreadsheet-like application to compare experiment results</li>
+      <li>Flexible display &mdash; customize what you see from the command line</li>
+      <li>Mark best results for export or use in other trials</li>
+    </ul>
   </div>
 </div>
 
-### Visualize metrics and generated output
+### Export to CSV or JSON
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-12">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild compare --csv > results.csv</span>
+      </div>
+    </div>
+    <ul class="md features">
+      <li></li>
+      <li>Generate CSV or JSON files containing experiment details</li>
+      <li>Use with other tools and programs to analyze and visualize
+      results</li>
+    </ul>
+  </div>
+</div>
+
+### Integrated visualizers
+
+<div class="row">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild view</span>
       </div>
     </div>
-    <div>--screen shots of source TensorBoard and Guild View--</div>
+    <p>Run <code>guild view</code> to start a browser based
+    application to explore and compare experiment results.</p>
   </div>
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/view-files.jpg" /></p>
+      <figcaption class="under-shadow">Files associated with a trial</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/view-output.jpg" /></p>
+      <figcaption class="under-shadow">Trial output</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-12">
+    <ul class="md features">
+      <li>Explore and compare trial results in a browser</li>
+      <li>Run as a shared server to support group collaboration</li>
+      <li>Seamless integration with TensorBoard to view trial scalars
+      (e.g. loss, accuracy, etc.)  and other logged events</li>
+    </ul>
 
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Curabitur tristique turpis at arcu sollicitudin, et venenatis
-    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-    fringilla at. Nunc sed tempus mi.
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild tensorboard</span>
+      </div>
+    </div>
+    <p>TensorBoard is used to study and compare trial metrics and
+      generated output. Use <code>guild tensorboard</code> to quickly
+      and easily start TensorBoard for your experiments.</p>
+  </div>
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/tb-feature.jpg" /></p>
+      <figcaption class="under-shadow">Compare experiment results in TensorBoard</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/tb-feature-2.jpg" /></p>
+      <figcaption class="under-shadow">View and compare model architecture</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-12">
+    <ul class="md features">
+      <li>Compare loss, accuracy and other training metrics across runs</li>
+      <li>Guild keeps TensorBoard up-to-date as you run new trials</li>
+      <li>Support for generating TensorBoard logs automatically from training output</li>
+    </ul>
   </div>
 </div>
 
 ### Diff changes across experiments
 
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild diff</span>
       </div>
     </div>
-    <div>--screen shot of source code diff--</div>
+    <p>Use <code>guild diff</code> to compare two trials.</p>
   </div>
-
-  <div class="col-lg-4 cmd-highlight-sidebar">
-    Curabitur tristique turpis at arcu sollicitudin, et venenatis
-    mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-    fringilla at. Nunc sed tempus mi.
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/meld.jpg" /></p>
+      <figcaption class="under-shadow">Detailed diff of two runs (trials)</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-6">
+    <figure>
+      <p><img class="md shadow" src="/assets/img/meld-diff.jpg" /></p>
+      <figcaption class="under-shadow">Diff source code changes between two runs</figcaption>
+    </figure>
+  </div>
+  <div class="col-lg-12">
+    <ul class="md features">
+      <li>Compare every detail: <i>hyperparameters</i>, <i>source
+      code</i>, <i>logs</i>, <i>command</i>, environment and any
+      generated file</li>
+      <li>Use to answer, <i>&ldquo;What changed beween these two runs
+      that may have influenced this result?&rdquo;</i></li>
+      <li>Customize using the diff tools of your choice</li>
+    </ul>
   </div>
 </div>
 
