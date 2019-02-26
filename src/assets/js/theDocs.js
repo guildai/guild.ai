@@ -27,23 +27,26 @@ $(function() {
 
   // Typed.js
 
-  var typed = new Typed('#typed', {
-    strings: [
-      "guild run train.py",
-      "guild run <span>train.py learning-rate=0.01</span>",
-      "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
-      "guild run <span>train.py</span> --optimizer bayesian",
-      "guild compare",
-      "guild diff",
-      "guild tensorboard",
-    ],
-    typeSpeed: 45,
-    backSpeed: 20,
-    backDelay: 1800,
-    loop: true,
-    showCursor: false,
-    smartBackspace: true
-  });
+  const typedEl = document.getElementById('typed');
+  if (typedEl !== null) {
+    const typed = new Typed(typedEl, {
+      strings: [
+        "guild run train.py",
+        "guild run <span>train.py learning-rate=0.01</span>",
+        "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
+        "guild run <span>train.py</span> --optimizer bayesian",
+        "guild compare",
+        "guild diff",
+        "guild tensorboard",
+      ],
+      typeSpeed: 45,
+      backSpeed: 20,
+      backDelay: 1800,
+      loop: true,
+      showCursor: false,
+      smartBackspace: true
+    });
+  }
 
   // Scroll to page links
   $('a').click(function(e) {
