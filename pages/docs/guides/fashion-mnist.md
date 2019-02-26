@@ -1,7 +1,6 @@
-title: Introduction
 tags: get-started
 
-# Guild AI introduction
+# Training Fashion MNIST
 
 [TOC]
 

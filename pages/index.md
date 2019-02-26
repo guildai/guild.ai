@@ -3,35 +3,31 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-<!--
--->
-
-
 <div class="row match-height top-features">
-  <div class="col-md-4 col-sm-6 promo center">
-    <h3>Track Experiments</h3>
-    <p>Automatically track each experiment, capturing model
-      performance, logs, and source code</p>
+  <div class="col-md-4 col-sm-12 promo center">
+    <h3>Track Experiments, Automatically</h3>
+    <p>Track experiments, capturing every detail including
+      performance, generated files, logs, and source code.</p>
     <img title="200x100"
          class="feature-grid-img"
          style="width:80%"
          src="/assets/img/record-experiments.jpg">
   </div>
 
-  <div class="col-md-4 col-sm-6 promo center">
+  <div class="col-md-4 col-sm-12 promo center">
     <h3>Analyze, Compare, Optimize</h3>
     <p>Learn from each experiment to optimize your model in less time
-      &mdash; either manually or with AutoML</p>
+      &mdash; either manually or with AutoML.</p>
     <img title="Hyperparameter optimization"
          class="feature-grid-img"
          style="width:80%"
          src="/assets/img/select-experiment.jpg">
   </div>
 
-  <div class="col-md-4 col-sm-6 promo center">
+  <div class="col-md-4 col-sm-12 promo center">
     <h3>Run Your Code, Unmodified</h3>
-    <p>Use your current training scripts without modification
-      &mdash; no need to adopt another framework
+    <p>Use your current training scripts without modification &mdash;
+      there&apos;s no need to adopt another framework.
     </p>
     <img title="Use your code without modification"
          class="feature-grid-img"
@@ -87,12 +83,13 @@ hide_in_pagenav: yes
     <h4>How is Guild AI different?</h4>
   </div>
   <div class="col-lg-8">
-    <p style="margin-bottom:0">Traditional experiment management frameworks require that you
-      modify your training scripts to use their APIs for getting
-      hyperparameters, logging output, and writing files. Guild
-      requires no such changes. It works with your existing scripts as
-      an external command line tool, using standard operating systems
-      conventions to provide hyperparameters and capture results.</p>
+    <p style="margin-bottom:0">Traditional experiment management
+      frameworks require that you modify your training scripts to use
+      their APIs for getting hyperparameters, logging output, and
+      writing files. Guild requires no such changes. It works with
+      your existing scripts as an external command line tool, using
+      standard operating systems conventions to provide
+      hyperparameters and capture results.</p>
   </div>
 </div>
 
@@ -114,17 +111,18 @@ hide_in_pagenav: yes
     <i class="far fa-bullseye-arrow"></i>
     <h4>AutoML</h4>
     <p>
-      Guild makes it easy to optimize hyperparameters&mdash;and even
-      model architecture.
+      Guild makes it easy to optimize hyperparameters and model
+      architecture. With a single command, you can apply
+      state-of-the-art algorithms to your training scripts.
     </p>
   </div>
   <div class="col-lg-4">
     <i class="far fa-balance-scale"></i>
     <h4>Reproducibility</h4>
     <p>
-      Curabitur tristique turpis at arcu sollicitudin, et venenatis
-      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-      fringilla at. Nunc sed tempus mi.
+      Guild makes it easy to recreate your experiments. By
+      systematically running your scripts and capturing their output,
+      Guild lets others run and compare results.
     </p>
   </div>
 </div>
@@ -135,27 +133,25 @@ hide_in_pagenav: yes
 
     <h4>Analytics</h4>
     <p>
-      Curabitur tristique turpis at arcu sollicitudin, et venenatis
-      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-      fringilla at. Nunc sed tempus mi.
+      Guild provides a suite of visualization, comparison, and diffing
+      tools for studying and comparing your experiment results.
     </p>
   </div>
   <div class="col-lg-4">
     <i class="far fa-route"></i>
     <h4>End-to-end learning</h4>
     <p>
-      Curabitur tristique turpis at arcu sollicitudin, et venenatis
-      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-      fringilla at. Nunc sed tempus mi.
+      Hidden with Guild's features is a powerful workflow feature that
+      lets you optimize over a series of operations, letting you apply
+      AutoML to true end-to-end learning.
     </p>
   </div>
   <div class="col-lg-4">
     <i class="far fa-chart-network"></i>
     <h4>Remote training and backups</h4>
     <p>
-      Curabitur tristique turpis at arcu sollicitudin, et venenatis
-      mauris eleifend. Donec porttitor cursus nisl, ut ornare metus
-      fringilla at. Nunc sed tempus mi.
+      Guild lets you train remotely &mdash; e.g. on powerful GPU
+      servers &mdash; as well as backup and restore your runs.
     </p>
   </div>
 </div>
@@ -182,6 +178,11 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/experiments/"
+     >Guide to running experiments <i class="fa next"></i></a>
+</div>
+
 ### Run multiple trials for a set of choices (Grid search)
 
 <div class="row">
@@ -197,6 +198,11 @@ hide_in_pagenav: yes
       i.e. performs a <i>grid search</i></li>
     </ul>
   </div>
+</div>
+
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/grid-search/"
+     >Guide to grid search <i class="fa next"></i></a>
 </div>
 
 ### Run trials for a range (Random search)
@@ -218,6 +224,10 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/random-search/"
+     >Guide to running random search <i class="fa next"></i></a>
+</div>
 
 ### Find the best hyperparameters using Bayesian optimization
 
@@ -236,6 +246,11 @@ hide_in_pagenav: yes
         trees</i></li>
     </ul>
   </div>
+</div>
+
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/bayesian-optimization/"
+     >Guide to Bayesian optimization <i class="fa next"></i></a>
 </div>
 
 ---
@@ -284,6 +299,11 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/export-runs/"
+     >Guide to exporting runs <i class="fa next"></i></a>
+</div>
+
 ### Integrated visualizers
 
 <div class="row">
@@ -293,7 +313,7 @@ hide_in_pagenav: yes
         $ <span class="typed-cursor">guild view</span>
       </div>
     </div>
-    <p>Run <code>guild view</code> to start a browser based
+    <p>Use <code>guild view</code> to start a browser-based
       application to explore and compare experiment results.</p>
   </div>
   <div class="col-lg-6">
@@ -384,41 +404,170 @@ hide_in_pagenav: yes
 
 ---
 
-# Other fun stuff, in Latin?
+# Reproducibility
 
-Curabitur tristique turpis at arcu sollicitudin, et venenatis mauris
-eleifend. Donec porttitor cursus nisl, ut ornare metus fringilla
-at. Nunc sed tempus mi. Aliquam porttitor mauris sit amet consequat
-condimentum. Vestibulum semper ultricies lobortis. Ut hendrerit non
-velit quis sagittis. Vestibulum eu mi sapien. In vitae arcu nec justo
-dictum convallis. Aliquam erat volutpat. Ut id quam rhoncus, facilisis
-libero ut, auctor nibh. Curabitur sagittis euismod congue.
+<div class="row match-height steps">
+  <div class="col-lg-4 step">
+    <i class="far fa-file-alt"></i>
+    <h4>Step 1: Add a Guild file<br>to your project</h4>
+    <p>
+      A Guild file is a simple text file named <code>guild.yml</code>
+      that describes the operations for your project. Guild files
+      support a range of features that automate reproducibility
+      &mdash; just it to your project root and you're done!
+    </p>
+  </div>
+  <div class="col-lg-4 step">
+    <i class="far fa-bullhorn"></i>
+    <h4>Step 2: Share your code<br>with colleagues</h4>
+    <p>
+      By adding a Guild file to your project, you make it easy for
+      colleagues and other researchers to recreate your
+      experiments. Simply share your project code through GitHub or
+      your favorite version control system.
+    </p>
+  </div>
+  <div class="col-lg-4 step">
+    <i class="far fa-users-cog"></i>
+    <h4>Step 3: Colleagues use Guild<br>to recreate experiments</h4>
+    <p>
+      After cloning your project repo, others can recreate your
+      experiments using the <code>guild run</code> command. Guild
+      takes care of everything needed to train your model and captures
+      the results for easy comparison.
+    </p>
+  </div>
+</div>
 
-Mauris congue, sem sed posuere imperdiet, massa justo suscipit mi,
-quis semper tellus purus in odio. Integer sit amet odio quam. Morbi
-suscipit erat nibh. Aliquam vitae augue et lectus gravida lacinia id
-in dui. Suspendisse ante erat, molestie a nunc non, condimentum
-tristique nibh. Nam at tortor mi. Cras viverra nec ante at lobortis.
+### Guild file &mdash; instructions for recreating an experiment
 
-Donec nec ante vel leo ornare porttitor. Donec pulvinar, felis et
-varius porta, neque neque tempus tortor, vitae tristique eros felis
-sed odio. Vestibulum a lacus placerat, pulvinar dui in, tincidunt
-risus. Proin tincidunt nisi quis felis consectetur, ultrices efficitur
-metus placerat. Interdum et malesuada fames ac ante ipsum primis in
-faucibus. Donec non laoreet lectus, vitae pharetra quam. Donec
-lobortis efficitur ultricies. Nam euismod, magna id posuere lobortis,
-dolor tortor semper dolor, eu sollicitudin quam sapien id
-libero. Integer dictum dignissim nisl, sit amet malesuada metus rutrum
-non.
+<div class="row">
+  <div class="col-lg-9">
+    <pre class="language-yaml gf-sample">train.py:
+  requires:
+   - url: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+  flags:
+    epochs:
+      default: 3
+      min: 1
+      max: 10
+    activation:
+      default: relu
+      choices: [relu, sigmoid]
+    num_dense_layers:
+      default: 1
+      min: 1
+      max: 5
+    num_dense_nodes:
+      default: 16
+      min: 5
+      max: 512
+    learning_rate:
+      default: 1e-5
+      min: 1e-6
+      max: 1e-2
+  objective:
+    maximize: epoch_val_acc</pre>
+    <p style="margin-top:12px; text-align: center">
+      <code>guild.yml</code> located in project root directory
+    </p>
+  </div>
+  <div class="col-lg-3">
+    <p>
+      The <code>requires</code> section defines a list of files that
+      are needed by the operation. Guild automatically downloads the
+      files and makes them available to training script. The download
+      files are cached and reused without re-downloading.
+    </p>
+    <p>
+      The <code>flags</code> section defines script hyperparameters
+      including default values and information used for tuning.
+    </p>
+    <p>
+      The <code>objective</code> section tells Guild what to optimize
+      when running tuning operations. In this case, Guild tries to
+      maximize validation accuracy.
+    </p>
+  </div>
+</div>
 
-Sed leo mauris, laoreet non augue sit amet, malesuada luctus orci. Nam
-vitae felis fermentum nulla dictum sodales. Quisque rhoncus dui non
-metus blandit placerat. Aenean quis lorem vitae dui commodo
-euismod. Aenean eu nunc diam. Aliquam maximus leo ipsum, interdum
-vulputate lacus ornare eget. Mauris non nunc id lacus tincidunt
-interdum. Vivamus sapien dolor, faucibus vel libero ac, elementum
-dapibus erat. Suspendisse odio purus, vulputate et magna vel, ornare
-pretium leo. Suspendisse potenti. Vestibulum eros nibh, elementum ac
-felis eget, facilisis mollis nisi. Proin tempor ex vitae risus
-placerat, ac sagittis sapien eleifend. Fusce vestibulum sapien at
-convallis aliquam.
+### Steps to recreate an experiment
+
+<div class="row">
+  <div class="col-lg-10">
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild run</span>
+      </div>
+    </div>
+    <ul class="md features">
+      <li>Run command in project root &mdash; i.e. the directory
+        containing <code>guild.yml</code> (above)</li>
+      <li>Guild downloads the required files and
+        runs <code>train.py</code> using the default hyperparameter
+        values defined in the Guild file
+      </li>
+      <li>Training results are automatically captured and available
+      for comparison to published results</li>
+    </ul>
+  </div>
+  <div class="col-lg-2">
+    It's just this simple &mdash; Guild uses the information in the
+    Guild file to automate the process.
+  </div>
+</div>
+
+---
+
+# Bayesian Optimization
+
+---
+
+# Next Steps
+
+<div class="row match-height">
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Install Guild AI</h3>
+<p class="expand">
+
+It just takes a moment to install Guild. From there it's easy to run
+and track your experiments &mdash; or apply state-of-the-art Bayesian
+optimization.
+
+</p>
+<a class="btn btn-primary cta" href="/install/"
+  >Install Guild AI <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Browser the features</h3>
+<p class="expand">
+
+Not convinced that Guild is right for you? Spend a few more minutes
+browing its features.
+
+</p>
+<a class="btn btn-primary cta" href="/features/"
+  >Browse Guild features <i class="fa next"></i></a>
+</div>
+</div>
+
+<div class="col col-md-4">
+<div class="promo left">
+<h3>Browse the docs</h3>
+<p class="expand">
+
+If you're interested in a complete picture of Guild AI, start by
+browsing its comprehensives documentation.
+
+</p>
+<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+</div>
+</div>
+</div>

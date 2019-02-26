@@ -5,16 +5,6 @@ tags: reference
 
 [TOC]
 
-- [General](category:/docs/commands/#general)
-- [Model info](category:/docs/commands/#models)
-- [Run management](category:/docs/commands/#runs)
-- [Runs command alias](category:/docs/commands/#runs-alias)
-- [Run info and analysis](category:/docs/commands/#run-info)
-- [Packaging and distribution](category:/docs/commands/#packaging)
-- [Remote](category:/docs/commands/#remote)
-- [Visualization](category:/docs/commands/#visual)
-- [Utilities](category:/docs/commands/#util)
-
 ## Running commands
 
 Guild commands must be executed on a command line. If you're
@@ -97,3 +87,15 @@ guild COMMAND --help
 
 This will print details about what the command does and how it can be
 configured including details about its options.
+
+## Commands
+
+- [General](category:/docs/commands/#general)
+- [Model info](category:/docs/commands/#models)
+- [Run management](category:/docs/commands/#runs)
+- [Runs command alias](category:/docs/commands/#runs-alias)
+- [Run info and analysis](category:/docs/commands/#run-info)
+- [Packaging and distribution](category:/docs/commands/#packaging)
+- [Remote](category:/docs/commands/#remote)
+- [Visualization](category:/docs/commands/#visual)
+- [Utilities](category:/docs/commands/#util)
