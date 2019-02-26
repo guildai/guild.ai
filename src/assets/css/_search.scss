@@ -1,5 +1,7 @@
 .search-header {
   margin-right: -15px;
+  display: flex;
+  align-items: center;
 
   .btn-search {
     color: $color-white;

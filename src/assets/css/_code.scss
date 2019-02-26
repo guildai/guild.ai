@@ -66,6 +66,10 @@ pre[class] {
   padding: 9px 12px;
 }
 
+pre.command-line {
+  background-color: $bg-color-terminal;
+}
+
 pre .language-name {
   background-color: transparent;
   color: $pale-text-color;
@@ -80,7 +84,7 @@ pre .language-name {
   margin-left: 4px;
   font-size: 12px;
   line-height: 14px;
-  text-shadow: 0 1px #fff;
+  // text-shadow: 0 1px #fff;
   transition: opacity $default-transition;
 
   &.out {

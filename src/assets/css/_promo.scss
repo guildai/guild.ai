@@ -1,5 +1,4 @@
 .promo {
-  margin: 20px 0 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -81,8 +80,7 @@
   }
 
   > .btn {
-    margin-top: 5px;
-    font-size: 14px;
+    font-size: 18px;
     padding: 8px 16px;
   }
 
@@ -316,7 +314,7 @@
 }
 
 ul.features {
-  font-size: 20px;
+  font-size: 18px;
   margin: 30px 60px 30px 30px;
 
   li {
@@ -326,4 +324,32 @@ ul.features {
   @media screen and (max-width: $break-sm) {
     margin: 30px 10px;
   }
+}
+
+.steps {
+  .step {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    i {
+      font-size: 72px;
+    }
+
+    h4 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-top: 5px;
+      max-width: 25em;
+    }
+  }
+}
+
+.gf-sample {
+  margin: 0 !important;
+  font-size: 16px;
+  padding: 12px 18px !important;
 }
