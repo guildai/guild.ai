@@ -4,8 +4,8 @@ body[data-spy] {
 
 .main-content {
   padding: 50px;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
 
   @media screen and (max-width: $break-md) {
     padding: 30px;

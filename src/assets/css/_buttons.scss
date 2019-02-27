@@ -3,6 +3,7 @@
   border: none;
   transition: $default-transition;
   letter-spacing: 0.015em;
+  white-space: unset;
   @include remove-outline;
 
   i.next {
@@ -32,7 +33,7 @@
 
 .btn-default {
   background-color: $btn-default-bg-color;
-  color: $color-default;
+  color: $btn-default-color;
 }
 
 .btn-purple,

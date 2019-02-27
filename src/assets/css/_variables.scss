@@ -5,6 +5,8 @@ $font-family-body: 'Roboto',sans-serif;
 $font-family-title: 'Roboto',sans-serif;
 $font-family-hero: 'Roboto Slab',sans-serif;
 $font-family-code: 'Roboto Mono',monospace;
+$default-font-size: 16px;
+$default-line-height: 24px;
 
 // Spacing
 $p-margin-bottom_:                  18;
@@ -20,6 +22,7 @@ $pale-text-color:                   #ccc;
 $pale-text-color-light:             #d5d5d5;
 $link-color:                        $accent-color;
 $bg-color-terminal:                 #020202;
+$terminal-text-color:               #f5f5f5;
 
 $border-color-darker:               #aaa;
 $border-color-dark:                 #ddd;
@@ -63,7 +66,7 @@ $default-transition-function:       ease;
 $default-transition:                $default-transition-time
                                     $default-transition-function;
 // Borders
-$default-border-radius:             3px;
+$default-border-radius:             4px;
 
 // _sidebar
 $sidebar-bg-color:                  $bg-color-dark;
@@ -85,8 +88,9 @@ $callout-warning-color:             #e65100;
 $callout-danger-color:              #ac1900;
 
 // _buttons
-$btn-default-bg-color:              #f5f5f5;
+$btn-default-bg-color:              #f0f0f0;
 $btn-bg-color-dark:                 #cccccc;
+$btn-default-color:                 $light-text-color;
 
 // _code
 $code-bg-color:                     $bg-color-dark;
@@ -125,3 +129,6 @@ $tooltip-bg-color:                  $color-dark;
 
 // _search
 $search-highlight-bg-color:         #FFF176;
+
+// _promo
+$feature-font-size:                 18px;

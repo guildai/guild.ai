@@ -17,7 +17,7 @@ hide_in_pagenav: yes
   <div class="col-md-4 col-sm-12 promo center">
     <h3>Analyze, Compare, Optimize</h3>
     <p>Learn from each experiment to optimize your model in less time
-      &mdash; either manually or with AutoML.</p>
+      &mdash; apply your own insights or use AutoML.</p>
     <img title="Hyperparameter optimization"
          class="feature-grid-img"
          style="width:80%"
@@ -65,7 +65,7 @@ hide_in_pagenav: yes
 
 <div class="row qa" style="margin-top:0">
   <div class="col-lg-4">
-    <h4>How can Guild AI help me?</h4>
+    <h4>How does Guild AI help?</h4>
   </div>
   <div class="col-lg-8">
     <p>
@@ -154,6 +154,12 @@ hide_in_pagenav: yes
       servers &mdash; as well as backup and restore your runs.
     </p>
   </div>
+</div>
+
+
+<div class="promo">
+  <a class="btn btn-primary" href="/features/"
+     >More about Guild AI features <i class="fa next"></i></a>
 </div>
 
 ---
@@ -281,6 +287,11 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/compare/"
+     >Guide to comparing runs <i class="fa next"></i></a>
+</div>
+
 ### Export to CSV or JSON
 
 <div class="row">
@@ -335,7 +346,9 @@ hide_in_pagenav: yes
       <li>Seamless integration with TensorBoard to view trial scalars
       (e.g. loss, accuracy, etc.)  and other logged events</li>
     </ul>
+  </div>
 
+  <div class="col-lg-12">
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild tensorboard</span>
@@ -520,9 +533,16 @@ hide_in_pagenav: yes
   </div>
 </div>
 
+<div class="promo">
+  <a class="btn btn-default" href="/docs/guides/reproducibility/"
+     >Guide to reproducibility <i class="fa next"></i></a>
+</div>
+
 ---
 
-# Bayesian Optimization
+# End-to-end Learning
+
+TODO
 
 ---
 
@@ -531,7 +551,7 @@ hide_in_pagenav: yes
 <div class="row match-height">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Install Guild AI</h3>
+<h3><i class="far fa-download"></i> Install Guild AI</h3>
 <p class="expand">
 
 It just takes a moment to install Guild. From there it's easy to run
@@ -546,7 +566,7 @@ optimization.
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Browser the features</h3>
+<h3><i class="far fa-compass"></i> Explore the features</h3>
 <p class="expand">
 
 Not convinced that Guild is right for you? Spend a few more minutes
@@ -554,13 +574,13 @@ browing its features.
 
 </p>
 <a class="btn btn-primary cta" href="/features/"
-  >Browse Guild features <i class="fa next"></i></a>
+  >Explore Guild AI features <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Browse the docs</h3>
+<h3><i class="far fa-book"></i> Browse Guild AI docs</h3>
 <p class="expand">
 
 If you're interested in a complete picture of Guild AI, start by

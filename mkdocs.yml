@@ -165,8 +165,8 @@ markdown_extensions:
 
 pages:
   - index.md
-  - install.md
   - features.md
+  - install.md
   - docs:
       - docs/index.md
       - docs/quick-start.md
@@ -188,6 +188,7 @@ pages:
           - docs/guides/grid-search.md
           - docs/guides/random-search.md
           - docs/guides/bayesian-optimization.md
+          - docs/guides/compare.md
           - docs/guides/export-runs.md
           - docs/guides/fashion-mnist.md
 
@@ -295,6 +296,5 @@ pages:
           - docs/reference/user-config.md
       - docs/glossary.md
   - support.md
-  - faq.md
   - about.md
   - adopt.md

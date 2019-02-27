@@ -69,18 +69,21 @@
 
     @media screen and (max-width: $break-sm) {
       font-size: 26px;
+      margin-top: 10px;
     }
 
+    i {
+      margin-right: 3px;
+    }
   }
 
   > p {
-    font-size: 18px;
+    font-size: $feature-font-size;
     line-height: 28px;
-    color: $gray-text-color;
   }
 
   > .btn {
-    font-size: 18px;
+    font-size: $feature-font-size;
     padding: 8px 16px;
   }
 
@@ -238,7 +241,7 @@
     text-align: center;
 
     p {
-      font-size: 18px;
+      font-size: $feature-font-size;
       color: #777;
       margin: 10px auto;
       max-width: 16em;
@@ -314,7 +317,7 @@
 }
 
 ul.features {
-  font-size: 18px;
+  font-size: $feature-font-size;
   margin: 30px 60px 30px 30px;
 
   li {
@@ -350,6 +353,14 @@ ul.features {
 
 .gf-sample {
   margin: 0 !important;
-  font-size: 16px;
+  font-size: 15px;
   padding: 12px 18px !important;
+
+  @media screen and (max-width: $break-sm) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: $break-xs) {
+    font-size: 13px;
+  }
 }

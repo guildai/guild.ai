@@ -40,10 +40,11 @@ h5 code {
 }
 
 pre {
-  font-size: 0.8125em;
+  font-size: 14px;
   line-height: 1.4;
   word-wrap: normal;
   word-break: break-word;
+  white-space: pre-wrap;
   background-color: transparent;
   border: none;
   padding: 0 12px;
@@ -68,6 +69,14 @@ pre[class] {
 
 pre.command-line {
   background-color: $bg-color-terminal;
+
+  code {
+    color: $terminal-text-color;
+  }
+
+  .language-name {
+    color: $light-gray-text-color;
+  }
 }
 
 pre .language-name {
