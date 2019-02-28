@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 30px;
 
   &.center {
     align-items: center;
@@ -281,11 +282,11 @@
 .top-features {
 
   h3 {
-    margin-top: 40px;
+    // margin-top: 20px;
   }
 
   @media screen and (max-width: $break-md) {
-    margin-top: -15px;
+   //  margin-top: -15px;
   }
 }
 
@@ -366,6 +367,7 @@ ul.features {
     p {
       margin-top: 5px;
       max-width: 25em;
+      padding: 0 20px;
     }
   }
 }
