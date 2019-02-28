@@ -270,13 +270,19 @@
 
 .qa {
   h4 {
-    margin-top: 0;
+    margin-top: 10px;
+
+    @media screen and (max-width: $break-md) {
+      margin-top: 20px;
+    }
   }
 }
 
 .top-features {
-  margin-top: -20px;
-  margin-bottom: -10px;
+
+  h3 {
+    margin-top: 40px;
+  }
 
   @media screen and (max-width: $break-md) {
     margin-top: -15px;
@@ -286,14 +292,23 @@
 .other-features {
   i {
     margin-right: 7px;
+    margin-top: 10px;
     color: $gray-text-color;
     font-size: 36px;
     float: left;
+
+    @media screen and (max-width: $break-md) {
+      margin-top: 0;
+    }
   }
 
   h4 {
     padding-left: 60px;
-    margin-top: 0;
+    margin-top: 10px;
+
+    @media screen and (max-width: $break-md) {
+      margin-top: 30px;
+    }
   }
 
   p {
@@ -313,6 +328,10 @@
       padding-left: 0;
       margin-top: 15px;
     }
+  }
+
+  + .promo {
+    margin-top: 20px;
   }
 }
 

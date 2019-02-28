@@ -12,10 +12,12 @@
     <h1 style="max-width:{{config.extra.tagline_width}}">
       {{ page.meta.tagline or config.extra.tagline }}
     </h1>
+    {% if config.extra.subtext %}
     <div class="spacer text"></div>
     <h5 style="max-width:{{config.extra.subtext_width}}">
       {{ page.meta.subtext or config.extra.subtext }}
     </h5>
+    {% endif %}
     <div class="text-editor banner">
       <div class="text-body">
         $ <span id="typed"></span><span class="typed-cursor">|</span>

@@ -41,7 +41,7 @@ $(function() {
       ],
       typeSpeed: 45,
       backSpeed: 20,
-      backDelay: 1800,
+      backDelay: 2000,
       loop: true,
       showCursor: false,
       smartBackspace: true

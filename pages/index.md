@@ -49,7 +49,7 @@ hide_in_pagenav: yes
 
 ---
 
-<div class="row qa" style="margin-top:30px">
+<div class="row qa">
   <div class="col-lg-4">
     <h4>Who uses Guild AI?</h4>
   </div>
@@ -63,7 +63,7 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="row qa" style="margin-top:0">
+<div class="row qa">
   <div class="col-lg-4">
     <h4>How does Guild AI help?</h4>
   </div>
@@ -78,7 +78,7 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="row qa" style="margin-top:0">
+<div class="row qa">
   <div class="col-lg-4">
     <h4>How is Guild AI different?</h4>
   </div>
@@ -537,12 +537,6 @@ hide_in_pagenav: yes
   <a class="btn btn-default" href="/docs/guides/reproducibility/"
      >Guide to reproducibility <i class="fa next"></i></a>
 </div>
-
----
-
-# End-to-end Learning
-
-TODO
 
 ---
 

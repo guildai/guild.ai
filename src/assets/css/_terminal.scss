@@ -1,6 +1,5 @@
 .text-editor {
   display: block;
-  margin: 0 auto 30px;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.5) 8px 12px 25px;
   clear: both;
@@ -22,28 +21,6 @@
     -ms-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
-  }
-
-  &.banner {
-    width: 100%;
-    max-width: 50em;
-
-    .text-body {
-      background-color: rgba(0,0,0,0.7);
-      font-size: 20px;
-
-      @media screen and (max-width: $break-lg) {
-        font-size: 20px;
-      }
-
-      @media screen and (max-width: $break-md) {
-        font-size: 18px;
-      }
-
-      @media screen and (max-width: $break-sm) {
-        font-size: 16px;
-      }
-    }
   }
 }
 

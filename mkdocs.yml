@@ -13,7 +13,7 @@ extra:
   subtext_width: 30em
   subtext:
 
-    Reproducibility. Optimization. End-to-end learning.
+
 
   links:
     - name: github
@@ -170,15 +170,17 @@ pages:
   - docs:
       - docs/index.md
       - docs/quick-start.md
-      - docs/operations.md
-      - docs/models.md
-      - docs/runs.md
-      - docs/resources.md
-      - docs/packages.md
-      - docs/tests.md
-      - docs/code-reuse.md
-      - docs/environments.md
-      - docs/remotes.md
+      - Concepts:
+          - docs/operations.md
+          - docs/models.md
+          - docs/runs.md
+          - docs/optimizers.md
+          - docs/resources.md
+          - docs/packages.md
+          - docs/tests.md
+          - docs/code-reuse.md
+          - docs/environments.md
+          - docs/remotes.md
       - Visual tools:
           - docs/visual/guild-view.md
           - docs/visual/tensorboard.md
@@ -192,7 +194,6 @@ pages:
           - docs/guides/export-runs.md
           - docs/guides/fashion-mnist.md
 
-          # - delete failed runs
           # - reuse models
           # - serve a trained model
           # - delete all runs
@@ -212,9 +213,8 @@ pages:
           # - test models (include tricks -m, -o -1)
           # - diffing runs
           # - diff images using Beyond Compare
-          # - docs/guides/convert-notebook.md
+
           # - docs/guides/add-guild.md
-          # - docs/guides/guild-for-research.md
           # - docs/guides/create-image-classifier.md
           # - docs/guides/create-object-detector.md
           # - docs/guides/train-on-ec2.md
@@ -223,7 +223,6 @@ pages:
           # - docs/guides/create-tflite-file.md
           # - docs/guides/specify-run-gpus.md
           # - docs/guides/debug-operation.md
-          # - docs/guides/create-tflite-file.md
 
           #    # - deep dive - understanding slim support
           #    - docs/tutorials/index.md
