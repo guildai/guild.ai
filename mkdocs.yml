@@ -167,7 +167,7 @@ pages:
   - features.md
   - docs:
       - docs/index.md
-      - docs/quick-start.md
+      - docs/start.md
       - Concepts:
           - docs/operations.md
           - docs/models.md
@@ -184,11 +184,10 @@ pages:
           - docs/visual/tensorboard.md
       - Guides:
           - docs/guides/index.md
-          - docs/guides/experiments.md
           - docs/guides/grid-search.md
           - docs/guides/random-search.md
           - docs/guides/bayesian-optimization.md
-          - docs/guides/compare.md
+          - docs/guides/compare-runs.md
           - docs/guides/export-runs.md
           - docs/guides/fashion-mnist.md
 

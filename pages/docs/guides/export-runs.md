@@ -1,6 +1,6 @@
 tags: integration
 
-# Export runs
+# Export Runs
 
 ``` command
 guild compare --csv > result.csv

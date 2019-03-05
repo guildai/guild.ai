@@ -1,3 +1,3 @@
 tags: optimization
 
-# Random search
+# Random Search

@@ -1,6 +1,6 @@
 tags: popular, models
 
-# Create an object detector
+# Create an Object Detector
 
 [TOC]
 

@@ -1,6 +1,6 @@
 tags: advanced-concept
 
-# Code reuse
+# Code Reuse
 
 [TOC]
 

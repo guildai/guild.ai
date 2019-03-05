@@ -1,6 +1,6 @@
 tags: mobile, tflite
 
-# Create a TensorFlow Lite file
+# Create a TensorFlow Lite File
 
 [TensorFlow Lite ->](https://www.tensorflow.org/lite/) is a runtime
 platform used to run TensorFlow models on mobile and embedded devices.

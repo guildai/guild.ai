@@ -159,9 +159,9 @@ hide_in_pagenav: yes
 </div>
 
 
-<div class="promo">
+<div class="promo" style="margin-top:0">
   <a class="btn btn-primary" href="/features/"
-     >More about Guild AI features <i class="fa next"></i></a>
+     >More information <i class="fa next"></i></a>
 </div>
 
 ---
@@ -187,11 +187,11 @@ hide_in_pagenav: yes
 </div>
 
 <div class="promo">
-  <a class="btn btn-default" href="/docs/guides/experiments/"
-     >Running experiments <i class="fa next"></i></a>
+  <a class="btn btn-default" href="/docs/start/"
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
-### Run multiple trials for a set of choices (Grid search)
+### Run multiple trials for a set of choices (Grid Search)
 
 <div class="row">
   <div class="col-lg-12">
@@ -210,10 +210,10 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/grid-search/"
-     >Grid search <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
-### Run trials for a range (Random search)
+### Run trials for a range (Random Search)
 
 <div class="row">
   <div class="col-lg-12">
@@ -234,7 +234,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/random-search/"
-     >Running random search <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
 ### Find the best hyperparameters using Bayesian optimization
@@ -258,7 +258,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/bayesian-optimization/"
-     >Bayesian optimization <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
 ---
@@ -291,7 +291,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/compare/"
-     >Comparing runs <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
 ### Export to CSV or JSON
@@ -314,7 +314,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/export-runs/"
-     >Exporting runs <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
 ### Integrated visualizers
@@ -537,7 +537,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/reproducibility/"
-     >Reproducibility <i class="fa next"></i></a>
+     >Step-by-step guide <i class="fa next"></i></a>
 </div>
 
 ---

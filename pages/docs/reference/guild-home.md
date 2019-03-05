@@ -1,6 +1,6 @@
 tags: reference
 
-# Guild home
+# Guild Home
 
 [TOC]
 

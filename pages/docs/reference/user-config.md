@@ -1,6 +1,6 @@
 tags: reference
 
-# User configuration
+# User Configuration
 
 [TOC]
 

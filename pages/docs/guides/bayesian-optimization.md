@@ -1,3 +1,3 @@
 tags: optimization, popular
 
-# Bayesian optimization
+# Bayesian Optimization

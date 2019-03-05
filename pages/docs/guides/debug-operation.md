@@ -1,7 +1,4 @@
-sidenav_title: Debug an operation
-tags: developer
-
-# Debugging an operation
+# Debug an Operation
 
 [TOC]
 

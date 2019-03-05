@@ -1,7 +1,7 @@
-sidenav_title: Specify available GPUs
+sidenav_title: Specify Available GPUs
 tags: tips
 
-# Specify available GPUs for a run
+# Specify Available GPUs for a Run
 
 [TOC]
 

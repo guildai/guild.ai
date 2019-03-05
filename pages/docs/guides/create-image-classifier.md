@@ -1,6 +1,6 @@
 tags: popular, models
 
-# Create an image classifier
+# Create an Image Classifier
 
 In this guide we create an image classifier by extending model
 configuration from [gpkg.slim](pkg:slim), which is a [Guild

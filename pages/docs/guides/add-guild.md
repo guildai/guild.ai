@@ -1,6 +1,6 @@
 tags: get-started, guide
 
-# Add Guild to a project
+# Add Guild to a Project
 
 <!-- XXX replace with simpler Keras project -->
 

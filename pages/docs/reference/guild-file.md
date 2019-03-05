@@ -1,6 +1,6 @@
 tags: reference
 
-# Guild file
+# Guild File
 
 [TOC]
 
