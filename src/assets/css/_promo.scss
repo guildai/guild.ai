@@ -120,6 +120,10 @@
   max-width: 300px !important;
   border-radius: 4px;
   box-shadow: rgba(0,0,0,0.5) 8px 12px 25px;
+
+  @media screen and (max-width: $break-md) {
+    margin-bottom: 20px !important;
+  }
 }
 
 .quick-start-img {
@@ -323,6 +327,7 @@
   p {
     padding-left: 60px;
     font-size: $feature-font-size;
+    margin-bottom: 30px;
   }
 
   @media screen and (max-width: $break-sm) {
@@ -347,7 +352,7 @@
 
 ul.features {
   font-size: $feature-font-size;
-  margin: 30px 60px 30px 30px;
+  margin: 16px 60px 30px 30px;
 
   li {
     margin-bottom: 12px;
@@ -365,14 +370,15 @@ ul.features {
     flex-direction: column;
 
     i {
-      font-size: 72px;
+      color: $gray-text-color;
+      font-size: 68px;
 
       @media screen and (max-width: $break-lg) {
         margin-top: 10px;
       }
 
       @media screen and (max-width: $break-md) {
-        font-size: 64px;
+        font-size: 60px;
       }
 
       @media screen and (max-width: $break-sm) {

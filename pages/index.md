@@ -8,7 +8,7 @@ hide_in_pagenav: yes
     <!--
     <h3></h3>
     -->
-    <h3>Track Experiments, Automatically</h3>
+    <h3>Track Experiments Automatically</h3>
     <p>Track experiments, capturing every detail including
       performance, generated files, logs, and source code.</p>
     <img title="200x100"
@@ -28,7 +28,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Run Your Code, Unmodified</h3>
+    <h3>Get Started Without Changing Your Code</h3>
     <p>Use your current training scripts without modification &mdash;
       there&apos;s no need to adopt another framework.
     </p>
@@ -74,9 +74,9 @@ hide_in_pagenav: yes
     <p>
       Guild helps you train better models in less time. Effective
       machine learning is a function of systematic
-      experimentation&mdash;one experiment leads to another until you
-      achieve your goals. The faster and more effective you can apply
-      experiments, the sooner you complete your work.
+      experimentation&mdash;one experiment leads to another as you
+      deepen your understanding. The faster and more effective you can
+      apply experiments, the sooner you'll complete your work.
     </p>
   </div>
 </div>
@@ -133,7 +133,6 @@ hide_in_pagenav: yes
 <div class="row match-height other-features">
   <div class="col-lg-4">
     <i class="far fa-analytics"></i>
-
     <h4>Analytics</h4>
     <p>
       Guild provides a suite of visualization, comparison, and diffing
@@ -571,7 +570,7 @@ browing its features.
 
 </p>
 <a class="btn btn-primary cta" href="/features/"
-  >Explore Guild AI features <i class="fa next"></i></a>
+  >Guild AI features <i class="fa next"></i></a>
 </div>
 </div>
 
