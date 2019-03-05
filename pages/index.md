@@ -4,7 +4,10 @@ hide_pagenav: yes
 hide_in_pagenav: yes
 
 <div class="row match-height top-features">
-  <div class="col-md-4 col-sm-12 promo center">
+  <div class="col-md-4 col-sm-12 promo center feature-promo">
+    <!--
+    <h3></h3>
+    -->
     <h3>Track Experiments, Automatically</h3>
     <p>Track experiments, capturing every detail including
       performance, generated files, logs, and source code.</p>
@@ -14,7 +17,7 @@ hide_in_pagenav: yes
          src="/assets/img/record-experiments.jpg">
   </div>
 
-  <div class="col-md-4 col-sm-12 promo center">
+  <div class="col-md-4 col-sm-12 promo center feature-promo">
     <h3>Analyze, Compare, Optimize</h3>
     <p>Learn from each experiment to optimize your model in less time
       &mdash; apply your own insights or use AutoML.</p>
@@ -24,7 +27,7 @@ hide_in_pagenav: yes
          src="/assets/img/select-experiment.jpg">
   </div>
 
-  <div class="col-md-4 col-sm-12 promo center">
+  <div class="col-md-4 col-sm-12 promo center feature-promo">
     <h3>Run Your Code, Unmodified</h3>
     <p>Use your current training scripts without modification &mdash;
       there&apos;s no need to adopt another framework.
@@ -69,11 +72,11 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-8">
     <p>
-      Guild will help you train better models in less time. Effective
+      Guild helps you train better models in less time. Effective
       machine learning is a function of systematic
       experimentation&mdash;one experiment leads to another until you
       achieve your goals. The faster and more effective you can apply
-      experiments, the sooner you'll complete your work.
+      experiments, the sooner you complete your work.
     </p>
   </div>
 </div>
@@ -166,7 +169,7 @@ hide_in_pagenav: yes
 
 # Run experiments
 
-### Run your training script, unmodified
+### Run your training script with Guild to generate an experiment
 
 <div class="row">
   <div class="col-lg-12">
@@ -177,7 +180,7 @@ hide_in_pagenav: yes
     </div>
     <ul class="md features">
       <li>Guild runs your script directly &mdash; no need to change
-        anything</li>
+        your code</li>
       <li>Captures <i>files</i>, <i>metrics</i>, <i>output</i>, and
         <i>logs</i> as a unique experiment</li>
     </ul>
@@ -186,7 +189,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/experiments/"
-     >Guide to running experiments <i class="fa next"></i></a>
+     >Running experiments <i class="fa next"></i></a>
 </div>
 
 ### Run multiple trials for a set of choices (Grid search)
@@ -208,7 +211,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/grid-search/"
-     >Guide to grid search <i class="fa next"></i></a>
+     >Grid search <i class="fa next"></i></a>
 </div>
 
 ### Run trials for a range (Random search)
@@ -232,7 +235,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/random-search/"
-     >Guide to running random search <i class="fa next"></i></a>
+     >Running random search <i class="fa next"></i></a>
 </div>
 
 ### Find the best hyperparameters using Bayesian optimization
@@ -256,7 +259,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/bayesian-optimization/"
-     >Guide to Bayesian optimization <i class="fa next"></i></a>
+     >Bayesian optimization <i class="fa next"></i></a>
 </div>
 
 ---
@@ -289,7 +292,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/compare/"
-     >Guide to comparing runs <i class="fa next"></i></a>
+     >Comparing runs <i class="fa next"></i></a>
 </div>
 
 ### Export to CSV or JSON
@@ -312,7 +315,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/export-runs/"
-     >Guide to exporting runs <i class="fa next"></i></a>
+     >Exporting runs <i class="fa next"></i></a>
 </div>
 
 ### Integrated visualizers
@@ -535,7 +538,7 @@ hide_in_pagenav: yes
 
 <div class="promo">
   <a class="btn btn-default" href="/docs/guides/reproducibility/"
-     >Guide to reproducibility <i class="fa next"></i></a>
+     >Reproducibility <i class="fa next"></i></a>
 </div>
 
 ---

@@ -96,7 +96,7 @@
     }
 
     @media screen and (max-width: $break-md) {
-      margin: 90px 0 20px;
+      margin: 75px 0 20px;
       font-size: 38px;
       line-height: 1.25;
     }
@@ -288,7 +288,7 @@
 .text-editor.banner {
   width: 100%;
   max-width: 50em;
-  margin: 60px auto 110px;
+  margin: 45px auto 110px;
 
   @media screen and (max-width: $break-lg) {
     margin: 60px auto 90px;

@@ -13,8 +13,6 @@ extra:
   subtext_width: 30em
   subtext:
 
-
-
   links:
     - name: github
       url: https://github.com/guildai/guildai
@@ -165,8 +163,8 @@ markdown_extensions:
 
 pages:
   - index.md
-  - features.md
   - install.md
+  - features.md
   - docs:
       - docs/index.md
       - docs/quick-start.md
