@@ -275,11 +275,15 @@
 
 .qa {
   h4 {
-    margin-top: 10px;
+    margin-top: 5px;
 
     @media screen and (max-width: $break-md) {
       margin-top: 20px;
     }
+  }
+
+  p {
+    font-size: $feature-font-size;
   }
 }
 
@@ -318,6 +322,7 @@
 
   p {
     padding-left: 60px;
+    font-size: $feature-font-size;
   }
 
   @media screen and (max-width: $break-sm) {
@@ -361,6 +366,18 @@ ul.features {
 
     i {
       font-size: 72px;
+
+      @media screen and (max-width: $break-lg) {
+        margin-top: 10px;
+      }
+
+      @media screen and (max-width: $break-md) {
+        font-size: 64px;
+      }
+
+      @media screen and (max-width: $break-sm) {
+        font-size: 48px;
+      }
     }
 
     h4 {
