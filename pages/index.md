@@ -459,11 +459,6 @@ hide_in_pagenav: yes
 <div class="row">
   <div class="col-lg-9">
     <pre class="language-yaml gf-sample">train.py:
-  requires:
-   - url: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-   - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-   - url: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-   - url: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
   flags:
     epochs:
       default: 3
@@ -485,7 +480,12 @@ hide_in_pagenav: yes
       min: 1e-6
       max: 1e-2
   objective:
-    maximize: epoch_val_acc</pre>
+      maximize: epoch_val_acc
+  requires:
+   - url: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+   - url: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz</pre>
     <p style="margin-top:12px; text-align: center">
       <code>guild.yml</code> located in project root directory
     </p>

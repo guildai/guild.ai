@@ -22,11 +22,11 @@ extra:
     - name: slack
       url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
       title: Guild AI Slack Channel
-      icon_class: 'fab fa-twitter'
+      icon_class: 'fab fa-slack-hash'
     - name: twitter
       url:  https://twitter.com/guildai
       title: Guild AI on Twitter
-      icon_class: 'fab fa-slack-hash'
+      icon_class: 'fab fa-twitter'
 
 theme:
   name: null
