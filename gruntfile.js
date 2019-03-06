@@ -48,7 +48,8 @@ module.exports = function(grunt) {
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/font-awesome/css/font-awesome.min.css',
             'node_modules/perfect-scrollbar/css/perfect-scrollbar.min.css',
-            'node_modules/featherlight/release/featherlight.min.css'
+            'node_modules/featherlight/release/featherlight.min.css',
+            'node_modules/jquery-fab/jquery-fab.css'
           ]
         }
       },
@@ -60,6 +61,7 @@ module.exports = function(grunt) {
             'node_modules/lozad/dist/lozad.min.js',
             'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
             'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
+            'node_modules/jquery-fab/jquery-fab.js',
             'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
             'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
             'node_modules/mousetrap/mousetrap.min.js',

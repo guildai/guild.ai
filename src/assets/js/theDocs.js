@@ -432,4 +432,15 @@ $(function() {
     // navigation to preserve the historic scroll position.
     trySmoothScroll(location.hash, false);
   }
+
+   var links = [
+      {
+        "icon": 'Start Here <i class="far fa-arrow-circle-right"></i>',
+        "url": "/docs/start/"
+      }
+    ];
+    var options = {
+      rotate: false
+    };
+    $('#get-started-fab').jqueryFab(links, options);
 });

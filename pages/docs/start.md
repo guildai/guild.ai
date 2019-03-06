@@ -1,4 +1,4 @@
-title: Quick Start
+title: Get Started
 tags: get-started
 
-# Guild AI Quick Start
+# Get Started with Guild AI

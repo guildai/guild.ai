@@ -144,3 +144,18 @@
 .btn-round.btn-default {
   @include btn-bg-color($color-default-darker);
 }
+
+button.jfab_main_btn {
+  background-color: $link-color;
+  border-radius: $default-border-radius;
+  height: unset;
+  width: unset;
+  font-size: $feature-font-size;
+  padding: 12px 20px;
+  right: 20px;
+  bottom: 20px;
+
+  i {
+    margin-left: 2px;
+  }
+}
