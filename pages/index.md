@@ -54,30 +54,31 @@ hide_in_pagenav: yes
 
 <div class="row qa">
   <div class="col-lg-4">
-    <h4>Who uses Guild AI?</h4>
+    <h4>How does Guild AI help?</h4>
   </div>
   <div class="col-lg-8">
-    <p>Guild AI is used by machine learning engineers and researchers
-      to run, track, and compare experiments. Each experiment yields
-      valuable information that is captured and used to inform next
-      steps. Scientists and developers leverage their experiment
-      results to build deeper intuition, troubleshoot issues, and
-      automate model architecture and hyperparameter optimization.</p>
+    <p>
+      Guild helps you <strong>train better models in less
+      time</strong>. Effective machine learning is a function of
+      systematic experimentation&mdash;one experiment leads to another
+      as you deepen your understanding. The faster and more effective
+      you can apply experiments, the sooner you'll complete your work.
+    </p>
   </div>
 </div>
 
 <div class="row qa">
   <div class="col-lg-4">
-    <h4>How does Guild AI help?</h4>
+    <h4>Who uses Guild AI?</h4>
   </div>
   <div class="col-lg-8">
-    <p>
-      Guild helps you train better models in less time. Effective
-      machine learning is a function of systematic
-      experimentation&mdash;one experiment leads to another as you
-      deepen your understanding. The faster and more effective you can
-      apply experiments, the sooner you'll complete your work.
-    </p>
+    <p>Guild AI is used by <strong>machine learning engineers and
+      researchers</strong> to run, track, and compare
+      experiments. Each experiment yields valuable information that is
+      captured and used to inform next steps. Scientists and
+      developers leverage their experiment results to build deeper
+      intuition, troubleshoot issues, and automate model architecture
+      and hyperparameter optimization.</p>
   </div>
 </div>
 
@@ -89,10 +90,10 @@ hide_in_pagenav: yes
     <p style="margin-bottom:0">Traditional experiment management
       frameworks require that you modify your training scripts to use
       their APIs for getting hyperparameters, logging output, and
-      writing files. Guild requires no such changes. It works with
-      your existing scripts as an external command line tool, using
-      standard operating systems conventions to provide
-      hyperparameters and capture results.</p>
+      writing files. Guild requires no such changes. It <strong>runs
+      your unmodified training scripts</strong> as an external command
+      line tool, using standard operating systems conventions to
+      provide hyperparameters and capture results.</p>
   </div>
 </div>
 
