@@ -152,7 +152,7 @@ button.jfab_main_btn {
   width: unset;
   font-size: $feature-font-size;
   padding: 12px 20px;
-  opacity: 0.9;
+  opacity: 0.85;
   right: 20px;
   bottom: 20px;
 
@@ -162,5 +162,9 @@ button.jfab_main_btn {
 
   i {
     margin-left: 2px;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    display: none;
   }
 }
