@@ -152,8 +152,13 @@ button.jfab_main_btn {
   width: unset;
   font-size: $feature-font-size;
   padding: 12px 20px;
+  opacity: 0.9;
   right: 20px;
   bottom: 20px;
+
+  &:hover {
+    opacity: 1.0;
+  }
 
   i {
     margin-left: 2px;

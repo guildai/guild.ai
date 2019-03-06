@@ -92,10 +92,11 @@ hide_in_pagenav: yes
     <p style="margin-bottom:0">Traditional experiment management
       frameworks require that you modify your training scripts to use
       their APIs for getting hyperparameters, logging output, and
-      writing files. Guild requires no such changes. It <strong>runs
-      your unmodified training scripts</strong> as an external command
-      line tool, using standard operating systems conventions to
-      provide hyperparameters and capture results.</p>
+      writing files. Guild requires no such
+      changes&mdash;it <strong>runs your unmodified training
+      scripts</strong> as an external command line tool and uses
+      standard operating system conventions to specify hyperparameters
+      and capture results.</p>
   </div>
 </div>
 
