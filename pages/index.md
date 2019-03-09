@@ -11,8 +11,10 @@ hide_in_pagenav: yes
     <h3></h3>
     -->
     <h3>Track Experiments Automatically</h3>
-    <p>Track experiments, capturing every detail including
-      performance, generated files, logs, and source code.</p>
+    <p>
+      Track experiments, capturing every detail including
+      performance, generated files, logs, and source code.
+    </p>
     <img title="200x100"
          class="feature-grid-img"
          style="width:80%"
@@ -21,8 +23,10 @@ hide_in_pagenav: yes
 
   <div class="col-md-4 col-sm-12 promo center feature-promo">
     <h3>Analyze, Compare, Optimize</h3>
-    <p>Learn from each experiment to optimize your model in less time
-      &mdash; apply your own insights or use AutoML.</p>
+    <p>
+      Learn from each experiment to optimize your model in less time
+      &mdash; apply your own insights or use AutoML.
+    </p>
     <img title="Hyperparameter optimization"
          class="feature-grid-img"
          style="width:80%"
@@ -31,8 +35,9 @@ hide_in_pagenav: yes
 
   <div class="col-md-4 col-sm-12 promo center feature-promo">
     <h3>Get Started Fast &mdash; No Code Changes</h3>
-    <p>Use your current training scripts without modification &mdash;
-      there&apos;s no need to adopt another framework.
+    <p>
+      Use your current training scripts without modification &mdash;
+      there&apos;s no need to adopt another framework or library.
     </p>
     <img title="Use your code without modification"
          class="feature-grid-img"
