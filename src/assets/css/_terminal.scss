@@ -34,6 +34,11 @@
   }
 }
 
+li .text-editor.sm {
+  margin: 8px 0 14px;
+  max-width: 40em;
+}
+
 img.terminal {
   padding: 8px 10px;
   background-color: $bg-color-terminal;

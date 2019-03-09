@@ -67,9 +67,10 @@ hide_in_pagenav: yes
     <p>
       Guild helps you <strong>train better models in less
       time</strong>. Effective machine learning is a function of
-      systematic experimentation&mdash;one experiment leads to another
-      as you deepen your understanding. The faster and more effective
-      you can apply experiments, the sooner you'll complete your work.
+      systematic experimentation &mdash; one experiment leads to
+      another as you deepen your understanding. The faster and more
+      effective you can apply experiments, the sooner you'll complete
+      your work.
     </p>
   </div>
 </div>
@@ -95,12 +96,13 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-8">
     <p style="margin-bottom:0">
-      Guild is <strong>cross platform and framework</strong> &mdash;
-      you can train and capture experiments in literally any language
-      using any library. You <strong>don't need to modify your
-      code</strong>. Furthermore, you don't need to install and
-      maintain databases or other infrastructure to manage
-      experiments. This lets you focus on what's
+      Guild is <strong>cross platform and framework
+      independent</strong> &mdash; you can train and capture
+      experiments in literally any language using any library. Guild
+      runs your unmodified code, which means you get to use the
+      libraries you want. Guild doesn't require databases or other
+      infrastructure to management experiments &mdash; it's simple and
+      easy to use. This frees you to focus on what's
       important: <em>building state-of-the-art models and machine
       learning apps</em>.
     </p>
@@ -123,7 +125,7 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-4">
     <i class="far fa-bullseye-arrow"></i>
-    <h4>AutoML</h4>
+    <h4>Auto ML</h4>
     <p>
       Guild makes it easy to optimize hyperparameters and model
       architecture. With a single command, you can apply
@@ -154,9 +156,9 @@ hide_in_pagenav: yes
     <i class="far fa-route"></i>
     <h4>End-to-end learning</h4>
     <p>
-      Hidden with Guild's features is a powerful workflow feature that
-      lets you optimize over a series of operations, letting you apply
-      AutoML to true end-to-end learning.
+      Guild has a powerful workflow feature that lets you optimize
+      over a series of operations, letting you apply Auto ML to true
+      end-to-end learning.
     </p>
   </div>
   <div class="col-lg-4">

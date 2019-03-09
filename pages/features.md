@@ -43,8 +43,8 @@ hide_in_pagenav: yes
         <li>You can <strong>analyze</strong> differences across runs
         to better understand a result</li>
         <li>You can <strong>share</strong> your results with colleagues</li>
-        <li>You can <strong>backup</strong> trained models&mdash;some
-          of which may have taken days to generate&mdash;for
+        <li>You can <strong>backup</strong> trained models &mdash;
+          some of which may have taken days to generate &mdash; for
           safekeeping</li>
         <li>You can <strong>optimize</strong> your model by focussing
         on approaches that perform well and avoiding those that
@@ -53,12 +53,12 @@ hide_in_pagenav: yes
     </p>
     <h4>But I already use a spreadsheet to track results</h4>
     <p>
-      Guild is <em>automatic</em>&mdash;it does the work for when you
-      run your training script so you don't have to copy and paste. It
-      captures everything associated with an
-      experiment&mdash;hyperparameters, metrics, logs, generated
-      files, and even source code snapshots! With this detail, you can
-      do more than merely report results: you can
+      Guild is <em>automatic</em> &mdash; it does the work for when
+      you run your training script so you don't have to copy and
+      paste. It captures everything associated with an experiment
+      &mdash; hyperparameters, metrics, logs, generated files, and
+      even source code snapshots! With this detail, you can do more
+      than merely report results: you can
       <strong>systematically improve your model</strong>.
     </p>
     <p>And you can
@@ -76,32 +76,91 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
-      Automated machine learning&mdash;<em>Auto ML</em>&mdash;is the
-      process of applying machine learning to machine learning. Rather
-      than manually design models and select hyperparameters, you
-      leverage the power of the computer to automatically learn them!
+      Auto ML stands for <em>automated machine learning</em> &mdash;
+        the process of applying machine learning to machine
+        learning. Rather than manually design models and select
+        hyperparameters, have the automatically learn them!  The
+        result is <strong>better models in less time</strong>.
 
       <div class="text-editor inline sm">
         <div class="text-body">
-          $ guild run train.py x=[-2.0:2.0] --optimizer bayesian
+          $ guild run train.py x=[-2.0:2.0] --optimizer bayesian --max-trials 100
         </div>
       </div>
     </p>
     <p>
-      This commands runs your script <code>train.py</code> but applied
-      a Bayesian optimizer to run it multiple times, each time using
-      different hyperparameters
+      This commands runs <code>train.py</code> using a Bayesian
+      optimizer:
       <ul class="md">
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
+        <li>Runs the script 100 times, each time with different values
+        for <code>x</code></li>
+        <li>Selects values between <code>-2.0</code>
+        and <code>2.0</code> &mdash; the <em>search space</em>
+        for <code>x</code></li>
+        <li>Uses the result of each trial to choose values
+        for <code>x</code> that are likely to improve results
+        (e.g. higher accuracy)</li>
       </ul>
     </p>
     <h4>When would I use this?</h4>
     <p>
-      XXX
+      Whenever you want to improve your model! Model tuning is one of
+      the most effective way to improve accuray &mdash; in some cases
+      it can be more effective than more data! And Guild makes it
+      easy, so why not give it a try and see what happens?
     </p>
+    <h4>What Bayesian methods does Guild support?</h4>
+    <p>
+      Guild supports a number of state-of-the-art optimization
+      algorithms:
+      <ul class="md">
+        <li>Gaussian process</li>
+        <li>Decision tree</li>
+        <li>Gradient boosted trees</li>
+        <li>Tree of Parzen estimator (coming)</li>
+      </ul>
+    </p>
+    <h4>But I prefer manual tuning</h4>
+    <p>
+      We wholeheartedly agree! That's why Guild supports an
+      incremental approach to hyperparameter tunning:
+      <ul class="md">
+        <li>Use a well-known hyperparameter range during model
+          development
+          <div class="text-editor inline sm">
+            <div class="text-body">
+              $ guild run train.py x=0.1
+            </div>
+          </div>
+        </li>
+        <li>Selectively expand the range with grid search
+          <div class="text-editor inline sm">
+            <div class="text-body">
+              $ guild run train.py x=[-0.1,0,0.1,0.2]
+            </div>
+          </div>
+        </li>
+        <li>If your search space is large, try random search to see
+          what works and what doesn't
+          <div class="text-editor inline sm">
+            <div class="text-body">
+              $ guild run train.py x=[-4.0:4.0] --optimizer random
+            </div>
+          </div>
+        </li>
+        <li>When you're ready, use Bayesian optimization to find the
+          best hyperparameters
+          <div class="text-editor inline sm">
+            <div class="text-body">
+              $ guild run train.py x=[-2.0:2.0] --optimizer bayesian
+            </div>
+          </div>
+        </li>
+      </ul>
+    </p>
+    <p>You can always try Bayesian optimization to start &mdash; it
+      can be remarkably efficient! But whatever approach you take,
+      Guild lets you control every step of the way.</p>
   </div>
 </div>
 
