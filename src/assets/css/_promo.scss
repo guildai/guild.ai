@@ -119,7 +119,7 @@
   width: 100%;
   max-width: 300px !important;
   border-radius: 4px;
-  box-shadow: rgba(0,0,0,0.5) 8px 12px 25px;
+  box-shadow: $default-box-shadow;
 
   @media screen and (max-width: $break-md) {
     margin-bottom: 20px !important;
@@ -410,5 +410,52 @@ ul.features {
 
   @media screen and (max-width: $break-xs) {
     font-size: 13px;
+  }
+}
+
+.feature-focus {
+  i.feature-icon {
+    font-size: 64px;
+  }
+
+  .icon {
+    margin-bottom: $p-margin-bottom;
+    text-align: right;
+
+    @media screen and (max-width: $break-sm) {
+      text-align: unset;
+    }
+}
+
+  .detail {
+
+  }
+
+  li i {
+    margin-right: 3px;
+  }
+}
+
+button.jfab_main_btn {
+  background-color: $banner-overlay-color;
+  opacity: 0.9;
+  border-radius: $default-border-radius;
+  height: unset;
+  width: unset;
+  font-size: $feature-font-size;
+  padding: 12px 20px;
+  right: 20px;
+  bottom: 20px;
+
+  &:hover {
+    opacity: 1.0;
+  }
+
+  i {
+    margin-left: 2px;
+  }
+
+  @media screen and (max-width: $break-sm) {
+    display: none;
   }
 }

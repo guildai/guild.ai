@@ -40,7 +40,7 @@ h5 code {
 }
 
 pre {
-  font-size: 14px;
+  font-size: $pre-font-size;
   line-height: 1.4;
   word-wrap: normal;
   word-break: break-word;
@@ -55,6 +55,9 @@ pre {
     font-weight: normal;
     color: $code-inline-color;
   }
+
+  box-shadow: $box-shadow-less;
+  margin-bottom: $p-margin-bottom_ + 12px;
 }
 
 pre[class] {
@@ -69,6 +72,7 @@ pre[class] {
 
 pre.command-line {
   background-color: $bg-color-terminal;
+  border: 1px solid darken($bg-color-terminal, 25%);
 
   code {
     color: $terminal-text-color;

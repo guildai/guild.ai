@@ -7,6 +7,7 @@ $font-family-hero: 'Roboto Slab',sans-serif;
 $font-family-code: 'Roboto Mono',monospace;
 $default-font-size: 16px;
 $default-line-height: 26px;
+$pre-font-size: 14px;
 
 // Spacing
 $p-margin-bottom_:                  18;
@@ -21,8 +22,11 @@ $light-gray-text-color:             #999;
 $pale-text-color:                   #ccc;
 $pale-text-color-light:             #d5d5d5;
 $link-color:                        $accent-color;
-$bg-color-terminal:                 #020202;
+$bg-color-terminal:                 #111;
 $terminal-text-color:               #f5f5f5;
+
+$banner-overlay-color:              saturate(darken($accent-color, 10%), 25%);
+$banner-overlay-opacity:            0.4;
 
 $border-color-darker:               #aaa;
 $border-color-dark:                 #ddd;
@@ -53,6 +57,10 @@ $color-dark:                        #424242;
 $color-dark-darker:                 #000000;
 $color-white:                       #ffffff;
 $color-white-darker:                #ffffff;
+
+// Shadow
+$default-box-shadow:                rgba(0, 0, 0, 0.5) 8px 12px 25px;
+$box-shadow-less:                   rgba(0, 0, 0, 0.4) 5px 8px 18px;
 
 // Breaks
 $break-xs:                          480px;

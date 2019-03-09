@@ -165,7 +165,7 @@ hide_in_pagenav: yes
 
 <div class="promo" style="margin-top:0">
   <a class="btn btn-primary" href="/features/"
-     >More information <i class="fa next"></i></a>
+     >More about features <i class="fa next"></i></a>
 </div>
 
 ---
@@ -490,7 +490,7 @@ hide_in_pagenav: yes
    - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
    - url: http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
    - url: http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz</pre>
-    <p style="margin-top:12px; text-align: center">
+    <p style="margin-top:18px; text-align: center">
       <code>guild.yml</code> located in project root directory
     </p>
   </div>

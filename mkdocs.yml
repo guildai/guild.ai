@@ -189,6 +189,7 @@ pages:
           - docs/guides/bayesian-optimization.md
           - docs/guides/compare-runs.md
           - docs/guides/export-runs.md
+          - docs/guides/export-spreadsheet.md
           - docs/guides/fashion-mnist.md
 
           # - reuse models

@@ -435,7 +435,7 @@ $(function() {
 
    var links = [
       {
-        "icon": 'Start Here <i class="far fa-arrow-circle-right"></i>',
+        "icon": 'Get Started <i class="far fa-arrow-circle-right"></i>',
         "url": "/docs/start/"
       }
     ];
