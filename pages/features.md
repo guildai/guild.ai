@@ -43,22 +43,23 @@ hide_in_pagenav: yes
         <li>You can <strong>analyze</strong> differences across runs
         to better understand a result</li>
         <li>You can <strong>share</strong> your results with colleagues</li>
-        <li>You can <strong>backup</strong> trained models&mdash;some of which may
-          have taken days to generate&mdash;for safekeeping</li>
+        <li>You can <strong>backup</strong> trained models&mdash;some
+          of which may have taken days to generate&mdash;for
+          safekeeping</li>
         <li>You can <strong>optimize</strong> your model by focussing
         on approaches that perform well and avoiding those that
         don't</li>
       </ul>
     </p>
-    <h4>But I already use a spreadsheet to track results!</h4>
+    <h4>But I already use a spreadsheet to track results</h4>
     <p>
-      Guild is <em>automatic</em>&mdash;it does its work in the
-      background when you run your training script. You don't have to
-      copy and paste. It also captures <em>everything</em> associated
-      with an experiment&mdash;hyperparameters, metrics, logs,
-      generated files, and even source code snapshots. With this
-      detail, you can do more than merely report results: you can
-      <strong>systematically improve</strong> your model.
+      Guild is <em>automatic</em>&mdash;it does the work for when you
+      run your training script so you don't have to copy and paste. It
+      captures everything associated with an
+      experiment&mdash;hyperparameters, metrics, logs, generated
+      files, and even source code snapshots! With this detail, you can
+      do more than merely report results: you can
+      <strong>systematically improve your model</strong>.
     </p>
     <p>And you can
       always <a href="/docs/guides/export-spreadsheet/">export your
@@ -67,7 +68,7 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-## AutoML
+## Auto ML
 
 <div class="row feature-focus">
   <div class="col-md-2 col-sm-2 icon">
@@ -75,16 +76,21 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
-      XXX
+      Automated machine learning&mdash;<em>Auto ML</em>&mdash;is the
+      process of applying machine learning to machine learning. Rather
+      than manually design models and select hyperparameters, you
+      leverage the power of the computer to automatically learn them!
 
       <div class="text-editor inline sm">
         <div class="text-body">
-          $ guild run train.py --optimizer bayesian
+          $ guild run train.py x=[-2.0:2.0] --optimizer bayesian
         </div>
       </div>
     </p>
     <p>
-      XXX
+      This commands runs your script <code>train.py</code> but applied
+      a Bayesian optimizer to run it multiple times, each time using
+      different hyperparameters
       <ul class="md">
         <li>xxx</li>
         <li>xxx</li>

@@ -255,7 +255,7 @@ hide_in_pagenav: yes
     <div class="text-editor inline">
       <div class="text-body">
         $ <span class="typed-cursor">guild run
-        train.py learning-rate=[0.1:0.3] --optimizer bayesian</span>
+        train.py x=[-2.0:2.0] --optimizer bayesian</span>
       </div>
     </div>
     <ul class="md features">

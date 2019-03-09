@@ -34,7 +34,7 @@ $(function() {
         "guild run train.py",
         "guild run <span>train.py learning-rate=0.01</span>",
         "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
-        "guild run <span>train.py</span> --optimizer bayesian",
+        "guild run <span>train.py</span> x=uniform[-2.0:2.0] --optimizer bayesian",
         "guild compare",
         "guild diff",
         "guild tensorboard",

@@ -3,7 +3,6 @@
   flex-direction: column;
   position: relative;
   background-position: center;
-  //background-attachment: fixed;
   background-size: cover;
   overflow: hidden;
 
@@ -12,8 +11,10 @@
     position: relative;
     z-index: 0;
     color: $color-white;
+    background-color: $banner-bg-color;
 
     &:before {
+      // display: none;
       position: absolute;
       content: ' ';
       top: 0;
