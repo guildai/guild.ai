@@ -30,7 +30,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Get Started Without Changing Your Code</h3>
+    <h3>Get Started Fast &mdash; No Code Changes</h3>
     <p>Use your current training scripts without modification &mdash;
       there&apos;s no need to adopt another framework.
     </p>
@@ -89,14 +89,16 @@ hide_in_pagenav: yes
     <h4>How is Guild AI different?</h4>
   </div>
   <div class="col-lg-8">
-    <p style="margin-bottom:0">Traditional experiment management
-      frameworks require that you modify your training scripts to use
-      their APIs for getting hyperparameters, logging output, and
-      writing files. Guild requires no such
-      changes&mdash;it <strong>runs your unmodified training
-      scripts</strong> as an external command line tool and uses
-      standard operating system conventions to specify hyperparameters
-      and capture results.</p>
+    <p style="margin-bottom:0">
+      Guild is <strong>cross platform and framework</strong> &mdash;
+      you can train and capture experiments in literally any language
+      using any library. You <strong>don't need to modify your
+      code</strong>. Furthermore, you don't need to install and
+      maintain databases or other infrastructure to manage
+      experiments. This lets you focus on what's
+      important: <em>building state-of-the-art models and machine
+      learning apps</em>.
+    </p>
   </div>
 </div>
 
