@@ -77,10 +77,10 @@ hide_in_pagenav: yes
   <div class="col-md-10 col-sm-10 detail">
     <p>
       Auto ML stands for <em>automated machine learning</em> &mdash;
-        the process of applying machine learning to machine
-        learning. Rather than manually design models and select
-        hyperparameters, have the automatically learn them!  The
-        result is <strong>better models in less time</strong>.
+      the process of applying machine learning to machine
+      learning. Rather than manually design models and select
+      hyperparameters, have the automatically learn them!  The result
+      is <strong>better models in less time</strong>.
 
       <div class="text-editor inline sm">
         <div class="text-body">
@@ -125,31 +125,29 @@ hide_in_pagenav: yes
       We wholeheartedly agree! That's why Guild supports an
       incremental approach to hyperparameter tunning:
       <ul class="md">
-        <li>Use a well-known hyperparameter range during model
-          development
+        <li>Use well-known hyperparameters during model development
           <div class="text-editor inline sm">
             <div class="text-body">
               $ guild run train.py x=0.1
             </div>
           </div>
         </li>
-        <li>Selectively expand the range with grid search
+        <li>Selectively expand the range with grid search (run once
+        for each value specified)
           <div class="text-editor inline sm">
             <div class="text-body">
               $ guild run train.py x=[-0.1,0,0.1,0.2]
             </div>
           </div>
         </li>
-        <li>If your search space is large, try random search to see
-          what works and what doesn't
+        <li>If your search space is large, try random search
           <div class="text-editor inline sm">
             <div class="text-body">
               $ guild run train.py x=[-4.0:4.0] --optimizer random
             </div>
           </div>
         </li>
-        <li>When you're ready, use Bayesian optimization to find the
-          best hyperparameters
+        <li>When you want to optimize your model, use Bayesian search
           <div class="text-editor inline sm">
             <div class="text-body">
               $ guild run train.py x=[-2.0:2.0] --optimizer bayesian
@@ -158,9 +156,11 @@ hide_in_pagenav: yes
         </li>
       </ul>
     </p>
-    <p>You can always try Bayesian optimization to start &mdash; it
-      can be remarkably efficient! But whatever approach you take,
-      Guild lets you control every step of the way.</p>
+    <p>
+      Of course you can always try Bayesian optimization to start
+      &mdash; it can be remarkably efficient! Whatever approach you
+      take, Guild lets you control every step.
+    </p>
   </div>
 </div>
 
@@ -172,24 +172,27 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
+      When you use Guild to train your models, you make it easier for
+      others to reproduce your results &mdash; or at least to recreate
+      your experiments. It looks something like this:
     </p>
-    <p><strong>Step 1</strong> - Get the project source code:
+    <p><strong>Step 1</strong> - Get the project source code
       <div class="text-editor inline sm">
         <div class="text-body">
-          $ git checkout https://github.com/OliverRichter/SAVER
+          $ git checkout https://github.com/guildai/amazing-results-project
         </div>
       </div>
     </p>
 
-    <p><strong>Step 2</strong> - Change to the project directory:
+    <p><strong>Step 2</strong> - Change to the project directory
       <div class="text-editor inline sm">
         <div class="text-body">
-          $ cd SAVER
+          $ cd amazing-results-project
         </div>
       </div>
     </p>
 
-    <p><strong>Step 3</strong> - Use Guild to recreate the results:
+    <p><strong>Step 3</strong> - Use Guild to recreate the results
       <div class="text-editor inline sm">
         <div class="text-body">
           $ guild run
