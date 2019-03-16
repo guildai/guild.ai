@@ -6,6 +6,10 @@
   white-space: unset;
   @include remove-outline;
 
+  i {
+    font-weight: normal;
+  }
+
   i.next {
     font-family: FontAwesome;
     font-size: 12px;
@@ -34,6 +38,7 @@
 .btn-default {
   background-color: $btn-default-bg-color;
   color: $btn-default-color;
+  border: 1px solid darken($btn-default-bg-color, 10%);
 }
 
 .btn-purple,

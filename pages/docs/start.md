@@ -165,9 +165,9 @@ In our mock training script, we don't generate any files so the list
 is empty. We generate files in later examples so knowing this command
 is useful.
 
-## Train again
+## Train a second time
 
-Run `train.py` a second time, but with an explicit value for the
+Run `train.py` again, but with an explicit value for the
 hyperparameter `x`:
 
 ``` command
@@ -257,8 +257,9 @@ Continue? (Y/n)
 
 Press `Enter` to start the operation.
 
-Guild runs five trials, each time with a different value for over the
-range <code>-2.0</code> to <code>2.0</code>.
+Guild runs twenty trials (the default number if the command line
+option `--max-trials` is not specified), each time with a different
+value for over the range <code>-2.0</code> to <code>2.0</code>.
 
 When the operation is finished, view the top five runs to see which
 values for *x* perform better:
@@ -270,46 +271,33 @@ guild compare --top 5 --min loss --table
 The `--table` option tells Guild to print the results as a table
 rather than run the interactive spreadsheet application.
 
-You should see that loss is lowest when *x* is approximately `-0.36`.
+You should see that loss is lowest when *x* is near `-0.3`.
+
+!!! note
+    The *noise* parameter introduces random "noise" to the loss
+    function, so results vary across runs.
 
 ## Summary
 
 Contratulations &mdash; you've run your first training operation in
-Guild! Yes, it was totally fake, but it served to illustrate some
-important features in Guild:
+Guild! It was totally fake, but it served to illustrate some important
+features in Guild:
 
-- You can run your scripts directly
+- Runs scripts without modification, automatically detecting
+  hyperparameters and default values
+- Capture each run as a unique experiment
+- View and management experiments
+- Optimize hyperparameters with a single command
 
 ## Next Steps
 
+To continue learning about Guild, select one of the Get Started guides
+below.
 
-Congratulations, you've installed Guild AI! We've outlined some next
-steps for you below.
+{!start-grid-search.md!}
 
-<div class="row match-height">
-<div class="col col-md-4">
-<div class="promo left">
-<h3>Get Started</h3>
-<p class="expand">
+{!start-random-search.md!}
 
-Start using Guild to train a simple model.
+{!start-reproducibility.md!}
 
-</p>
-<a class="btn btn-primary cta" href="/docs/start/"
-  >Get Started <i class="fa next"></i></a>
-</div>
-</div>
-
-<div class="col col-md-4">
-<div class="promo left">
-<h3>Browse the docs</h3>
-<p class="expand">
-
-If you're interested in a complete picture of Guild AI, browse the
-comprehensives documentation.
-
-</p>
-<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
-</div>
-</div>
-</div>
+{!start-image-classifier.md!}

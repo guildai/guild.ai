@@ -171,12 +171,9 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-
-<div class="promo" style="margin-top:0">
-  <a class="btn btn-primary" href="/features/"
-     >More about features <i class="fa next"></i></a>
+<div class="promo">
+  <a class="btn btn-primary" href="/features/">More about features <i class="fa next"></i></a>
 </div>
-
 ---
 
 # Run experiments
@@ -199,10 +196,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/start/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/start/">
+  Get started with experiments<i class="fa next"></i></a>
 
 ### Run multiple trials for a set of choices (Grid Search)
 
@@ -221,10 +216,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/grid-search/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/start/grid-search/">
+  Get started with Grid Search <i class="fa next"></i></a>
 
 ### Run trials for a range (Random Search)
 
@@ -245,10 +238,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/random-search/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/start/random-search/">
+  Get started with Random Search <i class="fa next"></i></a>
 
 ### Find the best hyperparameters using Bayesian optimization
 
@@ -269,10 +260,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/bayesian-optimization/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/guides/bayesian-optimization/">
+  Guide to Bayesian Optimization<i class="fa next"></i></a>
 
 ---
 
@@ -302,10 +291,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/compare/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/guides/compare/">
+  Guide to comparing runs <i class="fa next"></i></a>
 
 ### Export to CSV or JSON
 
@@ -325,10 +312,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/export-runs/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/guides/export-runs/">
+  Guide to exporting runs <i class="fa next"></i></a>
 
 ### Integrated visualizers
 
@@ -532,10 +517,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<div class="promo">
-  <a class="btn btn-default" href="/docs/guides/reproducibility/"
-     >Step-by-step guide <i class="fa next"></i></a>
-</div>
+<a class="btn btn-default btn-promo-next" href="/docs/start/reproducibility/">
+  Get started with reproducibility <i class="fa next"></i></a>
 
 ---
 

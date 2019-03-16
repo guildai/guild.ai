@@ -73,13 +73,12 @@ pre[class] {
 pre.code-toolbar.command-line > .toolbar,
 pre.code-toolbar.language-output > .toolbar,
 {
-  top: 9px;
+  top: 8px;
   right: 6px;
 
   a,
   button,
   span {
-    border: 1px solid lighten($bg-color-terminal-button, 5%);
     background-color: $bg-color-terminal-button;
     color: darken($color-white, 10%);
 
@@ -103,16 +102,15 @@ pre.language-output {
   }
 
   .language-name {
-    color: $gray-text-color;
+    color: ligthen($bg-color-terminal, 30%);
   }
 }
 
 pre .language-name {
   background-color: transparent;
-  color: $pale-text-color;
+  color: darken($code-bg-color, 30%);
   text-transform: uppercase;
   letter-spacing: 0.2px;
-  font-weight: 600;
   cursor: default;
   position: relative;
   float: right;
@@ -121,7 +119,6 @@ pre .language-name {
   margin-left: 4px;
   font-size: 12px;
   line-height: 14px;
-  // text-shadow: 0 1px #fff;
   transition: opacity $default-transition;
 
   &.out {

@@ -208,12 +208,11 @@ pre.code-toolbar {
     a,
     button,
     span {
-      border: 1px solid darken($btn-bg-color-dark, 3%);
       font-family: $font-family-body;
       background-color: $btn-bg-color-dark;
       color: $color-white;
       font-size: 12px;
-      padding: 4px 8px;
+      padding: 5px 9px;
       border-radius: 3px;
       transition: $default-transition;
 

@@ -1,3 +1,0 @@
-tags: optimization
-
-# Grid Search
