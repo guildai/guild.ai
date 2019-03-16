@@ -1,37 +1,38 @@
 figure {
   margin: 0 0 $p-margin-bottom;
-  display: table;
+
+  figcaption {
+    text-align: center;
+    color: $light-gray-text-color;
+    font-size: 16px;
+    line-height: 22px;
+    //margin-top: -10px;
+    margin-bottom: $p-margin-bottom;
+
+    &.under-shadow {
+      //margin-top: 24px;
+    }
+
+    code {
+      font-size: 13px;
+    }
+
+    a {
+      color: inherit;
+      font-weight: 700;
+    }
+  }
 }
 
 figure p + figcaption {
-  margin-top: -$p-margin-bottom_ * 0.5px;
+  // margin-top: -$p-margin-bottom_ * 0.5px;
 }
 
 img.md {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-}
-
-figcaption {
-  text-align: center;
-  color: $light-gray-text-color;
-  font-size: 16px;
-  line-height: 22px;
-  margin-top: 6px;
-
-  &.under-shadow {
-    margin-top: 30px;
-  }
-
-  code {
-    font-size: 13px;
-  }
-
-  a {
-    color: inherit;
-    font-weight: 700;
-  }
+  display: block;
 }
 
 .lity {
@@ -51,7 +52,8 @@ figcaption {
   }
 }
 
-.shadow {
+img.shadow {
   border-radius: 4px;
-  box-shadow: $default-box-shadow;
+  box-shadow: $default-box-shadow !important;
+  margin-bottom: 4px;
 }

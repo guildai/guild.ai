@@ -1,6 +1,6 @@
 site_name: Guild AI
 docs_dir: pages
-copyright: 2017-2019 TensorHub, Inc.
+copyright: 2018-2019 TensorHub, Inc.
 strict: true
 extra:
   version: 0.6.0
@@ -17,12 +17,13 @@ extra:
     - name: github
       url: https://github.com/guildai/guildai
       title: Guild AI on GitHub
-      header: yes
       icon_class: 'fab fa-github'
+      header: yes
     - name: slack
       url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
       title: Guild AI Slack Channel
       icon_class: 'fab fa-slack-hash'
+      header: yes
     - name: twitter
       url:  https://twitter.com/guildai
       title: Guild AI on Twitter
@@ -94,7 +95,7 @@ markdown_extensions:
               flag: /docs/operations/#flags
               guild-env: /docs/environments/
               guild-file: /docs/reference/guild-file/
-              guild-view: /docs/visual/guild-view/
+              guild-view: /docs/tools/guild-view/
               index: /docs/reference/guild-home/#runs-index
               model-def: /docs/models/#model-definition
               model: /docs/models/
@@ -107,7 +108,7 @@ markdown_extensions:
               resource: /docs/resources/
               run-dir: /docs/runs/#run-directory
               run: /docs/runs/
-              tensorboard: /docs/visual/tensorboard/
+              tensorboard: /docs/tools/tensorboard/
               test: /docs/tests/
               user-config: /docs/reference/user-config/
         # aliases
@@ -160,6 +161,9 @@ markdown_extensions:
         - link_pattern: alias:create-object-detector
           text: Create an object detector
           href: /docs/guides/create-object-detector/
+        - link_pattern: alias:compare
+          text: Guild Compare
+          href: /docs/tools/compare/,
 
 pages:
   - index.md
@@ -167,7 +171,8 @@ pages:
   - features.md
   - docs:
       - docs/index.md
-      - docs/start.md
+      - Get Started:
+          - docs/start.md
       - Concepts:
           - docs/operations.md
           - docs/models.md
@@ -179,9 +184,10 @@ pages:
           - docs/code-reuse.md
           - docs/environments.md
           - docs/remotes.md
-      - Visual tools:
-          - docs/visual/guild-view.md
-          - docs/visual/tensorboard.md
+      - Tools:
+          - docs/tools/compare.md
+          - docs/tools/guild-view.md
+          - docs/tools/tensorboard.md
       - Guides:
           - docs/guides/index.md
           - docs/guides/grid-search.md

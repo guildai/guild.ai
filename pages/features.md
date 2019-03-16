@@ -14,7 +14,7 @@ hide_in_pagenav: yes
   <div class="col-md-10 col-sm-10 detail">
     <p>
       Guild tracks each operation as a unique experiment. Simply run
-      your script with the <code>guild</code> command:
+      your script with the <code>guild</code> command.
 
       <div class="text-editor inline sm">
         <div class="text-body">
@@ -209,15 +209,13 @@ hide_in_pagenav: yes
         <li>Capture the results for comparison</li>
       </ul>
     </p>
-    <h4>I'm not a researcher, I don't need to reproduce my results!</h4>
+    <h4>I'm not a researcher, I don't need to reproduce my results</h4>
     <p>
-      To be fair, some researchers feel they don't need to reproduce
+      Even some researchers feel they don't need to reproduce
       their results <i class="far fa-smile-wink"></i>
     </p>
     <p>
-      In time reproducibility in machine learning will become as
-      important as it is in other engineering disciplines. If it's not
-      important for you now, consider the benefits of automating your
+      Reproducibility aside, consider the benefits of automating your
       worflow:
       <ul class="md">
         <li>You can run more experiments, which gives you more data,
@@ -241,7 +239,9 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
-      XXX
+      Guild is tightly integrated with analytic tools like
+      TensorBoard, which let you easily compare experiment results and
+      drill into training details.
 
       <div class="text-editor inline sm">
         <div class="text-body">
@@ -252,12 +252,11 @@ hide_in_pagenav: yes
     <p><img class="md shadow lozad" data-src="/assets/img/tb-feature.jpg" /></p>
     <figcaption class="under-shadow">Compare experiment results in TensorBoard</figcaption>
     <p>
-      XXX
+      Guild integration with TensorBoard consists of:
       <ul class="md">
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
+        <li>Launch TensorBoard with a single command</li>
+        <li>Automatically sync experiments with TensorBoard as they're updated</li>
+        <li>Filter runs by operation name, label, and run status</li>
       </ul>
     </p>
   </div>
@@ -271,31 +270,44 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
-      XXX
+      Guild has a powerful workflow feature, which lets you run
+      multiple steps in a single operation. Consider this scenario for
+      training and deploying a model for a mobile application:
+      <ol class="md">
+        <li>Prepare data set for training</li>
+        <li>Train model</li>
+        <li>Compress model</li>
+      </ol>
+    </p>
+    <p>
+      The primary goal is to maximize classification accuracy &mdash;
+      but because the model is deployed to a resource constrained
+      environment so you want to also <em>minimize</em> model size.
+    </p>
+    <p>
+      Here's how you'd do it in Guild:
 
       <div class="text-editor inline sm">
         <div class="text-body">
-          $ guild run prepare-train-compress --optimizer forest --minimize overall_loss
+          $ guild run workflow --optimizer bayesian --maximize accuracy --minimize model-size
         </div>
       </div>
     </p>
     <p>
-      XXX
-      <ul class="md">
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
+      This is the <code>workflow</code> definition:
+      <pre class="language-yaml gf-sample">workflow:
+  description: Run training end-to-end, including model compression
+  steps:
+    - prepare-data
+    - train
+    - compress</pre>
     </p>
-    <h4>I have no idea what you're talking about</h4>
     <p>
-      Check out <a target="_blank" class="ext"
-      href="https://www.ml4aad.org/wp-content/uploads/2018/12/AutoML-Tutorial-NeurIPS2018-MetaLearning.pdf#page=22">Learning
-      Pipelines</a> from Frank Hutter and Joaquin Vanschoren,
-      presented at <em>NeurIPS 2018 Tutorial on Automatic Machine
-      Learning</em>. Then check out our step-by-step guide
-      to <a href="/docs/guide/end-to-end/">End-to-End Learning</a>.
+      Running the <code>workflow</code> operation with a Bayesian
+      optimizer, Guild attempts to both maximize model accuracy and
+      minimize model size by adjusting hyperparameters across each of
+      the three operations: <em>prepare-data</em>, <em>train</em>,
+      and <em>compress</em>.
     </p>
   </div>
 </div>
@@ -308,8 +320,36 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
-      XXX
+      Guild commands can be run remotely! Simply
+      <a href="/docs/reference/user-config/#remote">define a
+      remote</a> and reference it using the <code>--remote</code>
+      command line option when running Guild commands.
+    </p>
+    <p>
+      Here's an example of running <code>train.py</code> on a remote
+      named <code>ec2-v100</code>:
+      <div class="text-editor inline sm">
+        <div class="text-body">
+          $ guild run train.py --remote ec2-v100
+        </div>
+      </div>
+    </p>
+    <p>
+      Here's a sample remote configuration:
 
+      <pre class="language-yaml gf-sample">ec2-v100:
+  type: ec2
+  region: us-east-2
+  ami: ami-0a47106e391391252
+  instance-type: p3.2xlarge</pre>
+    </p>
+    <p>
+      Guild also lets you easily copy experiments to and from remote
+      locations, including AWS S3 and SSH accessible servers.
+    </p>
+    <p>
+      Here's an example of copying local experiments to a remote
+      named <code>s3</code>:
       <div class="text-editor inline sm">
         <div class="text-body">
           $ guild push s3
@@ -317,28 +357,46 @@ hide_in_pagenav: yes
       </div>
     </p>
     <p>
-      XXX
-      <ul class="md">
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-        <li>xxx</li>
-      </ul>
+      And a sample configuration for <code>s3</code>:
+
+      <pre class="language-yaml gf-sample">s3:
+  type: s3
+  bucket: my-experiments</pre>
     </p>
-    <h4>Why should I care about backing anything up?</h4>
+    <h4>Can't I just use floppy disks for backup?</h4>
     <p>
-      If you've never lost your work to an accident, this is an
-      excellent question <i class="far fa-smile"></i>
+      Yes! 1.44 MB can hold a lot of data! But cloud storage is a bit
+      more scalable and secure <i class="far fa-smile"></i>
     </p>
     <p>
-      In all seriousness, you may not care about backing up trained
-      models if you can easily recreate them. Guild makes it
-      incredibly easy to recreate results so if you're model trains
-      quickly and you have retained the original data set, you might
-      skip this feature. However, if you're doing deep learning and
-      your models take more than a few minutes to train, it's a simple
-      matter to sync your runs to a remote service like S3. So why
-      not?
+      Backing experiments up to local storage is trivial with Guild
+      &mdash; it's simply a matter of running the <code>push</code>
+      command. Guild copies only the differences so it's an efficient
+      operation.
+    </p>
+    <h4>Simple team collaboration</h4>
+    <p>
+      Remote backup is also easy way to collaborate with colleague and
+      fellow machine learning engineers. Consider this simple
+      workflow:
+      <ol>
+        <li>
+          One or more scientists/engineers run experiments for a
+          particular task with Guild (e.g. experiments explore task
+          performance across a variety of models and hyperparameters).
+        </li>
+        <li>
+          Each scientist/engineer routinely copies experiments to a
+          common remote location &mdash; this serves to backup work
+          but also makes that work available to everyone on the team!
+        </li>
+        <li>
+          To compare results across the team, a scientist/engineer
+          need only synchronize with the remote location using
+          Guild <code>pull</code> to get everyone's experiments.
+        </li>
+      </ol>
+
     </p>
   </div>
 </div>

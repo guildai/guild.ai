@@ -13,13 +13,11 @@ hide_in_pagenav: yes
 
 Guild AI has the following requirements:
 
-- Max OS or Linux
+- macOS, Linux, or Windows
+- [Docker ->](https://docs.docker.com/docker-for-windows/install/) (required for Windows only)
 - Python 2.7 or Python 3
-- pip
-
-Guild is installed from PyPI using `pip`. Refer to *[pip Installation
-->](https://pip.pypa.io/en/stable/installing/)* to ensure you have it
-installed.
+- [pip ->](https://pip.pypa.io/en/stable/installing/)
+  or [conda ->](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
 
 ## Install Guild AI
 
@@ -28,28 +26,61 @@ installed.
 To install Guild AI, run the following command:
 
 ``` command
-pip install guildai
-```
-
-If you need to run `install` with administrative privileges, run:
-
-``` command
-sudo pip install guildai
-```
-
-Alternatively, install to the user install directory using the
-`--user` option:
-
-``` command
 pip install --user guildai
+```
+
+If you want to install Guild at the system level, omit the `--user`
+option and run the command as an administrator:
+
+``` command
+sudo guild install guildai
 ```
 
 If you want the latest pre-release version of Guild AI, use the
 ``--pre`` option:
 
 ``` command
-pip install --pre guildai
+pip install --pre --user guildai
 ```
+
+### Using conda
+
+If you're using conda, activate your environment:
+
+``` command
+conda activate ENV-NAME
+```
+
+Next, install Guild using `pip`:
+
+``` command
+pip install guildai
+```
+
+### With Docker
+
+!!! note
+    Installing Guild with Docker requires that you have Docker
+    installed. Refer to [About Docker CE
+    ->](https://docs.docker.com/install/) for instructions for your
+    platform.
+
+!!! note
+    Docker is the only way to run Guild on Windows at this time.
+
+Guild AI provides a Docker image that you can install by running:
+
+``` command
+docker pull guildai/guildai
+```
+
+Start an interactive TTY session using the image by running:
+
+``` command
+docker run -it guildai
+```
+
+From within the container, you can execute Guild commands.
 
 ### From source code
 
@@ -74,7 +105,7 @@ git clone https://github.com/guildai/guildai.git
 Change to the `guild` directory and install the required pip packages:
 
 ``` command
-cd guild
+cd guildai
 pip install -r requirements.txt
 ```
 
@@ -168,8 +199,6 @@ If there are problems with your installation, Guild will display the
 details and exit with an error. Refer to
 [Troubleshooting](/troubleshooting) for assistance.
 
-<!--
-
 ## Next steps
 
 Congratulations, you've installed Guild AI! We've outlined some next
@@ -178,44 +207,27 @@ steps for you below.
 <div class="row match-height">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Guild AI introduction</h3>
+<h3>Get Started</h3>
 <p class="expand">
 
-Start here to learn about projects, models and operations, runs,
-end-to-end workflow, automated testing and packaging.
+Start using Guild to train a simple model.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/intro/"
-  >Guild AI introduction <i class="fa next"></i></a>
+<a class="btn btn-primary cta" href="/docs/start/"
+  >Get Started <i class="fa next"></i></a>
 </div>
 </div>
 
-<div class="col col-md-4">
-<div class="promo left">
-<h3>Discover Guild AI packages</h3>
-<p class="expand">
-
-Guild AI provides a catalog of packages with support for
-state-of-the-art TensorFlow models and supporting utilities.
-
-</p>
-<a class="btn btn-primary cta" href="/packages/"
-  >Discover Guild packages <i class="fa next"></i></a>
-</div>
-</div>
-
-<div class="col col-md-4">
+<div class="col col-md-6">
 <div class="promo left">
 <h3>Browse the docs</h3>
 <p class="expand">
 
-If you're interested in a complete picture of Guild AI, start by
-browsing its comprehensives documentation.
+If you're interested in a complete picture of Guild AI, browse the
+comprehensives documentation.
 
 </p>
 <a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>
-
--->

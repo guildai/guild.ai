@@ -10,7 +10,6 @@
     position: absolute;
     top: 16px;
     left: 16px;
-    font-size: 12px;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -35,7 +34,6 @@
 
   padding: 0 20px;
   margin: 0 0 $p-margin-bottom;
-  font-size: 14px;
   width: 67%;
 
   @media screen and (max-width: $break-md) {
@@ -47,7 +45,6 @@
   }
 
   p {
-    font-size: 14px;
     line-height: 22px;
   }
 
@@ -75,7 +72,6 @@
 
     > i {
       color: $light-gray-text-color;
-      font-size: 12px;
       padding-left: 12px;
       cursor: default;
       font-style: normal;
@@ -88,7 +84,7 @@
     }
 
     &:before {
-      font: normal normal normal 14px/1 FontAwesome;
+      font: normal normal normal $default-font-size/1 FontAwesome;
       display: inline-block;
       width: 16px;
       margin-right: 6px;

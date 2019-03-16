@@ -25,7 +25,7 @@ hide_in_pagenav: yes
     <h3>Analyze, Compare, Optimize</h3>
     <p>
       Learn from each experiment to optimize your model in less time
-      &mdash; apply your own insights or use AutoML.
+      &mdash; apply your own insights or use Auto ML.
     </p>
     <img title="Hyperparameter optimization"
          class="feature-grid-img"
@@ -291,7 +291,7 @@ hide_in_pagenav: yes
     launch an interactive spreadsheet-like application to explore,
     sort, and compare results.</p>
     <figure>
-      <p><img class="md terminal lozad" data-src="/assets/img/compare-list-1.jpg" /></p>
+      <p><img class="md terminal lozad shadow" data-src="/assets/img/compare-1.png" /></p>
       <figcaption class="under-shadow">Interactive compare application</figcaption>
     </figure>
     <ul class="md features">
@@ -473,27 +473,15 @@ hide_in_pagenav: yes
   <div class="col-lg-9">
     <pre class="language-yaml gf-sample">train.py:
   flags:
-    epochs:
-      default: 3
-      min: 1
-      max: 10
+    epochs: 3
     activation:
       default: relu
-      choices: [relu, sigmoid]
-    num_dense_layers:
-      default: 1
-      min: 1
-      max: 5
-    num_dense_nodes:
-      default: 16
-      min: 5
-      max: 512
-    learning_rate:
-      default: 1e-5
-      min: 1e-6
-      max: 1e-2
-  objective:
-      maximize: epoch_val_acc
+      choices:
+        - relu
+        - sigmoid
+    num_dense_layers: 1
+    num_dense_nodes: 16
+    learning_rate: 1e-5
   requires:
    - url: http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
    - url: http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
@@ -505,19 +493,15 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-3">
     <p>
+      The <code>flags</code> section defines hyperparameters. Guild
+      uses the default values if not otherwise specified by the
+      user. This makes it easy for someone to recreate an experiment
+      by simply running <code>guild run</code>.
+    </p>
+    <p>
       The <code>requires</code> section defines a list of files that
-      are needed by the operation. Guild automatically downloads the
-      files and makes them available to training script. The download
-      files are cached and reused without re-downloading.
-    </p>
-    <p>
-      The <code>flags</code> section defines script hyperparameters
-      including default values and information used for tuning.
-    </p>
-    <p>
-      The <code>objective</code> section tells Guild what to optimize
-      when running tuning operations. In this case, Guild tries to
-      maximize validation accuracy.
+      are needed by the operation. Guild automatically downloads
+      required files and makes them available to training script.
     </p>
   </div>
 </div>
@@ -543,8 +527,8 @@ hide_in_pagenav: yes
     </ul>
   </div>
   <div class="col-lg-2">
-    It's just this simple &mdash; Guild uses the information in the
-    Guild file to automate the process.
+    Guild uses the information in the Guild file to replicate the
+    experiment, keeping things simple for new users.
   </div>
 </div>
 
@@ -560,16 +544,15 @@ hide_in_pagenav: yes
 <div class="row match-height">
 <div class="col col-md-4">
 <div class="promo left">
-<h3><i class="far fa-download"></i> Install Guild AI</h3>
+<h3><i class="far fa-arrow-circle-right"></i> Quick Start</h3>
 <p class="expand">
 
-It just takes a moment to install Guild. From there it's easy to run
-and track your experiments &mdash; or apply state-of-the-art Bayesian
-optimization.
+It just takes a moment to install Guild and get started with a simple
+experiment. From there you can learn about more advanced features.
 
 </p>
-<a class="btn btn-primary cta" href="/install/"
-  >Install Guild AI <i class="fa next"></i></a>
+<a class="btn btn-primary cta" href="/docs/start/"
+  >Get Started <i class="fa next"></i></a>
 </div>
 </div>
 

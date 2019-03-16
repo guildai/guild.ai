@@ -40,8 +40,9 @@ li .text-editor.sm {
 }
 
 img.terminal {
-  padding: 8px 10px;
-  background-color: $bg-color-terminal;
+  padding: 10px 8px;
+  background-color: $bg-color-terminal-img;
   border-radius: 4px;
-  box-shadow: $default-box-shadow;
+  box-shadow: $box-shadow-less;
+  margin-bottom: 4px;
 }

@@ -57,7 +57,7 @@ pre {
   }
 
   box-shadow: $box-shadow-less;
-  margin-bottom: $p-margin-bottom_ + 12px;
+  margin-bottom: $p-margin-bottom_ + 4px;
 }
 
 pre[class] {
@@ -67,19 +67,43 @@ pre[class] {
   background-color: $code-bg-color;
   border: 1px solid $code-border-color;
   border-radius: $default-border-radius;
-  padding: 9px 12px;
+  padding: $p-margin-bottom;
 }
 
-pre.command-line {
+pre.code-toolbar.command-line > .toolbar,
+pre.code-toolbar.language-output > .toolbar,
+{
+  top: 9px;
+  right: 6px;
+
+  a,
+  button,
+  span {
+    border: 1px solid lighten($bg-color-terminal-button, 5%);
+    background-color: $bg-color-terminal-button;
+    color: darken($color-white, 10%);
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: lighten($bg-color-terminal-button, 20%);
+      color: $color-white;
+    }
+  }
+}
+
+pre.command-line,
+pre.language-output {
   background-color: $bg-color-terminal;
-  border: 1px solid darken($bg-color-terminal, 25%);
+  border: 1px solid darken($bg-color-terminal, 5%);
+  padding: 9px 12px;
 
   code {
     color: $terminal-text-color;
   }
 
   .language-name {
-    color: $light-gray-text-color;
+    color: $gray-text-color;
   }
 }
 

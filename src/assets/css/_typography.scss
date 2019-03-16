@@ -58,7 +58,7 @@ h1 {
   font-weight: 300;
   line-height: 1.1;
   margin-bottom: 30px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.1px;
 }
 
 h2 {
@@ -159,7 +159,7 @@ h1, h2, h3 {
   }
 }
 
-ul {
+ul, ol {
   margin-bottom: $p-margin-bottom;
 }
 
@@ -194,9 +194,18 @@ a.ref {
   font-style: italic;
 }
 
+sup {
+  top: -0.5em;
+  left: -0.1em;
+}
+
 .footnote {
   font-size: 93%;
   color: $gray-text-color;
+
+  hr {
+    margin-bottom: 20px;
+  }
 
   ol {
     padding: 0 30px;

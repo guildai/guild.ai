@@ -32,7 +32,9 @@
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690;
+  // color: #690;
+  // color: #360;
+  color: #4d7a1f
 }
 
 .token.operator,
@@ -170,8 +172,8 @@ pre.code-toolbar {
 
 pre.code-toolbar > .toolbar {
   position: absolute;
-  top: 9px;
-  right: 6px;
+  top: 16px;
+  right: 16px;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
@@ -206,7 +208,7 @@ pre.code-toolbar {
     a,
     button,
     span {
-      border: 1px solid $border-color;
+      border: 1px solid darken($btn-bg-color-dark, 3%);
       font-family: $font-family-body;
       background-color: $btn-bg-color-dark;
       color: $color-white;
