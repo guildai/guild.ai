@@ -7,6 +7,6 @@ tags: support
 - [Get started](category:#get-started)
 - [Core concepts](category:#core-concept)
 - [Advanced concepts](category:#advanced-concept)
-- [Visual tools](category:#visual-tool)
+- [Tools](category:#tool)
 - [Reference](category:#reference)
 - [Popular guides](category:/docs/guides/#popular)

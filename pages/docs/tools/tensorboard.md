@@ -1,4 +1,4 @@
-tags: visual-tool
+tags: tool
 
 # TensorBoard
 

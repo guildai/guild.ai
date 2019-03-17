@@ -115,11 +115,20 @@ markdown_extensions:
         - link_pattern: alias:install-guild
           href: /install/
           text: install Guild AI
+        - link_pattern: alias:quick-start
+          href: /docs/start/
+          text: Guild AI Quick Start
+          class: doc
         - link_pattern: alias:guild-github
-          class: ext
-          target: _blank
           href: https://github.com/guildai/guildai
           text: Guild AI GitHub project
+          target: _blank
+          class: ext
+        - link_pattern: alias:guild-slack
+          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
+          text: Guild AI Slack channel
+          class: ext
+          target: _blank
         - link_pattern: alias:open-an-issue
           text: open an issue on GitHub
           class: ext
@@ -175,6 +184,7 @@ pages:
           - docs/start.md
           - docs/start/grid-search.md
           - docs/start/random-search.md
+          - docs/start/manage-runs.md
           - docs/start/reproducibility.md
           - docs/start/image-classifier.md
           - docs/start/diff.md
@@ -186,10 +196,8 @@ pages:
           - docs/models.md
           - docs/runs.md
           - docs/optimizers.md
-          - docs/resources.md
           - docs/packages.md
           - docs/tests.md
-          - docs/code-reuse.md
           - docs/environments.md
           - docs/remotes.md
       - Tools:

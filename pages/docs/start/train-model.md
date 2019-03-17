@@ -1,3 +1,5 @@
+tags: get-started
+
 # Train a Model
 
 In this guide we train a real machine learning model --- one that

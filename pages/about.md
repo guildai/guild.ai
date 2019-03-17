@@ -7,6 +7,8 @@ hide_in_pagenav: yes
 
 ## Links
 
+[Slack channel](alias:guild-slack)
+
 [GitHub project](alias:guild-github)
 
 ## Contributing

@@ -298,6 +298,8 @@ below.
 
 {!start-random-search.md!}
 
+{!start-manage-runs.md!}
+
 {!start-reproducibility.md!}
 
 {!start-image-classifier.md!}

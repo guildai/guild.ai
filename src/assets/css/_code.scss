@@ -57,7 +57,6 @@ pre {
   }
 
   box-shadow: $box-shadow-less;
-  margin-bottom: $p-margin-bottom_ + 4px;
 }
 
 pre[class] {
@@ -80,12 +79,12 @@ pre.code-toolbar.language-output > .toolbar,
   button,
   span {
     background-color: $bg-color-terminal-button;
-    color: darken($color-white, 10%);
+    color: darken($color-white, 20%);
 
     &:hover,
     &:focus {
       text-decoration: none;
-      background-color: lighten($bg-color-terminal-button, 20%);
+      background-color: lighten($bg-color-terminal-button, 10%);
       color: $color-white;
     }
   }
@@ -97,12 +96,20 @@ pre.language-output {
   border: 1px solid darken($bg-color-terminal, 5%);
   padding: 9px 12px;
 
-  code {
-    color: $terminal-text-color;
-  }
-
   .language-name {
     color: ligthen($bg-color-terminal, 30%);
+  }
+}
+
+pre.command-line {
+  code {
+    color: lighten($terminal-text-color, 10%);
+  }
+}
+
+pre.language-output {
+  code {
+    color: darken($terminal-text-color, 20%);
   }
 }
 
@@ -127,7 +134,16 @@ pre .language-name {
 }
 
 pre.language-command + pre.language-output {
-  margin-top: -8px;
+  margin-top: -22px;
+  padding-top: 4px;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  > .toolbar
+  {
+    top: 2px;
+  }
 }
 
 img.code {

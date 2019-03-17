@@ -1,3 +1,5 @@
+tags: get-started
+
 # Train an Image Classifier
 
 In this guide we train a real machine learning model --- one that

@@ -1,4 +1,4 @@
-tags: get-started
+tags: popular
 
 # Training Fashion MNIST
 

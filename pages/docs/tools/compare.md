@@ -1,1 +1,3 @@
+tags: tool
+
 # Guild Compare

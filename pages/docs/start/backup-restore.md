@@ -1,3 +1,5 @@
+tags: get-started
+
 # Backup and Restore
 
 ## Requirements
@@ -6,8 +8,4 @@
 
 ## Next Steps
 
-{!start-diff.md!}
-
-{!start-tensorboard.md!}
-
-{!start-remote-train.md!}
+{!start-docs.md!}
