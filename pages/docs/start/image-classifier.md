@@ -15,10 +15,12 @@ predicts the class for a Fashion-MNIST image.
 
 ## Next Steps
 
-{!start-diff.md!}
-
 {!start-tensorboard.md!}
 
-{!start-remote-train.md!}
+{!start-diff.md!}
+
+{!start-reproducibility.md!}
 
 {!start-backup-restore.md!}
+
+{!start-remote-train.md!}

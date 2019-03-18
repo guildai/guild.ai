@@ -8,4 +8,6 @@ tags: get-started
 
 ## Next Steps
 
+{!start-remote-train.md!}
+
 {!start-docs.md!}

@@ -7,9 +7,9 @@ tags: get-started
 {!start-requirements-2.md!}
 
 ## Next Steps
-{!start-tensorboard.md!}
 
-
-{!start-remote-train.md!}
+{!start-reproducibility.md!}
 
 {!start-backup-restore.md!}
+
+{!start-remote-train.md!}

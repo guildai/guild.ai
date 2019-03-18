@@ -8,4 +8,4 @@ tags: get-started
 
 ## Next Steps
 
-{!start-backup-restore.md!}
+{!start-docs.md!}

@@ -185,10 +185,10 @@ pages:
           - docs/start/grid-search.md
           - docs/start/random-search.md
           - docs/start/manage-runs.md
-          - docs/start/reproducibility.md
           - docs/start/image-classifier.md
-          - docs/start/diff.md
           - docs/start/tensorboard.md
+          - docs/start/diff.md
+          - docs/start/reproducibility.md
           - docs/start/backup-restore.md
           - docs/start/remote-train.md
       - Concepts:
