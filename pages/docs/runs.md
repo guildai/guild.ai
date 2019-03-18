@@ -34,7 +34,7 @@ concepts. If you'd prefer to skip this conceptual material, jump to
 
 ### Run directory
 
-A *run directory* is a file system directory (or folder) that contains
+A *run directory* is a file system directory (folder) that contains
 artifacts associated with a run. Guild creates a unique run directory
 for every run. This directory contains a variety of important data:
 

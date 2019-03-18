@@ -49,12 +49,40 @@ Next, run a search that includes two values for *x* and two values for
 *noise*:
 
 ``` command
-guild run x=[-0.3,-0.35] noise=[0.0,0.1]
+guild run train.py x=[-0.25,-0.30,-0.35] noise=[0.0,0.1]
 ```
 
-Press
+This operation generates a total of 6 trials --- the Cartesian product
+of the values specified for *x* and *noise*.
+
+Press `Enter` to start the grid search.
+
+After the 6 trials have completed, compare them by running:
+
+``` command
+guild compare 1:6 -T -m loss
+```
+
+Here are each of the arguments to [](cmd:compare) and what they mean:
+
+`1:6`
+: Compare runs starting with index `1` and ending with index `6`
+
+`-T`
+: Print results as a table rather than run as an interactive
+  application (short form of ``--table``)
+
+`-m loss`
+: Sort results by the `loss` column in ascending order (short form of
+  ``--min loss``)
 
 ## Summary
+
+In this guide we ran a simple *grid search* --- generating trials over
+a narrow search space for two hyperparameters. While our training
+operation is contrived, the process illustrates a useful tool in
+machine learning, which is to explore manually defined hyperparameter
+sets.
 
 ## Next Steps
 

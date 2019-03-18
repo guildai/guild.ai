@@ -189,8 +189,8 @@ pages:
           - docs/start/image-classifier.md
           - docs/start/diff.md
           - docs/start/tensorboard.md
-          - docs/start/remote-train.md
           - docs/start/backup-restore.md
+          - docs/start/remote-train.md
       - Concepts:
           - docs/operations.md
           - docs/models.md

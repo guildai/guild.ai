@@ -91,7 +91,7 @@ loss: 0.456723
 ```
 
 !!! note
-    Because the "noisy" function introduces a random component,
+    The "noisy" function applies a random component to loss so
     your result will be different.
 
 Congratulations! You've run your first training script with
@@ -120,8 +120,6 @@ script name), *start time*, and *status*.
     globally unique ID to ensure that each run can be tracked as a
     unique experiment, even if it's copied to another system.
 
-    Similarly, dates and time will differ.
-
 Next, show information for the run:
 
 ``` command
@@ -147,7 +145,12 @@ flags:
   x: 0.1
 ```
 
-We learn more about these details later.
+Note a few things:
+
+- Each experiment is uniquely identified with a unique ID
+- Guild captures a wide range of experiment metadata
+- All information associated with the run, including generated files
+  and metadata, is stored on disk, in a directory denoted by `run_dir`
 
 Next, list files generated for the run:
 
@@ -161,9 +164,10 @@ This command lists files associated with the run:
 ~/.guild/runs/25835712472011e98c3ec85b764bbf34
 ```
 
-In our mock training script, we don't generate any files so the list
-is empty. We generate files in later examples so knowing this command
-is useful.
+This line is the [run directory](term:run-dir), however, our mock
+training script doesn't generate any files so the list is otherwise
+empty. We generate files in later examples so knowing this command is
+useful.
 
 ## Train a second time
 
@@ -174,7 +178,7 @@ hyperparameter `x`:
 guild run train.py x=0.2
 ```
 
-Guild shows a preview of the run. Press `Enter` to continue.
+Press `Enter` to confirm the operation.
 
 Guild runs `train.py` a second time using the new value for `x`.
 
@@ -215,13 +219,12 @@ Press `q` to exit Guild Compare.
 ## Run Bayesian optimization
 
 You've seen Guild's ability to run a script and capture results for
-comparison. This is Guild's core functionality, but it only starts
-there. In this step you'll use Guild to automate a common practice:
-hyperparameter optimization.
+comparison. In this step you'll use Guild to automate a common
+practice: *hyperparameter optimization*.
 
-Our mock training script takes two (rather contrived) hyperparameters:
-*x* and *noise*. Let's try to find a value for *x* that minimize
-*loss*.
+Our mock training script takes two (slightly contrived)
+hyperparameters: *x* and *noise*. Let's try to find a value for *x*
+that minimize *loss*.
 
 Because we're using a simple function to simulate a training
 operation, we can plot the relationship between *x* and *loss* for a
@@ -229,9 +232,8 @@ given value of *noise*. It looks something like this:
 
 ![](/assets/img/bayesian-optimization.png)
 
-^ Relationship between hyperparameter *x* and *loss* [^plot]
-
-[^plot]: Credit for "noisy" plot: [Bayesian optimization with skopt ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
+^ Relationship between hyperparameter *x* and *loss* ([image
+credit](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html))
 
 From the plot, we can see that the true minimum for *loss* is where is
 around `-0.3`.
@@ -239,14 +241,12 @@ around `-0.3`.
 In real life of course we don't know this! So we run experiments to
 find (or to confirm) the hyperparameters that give us the best result.
 
-Let's use Guild's built-in Bayesian optimizer to multiple trials over
-a range of *x* with the goal of minimizing loss:
+Use Guild's built-in Bayesian optimizer to multiple trials over a
+range of *x* with the goal of minimizing loss:
 
 ``` command
 guild run train.py x=[-2.0:2.0] --optimizer bayesian
 ```
-
-Guild prompts with:
 
 ``` output
 You are about to run train.py with gp optimizer (max 20 trials)
@@ -257,9 +257,9 @@ Continue? (Y/n)
 
 Press `Enter` to start the operation.
 
-Guild runs twenty trials (the default number if the command line
-option `--max-trials` is not specified), each time with a different
-value for over the range <code>-2.0</code> to <code>2.0</code>.
+Guild runs 20 trials --- the default number if the command line option
+`--max-trials` is not specified --- each time with a different value
+for *x* over the range <code>-2.0</code> to <code>2.0</code>.
 
 When the operation is finished, view the top five runs to see which
 values for *x* perform better:
@@ -271,23 +271,36 @@ guild compare --top 5 --min loss --table
 The `--table` option tells Guild to print the results as a table
 rather than run the interactive spreadsheet application.
 
-You should see that loss is lowest when *x* is near `-0.3`.
+You should see that loss is lowest when *x* is near `-0.3`. If the
+search process didn't find minimums around this value, you can restart
+the Bayesian optimization operation to run for another 20 trials by
+running:
+
+``` command
+guild run --restart gp
+```
+
+Guild picks up where it left off, using the 20 previous trials as data
+for minimizing loss.
 
 !!! note
-    The *noise* parameter introduces random "noise" to the loss
-    function, so results vary across runs.
+    The value `gp` in the restart command is the name of the
+    Bayesian optimizer operation --- Guild restarts the last operation
+    with this name. You can alternatively specify the run ID with
+    `--restart`.
 
 ## Summary
 
-Contratulations &mdash; you've run your first training operation in
-Guild! It was totally fake, but it served to illustrate some important
-features in Guild:
+Contratulations, you've run your first training operation in Guild! It
+was a mock training function with no machine learning whatsoever, but
+served to highlight important features in Guild:
 
-- Runs scripts without modification, automatically detecting
+- Run scripts without modification, automatically detecting
   hyperparameters and default values
 - Capture each run as a unique experiment
 - View and management experiments
-- Optimize hyperparameters with a single command
+- Automate complex experiments including Bayesian hyperparameter
+  optimization
 
 ## Next Steps
 

@@ -97,7 +97,7 @@ pre.language-output {
   padding: 9px 12px;
 
   .language-name {
-    color: ligthen($bg-color-terminal, 30%);
+    color: lighten($bg-color-terminal, 30%);
   }
 }
 
@@ -134,7 +134,7 @@ pre .language-name {
 }
 
 pre.language-command + pre.language-output {
-  margin-top: -22px;
+  margin-top: -24px;
   padding-top: 4px;
   border-top: none;
   border-top-left-radius: 0;
