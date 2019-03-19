@@ -194,6 +194,7 @@ pages:
       - Concepts:
           - docs/operations.md
           - docs/models.md
+          - docs/resources.md
           - docs/runs.md
           - docs/optimizers.md
           - docs/packages.md
