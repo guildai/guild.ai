@@ -12,7 +12,7 @@ This guide provides a quick tour of run management functions.
 
 ## A script to test runs
 
-In the `sample-project` directory, create a file named `echo.py`:
+In the `guild-start` directory, create a file named `echo.py`:
 
 ``` python
 msg = "Hello Guild!"
@@ -22,31 +22,30 @@ with open("message.txt", "w") as out:
     out.write(msg + "\n")
 ```
 
-^ sample-project/echo.py
+^ guild-start/echo.py
 
 Verify that your project structure is:
 
 <div class="file-tree">
 <ul>
-<li class="is-folder open">sample-project
+<li class="is-folder open">guild-start
  <ul>
  <li class="is-file">echo.py</li>
- <li class="is-file">train.py</li>
+ <li class="is-file">train.py <small>(created
+ in <a href="/docs/start/">Quick Start</a>)</small></li>
  </ul>
 </li>
 </ul>
 </div>
 
-## Common tasks
-
-### Start runs
+## Start runs
 
 To start a run, use the [](cmd:run) command.
 
 Run `echo.py`:
 
 ``` command
-guild run
+guild run echo.py
 ```
 
 Press `Enter` to accept the default message and run the operation. The
@@ -57,7 +56,8 @@ Hello Guild!
 ```
 
 By default, Guild prompts you before starting the operation. You can
-bypass this prompt by including `-y, --yes` as a command line option:
+bypass this prompt by including `-y` or `--yes` as a command line
+option:
 
 ``` command
 guild run echo.py -y
@@ -75,7 +75,7 @@ guild run echo.py msg='Yo Guild!' -y
 Yo Guild!
 ```
 
-### Stop runs
+## Stop runs
 
 By default, Guild lets a script run to completion, regardless of how
 long it takes to complete.
@@ -92,7 +92,7 @@ guild stop
 This stops all running operations. For more information, see
 [](cmd:stop).
 
-### List runs
+## List runs
 
 List the latest 20 runs:
 
@@ -100,14 +100,14 @@ List the latest 20 runs:
 guild runs
 ```
 
-List all runs by providing the `-a, --all` command line option:
+List all runs by providing the `-a` or `--all` command line option:
 
 ``` command
 guild runs --all
 ```
 
 You can filter runs using a variety of options. For example, to show
-all runs with a status of `completed`, use the `-C, --completed`
+all runs with a status of `completed`, use the `-C` or `--completed`
 command line option:
 
 ``` command
@@ -119,7 +119,7 @@ accept runs as arguments.
 
 For a list of filter options, see [](cmd:runs).
 
-### Show run info
+## Show run info
 
 If you want information about a run, use [runs info](cmd:runs-info):
 
@@ -161,7 +161,7 @@ line options:
 - Dependencies (`--deps`)
 - Source code (`--source`)
 
-### List run files
+## List run files
 
 Show files associated with a run using the [](cmd:ls) command:
 
@@ -200,7 +200,7 @@ guild cat message.txt 2
 Hello Guild!
 ```
 
-### Open run files
+## Open run files
 
 Use the [](cmd:open) command to open a run directory in your system
 file browser:
@@ -211,8 +211,8 @@ guild open
 
 By default, Guild opens the latest run directory.
 
-You can also open specific files using the `-p, --path` command line
-option:
+You can also open specific files using the `-p` or `--path` command
+line option:
 
 ``` command
 guild open -p message.txt
@@ -225,18 +225,23 @@ You can browse the source code associated with a run by specifying the
 guild open --source
 ```
 
-### Delete runs
+## Delete runs
 
 Delete runs using [runs delete](cmd:runs-delete) or the alias `runs rm`.
 
-By default, Guild deletes all runs. You can specify one or more of:
+By default, Guild deletes all runs. You can specify one or more runs
+to delete using these forms:
 
 - run index
 - run index range
 - run ID
 
-to limit the runs to delete. You can additionally specify status
-filters such as `--terminated`, `--error`, `--completed`, etc.
+Run index ranges are in the form `START:STOP` and will select all runs
+starts with index `START` up to and including the run with index
+`STOP`.
+
+You can additionally specify status filters such as `--terminated`,
+`--error`, `--completed`, etc.
 
 For example, to delete the last run, use:
 
@@ -257,15 +262,26 @@ promt by specifying the `-y, --yes` command line option.
     Deleted runs can be restored later using [runs
     restore](cmd:runs-restore). See below for details.
 
-### Restore deleted runs
+!!! tip
+    To delete all failed runs --- i.e. runs with status `error`
+    --- use ``guild runs rm --error`` or the short version ``guild
+    runs rm -E``.
+
+## Restore deleted runs
 
 Deleted runs can be restored using [runs
-restore](cmd:runs-restore). For example, to restore the last deleted
-run, use:
+restore](cmd:runs-restore). By default, Guild restores all deleted
+runs. You can specify specific runs using indexes or run IDs. For
+example, to restore the last deleted run, use:
 
 ``` command
 guild runs restore 1
 ```
+
+!!! tip
+    To show deleted runs --- i.e. runs that can be restored ---
+    use ``guild runs --deleted`` or the short version ``guild runs
+    -d``.
 
 ## Summary
 

@@ -2,6 +2,11 @@ tags: get-started
 
 # Grid Search
 
+In this guide, we examine Guild's support for performing *[grid search
+->](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search)*.
+
+[TOC]
+
 ## Requirements
 
 {!start-requirements-2.md!}
@@ -16,12 +21,13 @@ Grid search in Guild is easy --- simply provide a list of values to
 use for any given flag. If you specify lists for multiple flags, Guild
 runs trials for each possible flag value combination.
 
-To illustrate, change to the `simple-project` directory (if you
-haven't created `simple-project` yet, follow the steps in
-[](alias:quick-start) first):
+Change to the `guild-start` directory: [^guild-start]
+
+[^guild-start]: If you haven't created `guild-start` yet, follow the
+steps in [](alias:quick-start) first).
 
 ``` command
-cd simple-project
+cd guild-start
 ```
 
 Run a grid search over five values for *x*:
@@ -40,10 +46,12 @@ Compare the last five runs:
 guild compare 1:5 --table --min loss
 ```
 
-This command tells Guild to show runs from index `1` to index `5` (the
-last five runs) sorted in ascending order by `loss`. Note that the
-loss is lowest where `x=-0.3`. (For background on the function
-generating *loss*, see [](alias:quick-start).)
+This command tells Guild to compare runs from index `1` to index `5`
+(the last five runs) sorted in ascending order by *loss*. Note that
+the loss is lowest where `x=-0.3`&nbsp; [^loss]
+
+[^loss]: For background on the function generating *loss*, see
+[](alias:quick-start).
 
 Next, run a search that includes two values for *x* and two values for
 *noise*:

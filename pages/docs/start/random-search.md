@@ -2,6 +2,12 @@ tags: get-started
 
 # Random Search
 
+In this guide, we examine Guild's support for performing *[random
+search
+->](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Random_search)*.
+
+[TOC]
+
 ## Requirements
 
 {!start-requirements-2.md!}
@@ -23,12 +29,19 @@ Guild performs a random search whenever you specify a flag value in the form `[L
 - Low and high values may be either integer or float values and must
   be separated by a colon
 
-To illustrate, change to the `simple-project` directory (if you
-haven't created `simple-project` yet, follow the steps in
-[](alias:quick-start) first):
+!!! note
+    The form `[LOW:HIGH]` is a short version of
+    `uniform[LOW:HIGH]`, which samples from a uniform distribution.
+    Guild also supports `loguniform`, which samples from a log-uniform
+    distribution.
+
+Change to the `guild-start` directory: [^guild-start]
+
+[^guild-start]: If you haven't created `guild-start` yet, follow the
+steps in [](alias:quick-start) first).
 
 ``` command
-cd simple-project
+cd guild-start
 ```
 
 Run a random search over the range `-0.4` and `-0.2` for *x*:

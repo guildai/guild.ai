@@ -4,23 +4,30 @@ tags: get-started
 
 # Guild AI Quick Start
 
+In this quick start guide, we create a mock training script and run it
+with Guild. The script doens't do any actual training, but illustrates
+some basic features of Guild.
+
+[TOC]
+
 ## Requirements
 
 {!start-requirements.md!}
 
 ## A mock training script
 
-In this quick start guide, you create a mock training script and run
-it with Guild. The script doens't do any actual training, but
-illustrates some basic features of Guild.
+The training script we create in this step doesn't actually train
+anything, but instead simulates the training process of accepting
+hyperparameters as inputs and generating a *[loss
+->](https://en.wikipedia.org/wiki/Loss_function)*.
 
-Frist, create a new directory for the project:
+Create a new directory for the project:
 
 ``` command
-mkdir simple-project
+mkdir guild-start
 ```
 
-Create a file named `train.py`, located in the `simple-project`
+Create a file named `train.py`, located in the `guild-start`
 directory:
 
 ``` python
@@ -36,20 +43,22 @@ print("noise: %f" % noise)
 print("loss: %f" % loss)
 ```
 
-^ sample-project/train.py
+^ guild-start/train.py
 
 This mock script simulates a training operation:
 
 - It has two mock hyperparameters: *x* and *noise*
 - It calculates a mock *loss* using a "noisy" function [^noisy-credit]
 
-[^noisy-credit]: Credit for "noisy" function: [Gilles Louppe, Manoj Kumar ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
+[^noisy-credit]: Credit for "noisy" function: [Gilles Louppe, Manoj
+    Kumar
+    ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
 
 Verify that your project structure is:
 
 <div class="file-tree">
 <ul>
-<li class="is-folder open">sample-project
+<li class="is-folder open">guild-start
  <ul>
  <li class="is-file">train.py</li>
  </ul>
@@ -62,7 +71,7 @@ Verify that your project structure is:
 In a command shell, change to the project directory:
 
 ``` command
-cd simple-project
+cd guild-start
 ```
 
 Run the mock training script `train.py` using Guild:
@@ -219,8 +228,8 @@ Press `q` to exit Guild Compare.
 ## Run Bayesian optimization
 
 You've seen Guild's ability to run a script and capture results for
-comparison. In this step you'll use Guild to automate a common
-practice: *hyperparameter optimization*.
+comparison. In this step we use Guild to automate a common practice:
+*hyperparameter optimization*.
 
 Our mock training script takes two (slightly contrived)
 hyperparameters: *x* and *noise*. Let's try to find a value for *x*
@@ -232,8 +241,10 @@ given value of *noise*. It looks something like this:
 
 ![](/assets/img/bayesian-optimization.png)
 
-^ Relationship between hyperparameter *x* and *loss* ([image
-credit](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html))
+^ Relationship between hyperparameter *x* and *loss*&nbsp; [^plot]
+
+[^plot]: Image credit: [Bayesian optimization with skopt
+->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
 
 From the plot, we can see that the true minimum for *loss* is where is
 around `-0.3`.
