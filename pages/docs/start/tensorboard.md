@@ -10,8 +10,8 @@ tags: get-started
 
 {!start-diff.md!}
 
-{!start-reproducibility.md!}
-
 {!start-backup-restore.md!}
 
 {!start-remote-train.md!}
+
+{!start-docs.md!}

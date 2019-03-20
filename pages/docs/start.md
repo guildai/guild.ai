@@ -14,7 +14,7 @@ some basic features of Guild.
 
 {!start-requirements.md!}
 
-## A mock training script
+## Mock training script
 
 The training script we create in this step doesn't actually train
 anything, but instead simulates the training process of accepting

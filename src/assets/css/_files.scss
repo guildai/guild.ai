@@ -90,6 +90,14 @@
       margin-right: 6px;
     }
 
+    .is-file.disabled {
+      color: $gray-text-color;
+
+      a {
+        color: $light-text-color;
+      }
+    }
+
     &.is-file:before {
       content: "\f15b";
       color: $file-tree-file-color;

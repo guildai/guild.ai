@@ -8,8 +8,8 @@ tags: get-started
 
 ## Next Steps
 
-{!start-reproducibility.md!}
-
 {!start-backup-restore.md!}
 
 {!start-remote-train.md!}
+
+{!start-docs.md!}
