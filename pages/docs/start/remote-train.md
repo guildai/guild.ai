@@ -6,6 +6,6 @@ tags: get-started
 
 {!start-requirements-3.md!}
 
-## Next Steps
+## Next steps
 
 {!start-docs.md!}

@@ -182,8 +182,7 @@ pages:
       - docs/index.md
       - Get Started:
           - docs/start.md
-          - docs/start/grid-search.md
-          - docs/start/random-search.md
+          - docs/start/optimization.md
           - docs/start/manage-runs.md
           - docs/start/image-classifier.md
           - docs/start/reproducibility.md

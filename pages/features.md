@@ -161,6 +161,11 @@ hide_in_pagenav: yes
       &mdash; it can be remarkably efficient! Whatever approach you
       take, Guild lets you control every step.
     </p>
+    <p>
+      For a step-by-step guide,
+      see <em><a href="/docs/start/optimization/">Get Started -
+      Hyperparameter Optimization</a></em>.
+    </p>
   </div>
 </div>
 
@@ -212,7 +217,7 @@ hide_in_pagenav: yes
     <h4>I'm not a researcher, I don't need to reproduce my results</h4>
     <p>
       Even some researchers feel they don't need to reproduce
-      their results <i class="far fa-smile-wink"></i>
+      their results <i class="fal fa-smile-wink"></i>
     </p>
     <p>
       Reproducibility aside, consider the benefits of automating your
@@ -227,6 +232,11 @@ hide_in_pagenav: yes
         sponsor, your credibility goes way up when you can confidently
         reproduce a result at any time</li>
       </ul>
+    </p>
+    <p>
+      For a step-by-step guide,
+      see <em><a href="/docs/start/reproducibility/">Get Started -
+      Reproducibility</a></em>.
     </p>
   </div>
 </div>
@@ -249,8 +259,10 @@ hide_in_pagenav: yes
         </div>
       </div>
     </p>
-    <p><img class="md shadow lozad" data-src="/assets/img/tb-feature.jpg" /></p>
-    <figcaption class="under-shadow">Compare experiment results in TensorBoard</figcaption>
+    <figure>
+      <p><img class="md shadow lozad" data-src="/assets/img/tb-feature.jpg" /></p>
+      <figcaption class="under-shadow">Compare experiment results in TensorBoard</figcaption>
+    </figure>
     <p>
       Guild integration with TensorBoard consists of:
       <ul class="md">
@@ -258,6 +270,11 @@ hide_in_pagenav: yes
         <li>Automatically sync experiments with TensorBoard as they're updated</li>
         <li>Filter runs by operation name, label, and run status</li>
       </ul>
+    </p>
+    <p>
+      For a step-by-step guide,
+      see <em><a href="/docs/start/tensorboard/">Get Started -
+      TensorBoard</a></em>.
     </p>
   </div>
 </div>
@@ -365,8 +382,7 @@ hide_in_pagenav: yes
     </p>
     <h4>Can't I just use floppy disks for backup?</h4>
     <p>
-      Yes! 1.44 MB can hold a lot of data! But cloud storage is a bit
-      more scalable and secure <i class="far fa-smile"></i>
+      1.44 MB is big but cloud storage even bigger!
     </p>
     <p>
       Backing experiments up to local storage is trivial with Guild
@@ -396,7 +412,13 @@ hide_in_pagenav: yes
           Guild <code>pull</code> to get everyone's experiments.
         </li>
       </ol>
-
+    </p>
+    <p>
+      For step-by-step guides, see Get Started
+      for <em><a href="/docs/start/backup-restore/">Backup and
+      Restore</a></em>
+      and <em><a href="/docs/start/remote-train/">Remote
+      Training</a></em>.
     </p>
   </div>
 </div>

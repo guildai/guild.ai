@@ -1,6 +1,6 @@
 # Reproducibility
 
-## Next Steps
+## Next steps
 
 {!tensorboard.md!}
 

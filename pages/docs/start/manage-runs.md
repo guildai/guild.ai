@@ -31,8 +31,8 @@ Verify that your project structure is:
 <li class="is-folder open">guild-start
  <ul>
  <li class="is-file">echo.py</li>
- <li class="is-file">train.py <small>(created
- in <a href="/docs/start/">Quick Start</a>)</small></li>
+ <li class="is-file disabled">train.py <small>(created
+ in <a href="/docs/start/">Quick Start</a> - not used in this guide)</small></li>
  </ul>
 </li>
 </ul>
@@ -117,7 +117,7 @@ guild runs --completed
 Guild shows runs with a 1-based index to simplify operations that
 accept runs as arguments.
 
-For a list of filter options, see [](cmd:runs).
+For a list of filter options, see the [](cmd:runs) command.
 
 ## Show run info
 

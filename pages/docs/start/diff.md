@@ -6,7 +6,7 @@ tags: get-started
 
 {!start-requirements-2.md!}
 
-## Next Steps
+## Next steps
 
 {!start-backup-restore.md!}
 
