@@ -17,6 +17,24 @@
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
+
+    &:before {
+      font-family: "Font Awesome 5 Pro";
+      margin-right: 6px;
+    }
+  }
+
+  &.tip .admonition-title:before {
+    content: "\f0eb";
+  }
+
+  &.info .admonition-title:before,
+  &.note .admonition-title:before {
+    content: "\f30f";
+  }
+
+  &.important .admonition-title:before {
+    content: "\f071";
   }
 
   @include callout-variant($callout-info-color);
