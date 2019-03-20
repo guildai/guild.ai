@@ -27,38 +27,81 @@ To perform a grid search in Guild, simply provide a list of values to
 use for any given flag. If you specify lists for multiple flags, Guild
 runs trials for each possible flag value combination.
 
-To illustrate, first change to the `guild-start` directory:
-[^guild-start]
+If you haven't already done so, open a command console and change to
+the `guild-start` directory: [^guild-start]
 
 [^guild-start]: If you haven't created `guild-start` yet, follow the
-steps in [](alias:quick-start) first.
+steps in [](alias:quick-start) before processing.
 
 ``` command
 cd guild-start
 ```
 
-Run a grid search over five values for *x*:
+Run grid search over five values for *x*:
 
 ``` command
 guild run train.py x=[-0.5,-0.4,-0.3,-0.2,-0.1]
+```
+
+``` output
+You are about to run train.py in a batch
+  noise: 0.1
+  x: [-0.5, -0.4, -0.3, -0.2, -0.1]
+Continue? (Y/n)
 ```
 
 Press `Enter` to confirm the operation.
 
 Guild runs `train.py` for each of the specified values.
 
-Compare the last five runs:
+Compare the current runs:
 
 ``` command
-guild compare 1:5 --table --min loss
+guild compare
 ```
 
-This command tells Guild to compare runs from index `1` to index `5`
-(the last five runs) sorted in ascending order by *loss*. Note that
-the loss is lowest where `x=-0.3`&nbsp; [^loss]
+Use your cursor keys to navigate the runs. You can sort a column in
+numeric ascending order by pressing the `1` key while the cursor is in
+the column.
+
+Note the run with the lowest value for *loss*. Based on our function,
+[^loss] loss should be lowest where *x* is near `-0.3`.
 
 [^loss]: For background on the function generating *loss*, see
 [](alias:quick-start).
+
+!!! note
+    Because the loss function introduces a random component
+    ("noise") the lowest loss is not always where *x* is near `-0.3`.
+
+Press `q` to exit the Compare application.
+
+By default, Guild compares all runs --- you see runs in the list from
+previous guides as well as the last five. To compare only the last
+five runs, use:
+
+``` command
+guild compare 1:5 --table
+```
+
+This tells Guild to compare runs starting with index `1` (the latest
+run) up to and including index `5`. The `--table` option runs the
+command in non-interactive mode, printing the results to the console.
+
+If you want to sort the results so that runs with the lowest loss
+appear first, run:
+
+``` command
+guild compare --table --min loss
+```
+
+If you want to show only the top 3 runs, use:
+
+``` command
+guild compare --table --min loss --top 3
+```
+
+For a complete list of options, see the [](cmd:compare) command.
 
 Next, run a search that includes two values for *x* and two values for
 *noise*:
@@ -68,28 +111,21 @@ guild run train.py x=[-0.25,-0.30,-0.35] noise=[0.0,0.1]
 ```
 
 This operation generates a total of 6 trials --- the Cartesian product
-of the values specified for *x* and *noise*.
+of the values specified for *x* and *noise*. Note that we have
+narrowed our range for *x* based on our previous results. In this
+case, we're using both automated grid search and intuition to find an
+optimal value for *x*.
 
-Press `Enter` to start the grid search.
+Press `Enter` to start the search.
 
-After the 6 trials have completed, compare them by running:
+After the 6 trials have completed, compare the runs:
 
 ``` command
-guild compare 1:6 -T -m loss
+guild compare --table --min loss
 ```
 
-Here are each of the arguments to [](cmd:compare) and what they mean:
-
-`1:6`
-: Compare runs starting with index `1` and ending with index `6`
-
-`-T`
-: Print results as a table rather than run as an interactive
-  application (short form of ``--table``)
-
-`-m loss`
-: Sort results by the `loss` column in ascending order (short form of
-  ``--min loss``)
+By now, we've accumlated enough runs to show that values of *x* near
+`-0.3` are indeed optimal with respect to minimizing *loss*.
 
 ## Random search
 
@@ -99,10 +135,11 @@ effective technique to find optimal hyperparameter values when you can
 spend enough time searching.
 
 For costly operations, consider [Bayesian
-optimization](/docs/guides/bayesian-optimization/) as an alternative
+optimization](#bayesian-optimization) (shown below) as an alternative
 to random search.
 
-Guild performs a random search whenever you specify a flag value in the form `[LOW:HIGH]`:
+Guild performs a random search by default when you specify a flag
+value in the form `[LOW:HIGH]`:
 
 - The value must start and end with square brackets
 - Low and high values may be either integer or float values and must
@@ -114,62 +151,41 @@ Guild performs a random search whenever you specify a flag value in the form `[L
     Guild also supports `loguniform`, which samples from a log-uniform
     distribution.
 
-Run a random search over the range `-0.4` and `-0.2` for *x*:
+Run a random search over the range `-0.35` and `-0.25` for *x*:
 
 ``` command
-guild run train.py noise=0 x=[-0.4:-0.2]
+guild run train.py noise=0 x=[-0.35:-0.25] --max-trials 5
 ```
 
 ``` output
-You are about to run train.py with random optimizer (max 20 trials)
+You are about to run train.py with random optimizer (max 5 trials)
   noise: 0.1
-  x: [-0.4:-0.2]
+  x: [-0.35:-0.25]
 Continue? (Y/n)
 ```
 
 We set *noise* to `0` so we can search for the true minimum loss.
 
-List the best 5 runs over the last 20 runs:
+When the operation is finished, compare the top 5 runs:
 
 ``` command
-guild compare 1:20 -T -m loss -t 5
+guild compare --table --min loss --top 5
 ```
 
-The arguments to [](cmd:compare) are:
-
-`1:20`
-: Compare runs starting with index `1` and ending with index `20` ---
-  i.e. the last 20 runs
-
-`-T`
-: Print results as a table rather than run as an interactive
-  application (short form of ``--table``)
-
-`-m loss`
-: Sort results by the `loss` column in ascending order (short form of
-  ``--min loss``)
-
-`-t 5`
-: Show the top five runs
-
-This is a fairly complex command, though it shows the flexibility of
-the `compare` command. If you prefer, simply run ``guild compare`` and
-iteratively explore the current list of runs. This will include runs
-from previous guides.
+By now we've really narrowed our search --- especially having set
+*noise* to zero! We could stop now, confident in our optimal value for
+*x*. However, let's pretend we don't know the optimal value for *x*
+and turn to a powerful search method: *Bayesian optimization*.
 
 ## Bayesian optimization
 
-You've seen Guild's ability to run a script and capture results for
-comparison. In this step we use Guild to automate a common practice:
-*hyperparameter optimization*.
+In the steps above, we used grid and random search methods to find
+values for *x* that correspond with low *loss*. This illustrates a
+common problem in machine learning: finding hyperparmeter values that
+are optimal for a given model and data set.
 
-Our mock training script takes two (slightly contrived)
-hyperparameters: *x* and *noise*. Let's try to find a value for *x*
-that minimize *loss*.
-
-Because we're using a simple function to simulate a training
-operation, we can plot the relationship between *x* and *loss* for a
-given value of *noise*. It looks something like this:
+Here's a plot that shows the relationship between *x* and *loss* for
+our `train.py` script:
 
 ![](/assets/img/bayesian-optimization.png)
 
@@ -178,17 +194,32 @@ given value of *noise*. It looks something like this:
 [^plot]: Image credit: [Bayesian optimization with skopt
 ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
 
-From the plot, we can see that the true minimum for *loss* is where is
-around `-0.3`.
+Of course in a real scenario, we don't have this information! And
+while we can use grid and random search to explore the search space of
+*x*, practical machine learning application present two challenges:
 
-In real life of course we don't know this! So we run experiments to
-find (or to confirm) the hyperparameters that give us the best result.
+- The search space across all hyperparameters is often too big to
+  cover, even with substantial computing power.
 
-Use Guild's built-in Bayesian optimizer to multiple trials over a
-range of *x* with the goal of minimizing loss:
+- Large models, in particular deep neural networks, are very expensive
+  to evaluate, taking hours or even days to generate a single result.
+
+To tackle the problem of hyperparameter optimization in these cases,
+we turn to Bayesian optimization. Bayesian optimizers use light weight
+models as surrogates for the target model --- surrogates that can be
+evaluated quickly to recommend likely optimal hyperparameter values
+--- and update those models using results from real
+trials. [^bayes-tutorial]
+
+[^bayes-tutorial]: For a more complete treatment of Bayesian
+ optimization, see *[A Tutorial on Bayesian Optimization
+ ->](https://arxiv.org/abs/1807.02811)* by Peter Frazier.
+
+Let's run `train.py` with Guild's built-in Bayesian optimizer, which
+uses a Gaussian process:
 
 ``` command
-guild run train.py x=[-2.0:2.0] --optimizer bayesian
+guild run train.py x=[-2.0:2.0] --optimizer bayesian --max-trials 20
 ```
 
 ``` output
@@ -200,37 +231,69 @@ Continue? (Y/n)
 
 Press `Enter` to start the operation.
 
-Guild runs 20 trials --- the default number if the command line option
-`--max-trials` is not specified --- each time with a different value
-for *x* over the range <code>-2.0</code> to <code>2.0</code>.
+Guild runs 20 trials, each time using the results from previous trials
+to explore the search space of *x*. With more results, the process
+tends to focus on areas with higher potential for minimizing *loss*.
 
-When the operation is finished, view the top five runs to see which
-values for *x* perform better:
+Note that we provide a wide range for *x*, not knowing (in this case
+pretending not to know) where to search. We rely on the optimizer to
+spend more time exploring high potential ranges to find a value for
+*x* that minimizes *loss*.
 
-``` command
-guild compare --top 5 --min loss --table
-```
-
-The `--table` option tells Guild to print the results as a table
-rather than run the interactive spreadsheet application.
-
-You should see that loss is lowest when *x* is near `-0.3`. If the
-search process didn't find minimums around this value, you can restart
-the Bayesian optimization operation to run for another 20 trials by
-running:
+When the operation is finished, compare the runs:
 
 ``` command
-guild run --restart gp
+guild compare
 ```
 
-Guild picks up where it left off, using the 20 previous trials as data
-for minimizing loss.
+Runs that are generated by the default Bayesian optimizer (i.e. using
+Gaussian processes) are labeled starting with ``gp``. In some cases,
+the optimizer recommends values that have already been tried, in which
+case Guild intervenes and uses random values within the search
+space. These trials are labeled starting with ``gp+random``.
+
+To sort a column in ascending order, navigate using the cursor keys to
+the target column and press `1` --- use this technique to sort runs by
+*loss* so that low values are listed first.
 
 !!! note
-    The value `gp` in the restart command is the name of the
-    Bayesian optimizer operation --- Guild restarts the last operation
-    with this name. You can alternatively specify the run ID with
-    `--restart`.
+    Bayesian methods are not guaranteed to find optimal values
+    for *x*, though they can do reasonably well with enough trials. To
+    ensure that you find optimal hyperparameters, you must grid
+    search, though as stated before, this is an intractable problem
+    for large search spaces or large numbers of hyperparameters.
+
+Guild supports three Bayesian optimizers, any of which can be
+specified for the `--optimizer` command line option for the
+[](cmd:run) command:
+
+`gp`
+: Uses Gaussian processes. You can alternatively use `bayesian` or
+  `gaussian` to specify this optimizer.
+
+`forest`
+: Uses decision trees.
+
+`gbrt`
+: Uses gradient boosted regression tree.
+
+Each optimizer has supports options that can be specified using
+`--opt-flag` options in the format ``--op-flag NAME=VALUE``. For help
+with an optimizer, including a complete list of options, run ``guild
+OPTIMIZER --help-op``.
+
+For example, to show help for the `gp` optimizer, run:
+
+``` command
+guild run gp --help-op
+```
+
+!!! note
+    Guild uses the excellent [Scikit-Optimize
+    ->](https://scikit-optimize.github.io/) library for its built-in
+    support of Bayesian optimization. However, Guild can be extended
+    to use your own optimizer and will be enhanced over time to
+    support a wider range of optimizers.
 
 ## Summary
 

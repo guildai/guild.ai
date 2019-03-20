@@ -238,8 +238,8 @@ in Guild:
   training results
 - View and compare results
 
-Guild provides *a lot more* functionality on top of this core. Select
-one of the links below to learn more!
+Guild provides *a lot more* functionality on top of this core --- see
+the links below to learn more!
 
 ## Next steps
 
