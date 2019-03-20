@@ -64,12 +64,35 @@ guild run echo.py -y
 ```
 
 `echo.py` supports a single [](term:flag) *msg*, which it prints to
-the console. You can set that value when you run the script with
-Guild:
+the console. You can list supported flags for a script by specifying
+the `--help-op` option to the `run` command:
 
 ``` command
-guild run echo.py msg='Yo Guild!' -y
+guild run echo.py --help-op
 ```
+
+``` output
+Usage: guild run [OPTIONS] echo.py [FLAG]...
+
+Use 'guild run --help' for a list of options.
+
+Flags:
+  msg  (default is Hello Guild!)
+```
+
+We can run the script with a different value for `msg`:
+
+``` command
+guild run echo.py msg='Yo Guild!'
+```
+
+``` output
+You are about to run echo.py
+  msg: Yo Guild!
+Continue? (Y/n)
+```
+
+Press `Enter` to continue. The script prints the alternate greeting:
 
 ``` output
 Yo Guild!
@@ -89,8 +112,12 @@ You can alternatively stop a run from a different console by running:
 guild stop
 ```
 
-This stops all running operations. For more information, see
-[](cmd:stop).
+^ Alternative to typing `Ctrl-C` --- run in a different command
+console
+
+This stops all running operations. You can alternatively specify
+specific runs to stop. For more information, see the [](cmd:stop)
+command.
 
 ## List runs
 
@@ -114,7 +141,7 @@ command line option:
 guild runs --completed
 ```
 
-Guild shows runs with a 1-based index to simplify operations that
+Guild shows runs with a 1-based index, which may be in commands that
 accept runs as arguments.
 
 For a list of filter options, see the [](cmd:runs) command.
@@ -160,6 +187,8 @@ line options:
 - Scalars (`--scalars`)
 - Dependencies (`--deps`)
 - Source code (`--source`)
+
+For more information, see the [runs info](cmd:runs-info) command.
 
 ## List run files
 
@@ -256,7 +285,7 @@ You are about to delete the following runs:
 ```
 
 By default, Guild prompt before deleting runs. You can bypass this
-promt by specifying the `-y, --yes` command line option.
+promt by specifying the `-y` or `--yes` command line option.
 
 !!! note
     Deleted runs can be restored later using [runs
