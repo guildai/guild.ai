@@ -56,6 +56,10 @@
       }
     }
   }
+
+  code.lit {
+    background-color: darken($code-inline-bg-color, 4%);
+  }
 }
 
 @media screen and (max-width: $break-xs) {

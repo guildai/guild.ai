@@ -186,8 +186,6 @@ pages:
           - docs/start/manage-runs.md
           - docs/start/image-classifier.md
           - docs/start/reproducibility.md
-          - docs/start/tensorboard.md
-          - docs/start/diff.md
           - docs/start/backup-restore.md
           - docs/start/remote-train.md
       - Concepts:

@@ -180,21 +180,138 @@ the training script --- specifically by the [TensorBoard Keras
 callback ->](https://keras.io/callbacks/#tensorboard) used by the
 script.
 
-## Train classifier over more epochs
+## View results in TensorBoard
 
-## Compare runs
+View the `fashion_mnist_mlp.py` training run in TensorBoard:
 
-## Optimize learning rate
+``` command
+guild tensorboard --operation mnist
+```
+
+This command shows any run matching "mnist" in TensorBoard. If you run
+this command in a separate command console, you can leave TensorBoard
+running in the background while you run more operations --- Guild
+automatically syncs TensorBoard with the current runs.
+
+![](/assets/img/tb-2.png)
+
+^ Guild integrates with TensorBoard ande automatically synchronizes
+filtered runs
+
+See the [](cmd:tensorboard) command for more information on running
+TensorBoard from Guild.
+
+When you're done viewing results in TensorBoard, return to the command
+prompt and press `Ctrl-C` to stop TensorBoard.
+
+## Train a second time
+
+Run `fashion_mnist_mlp.py` again --- this time specify a different
+learning rate:
+
+``` command
+guild run fashion_mnist_mlp.py lr=0.01
+```
+
+This changes the learning rate to `0.01` from the default `0.001`. It
+turns out that this value is too high --- but we use the scenario to
+demonstrate a simple trouble shooting process in Guild.
+
+Press `Enter` to start trainin.
+
+As the model trains, note the validation accuracy (represented by
+`val_acc` in the training progress display in the console) --- it is
+roughly 10%, which is random guessing! So we know our model isn't
+learning.
+
+You can stop the training at any point by typing `Ctrl-C` --- or
+simply let it run to completion.
+
+Compare the runs by running:
+
+``` command
+guild compare --table --strict-columns =lr,val_acc
+```
+
+This variation of `compare` uses `--strict-columns` to only show the
+columns we're interested in comparing --- in this case, *lr* and
+*val_acc*. The syntax `=lr` means "the flag `lr`" and is used to
+distinguish the value from scalars. `val_acc` is the name of the
+scalar used for *validation accuracy*.
+
+You can show the complete list of available scalars using the
+`--print-scalars` command line option. For example, to list all of the
+scalars available for the latest run, use:
+
+``` command
+guild compare 1 --print-scalars
+```
+
+For more details on compare options, see the [](cmd:compare) command.
+
+## Show differences between runs
+
+In the previous step, we tried a learning rate that was too high ---
+our model failed to learn anything at all!
+
+Let's assume for a moment we didn't know why this happened. How could
+we troubleshoot the problem?
+
+Let's use Guild's `diff` command to compare our last two
+runs. Specifically, we compare changes to flags and source code.
+
+``` command
+guild diff --flags --source
+```
+
+``` output
+--- ~/.guild/runs/7327dbd44bce11e98af6c85b764bbf34/.guild/attrs/flags
++++ ~/.guild/runs/925f38e44bce11e98af6c85b764bbf34/.guild/attrs/flags
+@@ -1,5 +1,5 @@
+ batch_size: 128
+ dropout: 0.2
+ epochs: 5
+-lr: 0.001
++lr: 0.01
+ lr_decay: 0.0
+```
+
+!!! tip
+    By default, Guild uses the `diff` command to show
+    differences. You can specify an alternative program when running
+    `diff` with the `c` or `--cmd` command line option. For example,
+    if you have [Meld ->](http://meldmerge.org/) available on your
+    system, you can compare the last two runs by running ``guild run
+    -c meld``.
+
+    You can configure the default program used for diffing in [user
+    configuration](/docs/reference/user-config/#diff).
+
+    Here's the diff of flags in Meld:
+
+    ![](/assets/img/diff-meld.png)
+
+
+We can see from this comparison exactly what changed across the two
+runs: the learning rate went from `0.001` to `0.01`. While this is a
+simple example, it demonstrates the value of systematically tracking
+experiment details.
 
 ## Summary
+
+In this guide we trained a simple image classifier and used
+TensorBoard and diffing tools to view and compare runs.
+
+- The training script used in this guide is a realistic example of a
+  real machine learning algorithm
+- We did not have to modify the script to take advance of Guild's
+  experiment tracking and comparison features
+- We used a simple method of troubleshooting --- diffing two runs ---
+  to explain a result
 
 ## Next steps
 
 {!start-reproducibility.md!}
-
-{!start-tensorboard.md!}
-
-{!start-diff.md!}
 
 {!start-backup-restore.md!}
 

@@ -109,7 +109,7 @@ $code-bg-color:                     #f5f5f5;
 $code-border-color:                 $border-color-dark;
 $code-inline-color:                 $light-text-color;
 $code-literal-color:                $light-text-color;
-$code-inline-bg-color:              #f0f2f1;
+$code-inline-bg-color:              darken($code-bg-color, 3%);
 $code-window-bg-color:              #ebebeb;
 $code-window-border-top-color:      #eaeae9;
 $code-window-border-bottom-color:   #dfdfde;
