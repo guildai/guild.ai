@@ -75,7 +75,7 @@ model.fit(
     epochs=epochs,
     verbose=1,
     validation_data=(x_test, y_test),
-    callbacks=[keras.callbacks.TensorBoard()])
+    callbacks=[keras.callbacks.TensorBoard(".")])
 ```
 
 ^ guild-start/fashion_mnist_mlp.py
@@ -168,8 +168,7 @@ This command lists files for the latest run. In the case of
 
 ``` output
 ~/.guild/runs/0fbff0c44b4011e9a325d017c2ab916f:
-  logs/
-  logs/events.out.tfevents.1553107414.dakota
+  events.out.tfevents.1553107414.localhost
 ```
 
 !!! note
@@ -290,7 +289,6 @@ guild diff --flags --source
     Here's the diff of flags in Meld:
 
     ![](/assets/img/diff-meld.png)
-
 
 We can see from this comparison exactly what changed across the two
 runs: the learning rate went from `0.001` to `0.01`. While this is a

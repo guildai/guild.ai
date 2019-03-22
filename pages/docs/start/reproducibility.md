@@ -1,3 +1,5 @@
+tags: get-started
+
 # Reproducibility
 
 In this guide, we introduce the topic of *reproducibility* in Guild by
@@ -60,6 +62,16 @@ Verify that your `guild-start` project structure is now:
 </li>
 </ul>
 </div>
+
+Replace `<name of S3 bucket>` with the name of the S3 bucket created
+in [Requirements](#requirements) above.
+
+!!! note
+    If a `remotes` section already exists in `config.yml`, omit
+    that line from the snippet above and only copy the last three
+    lines.
+
+Save you changes.
 
 ## Get project help
 
@@ -353,9 +365,8 @@ Using your text editor, modify `guild.yml` to be:
       description:
         An experiment that explores the impact of dropout
 
-        We find that dropout above 0.9 starts to negatively impacts
-        learning. Dropout rates above 0.95 appear to be pathological,
-        at least for short training runs.
+        We find that dropout above 0.9 starts to negatively impact
+        learning. Dropout rates above 0.95 appear to be pathological.
 
         Use `guild compare 1:5 --table -cc =dropout,val_acc` to
         compare results after running experiment.
@@ -423,7 +434,7 @@ The process for reproducibility is now quite simple:
 
 1. Get project source (e.g. from GitHub, etc.)
 2. Change to project directory
-3. Run ``guild help`` to discover project models and operations
+3. Run ``guild help`` to discover project models and operations (optional)
 4. Use ``guild run`` to run operations, including any operations that
    recreate experiments
 
