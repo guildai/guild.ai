@@ -5,14 +5,13 @@ hide_pagenav: yes
 
 # Support
 
-To resolve an issue you're having with Guild AI, search this
-documentation or review the links below---there's a good chance your
-topic has been covered here.
+The easiest way to get quick and outstanding support is to hop onto
+our Slack channel:
 
-If you're still facing issues, [](alias:open-an-issue) and we'll help!
+[<i class="fab fa-slack-hash"></i> Guild AI Slack Channel
+  ->](https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU)
 
-We also have a [Slack channel
-->](https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU)
-you can join.
+If you'd like to report a bug or request a feature, use our GitHub
+issue tracker:
 
-- [Links](category:/#support)
+[<i class="fab fa-github"></i> GitHub Issues ->](alias:open-an-issue)
