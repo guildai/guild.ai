@@ -26,11 +26,12 @@
 
   &.tip .admonition-title:before {
     content: "\f0eb";
+    color: $callout-tip-color;
   }
 
   &.info .admonition-title:before,
   &.note .admonition-title:before {
-    content: "\f30f";
+    content: "\f05a";
   }
 
   &.important .admonition-title:before {
@@ -41,6 +42,10 @@
 
   &.important {
     @include callout-variant($callout-warning-color);
+  }
+
+  &.tip {
+    @include callout-variant($callout-tip-color);
   }
 
   > p:last-child {

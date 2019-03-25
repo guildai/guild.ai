@@ -8,8 +8,6 @@ In this quick start guide, we create a mock training script and run it
 with Guild. The script doens't do any actual training, but illustrates
 some basic features of Guild.
 
-[TOC]
-
 ## Requirements
 
 {!start-requirements.md!}
@@ -68,7 +66,8 @@ Verify that your project structure is:
 
 ## Run `train.py` with Guild
 
-In a command shell, change to the project directory:
+If you haven't done so already, in a command console, change to the
+project directory:
 
 ``` command
 cd guild-start
@@ -100,7 +99,7 @@ loss: 0.456723
 ```
 
 !!! note
-    The "noisy" function applies a random component to *loss* so
+    The "noisy" function applies a random component to *loss* ---
     your result will be different.
 
 Congratulations! You've run your first training script with
@@ -109,7 +108,7 @@ section, we examine what was created.
 
 ## Examine the run
 
-List available runs by running:
+List available runs:
 
 ``` command
 guild runs
@@ -121,8 +120,8 @@ Guild shows the recent run for `train.py`:
 [1:25835712]  train.py  2019-03-15 07:45:00  completed
 ```
 
-The list shows each available run (in this case, we've only run
-`train.py` once) with its ID, operation name, start time, and status.
+The list shows each available run (in this case, we've run `train.py`
+once) with its ID, operation name, start time, and status.
 
 !!! note
     In cases where Guild shows a run ID, the ID will be different
@@ -130,7 +129,7 @@ The list shows each available run (in this case, we've only run
     unique ID to ensure that each run can be tracked as a unique
     experiment, even if it's copied to another system.
 
-Next, show information for the run:
+Show information for the run:
 
 ``` command
 guild runs info
@@ -157,10 +156,14 @@ flags:
 
 Note a few things:
 
-- Each experiment is uniquely identified with a unique ID
+- Each experiment is identified with a unique ID
 - Guild captures a wide range of experiment metadata
 - All information associated with the run is stored on disk in a
-  directory (see `run_dir` above)
+  directory (see `run_dir` in the listing above) [^ls-all]
+
+[^ls-all]: To see all of the files associated with a run, use ``guild
+    ls --all`` --- this shows everything associated with a run in
+    Guild.
 
 ## Train a second time
 
@@ -207,19 +210,15 @@ navigate to the `loss` column and press `1`. The key `1` tells Guild
 to sort the runs in numeric ascending order. For a complete list of
 key bindings in Compare, type `?` (the question mark).
 
-Press `q` to exit Guild Compare.
+Press `q` to exit Compare.
 
-Next, run this command to show the runs sorted by *loss* in
-non-interactive mode:
+Run this command to find the run with the lowest loss:
 
 ``` command
-guild compare --table --min loss
+guild compare --table --min loss --top 1
 ```
 
-The "best" run (i.e. the run with the lowest value for *loss* ---
-though this is a contrived example) is listed first.
-
-You can also generate output in CSV format to use in a spreadsheet:
+You can export data in CSV format to use in a spreadsheet:
 
 ``` command
 guild compare --csv
@@ -228,9 +227,8 @@ guild compare --csv
 ## Summary
 
 Contratulations, you've run your first training operation in Guild! It
-was a mock training function (with no machine learning whatsoever <i
-class="fal fa-smile"></i>) but served to highlight important features
-in Guild:
+was a mock training function (with no machine learning whatsoever!)
+but served to highlight important features in Guild:
 
 - Run scripts without modification, automatically detecting
   hyperparameters and default values

@@ -92,6 +92,7 @@ markdown_extensions:
           href: '{1}'
           arg_maps:
             - control-key: https://en.wikipedia.org/wiki/Control_key
+              dependencies: /docs/dependencies.md
               flag: /docs/operations/#flags
               guild-env: /docs/environments/
               guild-file: /docs/reference/guild-file/
@@ -189,10 +190,11 @@ pages:
           - docs/start/backup-restore.md
           - docs/start/remote-train.md
       - Concepts:
+          - docs/runs.md
           - docs/operations.md
           - docs/models.md
           - docs/resources.md
-          - docs/runs.md
+          - docs/dependencies.md
           - docs/optimizers.md
           - docs/packages.md
           - docs/tests.md
@@ -204,9 +206,9 @@ pages:
           - docs/tools/tensorboard.md
       - Guides:
           - docs/guides/index.md
-          - docs/guides/bayesian-optimization.md
+          #- docs/guides/bayesian-optimization.md
           - docs/guides/compare.md
-          - docs/guides/export-runs.md
+          #- docs/guides/export-runs.md
           - docs/guides/export-spreadsheet.md
           - docs/guides/fashion-mnist.md
 

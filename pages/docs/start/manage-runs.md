@@ -4,8 +4,6 @@ tags: get-started
 
 This guide provides a quick tour of run management functions.
 
-[TOC]
-
 ## Requirements
 
 {!start-requirements-2.md!}
@@ -63,9 +61,9 @@ option:
 guild run echo.py -y
 ```
 
-`echo.py` supports a single [](term:flag) *msg*, which it prints to
-the console. You can list supported flags for a script by specifying
-the `--help-op` option to the `run` command:
+`echo.py` supports a single flag: `msg`, which it prints to the
+console. You can list supported flags for a script by specifying the
+`--help-op` option to the `run` command:
 
 ``` command
 guild run echo.py --help-op
@@ -97,6 +95,11 @@ Press `Enter` to continue. The script prints the alternate greeting:
 ``` output
 Yo Guild!
 ```
+
+While this is a very simple example --- certainly not related to
+machine learning --- it demonstrates that Guild runs your Python
+script unmodified and captures the result as a unique
+experiment. Later we see what Guild tracks for these operations.
 
 ## Stop runs
 
@@ -206,10 +209,12 @@ guild ls
 By default, Guild shows files associated with the latest run. You can
 specify a different run using a run index or run ID.
 
+## Show text files
+
 The `echo.py` writes the value of the *msg* flag to a file named
 `message.txt`.
 
-You can display the contents of a file using [](cmd:cat):
+You can display the contents of a file using the [](cmd:cat) command:
 
 ``` command
 guild cat message.txt
@@ -229,6 +234,17 @@ guild cat message.txt 2
 Hello Guild!
 ```
 
+## Diff files
+
+Guild supports diffing information across runs. For example, to diff
+`message.txt` across the last two runs, use:
+
+``` command
+guild diff --path message.txt
+```
+
+For more information, see the [](cmd:diff) command.
+
 ## Open run files
 
 Use the [](cmd:open) command to open a run directory in your system
@@ -240,11 +256,11 @@ guild open
 
 By default, Guild opens the latest run directory.
 
-You can also open specific files using the `-p` or `--path` command
-line option:
+You can open specific files using the `-p` or `--path` command line
+option:
 
 ``` command
-guild open -p message.txt
+guild open --path message.txt
 ```
 
 You can browse the source code associated with a run by specifying the
@@ -269,8 +285,8 @@ Run index ranges are in the form `START:STOP` and will select all runs
 starts with index `START` up to and including the run with index
 `STOP`.
 
-You can additionally specify status filters such as `--terminated`,
-`--error`, `--completed`, etc.
+You can specify status filters such as `--terminated`, `--error`,
+`--completed`, etc.
 
 For example, to delete the last run, use:
 
@@ -311,6 +327,65 @@ guild runs restore 1
     To show deleted runs --- i.e. runs that can be restored ---
     use ``guild runs --deleted`` or the short version ``guild runs
     -d``.
+
+## Label runs
+
+Labels are short strings that you can associate with a run. Labels
+appear in run lists and in run comparisons by default. Labels can also
+be used to filter runs in any run-related command.
+
+To label the latest run, use:
+
+``` command
+guild label get-started
+```
+
+Guild prompts before applying any labels, letting you see which runs
+are effected before any changes are made:
+
+``` output
+You are about to label the following runs with 'get-started':
+  [f8d7c6e8]  echo.py  2019-03-23 10:18:54  completed
+  Continue? (Y/n)
+```
+
+Press `Enter` to apply the label.
+
+Show runs with the `get-started` label:
+
+``` command
+guild runs --label get-started
+```
+
+You can apply labels using a variety of selection options:
+
+- Run indexes and IDs
+- Operation
+- Run status
+- Labels
+- Marked status
+
+For example, to label all of the `echo.py` runs, use:
+
+``` command
+guild label --operation echo.py get-started
+```
+
+Press `Enter` to apply the label.
+
+You can clear labels using the `--clear` command line option:
+
+``` command
+guild label --clear 1:2
+```
+
+This command removes the label from the last two runs.
+
+For more information, see the [](cmd:label) command.
+
+## Marking runs
+
+Runs may be *marked* to signify they have special meaning
 
 ## Summary
 

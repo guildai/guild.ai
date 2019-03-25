@@ -260,8 +260,8 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-<a class="btn btn-default btn-promo-next" href="/docs/guides/bayesian-optimization/">
-  Guide to Bayesian Optimization<i class="fa next"></i></a>
+<a class="btn btn-default btn-promo-next" href="/docs/start/optimization/">
+  Guide to Hyperparameter Optimization<i class="fa next"></i></a>
 
 ---
 
