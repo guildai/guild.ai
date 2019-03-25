@@ -1,4 +1,4 @@
-ags: get-started
+tags: get-started
 
 # Train an Image Classifier
 
@@ -28,7 +28,7 @@ project:
 mkdir guild-start
 ```
 
-Create a file named `fasion_mnist_mlp.py`, located in the
+Create a file named `fashion_mnist_mlp.py`, located in the
 `guild-start` directory:
 
 ``` python
@@ -188,7 +188,7 @@ automatically syncs TensorBoard with the current runs.
 
 ![](/assets/img/tb-2.png)
 
-^ Guild integrates with TensorBoard ande automatically synchronizes
+^ Guild integrates with TensorBoard and automatically synchronizes
 filtered runs
 
 See the [](cmd:tensorboard) command for more information on running

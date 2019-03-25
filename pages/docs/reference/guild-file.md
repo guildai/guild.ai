@@ -392,7 +392,7 @@ attribute as named objects.
 ## Flag types
 
 A type may be specified for a flag, indicating the set of values that
-may be used for the flag. By defaut, flag values are applied as
+may be used for the flag. By default, flag values are applied as
 provided, either as default values or as command line arguments.
 
 Supported types are:

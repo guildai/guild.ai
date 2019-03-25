@@ -45,6 +45,8 @@ remotes:
     bucket: <name of S3 bucket>
 ```
 
+^ Adding `s3` to the `remotes` section in `~/.guild/config.yml`
+
 Replace `<name of S3 bucket>` with the name of the S3 bucket created
 in [Requirements](#requirements) above.
 
@@ -53,7 +55,7 @@ in [Requirements](#requirements) above.
     that line from the snippet above and only copy the lines after
     `remotes`.
 
-Save you changes.
+Save you changes to `~/.guild/config.yml`.
 
 ## Set AWS environment variables
 
@@ -136,7 +138,7 @@ Synchronizing runs with s3
 ## Delete the latest local run
 
 Later we restore the `fashion_mnist_mlp.py` run from S3 --- so let's
-permanently delete the local run first:
+delete the local run first:
 
 ``` command
 guild runs rm 1
@@ -187,10 +189,10 @@ guild runs rm --permanent -r s3
 Note that this command deletes *all* of the runs from the `s3` remote
 bucket --- not just the latest run. Guild prompts you before deleting.
 
-Verify the list and press `n` followed by `Enter`.
+Verify the list and press `y` followed by `Enter`.
 
 !!! note
-    If you don't use the `--permamnent` command line option, the
+    If you don't use the `--permanent` command line option, the
     run is not deleted from S3 as it can be restored using ``guild
     restore -r s3``. If you want to truly delete the run, use the
     `--permanent` option.

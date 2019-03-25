@@ -63,16 +63,6 @@ Verify that your `guild-start` project structure is now:
 </ul>
 </div>
 
-Replace `<name of S3 bucket>` with the name of the S3 bucket created
-in [Requirements](#requirements) above.
-
-!!! note
-    If a `remotes` section already exists in `config.yml`, omit
-    that line from the snippet above and only copy the last three
-    lines.
-
-Save you changes.
-
 ## Get project help
 
 In you haven't done so already, in a command console, change to the
@@ -88,8 +78,8 @@ While in the directory `guild-start`, show project help by running:
 guild help
 ```
 
-Guild shows a help screen for the project. In particular, it shows the
-models defined in the Guild file.
+Guild shows a help screen for the project, which includes models and
+operations defined in the Guild file.
 
 Press `q` to exit the help screen.
 
@@ -176,7 +166,7 @@ and Guild will do the rest.
 
 List available runs:
 
-```
+``` command
 guild runs
 ```
 
@@ -203,7 +193,7 @@ specified in the `main` operation attribute:
       main: fashion_mnist_mlp
 ```
 
-^ `fasion_mnist_mlp` is the Python module that is executed when
+^ `fashion_mnist_mlp` is the Python module that is executed when
 running the operation
 
 When we run ``guild help``, we see that Guild automatically detects
@@ -245,7 +235,6 @@ Using your text editor, modify `guild.yml` to be:
           max: 1e-2
         dropout:
           description: Dropout rate used to help prevent overfitting
-          max: 0.9
 ```
 
 ^ Adding `flags`
@@ -282,7 +271,7 @@ guild: invalid value for lr: out of range (greater than max 0.01)
 
 ## Exploring dropout
 
-Note that in the last section we omitted a minimim value for
+Note that in the last section we omitted a minimum value for
 dropout. Surely there's a rate above which dropout is harmful to
 learning --- but what is that rate? We might pick a value --- say
 `0.5` --- but what rationale do we have for selecting that value?

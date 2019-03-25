@@ -181,7 +181,7 @@ to show information for the second to last run:
 guild runs info 2
 ```
 
-You can request additional information by specidying various command
+You can request additional information by specifying various command
 line options:
 
 - Files associated with the run (`--files`)
@@ -301,7 +301,7 @@ You are about to delete the following runs:
 ```
 
 By default, Guild prompt before deleting runs. You can bypass this
-promt by specifying the `-y` or `--yes` command line option.
+prompt by specifying the `-y` or `--yes` command line option.
 
 !!! note
     Deleted runs can be restored later using [runs

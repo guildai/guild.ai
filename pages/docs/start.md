@@ -5,7 +5,7 @@ tags: get-started
 # Guild AI Quick Start
 
 In this quick start guide, we create a mock training script and run it
-with Guild. The script doens't do any actual training, but illustrates
+with Guild. The script doesn't do any actual training, but illustrates
 some basic features of Guild.
 
 ## Requirements
@@ -226,7 +226,7 @@ guild compare --csv
 
 ## Summary
 
-Contratulations, you've run your first training operation in Guild! It
+Congratulations, you've run your first training operation in Guild! It
 was a mock training function (with no machine learning whatsoever!)
 but served to highlight important features in Guild:
 

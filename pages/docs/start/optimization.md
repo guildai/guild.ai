@@ -5,7 +5,7 @@ tags: get-started
 In this guide, we look more closely at Guild's support for
 [hyperparameter optimization
 ->](https://en.wikipedia.org/wiki/Hyperparameter_optimization). Specifically,
-we look at a progession of techiques, starting with **grid search**
+we look at a progression of techniques, starting with **grid search**
 and **random search** and moving to more sophisticated methods using
 **Bayesian algorithms**.
 
@@ -126,13 +126,13 @@ After the 6 trials have completed, compare the runs:
 guild compare --table --min loss
 ```
 
-By now, we've accumlated enough runs to show that values of *x* near
+By now, we've accumulated enough runs to show that values of *x* near
 `-0.3` are indeed optimal with respect to minimizing *loss*.
 
 ## Random search
 
 Random search is a method used in machine learning to explore
-hyperparamter spaces at random. Random search is a surprisingly
+hyperparameter spaces at random. Random search is a surprisingly
 effective technique to find optimal hyperparameter values when you can
 spend enough time searching.
 
@@ -187,7 +187,7 @@ The argument `1:5` tells Guild to show only runs starting with index
 
 In the steps above, we used grid and random search methods to find
 values for *x* that correspond with low *loss*. This illustrates a
-common problem in machine learning: finding hyperparmeter values that
+common problem in machine learning: finding hyperparameter values that
 are optimal for a given model and data set.
 
 Here's a plot that shows the relationship between *x* and *loss* for
@@ -310,7 +310,7 @@ guild run gp --help-op
 ```
 
 Feel free to experiment with different optimizers and optimizer
-flags. For example, to run 20 trials using Gaussian proceses (i.e. the
+flags. For example, to run 20 trials using Gaussian processes (i.e. the
 `gp` optimizer) using *negative expected improvement* and an explicit
 value for *noise*, use:
 

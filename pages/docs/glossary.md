@@ -36,7 +36,7 @@ A specification used to start a run.
 
 ## Range value
 
-A flag value that specifies a range within minimim and maximum values.
+A flag value that specifies a range within minimum and maximum values.
 
 ## Run
 

@@ -9,9 +9,9 @@ engineers to both learn from and contribute to an open source paper
 implementation. The program supports two goals:
 
 - Improve the reproducibility published results
-- Faciliate the use of project code in software applications
+- Facilitate the use of project code in software applications
 
-Program partipants work together to select a project and generate
+Program participants work together to select a project and generate
 project artifacts as described below.
 
 ## Select a project
@@ -42,7 +42,7 @@ project artifacts as described below.
 
 ## Commitments
 
-- To abide by [Guildlines](#guidelines)
+- To abide by [Guidelines](#guidelines)
 - To fix bugs and answer questions associated with [Project
   artifacts](#project-artifacts) in a timely manner
-- To contribute fixes project issues whnever possible
+- To contribute fixes project issues whenever possible

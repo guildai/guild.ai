@@ -64,6 +64,8 @@ remotes:
       guild check --verbose
 ```
 
+^ Adding `ec2` to the `remotes` section in `~/.guild/config.yml`
+
 !!! note
     If a `remotes` section already exists in `config.yml`, omit
     that line from the snippet above and only copy the lines after
@@ -71,12 +73,12 @@ remotes:
 
 You can change the region from `us-east-2` to a different region
 (e.g. your IAM user doesn't have rights to start instances in that
-region). If you change the region, you must also change the `ami` to
-the [Deep Learning -
+region or you want to run an instance closer to you). If you change
+the region, you must also change the `ami` to the [Deep Learning -
 Ubuntu](https://aws.amazon.com/marketplace/pp/B077GCH38C) AMI
 available for that region.
 
-Save you changes.
+Save you changes to `~/.guild/config.yml`.
 
 ## Set AWS environment variables
 
@@ -94,7 +96,20 @@ EC2 instances.
 
 ## Start the remote
 
-Start the `ec2` remote by running:
+Check the status of the `ec2` remote by running:
+
+``` command
+guild remote status ec2
+```
+
+Guild uses checks the status of the remote --- since we haven't
+started it yet, you should see:
+
+``` output
+guild: remote ec2 is not available (not started)
+```
+
+Let's start the `ec2` remote:
 
 ``` command
 guild remote start ec2
@@ -107,8 +122,8 @@ Continue? (Y/n)
 
 Press `Enter` to start the server.
 
-Guild starts a new `p2.xlarge` instance. This process may take a
-few minutes to complete.
+Guild starts a new `p2.xlarge` instance. This process takes a few
+minutes to complete.
 
 When the command finishes, very that the remote is available by
 running:
@@ -117,7 +132,7 @@ running:
 guild remote status ec2
 ```
 
-If the remote is availble, Guild will print:
+If the remote is available, Guild will print:
 
 ``` output
 Getting remote status
@@ -206,13 +221,26 @@ This action may result in permanent loss of data.
 Continue? (y/N)
 ```
 
-Type `y` and `Enter` to confirm the command.
+Press `y` and `Enter` to confirm the command.
 
 !!! important
     The [remote stop](cmd:remote-stop) command terminates
     the EC2 sever --- any runs on the remote will be deleted. If you
     want to keep any of the runs on the remote, use the [](cmd:pull)
     command to copy the remote servers before stopping the remote.
+
+When the operation finishes, verify that the remote is stopped by
+running:
+
+``` command
+guild remote status ec2
+```
+
+If the server is stopped, you will see:
+
+``` output
+guild: remote ec2 is not available (not started)
+```
 
 !!! important
     We recommend verifying that all EC2 instances have

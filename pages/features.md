@@ -48,7 +48,7 @@ hide_in_pagenav: yes
         <li>You can <strong>backup</strong> trained models &mdash;
           some of which may have taken days to generate &mdash; for
           safekeeping</li>
-        <li>You can <strong>optimize</strong> your model by focussing
+        <li>You can <strong>optimize</strong> your model by focusing
         on approaches that perform well and avoiding those that
         don't</li>
       </ul>
@@ -107,7 +107,7 @@ hide_in_pagenav: yes
     <h4>When would I use this?</h4>
     <p>
       Whenever you want to improve your model! Model tuning is one of
-      the most effective way to improve accuray &mdash; in some cases
+      the most effective way to improve accuracy &mdash; in some cases
       it can be more effective than more data! And Guild makes it
       easy, so why not give it a try and see what happens?
     </p>
@@ -125,7 +125,7 @@ hide_in_pagenav: yes
     <h4>But I prefer manual tuning</h4>
     <p>
       We wholeheartedly agree! That's why Guild supports an
-      incremental approach to hyperparameter tunning:
+      incremental approach to hyperparameter tuning:
       <ul class="md">
         <li>Use well-known hyperparameters during model development
           <div class="text-editor inline sm">

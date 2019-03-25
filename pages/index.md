@@ -408,7 +408,7 @@ hide_in_pagenav: yes
       <li>Compare every detail: <i>hyperparameters</i>, <i>source
       code</i>, <i>logs</i>, <i>command</i>, environment and any
       generated file</li>
-      <li>Use to answer, <i>&ldquo;What changed beween these two runs
+      <li>Use to answer, <i>&ldquo;What changed between these two runs
       that may have influenced this result?&rdquo;</i></li>
       <li>Customize using the diff tools of your choice</li>
     </ul>
@@ -545,7 +545,7 @@ experiment. From there you can learn about more advanced features.
 <p class="expand">
 
 Not convinced that Guild is right for you? Spend a few more minutes
-browing its features.
+browsing its features.
 
 </p>
 <a class="btn btn-primary cta" href="/features/"
