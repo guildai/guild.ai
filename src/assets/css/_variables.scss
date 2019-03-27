@@ -63,7 +63,7 @@ $color-white:                       #ffffff;
 $color-white-darker:                #ffffff;
 
 // Shadow
-$default-box-shadow:                rgba(0, 0, 0, 0.5) 8px 12px 25px;
+$default-box-shadow:                rgba(0, 0, 0, 0.5) 5px 8px 18px;
 $box-shadow-less:                   rgba(0, 0, 0, 0.4) 5px 8px 18px;
 
 // Breaks
@@ -106,8 +106,8 @@ $btn-bg-color-dark:                 #cccccc;
 $btn-default-color:                 $light-text-color;
 
 // _code
-$code-bg-color:                     #f0f0f0;
-$code-border-color:                 $border-color-dark;
+$code-bg-color:                     #fff;
+$code-border-color:                 #777;
 $code-inline-color:                 $light-text-color;
 $code-literal-color:                $light-text-color;
 $code-inline-bg-color:              darken($code-bg-color, 3%);

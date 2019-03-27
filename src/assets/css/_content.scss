@@ -6,6 +6,9 @@ body[data-spy] {
   padding: 60px 50px 90px;
   font-size: $default-font-size;
   line-height: $default-line-height;
+  background-color: #fef2ea;
+  // background-color: #f3f5fc;
+
 
   @media screen and (max-width: $break-md) {
     padding: 45px 30px 75px;

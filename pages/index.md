@@ -245,12 +245,55 @@ hide_in_pagenav: yes
 
 <div class="row">
   <div class="col-lg-12">
-    <div class="text-editor inline">
+
+    <div class="text-editor inline" style="width:590px">
       <div class="text-body">
-        $ <span class="typed-cursor">guild run
-        train.py x=[-2.0:2.0] --optimizer bayesian</span>
+        $ <span class="typed-cursor">guild help</span>
       </div>
     </div>
+
+    <p>&nbsp;</p>
+    <p>&ldquo; &rdquo;&rsquo;</p>
+    <p>&nbsp;</p>
+
+    <!--
+
+    <div class="text-editor inline" style="width:670px">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild run key-findings</span>
+      </div>
+    </div>
+
+
+    <div class="text-editor inline" style="width:670px">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild push arya-experiments-on-s3</span>
+      </div>
+    </div>
+
+
+
+    <div class="text-editor inline" style="width:670px">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild run train.py dropout=uniform[0.0:0.9] --optimizer bayesian</span>
+      </div>
+    </div>
+
+    <div class="text-editor inline">
+      <div class="text-body">
+        $ <span class="typed-cursor">guild pull arya-experiments-on-s3</span>
+      </div>
+    </div>
+
+    <pre class="language-yaml gf-sample" style="width:560px">key-findings:
+  description: Key findings for dropout between 0.8 and 0.95
+  steps:
+    - run: train.py dropout=0.8
+    - run: train.py dropout=0.9
+    - run: train.py dropout=0.95</pre>
+
+    -->
+
     <ul class="md features">
       <li>Use <code>--optimizer</code> to minimize (or maximize) an objective</li>
       <li>Guild supports the latest Bayesian optimizers including
