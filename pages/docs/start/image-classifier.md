@@ -10,6 +10,7 @@ set.
 ## Requirements
 
 {!start-requirements.md!}
+{!cli-requirements.md!}
 
 ## Image classifier training script
 

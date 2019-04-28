@@ -11,6 +11,7 @@ some basic features of Guild.
 ## Requirements
 
 {!start-requirements.md!}
+{!cli-requirements.md!}
 
 ## Mock training script
 

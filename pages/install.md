@@ -13,9 +13,8 @@ hide_in_pagenav: yes
 
 Guild AI has the following requirements:
 
-- macOS, Linux, or Windows
-- [Docker ->](https://docs.docker.com/docker-for-windows/install/) (required for Windows only)
-- Python 2.7 or Python 3
+- macOS, Linux, Windows (Windows requires Python 3)
+- Python 2.7, Python 3
 - [pip ->](https://pip.pypa.io/en/stable/installing/)
   or [conda ->](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
 
@@ -64,9 +63,6 @@ pip install guildai
     installed. Refer to [About Docker CE
     ->](https://docs.docker.com/install/) for instructions for your
     platform.
-
-!!! note
-    Docker is the only way to run Guild on Windows at this time.
 
 Guild AI provides a Docker image that you can install by running:
 
@@ -137,8 +133,13 @@ available on your PATH using one of these methods:
 
 ## Install TensorFlow
 
+!!! important
+    Guild requires TensorFlow for integrated TensorBoard
+    support only --- you are not required to use TensorFlow in your
+    work.
+
 Guild requires TensorFlow but does not install it for
-you. [^tf-install] You can use `pip` to install TensorFlow by running:
+you.[^tf-install] You can use `pip` to install TensorFlow by running:
 
 [^tf-install]:
     TensorFlow is a rapidly evolving software library and is provided as
