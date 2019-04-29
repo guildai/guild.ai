@@ -419,7 +419,7 @@ guild runs rm -Ep
 To delete all failed and terminated runs, use:
 
 ``` command
-guild runs -ET
+guild runs rm -ET
 ```
 
 ## Restore deleted runs
