@@ -5,6 +5,8 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
+<div id="get-started-fab"></div>
+
 # Install Guild AI
 
 [TOC]

@@ -399,24 +399,26 @@ Deleted runs can be restored using the [runs
 restore](cmd:runs-restore) command. Refer to [Restoring deleted
 runs](#restore-deleted-runs) below for details.
 
+You can permanently delete runs by including the `-p, --permanent`
+option.
+
+!!! important
+    Permanently deleted runs cannot be recovered! We
+    recommend that you do NOT permanently delete runs as a part of
+    your typical work flow. By omitting the `--permanent` flag, you
+    have the opportunity to recover a run that you unexpectedly
+    need. In time you can purge deleted runs using the [](cmd:purge)
+    command (see below).
+
 ### Frequently used delete commands
 
-To delete all failed runs, use:
+To delete all failed runs (i.e. "error" status), use:
 
 ``` command
 guild runs rm -E
 ```
 
-To permanently delete all failed runs, use:
-
-``` command
-guild runs rm -Ep
-```
-
-!!! important
-    Permanently deleted runs cannot be recovered!
-
-To delete all failed and terminated runs, use:
+To delete all failed as well as terminated runs, use:
 
 ``` command
 guild runs rm -ET
