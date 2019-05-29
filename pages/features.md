@@ -81,7 +81,7 @@ hide_in_pagenav: yes
       Auto ML stands for <em>automated machine learning</em> &mdash;
       the process of applying machine learning to machine
       learning. Rather than manually design models and select
-      hyperparameters, have the automatically learn them!  The result
+      hyperparameters, automatically learn them! The result
       is <strong>better models in less time</strong>.
 
       <div class="text-editor inline sm">
