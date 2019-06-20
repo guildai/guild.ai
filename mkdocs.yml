@@ -38,7 +38,7 @@ theme:
   include_search_page: false
   search_index_only: true
   static_templates:
-    - search.html
+    - version.html
 plugins:
   - search
   - nav_resolve
