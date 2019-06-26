@@ -70,7 +70,7 @@ hide_in_pagenav: yes
   </div>
 </div>
 
-## Auto ML
+## Hyperparameter Search
 
 <div class="row feature-focus">
   <div class="col-md-2 col-sm-2 icon">
@@ -78,6 +78,9 @@ hide_in_pagenav: yes
   </div>
   <div class="col-md-10 col-sm-10 detail">
     <p>
+
+
+
       Auto ML stands for <em>automated machine learning</em> &mdash;
       the process of applying machine learning to machine
       learning. Rather than manually design models and select

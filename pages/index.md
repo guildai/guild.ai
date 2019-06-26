@@ -12,7 +12,7 @@ hide_in_pagenav: yes
     -->
     <h3>Track Experiments Automatically</h3>
     <p>
-      Track experiments, capturing every detail including
+      Capture every detail of your experiments including
       performance, generated files, logs, and source code.
     </p>
     <img title="200x100"
@@ -65,12 +65,13 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-8">
     <p>
-      Guild helps you <strong>train better models in less
-      time</strong>. Effective machine learning is a function of
-      systematic experimentation &mdash; one experiment leads to
-      another as you deepen your understanding. The faster and more
-      effective you can apply experiments, the sooner you'll complete
-      your work.
+
+      Guild helps you <strong>train better models</strong> in less
+      time. Effective machine learning is a function of systematic
+      experimentation. One experiment leads to another as you deepen
+      your understanding. The faster you apply experiments, the sooner
+      you complete your work.
+
     </p>
   </div>
 </div>
@@ -80,13 +81,15 @@ hide_in_pagenav: yes
     <h4>Who uses Guild AI?</h4>
   </div>
   <div class="col-lg-8">
-    <p>Guild AI is used by <strong>machine learning engineers and
-      researchers</strong> to run, track, and compare
-      experiments. Each experiment yields valuable information that is
-      captured and used to inform next steps. Scientists and
-      developers leverage their experiment results to build deeper
-      intuition, troubleshoot issues, and automate model architecture
-      and hyperparameter optimization.</p>
+    <p>
+
+      <strong>Machine learning engineers and researchers</strong> use
+      Guild to run, track, and compare experiments. Each experiment
+      yields valuable information used to deepen understanding and
+      inform next steps. Users further explore model performance with
+      hyperparameter search and Bayesian optimization.
+
+    </p>
   </div>
 </div>
 
@@ -96,54 +99,139 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-8">
     <p style="margin-bottom:0">
-      Guild is <strong>cross platform and framework
-      independent</strong> &mdash; you can train and capture
-      experiments in literally any language using any library. Guild
-      runs your unmodified code, which means you get to use the
-      libraries you want. Guild doesn't require databases or other
-      infrastructure to management experiments &mdash; it's simple and
-      easy to use. This frees you to focus on what's
-      important: <em>building state-of-the-art models and machine
-      learning apps</em>.
+
+      Guild is <strong>light weight and easy to use</strong>. It's an
+      open source, external toolkit &mdash; not a framework. Guild
+      runs your unmodified code. This lets you automate experiments
+      using any library or script. Guild doesn't depend on databases
+      or other infrastructure to manage experiments.
+
     </p>
   </div>
 </div>
 
 ---
 
-# Features
+<div class="row match-height other-features">
+  <div class="col-lg-6">
+    <i class="far fa-paper-plane"></i>
+    <h4>Ultra light weight</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-box-check"></i>
+    <h4>Manage experiments</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-bullseye-arrow"></i>
+    <h4>Tune hyperparameters</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-analytics"></i>
+    <h4>Compare and analyze runs</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-code-branch"></i>
+    <h4>Automate workflow</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-box-check"></i>
+    <h4>Publish and share results</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-box-check"></i>
+    <h4>Remote training and backup</h4>
+    <p>
+
+    </p>
+  </div>
+  <div class="col-lg-6">
+    <i class="far fa-box-check"></i>
+    <h4>Jupyter Notebook API</h4>
+    <p>
+
+    </p>
+  </div>
+</div>
+
 
 <div class="row match-height other-features">
   <div class="col-lg-4">
     <i class="far fa-box-check"></i>
     <h4>Experiment management</h4>
     <p>
-      When you run your training scripts with Guild, you get
-      experiment management automatically. Use the results to make
-      informed decisions about your models.
+
+      Guild is a light weight experiment management toolkit. Run your
+      training scripts with Guild to capture your results and use them
+      to make better decisions.
+
     </p>
   </div>
   <div class="col-lg-4">
     <i class="far fa-bullseye-arrow"></i>
-    <h4>Auto ML</h4>
+    <h4>Hyperparameter tuning</h4>
     <p>
-      Guild makes it easy to optimize hyperparameters and model
-      architecture. With a single command, you can apply
-      state-of-the-art algorithms to your training scripts.
+
+      Guild makes it trivial to run grid search, random search, and
+      Bayesian optimization. There's no need to change your code or
+      adopt a specialized framework.
+
     </p>
   </div>
+
+  <div class="col-lg-4">
+    <i class="far fa-analytics"></i>
+    <h4>Analysis</h4>
+    <p>
+
+      Compare runs across a variety of metrics. Consider not only
+      accuracy, but also training time, latency, memory, and
+      others. Visualize results in TensorBoard.
+
+    </p>
+  </div>
+
   <div class="col-lg-4">
     <i class="far fa-balance-scale"></i>
     <h4>Reproducibility</h4>
     <p>
-      Guild makes it easy to recreate your experiments. By
-      systematically running your scripts and capturing their output,
-      Guild lets others run and compare results.
+
+      Guild makes it easy to recreate experiments across
+      systems. Include a simple Guild file in your project to document
+      trials and let others rerun them.
+
     </p>
   </div>
-</div>
 
-<div class="row match-height other-features">
+  <div class="col-lg-4">
+    <i class="far fa-balance-scale"></i>
+    <h4>Reproducibility</h4>
+    <p>
+
+      Guild makes it easy to recreate experiments across
+      systems. Include a simple Guild file in your project to document
+      trials and let others rerun them.
+
+    </p>
+  </div>
+
   <div class="col-lg-4">
     <i class="far fa-analytics"></i>
     <h4>Analytics</h4>
@@ -154,7 +242,7 @@ hide_in_pagenav: yes
   </div>
   <div class="col-lg-4">
     <i class="far fa-route"></i>
-    <h4>End-to-end learning</h4>
+    <h4>Workflow</h4>
     <p>
       Guild has a powerful workflow feature that lets you optimize
       over a series of operations, letting you apply Auto ML to true
