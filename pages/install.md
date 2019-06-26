@@ -34,7 +34,7 @@ If you want to install Guild at the system level, omit the `--user`
 option and run the command as an administrator:
 
 ``` command
-sudo guild install guildai
+sudo pip install guildai
 ```
 
 If you want the latest pre-release version of Guild AI, use the
