@@ -1,28 +1,54 @@
 navbar_item: yes
 hide_sidenav: yes
-hide_in_pagenav: yes
 hide_pagenav: yes
 
-# Support
+<div id="get-started-fab"></div>
 
-## Slack
+# Guild AI Support
 
-The easiest way to get quick and outstanding support is to hop onto
-our Slack channel.
+<div class="row match-height top-features">
+  <div class="col-md-4 col-sm-12 promo">
 
-[<i class="fab fa-slack-hash"></i> Guild AI Slack Channel
-->](https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU)
+    <h3><i class="fab fa-slack"></i> Ask a Question on Slack</h3>
+    <p>
+      Join our ever growing community on Slack to get help with Guild.
+      This is a great way connect with other users and learn how
+      they're using Guild.
 
-## Email
+    </p>
 
-To receive announcements, ask questions, or help others use Guild AI
-via email, join our Google Groups mailing list.
+    <p>
+      <a href="https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU"
+      class="ext" target="_blank">Guild AI Slack Workspace</a>
+    </p>
+  </div>
 
-[<i class="far fa-envelope"></i> Guild AI Email List ->](https://groups.google.com/d/forum/guildai)
+  <div class="col-md-4 col-sm-12 promo">
 
-## GitHub Issues
+    <h3><i class="fab fa-github"></i> Open an Issue</h3>
+    <p>
+      If you're seeing surprising behavior, open an issue on our
+      GitHub repository. This is the best way to track resolution of a
+      problem.
+    </p>
 
-If you'd like to report a bug or request a feature, use our GitHub
-issue tracker.
+    <p>
+      <a href="https://github.com/guildai/guildai/issues"
+         class="ext" target="_blank">Guild AI Issues on GitHub</a>
+    </p>
+  </div>
 
-[<i class="fab fa-github"></i> GitHub Issues ->](alias:open-an-issue)
+  <div class="col-md-4 col-sm-12 promo">
+
+    <h3><i class="far fa-paper-plane"></i> Send an Email</h3>
+    <p>
+      If you prefer to keep your correspondance confidential, email is
+      your best option. We'll make sure your issue is handled while
+      maintaining your privacy.
+    </p>
+    <p>
+      <a href="mailto:support@guild.ai" class="ext">Email support@guild.ai</a>
+    </p>
+  </div>
+
+</div>

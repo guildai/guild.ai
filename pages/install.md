@@ -216,7 +216,7 @@ steps for you below.
 Start using Guild to train a simple model.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/start/"
+<a class="btn btn-primary cta" href="/start/"
   >Get Started <i class="fa next"></i></a>
 </div>
 </div>
