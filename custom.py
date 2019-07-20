@@ -13,11 +13,16 @@ import jinja2
 import six
 
 import markdown
+
+from markdown import inlinepatterns
+from markdown import treeprocessors
+
+from markdown.blockprocessors import BlockProcessor
+
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
 from markdown.extensions import fenced_code
-from markdown import inlinepatterns
-from markdown import treeprocessors
+
 from markdown.util import etree
 
 import mkdocs.config as _ # pylint: disable=unused-import
@@ -799,7 +804,7 @@ class CmdHelpContext(object):
         return "/docs/commands/{}".format("-".join(cmd_path))
 
     def cmd_url(self, cmd):
-        return self._cmd_url_base + "-{}-cmd/".format(cmd)
+        return  "{}-{}/".format(self._cmd_url_base, cmd)
 
 class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
@@ -1119,7 +1124,7 @@ class CmdHelpUrlProcessor(treeprocessors.Treeprocessor):
                 el.set("class", "cmd")
                 cmd = " ".join(m.groups())
                 el.text = cmd
-                href = "/docs/commands/{}-cmd/".format(cmd.replace(" ", "-"))
+                href = "/docs/commands/{}/".format(cmd.replace(" ", "-"))
                 el.set("href", href)
 
 class CmdHelpUrl(Extension):
@@ -1136,12 +1141,12 @@ class CmdHelpUrl(Extension):
     A link to `run` help:
 
     >>> print(md.convert("``guild run --help``"))
-    <p><a class="cmd" href="/docs/commands/run-cmd/">run</a></p>
+    <p><a class="cmd" href="/docs/commands/run/">run</a></p>
 
     A link to `runs rm` help:
 
     >>> print(md.convert("``guild runs rm --help``"))
-    <p><a class="cmd" href="/docs/commands/runs-rm-cmd/">runs rm</a></p>
+    <p><a class="cmd" href="/docs/commands/runs-rm/">runs rm</a></p>
 
     """
 
@@ -1333,12 +1338,12 @@ class PkgConfigList(Extension):
     Here's a list for config from `pkg-1` with tag `a`:
 
     >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 a]"))
-    <dl><dt>c1</dt><dd>Config c1</dd></dl>
+    <dl><dt><code>c1</code></dt><dd>Config c1</dd></dl>
 
     And tag `b`:
 
     >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 b]"))
-    <dl><dt>c1</dt><dd>Config c1</dd><dt>c2</dt><dd>Config c2</dd></dl>
+    <dl><dt><code>c1</code></dt><dd>Config c1</dd><dt><code>c2</code></dt><dd>Config c2</dd></dl>
 
     And tag `c` (doesn't exit):
 
@@ -1391,13 +1396,17 @@ class Serve(BasePlugin):
             return any((p.search(path) for p in patterns))
         return ignore
 
+class MarkdownInHtml(Extension):
+    """Enable Markdown in HTML."""
+
+    def extendMarkdown(self, md, _globals):
+        md.preprocessors['html_block'].markdown_in_raw = True
+
 def test():
     import doctest
     import sys
-    failed, _count = doctest.testmod(
-        optionflags=(
-            doctest.REPORT_ONLY_FIRST_FAILURE |
-            doctest.NORMALIZE_WHITESPACE))
+    flags = doctest.NORMALIZE_WHITESPACE
+    failed, _count = doctest.testmod(optionflags=flags)
     if failed:
         sys.exit(1)
 

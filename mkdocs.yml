@@ -51,8 +51,10 @@ markdown_extensions:
   - footnotes
   - smarty
   - def_list
+  - extra
   - markdown_include.include:
       base_path: include
+  - custom:MarkdownInHtml
   - custom:DefinitionId
   - custom:CmdHelp:
       src_path: ./guild/guild/commands/
@@ -81,7 +83,7 @@ markdown_extensions:
         # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
-          href: '/docs/commands/{}-cmd'
+          href: '/commands/{}-cmd'
           text: '{}'
         - link_pattern: 'pkg:(.*)'
           text: '{1}'
@@ -94,32 +96,32 @@ markdown_extensions:
           href: '{1}'
           arg_maps:
             - control-key: https://en.wikipedia.org/wiki/Control_key
-              dependencies: /docs/dependencies.md
-              flag: /docs/operations/#flags
-              guild-env: /docs/environments/
-              guild-file: /docs/reference/guild-file/
-              guild-view: /docs/tools/guild-view/
-              index: /docs/reference/guild-home/#runs-index
-              model-def: /docs/models/#model-definition
-              model: /docs/models/
-              operation-alias: /docs/runs/#operation-aliases
-              operation: /docs/operations/
-              package-file: /docs/reference/package-file/
-              package: /docs/packages/
-              remote: /docs/remotes/
-              resource-cache: /docs/reference/guild-home/#resource-cache
-              resource: /docs/resources/
-              run-dir: /docs/runs/#run-directory
-              run: /docs/runs/
-              tensorboard: /docs/tools/tensorboard/
-              test: /docs/tests/
-              user-config: /docs/reference/user-config/
+              dependencies: /dependencies.md
+              flag: /operations/#flags
+              guild-env: /environments/
+              guild-view: /tools/guild-view/
+              guildfile: /guildfile/
+              index: /reference/guild-home/#runs-index
+              model-def: /models/#model-definition
+              model: /models/
+              operation-alias: /runs/#operation-aliases
+              operation: /operations/
+              package-file: /reference/package-file/
+              package: /packages/
+              remote: /remotes/
+              resource-cache: /reference/guild-home/#resource-cache
+              resource: /resources/
+              run-dir: /runs/#run-directory
+              run: /runs/
+              tensorboard: /tools/tensorboard/
+              test: /tests/
+              user-config: /reference/user-config/
         # aliases
         - link_pattern: alias:install-guild
           href: /install/
           text: install Guild AI
         - link_pattern: alias:quick-start
-          href: /docs/start/
+          href: /start/
           text: Guild AI Quick Start
           class: doc
         - link_pattern: alias:guild-github
@@ -138,16 +140,16 @@ markdown_extensions:
           target: _blank
           href: https://github.com/guildai/guildai/issues
         - link_pattern: alias:virtualenv-activate
-          href: /docs/tutorials/workflow-with-virtualenv/#using-a-virtual-environment
+          href: /tutorials/workflow-with-virtualenv/#using-a-virtual-environment
           text: activate your virtual environment
         - link_pattern: alias:running-commands
-          href: /docs/commands/#running-commands
+          href: /commands/#running-commands
           text: running commands
         - link_pattern: alias:separate-console
-          href: /docs/commands/#running-commands-in-a-separate-console
+          href: /commands/#running-commands-in-a-separate-console
           text: separate console
         - link_pattern: alias:tut-env-setup
-          href: /docs/tutorials/#tutorial-virtual-environments
+          href: /tutorials/#tutorial-virtual-environments
           text: Tutorial virtual environments
         - link_pattern: alias:tf-model-zoo
           href: https://github.com/tensorflow/models
@@ -158,7 +160,7 @@ markdown_extensions:
           href: /packages/
           text: Guild AI packages
         - link_pattern: alias:add-guild
-          href: /docs/guides/add-guild/
+          href: /guides/add-guild/
           text: Add Guild to a project
         - link_pattern: alias:pip
           text: pip
@@ -172,27 +174,94 @@ markdown_extensions:
           class: ext
         - link_pattern: alias:create-object-detector
           text: Create an object detector
-          href: /docs/guides/create-object-detector/
+          href: /guides/create-object-detector/
         - link_pattern: alias:compare
           text: Guild Compare
-          href: /docs/tools/compare/,
+          href: /tools/compare/
 
 pages:
   - index.md
   - install.md
+  - quickref.md
   - docs:
       - docs.md
-      - Get Started:
-          - start/index.md
-          - start/optimization.md
-      #- Concepts:
+      - start.md
+      - Concepts:
+          - cli.md
+          - guildfile.md
+          - operations.md
+          - optimizers.md
+          - models.md
+          - environments.md
+          - packages.md
+          - remotes.md
       - How To:
           - howto/run-script.md
-          - howto/create-guild-file.md
-          - howto/customize-operation-flags.md
-          - howto/access-files-during-run.md
           - howto/tune-hyperparameters.md
+          - howto/customize-script-inputs.md
+          - howto/customize-script-outputs.md
+          - howto/create-guildfile.md
+          - howto/list-operations.md
+          - howto/use-datasets-from-internet.md
+          - howto/build-workflow.md
+          - howto/debug-run-files.md
+          - howto/debug-output-scalars.md
+          - howto/customize-source-code-snapshots.md
+
+      - Commands:
+          - commands/index.md
+          - commands/cat.md
+          - commands/check.md
+          - commands/compare.md
+          - commands/diff.md
+          - commands/download.md
+          - commands/export.md
+          - commands/help.md
+          - commands/import.md
+          - commands/index.md
+          - commands/init.md
+          - commands/install.md
+          - commands/label.md
+          - commands/ls.md
+          - commands/models.md
+          - commands/open.md
+          - commands/operations.md
+          - commands/package.md
+          - commands/packages.md
+          - commands/packages-delete.md
+          - commands/packages-info.md
+          - commands/packages-list.md
+          - commands/pull.md
+          - commands/push.md
+          - commands/remote.md
+          - commands/remote-start.md
+          - commands/remote-status.md
+          - commands/remote-stop.md
+          - commands/remotes.md
+          - commands/run.md
+          - commands/runs.md
+          - commands/runs-delete.md
+          - commands/runs-diff.md
+          - commands/runs-export.md
+          - commands/runs-import.md
+          - commands/runs-info.md
+          - commands/runs-label.md
+          - commands/runs-list.md
+          - commands/runs-pull.md
+          - commands/runs-purge.md
+          - commands/runs-push.md
+          - commands/runs-restore.md
+          - commands/runs-stop.md
+          - commands/search.md
+          - commands/shell.md
+          - commands/stop.md
+          - commands/sync.md
+          - commands/tensorboard.md
+          - commands/tensorflow.md
+          - commands/tensorflow-inspect.md
+          - commands/uninstall.md
+          - commands/view.md
+          - commands/watch.md
 
       #- Reference:
-  - quickref.md
   - support.md

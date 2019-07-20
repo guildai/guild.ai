@@ -38,7 +38,7 @@ hide_in_pagenav: yes
   </div>
 
   <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Ultra Light Weight, Open Source Toolkit</h3>
+    <h3>Light Weight, Open Source Toolkit</h3>
     <p>
 
       Start fast without changing your code &mdash; Guild AI is a
@@ -107,10 +107,10 @@ hide_in_pagenav: yes
   <div class="col-lg-8">
     <p style="margin-bottom:0">
 
-      Guild is <strong>ultra light weight</strong> and <strong>open
-      source</strong>. It's an external tool that runs your unmodified
-      code. This lets you quickly automate experiments using any
-      library or script. Guild doesn't depend on databases or other
+      Guild is an <strong>external toolkit</strong> that runs your
+      <strong>unmodified code</strong>. This lets you quickly automate
+      experiments using any library or script. Guild is <strong>light
+      weight</strong>. It doesn't depend on databases or other
       infrastructure to manage experiments.
 
     </p>
@@ -126,9 +126,9 @@ hide_in_pagenav: yes
     <h4>Manage Experiments</h4>
     <p>
 
-      Guild automatically captures every detail of your training runs
-      as unique experiments. All you do is run your script and Guild
-      takes care of the rest.
+      Guild automatically captures the details of your training runs
+      as unique experiments. Simply run your script and Guild takes
+      care of the rest.
 
     </p>
   </div>
@@ -138,7 +138,7 @@ hide_in_pagenav: yes
     <h4>Compare and Analyze Runs</h4>
     <p>
 
-      With a detailed record of each run, you get invaluable
+      With a detailed record of each run, you can leverage invaluable
       information for debugging issues, improving your model, and
       selecting the best runs for deployment.
 

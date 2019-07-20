@@ -80,7 +80,7 @@ docker run -it guildai
 
 From within the container, you can execute Guild commands.
 
-### From source code
+### From Source Code
 
 !!! note
     This step is an alternative to installing Guild AI with pip
@@ -161,7 +161,7 @@ pip install tensorflow-gpu
 For alternative installation methods, refer to [Installing TensorFlow
 ->](https://www.tensorflow.org/install/).
 
-## Install optional libraries
+## Install Optional Libraries
 
 If you system has a GPU or other accelerator supported by TensorFlow,
 you will need to install and configure support for your hardware.
@@ -189,7 +189,7 @@ with one or more GPUs, ensure that `nvidia-smi` is installed.
     ->](https://developer.nvidia.com/nvidia-system-management-interface)
     for more information.
 
-## Verify your installation
+## Verify your Installation
 
 Verify that Guild is installed properly by running the
 [`check`](docs/commands/check) command:
@@ -202,18 +202,18 @@ If there are problems with your installation, Guild will display the
 details and exit with an error. Refer to
 [Troubleshooting](/troubleshooting) for assistance.
 
-## Next steps
+## Next Steps
 
 Congratulations, you've installed Guild AI! We've outlined some next
 steps for you below.
 
-<div class="row match-height">
+<div class="row match-height mt-4">
 <div class="col col-md-4">
 <div class="promo left">
-<h3>Get Started</h3>
+<h3>Guild AI Quick Start</h3>
 <p class="expand">
 
-Start using Guild to train a simple model.
+Start using Guild to run, track, and compare experiments.
 
 </p>
 <a class="btn btn-primary cta" href="/start/"
@@ -223,14 +223,14 @@ Start using Guild to train a simple model.
 
 <div class="col col-md-6">
 <div class="promo left">
-<h3>Browse the docs</h3>
+<h3>Browse the Docs</h3>
 <p class="expand">
 
 If you're interested in a complete picture of Guild AI, browse the
 comprehensives documentation.
 
 </p>
-<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+<a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>

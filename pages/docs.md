@@ -5,8 +5,12 @@ hide_in_sidenav: yes
 
 # Documentation
 
-- [Get Started](category:/start)
-- [Common Tasks](category:/howto#common)
+- [Basics](category:/#basic)
+- [Scripts](category:/#scripts)
+- [Projects](category:/#projects)
+- [Operation Resources](category:/#resources)
+- [Advanced](category:/#advanced)
+- [Debugging](category:/#debug)
 
 <!--
 - [Get Started](category:#get-started)
