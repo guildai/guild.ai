@@ -5,6 +5,13 @@ hide_in_sidenav: yes
 
 # Documentation
 
+TODO: The sections below are a work in progress. Current thinking is
+to list the "Concept" topics first, under Basics and Advanced. Then
+list the How To Guides below in their various categories.
+
+All of of the content shown here will have a corresponding link in the
+navbar to the left.
+
 - [Basics](category:/#basic-concept)
 - [Advanced](category:/#advanced-concept)
 

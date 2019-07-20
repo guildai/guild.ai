@@ -220,6 +220,10 @@ hide_in_pagenav: yes
 
 ---
 
+TODO: Move the "Features" stuff from the old site into the sections
+below. This is just an elaboration on the grid items above with
+samples, images, etc.
+
 # Manage Experiments
 
 # Compare and Analyze Runs

@@ -240,6 +240,19 @@ other examples and detailed code snippets, see [Create a Guild File -
 Examples](/howto/create-guildfile.md#examples). For general
 documentation on Guild files see, [Guild Files](/guildfiles.md).
 
+TODO: This "cheathsheet" project is breathtakingly long. It's not even
+a completely annotated example. I'm not sure what approach to
+take. Shorten this to something more essential with less verbose docs
+and link to the more verbose example, or keep as is.
+
+TODO: Maybe provide links to multiple annotated examples? It'd be nice
+to just have a go-to place to grab the text and get started. Of course
+this could also be provided in a freakin' Guild command! But for 0.7,
+this annotated example approach is far better than the nothing-at-all
+strategy from 0.6.
+
+TODO: The content below should come from an annotated example.
+
 ``` yaml
 # ===================================================================
 # Sample Guild file
