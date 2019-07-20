@@ -45,10 +45,13 @@ Verify that Guild is installed:
 guild check
 ```
 
-To get more details about your environment use the `--verbose` option:
+#### Upgrade Guild
+
+The `check` command informs you if a newer version of Guild is
+available. To upgrade Guild:
 
 ``` command
-guild check --verbose
+pip install --upgrade guildai
 ```
 
 More information:
@@ -232,13 +235,10 @@ guild tensorboard --port 8080
 
 ## Guild File - Basic
 
-Use the template below to get started quickly with a basic Guild file.
-
-For other examples and detailed code snippets, see [Create a Guild
-File - Examples](/howto/create-guildfile.md#examples).
-
-For general documentation on Guild files see, [Guild
-Files](/guildfiles.md).
+Use the template below to get started with a basic Guild file. For
+other examples and detailed code snippets, see [Create a Guild File -
+Examples](/howto/create-guildfile.md#examples). For general
+documentation on Guild files see, [Guild Files](/guildfiles.md).
 
 ``` yaml
 # ===================================================================
@@ -263,12 +263,18 @@ Files](/guildfiles.md).
 #
 #  $ guild help
 #
-
 # Read the annotations below and modify this file as needed. We
 # recommend that you remove any annotations that you don't need so
 # that your final Guild file remains small and easily readable.
 
 # For help with Guild files, see https://guild.ai/guildfiles/
+
+# -------------------------------------------------------------------
+# Operations
+# -------------------------------------------------------------------
+
+# Operations are defined as top-level mappings of strings (the
+# operation name) to attributes (another mapping).
 
 train:
 
@@ -448,13 +454,13 @@ train:
   # operation. You can view and diff your source code files later
   # using commands such as:
   #
-  #  $ guild ls --sourcecode
-  #  $ guild open --sourcecode
-  #  $ guild diff --sourcecode
+  #  $ guild ls --sourcecode    # list souce code files for latest run
+  #  $ guild open --sourcecode  # browse source code for latest run
+  #  $ guild diff --sourcecode  # diff source code for last two runs
 
-  # Note that you can only include one 'sourcecode' section. If you
-  # uncomment any of the sections below, ensure that it is the only
-  # section you uncomment.
+  # Note that you can only include one 'sourcecode' section for an
+  # operation. If you uncomment any of the sections below, ensure that
+  # it is the only section you uncomment.
   #
   # If you want to disable source code snapshots, uncomment the
   # following line:
@@ -477,7 +483,7 @@ train:
   #sourcecode: '*.py'
 
   # To specify multiple patterns, use a list of patterns. The block
-  # below indicates that Guild copy only Python source files and files
+  # below tells Guild to copy only Python source files and files
   # ending in '.txt'.
 
   #sourcecode:
@@ -491,12 +497,12 @@ train:
   #sourcecode:
   #  - exclude: my_dataset.csv
 
-  # To include specific files that would not otherwise be treated as
-  # source code by Guild (e.g. they are binary files such as images or
-  # they are larger than 1M), explicitly include them as the block
-  # below illustrates. Note that these includes are applied in
-  # addition to the default rules - files that match the patterns are
-  # added to the default list of copied source files.
+  # To include files that would not otherwise be treated as source
+  # code by Guild (e.g. they are binary files such as images or they
+  # are larger than 1M), explicitly include them as the block below
+  # illustrates. Note that these includes are applied in addition to
+  # the default rules - files that match the patterns are added to the
+  # default list of copied source files.
 
   #sourcecode:
   #  - include: my_image.png
@@ -507,9 +513,9 @@ train:
   # specified.
 
   #sourcecode:
-  #  - exclude: '*'
-  #  - include: '*.py'
-  #  - exclude: 'dont_include.py'
+  #  - exclude: '*'                 # exclude all files by default
+  #  - include: '*.py'              # then include all Python files
+  #  - exclude: 'dont_include.py'   # exclude a specific Python file
 
   # If your source code is not located in the same directory as the
   # Guild file - e.g. it's in the parent directory or in a
@@ -552,22 +558,21 @@ train:
   # In some cases, Guild uses a resource cache to save files
   # (e.g. when downloading files and when unpacking archives). The
   # resource cache is located under Guild home (use 'guild check' to
-  # see where Guild home is) in the directory 'cache/resources'. If
-  # you want to clear this cache, simply delete that directory.
+  # see where Guild home is) in the subdirectory 'cache/resources'.
   #
   # Once you have defined a required file (e.g. using one of the
   # samples below) you can test the run directory layout without
-  # actually running the operation by using the '--stage' option of
-  # the run command. When using the '--stage' option, specify a
-  # directory to serve as the run directory. You can then study the
-  # run directory to config that it's layed out as you expect.
+  # running the operation by using the '--stage' option of the run
+  # command. When using the '--stage' option, specify a directory to
+  # serve as the run directory. You can then study the run directory
+  # to config that it's layed out as you expect.
   #
   #  $ guild run train --stage /tmp/train-stage
   #
   # Note that only one 'requires' section may be defined. If you
   # uncomment any of the sections below, ensure that it is the only
   # section that you uncomment. If you want to combine examples, copy
-  # the applicable items to your one 'requires' section.
+  # the applicable items to the one 'requires' section.
   #
   # The sample block below defines a single file 'my_config.yml'. When
   # the operation is run, Guild creates a symbolic link to this file
@@ -616,58 +621,152 @@ train:
   #  - file: config_files
   #  - url: https://my.co/datasets/cifar.zip
 
+  # end of train operation
+
+# Guild files support multiple operations. It's common to define
+# operations for each of the steps you want to perform for a
+# project. For example, 'train' above might be followed by an
+# 'evaluate' operation, which tests a trained model on an unseen data
+# set. Other operations might include:
+
+#  prepare-data   Download, pre-process, and split a data set for
+#                 training
+#
+#  quantize       Apply quantization to a trained model to reduce
+#                 memory footprint
+#
+#  deploy         Deploy a trained model a server
+#
+# The advantage of defining separate operations is that each can be
+# run as needed. Outputs from one operation can be used by other
+# operations. With this facility, you can define efficient, end-to-end
+# workflows for your projects.
+#
+# In example below, we define a second operation 'evaluate', which
+# uses some of the conventions shown above as well as new concept:
+# required output (see below).
+#
+# Modify or delete the operation below as needed for your project.
+
+evaluate:
+  description: Evaluate a trained model
+
+  # Using Python module 'evaluate' (defined in the file 'evaluate.py'
+  # located in the same directory as the Guild file).
+
+  main: evaluate
+
+  # Don't automatically import any flags. We won't define flags for
+  # this operation and telling Guild to skip this step avoid
+  # needlessly scanning the evaluate module.
+
+  flags-import: no
+
+  # In the requires section, we need to indicate that our evaluate
+  # operation requires the output from our train operation. The output
+  # from train includes saved weights.
+  #
+  # Note this is a hypothetical example.
+
+  requires:
+
+    # You indicate that the output for an operation is required by
+    # listing a requirement in the form 'operation: OPERATION_NAME'.
+    # In this case, we indicate that we require output from
+    # 'train'. When evaluate is run, Guild looks for the lasted train
+    # run and creates links to its files in the evaluate run
+    # directory.
+    #
+    # Additionally, we specify a 'select' attribute, which tells Guild
+    # to create links to only some train files. The 'select' section
+    # uses the same format as the 'sourcecode' file select above.
+    #
+    # The specification below creates links from the latest 'train'
+    # operation run directory in the 'evaluate' run directory. In this
+    # way, evaluate has access to files generated by train.
+    #
+    # By default, Guild automatically links to files in the latest
+    # train run. You can specify a different train run when running
+    # evaluate:
+    #
+    #  $ guild run evaluate train=RUN_ID
+
+    - operation: train
+      select: 'weights-*.hdf5'
+
+  # end evaluate operation
 ```
 </div>
 
 <div class="row"></div>
 
 <div class="col col-lg-6 qref" markdown="1">
-## Operations
 
-### Scripts
+#### Viewing Help from a Guild File
 
-Run a script directly:
+Once you've defined a Guild file in your project, you can review help
+for it by running:
 
 ``` command
-guild run SCRIPT_FILENAME
+guild help
 ```
 
-### Guild File Operations
-
-If the current directory contains a [Guild file](term:guildfile) you
-can run operations defined in that file.
-
-List operations defined in the current directory Guild file:
+You can also view help for specific a operation, which is helpful when
+running it:
 
 ``` command
-guild operations
+guild run train --help-op
 ```
 
-To run an operation:
+#### Listing Operations
+
+List operations defined in a Guild file:
 
 ``` command
-guild run OPERATION_NAME
+guild ops
 ```
 
-Specify flag values for an operation:
+#### Run an Operation
+
+Run an operation is like running a script. However, run operations are
+defined in Guild files (see example above). To run the `train`
+operation:
 
 ``` command
-guild run OPERATION FLAG_NAME=VALUE
+guild run train
 ```
 
-### Operation Help
-
-To view help for an operation, use the [run](cmd:run) command with the
-`--help-op` option:
+To specify flag values, use `NAME=VALUE`:
 
 ``` command
-guild run OPERATION --help-op
+guild run train batch_size=1000
 ```
 
 </div>
 
-<div class="col col-lg-6" markdown="1">
-## Do Something Else
+<div class="col col-lg-6 qref" markdown="1">
+
+#### Testing Output Scalars
+
+When defining output scalars (see Guild file example above) you can
+test configured output scalars on sample script output. After running
+the command below, enter a line of sample output and press `Enter` to
+evaluate it for potential scalar matches.
+
+``` command
+guild run train --test-output-scalars -
+```
+
+#### Verifying Required Files
+
+When you specify required files for an operation (see Guild file
+example above) you can stage the operation in a temporary directory to
+confirm that Guild is resolving files as expected.
+
+``` command
+guild run train --stage /tmp/train-stage
+```
+
 </div>
 
 <div class="row"></div>
