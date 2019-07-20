@@ -237,7 +237,8 @@ Use the template below to get started quickly with a basic Guild file.
 For other examples and detailed code snippets, see [Create a Guild
 File - Examples](/howto/create-guildfile.md#examples).
 
-For general documentation on Guild files see, [Guild File](/guildfile.md).
+For general documentation on Guild files see, [Guild
+Files](/guildfiles.md).
 
 ``` yaml
 # ===================================================================
@@ -261,6 +262,13 @@ For general documentation on Guild files see, [Guild File](/guildfile.md).
 # Get help for the entire project by running:
 #
 #  $ guild help
+#
+
+# Read the annotations below and modify this file as needed. We
+# recommend that you remove any annotations that you don't need so
+# that your final Guild file remains small and easily readable.
+
+# For help with Guild files, see https://guild.ai/guildfiles/
 
 train:
 
@@ -436,7 +444,177 @@ train:
   # Source code snapshots
   # -----------------------------------------------------------------
 
-  # Guild snapshots your project source code for each operation.
+  # By default, Guild snapshots your project source code for each
+  # operation. You can view and diff your source code files later
+  # using commands such as:
+  #
+  #  $ guild ls --sourcecode
+  #  $ guild open --sourcecode
+  #  $ guild diff --sourcecode
+
+  # Note that you can only include one 'sourcecode' section. If you
+  # uncomment any of the sections below, ensure that it is the only
+  # section you uncomment.
+  #
+  # If you want to disable source code snapshots, uncomment the
+  # following line:
+
+  #sourcecode: no
+
+  # By default, Guild considers any text file that is less than 1M in
+  # size to be "source code". Additionally, Guild only copies at most
+  # 1000 source code files. These measures ensure that Guild does not
+  # mistakenly copy large files (e.g. such as data sets stored as
+  # text) or copy too many file.
+  #
+  # You can specify explicitly which files in your project should be
+  # copied as source code.
+  #
+  # The line below tells Guild to copy only Python source files. Note
+  # that you must include the wild card character '*' in quotes to
+  # comply with YAML synaxt rules.
+
+  #sourcecode: '*.py'
+
+  # To specify multiple patterns, use a list of patterns. The block
+  # below indicates that Guild copy only Python source files and files
+  # ending in '.txt'.
+
+  #sourcecode:
+  #  - '*.py'
+  #  - '*.txt'
+
+  # You can also indicate that Guild should exclude certain files. For
+  # example, if you have a csv file that should not be treated as
+  # source code, you can exclude it using:
+
+  #sourcecode:
+  #  - exclude: my_dataset.csv
+
+  # To include specific files that would not otherwise be treated as
+  # source code by Guild (e.g. they are binary files such as images or
+  # they are larger than 1M), explicitly include them as the block
+  # below illustrates. Note that these includes are applied in
+  # addition to the default rules - files that match the patterns are
+  # added to the default list of copied source files.
+
+  #sourcecode:
+  #  - include: my_image.png
+  #  - include: my_very_large_file.csv
+
+  # Include and exclude directives can be used together for more
+  # advanced specifications. Directives are applied in the order
+  # specified.
+
+  #sourcecode:
+  #  - exclude: '*'
+  #  - include: '*.py'
+  #  - exclude: 'dont_include.py'
+
+  # If your source code is not located in the same directory as the
+  # Guild file - e.g. it's in the parent directory or in a
+  # subdirectory - you can specify an alternative root directory to
+  # copy from. Uncomment the block below to use this feature. Note
+  # that the value for 'select' below in this case is used as the file
+  # selection specification - any of the examples above can be used
+  # for the 'select' value below. To apply the default copy rules, you
+  # can omit 'select'.
+
+  #sourcecode:
+  #  root: ..
+  #  select: '*.py'
+
+  # -----------------------------------------------------------------
+  # Required files
+  # -----------------------------------------------------------------
+
+  # When Guild runs an operation, it first creates an empty directory
+  # for the run. This is referred as the 'run directory'. Running each
+  # operation in a unique directory ensures that each experiment is
+  # kept separate. The directory is initially empty to control the
+  # files used during the run.
+  #
+  # The run directory is configured as the current working directory
+  # for each operation. This means that project files that you expect
+  # to be available to the script will not be available - at least by
+  # default.
+  #
+  # To access a file from the run directory, you must define the file
+  # in the operation 'requires' section. Guild supports several ways
+  # to define required files. Each method tells Guild how to resolve
+  # any files needed by the operation.
+  #
+  # Note that Guild does not copy required files to the run
+  # directory. It creates symbolic links to them. For this reason,
+  # Guild requires permission to create symolic links (on Windows,
+  # this permission is not granted to unpriviledged users by default).
+  #
+  # In some cases, Guild uses a resource cache to save files
+  # (e.g. when downloading files and when unpacking archives). The
+  # resource cache is located under Guild home (use 'guild check' to
+  # see where Guild home is) in the directory 'cache/resources'. If
+  # you want to clear this cache, simply delete that directory.
+  #
+  # Once you have defined a required file (e.g. using one of the
+  # samples below) you can test the run directory layout without
+  # actually running the operation by using the '--stage' option of
+  # the run command. When using the '--stage' option, specify a
+  # directory to serve as the run directory. You can then study the
+  # run directory to config that it's layed out as you expect.
+  #
+  #  $ guild run train --stage /tmp/train-stage
+  #
+  # Note that only one 'requires' section may be defined. If you
+  # uncomment any of the sections below, ensure that it is the only
+  # section that you uncomment. If you want to combine examples, copy
+  # the applicable items to your one 'requires' section.
+  #
+  # The sample block below defines a single file 'my_config.yml'. When
+  # the operation is run, Guild creates a symbolic link to this file
+  # in the run directory. If this file doesn't exit, Guild exits with
+  # an error indicating that a required resource cannot be resolved.
+
+  #requires:
+  #  - file: my_config.yml
+
+  # In some cases, your script may require files in a directory
+  # located in your project. You can include the directory as a file
+  # as well. The block below creates a link to the directory
+  # 'my_config_subdir' in the run directory.
+
+  #requires:
+  #  - file: my_config_subdir
+
+  # If you specify an archive (e.g. zip, tar, compressed tar) Guild
+  # will automatically unpack the archive in its resource cache
+  # directory and create links to each top-level archive file. The
+  # block below indicates that files contained in 'samples.zip'
+  # are available in the run directory.
+
+  #requires:
+  #  - file: samples.zip
+
+  # You can indicate that an archive should not be unpacked using the
+  # 'unpack' attribute.
+
+  #requires:
+  #  - file: samples.zip
+  #    unpack: yes
+
+  # URLs may also be specified. Guild automatically downloads files to
+  # its resource cache. If the downloaded file is an archive, Guild
+  # unpacks it according to the rules above. This block tells Guild to
+  # download a file and unpack it in preparation for a run.
+
+  #requires:
+  #  - url: https://my.co/datasets/mnist.zip
+
+  # The block below combines several file requirements.
+
+  #requires:
+  #  - file: samples.zip
+  #  - file: config_files
+  #  - url: https://my.co/datasets/cifar.zip
 
 ```
 </div>

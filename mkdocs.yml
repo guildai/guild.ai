@@ -185,15 +185,16 @@ pages:
   - docs:
       - docs.md
       - start.md
-      - Concepts:
-          - cli.md
-          - guildfile.md
-          - operations.md
-          - optimizers.md
-          - models.md
-          - environments.md
-          - packages.md
-          - remotes.md
+      - cli.md
+      - scripts.md
+      - guildfiles.md
+      - operations.md
+      - tuning.md
+      - workflow.md
+      - models.md
+      - environments.md
+      - packages.md
+      - remotes.md
       - How To:
           - howto/run-script.md
           - howto/tune-hyperparameters.md
@@ -207,7 +208,7 @@ pages:
           - howto/debug-output-scalars.md
           - howto/customize-source-code-snapshots.md
 
-      - Commands:
+      - Command Reference:
           - commands/index.md
           - commands/cat.md
           - commands/check.md
