@@ -182,7 +182,6 @@ markdown_extensions:
 pages:
   - index.md
   - install.md
-  - quickref.md
   - docs:
       - docs.md
       - start.md
@@ -264,4 +263,5 @@ pages:
           - commands/watch.md
 
       #- Reference:
+  - cheatsheet.md
   - support.md
