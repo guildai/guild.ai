@@ -3,8 +3,8 @@ docs_dir: pages
 copyright: 2018-2019 TensorHub, Inc.
 strict: true
 extra:
-  rel_version: 0.6.4
-  pre_version: 0.6.5.dev3
+  rel_version: 0.6.5
+  pre_version: 0.6.5
 
   tagline_width: 20em
   tagline:
