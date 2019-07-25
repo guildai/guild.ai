@@ -253,6 +253,12 @@ strategy from 0.6.
 
 TODO: The content below should come from an annotated example.
 
+TODO: This def needs to be free of annotations - way too much here,
+embarrassing. Provide a link to the annotated copy within the YAML
+header. See
+https://www.packer.io/intro/getting-started/build-image.html for a
+quick-and-easy template.
+
 ``` yaml
 # ===================================================================
 # Sample Guild file
