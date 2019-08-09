@@ -847,7 +847,14 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         cmd_help = self._get_cmd_help(cmd)
         ctx = CmdHelpContext(cmd_help)
         rendered = self._template.render(cmd=cmd_help, ctx=ctx)
-        help_el = etree.fromstring(rendered)
+        rendered = rendered.replace("<p>\b", "<p style=\"white-space: pre\">")
+        try:
+            help_el = etree.fromstring(rendered)
+        except Exception:
+            print("ERROR processing %s cmd" % cmd)
+            print("Rendered:")
+            print(rendered)
+            raise
         _replace_el(parent, target, help_el)
 
     def _get_cmd_help(self, cmd):
