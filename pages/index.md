@@ -2,6 +2,7 @@ layout: front-page
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
+title: Experiment Tracking for Machine Learning Engineers
 
 <div id="get-started-fab"></div>
 
@@ -224,21 +225,26 @@ TODO: Move the "Features" stuff from the old site into the sections
 below. This is just an elaboration on the grid items above with
 samples, images, etc.
 
-# Manage Experiments
+Each section *must* be very short and to te point, with a single image
+to convey what it is. Include: what it is and why it's important.
 
-# Compare and Analyze Runs
+<div id="features"></div>
 
-# Tune Hyperparameters
+## Manage Experiments
 
-# Automate Workflow
+## Compare and Analyze Runs
 
-# Publish and Share Results
+## Tune Hyperparameters
 
-# Train and Backup Remotely
+## Automate Workflow
 
-# Command Line Interface
+## Publish and Share Results
 
-# Python API
+## Train and Backup Remotely
+
+## Command Line Interface
+
+## Python API
 
 ---
 

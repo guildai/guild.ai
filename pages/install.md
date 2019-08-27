@@ -1,11 +1,4 @@
-title: Install
-pagenav_title: Install Guild AI
-navbar_item: yes
-hide_sidenav: yes
-hide_pagenav: yes
-hide_in_pagenav: yes
-
-<div id="get-started-fab"></div>
+sidenav_title: Install
 
 # Install Guild AI
 

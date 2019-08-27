@@ -3,17 +3,23 @@ docs_dir: pages
 copyright: 2018-2019 TensorHub, Inc.
 strict: true
 extra:
-  rel_version: 0.6.5
-  pre_version: 0.6.5
+  version: 0.6.6
 
   tagline_width: 20em
   tagline:
 
-    The easiest way to run, track, and compare
-    machine learning experiments
+    Experiment Tracking for Machine Learning Engineers
 
   subtext_width: 30em
   subtext:
+
+  tagline_bullets:
+    - text: Measure
+      icon: pie-line-graph
+    - text: Study
+      icon: file-code-search
+    - text: Improve
+      icon: target-center
 
   links:
     - name: github
@@ -129,7 +135,7 @@ markdown_extensions:
           text: Guild AI GitHub project
           target: _blank
           class: ext
-        - link_pattern: alias:guild-slack
+        - link_pattern: alias:slack
           href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
           text: Guild AI Slack workspace
           class: ext
@@ -181,35 +187,31 @@ markdown_extensions:
 
 pages:
   - index.md
-  - install.md
+  - start.md
   - docs:
       - docs.md
-      - start.md
-      - cli.md
-      - scripts.md
-      - guildfiles.md
-      - operations.md
-      - tuning.md
-      - workflow.md
-      - models.md
-      - environments.md
-      - packages.md
-      - remotes.md
-      - How To:
-          - howto/run-script.md
-          - howto/tune-hyperparameters.md
-          - howto/customize-script-inputs.md
-          - howto/customize-script-outputs.md
-          - howto/create-guildfile.md
-          - howto/list-operations.md
-          - howto/use-datasets-from-internet.md
-          - howto/build-workflow.md
-          - howto/debug-run-files.md
-          - howto/debug-output-scalars.md
-          - howto/customize-source-code-snapshots.md
+      - install.md
+      - Introduction:
+          - intro/run.md
+          - intro/compare.md
+          - intro/customize.md
+          - intro/automate.md
+          - intro/advanced.md
+      - concepts.md
 
-      - Command Reference:
-          - commands/index.md
+      - Guides:
+          - guildfile.md
+          - runs.md
+          - tuning.md
+          - remote.md
+          - debugging.md
+
+      - Tools:
+          - tools/compare.md
+          - tools/tensorboard.md
+          - tools/view.md
+
+      - Commands:
           - commands/cat.md
           - commands/check.md
           - commands/compare.md
@@ -227,19 +229,18 @@ pages:
           - commands/open.md
           - commands/operations.md
           - commands/package.md
-          - commands/packages.md
           - commands/packages-delete.md
           - commands/packages-info.md
           - commands/packages-list.md
+          - commands/packages.md
           - commands/pull.md
           - commands/push.md
-          - commands/remote.md
           - commands/remote-start.md
           - commands/remote-status.md
           - commands/remote-stop.md
+          - commands/remote.md
           - commands/remotes.md
           - commands/run.md
-          - commands/runs.md
           - commands/runs-delete.md
           - commands/runs-diff.md
           - commands/runs-export.md
@@ -252,17 +253,23 @@ pages:
           - commands/runs-push.md
           - commands/runs-restore.md
           - commands/runs-stop.md
+          - commands/runs.md
           - commands/search.md
           - commands/shell.md
           - commands/stop.md
           - commands/sync.md
           - commands/tensorboard.md
-          - commands/tensorflow.md
           - commands/tensorflow-inspect.md
+          - commands/tensorflow.md
           - commands/uninstall.md
           - commands/view.md
           - commands/watch.md
 
-      #- Reference:
-  - cheatsheet.md
+      - Reference:
+          - reference/guildfile.md
+          - reference/user-config.md
+
+      - cheatsheet.md
+
+  - faq.md
   - support.md

@@ -1,10 +1,24 @@
-title: Cheatsheet
-navbar_item: yes
-hide_sidenav: yes
-
 # Cheatsheet
 
-<div class="row"></div>
+TODO:
+
+- Get to the chase - how to run something - install and check should
+  just be an aside at the top of the page
+
+- The basics
+    - Run a script or operation
+    - List runs
+    - List run info
+    - List run files
+    - Compare runs
+    - Diff runs
+    - View or open run files
+
+- Create a Guild file (needs to be super simple with links to more
+  advanced examples)
+
+
+<div class="row" style="margin-top:-20px"></div>
 
 <div class="col col-lg-6" markdown="1">
 
@@ -236,9 +250,8 @@ guild tensorboard --port 8080
 ## Guild File - Basic
 
 Use the template below to get started with a basic Guild file. For
-other examples and detailed code snippets, see [Create a Guild File -
-Examples](/howto/create-guildfile.md#examples). For general
-documentation on Guild files see, [Guild Files](/guildfiles.md).
+other examples and detailed code snippets, see TODO. For general
+documentation on Guild files see, [Guild Files](/guildfile.md).
 
 TODO: This "cheathsheet" project is breathtakingly long. It's not even
 a completely annotated example. I'm not sure what approach to

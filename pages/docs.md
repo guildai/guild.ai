@@ -1,9 +1,8 @@
-title: Docs
+title: Documentation
 navbar_item: yes
-pagenav_title: Documentation
 hide_in_sidenav: yes
 
-# Documentation
+# Guild AI Documentation
 
 TODO: The sections below are a work in progress. Current thinking is
 to list the "Concept" topics first, under Basics and Advanced. Then

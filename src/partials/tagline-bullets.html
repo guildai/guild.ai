@@ -1,0 +1,5 @@
+<ul class="tagline-bullets">
+  {% for bullet in config.extra.tagline_bullets %}
+  <li><img src="/assets/icons/{{ bullet.icon }}.svg">{{ bullet.text }}</li>
+  {% endfor %}
+</ul>

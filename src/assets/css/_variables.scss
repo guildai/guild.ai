@@ -6,7 +6,7 @@ $font-family-title: 'Roboto',sans-serif;
 $font-family-hero: 'Roboto Slab',sans-serif;
 $font-family-code: 'Roboto Mono',monospace;
 $default-font-size: 16px;
-$default-line-height: 24px;
+$default-line-height: 25px;
 $pre-font-size: 14px;
 
 // Spacing
@@ -63,8 +63,8 @@ $color-white:                       #ffffff;
 $color-white-darker:                #ffffff;
 
 // Shadow
-$default-box-shadow:                rgba(0, 0, 0, 0.5) 8px 12px 25px;
-$box-shadow-less:                   rgba(0, 0, 0, 0.4) 5px 8px 18px;
+$default-box-shadow:                rgba(0, 0, 0, 0.3) 3px 5px 14px;
+$box-shadow-less:                   rgba(0, 0, 0, 0.3) 3px 5px 14px;
 
 // Breaks
 $break-xs:                          480px;

@@ -65,8 +65,7 @@
   > h4 {
     font-weight: 500;
     margin: 0 0 7px;
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 26px;
 
     @media screen and (max-width: $break-sm) {
       font-size: 26px;
@@ -80,7 +79,6 @@
 
   > p {
     font-size: $feature-font-size;
-    line-height: 26px;
     flex: 1;
   }
 
