@@ -6,11 +6,19 @@ title: Experiment Tracking for Machine Learning Engineers
 
 <div id="get-started-fab"></div>
 
+<div class="row match-height logos">
+  <img src="/assets/img/tensorflow-logo.png" width="150">
+  <img src="/assets/img/pytorch-logo.png" width="140">
+  <img src="/assets/img/keras-logo.png" width="110">
+  <img src="/assets/img/scikit-learn-logo.png" width="95">
+  <img src="/assets/img/mxnet-logo.png" width="105">
+  <img src="/assets/img/xgboost-logo.png" width="105">
+</div>
+
+
+<!--
 <div class="row match-height top-features">
   <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <!--
-    <h3></h3>
-    -->
     <h3>Track Experiments Automatically</h3>
     <p>
 
@@ -53,16 +61,8 @@ title: Experiment Tracking for Machine Learning Engineers
   </div>
 </div>
 
----
+-->
 
-<div class="row match-height logos">
-  <img src="/assets/img/tensorflow-logo.png" width="150">
-  <img src="/assets/img/pytorch-logo.png" width="140">
-  <img src="/assets/img/keras-logo.png" width="110">
-  <img src="/assets/img/scikit-learn-logo.png" width="95">
-  <img src="/assets/img/mxnet-logo.png" width="105">
-  <img src="/assets/img/xgboost-logo.png" width="105">
-</div>
 
 ---
 

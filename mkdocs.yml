@@ -14,12 +14,12 @@ extra:
   subtext:
 
   tagline_bullets:
-    - text: Measure
-      icon: pie-line-graph
-    - text: Study
-      icon: file-code-search
-    - text: Improve
-      icon: target-center
+    - text: Light Weight
+      icon: wild-bird-fly-gray
+    - text: Batteries Included
+      icon: photography-equipment-battery-gray
+    - text: 100% Open Source
+      icon: developer-community-github-2-gray
 
   links:
     - name: github

@@ -287,7 +287,7 @@
 
   .tagline-bullets {
     list-style: none;
-    margin: 40px 40px 150px;
+    margin: 40px 40px 175px;
     padding: 0;
     text-align: center;
 
@@ -308,6 +308,7 @@
       display: inline-block;
       padding: 4px 20px;
       font-size: 2.8em;
+      color: #eee;
 
       @media screen and (max-width: $break-lg) {
         font-size: 2.6em;
@@ -320,7 +321,7 @@
       }
 
       @media screen and (max-width: $break-sm) {
-        font-size: 2em;
+        font-size: 2.2em;
         padding: 4px 12px;
       }
 
@@ -329,15 +330,15 @@
       }
 
       img {
-        height: 58px;
+        height: 56px;
         margin-right: 16px;
 
         @media screen and (max-width: $break-lg) {
-          height: 54px;
+          height: 52px;
         }
 
         @media screen and (max-width: $break-md) {
-          height: 50px;
+          height: 48px;
         }
 
         @media screen and (max-width: $break-sm) {
