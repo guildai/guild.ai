@@ -6,6 +6,22 @@ title: Experiment Tracking for Machine Learning Engineers
 
 <div id="get-started-fab"></div>
 
+<div class="row">
+  <div class="col-lg-9" style="margin:90px 0">
+    <h1>Something to say here</h1>
+    <div class="text-editor banner">
+      <div class="text-body">
+        $ <span id="typed"></span><span class="typed-cursor">|</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3" style="margin:110px 0">
+    Some blah blah blah, whatever the heck this is.
+  </div>
+</div>
+
+<p></p>
+
 <div class="row match-height logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">

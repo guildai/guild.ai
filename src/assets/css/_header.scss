@@ -19,7 +19,7 @@
 
     > img {
       display: inline-block;
-      max-height: 40px;
+      max-height: 42px;
       transition: $default-transition;
     }
 
@@ -126,9 +126,9 @@
     transition: $default-transition;
 
     @media screen and (max-width: $break-md) {
-      font-size: 16px;
-      padding-left: 10px;
-      padding-right: 10px;
+      font-size: 18px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
 
     &:focus,
@@ -361,7 +361,7 @@
     text-align: center;
 
     > img {
-      max-height: 24px;
+      max-height: 30px;
     }
   }
 
