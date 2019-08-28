@@ -6,22 +6,6 @@ title: Experiment Tracking for Machine Learning Engineers
 
 <div id="get-started-fab"></div>
 
-<div class="row">
-  <div class="col-lg-9" style="margin:90px 0">
-    <h1>Something to say here</h1>
-    <div class="text-editor banner">
-      <div class="text-body">
-        $ <span id="typed"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3" style="margin:110px 0">
-    Some blah blah blah, whatever the heck this is.
-  </div>
-</div>
-
-<p></p>
-
 <div class="row match-height logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">
@@ -29,6 +13,179 @@ title: Experiment Tracking for Machine Learning Engineers
   <img src="/assets/img/scikit-learn-logo.png" width="95">
   <img src="/assets/img/mxnet-logo.png" width="105">
   <img src="/assets/img/xgboost-logo.png" width="105">
+</div>
+
+---
+
+<p markdown="1" class="highlight">
+
+Machine learning engineers use Guild AI to track and compare
+experiments. They establish baselines, improve performance, and catch
+regressions. They go faster and make fewer mistakes. They share
+results and learn from others. Most of all, they enjoy engineering
+best practices without having to reinvent them.
+
+</p>
+
+---
+
+<div class="row match-height other-features">
+
+  <div class="col-lg-6">
+    <i class="far fa-box-check"></i>
+    <h4>Track Experiments</h4>
+    <p>
+
+      Guild automatically captures every detail of your training runs
+      as unique experiments.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="far fa-analytics"></i>
+    <h4>Compare and Analyze Runs</h4>
+    <p>
+
+      Use hard data to deepen your understanding and incrementally
+      improve your models.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="far fa-bullseye-arrow"></i>
+    <h4>Tune Hyperparameters</h4>
+    <p>
+
+      Find optimal hyperparameters and model architecture without
+      setting up complicated trials.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="far fa-sitemap"></i>
+    <h4>Automate Workflow</h4>
+    <p>
+
+      Save time and avoid costly mistakes by automating your training
+      steps.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="far fa-share-square"></i>
+    <h4>Publish and Share Results</h4>
+    <p>
+
+      Share your results with colleagues through HTML, Markdown or
+      LaTex based reports.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="far fa-cloud-upload"></i>
+    <h4>Train and Backup Remotely</h4>
+    <p>
+
+      Train on GPU accelerated systems running in the cloud on
+      on-prem.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="fas fa-terminal"></i>
+    <h4>Command Line Interface</h4>
+    <p>
+
+      Use your current console based work flow with Guild's POSIX
+      compliant interface.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <i class="fab fa-python"></i>
+    <h4>Python API</h4>
+    <p>
+
+      Use Notebooks or interactive shells with Guild's Python
+      interface.
+
+    </p>
+  </div>
+</div>
+
+---
+
+<div class="row feature">
+  <div class="hidden-xs col-sm-2">
+    <img class="icon" src="/assets/icons/space-rocket-flying-gray.svg">
+  </div>
+  <div class="col-sm-10">
+    <h2><strong>Start Fast</strong> - Run your script directly</h2>
+    <p>
+      Run your code <strong>without modification</strong>
+      to <strong>automatically capture</strong> unique experiments.
+    </p>
+    <div class="text-editor">
+      <div class="text-body">
+        $ <span id="typed-run"></span><span class="typed-cursor">|</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row feature">
+  <div class="hidden-xs col-sm-2">
+    <img class="icon" src="/assets/icons/file-code-settings-gray.svg">
+  </div>
+  <div class="col-sm-10">
+    <h2><strong>Evolve</strong> - Use a Guild file for more control</h2>
+
+    <p>
+
+      Add Guild a file named <code>guild.yml</code> to your project
+      to <strong>make everything explicit</strong> and to keep
+      experiment configuration <strong>outside your code</strong>.
+
+    </p>
+
+    <pre data-toolbar="hide"><code class="language-yaml">
+        train-mnist:
+          description: Train CNN on MNIST images
+          main: train
+          flags:
+            lr:
+              description: Learning rate
+              default: 0.01
+            batch_size:
+              description: Training batch size
+              default: 100
+          requires:
+            - http://pub.guild.ai/mnist.tar.gz
+
+        eval-mnist:
+          description: Evaluate a trained model
+          main: eval
+          requires: train-mnist
+    </code></pre>
+
+    <p>
+      This not only helps Guild run your scripts, it
+      <strong>documents the interface</strong> to your project.
+    </p>
+
+    <div class="text-editor">
+      <div class="text-body">
+        $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -82,156 +239,23 @@ title: Experiment Tracking for Machine Learning Engineers
 
 ---
 
-<div class="row qa">
-  <div class="col-lg-4">
-    <h4>How does Guild AI help?</h4>
+<div class="row feature">
+  <div class="hidden-xs col-sm-2">
+    <img src="/assets/icons/video-player-adjust-finger-gray.svg">
   </div>
-  <div class="col-lg-8">
-    <p>
-
-      Guild helps you <strong>train better models</strong> in less
-      time. Effective machine learning is a function of systematic
-      experimentation. One experiment leads to another as you deepen
-      your understanding. The faster you apply experiments, the sooner
-      you complete your work.
-
-    </p>
-  </div>
-</div>
-
-<div class="row qa">
-  <div class="col-lg-4">
-    <h4>Who uses Guild AI?</h4>
-  </div>
-  <div class="col-lg-8">
-    <p>
-
-      <strong>Machine learning engineers</strong>
-      and <strong>researchers</strong> use Guild to run, track, and
-      compare experiments. Each experiment yields valuable information
-      used to deepen understanding and inform next steps. Users
-      further explore model performance with hyperparameter search and
-      Bayesian optimization.
-
-    </p>
-  </div>
-</div>
-
-<div class="row qa">
-  <div class="col-lg-4">
-    <h4>How is Guild AI different?</h4>
-  </div>
-  <div class="col-lg-8">
-    <p style="margin-bottom:0">
-
-      Guild is an <strong>external toolkit</strong> that runs your
-      <strong>unmodified code</strong>. This lets you quickly automate
-      experiments using any library or script. Guild is <strong>light
-      weight</strong>. It doesn't depend on databases or other
-      infrastructure to manage experiments.
-
-    </p>
-  </div>
-</div>
-
----
-
-<div class="row match-height other-features">
-
-  <div class="col-lg-6">
-    <i class="far fa-box-check"></i>
-    <h4>Manage Experiments</h4>
-    <p>
-
-      Guild automatically captures the details of your training runs
-      as unique experiments. Simply run your script and Guild takes
-      care of the rest.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-analytics"></i>
-    <h4>Compare and Analyze Runs</h4>
-    <p>
-
-      With a detailed record of each run, you can leverage invaluable
-      information for debugging issues, improving your model, and
-      selecting the best runs for deployment.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-bullseye-arrow"></i>
-    <h4>Tune Hyperparameters</h4>
-    <p>
-
-      Guild makes it trivial to run grid search, random search, and
-      Bayesian optimization. There's no need to adopt a specialized
-      framework or even change your code.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-sitemap"></i>
-    <h4>Automate Workflow</h4>
-    <p>
-
-      Guild automates your machine learning pipelines &mdash; from
-      data preparation to training, evaluation, and deployment. You
-      can even apply AutoML for true end-to-end learning.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-share-square"></i>
-    <h4>Publish and Share Results</h4>
-    <p>
-
-      Generate reports for your runs that summarize your results for
-      others. Use Guild's built-in reports or create your own using
-      Markdown, HTML, or LaTeX.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-cloud-upload"></i>
-    <h4>Train and Backup Remotely</h4>
-    <p>
-
-      Train your models on cloud or on-prem servers with a single
-      switch. Backup and restore your runs to S3, GCP, or any SSH
-      accessible server.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="fas fa-terminal"></i>
-    <h4>Command Line Interface</h4>
-    <p>
-
-      Guild's functionality is available using a POSIX compliant
-      command line interface. Use Guild at your favoriate terminal or
-      in automation environments.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="fab fa-python"></i>
-    <h4>Python API</h4>
-    <p>
-
-      If you work in Notebook environments such as Google
-      Colaboratory, or prefer to build your own Python based tools,
-      Guild provides a comprehensive Python interface.
-
-    </p>
+  <div class="col-sm-10">
+    <h2><strong>Learn</strong> - Many ways to view compare results</h2>
+    <div class="text-editor">
+      <div class="text-body">
+        $ <span id="typed-view-and-compare"></span><span class="typed-cursor">|</span>
+      </div>
+      <img id="view-and-compare-img-compare" class="show-hide" src="/assets/img/compare-4.png">
+      <div id="view-and-compare-img-tensorboard" class="show-hide">TensorBoard</div>
+      <div id="view-and-compare-img-view" class="show-hide">View</div>
+      <div id="view-and-compare-img-open" class="show-hide">Open</div>
+      <div id="view-and-compare-img-info" class="show-hide">Info</div>
+      <div id="view-and-compare-img-cat" class="show-hide">Cat</div>
+    </div>
   </div>
 </div>
 

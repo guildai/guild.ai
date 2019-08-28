@@ -166,6 +166,16 @@ pre.line-numbers > code {
   text-align: right;
 }
 
+pre.code-toolbar[data-toolbar="hide"] {
+  .toolbar {
+    display: none;
+  }
+
+  .language-name {
+    display: none;
+  }
+}
+
 pre.code-toolbar {
   position: relative;
 }

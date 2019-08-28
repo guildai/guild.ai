@@ -27,17 +27,14 @@ $(function() {
 
   // Typed.js
 
-  const typedEl = document.getElementById('typed');
-  if (typedEl !== null) {
-    const typed = new Typed(typedEl, {
+  const typedRunEl = document.getElementById('typed-run');
+  if (typedRunEl !== null) {
+    new Typed(typedRunEl, {
       strings: [
         "guild run train.py",
-        "guild run <span>train.py learning-rate=0.01</span>",
-        "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
-        "guild run <span>train.py</span> x=[-2.0:2.0] --optimizer bayesian",
-        "guild compare",
-        "guild diff",
-        "guild tensorboard",
+        "guild run <span>train.py</span> lr=0.01",
+        "guild run <span>train.py lr=[1e-3,1e-2]</span>",
+        "guild run <span>train.py</span> lr=[1e-7:1e-1] --optimize",
       ],
       typeSpeed: 45,
       backSpeed: 20,
@@ -46,6 +43,62 @@ $(function() {
       showCursor: false,
       smartBackspace: true
     });
+  }
+
+  const typedRun2El = document.getElementById('typed-run2');
+  if (typedRun2El !== null) {
+    new Typed(typedRun2El, {
+      strings: [
+        "guild help",
+        "guild run train-mnist --help-op",
+        "guild run <span>train-mnist lr=1e-3 batch_size=1000</span>",
+        "guild run <span>train-mnist</span> lr=[1e-4:1e-1] -o bayesian",
+      ],
+      typeSpeed: 45,
+      backSpeed: 20,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false,
+      smartBackspace: true
+    });
+  }
+
+  const typedVandCEl = document.getElementById('typed-view-and-compare');
+  if (typedVandCEl !== null) {
+    const viewCompareCmds = [
+      'compare',
+      'tensorboard',
+      'view',
+      'open',
+      'info',
+      'cat'
+    ];
+    new Typed(typedVandCEl, {
+      strings: viewCompareCmds.map(function(cmd) {
+        return 'guild ' + cmd;
+      }),
+      typeSpeed: 45,
+      backSpeed: 20,
+      backDelay: 4000,
+      loop: true,
+      showCursor: false,
+      smartBackspace: true,
+      onStringTyped: function(pos) {
+        const selected = viewCompareCmds[pos];
+        setTimeout(function() {
+          viewCompareCmds.forEach(function(cmd) {
+            const el = document.getElementById('view-and-compare-img-' + cmd);
+            if (el !== null) {
+              if (cmd === selected) {
+                el.classList.add("active");
+              } else {
+                el.classList.remove("active");
+              }
+            }
+          });
+        }, 700);
+      }
+    })
   }
 
   // Scroll to page links
