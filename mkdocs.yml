@@ -5,12 +5,12 @@ strict: true
 extra:
   version: 0.6.6
 
-  tagline_width: 18em
+  tagline_width: 30em
   tagline:
 
-    Open Source Tools for Machine Learning Automation
+    Tools for Machine Learning Automation
 
-  subtext_width: 30em
+  subtext_width: 40em
   subtext:
 
   tagline_bullets:
@@ -22,6 +22,9 @@ extra:
 
     - text: Reproducibility
       icon: task-list-check-gray
+
+    - text: Open Source
+      icon: developer-community-github-2-gray
 
   links:
     - name: github

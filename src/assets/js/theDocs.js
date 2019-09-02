@@ -49,10 +49,10 @@ $(function() {
   if (typedRun2El !== null) {
     new Typed(typedRun2El, {
       strings: [
-        "guild help",
-        "guild run train-mnist --help-op",
-        "guild run <span>train-mnist lr=1e-3 batch_size=1000</span>",
-        "guild run <span>train-mnist</span> lr=[1e-4:1e-1] -o bayesian",
+        "guild run <span>train-mnist lr=0.001</span>",
+        "guild run <span>train-mnist lr=0.001 batch_size=1000</span>",
+        "guild run <span>train-mnist lr=</span>[0.001,0.01,0.1]",
+        "guild run <span>train-mnist lr=[1e-4:1e-1] -o bayesian</span>",
       ],
       typeSpeed: 45,
       backSpeed: 20,
@@ -69,9 +69,8 @@ $(function() {
       'compare',
       'tensorboard',
       'view',
-      'open',
-      'info',
-      'cat'
+      'diff',
+      'open'
     ];
     new Typed(typedVandCEl, {
       strings: viewCompareCmds.map(function(cmd) {
@@ -79,7 +78,7 @@ $(function() {
       }),
       typeSpeed: 45,
       backSpeed: 20,
-      backDelay: 4000,
+      backDelay: 5000,
       loop: true,
       showCursor: false,
       smartBackspace: true,
@@ -96,7 +95,7 @@ $(function() {
               }
             }
           });
-        }, 150);
+        }, 100);
       }
     })
   }
