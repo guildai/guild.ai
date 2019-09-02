@@ -19,11 +19,10 @@ title: Experiment Tracking for Machine Learning Engineers
 
 <p markdown="1" class="highlight">
 
-Machine learning engineers use Guild AI to track and compare
-experiments. They establish baselines, improve performance, and catch
-regressions. They go faster and make fewer mistakes. They share
-results and learn from others. Most of all, they enjoy engineering
-best practices without having to reinvent them.
+Guild AI is a toolkit that helps you track experiments, compare
+results, and automate your machine learning workflow. Run your
+unmodified training scripts to automatically capture unique
+experiments and leverage Guild's analysis and optimization features.
 
 </p>
 
@@ -32,7 +31,7 @@ best practices without having to reinvent them.
 <div class="row match-height other-features">
 
   <div class="col-lg-6">
-    <i class="far fa-box-check"></i>
+    <img class="feature-icon" src="/assets/icons/folder-check.svg">
     <h4>Track Experiments</h4>
     <p>
 
@@ -43,18 +42,18 @@ best practices without having to reinvent them.
   </div>
 
   <div class="col-lg-6">
-    <i class="far fa-analytics"></i>
+    <img class="feature-icon" src="/assets/icons/analytics-graph.svg">
     <h4>Compare and Analyze Runs</h4>
     <p>
 
-      Use hard data to deepen your understanding and incrementally
+      Use results to deepen your understanding and incrementally
       improve your models.
 
     </p>
   </div>
 
   <div class="col-lg-6">
-    <i class="far fa-bullseye-arrow"></i>
+    <img class="feature-icon" src="/assets/icons/seo-search-star.svg">
     <h4>Tune Hyperparameters</h4>
     <p>
 
@@ -65,7 +64,7 @@ best practices without having to reinvent them.
   </div>
 
   <div class="col-lg-6">
-    <i class="far fa-sitemap"></i>
+    <img class="feature-icon" src="/assets/icons/hierarchy.svg">
     <h4>Automate Workflow</h4>
     <p>
 
@@ -76,18 +75,7 @@ best practices without having to reinvent them.
   </div>
 
   <div class="col-lg-6">
-    <i class="far fa-share-square"></i>
-    <h4>Publish and Share Results</h4>
-    <p>
-
-      Share your results with colleagues through HTML, Markdown or
-      LaTex based reports.
-
-    </p>
-  </div>
-
-  <div class="col-lg-6">
-    <i class="far fa-cloud-upload"></i>
+    <img class="feature-icon" src="/assets/icons/cloud-server.svg">
     <h4>Train and Backup Remotely</h4>
     <p>
 
@@ -98,7 +86,18 @@ best practices without having to reinvent them.
   </div>
 
   <div class="col-lg-6">
-    <i class="fas fa-terminal"></i>
+    <img class="feature-icon" src="/assets/icons/common-file-text-share.svg">
+    <h4>Publish and Share Results</h4>
+    <p>
+
+      Share your results with colleagues through HTML, Markdown or
+      LaTex based reports.
+
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <img class="feature-icon" src="/assets/icons/app-window-code.svg">
     <h4>Command Line Interface</h4>
     <p>
 
@@ -109,7 +108,7 @@ best practices without having to reinvent them.
   </div>
 
   <div class="col-lg-6">
-    <i class="fab fa-python"></i>
+    <img class="feature-icon" src="/assets/icons/file-py.svg">
     <h4>Python API</h4>
     <p>
 
@@ -124,7 +123,7 @@ best practices without having to reinvent them.
 
 <div class="row feature">
   <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/space-rocket-flying-gray.svg">
+    <img class="icon" src="/assets/icons/railroad-fast-train-1.svg">
   </div>
   <div class="col-sm-10">
     <h2><strong>Start Fast</strong> - Run your script directly</h2>
@@ -142,16 +141,16 @@ best practices without having to reinvent them.
 
 <div class="row feature">
   <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/file-code-settings-gray.svg">
+    <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Evolve</strong> - Use a Guild file for more control</h2>
+    <h2><strong>Configure a Project</strong> - Use a Guild file for more control</h2>
 
     <p>
 
-      Add Guild a file named <code>guild.yml</code> to your project
-      to <strong>make everything explicit</strong> and to keep
-      experiment configuration <strong>outside your code</strong>.
+      Add a Guild file (named <code>guild.yml</code>) to your project
+      to <strong>make things explicit</strong> and to keep experiment
+      configuration <strong>outside your code</strong>.
 
     </p>
 
@@ -176,83 +175,32 @@ best practices without having to reinvent them.
     </code></pre>
 
     <p>
-      This not only helps Guild run your scripts, it
-      <strong>documents the interface</strong> to your project.
+
+      Guild files also <strong>document the interface</strong> to your
+      project.
+
     </p>
 
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
   </div>
 </div>
-
-
-<!--
-<div class="row match-height top-features">
-  <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Track Experiments Automatically</h3>
-    <p>
-
-      Capture every detail of your experiments including
-      performance, generated files, logs, and source code.
-
-    </p>
-    <img title="200x100"
-         class="feature-grid-img"
-         style="width:80%"
-         src="/assets/img/record-experiments.jpg">
-  </div>
-
-  <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Analyze, Compare, Optimize</h3>
-    <p>
-
-      Learn from each experiment to optimize your model in less time
-      &mdash; apply your own insights or use AutoML.
-
-    </p>
-    <img title="Hyperparameter optimization"
-         class="feature-grid-img"
-         style="width:80%"
-         src="/assets/img/select-experiment.jpg">
-  </div>
-
-  <div class="col-md-4 col-sm-12 promo center feature-promo">
-    <h3>Light Weight, Open Source Toolkit</h3>
-    <p>
-
-      Start fast without changing your code &mdash; Guild AI is a
-      simple external tool, not a complicated framework.
-
-    </p>
-    <img title="Use your code without modification"
-         class="feature-grid-img"
-         style="width:80%"
-         src="/assets/img/own-code-sm.jpg">
-  </div>
-</div>
-
--->
-
-
----
 
 <div class="row feature">
   <div class="hidden-xs col-sm-2">
-    <img src="/assets/icons/video-player-adjust-finger-gray.svg">
+    <img class="icon" src="/assets/icons/seo-search-graph-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Learn</strong> - Many ways to view compare results</h2>
+    <h2><strong>Study Results</strong> - Better understand your model with real data</h2>
     <div class="text-editor">
       <div class="text-body">
         $ <span id="typed-view-and-compare"></span><span class="typed-cursor">|</span>
       </div>
-      <img id="view-and-compare-img-compare" class="show-hide" src="/assets/img/compare-4.png">
+    </div>
+    <div class="view-and-compare-preview">
+      <img id="view-and-compare-img-compare" class="show-hide md shadow" src="/assets/img/compare-4.png">
       <div id="view-and-compare-img-tensorboard" class="show-hide">TensorBoard</div>
       <div id="view-and-compare-img-view" class="show-hide">View</div>
       <div id="view-and-compare-img-open" class="show-hide">Open</div>
+      <div id="view-and-compare-img-diff" class="show-hide">Diff</div>
       <div id="view-and-compare-img-info" class="show-hide">Info</div>
       <div id="view-and-compare-img-cat" class="show-hide">Cat</div>
     </div>

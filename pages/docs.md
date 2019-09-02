@@ -1,4 +1,4 @@
-title: Documentation
+title: Docs
 navbar_item: yes
 hide_in_sidenav: yes
 

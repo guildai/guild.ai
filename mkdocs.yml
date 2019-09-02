@@ -5,21 +5,23 @@ strict: true
 extra:
   version: 0.6.6
 
-  tagline_width: 20em
+  tagline_width: 18em
   tagline:
 
-    Experiment Tracking for Machine Learning Engineers
+    Open Source Tools for Machine Learning Automation
 
   subtext_width: 30em
   subtext:
 
   tagline_bullets:
-    - text: Light Weight
-      icon: wild-bird-fly-gray
-    - text: Batteries Included
-      icon: photography-equipment-battery-gray
-    - text: 100% Open Source
-      icon: developer-community-github-2-gray
+    - text: Experiment Tracking
+      icon: analytics-graph-gray
+
+    - text: Model Tuning
+      icon: seo-search-graph-gray
+
+    - text: Reproducibility
+      icon: task-list-check-gray
 
   links:
     - name: github
@@ -271,5 +273,6 @@ pages:
 
       - cheatsheet.md
 
+  - examples.md
   - faq.md
   - support.md

@@ -1,7 +1,7 @@
 .site-header {
 
   .btn {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .navbar {
@@ -25,6 +25,10 @@
       display: inline-block;
       max-height: 42px;
       transition: $default-transition;
+
+      @media screen and (max-width: $break-md) {
+        max-height: 36px;
+      }
     }
 
     .force-middle {
@@ -125,12 +129,14 @@
     color: rgba(255,255,255,.8);
     font-weight: 500;
     text-transform: uppercase;
-    font-size: 19px;
-    letter-spacing: 0.3px;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    padding-left: 12px;
+    padding-right: 12px;
     transition: $default-transition;
 
     @media screen and (max-width: $break-md) {
-      font-size: 18px;
+      font-size: 16px;
       padding-left: 8px;
       padding-right: 8px;
     }
@@ -184,9 +190,13 @@
   padding-left: 15px;
 
   a {
-    padding: 0 15px;
+    padding: 0 12px;
     color: white;
-    font-size: 26px;
+    font-size: 24px;
+
+    @media screen and (max-width: $break-sm) {
+      padding: 0 10px;
+    }
   }
 }
 
@@ -310,6 +320,10 @@
   background-color: #292929;
 }
 
+#navbar {
+  padding-top: 2px;
+}
+
 @media screen and (max-width: $break-md) {
 
   .site-header .navbar {
@@ -365,7 +379,7 @@
     text-align: center;
 
     > img {
-      max-height: 30px;
+      max-height: 28px;
     }
   }
 
