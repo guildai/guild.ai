@@ -251,7 +251,7 @@ guild tensorboard --port 8080
 
 Use the template below to get started with a basic Guild file. For
 other examples and detailed code snippets, see TODO. For general
-documentation on Guild files see, [Guild Files](/guildfile.md).
+documentation on Guild files see, TODO.
 
 TODO: This "cheathsheet" project is breathtakingly long. It's not even
 a completely annotated example. I'm not sure what approach to

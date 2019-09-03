@@ -1,7 +1,6 @@
 navbar_item: yes
-hide_sidenav: yes
 
-# Get Started
+# Quick Start
 
 <div class="row" style="margin-top:-20px"></div>
 

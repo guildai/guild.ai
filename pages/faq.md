@@ -85,8 +85,8 @@ requirements onerous.
 Guild is designed as a traditional build tools. It relies on external
 configuration and operating system conventions to perform its work.
 
-For configuration, Guild relies on a [*Guild file*](guildfile.md) ---
-a human readable file that tells Guild about your code.
+For configuration, Guild relies on a TODO --- a human readable file
+that tells Guild about your code.
 
 Guild otherwise interfaces with your scripts using standard operating
 system conventions (command arguments, environment variables, standard

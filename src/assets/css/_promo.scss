@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 30px;
 
   &.center {
     align-items: center;
@@ -331,6 +332,10 @@
     @media screen and (max-width: $break-md) {
       margin-top: 0;
     }
+
+    @media screen and (max-width: $break-sm) {
+      height: 38px;
+    }
   }
 
   h4 {
@@ -340,12 +345,24 @@
     @media screen and (max-width: $break-md) {
       margin-top: 30px;
     }
+
+    @media screen and (max-width: $break-sm) {
+      padding-left: 60px;
+    }
   }
 
   p {
     padding-left: 64px;
     font-size: $feature-font-size;
     margin-bottom: 46px;
+
+    @media screen and (max-width: $break-md) {
+      margin-bottom: 36px;
+    }
+
+    @media screen and (max-width: $break-sm) {
+      padding-left: 60px;
+    }
   }
 
 
@@ -522,16 +539,16 @@ p.highlight {
     margin: 20px 0;
 
     .text-body {
-      font-size: 18px;
+      font-size: 17px;
+
+      @media screen and (max-width: $break-md) {
+        font-size: 15px;
+      }
     }
   }
 
   pre {
     margin: 30px 0 40px;
-
-    code {
-      font-size: 16px;
-    }
   }
 
   .highlights {
@@ -543,9 +560,10 @@ p.highlight {
 
   img.icon {
     position: absolute;
-    width: calc(100% - 90px);
-    margin: 0 45px;
+    width: 100%;
+    max-width: 80px;
     top: 20px;
+    right: 20px;
   }
 
   .show-hide {
@@ -562,6 +580,7 @@ p.highlight {
     p {
       margin-top: 24px;
       text-align: center;
+      font-style: italic;
     }
   }
 }

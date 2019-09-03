@@ -50,13 +50,13 @@ theme:
   # include them here:
   include_search_page: false
   search_index_only: true
-  static_templates:
-    - version.html
+
 plugins:
   - search
   - nav_resolve
   # Modifies mkdocs server to avoid needless rebuilds
   - serve
+
 markdown_extensions:
   - admonition
   - footnotes
@@ -192,24 +192,35 @@ markdown_extensions:
 
 pages:
   - index.md
-  - start.md
   - docs:
       - docs.md
       - install.md
-      - Introduction:
-          - intro/run.md
-          - intro/compare.md
-          - intro/customize.md
-          - intro/automate.md
-          - intro/advanced.md
-      - concepts.md
+      - Get Started:
+          - start.md
+          - start/run.md
+          - start/compare.md
+          - start/customize.md
+          - start/automate.md
+          - start/advanced.md
+      - Concepts:
+          - cli.md
+          - projects.md
+          - operations.md
+          - models.md
+          - resources.md
+          - runs.md
+          - compare.md
+          - environments.md
+          - workflow.md
+          - packages.md
+          - remotes.md
 
       - Guides:
-          - guildfile.md
-          - runs.md
-          - tuning.md
-          - remote.md
-          - debugging.md
+          - guides/guildfile.md
+          - guides/runs.md
+          - guides/tuning.md
+          - guides/remote.md
+          - guides/debugging.md
 
       - Tools:
           - tools/compare.md

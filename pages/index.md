@@ -144,7 +144,7 @@ software, available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Add Structure</strong> - Use a Guild file for more control</h2>
+    <h2><strong>Organize</strong> - Use a Guild file for more control</h2>
 
     <p>
 
@@ -211,7 +211,7 @@ software, available under the Apache 2 open source license.
 
     <p>
 
-      Guild comes with a tour de force of <strong>analytic
+      Guild comes with a tour de force of <strong>analytics
       tools</strong> that help you <strong>study results</strong> and
       <strong>inform your next steps</strong>.
 
@@ -226,33 +226,23 @@ software, available under the Apache 2 open source license.
     <div class="view-and-compare-preview">
       <div id="view-and-compare-img-compare" class="show-hide">
         <img class="md shadow" src="/assets/img/compare-feature.png">
-        <p>
-          Compare results at the command line.
-        </p>
+        <p>Compare results at the command line</p>
       </div>
       <div id="view-and-compare-img-tensorboard" class="show-hide">
         <img class="md shadow" src="/assets/img/tensorboard-feature.png">
-        <p>
-          Built-in TensorBoard support.
-        </p>
+        <p>Built-in TensorBoard support</p>
       </div>
       <div id="view-and-compare-img-view" class="show-hide">
         <img class="md shadow" src="/assets/img/view-feature.png">
-        <p>
-          View and compare results graphically.
-        </p>
+        <p>View and compare runs in a fancy web UI</p>
       </div>
       <div id="view-and-compare-img-diff" class="show-hide">
         <img class="md shadow" src="/assets/img/diff-feature.png">
-        <p>
-          View fine-grain differences between two runs.
-        </p>
+        <p>View fine-grain differences between two runs</p>
       </div>
       <div id="view-and-compare-img-open" class="show-hide">
         <img class="md shadow" src="/assets/img/open-feature.png">
-        <p>
-          Browse and open run files.
-        </p>
+        <p>Browse and open run files</p>
       </div>
     </div>
   </div>
@@ -260,47 +250,45 @@ software, available under the Apache 2 open source license.
 
 ---
 
-# Learn More
+# Next Steps
 
 <div class="row match-height">
 <div class="col col-md-4">
 <div class="promo left">
-<h3><i class="far fa-arrow-circle-right"></i> Quick Start</h3>
+<h3><img src="/assets/icons/cursor-double-click-bold.svg"> Get Started</h3>
 <p class="expand">
 
-It just takes a moment to install Guild and get started with a simple
-experiment. From there you can learn about more advanced features.
+Start using Guild AI to track experiments in a matter of minutes.
 
 </p>
-<a class="btn btn-primary cta" href="/docs/start/"
+<a class="btn btn-primary cta" href="/start/"
   >Get Started <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3><i class="far fa-compass"></i> Explore the features</h3>
+<h3><img src="/assets/icons/task-list-question.svg"> Common Questions</h3>
 <p class="expand">
 
-Not convinced that Guild is right for you? Spend a few more minutes
-browsing its features.
+When should you use Guild? What makes Guild different? Answer these
+and more in the FAQ.
 
 </p>
-<a class="btn btn-primary cta" href="/features/"
-  >Guild AI features <i class="fa next"></i></a>
+<a class="btn btn-primary cta" href="/faq/"
+  >Common Questions <i class="fa next"></i></a>
 </div>
 </div>
 
 <div class="col col-md-4">
 <div class="promo left">
-<h3><i class="far fa-book"></i> Browse Guild AI docs</h3>
+<h3><img src="/assets/icons/book-open-text.svg"> Browse the Docs</h3>
 <p class="expand">
 
-If you're interested in a complete picture of Guild AI, start by
-browsing its comprehensives documentation.
+Guild AI has lots of great features. Learn all about them in the docs.
 
 </p>
-<a class="btn btn-primary" href="/docs/">Browse the docs <i class="fa next"></i></a>
+<a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>
