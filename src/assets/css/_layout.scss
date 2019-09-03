@@ -28,3 +28,13 @@ main {
 .mt-4 {
   margin-top: 3rem !important;
 }
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}

@@ -76,6 +76,10 @@
     i {
       margin-right: 3px;
     }
+
+    img {
+      margin-top: -0.15em;
+    }
   }
 
   > p {
@@ -311,29 +315,13 @@
 
   margin-bottom: -40px;
 
-  i {
-    margin-right: 7px;
-    margin-top: 10px;
-    color: $gray-text-color;
-    font-size: 36px;
-    float: left;
-
-    @media screen and (max-width: $break-md) {
-      margin-top: 0;
-    }
-  }
-
   .feature-icon {
     margin-right: 7px;
     margin-top: 10px;
     height: 42px;
-    float: left;
+    position: absolute;
 
     @media screen and (max-width: $break-md) {
-      margin-top: 0;
-    }
-
-    @media screen and (max-width: $break-sm) {
       height: 38px;
     }
   }
@@ -341,10 +329,6 @@
   h4 {
     padding-left: 64px;
     margin-top: 10px;
-
-    @media screen and (max-width: $break-md) {
-      margin-top: 30px;
-    }
 
     @media screen and (max-width: $break-sm) {
       padding-left: 60px;
@@ -358,9 +342,6 @@
 
     @media screen and (max-width: $break-md) {
       margin-bottom: 36px;
-    }
-
-    @media screen and (max-width: $break-sm) {
       padding-left: 60px;
     }
   }
@@ -581,6 +562,7 @@ p.highlight {
       margin-top: 24px;
       text-align: center;
       font-style: italic;
+      line-height: inherit;
     }
   }
 }

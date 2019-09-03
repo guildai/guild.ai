@@ -28,9 +28,9 @@ software, available under the Apache 2 open source license.
 
 ---
 
-<div class="row match-height other-features">
+<div class="row other-features display-flex">
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/folder-check.svg">
     <h4>Track Experiments</h4>
     <p>
@@ -41,7 +41,7 @@ software, available under the Apache 2 open source license.
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/analytics-graph.svg">
     <h4>Compare and Analyze Runs</h4>
     <p>
@@ -52,29 +52,28 @@ software, available under the Apache 2 open source license.
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/seo-search-star.svg">
     <h4>Tune Hyperparameters</h4>
     <p>
 
-      Find optimal hyperparameters and model architecture without
-      setting up complicated trials.
+      Find optimal hyperparameters without setting up complicated
+      trials.
 
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/hierarchy.svg">
     <h4>Automate Workflow</h4>
     <p>
 
-      Save time and avoid costly mistakes by automating your training
-      steps.
+      Save time and avoid mistakes by automating your training steps.
 
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/cloud-server.svg">
     <h4>Train and Backup Remotely</h4>
     <p>
@@ -85,7 +84,7 @@ software, available under the Apache 2 open source license.
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/common-file-text-share.svg">
     <h4>Publish and Share Results</h4>
     <p>
@@ -96,7 +95,7 @@ software, available under the Apache 2 open source license.
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/app-window-code.svg">
     <h4>Command Line Interface</h4>
     <p>
@@ -107,7 +106,7 @@ software, available under the Apache 2 open source license.
     </p>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/file-py.svg">
     <h4>Python API</h4>
     <p>
@@ -252,7 +251,7 @@ software, available under the Apache 2 open source license.
 
 # Next Steps
 
-<div class="row match-height">
+<div class="row display-flex">
 <div class="col col-md-4">
 <div class="promo left">
 <h3><img src="/assets/icons/cursor-double-click-bold.svg"> Get Started</h3>
