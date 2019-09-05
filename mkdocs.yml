@@ -94,7 +94,7 @@ markdown_extensions:
         # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
-          href: '/commands/{}-cmd'
+          href: '/commands/{}/'
           text: '{}'
         - link_pattern: 'pkg:(.*)'
           text: '{1}'
@@ -195,13 +195,15 @@ pages:
   - docs:
       - docs.md
       - install.md
+
       - Get Started:
           - start.md
-          - start/run.md
+          - start/optimize.md
           - start/compare.md
           - start/customize.md
           - start/automate.md
           - start/advanced.md
+
       - Concepts:
           - cli.md
           - projects.md
@@ -228,6 +230,7 @@ pages:
           - tools/view.md
 
       - Commands:
+          - commands/index.md
           - commands/cat.md
           - commands/check.md
           - commands/compare.md
@@ -236,7 +239,6 @@ pages:
           - commands/export.md
           - commands/help.md
           - commands/import.md
-          - commands/index.md
           - commands/init.md
           - commands/install.md
           - commands/label.md
