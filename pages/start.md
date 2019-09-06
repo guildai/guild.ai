@@ -32,8 +32,7 @@ import numpy as np
 
 x = 0.1
 
-loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2))
-        + np.random.randn() * 0.1)
+loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * 0.1)
 
 print("loss: %f" % loss)
 ```
@@ -51,6 +50,12 @@ guild run train.py -m 10 x=[-2.0:2.0]
 ```
 
 Press `Enter` to confirm the operation.
+
+!!! tip
+    Guild *magic* to set values of `x`. This is convenient for
+    simple scripts like `train.py`. Guild also supports non-magic
+    interfaces such as command line arguments. For more information,
+    see [Magic](kb/magic.md).
 
 ## Compare Runs
 

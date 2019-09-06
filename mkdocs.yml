@@ -204,17 +204,13 @@ pages:
           - start/automate.md
           - start/advanced.md
 
-      - Concepts:
+      - Core Concepts:
           - cli.md
-          - projects.md
-          - operations.md
-          - models.md
-          - resources.md
+          - configuration.md
           - runs.md
           - compare.md
           - environments.md
           - workflow.md
-          - packages.md
           - remotes.md
 
       - Guides:
@@ -286,6 +282,9 @@ pages:
       - Reference:
           - reference/guildfile.md
           - reference/user-config.md
+
+      - Knowledge Base:
+          - kb/magic.md
 
       - cheatsheet.md
 

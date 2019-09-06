@@ -40,20 +40,16 @@ the [Apache 2.0
 ->](https://github.com/guildai/guildai/blob/master/LICENSE.txt)
 license.
 
-Guild costs time and effort to adopt. But it's [easy to
-start](start.md) and learning Guild features is straight forward and
-incremental.
+While Guild costs time and effort to learn, it's [easy to start
+with](start.md) and use features incrementally.
 
 ### How is Guild different from other experiment management systems?
 
-Guild AI is unique among the alternatives:
-
-- External tool, not an embedded library
-- Requires changes to code
-- Requires additional required software or services
-
-This makes Guild easier to use and less complex, without sacrificing
-[features](index.md#features).
+- Guild is an external tool, not an embedded library
+- Guild is light weight
+- Guild does not require you to modify your code
+- Guild does not require additional software or systems like databases
+  or containers
 
 ### Why not just embed a library for experiment tracking?
 
@@ -82,43 +78,33 @@ requirements onerous.
 
 ### How does Guild work without requiring code changes?
 
-Guild is designed as a traditional build tools. It relies on external
+Guild is designed as a traditional build tool. It relies on external
 configuration and operating system conventions to perform its work.
 
-For configuration, Guild relies on a TODO --- a human readable file
-that tells Guild about your code.
+Guild interfaces with your scripts using standard operating system
+conventions (command arguments, environment variables, standard ouput,
+file systems, etc.). This interface is available for any language,
+framework, and platform, making Guild flexible for a wide range of
+applications.
 
-Guild otherwise interfaces with your scripts using standard operating
-system conventions (command arguments, environment variables, standard
-ouput, file systems, etc.). This interface is available for any
-language, framework, and platform, making Guild flexible for a wide
-range of applications.
+Guild provides some magic for Python scripts that rely on global
+variables, which are commonly used in Notebooks, examples, and
+prototypes. This interface is still external --- there's no
+requirement to change your code. It's easily changed to support
+command line arguments if you want.
 
-Guild provides a bit of magic for Python scripts that rely on global
-variables (commonly used in Notebooks, examples, and
-prototypes). However, this interface is still external --- there's no
-requirement to change your code to accommodate Guild. It's easily
-changed to support command line arguments if you want.
+### How does Guild save results?
 
-### How does Guild store results?
-
-Guild stores all results on a locally mounted file system. Guild does
+Guild saves all results on a locally mounted file system. Guild does
 not use databases.
 
 This has a number of benefits:
 
-- Zero database install and maintenance costs
+- No database installation and maintenance costs
 - Access to standard file system tools to read, copy, and archive
   experiments
-- Access standard file and directory diffing tools to compare runs
+- Access to standard file and directory diffing tools to compare runs
 
 Guild uses SQLite to index results for fast lookup. This is how [Guild
 Compare](tools/compare.md) and [Guild View](tools/view.md) both
-perform quickly. The use of SQLite in this case is a performance
-optimization and not how experiments are stored.
-
-### Why doesn't Guild have many GitHub stars?
-
-We don't ask for GitHub stars. If your boss requires a certain number
-of stars before he or she approves the use of a quality, useful tool,
-we're sorry and good luck!
+perform quickly.
