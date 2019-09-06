@@ -270,8 +270,8 @@ Start using Guild AI to track experiments in a matter of minutes.
 <h3><img src="/assets/icons/task-list-question.svg"> Common Questions</h3>
 <p class="expand">
 
-When should you use Guild? What makes Guild different? Answer these
-and more in the FAQ.
+When should you use Guild? How is it different? See these and more in
+the FAQ.
 
 </p>
 <a class="btn btn-primary cta" href="/faq/"

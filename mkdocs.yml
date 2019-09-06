@@ -96,6 +96,11 @@ markdown_extensions:
           class: cmd
           href: '/commands/{}/'
           text: '{}'
+        - link_pattern: 'pylib:(.*)'
+          class: ext pkg
+          href: 'https://docs.python.org/3/library/{}.html'
+          text: '{}'
+          target: _blank
         - link_pattern: 'pkg:(.*)'
           text: '{1}'
           href: /packages/{1}/
@@ -111,7 +116,7 @@ markdown_extensions:
               flag: /operations/#flags
               guild-env: /environments/
               guild-view: /tools/guild-view/
-              guildfile: /guildfile/
+              guildfile: /reference/guildfile/
               index: /reference/guild-home/#runs-index
               model-def: /models/#model-definition
               model: /models/
@@ -284,6 +289,7 @@ pages:
           - reference/user-config.md
 
       - Knowledge Base:
+          - kb/dependencies.md
           - kb/magic.md
 
       - cheatsheet.md
