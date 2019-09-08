@@ -67,8 +67,8 @@ $(function() {
   if (typedVandCEl !== null) {
     const viewCompareCmds = [
       'compare',
-      'tensorboard',
       'view',
+      'tensorboard',
       'diff',
       'open'
     ];

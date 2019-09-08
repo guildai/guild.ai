@@ -18,7 +18,7 @@ Guild is a light weight, external tool that doesn't require changes to
 your code. It runs scripts in written in any language or framework on
 Linux, macOS, and Windows.
 
-### When would I use Guild?
+### When should I use Guild?
 
 Guild gives you insight into your machine learning work. Use it when
 you want to:

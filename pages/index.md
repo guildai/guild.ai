@@ -258,11 +258,11 @@ to use. It's freely available under the Apache 2 open source license.
 
 <div class="row display-flex">
 <div class="col col-md-4">
-<div class="promo left">
+<div class="promo left match-height">
 <h3><img src="/assets/icons/cursor-double-click-bold.svg"> Get Started</h3>
 <p class="expand">
 
-Start using Guild AI to track experiments in a matter of minutes.
+Start using Guild AI in minutes to track experiments.
 
 </p>
 <a class="btn btn-primary cta" href="/start/"
@@ -271,11 +271,11 @@ Start using Guild AI to track experiments in a matter of minutes.
 </div>
 
 <div class="col col-md-4">
-<div class="promo left">
+<div class="promo left match-height">
 <h3><img src="/assets/icons/task-list-question.svg"> Common Questions</h3>
 <p class="expand">
 
-When should you use Guild? How is it different? See these and more in
+When should I use Guild? How is it different? Read this and more in
 the FAQ.
 
 </p>
@@ -285,11 +285,11 @@ the FAQ.
 </div>
 
 <div class="col col-md-4">
-<div class="promo left">
+<div class="promo left match-height">
 <h3><img src="/assets/icons/book-open-text.svg"> Browse the Docs</h3>
 <p class="expand">
 
-Guild AI has lots of great features. Learn all about them in the docs.
+Learn about Guild AI features by explorin the docs.
 
 </p>
 <a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
