@@ -55,6 +55,30 @@ Bad:
 *When using a TOC, insert the TOC immediately following the page
 title.*
 
+## TOC Front Matter
+
+*Avoid front matter that appears before the first heading.*
+
+Good:
+
+```
+[TOC]
+
+# Heading 1
+
+Intro text.
+```
+
+Bad:
+
+```
+TOC]
+
+Intro text.
+
+# Heading 1
+```
+
 ## Avoid Superlatives
 
 *Don't use superlatives like great, excellent, amazing.*

@@ -167,8 +167,8 @@ to source code.
 ### Motivation
 
 Guild AI tracks machine learning experiments and does so without
-requiring changes to your code. [Dependencies Considered
-Harmful](dependencies.md) describes the benefit to this approach.
+requiring changes to your code. [Dependencies](dependencies.md)
+describes the benefit to this approach.
 
 Because a number of machine learning scripts are written without
 support for command line interfaces, Guild supports script

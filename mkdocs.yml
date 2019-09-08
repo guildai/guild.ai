@@ -6,9 +6,12 @@ extra:
   version: 0.6.6
 
   tagline_width: 30em
+
+  # NOTE: Update title in pages/index.md to sync with tagline.
+  #
   tagline:
 
-    Tools for Machine Learning Automation
+    Tools for Systematic Machine Learning
 
   subtext_width: 40em
   subtext:

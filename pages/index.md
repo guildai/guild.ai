@@ -2,7 +2,7 @@ layout: front-page
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
-title: Tools for Machine Learning Automation
+title: Tools for Systematic Machine Learning
 
 <div id="get-started-fab"></div>
 
@@ -19,10 +19,10 @@ title: Tools for Machine Learning Automation
 
 <p markdown="1" class="highlight">
 
-Guild AI is a software toolkit used by machine learning engineers to
-build better models in less time. It automates experiments and
-supports detailed analysis and comparison of results. Guild AI is free
-software, available under the Apache 2 open source license.
+Guild AI is used by machine learning engineers to build better models
+in less time. It automates experiments and gives you essential
+information to make better decisions. Guild AI is light weight, easy
+to use. It's freely available under the Apache 2 open source license.
 
 </p>
 
@@ -125,10 +125,14 @@ software, available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/railroad-fast-train-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Start Fast</strong> - Run your script directly</h2>
+    <h2><strong>Start Fast</strong> - Run your script to track
+    experiments</h2>
     <p>
-      Run your code <strong>without modification</strong>
-      to <strong>automatically capture</strong> unique experiments.
+
+      Guild AI captures <strong>every detail</strong> including
+      hyperparameters, metrics, and generated artifacts by
+      simply running your <strong>unmodified scripts</strong>.
+
     </p>
     <div class="text-editor">
       <div class="text-body">
@@ -140,16 +144,88 @@ software, available under the Apache 2 open source license.
 
 <div class="row feature">
   <div class="hidden-xs col-sm-2">
+    <img class="icon" src="/assets/icons/seo-search-graph-1.svg">
+  </div>
+  <div class="col-sm-10">
+    <h2>
+      <strong>Study and Compare</strong> - Find information for critical decisions
+    </h2>
+
+    <p>
+
+      Guild comes with a tour de force of <strong>analytics
+      tools</strong> that help you <strong>study results</strong> and
+      <strong>inform your next steps</strong>.
+
+    </p>
+
+    <div class="text-editor">
+      <div class="text-body">
+        $ <span id="typed-view-and-compare"></span><span class="typed-cursor">|</span>
+      </div>
+    </div>
+
+    <div class="view-and-compare-preview">
+      <div id="view-and-compare-img-compare" class="show-hide active">
+        <img class="md shadow" src="/assets/img/compare-feature.png" data-dim="1100x815">
+        <p>Compare results at the command line</p>
+      </div>
+      <div id="view-and-compare-img-view" class="show-hide">
+        <img class="md shadow" src="/assets/img/view-feature.png" data-dim="1100x815">
+        <p>Compare results in a GUI</p>
+      </div>
+      <div id="view-and-compare-img-tensorboard" class="show-hide" data-dim="1100x815">
+        <img class="md shadow" src="/assets/img/tensorboard-feature.png">
+        <p>Built-in TensorBoard support</p>
+      </div>
+      <div id="view-and-compare-img-diff" class="show-hide">
+        <img class="md shadow" src="/assets/img/diff-feature.png" data-dim="1100x815">
+        <p>View fine-grain differences between two runs</p>
+      </div>
+      <div id="view-and-compare-img-open" class="show-hide">
+        <img class="md shadow" src="/assets/img/open-feature.png" data-dim="1100x815">
+        <p>Browse and open run files</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row feature">
+  <div class="hidden-xs col-sm-2">
+    <img class="icon" src="/assets/icons/charging-flash-sync-1.svg">
+  </div>
+  <div class="col-sm-10">
+    <h2><strong>Automate</strong> - Tune your models, streamline your workflow</h2>
+
+    <p>
+
+      Perform <strong>grid search</strong>, <strong>random
+      search</strong>, and <strong>Baysian optimization</strong> with
+      a single command. Automate experiment tracking for <strong>all
+      stages of your pipeline</strong>.
+
+    </p>
+
+    <div class="text-editor">
+      <div class="text-body">
+        $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row feature">
+  <div class="hidden-xs col-sm-2">
     <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Organize</strong> - Use a Guild file for more control</h2>
+    <h2><strong>Take Control</strong> - Configure everything with a single file</h2>
 
     <p>
 
       Add <code>guild.yml</code> to your project to <strong>make
       things explicit</strong> and to keep experiment
-      configuration <strong>outside your code</strong>.
+      config <strong>outside your code</strong>.
 
     </p>
 
@@ -173,77 +249,6 @@ software, available under the Apache 2 open source license.
           requires: train-mnist
     </code></pre>
 
-  </div>
-</div>
-
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/charging-flash-sync-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2><strong>Experiment</strong> - Run trials quickly and easily</h2>
-
-    <p>
-
-      Guild supports single trials, <strong>grid
-      search</strong>, <strong>random search</strong>,
-      and <strong>Baysian optimization</strong> through an elegant
-      command line interface.
-
-    </p>
-
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/seo-search-graph-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2><strong>Learn and Improve</strong> - Build understanding from
-    the data</h2>
-
-    <p>
-
-      Guild comes with a tour de force of <strong>analytics
-      tools</strong> that help you <strong>study results</strong> and
-      <strong>inform your next steps</strong>.
-
-    </p>
-
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-view-and-compare"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
-
-    <div class="view-and-compare-preview">
-      <div id="view-and-compare-img-compare" class="show-hide">
-        <img class="md shadow" src="/assets/img/compare-feature.png">
-        <p>Compare results at the command line</p>
-      </div>
-      <div id="view-and-compare-img-tensorboard" class="show-hide">
-        <img class="md shadow" src="/assets/img/tensorboard-feature.png">
-        <p>Built-in TensorBoard support</p>
-      </div>
-      <div id="view-and-compare-img-view" class="show-hide">
-        <img class="md shadow" src="/assets/img/view-feature.png">
-        <p>View and compare runs in a fancy web UI</p>
-      </div>
-      <div id="view-and-compare-img-diff" class="show-hide">
-        <img class="md shadow" src="/assets/img/diff-feature.png">
-        <p>View fine-grain differences between two runs</p>
-      </div>
-      <div id="view-and-compare-img-open" class="show-hide">
-        <img class="md shadow" src="/assets/img/open-feature.png">
-        <p>Browse and open run files</p>
-      </div>
-    </div>
   </div>
 </div>
 

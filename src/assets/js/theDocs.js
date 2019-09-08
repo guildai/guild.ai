@@ -291,8 +291,7 @@ $(function() {
 
   // Equal height
 
-  $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
-  $('.promo').matchHeight();
+  $('.match-height').matchHeight();
 
   // Code
 
