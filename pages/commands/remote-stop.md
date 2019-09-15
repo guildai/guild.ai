@@ -2,7 +2,7 @@ sidenav_title: remote stop
 overview_title: remote stop
 tags: remote
 
-# remote stop command
+# remote stop
 
 [TOC]
 

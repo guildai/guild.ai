@@ -2,7 +2,7 @@ sidenav_title: tensorflow
 overview_title: tensorflow
 tags:
 
-# tensorflow command
+# tensorflow
 
 [TOC]
 

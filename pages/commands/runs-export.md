@@ -2,7 +2,7 @@ sidenav_title: runs export
 overview_title: runs export
 tags: runs
 
-# runs export command
+# runs export
 
 [TOC]
 

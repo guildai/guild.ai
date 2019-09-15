@@ -2,7 +2,7 @@ sidenav_title: remote start
 overview_title: remote start
 tags: remote
 
-# remote start command
+# remote start
 
 [TOC]
 

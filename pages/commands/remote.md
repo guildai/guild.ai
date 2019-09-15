@@ -2,7 +2,7 @@ sidenav_title: remote
 overview_title: remote
 tags: remote
 
-# remote command
+# remote
 
 [TOC]
 

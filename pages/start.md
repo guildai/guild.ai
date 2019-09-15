@@ -52,10 +52,10 @@ guild run train.py -m 10 x=[-2.0:2.0]
 Press `Enter` to confirm the operation.
 
 !!! tip
-    Guild *magic* to set values of `x`. This is convenient for
-    simple scripts like `train.py`. Guild also supports non-magic
-    interfaces such as command line arguments. For more information,
-    see [Magic](kb/magic.md).
+    Guild uses some *magic* to set values of `x`. This is
+    convenient for simple scripts like `train.py`. Guild also supports
+    non-magic interfaces such as command line arguments. For more
+    information, see [Magic](kb/magic.md).
 
 ## Compare Runs
 
@@ -76,15 +76,6 @@ Exit the Compare application by pressing `q`.
 To visualize the relationship between the hyperparameter `x` and
 `loss`, use TensorBoard's [HParam plugin
 ->](https://www.tensorflow.org/tensorboard/r2/hyperparameter_tuning_with_hparams).
-
-First, ensure that the plugin is supported by TensorBoard by
-installing TensorFlow:
-
-!!! note
-    This step is only required if you have TensorBoard 1.14 or
-    lower installed. If you have TensorBoard 1.15 or higher, you can
-    skip this step. Use `tensorboard --version` to show the installed
-    version.
 
 ``` command
 pip install tensorflow

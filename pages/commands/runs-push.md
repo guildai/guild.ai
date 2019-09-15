@@ -2,7 +2,7 @@ sidenav_title: runs push
 overview_title: runs push
 tags: runs, remote
 
-# runs push command
+# runs push
 
 [TOC]
 

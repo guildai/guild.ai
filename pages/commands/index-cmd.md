@@ -2,7 +2,7 @@ sidenav_title: index
 overview_title: index
 tags: util
 
-# index command
+# index
 
 [TOC]
 

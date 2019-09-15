@@ -106,5 +106,5 @@ This has a number of benefits:
 - Access to standard file and directory diffing tools to compare runs
 
 Guild uses SQLite to index results for fast lookup. This is how [Guild
-Compare](tools/compare.md) and [Guild View](tools/view.md) both
-perform quickly.
+Compare](tools.md#guild-compare) and [Guild View](tools.md#guild-view)
+both perform quickly.

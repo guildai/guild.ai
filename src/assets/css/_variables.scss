@@ -83,6 +83,7 @@ $default-transition:                $default-transition-time
                                     $default-transition-function;
 // Borders
 $default-border-radius:             4px;
+$border-dl:                         1px dotted $border-color-dark;
 
 // _sidebar
 $sidebar-bg-color:                  $bg-color-dark;

@@ -132,6 +132,7 @@ markdown_extensions:
               resource: /resources/
               run-dir: /runs/#run-directory
               run: /runs/
+              ssh: https://en.wikipedia.org/wiki/Secure_Shell
               tensorboard: /tools/tensorboard/
               test: /tests/
               user-config: /reference/user-config/
@@ -216,7 +217,7 @@ pages:
           - cli.md
           - configuration.md
           - runs.md
-          - compare.md
+          - tools.md
           - environments.md
           - workflow.md
           - remotes.md
@@ -227,11 +228,6 @@ pages:
           - guides/tuning.md
           - guides/remote.md
           - guides/debugging.md
-
-      - Tools:
-          - tools/compare.md
-          - tools/tensorboard.md
-          - tools/view.md
 
       - Commands:
           - commands/index.md
@@ -290,6 +286,7 @@ pages:
       - Reference:
           - reference/guildfile.md
           - reference/user-config.md
+          - reference/remotes.md
 
       - Knowledge Base:
           - kb/dependencies.md

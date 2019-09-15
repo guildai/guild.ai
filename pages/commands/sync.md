@@ -2,7 +2,7 @@ sidenav_title: sync
 overview_title: sync
 tags: remote
 
-# sync command
+# sync
 
 [TOC]
 

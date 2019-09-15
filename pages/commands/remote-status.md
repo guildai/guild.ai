@@ -2,7 +2,7 @@ sidenav_title: remote status
 overview_title: remote status
 tags: remote
 
-# remote status command
+# remote status
 
 [TOC]
 

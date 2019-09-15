@@ -1,16 +1,48 @@
 # Rules for Writing Docs
 
+Goals:
+
+- Be direct without losing clarity
+- Minimize the number of words in a sentense
+- Minimize complexity
+- Avoid formalism unless
+
 ## Second Person
 
 *Use second person when interacting with user-related tasks.*
 
 Good:
 
-- You can configure the project using a Guild File.
+- You configure the project using a Guild File.
 
 Bad:
 
-- We can configure the project using a Guild file.
+- We configure the project using a Guild file.
+
+## Auxiliary Verbs
+
+*Avoid using auxiliary verbs like can and may unless the sentence
+would be incorrect without their use.*
+
+Good:
+
+- You configure the project using a Guild File.
+
+Bad:
+
+- You can configure the project using a Guild File.
+
+## Use of Next in Steps
+
+*Avoid "next" in steps.*
+
+Good:
+
+- Train the model.
+
+Bad:
+
+- Next, train the model.
 
 ## Present Tense
 
@@ -20,11 +52,23 @@ later.*
 
 Good:
 
-- The the previous section, you trained a model.
+- In the previous section, you train a model.
 
 Bad:
 
 - In the previous section, you trained a model.
+
+## Passive Voice
+
+*Avoid passive voice.*
+
+Good:
+
+- The user trains a model.
+
+Bad:
+
+- The model is trained.
 
 ## Title Case
 
@@ -38,7 +82,7 @@ Bad:
 
 - Configure your project
 
-## Avoid Gerunds
+## Gerunds
 
 *Avoid the use of gerunds in titles and headings.*
 
@@ -79,7 +123,7 @@ Intro text.
 # Heading 1
 ```
 
-## Avoid Superlatives
+## Superlatives
 
 *Don't use superlatives like great, excellent, amazing.*
 

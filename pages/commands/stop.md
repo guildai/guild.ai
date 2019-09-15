@@ -2,7 +2,7 @@ sidenav_title: stop
 overview_title: stop
 tags: runs-alias
 
-# stop command
+# stop
 
 [TOC]
 
