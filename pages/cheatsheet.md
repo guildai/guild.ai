@@ -1,31 +1,336 @@
 # Cheatsheet
 
-TODO:
+[TOC]
 
-- Get to the chase - how to run something - install and check should
-  just be an aside at the top of the page
+## Get Command Help
 
-- The basics
-    - Run a script or operation
-    - List runs
-    - List run info
-    - List run files
-    - Compare runs
-    - Diff runs
-    - View or open run files
+List Guild commands:
 
-- Create a Guild file (needs to be super simple with links to more
-  advanced examples)
+``` command
+guild
+```
 
+Get help for a command:
 
-<div class="row" style="margin-top:-20px"></div>
+``` command
+guild command --help
+```
 
-<div class="col col-lg-6" markdown="1">
+## Run a Script
+
+Use Guild to run a Python script to generate a unique experiment.
+
+``` command
+guild run script.py flag1=val1 flag2=val2
+```
+
+*Command help: [run](cmd:run)*
+
+## Run an Operation
+
+Operations are defined in [Guild files](alias:guild-files).
+
+``` command
+guild run operation flag1=val1 flag2=val2
+```
+
+Grid search:
+
+``` command
+guild run train learning-rate=[0.01,0.1] batch-size=[50,100]
+```
+
+Random search:
+
+``` command
+guild run train -m 10 learning_rate=loguniform[1e-5:1e-2] batch_size=50
+```
+
+``` command
+guild run train dropout=uniform[0.1:0.8]
+```
+
+``` command
+guild run train dropout=[0.1:0.8]
+```
+
+Bayesian optimization with gaussian processes:
+
+``` command
+guild run train -m 10 -o gp learning_rate=loguniform[1e-5:1e-2] batch_size=50
+```
+
+*Command help: [run](cmd:run)*
+
+## Get Operation Help
+
+List available operations:
+
+``` command
+guild operations
+```
+
+Get help for the current project:
+
+``` command
+guild help
+```
+
+Get help with running a particular operation:
+
+``` command
+guild run operation --help-op
+```
+
+*Command help: [operations](cmd:operations), [help](cmd:help), [run](cmd:run)*
+
+## Define an Operation
+
+Operations at the top-level of `guild.yml` ([operation only
+format](reference/guildfile.md#operation-only-format)):
+
+``` yaml
+prepare-data:
+  descrition: Prepare data for training
+  main: prepare
+  flags:
+    val-split:
+      description: Percent of examples to use for validation
+      default: 0.2
+
+train:
+  description: Train a model on prepared data
+  main: train
+  flags:
+    learning-rate:
+      description: Learning rate
+      default: 0.1
+    batch-size:
+      description: Batch size
+      default: 100
+  requires:
+    - operation: prepare-data
+```
+
+When using [full format](reference/guildfile.md#full-format), define
+operations under a model's `operations` attribute:
+
+``` yaml
+- model: cnn
+  operations:
+    train:
+      description: Train the CNN
+      main: train
+```
+
+Hints:
+
+- Guild automatically imports flags from Python modules so you don't
+  need to re-specify them in the Guild file.
+
+- To only import certain flags, use `flags-import`.
+
+- To skip importing certain flags, use `flags-import-skip`.
+
+- To disable importing flags altogether, use `flags-import: no`.
+
+- When an operation name is the same as the Python module name, you
+  can omit `main`.
+
+Refer to [Operations](reference/guildfile.md#operations) for a full
+list of configuration options.
+
+## List Runs
+
+``` command
+guild runs
+```
+
+Show only runs whose operation name contains "train":
+
+``` command
+guild runs -o train
+```
+
+Show runs that were started within various intervals:
+
+``` command
+guild runs -s today
+```
+
+``` command
+guild runs -s '1 week ago'
+```
+
+``` command
+guild runs -s 'last 15 minutes'
+```
+
+Show runs with various status:
+
+``` command
+guild runs --terminated
+```
+
+``` command
+guild runs --completed
+```
+
+``` command
+guild runs --terminates --error
+```
+
+``` command
+guild runs -TE
+```
+
+*Command help: [runs list](cmd:runs-list)*
+
+## Show Run Details
+
+!!! note
+    The examples below apply to the latest run. To apply them to
+    another run, include the run index or run ID in the command.
+
+Show latest run metadata including flags:
+
+``` command
+guild runs info
+```
+
+Include scalars (metrics):
+
+``` command
+guid runs info -S
+```
+
+List run files:
+
+``` command
+guild ls
+```
+
+List run source code:
+
+``` command
+guild ls --sourcecode
+```
+
+Show run output:
+
+``` command
+guild cat --output
+```
+
+Print a run text file to the console:
+
+``` command
+guild cat -p model.txt
+```
+
+Open a run file or directory using the desktop file browser:
+
+``` command
+guild open -p plot.png
+```
+
+``` command
+guild open -p plots
+```
+
+*Command help: [runs info](cmd:runs-info), [ls](cmd:ls),
+[cat](cmd:cat), [open](cmd:open)*
+
+## Compare Runs
+
+``` command
+guild compare
+```
+
+Compare only runs whose operations contain "cnn" that were started
+today:
+
+``` command
+guild compare -o cnn -s today
+```
+
+Write compare data to a CSV:
+
+``` command
+guild compare --csv compare.csv
+```
+
+Compare runs using TensorBoard:
+
+``` command
+guild tensorboard
+```
+
+Compare runs using Guild View:
+
+``` command
+guild view
+```
+
+*Command help: [compare](cmd:compare), [tensorboard](cmd:tensorboard),
+[view](cmd:view)*
+
+## Diff Runs
+
+!!! note
+    The examples below diff the last two runs. To diff different
+    runs, include their indexes or IDs in the command in the form
+    `FROM TO`.
+
+Diff the last two runs:
+
+``` command
+guild diff
+```
+
+Diff various information of the last two runs:
+
+``` command
+guild diff --flags
+```
+
+``` command
+guild diff --sourcecode
+```
+
+``` command
+guild diff --output
+```
+
+Diff a run file or directory:
+
+``` command
+guild diff -p model.txt
+```
+
+``` command
+guild diff -p checkpoints
+```
+
+Use [Meld ->](https://meldmerge.org/) to diff runs:
+
+``` command
+guild diff --cmd meld
+```
+
+To save Meld as the default program to diff runs, edit
+`~/.guild/config.yml` and include this configuration:
+
+``` yaml
+diff:
+  command: meld
+```
+
+^ `~/.guild/config.yml`
+
+*Command help: [diff](cmd:diff)*
 
 ## Install Guild AI
-
-Use the [pip command ->](https://pip.pypa.io/en/stable/installing/)
-to install Guild AI:
 
 ``` command
 pip install guildai
@@ -43,234 +348,24 @@ Install with elevated priviledges (Linux and macOS):
 sudo pip install guildai
 ```
 
-More information:
-
-- [Detailed installation steps](/install/)
-
-</div>
-
-<div class="col col-lg-6" markdown="1">
-
-## Check Environment
-
 Verify that Guild is installed:
 
 ``` command
 guild check
 ```
 
-#### Upgrade Guild
-
-The `check` command informs you if a newer version of Guild is
-available. To upgrade Guild:
+Upgrade Guild:
 
 ``` command
 pip install --upgrade guildai
 ```
 
-More information:
-
-- [Guild environments](/environments/)
-- [`check` command](/commands/check/)
-
-</div>
-
-<div class="row"></div>
-
-<div class="col col-lg-6" markdown="1">
-
-## Run a Script
-
-Run a script directly to generate an experiment:
-
-``` command
-guild run train.py
-```
-
-`train.py` in this case is a training script located in the current
-directory.
-
-#### Flags
-
-If the script accepts flags, you can specify a values when running it:
-
-``` command
-guild run train.py learning_rate=0.01
-```
-
-#### Grid Search
-
-To run a script over multiple flag values, specify a list of values
-for each flag:
-
-``` command
-guild run train.py \
-  learning_rate=[0.01,0.001] \
-  batch_size=[50,100]
-```
-
-This command will run `train.py` four times --- one run for each
-possible combination of flag values.
-
-#### Random Search
-
-To run a script using randomly selected values, specify a
-*distribution* search space for a flag:
-
-``` command
-guild run train.py \
-  --max-trials 10 \
-  learning_rate=loguniform[1e-5:1e-2] \
-  batch_size=50
-```
-
-This runs 10 trials using randomly selected values for `learning_rate`
-using a loguniform distribution and the fixed value 50 for
-`batch_size`.
-
-To specify a uniform distribution, replace `loguniform` with `uniform`:
-
-``` command
-guild run train.py dropout=uniform[0.1:0.8]
-```
-
-Alternatively, in the case of `uniform`, you can omit the name
-altogether. This command is equivalent to the previous command:
-
-``` command
-guild run train.py dropout=[0.1:0.8]
-```
-
-#### Hyperparameter Optimization
-
-To optimize hyperparameters (i.e. find flag values that minimize loss)
-use the `--optimizer` option:
-
-``` command
-guild run train.py \
-  --max-trials 10 \
-  --optimizer bayesian \
-  learning_rate=loguniform[1e-5:1e-2] \
-  batch_size=50
-```
-
-</div>
-
-<div class="col col-lg-6" markdown="1">
-
-## View Results
-
-List your experiments, which are also called *runs*:
-
-``` command
-guild runs
-```
-
-Compare results side-by-side, including flag values (e.g. learning
-rate, batch size, etc.) and scalars (e.g. loss, accuracy, etc.):
-
-``` command
-guild compare
-```
-
-#### Run Info
-
-View information for a run:
-
-``` command
-guild runs info [RUN]
-```
-
-`RUN` is either a run index (a number displayed in the runs list) or a
-run ID. If you omit `RUN`, the latest run is used.
-
-To show scalars:
-
-``` command
-guild runs info [RUN] --scalars
-```
-
-#### Run Output
-
-Print run output to standard output:
-
-``` command
-guild cat --output [RUN]
-```
-
-#### List Run Files
-
-List files associated with a run:
-
-``` command
-guild ls [RUN]
-```
-
-#### View Run Files
-
-Use your local file explorer to open the directory containing run
-files:
-
-``` command
-guild open [RUN]
-```
-
-To open a specific file (e.g. to view an image):
-
-``` command
-guild open --path path_to_image.png
-```
-
-Note: the `open` command only work when running from a desktop
-environment.
-
-#### View Runs in TensorBoard
-
-View run results in TensorBoard:
-
-``` command
-guild tensorboard [RUN]
-```
-
-If `RUN` is not specified, Guild opens all runs in TensorBoard.
-
-By default, Guild runs TensorBoard on a randomly assigned port. To run
-TensorBoard on an explicit port, use the `--port` option:
-
-``` command
-guild tensorboard --port 8080
-```
-
-</div>
-
-<div class="row"></div>
-
-<div class="col col-lg-12" markdown="1">
-
 ## Guild File - Basic
 
-Use the template below to get started with a basic Guild file. For
-other examples and detailed code snippets, see TODO. For general
-documentation on Guild files see, TODO.
+TODO - simplified versions:
 
-TODO: This "cheathsheet" project is breathtakingly long. It's not even
-a completely annotated example. I'm not sure what approach to
-take. Shorten this to something more essential with less verbose docs
-and link to the more verbose example, or keep as is.
-
-TODO: Maybe provide links to multiple annotated examples? It'd be nice
-to just have a go-to place to grab the text and get started. Of course
-this could also be provided in a freakin' Guild command! But for 0.7,
-this annotated example approach is far better than the nothing-at-all
-strategy from 0.6.
-
-TODO: The content below should come from an annotated example.
-
-TODO: This def needs to be free of annotations - way too much here,
-embarrassing. Provide a link to the annotated copy within the YAML
-header. See
-https://www.packer.io/intro/getting-started/build-image.html for a
-quick-and-easy template.
+- Output scalars
+- Sourcecode snapshots
 
 ``` yaml
 # ===================================================================
@@ -728,77 +823,17 @@ evaluate:
 
   # end evaluate operation
 ```
-</div>
 
-<div class="row"></div>
+## Debug Operations
 
-<div class="col col-lg-6 qref" markdown="1">
-
-#### Viewing Help from a Guild File
-
-Once you've defined a Guild file in your project, you can review help
-for it by running:
-
-``` command
-guild help
-```
-
-You can also view help for specific a operation, which is helpful when
-running it:
-
-``` command
-guild run train --help-op
-```
-
-#### Listing Operations
-
-List operations defined in a Guild file:
-
-``` command
-guild ops
-```
-
-#### Run an Operation
-
-Run an operation is like running a script. However, run operations are
-defined in Guild files (see example above). To run the `train`
-operation:
-
-``` command
-guild run train
-```
-
-To specify flag values, use `NAME=VALUE`:
-
-``` command
-guild run train batch_size=1000
-```
-
-</div>
-
-<div class="col col-lg-6 qref" markdown="1">
-
-#### Testing Output Scalars
-
-When defining output scalars (see Guild file example above) you can
-test configured output scalars on sample script output. After running
-the command below, enter a line of sample output and press `Enter` to
-evaluate it for potential scalar matches.
+Test output scalars:
 
 ``` command
 guild run train --test-output-scalars -
 ```
 
-#### Verifying Required Files
-
-When you specify required files for an operation (see Guild file
-example above) you can stage the operation in a temporary directory to
-confirm that Guild is resolving files as expected.
+Stage a run directory without running an operation:
 
 ``` command
 guild run train --stage /tmp/train-stage
 ```
-
-</div>
-
-<div class="row"></div>

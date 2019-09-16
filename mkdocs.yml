@@ -137,6 +137,9 @@ markdown_extensions:
               test: /tests/
               user-config: /reference/user-config/
         # aliases
+        - link_pattern: alias:guild-files
+          href: /config#guild-files
+          text: Guild files
         - link_pattern: alias:install-guild
           href: /install/
           text: install Guild AI
@@ -215,7 +218,7 @@ pages:
 
       - Core Concepts:
           - cli.md
-          - configuration.md
+          - config.md
           - runs.md
           - tools.md
           - environments.md

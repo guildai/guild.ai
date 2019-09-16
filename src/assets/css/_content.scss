@@ -117,12 +117,12 @@ div.dl {
 
     div.dd {
 
-      p {
-        // margin-bottom: 9px;
-      }
-
       p:first-of-type {
         margin-top: $p-margin-bottom;
+      }
+
+      p:first-child {
+        margin-top: 0;
       }
 
       p:last-child {
