@@ -14,7 +14,7 @@ hide_pagenav: yes
 Join the community on Slack to get help with Guild. This is a great
 way connect with other users and learn how they're using Guild.
 
-[Guild AI Slack Workspace ->](alias:slack)
+[Guild AI Slack Workspace ->](ref:slack)
 </div>
 
 <div class="col col-lg-4" markdown="1">
@@ -23,7 +23,7 @@ way connect with other users and learn how they're using Guild.
 If you're seeing surprising behavior, open an issue on our GitHub
 repository. This is the best way to track resolution of a problem.
 
-[Guild AI Issues on GitHub ->](alias:open-issue)
+[Guild AI Issues on GitHub ->](ref:open-an-issue)
 </div>
 
 <div class="col col-lg-4" markdown="1">

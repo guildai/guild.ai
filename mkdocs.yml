@@ -89,118 +89,62 @@ markdown_extensions:
   - custom:NonbreakingHyphens
   - custom:Link:
       templates:
-        # external links
+
+        # external link
         - text_pattern: '(.+?)\s?->'
           text: '{}'
           class: ext
           target: _blank
+
         # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
           href: '/commands/{}/'
           text: '{}'
+
+        # Python lib
         - link_pattern: 'pylib:(.*)'
           class: ext pkg
           href: 'https://docs.python.org/3/library/{}.html'
           text: '{}'
           target: _blank
+
+        # Guild package
         - link_pattern: 'pkg:(.*)'
           text: '{1}'
           href: /packages/{1}/
           class: pkg
+
         # term
         - link_pattern: 'term:(.*)'
           class: term
           text: '{0}'
           href: '{1}'
           arg_maps:
-            - control-key: https://en.wikipedia.org/wiki/Control_key
-              dependencies: /dependencies.md
-              flag: /operations/#flags
-              guild-env: /environments/
-              guild-view: /tools/guild-view/
-              guildfile: /reference/guildfile/
-              index: /reference/guild-home/#runs-index
-              model-def: /models/#model-definition
-              model: /models/
-              operation-alias: /runs/#operation-aliases
-              operation: /operations/
-              package-file: /reference/package-file/
-              package: /packages/
-              remote: /remotes/
-              resource-cache: /reference/guild-home/#resource-cache
-              resource: /resources/
-              run-dir: /runs/#run-directory
-              run: /runs/
-              ssh: https://en.wikipedia.org/wiki/Secure_Shell
-              tensorboard: /tools/tensorboard/
-              test: /tests/
-              user-config: /reference/user-config/
-        # aliases
-        - link_pattern: alias:guild-files
-          href: /config#guild-files
-          text: Guild files
-        - link_pattern: alias:install-guild
-          href: /install/
-          text: install Guild AI
-        - link_pattern: alias:quick-start
-          href: /start/
-          text: Guild AI Quick Start
-          class: doc
-        - link_pattern: alias:guild-github
-          href: https://github.com/guildai/guildai
-          text: Guild AI GitHub project
-          target: _blank
-          class: ext
-        - link_pattern: alias:slack
-          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
-          text: Guild AI Slack workspace
-          class: ext
-          target: _blank
-        - link_pattern: alias:open-an-issue
+            - ssh: https://en.wikipedia.org/wiki/Secure_Shell
+
+        # ref (general)
+        - link_pattern: 'ref:(.*)'
+          text: '{0}'
+          href: '{1}'
+          arg_maps:
+            - guild-files: /config.md#guild-files
+              requirements: /config.md#required-resources
+              remotes: /reference/remotes.md
+              user-config: /reference/user-config.md
+
+        # custom refs
+        - link_pattern: ref:open-an-issue
           text: open an issue on GitHub
           class: ext
           target: _blank
           href: https://github.com/guildai/guildai/issues
-        - link_pattern: alias:virtualenv-activate
-          href: /tutorials/workflow-with-virtualenv/#using-a-virtual-environment
-          text: activate your virtual environment
-        - link_pattern: alias:running-commands
-          href: /commands/#running-commands
-          text: running commands
-        - link_pattern: alias:separate-console
-          href: /commands/#running-commands-in-a-separate-console
-          text: separate console
-        - link_pattern: alias:tut-env-setup
-          href: /tutorials/#tutorial-virtual-environments
-          text: Tutorial virtual environments
-        - link_pattern: alias:tf-model-zoo
-          href: https://github.com/tensorflow/models
-          target: _blank
+
+        - link_pattern: ref:slack
+          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
+          text: Guild AI Slack workspace
           class: ext
-          text: TensorFlow model zoo
-        - link_pattern: alias:packages
-          href: /packages/
-          text: Guild AI packages
-        - link_pattern: alias:add-guild
-          href: /guides/add-guild/
-          text: Add Guild to a project
-        - link_pattern: alias:pip
-          text: pip
-          href: https://pip.pypa.io/en/stable/
           target: _blank
-          class: ext
-        - link_pattern: alias:tmux
-          text: tmux
-          href: https://en.wikipedia.org/wiki/Tmux
-          target: _blank
-          class: ext
-        - link_pattern: alias:create-object-detector
-          text: Create an object detector
-          href: /guides/create-object-detector/
-        - link_pattern: alias:compare
-          text: Guild Compare
-          href: /tools/compare/
 
 pages:
   - index.md

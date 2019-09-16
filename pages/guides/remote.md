@@ -9,14 +9,12 @@ non-local operations. Guild supports a variety of remote *types*. This
 document describes how train models remotely, backup and restore runs,
 as well as other remote operations.
 
-For details on configuring remotes, see
-[Remotes](../reference/remotes.md).
+For details on configuring remotes, see [Remotes](ref:remotes).
 
 ## Defining Remotes
 
-Remotes are defined in [user
-configuration](../reference/user-config.md). Below is an example of an
-SSH remote named `remote-gpu`:
+Remotes are defined in [user configuration](ref:user-config). Below is
+an example of an SSH remote named `remote-gpu`:
 
 ``` yaml
 remotes:
@@ -43,7 +41,7 @@ Guild supports a variety of remote types:
   supported.
 
 For a complete list of remote types, including examples, see
-[Remotes](../reference/remotes.md).
+[Remotes](ref:remotes).
 
 ## Managing Remotes
 
@@ -68,8 +66,8 @@ A remote must be available before it can be used in a remote
 command. Check a remote using [remote status](cmd:remote-status). If a
 remote is not available and can be started, use [remote
 start](cmd:remote-start) to start it first. Note that some remote
-types cannot be started or stopped. Refer to
-[Remotes](../reference/remotes.md) for detail on each remote type.
+types cannot be started or stopped. Refer to [Remotes](ref:remotes)
+for detail on each remote type.
 
 ## Remote Commands
 
@@ -83,8 +81,8 @@ guild --remote remote-gpu check
 
 Not all remote types support every command. For example, the `s3`
 remote type does not support the `run` command. Refer to
-[Remotes](../reference/remotes.md) for details on which remote
-commands are support for a particular remote type.
+[Remotes](ref:remotes) for details on which remote commands are
+support for a particular remote type.
 
 Remote commands include:
 

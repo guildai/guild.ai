@@ -29,7 +29,7 @@ change the behavior.
 
 By default, Guild AI attempts to detect and import script flags. In
 some cases Guild gets this wrong. When it does, you can configure
-flags in a [Guild File](term:guildfile).
+flags in a [Guild File](ref:guildfile).
 
 ### Motivation
 

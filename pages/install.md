@@ -114,7 +114,7 @@ guild/scripts/guild check
 
 If see the message ``NOT INSTALLED (No module named 'tensorflow')``
 that's okay - you'll install TensorFlow in the steps below. If you see
-other errors, please [](alias:open-an-issue) and we'll help!
+other errors, please [](ref:open-an-issue) and we'll help!
 
 You can run the `GUILD_SOURCE_DIR/guild/scripts/guild` executable
 directly (where `GUILD_SOURCE_DIR` is the location of your cloned

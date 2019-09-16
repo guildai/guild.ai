@@ -21,7 +21,7 @@ guild check
 ```
 
 Refer to [Install Guild AI](install.md) for detailed install
-instructions or [ask for help](alias:slack).
+instructions or [ask for help](ref:slack).
 
 ## Create a Mock Training Script
 
