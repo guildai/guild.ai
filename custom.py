@@ -311,19 +311,23 @@ class LinkTemplate(object):
         link.text = new_link.text
         for child in new_link.getchildren():
             link.append(child)
+        link.tail = new_link.tail
 
     def _applied_link(self, args, link_body, link):
         body = self._applied_link_body(args, link_body, link)
         href = self._applied_link_href(args, link)
         cls = self._applied_link_class(args, link)
         target = self._applied_link_attr("target", args, link)
+        tail = link.tail
         s_parts = ["<a href=\"%s\"" % href]
         if cls:
             s_parts.append(" class=\"%s\"" % cls)
         if target:
             s_parts.append(" target=\"%s\"" % target)
         s_parts.append(">%s</a>" % body)
-        return etree.fromstring("".join(s_parts))
+        applied = etree.fromstring("".join(s_parts))
+        applied.tail = tail
+        return applied
 
     def _applied_link_body(self, args, link_body, link):
         if self._text and (not link_body or self._text_pattern):
@@ -530,6 +534,10 @@ class Link(Extension):
 
     >>> print(md.convert("[`foo`](mapped:a)"))
     <p><a href="a"><code>foo</code></a></p>
+
+    >>> print(md.convert("foo [bar](mapped:a) baz"))
+    <p>foo <a href="a">bar</a> baz</p>
+
     """
 
     def __init__(self, templates):
