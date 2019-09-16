@@ -128,9 +128,17 @@ markdown_extensions:
           text: '{0}'
           href: '{1}'
           arg_maps:
-            - guild-files: /config.md#guild-files
-              requirements: /config.md#required-resources
+            -
+              flags: /reference/guildfile.md#flags
+              full-format: /reference/guildfile.md#full-format
+              guild-files: /config.md#guild-files
+              magic: /kb/magic.md
+              operation-only-format: /reference/guildfile.md#operation-only-format
+              operations: /reference/guildfile.md#operations
+              output-scalars: /reference/guildfile.md#output-scalars
               remotes: /reference/remotes.md
+              requirements: /config.md#required-resources
+              source-code: /reference/guildfile.md#source-code
               user-config: /reference/user-config.md
 
         # custom refs

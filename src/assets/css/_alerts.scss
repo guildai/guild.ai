@@ -24,7 +24,8 @@
     }
   }
 
-  &.tip .admonition-title:before {
+  &.tip .admonition-title:before,
+  &.tips .admonition-title:before {
     content: "\f0eb";
     color: $callout-tip-color;
   }
@@ -44,7 +45,8 @@
     @include callout-variant($callout-warning-color);
   }
 
-  &.tip {
+  &.tip,
+  &.tips {
     @include callout-variant($callout-tip-color);
   }
 

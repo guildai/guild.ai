@@ -11,8 +11,8 @@ Guild AI generally adheres to the principles outlined in Tim Peter's
 
 > Explicit is better than implicit.
 
-In some cases Guild goes out of its way to support implicit behavior,
-some of which can be considered [magic
+In some cases Guild goes out of its way to support *implicit*
+behavior, some of which could be [considered magic
 ->](https://en.wikipedia.org/wiki/Magic_(programming)).
 
 Magic hides complexity and removes barriers to getting started. When
