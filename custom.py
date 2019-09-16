@@ -269,8 +269,9 @@ class LinkTemplate(object):
 
     def try_apply(self, link):
         unset = object()
+        link_body = self._link_body(link)
         text_m = (
-            self._text_pattern.match(link.text or "")
+            self._text_pattern.match(link_body or "")
             if self._text_pattern
             else unset)
         link_m = (
@@ -285,10 +286,7 @@ class LinkTemplate(object):
                 m_args = (m_args or ()) + link_m.groups()
             if m_args is not None:
                 args = self._format_args(m_args)
-                self._apply_text(args, link)
-                self._apply_href(args, link)
-                self._apply_class(args, link)
-                self._apply_attrs(("target",), args, link)
+                self._apply_link(args, link_body, link)
 
     def _format_args(self, args):
         for arg, arg_map in self._zip_longest(args, self._arg_maps):
@@ -305,28 +303,59 @@ class LinkTemplate(object):
         else:
             return zip_longest(a, b)
 
-    def _apply_text(self, args, link):
-        if self._text and (not link.text or self._text_pattern):
-            link.text = self._text.format(*args).strip()
+    def _apply_link(self, args, link_body, link):
+        new_link = self._applied_link(args, link_body, link)
+        link.clear()
+        for name, val in new_link.items():
+            link.set(name, val)
+        link.text = new_link.text
+        for child in new_link.getchildren():
+            link.append(child)
 
-    def _apply_href(self, args, link):
-        if self._href and (not link.get("href") or self._link_pattern):
-            link.set("href", self._href.format(*args).strip())
+    def _applied_link(self, args, link_body, link):
+        body = self._applied_link_body(args, link_body, link)
+        href = self._applied_link_href(args, link)
+        cls = self._applied_link_class(args, link)
+        target = self._applied_link_attr("target", args, link)
+        s_parts = ["<a href=\"%s\"" % href]
+        if cls:
+            s_parts.append(" class=\"%s\"" % cls)
+        if target:
+            s_parts.append(" target=\"%s\"" % target)
+        s_parts.append(">%s</a>" % body)
+        return etree.fromstring("".join(s_parts))
 
-    def _apply_class(self, args, link):
+    def _applied_link_body(self, args, link_body, link):
+        if self._text and (not link_body or self._text_pattern):
+            return self._text.format(*args).strip()
+        return self._link_body(link)
+
+    @staticmethod
+    def _link_body(link):
+        children = "".join([etree.tostring(e) for e in link.getchildren()])
+        return (link.text or "") + children
+
+    def _applied_link_href(self, args, link):
+        link_href = link.get("href")
+        if self._href and (not link_href or self._link_pattern):
+            return self._href.format(*args).strip()
+        return link_href
+
+    def _applied_link_class(self, args, link):
+        link_class = link.get("class")
         if self._class:
-            cur = link.get("class")
+            cur = link_class
             formatted = self._class.format(*args).strip()
-            link.set("class", " ".join((cur, formatted)) if cur else formatted)
+            return " ".join((cur, formatted)) if cur else formatted
+        return link_class
 
-    def _apply_attrs(self, attrs, args, link):
-        for name in attrs:
-            try:
-                val = self._attrs[name]
-            except KeyError:
-                pass
-            else:
-                link.set(name, val.format(*args).strip())
+    def _applied_link_attr(self, attr_name, args, link):
+        try:
+            val = self._attrs[attr_name]
+        except KeyError:
+            return link.get(attr_name)
+        else:
+            return val.format(*args).strip()
 
 class LinkProcessor(treeprocessors.Treeprocessor):
 
@@ -499,6 +528,8 @@ class Link(Extension):
     >>> print(md.convert("[](mapped:a)"))
     <p><a href="a">A</a></p>
 
+    >>> print(md.convert("[`foo`](mapped:a)"))
+    <p><a href="a"><code>foo</code></a></p>
     """
 
     def __init__(self, templates):
