@@ -5,8 +5,15 @@
 ## Introduction
 
 Guild AI strives to minimize dependencies on software libraries and
-external systems. In particluar, Guild does not require that you
-modify your scripts to support experiment management.
+external systems. Specifically, Guild does not require:
+
+- Changes to your source code --- experiment tracking features are
+  configured in a separate text file
+- Databases or networked file system --- experiments are saved to the
+  local file system
+- Containers or container infrastructure --- everything is run as a
+  standard operating system process
+- Agents or long running services
 
 Dependencies are costly. The impact your software in a number of ways:
 

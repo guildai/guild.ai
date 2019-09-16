@@ -19,10 +19,12 @@ title: Tools for Systematic Machine Learning
 
 <p markdown="1" class="highlight">
 
-Guild AI is used by machine learning engineers to build better models
-in less time. It automates experiments and gives you essential
-information to make better decisions. Guild AI is light weight, easy
-to use. It's freely available under the Apache 2 open source license.
+Guild AI is used by machine learning engineers to automate development
+tasks like data preparation, training, testing, and deployment. Guild
+captures runs as a unique experiments and lets you study and compare
+results. The benefit is that you make better decisions and build
+better models in less time. Guild AI is freely available under the
+Apache 2 open source license.
 
 </p>
 
@@ -148,13 +150,14 @@ to use. It's freely available under the Apache 2 open source license.
   </div>
   <div class="col-sm-10">
     <h2>
-      <strong>Study and Compare</strong> - Find information for critical decisions
+      <strong>Get Critical Info</strong> - Leverage results to make better decisions
     </h2>
 
     <p>
 
       Guild comes with a tour de force of <strong>analytics
-      tools</strong> that help you <strong>study results</strong> and
+      tools</strong> that help you <strong>study and compare
+      results</strong> and
       <strong>inform your next steps</strong>.
 
     </p>
@@ -168,23 +171,23 @@ to use. It's freely available under the Apache 2 open source license.
     <div class="view-and-compare-preview">
       <div id="view-and-compare-img-compare" class="show-hide active">
         <img class="md shadow" src="/assets/img/compare-feature.png" data-dim="1100x815">
-        <p>Compare results at the command line</p>
+        <p>Compare results from any command line &mdash; local or remote</p>
       </div>
       <div id="view-and-compare-img-view" class="show-hide">
         <img class="md shadow" src="/assets/img/view-feature.png" data-dim="1100x815">
-        <p>Compare results in a GUI</p>
+        <p>Explore run metadata, source files, and generated artifacts</p>
       </div>
       <div id="view-and-compare-img-tensorboard" class="show-hide" data-dim="1100x815">
         <img class="md shadow" src="/assets/img/tensorboard-feature.png">
-        <p>Built-in TensorBoard support</p>
+        <p>Integrated TensorBoard with automatic hyperparameter support</p>
       </div>
       <div id="view-and-compare-img-diff" class="show-hide">
         <img class="md shadow" src="/assets/img/diff-feature.png" data-dim="1100x815">
-        <p>View fine-grain differences between two runs</p>
+        <p>Diff runs down to the smallest detail</p>
       </div>
       <div id="view-and-compare-img-open" class="show-hide">
         <img class="md shadow" src="/assets/img/open-feature.png" data-dim="1100x815">
-        <p>Browse and open run files</p>
+        <p>Immediate and transparent access to run artifacts &mdash; nothing stored in a database</p>
       </div>
     </div>
   </div>
@@ -195,7 +198,7 @@ to use. It's freely available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/charging-flash-sync-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Automate</strong> - Tune your models, streamline your workflow</h2>
+    <h2><strong>Optimize</strong> - Tune your models, streamline your workflow</h2>
 
     <p>
 
@@ -219,7 +222,7 @@ to use. It's freely available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Take Control</strong> - Configure everything with a single file</h2>
+    <h2><strong>Total Control</strong> - Configure everything without changing your scripts</h2>
 
     <p>
 

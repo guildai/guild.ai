@@ -26,7 +26,7 @@ extra:
     - text: Reproducibility
       icon: task-list-check-gray
 
-    - text: Open Source
+    - text: 100% Open Source
       icon: developer-community-github-2-gray
 
   links:
@@ -245,10 +245,14 @@ pages:
 
       - Knowledge Base:
           - kb/dependencies.md
+          - kb/duck-typing.md
           - kb/magic.md
+          - kb/model-reuse.md
+          - kb/git-for-tracking.md
 
       - cheatsheet.md
 
   - examples.md
   - faq.md
   - support.md
+  - services.md
