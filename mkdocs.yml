@@ -121,7 +121,11 @@ markdown_extensions:
           text: '{0}'
           href: '{1}'
           arg_maps:
-            - ssh: https://en.wikipedia.org/wiki/Secure_Shell
+            -
+              bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
+              grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
+              random-search: https://en.wikipedia.org/wiki/Random_search
+              ssh: https://en.wikipedia.org/wiki/Secure_Shell
 
         # ref (general)
         - link_pattern: 'ref:(.*)'
@@ -131,8 +135,12 @@ markdown_extensions:
             -
               flags: /reference/guildfile.md#flags
               full-format: /reference/guildfile.md#full-format
+              guild-compare: /tools.md#guild-compare
+              guild-file: /reference/guildfile.md
               guild-files: /config.md#guild-files
+              guild-view: /tools.md#guild-view
               magic: /kb/magic.md
+              no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
               operations: /reference/guildfile.md#operations
               output-scalars: /reference/guildfile.md#output-scalars
@@ -163,7 +171,7 @@ pages:
       - Get Started:
           - start.md
           - start/optimize.md
-          - start/compare.md
+          - start/runs.md
           - start/customize.md
           - start/automate.md
           - start/advanced.md
@@ -254,5 +262,4 @@ pages:
 
   - examples.md
   - faq.md
-  - support.md
   - services.md

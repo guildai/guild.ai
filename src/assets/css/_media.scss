@@ -6,7 +6,7 @@ figure {
     color: $light-gray-text-color;
     font-size: 16px;
     line-height: 22px;
-    margin-top: -6px;
+    margin-top: -8px;
     margin-bottom: $p-margin-bottom;
 
     &.under-shadow {
@@ -15,6 +15,7 @@ figure {
 
     code {
       font-size: 13px;
+      color: darken($light-gray-text-color, 10%);
     }
 
     a {
@@ -26,7 +27,7 @@ figure {
 img.md {
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 auto 24px;
   display: block;
   box-shadow: rgba(0,0,0,0.3) 3px 5px 14px;
   border-radius: 3px;

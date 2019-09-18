@@ -40,6 +40,10 @@
   }
 
   &.navbar-sm {
+    .btn {
+      font-size: 15px;
+    }
+
     .navbar {
       padding-top: 1px;
       padding-bottom: 1px;
@@ -196,6 +200,14 @@
 
     @media screen and (max-width: $break-sm) {
       padding: 0 10px;
+    }
+  }
+}
+
+.site-header.navbar-sm {
+  .navbar-default .social-icons {
+    a {
+      font-size: 21px;
     }
   }
 }

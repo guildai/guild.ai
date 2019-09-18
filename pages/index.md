@@ -19,12 +19,11 @@ title: Tools for Systematic Machine Learning
 
 <p markdown="1" class="highlight">
 
-Guild AI is used by machine learning engineers to automate development
-tasks like data preparation, training, testing, and deployment. Guild
-captures runs as a unique experiments and lets you study and compare
-results. The benefit is that you make better decisions and build
-better models in less time. Guild AI is freely available under the
-Apache 2 open source license.
+Guild AI is used by machine learning engineers to automate data
+preparation, training, testing, and deployment. Guild captures runs as
+a unique experiments that you can study and compare. With better
+information, you build better models in less time. Guild AI is freely
+available under the Apache 2 open source license.
 
 </p>
 
@@ -222,7 +221,7 @@ Apache 2 open source license.
     <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Total Control</strong> - Configure everything without changing your scripts</h2>
+    <h2><strong>Total Control</strong> - Configure everything with no code changes</h2>
 
     <p>
 
