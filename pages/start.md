@@ -23,7 +23,69 @@ guild check
 Refer to [Install Guild AI](install.md) for detailed install
 instructions or [ask for help](ref:slack).
 
-## Create a Mock Training Script
+## Get Help
+
+Guild is a command line tool. Commands are run using the format
+``guild COMMAND``. Use the `--help` option to get help for a command.
+
+``` command
+guild --help
+```
+
+``` output
+Usage: guild [OPTIONS] COMMAND [ARGS]...
+
+  Guild AI command line interface.
+
+Options:
+  --version  Show the version and exit.
+  -C PATH    Use PATH as current directory for referencing guild files
+             (guild.yml).
+  -H PATH    Use PATH as Guild home (default is /home/garrett/.guild).
+  --debug    Log more information during command.
+  --help     Show this message and exit.
+
+Commands:
+  cat              Show contents of a run file.
+  check            Check the Guild setup.
+  compare          Compare run results.
+  diff             Diff two runs.
+  download         Download a file resource.
+  export           Export one or more runs.
+  help             Show help for a path or package.
+  import           Import one or more runs from ARCHIVE.
+  init             Initialize a Guild environment.
+  install          Install one or more packages.
+  label            Set run labels.
+  ls               List run files.
+  mark             Mark a run.
+  models           Show available models.
+  open             Open a run path.
+  operations, ops  Show model operations.
+  package          Create a package for distribution.
+  packages         Show or manage packages.
+  publish          Publish one or more runs.
+  pull             Copy one or more runs from a remote location.
+  push             Copy one or more runs to a remote location.
+  remote           Manage remote status.
+  remotes          Show available remotes.
+  run              Run a model operation.
+  runs             Show or manage runs.
+  search           Search for a package.
+  shell            Start a Python shell for API use.
+  stop             Stop one or more runs.
+  sync             Synchronize remote runs.
+  sys              System utilities.
+  tensorboard      Visualize runs with TensorBoard.
+  tensorflow       Collection of TensorFlow tools.
+  uninstall        Uninstall one or more packages.
+  view             Visualize runs in a local web application.
+  watch            Watch run output.
+```
+
+For online help with commands, see [Commands](commands/index.md).
+
+## Create a Sample Training Script
 
 Create a new directory:
 
@@ -61,7 +123,7 @@ The new directory should look like this:
 <ul>
 <li class="is-folder open">guild-start
  <ul>
- <li class="is-file">guild.yml</li>
+ <li class="is-file">train.py</li>
  </ul>
 </li>
 </ul>

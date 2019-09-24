@@ -96,6 +96,12 @@ markdown_extensions:
           class: ext
           target: _blank
 
+        # external link alt (supports formatting)
+        - link_pattern: 'ext:(.*)'
+          class: ext
+          href: '{}'
+          target: _blank
+
         # command
         - link_pattern: 'cmd:(.*)'
           class: cmd
@@ -124,6 +130,7 @@ markdown_extensions:
             -
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
+              operation: /config.md#operations
               random-search: https://en.wikipedia.org/wiki/Random_search
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
 
@@ -136,8 +143,7 @@ markdown_extensions:
               flags: /reference/guildfile.md#flags
               full-format: /reference/guildfile.md#full-format
               guild-compare: /tools.md#guild-compare
-              guild-file: /reference/guildfile.md
-              guild-files: /config.md#guild-files
+              guildfile: /reference/guildfile.md
               guild-view: /tools.md#guild-view
               magic: /kb/magic.md
               no-databases: /faq/#how-does-guild-save-results
@@ -172,18 +178,22 @@ pages:
           - start.md
           - start/optimize.md
           - start/runs.md
-          - start/customize.md
-          - start/automate.md
-          - start/advanced.md
+          - start/guildfile.md
+          - start/classifier.md
+          # ??? - start/automate.md
+          # ??? - start/advanced.md
 
       - Core Concepts:
           - cli.md
           - config.md
+          - operations.md
           - runs.md
           - tools.md
-          - environments.md
           - workflow.md
-          - remotes.md
+          - remote.md
+          - backup-and-restore.md
+          - publishing.md
+          - environments.md
 
       - Guides:
           - guides/guildfile.md

@@ -73,4 +73,8 @@ plot matrices
 ->](https://en.wikipedia.org/wiki/Scatter_plot#Scatter_plot_matrices).
 
 
-## Diff
+## Diff Runs
+
+## View Files
+
+TODO cat and open

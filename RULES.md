@@ -19,6 +19,12 @@ Bad:
 
 - We configure the project using a Guild file.
 
+If the statement is made from the perspective of Guild authors, use
+*we*. For example:
+
+- We recommend that you define the package first.
+
+
 ## Auxiliary Verbs
 
 *Avoid using auxiliary verbs like can and may unless the sentence
