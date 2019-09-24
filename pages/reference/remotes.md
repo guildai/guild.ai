@@ -33,9 +33,28 @@ specified host is available using the specified connect information.
 SSH remotes support all [remote
 commands](../guides/remote.md#remote-commands).
 
+### Examples
+
+## EC2
+
+### Attributes
+
+### Status
+
+### Start and Stop
+
+### Remote Commands
+
+### Examples
+
 ## S3
 
 ### Attributes
 
+### Status
 
-## EC2
+### Start and Stop
+
+### Remote Commands
+
+### Examples

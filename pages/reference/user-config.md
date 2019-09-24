@@ -7,6 +7,26 @@
 Guild user configuration is defined in `~/.guild/config.yml`. User
 configuration applies across all projects and packages.
 
+## Diff
+
+Guild [diff](cmd:diff) can be configured by defining any of the
+attributes below under a top-level `diff` mapping.
+
+### Attributes
+
+`command`
+: The command used when diffing two paths. The two paths are appended
+  to this command as separate arguments.
+
+### Examples
+
+Use [Meld](ref:meld) to diff runs:
+
+```
+diff:
+  command: meld
+```
+
 ## Remotes
 
 Remotes are defined in user configuration under a top-level `remotes`

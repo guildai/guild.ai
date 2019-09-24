@@ -134,6 +134,24 @@ markdown_extensions:
               random-search: https://en.wikipedia.org/wiki/Random_search
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
 
+        - link_pattern: ref:meld
+          text: Meld
+          class: ext
+          target: _blank
+          href: https://meldmerge.org/
+
+        - link_pattern: ref:open-an-issue
+          text: open an issue on GitHub
+          class: ext
+          target: _blank
+          href: https://github.com/guildai/guildai/issues
+
+        - link_pattern: ref:slack
+          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
+          text: Guild AI Slack workspace
+          class: ext
+          target: _blank
+
         # ref (general)
         - link_pattern: 'ref:(.*)'
           text: '{0}'
@@ -154,19 +172,6 @@ markdown_extensions:
               requirements: /config.md#required-resources
               source-code: /reference/guildfile.md#source-code
               user-config: /reference/user-config.md
-
-        # custom refs
-        - link_pattern: ref:open-an-issue
-          text: open an issue on GitHub
-          class: ext
-          target: _blank
-          href: https://github.com/guildai/guildai/issues
-
-        - link_pattern: ref:slack
-          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
-          text: Guild AI Slack workspace
-          class: ext
-          target: _blank
 
 pages:
   - index.md
