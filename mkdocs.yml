@@ -121,19 +121,6 @@ markdown_extensions:
           href: /packages/{1}/
           class: pkg
 
-        # term
-        - link_pattern: 'term:(.*)'
-          class: term
-          text: '{0}'
-          href: '{1}'
-          arg_maps:
-            -
-              bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
-              grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
-              operation: /config.md#operations
-              random-search: https://en.wikipedia.org/wiki/Random_search
-              ssh: https://en.wikipedia.org/wiki/Secure_Shell
-
         - link_pattern: ref:meld
           text: Meld
           class: ext
@@ -153,24 +140,38 @@ markdown_extensions:
           target: _blank
 
         # ref (general)
-        - link_pattern: 'ref:(.*)'
+        - link_pattern: '(ref|term):(.*)'
           text: '{0}'
-          href: '{1}'
+          href: '{3}'
+          class: '{2}'
           arg_maps:
+            - {}
             -
-              flags: /reference/guildfile.md#flags
+              bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
+              flag: /guildfile.md#flags
+              flags: /guildfile.md#flags
               full-format: /reference/guildfile.md#full-format
+              grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools.md#guild-compare
-              guildfile: /reference/guildfile.md
+              guildfile: /guildfile.md
+              guildfiles: /guildfile.md
               guild-view: /tools.md#guild-view
               magic: /kb/magic.md
+              main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
-              operations: /reference/guildfile.md#operations
-              output-scalars: /reference/guildfile.md#output-scalars
+              operation: /guildfile.md#operations
+              operations: /guildfile.md#operations
+              output-scalar: /guildfile.md#output-scalars
+              output-scalars: /guildfile.md#output-scalars
+              random-search: https://en.wikipedia.org/wiki/Random_search
               remotes: /reference/remotes.md
-              requirements: /config.md#required-resources
-              source-code: /reference/guildfile.md#source-code
+              requirements: /guildfile.md#required-resources
+              run: /runs.md
+              ssh: https://en.wikipedia.org/wiki/Secure_Shell
+              step: /reference/guildfile.md#steps
+              steps: /reference/guildfile.md#steps
+              source-code: /guildfile.md#source-code
               user-config: /reference/user-config.md
 
 pages:
@@ -185,12 +186,12 @@ pages:
           - start/runs.md
           - start/guildfile.md
           - start/classifier.md
-          # ??? - start/automate.md
-          # ??? - start/advanced.md
+          - start/workflow.md
+          - start/explore.md
 
       - Core Concepts:
           - cli.md
-          - config.md
+          - guildfile.md
           - operations.md
           - runs.md
           - tools.md
@@ -201,11 +202,14 @@ pages:
           - environments.md
 
       - Guides:
-          - guides/guildfile.md
-          - guides/runs.md
-          - guides/tuning.md
+          - guides/add.md
+          - guides/run.md
+          - guides/compare.md
+          - guides/workflow.md
+          - guides/schedule.md
           - guides/remote.md
-          - guides/debugging.md
+          - guides/backup.md
+          - guides/troubleshoot.md
 
       - Commands:
           - commands/index.md

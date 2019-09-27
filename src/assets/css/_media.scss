@@ -3,7 +3,7 @@ figure {
 
   figcaption {
     text-align: center;
-    color: $light-gray-text-color;
+    color: $gray-text-color;
     font-size: 16px;
     line-height: 22px;
     margin-top: -8px;
@@ -15,7 +15,7 @@ figure {
 
     code {
       font-size: 13px;
-      color: darken($light-gray-text-color, 10%);
+      color: darken($gray-text-color, 15%);
     }
 
     a {
@@ -30,7 +30,7 @@ img.md {
   margin: 0 auto 24px;
   display: block;
   box-shadow: rgba(0,0,0,0.3) 3px 5px 14px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 .lity {

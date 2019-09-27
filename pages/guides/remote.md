@@ -1,4 +1,4 @@
-# Remote Training and Backup
+# Train Remotely
 
 [TOC]
 
@@ -9,7 +9,7 @@ non-local operations. Guild supports a variety of remote *types*. This
 document describes how train models remotely, backup and restore runs,
 as well as other remote operations.
 
-For details on configuring remotes, see [Remotes](ref:remotes).
+For details on configuring remotes, see [Remotes](ref:remote).
 
 ## Defining Remotes
 
@@ -41,7 +41,7 @@ Guild supports a variety of remote types:
   supported.
 
 For a complete list of remote types, including examples, see
-[Remotes](ref:remotes).
+[Remotes](ref:remote).
 
 ## Managing Remotes
 
@@ -66,7 +66,7 @@ A remote must be available before it can be used in a remote
 command. Check a remote using [remote status](cmd:remote-status). If a
 remote is not available and can be started, use [remote
 start](cmd:remote-start) to start it first. Note that some remote
-types cannot be started or stopped. Refer to [Remotes](ref:remotes)
+types cannot be started or stopped. Refer to [Remotes](ref:remote)
 for detail on each remote type.
 
 ## Remote Commands
@@ -81,7 +81,7 @@ guild --remote remote-gpu check
 
 Not all remote types support every command. For example, the `s3`
 remote type does not support the `run` command. Refer to
-[Remotes](ref:remotes) for details on which remote commands are
+[Remotes](ref:remote) for details on which remote commands are
 support for a particular remote type.
 
 Remote commands include:

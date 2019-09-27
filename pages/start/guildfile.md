@@ -1,14 +1,14 @@
-# Create a Guild File
+# Add a Guild File
 
-In the previous sections, you ran a script `train.py` directly with
-Guild. In this section, you run the same script as an
-[operation](term:operation) defined in a [Guild file](ref:guildfile).
+In the previous sections, you ran a script `train.py` directly. In
+this section, you run the same script as an
+[operation](term:operation) defined in a [Guild file](ref:guildfiles).
 
 Guild files provide information about your scripts so Guild can run
-them without modifications.
+them without Guild-specific changes.
 
-In the `guild-start` directory from [Get Started](../start.md), create
-a file named `guild.yml` that contains this YAML configuration:
+In the `guild-start` directory, create a file named `guild.yml` that
+contains this YAML configuration:
 
 ``` yaml
 - model: sample
@@ -97,18 +97,6 @@ guild ops
 sample:train  Generate a sample loss
 ```
 
-## Delete Runs (optional)
-
-In preparation for the operations below, we recommend that you delete
-your existing runs. Recall from [Manage Run](runs.md) that you can
-restore deleted runs later.
-
-``` command
-guild runs rm
-```
-
-Press `Enter` to confirm.
-
 ## Run an Operation
 
 Run the `train` operation for the `sample` model:
@@ -129,9 +117,7 @@ Guild runs the module defined in `train.py`. It uses the operation
 name to infer the main module. Later you control the module that Guild
 runs.
 
-Guild imports the flag `x` and its default value 0.1 from
-`train.py`. Later you control the flags that are imported and how they
-are applied to a script.
+Guild imports the flag `x` and its default value 0.1 from `train.py`.
 
 View available runs:
 
@@ -174,4 +160,4 @@ running various Guild commands.
 
 In the next section, you create a real classifier using [scikit-learn
 support vector machines
--](https://scikit-learn.org/stable/modules/svm.html).
+->](https://scikit-learn.org/stable/modules/svm.html).

@@ -28,7 +28,7 @@ guild run script.py flag1=val1 flag2=val2
 
 ## Run an Operation
 
-Operations are defined in a [Guild file](ref:guildfile).
+Operations are defined in a [Guild file](ref:guildfiles).
 
 Run an operation with default flag values:
 
@@ -108,11 +108,11 @@ guild run operation --help-op
 
 ## Define an Operation
 
-The examples below can be added to a [Guild file](ref:guildfile) and
+The examples below can be added to a [Guild file](ref:guildfiles) and
 adopted as needed.
 
 Operations defined top-level of `guild.yml` ([operation only
-format](ref:operation-only-format)):
+format](ref:operations-only-format)):
 
 ``` yaml
 prepare-data:

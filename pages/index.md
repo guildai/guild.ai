@@ -126,8 +126,8 @@ available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/railroad-fast-train-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Start Fast</strong> - Run your script to track
-    experiments</h2>
+    <h2><strong>Start Fast</strong> - Run your scripts directly to
+    track experiments</h2>
     <p>
 
       Guild AI captures <strong>every detail</strong> including
@@ -149,12 +149,12 @@ available under the Apache 2 open source license.
   </div>
   <div class="col-sm-10">
     <h2>
-      <strong>Get Critical Info</strong> - Leverage results to make better decisions
+      <strong>Deep Insight</strong> - Leverage every result to improve your models
     </h2>
 
     <p>
 
-      Guild comes with a tour de force of <strong>analytics
+      Guild provides a tour de force of <strong>analytics
       tools</strong> that help you <strong>study and compare
       results</strong> and
       <strong>inform your next steps</strong>.
@@ -170,23 +170,19 @@ available under the Apache 2 open source license.
     <div class="view-and-compare-preview">
       <div id="view-and-compare-img-compare" class="show-hide active">
         <img class="md shadow" src="/assets/img/compare-feature.png" data-dim="1100x815">
-        <p>Compare results from any command line &mdash; local or remote</p>
+        <p class="caption">Compare results from any command line &mdash; local or remote</p>
       </div>
       <div id="view-and-compare-img-view" class="show-hide">
         <img class="md shadow" src="/assets/img/view-feature.png" data-dim="1100x815">
-        <p>Explore run metadata, source files, and generated artifacts</p>
+        <p class="caption">Explore run metadata, source files, and generated artifacts</p>
       </div>
       <div id="view-and-compare-img-tensorboard" class="show-hide" data-dim="1100x815">
-        <img class="md shadow" src="/assets/img/tensorboard-feature.png">
-        <p>Integrated TensorBoard with automatic hyperparameter support</p>
+        <img class="md shadow" src="/assets/img/plot-feature.png">
+        <p>Integrated TensorBoard with enhanced features</p>
       </div>
       <div id="view-and-compare-img-diff" class="show-hide">
         <img class="md shadow" src="/assets/img/diff-feature.png" data-dim="1100x815">
-        <p>Diff runs down to the smallest detail</p>
-      </div>
-      <div id="view-and-compare-img-open" class="show-hide">
-        <img class="md shadow" src="/assets/img/open-feature.png" data-dim="1100x815">
-        <p>Immediate and transparent access to run artifacts &mdash; nothing stored in a database</p>
+        <p class="caption">Diff runs down to the smallest detail</p>
       </div>
     </div>
   </div>
@@ -197,7 +193,7 @@ available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/charging-flash-sync-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Optimize</strong> - Tune your models, streamline your workflow</h2>
+    <h2><strong>Effortless Tuning</strong> - Optimize without complicated setup</h2>
 
     <p>
 
@@ -213,6 +209,12 @@ available under the Apache 2 open source license.
         $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
       </div>
     </div>
+
+    <div class="view-and-compare-preview">
+      <img class="md shadow" src="/assets/img/hparams-feature.png">
+      <p class="caption">Visualize relationships betweeen hyperparameteres and objectives</p>
+    </div>
+
   </div>
 </div>
 
@@ -221,13 +223,13 @@ available under the Apache 2 open source license.
     <img class="icon" src="/assets/icons/file-code-settings-1.svg">
   </div>
   <div class="col-sm-10">
-    <h2><strong>Total Control</strong> - Configure everything with no code changes</h2>
+    <h2><strong>Configuration as Code</strong> - All the features without changing your scripts</h2>
 
     <p>
 
       Add <code>guild.yml</code> to your project to <strong>make
       things explicit</strong> and to keep experiment
-      config <strong>outside your code</strong>.
+      logic <strong>outside your code</strong>.
 
     </p>
 
@@ -251,9 +253,50 @@ available under the Apache 2 open source license.
           requires: train-mnist
     </code></pre>
 
+    <p class="caption">A single <code>guild.yml</code> configures your
+    projects</p>
+
   </div>
 </div>
 
+---
+
+<div class="row">
+<div class="col-md-6">
+  <h3>Why Track Experiments?</h3>
+
+  <p>Experiment tracking is like <strong>version control</strong>. It
+    lets you <strong>go back in time</strong> and answer questions.
+
+    <ul class="md">
+      <li>My model converged last week and now it
+      doesn't. <strong>What changed?</strong></li>
+      <li>A run has a notably higher performance than the
+        others. <strong>Can I repeat the results?</strong></li>
+      <li>I'm publishing SOTA results for my
+        model. Can <strong>someone else</strong> easily repeat the
+        results?</li>
+    </ul>
+  </p>
+</div>
+
+<div class="col-md-6">
+  <h3>Why Guild AI?</h3>
+
+  <p>
+    Guild AI lets you <strong>start tracking experiments
+      immediately</strong> without sacrificing features.</p>
+
+    <p>Guild AI is <strong>portable across individuals and
+      teams</strong>. Others can use it to run and track experiments
+      just as easily as you can.</p>
+
+    Guild AI follows the principle of <strong>separation of
+      concerns</strong>. It does one thing well and relies on
+      <strong>standard interfaces</strong> to work with other tools.
+  </p>
+</div>
+</div>
 ---
 
 # Next Steps

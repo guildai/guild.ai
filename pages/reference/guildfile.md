@@ -215,7 +215,8 @@ above for examples of both operation only and full format operations.
 
     Guild uses this value to execute a system command.
 
-    Use `exec` to run a non-Python program. You can specify flag values as arguments using
+    Use `exec` to run a non-Python program. You can specify flag
+    values as arguments using
 
 `flags`
 : Operation flags (mapping of flag name to [Flag](#flag) definition)
@@ -291,6 +292,8 @@ above for examples of both operation only and full format operations.
 ## Source Code
 
 ## Output Scalars
+
+## Steps
 
 ## Models
 

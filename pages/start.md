@@ -26,7 +26,10 @@ instructions or [ask for help](ref:slack).
 ## Get Help
 
 Guild is a command line tool. Commands are run using the format
-``guild COMMAND``. Use the `--help` option to get help for a command.
+``guild COMMAND``. Use the `--help` option to show information for a
+command.
+
+Show available commands:
 
 ``` command
 guild --help
@@ -83,7 +86,7 @@ Commands:
   watch            Watch run output.
 ```
 
-For online help with commands, see [Commands](commands/index.md).
+See [Command Reference](commands/index.md) for online help.
 
 ## Create a Sample Training Script
 
@@ -149,7 +152,7 @@ Guild runs `train.py`, which prints a simulated loss. Guild lets you
 run any unmodified script this way.
 
 When Guild runs a script, it generates a new experiment, or
-*run*. Each run tracks experiment details including results.
+[run](term:run). Each run tracks experiment details including results.
 
 List available runs:
 
@@ -261,9 +264,9 @@ View your runs using TensorBoard:
 guild tensorboard
 ```
 
-Guild opens TensorBoard in your browser. Click the **HParams** tab to
-compare run performance. You can visualize the runs using **Parallel
-Coordinates View** and **Scatter Plot Matrix View** by clicking the
+Guild opens TensorBoard in your browser. Click the **HPARAMS** tab to
+compare run performance. You can visualize the runs using **PARALLEL
+COORDINATES VIEW** and **SCATTER PLOT MATRIX VIEW** by clicking the
 applicable tab.
 
 ![](/assets/img/tb-hparams.png)

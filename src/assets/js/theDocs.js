@@ -69,8 +69,7 @@ $(function() {
       'compare',
       'view',
       'tensorboard',
-      'diff',
-      'open'
+      'diff'
     ];
     new Typed(typedVandCEl, {
       strings: viewCompareCmds.map(function(cmd) {
@@ -78,7 +77,7 @@ $(function() {
       }),
       typeSpeed: 45,
       backSpeed: 20,
-      backDelay: 5000,
+      backDelay: 4000,
       loop: true,
       showCursor: false,
       smartBackspace: true,

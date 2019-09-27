@@ -1,6 +1,13 @@
-# Advanced Topics
+# Explore Guild Features
 
-[TOC]
+TODO:
+
+- Add Guild to a Project
+
+
+---
+
+old:
 
 ## Environments
 

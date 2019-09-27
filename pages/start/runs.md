@@ -65,35 +65,51 @@ guild runs restore --yes
 Guild does not prompt you in this case because you specified the
 `--yes` option.
 
-## More Commands
+## Export Runs
 
-Guild provides various commands that apply to runs. Below are some of
-the more common commands.
+You can export runs to a directory for backup or to clear runs from
+your list.
 
-[diff](cmd:diff)
-: Diff two runs. Guild lets you diff entire runs, sections of runs
-  (e.g. flags, source code, etc.) or individual files.
+Export all runs to a local `archived-runs` directory:
 
-[ls](cmd:ls)
-: List files associated with a run.
+``` command
+guild export --move archived-runs
+```
 
-[cat](cmd:cat), [open](cmd:open)
-: Show files associated with a run. Use `cat` to show a text file on
-  the console or `open` to open a file or directory in your desktop
-  file manager.
+Press `Enter` to confirm.
 
-[export](cmd:export), [import](cmd:import)
-: Backup and restore runs or manage the runs visible in your
-  environment.
+Guild moves all of your runs into `archived-runs`.
 
-[push](cmd:push), [pull](cmd:pull)
-: Copy runs to and from remote locations. Used to backup and restore
-  and other run synchronization tasks.
+Verify that your runs list is empty:
+
+``` command
+guild runs
+```
+
+List runs in an archive directory by specifying the `--archive`
+option:
+
+``` command
+guild runs --archive archived-runs
+```
+
+Guild shows the list of runs in the directory.
+
+If you want to import any runs back into your list, use
+[import](cmd:import). For this guide, keep the runs list empty for the
+next section.
+
+!!! tip
+    Use [export](cmd:export) to keep your list clear of runs
+    you're no longer working with. Use different export directories to
+    categorize your runs as needed. If you want to move runs to a
+    remote location, use [push](cmd:push) with a [remote
+    configuration](ref:remote).
 
 ## Next Steps
 
-In this section, you deleted and restored runs. You learned about
-other Guild commands that apply to runs.
+In this section, you deleted and restored runs. You exported runs to
+an archive.
 
-In the next section, you use a [Guild file](ref:guildfile) to define
+In the next section, you use a [Guild file](ref:guildfiles) to define
 operations your project.

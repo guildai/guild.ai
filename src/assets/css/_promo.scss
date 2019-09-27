@@ -482,8 +482,8 @@ p.highlight {
 
 .feature {
 
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
   @media screen and (max-width: $break-sm) {
     margin-top: -20px;
@@ -529,7 +529,7 @@ p.highlight {
   }
 
   pre {
-    margin: 30px 0 40px;
+    margin: 30px 0 30px;
   }
 
   .highlights {
@@ -557,12 +557,16 @@ p.highlight {
 
   .view-and-compare-preview {
     margin-top: 30px;
+  }
 
-    p {
-      margin-top: 24px;
-      text-align: center;
-      font-style: italic;
-      line-height: inherit;
-    }
+  p.caption {
+    margin-top: 18px;
+    text-align: center;
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  pre + p.caption {
+    margin-top: -10px;
   }
 }
