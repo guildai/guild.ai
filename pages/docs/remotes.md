@@ -48,6 +48,7 @@ You must also have the following installed and configured on each
 remote SSH host:
 
 - SSH server
+- rsync
 - Guild AI
 - pip
 
