@@ -126,7 +126,7 @@ markdown_extensions:
           target: _blank
           class: ext
         - link_pattern: alias:guild-slack
-          href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
+          href: https://guildai.slack.com/join/shared_invite/enQtNDgxNDg5ODk2MjI2LThhZmU1YjFhYTQ5ODM1NGQxN2E5ODBmOTM2ODg3NzM3YjZmNmNhYzllNjYxZTU3YWJiNzA3ZjQyZWM0MmI4ZGM
           text: Guild AI Slack channel
           class: ext
           target: _blank
