@@ -266,7 +266,6 @@ above for examples of both operation only and full format operations.
         self.env = data.get("env") or {}
         self.disable_plugins = _disable_plugins(data, modeldef.guildfile)
         self.dependencies = _init_dependencies(data.get("requires"), self)
-        self.pre_process = data.get("pre-process")
         self.remote = data.get("remote") or False
         self.stoppable = data.get("stoppable") or False
         self.set_trace = data.get("set-trace") or False
