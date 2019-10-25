@@ -263,7 +263,6 @@ pages:
           - docs/commands/export-cmd.md
           - docs/commands/help-cmd.md
           - docs/commands/import-cmd.md
-          - docs/commands/index-cmd.md
           - docs/commands/init-cmd.md
           - docs/commands/install-cmd.md
           - docs/commands/label-cmd.md

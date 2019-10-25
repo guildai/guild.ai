@@ -842,6 +842,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
         cmd_help = self._get_cmd_help(cmd)
         ctx = CmdHelpContext(cmd_help)
         rendered = self._template.render(cmd=cmd_help, ctx=ctx)
+        rendered = rendered.replace("\x08", "")
         help_el = etree.fromstring(rendered)
         _replace_el(parent, target, help_el)
 
