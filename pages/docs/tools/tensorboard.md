@@ -15,8 +15,8 @@ contain a variety of useful information associated with a run:
 - Model graph
 - Model statistics
 
-For more information, see [TensorBoard: Visualizing
-Learning](https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard).
+For more information, see [TensorBoard: TensorFlow's visualization
+toolkit](https://www.tensorflow.org/tensorboard).
 
 ## TensorBoard and Guild
 
@@ -39,7 +39,7 @@ guild tensorboard --operation train
 For more information, see [tensorboard](cmd:tensorboard).
 
 TensorBoard is also integrated with [Guild
-View](/docs/visual/guild-view/). You can launch TensorBoard from Guild
+View](/docs/tools/guild-view/). You can launch TensorBoard from Guild
 View by clicking ![View in
 TensorBoard](/assets/img/view-in-tensorboard.png) which is located in
 the upper left of the screen.
@@ -48,4 +48,4 @@ the upper left of the screen.
 
 When you run TensorBoard from Guild, by either the `tensorboard`
 command or from Guild View, the list of runs is automatically
-synchronized with the current [run view](term:run-view).
+synchronized with the list of viewed runs.
