@@ -155,9 +155,6 @@ markdown_extensions:
         - link_pattern: alias:packages
           href: /packages/
           text: Guild AI packages
-        - link_pattern: alias:add-guild
-          href: /docs/guides/add-guild/
-          text: Add Guild to a project
         - link_pattern: alias:pip
           text: pip
           href: https://pip.pypa.io/en/stable/

@@ -88,11 +88,11 @@ Using a text editor, paste the following code sample into `guild.yml`:
 
 - Save `guild.yml`.
 
-For more information on defining models and operations, see [Guile
+For more information on defining models and operations, see [Guild
 file reference](/docs/reference/guild-file/).
 
 For a detailed step-by-step example of creating a Guild model, see
-[](alias:add-guild).
+[Models](/docs/models/).
 
 You can experiment with training your model by running:
 
