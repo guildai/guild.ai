@@ -11,7 +11,7 @@ extra:
   #
   tagline:
 
-    Tools for Systematic Machine Learning
+    The ML Engineering Platform
 
   subtext_width: 40em
   subtext:
@@ -20,14 +20,14 @@ extra:
     - text: Experiment Tracking
       icon: analytics-graph-gray
 
-    - text: Model Tuning
+    - text: Auto ML
       icon: seo-search-graph-gray
 
     - text: Reproducibility
       icon: task-list-check-gray
 
-    - text: 100% Open Source
-      icon: developer-community-github-2-gray
+    - text: Pipeline Automation
+      icon: hierarchy-10-gray
 
   links:
     - name: github
