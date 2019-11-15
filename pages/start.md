@@ -200,10 +200,8 @@ Guild provides a number of tools to leverage experiment data, which
 you learn about later.
 
 !!! highlight
-    It's easy to track experiments with Guild.
-
     - No code changes
-    - No system requirements like databases or web services
+    - No system daemons (databases, web services, etc.)
 
 ## Search for Better Results
 

@@ -13,7 +13,7 @@ The final modified `guild.yml` should be:
 
 ``` yaml
 - model: sample
-  description: A sample (mock) model
+  description: A sample model
   operations:
     train:
       description: Generate a sample loss

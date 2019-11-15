@@ -18,16 +18,16 @@ extra:
 
   tagline_bullets:
     - text: Experiment Tracking
-      icon: analytics-graph-gray
+      icon: folder-check-gray
 
     - text: Auto ML
       icon: seo-search-graph-gray
 
-    - text: Reproducibility
-      icon: task-list-check-gray
-
     - text: Pipeline Automation
       icon: hierarchy-10-gray
+
+    - text: Any Cloud
+      icon: cloud-star-gray
 
   links:
     - name: github
@@ -272,7 +272,6 @@ pages:
 
       - Knowledge Base:
           - kb/dependencies.md
-          - kb/duck-typing.md
           - kb/magic.md
           - kb/model-reuse.md
           - kb/git-for-tracking.md

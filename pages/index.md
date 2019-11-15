@@ -6,7 +6,7 @@ title: Tools for Systematic Machine Learning
 
 <div id="get-started-fab"></div>
 
-<div class="row match-height logos">
+<div class="row logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">
   <img src="/assets/img/keras-logo.png" width="110">
@@ -17,13 +17,20 @@ title: Tools for Systematic Machine Learning
 
 ---
 
-<p markdown="1" class="highlight">
+<p class="highlight">
 
-Guild AI automates data preparation, training, testing, and deployment
-of machine learning models. It captures experiment details and
-performance metrics to let you study and compare results. Use Guild
-when you want to systematically improve your models and minimize
-errors.
+Guidl AI is a comprehensive platform for machine learning
+engineers. Use it to automate data preparation, training, testing, and
+deployment of machine learning models. Capture experiment results and
+performance metrics to inform design decisions and govern your model
+ecosystem.
+
+</p>
+
+<p class="highlight">
+
+Guild AI is vendor and platform independent. It's freely available
+under the Apache 2.0 open source license.
 
 </p>
 
@@ -66,10 +73,10 @@ errors.
 
   <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/hierarchy.svg">
-    <h4>Automate Workflow</h4>
+    <h4>Automate Pipelines</h4>
     <p>
 
-      Save time and avoid mistakes by automating your training steps.
+      Accelerate model development, eliminate costly errors, and measure results.
 
     </p>
   </div>
@@ -109,7 +116,7 @@ errors.
 
   <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/file-py.svg">
-    <h4>Python API</h4>
+    <h4>Jupyter Notebook Friendly</h4>
     <p>
 
       Use Notebooks or interactive shells with Guild's Python
@@ -121,181 +128,102 @@ errors.
 
 ---
 
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/railroad-fast-train-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2><strong>Start Fast</strong> - Run your scripts directly to
-    track experiments</h2>
+<div class="row img-features">
+
+  <div class="col col-sm-6 match-height">
+    <h5>Model Governance and Auditability</h5>
+    <img class="md shadow" src="/assets/img/view-feature.png">
     <p>
-
-      Guild AI captures <strong>every detail</strong> including
-      hyperparameters, metrics, and generated artifacts by
-      simply running your <strong>unmodified scripts</strong>.
-
+      When you develop with Guild, each operation is tracked,
+      including source code, hyperparameters, results, and generated
+      artifacts. Build with confidence having full governance and
+      auditability.
     </p>
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-run"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
   </div>
-</div>
 
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/seo-search-graph-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2>
-      <strong>Deep Insight</strong> - Leverage every result to improve your models
-    </h2>
-
+  <div class="col col-sm-6 match-height">
+    <h5>Beyond Notebooks</h5>
+    <img class="md shadow" src="/assets/img/plot-feature.png">
     <p>
-
-      Guild provides a tour de force of <strong>analytics
-      tools</strong> that help you <strong>study and compare
-      results</strong> and
-      <strong>inform your next steps</strong>.
-
+      Where Notebooks summarize a single point in time, Guild captures
+      summaries over the entire life cycle of your model. This
+      includes associated source code, data, hyperparameters, and
+      artifacts.
     </p>
-
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-view-and-compare"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
-
-    <div class="view-and-compare-preview">
-      <div id="view-and-compare-img-compare" class="show-hide active">
-        <img class="md shadow" src="/assets/img/compare-feature.png" data-dim="1100x815">
-        <p class="caption">Compare results from any command line &mdash; local or remote</p>
-      </div>
-      <div id="view-and-compare-img-view" class="show-hide">
-        <img class="md shadow" src="/assets/img/view-feature.png" data-dim="1100x815">
-        <p class="caption">Explore run metadata, source files, and generated artifacts</p>
-      </div>
-      <div id="view-and-compare-img-tensorboard" class="show-hide" data-dim="1100x815">
-        <img class="md shadow" src="/assets/img/plot-feature.png">
-        <p>Integrated TensorBoard with enhanced features</p>
-      </div>
-      <div id="view-and-compare-img-diff" class="show-hide">
-        <img class="md shadow" src="/assets/img/diff-feature.png" data-dim="1100x815">
-        <p class="caption">Diff runs down to the smallest detail</p>
-      </div>
-    </div>
   </div>
-</div>
 
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/charging-flash-sync-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2><strong>Effortless Tuning</strong> - Optimize without complicated setup</h2>
-
+  <div class="col col-sm-6 match-height">
+    <h5>Automated Hyperparameter Tuning</h5>
+    <img class="md shadow" src="/assets/img/hparams-2-feature.png">
     <p>
-
-      Perform <strong>grid search</strong>, <strong>random
-      search</strong>, and <strong>Baysian optimization</strong> with
-      a single command. Automate experiment tracking for <strong>all
-      stages of your pipeline</strong>.
-
+      With Guild it's trivial to start hyperparameter tuning runs for
+      any operation. Simpley specify the hyperparameter ranges and
+      tell Guild what to optimize and it does the rest.
     </p>
-
-    <div class="text-editor">
-      <div class="text-body">
-        $ <span id="typed-run2"></span><span class="typed-cursor">|</span>
-      </div>
-    </div>
-
-    <div class="view-and-compare-preview">
-      <img class="md shadow" src="/assets/img/hparams-feature.png">
-      <p class="caption">Visualize relationships betweeen hyperparameteres and objectives</p>
-    </div>
-
   </div>
-</div>
 
-<div class="row feature">
-  <div class="hidden-xs col-sm-2">
-    <img class="icon" src="/assets/icons/file-code-settings-1.svg">
-  </div>
-  <div class="col-sm-10">
-    <h2><strong>Configuration as Code</strong> - All the features without changing your scripts</h2>
-
+  <div class="col col-sm-6 match-height">
+    <h5>Engineering Best Practices</h5>
+    <img class="md shadow" src="/assets/img/compare-feature.png">
     <p>
-
-      Add <code>guild.yml</code> to your project to <strong>make
-      things explicit</strong> and to keep experiment
-      logic <strong>outside your code</strong>.
-
+      Guild is designed with engineers in mind, including full support
+      for terminal operations running locally or on remote
+      servers. Results are available instantly using POSIX compliant
+      interfaces.
     </p>
-
-    <pre data-toolbar="hide"><code class="language-yaml">
-        train-mnist:
-          description: Train CNN on MNIST images
-          main: train
-          flags:
-            lr:
-              description: Learning rate
-              default: 0.01
-            batch_size:
-              description: Training batch size
-              default: 100
-          requires:
-            - http://pub.guild.ai/mnist.tar.gz
-
-        eval-mnist:
-          description: Evaluate a trained model
-          main: eval
-          requires: train-mnist
-    </code></pre>
-
-    <p class="caption">A single <code>guild.yml</code> configures your
-    projects</p>
-
   </div>
+
+  <div class="col col-sm-6 match-height">
+    <h5>Know Exactly What Changed</h5>
+    <img class="md shadow" src="/assets/img/diff-feature.png">
+    <p>
+      It's essential to know what changed when comparing runs. Guild
+      lets you drill into differences at any level to answer questions
+      from data scientists, managers, and users.
+    </p>
+  </div>
+
+  <div class="col col-sm-6 match-height">
+    <h5>Configuration As Code</h5>
+    <img class="md shadow" src="/assets/img/code-feature.png">
+    <p>
+      Guild supports a simple configuration scheme that lets you
+      define model operations that perform complex tasks with a single
+      command.
+    </p>
+  </div>
+
 </div>
 
 ---
 
 <div class="row">
-<div class="col-md-6">
-  <h3>Why Track Experiments?</h3>
+  <div class="col-md-6">
+    <h3>What is ML Engineering?</h3>
 
-  <p>Experiment tracking is like <strong>version control</strong>. It
-    lets you <strong>go back in time</strong> and answer questions.
+    <p>
+      ML engineering is the application of control and automated
+      methods to machine learning. It follows in the tradition of
+      release management, continuous integration, and DevOps to ensure
+      that models are not just optimized for performance, but are
+      formally measured, recreatable and auditable. Effective ML
+      engineering supports faster model development while maintaining
+      the highest levels of quality.
+    </p>
+  </div>
 
-    <ul class="md">
-      <li>My model converged last week and now it
-      doesn't. <strong>What changed?</strong></li>
-      <li>A run has a notably higher performance than the
-        others. <strong>Can I repeat the results?</strong></li>
-      <li>I'm publishing SOTA results for my
-        model. Can <strong>someone else</strong> easily repeat the
-        results?</li>
-    </ul>
-  </p>
-</div>
+  <div class="col-md-6">
+    <h3>Why Guild AI?</h3>
 
-<div class="col-md-6">
-  <h3>Why Guild AI?</h3>
-
-  <p>
-    Guild AI lets you <strong>start tracking experiments
-      immediately</strong> without sacrificing features.</p>
-
-    <p>Guild AI is <strong>portable across individuals and
-      teams</strong>. Others can use it to run and track experiments
-      just as easily as you can.</p>
-
-    Guild AI follows the principle of <strong>separation of
-      concerns</strong>. It does one thing well and relies on
-      <strong>standard interfaces</strong> to work with other tools.
-  </p>
-</div>
+    <p>
+      Guild AI is a complete platform for engineers who want to apply
+      to machine learning the same control and automation they use in
+      other areas. This includes experiment tracking, tools for
+      comparison and analysis, hyperparameter tuning, pipeline
+      automation, and network based operation on any cloud. The Guild
+      AI platform extends the engineering toolkit to ML development.
+    </p>
+  </div>
 </div>
 ---
 

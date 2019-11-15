@@ -12,7 +12,7 @@ contains this YAML configuration:
 
 ``` yaml
 - model: sample
-  description: A sample (mock) model
+  description: A sample model
   operations:
     train:
       description: Generate a sample loss
@@ -60,7 +60,7 @@ MODELS
 
     sample
 
-      A sample (mock) model
+      A sample model
 
       Operations:
 
@@ -84,7 +84,7 @@ guild models
 ```
 
 ``` output
-sample  A sample (mock) model
+sample  A sample model
 ```
 
 List operations defined for the project:

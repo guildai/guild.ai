@@ -1,0 +1,7 @@
+- model: egan
+  description: Anomaly detector using Efficient GAN
+  reference: https://arxiv.org/abs/1802.06222
+  operations:
+    train:
+      flags:
+        learning-rate:
