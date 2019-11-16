@@ -2,6 +2,29 @@
   description: Anomaly detector using Efficient GAN
   reference: https://arxiv.org/abs/1802.06222
   operations:
+    prepare-mnist:
+      description: Prepare MNIST data set for training
+      main: prepare_mnist
+    prepare-kdd99:
+      description: Prepare KDD99 data set for training
+      main: prepare_kdd99
     train:
+      description: Train model
+      main: train
       flags:
-        learning-rate:
+        epochs:
+          description: Training epochs
+          default: 1000
+        w:
+          description: Weight for the sum of the mapping loss function
+          default: 0.1
+        m:
+          description: Mode/method for discriminator loss
+          default: fm
+          choices: [cross-e, fm]
+        d:
+          description: Degree for the L norm
+          default: 1
+        seed:
+          description: Random seed
+          default: 43

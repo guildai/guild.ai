@@ -209,6 +209,7 @@ pages:
           - guides/schedule.md
           - guides/remote.md
           - guides/backup.md
+          - guides/notebooks.md
           - guides/troubleshoot.md
 
       - Commands:
@@ -276,7 +277,9 @@ pages:
           - kb/model-reuse.md
           - kb/git-for-tracking.md
 
-      - cheatsheet.md
+      - Cheatsheets:
+          - cheatsheets/commands.md
+          - cheatsheets/guildfile.md
 
   - examples.md
   - faq.md

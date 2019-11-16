@@ -11,6 +11,9 @@ models. They support a variety of code reuse features.
 See [Guild File](reference/guildfile.md) for a complete list of
 configuration options.
 
+See [Guild File Snippets](cheatsheets/guildfile.md) for common
+cheatsheet snippets.
+
 ## Operations
 
 Operations define what Guild runs to generate an experiment. Here's an
