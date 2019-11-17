@@ -1,3 +1,5 @@
+tags: start
+
 # Automate Workflow
 
 In the previous section, you added `iris-svm` to your project Guild

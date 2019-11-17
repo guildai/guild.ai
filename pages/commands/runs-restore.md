@@ -1,6 +1,6 @@
 sidenav_title: runs restore
 overview_title: runs restore
-tags: runs, runs-cmd, runs-select
+tags: runs
 
 # runs restore
 

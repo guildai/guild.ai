@@ -1,6 +1,6 @@
 sidenav_title: runs info
 overview_title: runs info
-tags: runs, run-info
+tags: run-info, common
 
 # runs info
 

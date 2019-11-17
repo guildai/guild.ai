@@ -1,4 +1,5 @@
 navbar_item: yes
+tags: start
 
 # Quick Start
 

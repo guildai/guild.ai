@@ -1,6 +1,6 @@
 sidenav_title: label
 overview_title: label
-tags: runs-alias
+tags: runs
 
 # label
 

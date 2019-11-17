@@ -1,6 +1,6 @@
 sidenav_title: runs diff
 overview_title: runs diff
-tags: runs
+tags: alias
 
 # runs diff
 

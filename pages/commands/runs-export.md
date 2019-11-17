@@ -1,6 +1,6 @@
 sidenav_title: runs export
 overview_title: runs export
-tags: runs
+tags: alias
 
 # runs export
 

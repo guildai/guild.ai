@@ -1,1 +1,3 @@
+tags: concept
+
 # Remote Training

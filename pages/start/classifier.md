@@ -1,3 +1,5 @@
+tags: start
+
 # Create a Classifier
 
 In the previous sections, you created a [Guild file](ref:guildfiles) in

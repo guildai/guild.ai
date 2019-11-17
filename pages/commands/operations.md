@@ -1,6 +1,6 @@
 sidenav_title: operations
 overview_title: operations
-tags: models
+tags: model-info, common
 
 # operations
 

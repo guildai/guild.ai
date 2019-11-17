@@ -4,32 +4,50 @@ hide_in_sidenav: yes
 
 # Guild AI Documentation
 
-TODO: The sections below are a work in progress. Current thinking is
-to list the "Concept" topics first, under Basics and Advanced. Then
-list the How To Guides below in their various categories.
+## Get Started
 
-All of of the content shown here will have a corresponding link in the
-navbar to the left.
+Start here to learn about Guild AI through easy-to-follow,
+step-by-step guides.
 
-- [Basics](category:/#basic-concept)
-- [Advanced](category:/#advanced-concept)
+- [](category:/#start)
 
-<!--
-- [Scripts](category:/#scripts)
-- [Projects](category:/#projects)
-- [Operation Resources](category:/#resources)
-- [Advanced](category:/#advanced)
-- [Debugging](category:/#debug)
--->
+## Concepts
 
-## How To Guides
+Once you're familiar gotten a start with Guild, go deeper into the
+core concepts behind the features.
 
-- [Advanced](category:/howto/#advanced)
+- [](category:/#concept)
 
-<!--
-- [Get Started](category:#get-started)
-- [Concepts](category:#core-concept)
-- [Tools](category:#tool)
-- [Reference](category:#reference)
-- [Popular guides](category:/docs/guides/#popular)
--->
+## Guides
+
+Use these guides to get more hands on experience using Guild.
+
+- [Guides](category:/guides/#)
+
+## Commands
+
+Guild is a complete platform for ML engineering. Review the commands
+below to familiarize yourself with its full feature set.
+
+{! cmd-categories.md !}
+
+## Reference
+
+Refer to the reference guides below when you need to lookup
+configuration syntax.
+
+- [](category:/reference/#)
+
+## Knowledge Base
+
+The knowledge base (KB) articles below provide added context and
+detail to help you get the most out of Guild.
+
+- [](category:/kb/#)
+
+## Cheat Sheets
+
+Guild power users should bookmark the cheatsheets below for fast
+access to the most common commands and configuration snippets.
+
+- [](category:/cheatsheets/#)

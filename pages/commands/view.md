@@ -1,6 +1,6 @@
 sidenav_title: view
 overview_title: view
-tags: visual, run-info
+tags: tool, visual, compare, run-info
 
 # view
 

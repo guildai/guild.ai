@@ -1,6 +1,6 @@
 sidenav_title: runs push
 overview_title: runs push
-tags: runs, remote
+tags: alias
 
 # runs push
 

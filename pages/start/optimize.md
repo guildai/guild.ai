@@ -1,4 +1,6 @@
-# Optimize Model
+tags: start
+
+# Optimize a Model
 
 In [the previous section](../start.md) you ran a *random search* to
 find optimal values for `x`. In this section, you use two other

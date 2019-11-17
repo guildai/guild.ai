@@ -1,6 +1,6 @@
 sidenav_title: remote
 overview_title: remote
-tags: remote
+tags:
 
 # remote
 

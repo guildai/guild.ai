@@ -1,6 +1,6 @@
 sidenav_title: models
 overview_title: models
-tags: models
+tags: model-info
 
 # models
 

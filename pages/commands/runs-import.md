@@ -1,6 +1,6 @@
 sidenav_title: runs import
 overview_title: runs import
-tags: runs
+tags: alias
 
 # runs import
 

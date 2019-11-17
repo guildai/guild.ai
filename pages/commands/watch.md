@@ -1,6 +1,6 @@
 sidenav_title: watch
 overview_title: watch
-tags: remote
+tags: run-exec
 
 # watch
 

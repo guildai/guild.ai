@@ -1,3 +1,5 @@
+tags: start
+
 # Add a Guild File
 
 In the previous sections, you ran a script `train.py` directly. In

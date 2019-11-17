@@ -1,6 +1,6 @@
 sidenav_title: compare
 overview_title: compare
-tags: run-info
+tags: compare, common
 
 # compare
 

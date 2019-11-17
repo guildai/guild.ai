@@ -1,3 +1,5 @@
+tags: concept
+
 # Command Line Interface
 
 > The command line is the ultimate seat of power on your

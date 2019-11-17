@@ -1,6 +1,6 @@
 sidenav_title: sync
 overview_title: sync
-tags: remote
+tags: remote, io
 
 # sync
 
