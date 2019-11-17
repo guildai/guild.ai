@@ -366,6 +366,8 @@ ul.features {
 }
 
 .img-features {
+  margin: -$p-margin-bottom 0 -$p-margin-bottom;
+
   .col {
     padding: 18px 24px;
   }
@@ -585,5 +587,15 @@ p.highlight {
 
   pre + p.caption {
     margin-top: -10px;
+  }
+}
+
+.promo-qa {
+  h3 {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
