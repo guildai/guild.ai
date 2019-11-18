@@ -772,7 +772,7 @@ class FigureProcessor(treeprocessors.Treeprocessor):
                 caption.text = caption.text[2:]
                 break
         else:
-            raise AssertionError()
+            assert False, (target, caption, parent)
 
 class Figure(Extension):
     """Support HTML figure element with captions.

@@ -1,113 +1,313 @@
-sidenav_title: Guild File Configuration
+sidenav_title: Guild File
 
 # Guild File Cheatsheet
 
 [TOC]
 
-### Import Flags
+## Operations
 
-By default, Guild attempts to import flags from an operation's main
-module. If Guild's default behavior is not correct, consider some of
-the examples below.
+### Python Based Operations
 
-Import specific flags:
+#### Simple Operation
 
-``` yaml
-train:
-  flags-import:
-    - lr
-    - batch_size
-    - epochs
-    - dropout
-```
-
-^ guild.yml snippet --- import specific flags
-
-Import all flags with some exceptions:
+Run an operation implemented in the Python `train` module
+(e.g. defined locally in `train.py`):
 
 ``` yaml
 train:
-  flags-import-skip:
-    - data_dir
-    - log_dir
+  flags-import: yes
 ```
 
-^ guild.yml snippet --- import all flags with exceptions
+^ Run Python `train` module using default flag import rules
 
-Disable all flag imports:
+With this configuration, Guild imports all available flags defined in
+the `train` module. By default, Guild inspects the module for an
+appropriate flags interface: argument passing or global
+variables. Based on the detected interface, Guild detects available
+flags.
+
+Use the `main` attribute to be explicit or to use a value different
+from the operation name.
 
 ``` yaml
 train:
-  flags-import: no
+  main: train_model
+  flags-import: yes
 ```
 
-^ guild.yml snippet --- disable flag imports
+^ Use `main` to explicitly define the Python main module
 
-!!! tips
-    - Disable flags import to prevent Guild from automatically
-      scanning operation modules for flag information.
+You can include base arguments in the main specification.
 
-Related Help Topics:
+``` yaml
+train:
+  main: model --train
+  flags-import: yes
+```
 
-- [Operations](ref:operations)
+^ Specify base (non flag) arguments to the module as needed
 
-### Flags Interface
+#### Flags Import
 
-By default, Guild attempts to detect an operation module's flags
-interface. It does this by checking if the module imports
-`argparse`. If it does, Guild uses command line arguments to pass flag
-values. Otherwise, Guild sets flag values as module global variables.
+To specify a list of flags to import, skipping any detected flags that
+are not specified:
 
-Explicitly the interface to use command line arguments:
+``` yaml
+train:
+  flags-import: [epochs, lr]
+  flags-import: yes
+```
+
+^ Import specific flags
+
+To import all flags but a specified list of flags:
+
+``` yaml
+train:
+  flags-import: all
+  flags-import-skip: [num_classes]
+```
+
+^ Import all but some flags
+
+!!! note
+    The values `all` and `yes` for `flags-import` are
+    synonymous. Use the value that you feel is clearest for the
+    context.
+
+#### Flags Interface
+
+To control the flags interface, use `flags-dest`.
+
+To force Guild to use an argument passing interface:
 
 ``` yaml
 train:
   flags-dest: args
+  flags-import: all
 ```
 
-^ guild.yml snippet --- use command line arguments to pass flag values
+^ Pass flag values to `train` module as arguments
 
-Set flags interface to use global variables:
+To force Guild to use a globals interface:
 
 ``` yaml
 train:
   flags-dest: globals
+  flags-import: all
 ```
 
-^ guild.yml snippet --- set flag values as module globals
+^ Set flag values as `train` module global variables
 
-Set flags interface to set values in a global `params` dict:
+To write flag values to a global Python dict named `params`:
 
 ``` yaml
 train:
   flags-dest: global:params
+  flags-import: all
 ```
 
-^ guild.yml snippet --- set flag values as items in a global dict
+^ Set flag values as elements of global dict `params` in `train` module
 
-!!! tips
-    - Specify a flags interface by setting `flags-dest` to prevent
-      Guild from scanning operation modules for interface type.
+!!! tip
+    By specifying `flags-dest` and not importing all flags, you
+    disable Guild's automatic flags detection scan.  See
+    [Auto-detecting Flags](ref:autodetect-flags) for information on
+    how Guild scans modules for interface type and how it sets module
+    global variables.
 
-    - See [Auto-detecting Flags](ref:autodetect-flags) for information
-      on how Guild scans modules for interface type and how it sets module
-      global variables.
+### Other Language Operations
 
-Other Examples:
+Examples below show operations implemented in non-Python languages
+using the `exec` operation attribute.
 
-- [Guild AI Example: Flags Interface
-  ->](https://github.com/guildai/examples/tree/master/flags-dest)
+#### All Flag Values as Arguments
 
-Related Help Topics:
+Pass all flag arguments using getopt long-form `--NAME VAL` for each
+argument:
 
-- [Operations](ref:operations)
+``` yaml
+train:
+  exec: java -jar train.jar ${flag_args}
+  flags:
+    lr: 0.1
+    epochs: 100
+    activation: relu
+  requires:
+    - file: train.jar
+```
 
-### Define a Flag
+^ Use `${flag_args}` in `exec` to insert flag values as long-form
+  getopt args
 
-Flags must be defined using the `flags` operation attribute. The
-samples below are for a hypothetical `train` operation. Change
-`FLAG_NAME` and attributes as needed. Delete sections that don't
-apply.
+``` command
+guild run train --print-cmd
+```
+
+``` output
+java -jar train.jar --activation relu --epochs 100 --lr 0.1
+```
+
+#### Specific Flag Values as Arguments
+
+Include flag argument explicitly:
+
+``` yaml
+train:
+  exec: java -jar train.jar ${epochs}
+  flags:
+    epochs: 100
+  requires:
+    - file: train.jar
+```
+
+^ Specify value for `epochs` flag as a command argument
+
+``` command
+guild run train --print-cmd
+```
+
+``` output
+java -jar train.jar 1000
+```
+
+### Flags
+
+Flags must be defined using the `flags` operation attribute.
+
+#### Basic Flag Definitions
+
+The most basic flag configuration is a single default value.
+
+``` yaml
+train:
+  flags:
+    lr: 0.1
+    epochs: 100
+```
+
+^ Flags defined using their default values
+
+All other flag configurations require a mapping.
+
+``` yaml
+train:
+  flags:
+    lr:
+      description: Learning rate
+      default: 0.1
+    epochs:
+      description: Number of epochs to train
+      default: 100
+```
+
+^ Flags with descriptions and default values
+
+#### Required Values
+
+Require that the user specify a value for a flag using the `required`
+attribute.
+
+``` yaml
+train:
+  flags:
+    dataset:
+      description: Path to data set
+      required: yes
+```
+
+#### Flag Value Types
+
+Guild automatically detects number types and converts them accordingly
+when setting global values. All command arguments, however, are passed
+as strings and must be processed by the script.
+
+Use the `type` flag attribute to validate user input and convert that
+input to the specified type.
+
+``` yaml
+train:
+  flags:
+    epochs:
+      default: 100
+      type: int
+    lr:
+      default: 0.1
+      type: float
+    data-path:
+      default: data.csv
+      type: existing-path
+
+```
+
+See
+
+#### Flag Choices
+
+Limit to a list of valid choices using the `choices` attribute.
+
+``` yaml
+train:
+  flags:
+    activation:
+      description: Activation layer
+      default: relu
+      choices:
+        - relu
+        - sigmoid
+        - linear
+```
+
+^ Use choices to limit flag values
+
+Provide descriptions for each choice to help the user understand each.
+
+``` yaml
+train:
+  flags:
+    activation:
+      description: Activation layer
+      choices:
+        - value: relu
+          description: Rectified linear unit
+        - value: sigmoid
+          description: Non-linear transform
+        - value: linear
+          description: No transform
+```
+
+^ Choices with descriptions --- used to display help to the user
+
+``` command
+guild run train --help-op
+```
+
+``` output
+Usage: guild run [OPTIONS] train [FLAG]...
+
+Use 'guild run --help' for a list of options.
+
+Flags:
+  activation  Activation layer
+
+              Choices:
+                relu     Rectified linear unit
+                sigmoid  Non-linear transform
+                linear   No transform
+```
+
+Allow a value not listed in `choices`:
+
+``` yaml
+train:
+  flags:
+    layers:
+      description: Number of hidden layers
+      choices: [1, 5, 10]
+      allow-other: yes
+```
+
+xxx
 
 ``` yaml
 train:
@@ -116,11 +316,6 @@ train:
       description: A sample flag
       default: 100
 
-      # List of legal values.
-      #choices: [1, 2, blue, shoe]
-
-      # Let user specify a non-choice value when choices are
-      # defined.
       #allow-other: yes
 
       # Indicate if a value is required for the operation.
@@ -156,6 +351,9 @@ train:
 Related Help Topics:
 
 - [Flags](ref:flags)
+
+
+----------------------------
 
 ### Output Scalars
 

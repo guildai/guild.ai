@@ -15,7 +15,7 @@ files.
 Guild files can be constructed using one of two formats:
 
 - Full format
-- Operation only format
+- Operation-only format
 
 <a id="full-format">*Full*</a> format is used to specify full project
 configuration. It contains a list of top-level objects in the format:
@@ -52,7 +52,7 @@ You can include any of the following types in full mode:
 : Packages define how Guild generates Python wheel distributions. See
   [Packages](#packages) below.
 
-<a id="operation-only-format">*Operation only* format</a> is a
+<a id="operation-only-format">*Operation-only* format</a> is a
 simplified format that contains a map of operations in the format:
 
 ``` yaml
@@ -71,19 +71,19 @@ operation_name_2:
 
 Use full format when you want to:
 
-- Specify a model name (operation only uses an anonymous model)
-- Define more than oen model
+- Specify a model name (operation-only uses an anonymous model)
+- Define multiple models
 - Define named resources
 - Define a package
 
-Use operation only format when you want to:
+Use operation-only format when you want to:
 
 - Only define operations, keeping the Guild file as simple as possible
 
-In practice, users often start with operation only format and move to
+In practice, users often start with operation-only format and move to
 full format as needed.
 
-For example, here's a simple operation only Guild file:
+Here's a simple operation-only Guild file:
 
 ``` yaml
 prepare-data:
@@ -98,7 +98,7 @@ train:
     batch-size: 100
 ```
 
-^ Example of operation only format
+^ Example of operation-only format
 
 To move to a full format, these operations can be added to a top-level
 `model` object:
@@ -132,25 +132,45 @@ executed. Consider the command:
 guild run train
 ```
 
-If `train` is not a local script, Guild looks in the current directory
-for a Guild file that contains a `train` operation. Guild uses the
-configuration to run the operation and to perform various tasks such
-as validating flag values, snapshotting source code, and saving
-metrics.
+Guild looks in the current directory for a Guild file that contains a
+`train` operation. Guild uses the configuration to run the operation
+and to perform tasks such as validating flag values, snapshotting
+source code, and saving metrics.
 
-Operations can be defined at the top-level of a Guild file in a
-mapping. This is called *operation only* format. Alternatively,
-operations can be defined as values of a model's `operations`
-attribute. This is called *full* format. See [Overview](#overview)
-above for examples of both operation only and full format operations.
+As described above in [Overview](#overview), operations can be defined
+at the top-level of a Guild file in a mapping (*operation-only*
+format). Alternatively, operations can be defined as values of a
+model's `operations` attribute (*full* format).
 
 ### Attributes
+
+The attributes listed below describe an operation.
+
+If the Guild file is is operation-only format, the attributes are
+applied under a top-level mapping key, which is the operataion name:
+
+``` yaml
+<mapping key>:
+  <attr>: <val>
+  ...
+```
+
+If the Guild file is full format, they are applied as attributes of an
+`operations` attribute for a model:
+
+``` yaml
+- model: <model name>
+  operations:
+    <mapping key>:
+      <attr>: <val>
+      ...
+```
 
 `<mapping key>`
 : Operation name (required string)
 
     Operation names are specified as the key in a mapping. If the
-    Guild file is written in operation only format, the mapping is
+    Guild file is written in operation-only format, the mapping is
     defined at the top-level of the Guild file. If the Guild file is
     written in full format, the mapping is defined as the value of the
     `operations` attribute for a model.
@@ -217,14 +237,21 @@ above for examples of both operation only and full format operations.
 
     Guild uses this value to execute a system command.
 
-    Use `exec` to run a non-Python program. You can specify flag
-    values as arguments using
+    Use `exec` to run operations by executing a program. By default,
+    flags are not invcluded in the operation command. To include
+    flags, specify `${flag_args}` as an argument in the `exec` value.
+
+`steps`
+: List of steps to run for workflow (list of string or [steps](#steps))
+
+    See [Workflow](../workflow.md) for more information on
+    implementing workflows in Guild.
 
 `flags`
 : Operation flags (mapping of flag name to [Flag](#flag) definition)
 
 `flags-dest`
-: Destination for flag values
+: Destination for flag values (string)
 
     This value tells Guild how to communicate flag values to the
     operation script. Guild supports the following flag destinations:
@@ -248,24 +275,61 @@ above for examples of both operation only and full format operations.
       variable `params.
 
 `flags-import`
-: List of flags to import
+: List of flags to import (string or list of strings)
 
-    By default, Guild inspects
+    By default, Guild does not import any flags.
 
+    To import all detected flags, use `yes` or `all` for the value.
+
+    To import a list of flags, specify a list of flag names.
+
+    When importing flags, Guild inspects the script specified in the
+    `main` attribute to determine how flags are defined. If the Python
+    module uses `argparse`, Guild inspects the parser arguments for
+    flags, otherwise it inspects the module for global scalar or
+    string assignments. This interface can be controlled explicitly
+    using the `flags-dest` attribute (see above).
+
+`flags-import-skip`
+: List of flags to skip when importing all flags (list of strings)
+
+    Use this attribute when setting `flags-import` to `yes` or `all`
+    when it's more convenient to exclude a list of flags than it is to
+    list flags to import.
+
+`requires`
+: List of operation dependencies (list of [resources](#resources))
+
+    By default run directories are empty, which means that any local
+    files that a script needs will not be available by default. To
+    ensure that a script has access to required resources, the
+    operation must specify the appropriate dependencies using the
+    `requires` attribute.
+
+`env`
+: Additional environment variables available to the operation process
+  (mapping of names to values)
+
+    Note that flag values are always available in the environment as
+    `FLAG_*` variables, where `*` is the upper case flag name. A flag
+    can specify a different environment variable name using the
+    `env-name` flag attribute.
+
+`python-requires`
+: Requirement specification of Python needed for the operation
+  (string)
+
+    The requirement must be specified without a package name using
+    only the version portion of a [](ref:pip-reqs).
+
+`python-path`
+: Path to use for `PYTHONPATH` when running the operation (string)
 
 ---
 
-        self.flags_import = data.get("flags-import")
-        self.flags_import_skip = data.get("flags-import-skip")
-        self._modelref = None
-        self._flag_vals = _init_flag_values(self.flags)
-        self.description = (data.get("description") or "").strip()
-        self.exec_ = data.get("exec")
-        self.main = data.get("main")
-        self.steps = data.get("steps")
-        self.python_requires = data.get("python-requires")
-        self.python_path = data.get("python-path")
-        self.env = data.get("env") or {}
+
+
+
         self.disable_plugins = _disable_plugins(data, modeldef.guildfile)
         self.dependencies = _init_dependencies(data.get("requires"), self)
         self.remote = data.get("remote") or False
@@ -293,6 +357,8 @@ above for examples of both operation only and full format operations.
 ## Source Code
 
 ## Output Scalars
+
+## Resources
 
 ## Steps
 

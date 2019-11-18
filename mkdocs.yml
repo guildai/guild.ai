@@ -171,6 +171,7 @@ markdown_extensions:
           arg_maps:
             - {}
             -
+              autodetect-flags: /kb/autodetect-flags.md
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
               flag: /guildfile.md#flags
               flags: /guildfile.md#flags

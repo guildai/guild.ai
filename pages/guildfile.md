@@ -67,32 +67,13 @@ inputs and outputs.
 
 For information about managing runs, see [Runs](runs.md).
 
+### Python Based Operation
 
+### Other Language Based Operations
 
+### Workflows
 
-
-
-
-
-
-----------------------
-
-# OLD below TODO cleanup
-
-
-See [Flags](#flags) below for information about how Guild communicates
-flag values to a Python module.
-
-See [Operations](reference/guildfile.md#operations) for a complete
-list of configuration options.
-
-### Python Operations
-
-### Exec Operations
-
-### Workflow Operations
-
-## Flags
+### Flags
 
 TODO:
 
@@ -102,7 +83,11 @@ TODO:
 - Behavior can be disabled for explicit control and to avoid scanning
   scripts
 
-## Output Scalars
+### Source Code
+
+TODO
+
+### Output Scalars
 
 Output scalars are logged scalars generated from script output. Guild
 uses regular expressions to match output and associate values with
@@ -149,7 +134,7 @@ Scalars](#framework-scalars) below for more information.
 The sections that follow describe how you can configure Guild's output
 scalar behavior.
 
-### Scalar Step
+#### Scalar Step
 
 When logging scalars, Guild associates each value with a current
 *step*. This lets you log several values for a key over a number of
@@ -179,7 +164,7 @@ following scalar values.
 | `x` | 0.2   | 2    |
 | `x` | 0.1   | 3    |
 
-### Custom Output Scalars
+#### Custom Output Scalars
 
 Configure output scalars for an opertion by defining a
 `output-scalars` attribute. Guild supports two schemes:
@@ -201,7 +186,7 @@ train:
     step:
 ```
 
-### Disable Output Scalars
+#### Disable Output Scalars
 
 If you want to log scalars explicitly (e.g. using a [TensorFlow
 summary writer
@@ -216,12 +201,7 @@ train:
 
 You can control how
 
-### Framework Scalars
-
-Unless otherwise configured, Guild applies specialized patterns when
-an operation uses a known framework.
-
-#### Keras
+#### Keras Scalars
 
 By default, Guild applies the following patterns when running Keras
 operations:
@@ -231,12 +211,26 @@ operations:
 
     r" - ([a-z_]+): (\value)"
 
-## Required Resources
+### Dependencies
 
-## Source Code
+TODO
 
 ## Models
 
-## Named Resources
+TODO
+
+## Resources
+
+TODO
 
 ## Packages
+
+TODO
+
+## Resuable Config
+
+TODO
+
+## Inheritance
+
+## Including Files
