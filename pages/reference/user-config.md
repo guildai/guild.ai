@@ -1,4 +1,6 @@
-# User Configuration
+sidenav_title: User Configuration
+
+# User Configuration Reference
 
 [TOC]
 

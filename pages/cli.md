@@ -6,8 +6,10 @@ tags: concept
 > computer. Using the command line, you can perform amazing feats of
 > wizardry and speed, taming your computer and getting it to do
 > precisely what you want.
->
-> ---David Baumgold in *Getting to Know the Command Line*
+
+<div markdown="1" style="text-align:right;padding-right:20px;margin-top:-18px">
+---David Baumgold in *Getting to Know the Command Line*
+</div>
 
 Guild's primary interface is via the command line. Guild also supports
 a [Python interface for work in Jupyter
@@ -23,7 +25,7 @@ toolchains. This has a number of benefits:
 - Commands can be integrated into most development environments
 
 While it can take time and effort to learn command line techniques, we
-feel the benefits are well worth the investment.
+feel the benefits are well worth the investment!
 
 If you're not familiar with running commands from a terminal, we
 suggest reading one of the following guides for your platform.

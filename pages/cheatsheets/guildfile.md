@@ -87,9 +87,9 @@ train:
     - Specify a flags interface by setting `flags-dest` to prevent
       Guild from scanning operation modules for interface type.
 
-    - See [Magic](ref:magic) for information on how Guild scans
-      modules for interface type and how it sets module global
-      variables.
+    - See [Auto-detecting Flags](ref:autodetect-flags) for information
+      on how Guild scans modules for interface type and how it sets module
+      global variables.
 
 Other Examples:
 

@@ -121,6 +121,12 @@ markdown_extensions:
           href: /packages/{1}/
           class: pkg
 
+        - link_pattern: ref:conda
+          text: Conda
+          class: ext
+          target: _blank
+          href: https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html
+
         - link_pattern: ref:meld
           text: Meld
           class: ext
@@ -133,9 +139,21 @@ markdown_extensions:
           target: _blank
           href: https://github.com/guildai/guildai/issues
 
+        - link_pattern: ref:pip-reqs
+          text: pip requirement specification
+          class: ext
+          target: _blank
+          href: https://pip.pypa.io/en/stable/reference/pip_install/#requirement-specifiers
+
         - link_pattern: ref:slack
           href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
           text: Guild AI Slack workspace
+          class: ext
+          target: _blank
+
+        - link_pattern: ref:virtualenv
+          href: https://virtualenv.pypa.io/en/latest/
+          text: virtualenv
           class: ext
           target: _blank
 
@@ -156,7 +174,6 @@ markdown_extensions:
               guildfile: /guildfile.md
               guildfiles: /guildfile.md
               guild-view: /tools.md#guild-view
-              magic: /kb/magic.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
@@ -168,6 +185,7 @@ markdown_extensions:
               remotes: /reference/remotes.md
               requirements: /guildfile.md#required-resources
               run: /runs.md
+              run-dir: /runs.md#run-directory
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
               step: /reference/guildfile.md#steps
               steps: /reference/guildfile.md#steps
@@ -192,7 +210,6 @@ pages:
       - Core Concepts:
           - cli.md
           - guildfile.md
-          - operations.md
           - runs.md
           - tools.md
           - workflow.md
@@ -203,9 +220,9 @@ pages:
 
       - Guides:
           - guides/add.md
-          - guides/run.md
           - guides/compare.md
           - guides/workflow.md
+          - guides/reproducibility.md
           - guides/schedule.md
           - guides/remote.md
           - guides/backup.md
@@ -273,7 +290,7 @@ pages:
 
       - Knowledge Base:
           - kb/dependencies.md
-          - kb/magic.md
+          - kb/autodetect-flags.md
           - kb/model-reuse.md
           - kb/git-for-tracking.md
 

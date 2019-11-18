@@ -6,20 +6,30 @@ tags: concept
 
 ## Overview
 
-Guild files are named `guild.yml` and are saved in project directories
-to support Guild functionality. Guild files define operations and
-models. They support a variety of code reuse features.
+Guild files are named `guild.yml`. They provide information about your
+project. Use Guild files to configure:
 
-See [Guild File](reference/guildfile.md) for a complete list of
-configuration options.
+- How to run scripts to generate experiments (operations)
+- Input parameters to the script (flags)
+- Generated output metrics (scalars)
+- Required source code
+- Requires input files
+- Operations associated with a model
+
+See [Get Started - Add a Guild File](start/guildfile.md) for a
+hands-on exercise in using a Guild file for a simple project.
+
+See [Guild File Reference](reference/guildfile.md) for a complete list
+of configuration options.
 
 See [Guild File Snippets](cheatsheets/guildfile.md) for common
 cheatsheet snippets.
 
 ## Operations
 
-Operations define what Guild runs to generate an experiment. Here's an
-operation definition:
+An *operation* defines what Guild executes to generate a run.
+
+Here's a simple operation, defined in a Guild file:
 
 ``` yaml
 train:
@@ -31,14 +41,15 @@ train:
 
 - The operation is named `train` and can be run using ``guild run train``.
 
-- The main Python module is also named `train` and should be defined
-  in a file named `train.py` in the same directory as `guild.yml`.
+- The main Python module is also named `train` and can be defined in a
+  file named `train.py` in the same directory as `guild.yml`.
 
 - The operation defines two flags: `learning-rate` and `batch-size`,
   each with default values.
 
-To run the `train` operation, change to the directory containing
-`guild.yml` and run:
+You can run the operation from a command terminal by changing the
+project directory (the directory containing `guild.yml`) and running
+the command:
 
 ``` command
 guild run train
@@ -47,7 +58,23 @@ guild run train
 Guild shows a preview of the flags used for the operation and asks you
 to confirm the operation by pressing `Enter`. When you confirm the
 operation, Guild executes the `train` module with the specified flag
-values.
+values. Guild generates a *run*, which is a record of the operation
+inputs and outputs.
+
+For information about managing runs, see [Runs](runs.md).
+
+
+
+
+
+
+
+
+
+----------------------
+
+# OLD below TODO cleanup
+
 
 See [Flags](#flags) below for information about how Guild communicates
 flag values to a Python module.

@@ -1,4 +1,6 @@
-# Magic
+# Auto-detecting Flags
+
+# TODO: cleanup blow
 
 [TOC]
 

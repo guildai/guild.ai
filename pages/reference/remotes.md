@@ -1,4 +1,6 @@
-# Remotes
+sidenav_title: Remotes
+
+# Remotes Reference
 
 [TOC]
 

@@ -1,4 +1,6 @@
-# Guild File
+sidenav_title: Guild File
+
+# Guild File Reference
 
 [TOC]
 
