@@ -1,8 +1,8 @@
-# Commands
+sidenav_title: Commands
+
+# Command Cheatsheet
 
 [TOC]
-
-
 
 ## Get Command Help
 

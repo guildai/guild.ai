@@ -1,4 +1,6 @@
-# Guild File Snippets
+sidenav_title: Guild File Configuration
+
+# Guild File Cheatsheet
 
 [TOC]
 

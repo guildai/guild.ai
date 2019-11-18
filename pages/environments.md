@@ -79,10 +79,12 @@ New environments may be created using various techniques.
 - Create a new directory and [set it as Guild home](#set-guild-home)
 
 Guild's [](cmd:init) command uses `virtualenv` to create a new virtual
-environment. The commands performs some additional steps to streamline
-the process of creating a virtualized Guild environment for a project:
+environment. The commands performs additional steps to streamline the
+process of creating a virtualized Guild environment for a project:
 
-- Use a Python version requirement to select an appropriate Python
-  version when creating the virtual environment
+- Use a [Python version
+  requirement](guides/reproducibility.md#python-version) to select an
+  appropriate Python version when creating the virtual environment
+
 - Run `pip install -r requirements.txt` if `requirements.txt` is
   defined for a project

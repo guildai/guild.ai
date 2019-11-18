@@ -11,7 +11,7 @@ various questions.
 - Did a code change improve or degrade results?
 - What is the effect of dropout on time-to-converge?
 
-The list goes on! Guild provides a number of tools for comparing runs.
+Guild provides a number of tools for comparing runs.
 
 ## Guild Compare
 
@@ -65,18 +65,25 @@ details.
 
 ## TensorBoard
 
+### Summaries
+
 TODO
 
-### HParams plugin
+### Images
+
+TODO
+
+### Hyperparameters
+
+TODO
 
 for your runs so you can compare results using [parallel coordinates
 ->](https://en.wikipedia.org/wiki/Parallel_coordinates) and [scatter
 plot matrices
 ->](https://en.wikipedia.org/wiki/Scatter_plot#Scatter_plot_matrices).
 
-
 ## Diff Runs
 
 ## View Files
 
-TODO cat and open
+TODO

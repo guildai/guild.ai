@@ -24,7 +24,6 @@ If the statement is made from the perspective of Guild authors, use
 
 - We recommend that you define the package first.
 
-
 ## Auxiliary Verbs
 
 *Avoid using auxiliary verbs like can and may unless the sentence
@@ -176,3 +175,22 @@ Good:
 Bad:
 
 - Tim Peters wrote the excellent PEP 20.
+
+## Referencing commands
+
+Avoid "the `cmd` command" or "the command `cmd`" in favor simply of
+"`cmd`". Avoid starting a sentence with a command.
+
+Good:
+
+- Use `cmd` to do something.
+
+- When you run `cmd`, Guild does something.
+
+- On `cmd`, Guild does something.
+
+Bad:
+
+- Use the `cmd` command to do something.
+
+- `cmd` does something.

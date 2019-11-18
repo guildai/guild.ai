@@ -6,9 +6,9 @@ hide_pagenav: yes
 
 # Guild AI Services
 
-## Free Support
+## Support
 
-<div class="row" style="margin-top:-20px"></div>
+<div class="row" style="margin-top:-20px"></div> <!-- hack to support md in divs below -->
 
 <div class="col col-lg-4" markdown="1">
 ### <i class="fab fa-slack"></i> Ask a Question
@@ -36,3 +36,79 @@ option. We'll address your issue while maintaining your privacy.
 
 [Email support@guild.ai ->](mailto:support@guild.ai)
 </div>
+
+<div class="row" style="margin-top:-20px"></div>
+
+## Professional Services
+
+<div class="col col-lg-4" markdown="1">
+### Data Assessment
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Problem Definition
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Model Development
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Model Support
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Pipeline Development
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Pipeline Monitoring
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="col col-lg-4" markdown="1">
+### Priority Guild AI Support
+
+Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
+accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
+laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
+nunc.
+
+</div>
+
+<div class="row" style="margin-top:-20px"></div> <!-- clear for row hack above -->

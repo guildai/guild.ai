@@ -84,9 +84,5 @@ remotes:
     ...
 ```
 
-
-Not all commands support remotes. For a list of remote-enabled
-commands, see [Remote Commands](../guides/remote.md#remote-commands).
-
 Refer to [Remotes](remotes.md) for details on configuring remote
 types.

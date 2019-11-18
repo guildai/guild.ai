@@ -11,6 +11,19 @@ a run may be any type of operation, including data preparation, model
 optimization, model compression, deployment --- or any other action
 you want to perform as a part of your ML pipeline.
 
+The term "run" may refer to one of two things:
+
+- The *operating system process* associated with the operation
+- The *run directory* containing metadata associated with the
+  operation and all files associated with the run
+
+The meaning of *run* can typically be inferred from the usage
+context. For example, to "stop a run" means to terminate the operating
+system process associated with a run. To "delete a run" means to
+delete the run directory.
+
+### Guild Runs vs Scripts
+
 A Guild run is similar to traditional script execution:
 
 - Run a program as an operating system process
@@ -44,36 +57,53 @@ With this simple scheme, Guild isolates runs to capture unique
 experiments without relying on containers or virtual machines for
 isolation.
 
-The term "run" may refer to one of two things:
-
-- The *operating system process* associated with the operation
-- The *run directory* containing metadata associated with the
-  operation and all files associated with the run
-
-The meaning of *run* can typically be inferred from the usage
-context. For example, to "stop a run" means to terminate the operating
-system process associated with a run. To "delete a run" means to
-delete the run directory.
-
-## Run Directory
+### Run Directory
 
 A *run directory* is a unique directory created for a run process. Run
-directories are stored under the *Guild home* for an environment.
+directories are stored under the *Guild home* for an environment. See
+[Environments](cmd:environments.md) for information about Guild home
+and the location of runs.
 
+All run metadata and generated files are located in a run directory.
 
-purpose.
+A run directory can be deleted to remove the run. Note however, that
+deleted run directories for in-process runs will result in an orphaned
+run process that Guild cannot manage. To safely delete a run, either
+use [runs delete](cmd:runs-delete) or stop the run first, either using
+[stop](cmd:stop) or by terminating the run operating system process.
 
-When Guild runs an operation, it creates a unique *run*. A run means
-one of two things:
+### Run Status
 
+If a run process is alive, the run is said to be *running*. Otherwise
+the run is *not running* and has one of the following status based on
+the process state:
 
+completed
+: Run completed successfully --- i.e. exited with a 0 status.
+
+error
+: Run completed unsuccessfully --- i.e. exited with a non-0 status.
+
+terminated
+: Run was stopped prior to completion by the user or a system signal.
+
+pending
+: Guild started the run but the operating system process has not yet
+  started.
+
+staged
+: Guild staged the run to be started later.
+
+Run status is displayed for various Guild commands including
+[runs](cmd:runs), which lists runs, and [runs info](cmd:runs-info),
+which shows information about a run.
 
 ## Start a Run
 
 Start a run using [](cmd:run). You can run a script directly or run an
 operation defined in a [Guild file](term:guildfile).
 
-To run a script, specify the path to the script like this:
+To run a script, specify the path to the script:
 
 ``` command
 guild run train.py
@@ -93,7 +123,7 @@ guild operations
 
 Guild lists the operations defined in the Guild file.
 
-You can run any of the operations like this:
+You can run any of the operations:
 
 ``` command
 guild run OPERATION
@@ -156,62 +186,36 @@ By default, Guild shows all non-private files in the [run directory](ref:rundir)
 
 ### View Run File Contents
 
-
+TODO
 
 ## List Runs
 
-##
+TODO
+
+## Compare Runs
+
+TODO
 
 ## Delete Runs
 
-## Export Runs
+TODO
 
+### Restore Deleted Runs
 
-# OLD - TODO cleanup
-## Overview
+TODO
 
-A *run* in Guild AI is one of two things:
+### Permanently Delete Runs
 
-run process
-: Operating system process started with [run](cmd:run)
+TODO
 
-run directory
-: Directory containing metadata and files associated with a run
-  process
+## Export and Import Runs
 
-      A run cannot exist apart from a run directory.
+TODO
 
-If a run process is alive, the run is said to be *running*. Otherwise
-the run is *not running* and has one of the following status based on
-the process state:
+## Label Runs
 
-completed
-: Run completed successfully --- i.e. exited with a 0 status.
+TODO
 
-error
-: Run completed unsuccessfully --- i.e. exited with a non-0 status.
+## Sync Runs with Remote Systems
 
-terminated
-: Run was stopped prior to completion by the user or a system signal.
-
-pending
-: Guild started the run but the operating system process has not yet
-  started.
-
-staged
-: Guild staged the run to be started later.
-
-Run directories are stored in either a Guild environment or in an
-archive directory. To view the location of runs in the current
-environment, use [check](cmd:check) to show environment details. Runs
-are stored in the `runs` subdirectory of the path shown by the
-`guild_home` environment attribute.
-
-Use [runs](cmd:runs) to show the current list of runs.
-
-Use [runs info](cmd:runs-info) to show information about a
-specific run, including the location of its run directory, which is
-shown by the `run_dir` attribute.
-
-Run directories contain all information associated with a run and may
-be freely moved to different locations.
+TODO

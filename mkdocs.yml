@@ -151,6 +151,12 @@ markdown_extensions:
           class: ext
           target: _blank
 
+        - link_pattern: ref:terraform
+          href: https://www.terraform.io/
+          text: Terraform
+          class: ext
+          target: _blank
+
         - link_pattern: ref:virtualenv
           href: https://virtualenv.pypa.io/en/latest/
           text: virtualenv
@@ -221,11 +227,11 @@ pages:
       - Guides:
           - guides/add.md
           - guides/compare.md
-          - guides/workflow.md
+          #- guides/workflow.md
           - guides/reproducibility.md
-          - guides/schedule.md
-          - guides/remote.md
-          - guides/backup.md
+          #- guides/schedule.md
+          #- guides/remote.md
+          #- guides/backup.md
           - guides/notebooks.md
           - guides/troubleshoot.md
 
@@ -297,7 +303,8 @@ pages:
       - Cheatsheets:
           - cheatsheets/commands.md
           - cheatsheets/guildfile.md
+          - cheatsheets/remotes.md
 
-  - examples.md
+  #- examples.md
   - faq.md
   - services.md

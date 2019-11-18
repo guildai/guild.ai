@@ -65,8 +65,8 @@ matplotlib
 keras
 ```
 
-^ `requirements.txt` with a Python requirements comment used by Guild
-  when creating a virtual environment
+^ `requirements.txt` with Python requirements comment --- used by
+  Guild `init` when creating a virtual environment
 
 The first line of `requirements.txt` is a comment and therefore
 ignored by `pip`. However, Guild uses the comment to find a suitable

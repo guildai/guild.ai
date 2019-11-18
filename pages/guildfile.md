@@ -6,8 +6,8 @@ tags: concept
 
 ## Overview
 
-Guild files are named `guild.yml`. They provide information about your
-project. Use Guild files to configure:
+Guild files are named `guild.yml` and are located in project
+directories. They provide information about your project:
 
 - How to run scripts to generate experiments (operations)
 - Input parameters to the script (flags)
@@ -25,9 +25,14 @@ of configuration options.
 See [Guild File Snippets](cheatsheets/guildfile.md) for common
 cheatsheet snippets.
 
+While Guild can run a script directly without explicit configuration,
+in such cases Guild makes assumptions about how to run the script. For
+systematic machine learning workflows, we recommend using Guild files
+to formally define your project operations.
+
 ## Operations
 
-An *operation* defines what Guild executes to generate a run.
+An *operation* defines what Guild executes to for a run.
 
 Here's a simple operation, defined in a Guild file:
 
@@ -41,15 +46,14 @@ train:
 
 - The operation is named `train` and can be run using ``guild run train``.
 
-- The main Python module is also named `train` and can be defined in a
-  file named `train.py` in the same directory as `guild.yml`.
+- The main Python module, also named `train`, can be defined in a file
+  named `train.py` in the same directory as `guild.yml`.
 
 - The operation defines two flags: `learning-rate` and `batch-size`,
   each with default values.
 
-You can run the operation from a command terminal by changing the
-project directory (the directory containing `guild.yml`) and running
-the command:
+You can run the operation from a command terminal by changing to the
+directory containing `guild.yml` (the project directory) and running:
 
 ``` command
 guild run train
