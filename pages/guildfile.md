@@ -7,14 +7,13 @@ tags: concept
 ## Overview
 
 Guild files are named `guild.yml` and are located in project
-directories. They provide information about your project:
+directories. They provide information about your project.
 
 - How to run scripts to generate experiments (operations)
 - Input parameters to the script (flags)
 - Generated output metrics (scalars)
 - Required source code
-- Requires input files
-- Operations associated with a model
+- Requires input files (dependencies)
 
 See [Get Started - Add a Guild File](start/guildfile.md) for a
 hands-on exercise in using a Guild file for a simple project.
@@ -22,8 +21,8 @@ hands-on exercise in using a Guild file for a simple project.
 See [Guild File Reference](reference/guildfile.md) for a complete list
 of configuration options.
 
-See [Guild File Snippets](cheatsheets/guildfile.md) for common
-cheatsheet snippets.
+See [Guild File Cheatsheet](cheatsheets/guildfile.md) for
+configuration examples.
 
 While Guild can run a script directly without explicit configuration,
 in such cases Guild makes assumptions about how to run the script. For
