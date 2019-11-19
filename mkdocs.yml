@@ -222,17 +222,17 @@ pages:
           - workflow.md
           - remote.md
           - backup-and-restore.md
-          - publishing.md
+          ##- publishing.md
           - environments.md
 
       - Guides:
           - guides/add.md
           - guides/compare.md
-          #- guides/workflow.md
+          ##- guides/workflow.md
           - guides/reproducibility.md
-          #- guides/schedule.md
-          #- guides/remote.md
-          #- guides/backup.md
+          ##- guides/schedule.md
+          ##- guides/remote.md
+          ##- guides/backup.md
           - guides/notebooks.md
           - guides/troubleshoot.md
 

@@ -458,8 +458,8 @@ ul.features {
 }
 
 button.jfab_main_btn {
-  background-color: $banner-overlay-color;
-  opacity: 0.9;
+  background-color: $get-started-fab-color;
+  opacity: $get-started-fab-opacity;
   border-radius: $default-border-radius;
   height: unset;
   width: unset;

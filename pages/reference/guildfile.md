@@ -30,8 +30,6 @@ configuration. It contains a list of top-level objects in the format:
   attr_1: val_1
   attr_2: val_2
   ...
-
-...
 ```
 
 `object_type` is an attribute that implies the object type by its
@@ -45,15 +43,14 @@ You can include any of the following types in full mode:
 
 `config`
 : A named mapping of attributes that can be referenced by other
-  top-level objects as configuration. See [Reuse Config](#config)
-  below.
+  top-level objects as configuration. See [Config](#config) below.
 
 `package`
 : Packages define how Guild generates Python wheel distributions. See
   [Packages](#packages) below.
 
-<a id="operation-only-format">*Operation-only* format</a> is a
-simplified format that contains a map of operations in the format:
+*Operation-only* format is a simplified format that contains a map of
+operations in the format:
 
 ``` yaml
 operation_name_1:
@@ -65,8 +62,6 @@ operation_name_2:
   attr_1: val_1
   attr_2: val_2
   ...
-
-...
 ```
 
 Use full format when you want to:
@@ -80,8 +75,8 @@ Use operation-only format when you want to:
 
 - Only define operations, keeping the Guild file as simple as possible
 
-In practice, users often start with operation-only format and move to
-full format as needed.
+Users often start with operation-only format and move to full format
+as needed.
 
 Here's a simple operation-only Guild file:
 
@@ -98,7 +93,7 @@ train:
     batch-size: 100
 ```
 
-^ Example of operation-only format
+^ Operation-only format --- operations are defined at the top-level
 
 To move to a full format, these operations can be added to a top-level
 `model` object:
@@ -118,7 +113,8 @@ To move to a full format, these operations can be added to a top-level
         batch-size: 100
 ```
 
-^ Example of full format
+^ Full format --- top-level objets defined using type attributes
+  (e.g. `model: mlp`)
 
 Full format lets you define models, packages, and reusable
 configuration.
@@ -137,12 +133,20 @@ Guild looks in the current directory for a Guild file that contains a
 and to perform tasks such as validating flag values, snapshotting
 source code, and saving metrics.
 
+You can list operations that are available by running:
+
+``` command
+guild operations
+```
+
 As described above in [Overview](#overview), operations can be defined
 at the top-level of a Guild file in a mapping (*operation-only*
 format). Alternatively, operations can be defined as values of a
 model's `operations` attribute (*full* format).
 
-### Attributes
+For a various examples of operations
+
+### Operation Attributes
 
 The attributes listed below describe an operation.
 
