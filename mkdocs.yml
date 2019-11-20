@@ -215,6 +215,7 @@ pages:
           - start/explore.md
 
       - Core Concepts:
+          - architecture.md
           - cli.md
           - guildfile.md
           - runs.md
