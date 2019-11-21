@@ -19,7 +19,7 @@ extra:
       icon_class: 'fab fa-github'
       header: yes
     - name: slack
-      url: https://guildai.slack.com/join/shared_invite/enQtNDgxNDg5ODk2MjI2LThhZmU1YjFhYTQ5ODM1NGQxN2E5ODBmOTM2ODg3NzM3YjZmNmNhYzllNjYxZTU3YWJiNzA3ZjQyZWM0MmI4ZGM
+      url: http://bit.ly/guild-ai-slack
       title: Guild AI Slack Channel
       icon_class: 'fab fa-slack-hash'
       header: yes

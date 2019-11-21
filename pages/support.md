@@ -11,7 +11,7 @@ The easiest way to get quick and outstanding support is to hop onto
 our Slack channel.
 
 [<i class="fab fa-slack-hash"></i> Guild AI Slack Channel
-->](https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU)
+->](http://bit.ly/guild-ai-slack)
 
 ## Email
 
