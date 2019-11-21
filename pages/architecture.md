@@ -1,5 +1,6 @@
 sidenav_title: Architecture
+tags: concept
 
-# Guild AI Architecture
+# Architecture
 
 TODO: schematic ala https://docs.scrapy.org/en/latest/topics/architecture.html

@@ -22,7 +22,7 @@ core concepts behind the features.
 
 Use these guides to get more hands on experience using Guild.
 
-- [Guides](category:/guides/#)
+- [](category:/guides/#)
 
 ## Commands
 

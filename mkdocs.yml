@@ -214,7 +214,7 @@ pages:
           - start/workflow.md
           - start/explore.md
 
-      - Core Concepts:
+      - Concepts:
           - architecture.md
           - cli.md
           - guildfile.md
