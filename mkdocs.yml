@@ -7,9 +7,7 @@ extra:
 
   tagline_width: 30em
 
-  # NOTE: Update title in pages/index.md to sync with tagline.
-  #
-  tagline:
+  tagline:  # IMPORTANT: sync pages/index.md title with tagline
 
     The ML Engineering Platform
 
@@ -26,8 +24,8 @@ extra:
     - text: Pipeline Automation
       icon: hierarchy-10-gray
 
-    - text: Vendor Independent
-      icon: cloud-star-gray
+    - text: Free and Independent
+      icon: programming-flag-gray
 
   links:
     - name: github

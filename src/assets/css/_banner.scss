@@ -36,43 +36,29 @@
 
   .container,
   .container-fluid {
-    margin-top: 100px;
+    margin: 120px auto;
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0 50px;
     align-items: center;
 
-    .spacer {
-      flex: 1;
+    .navbar-spacer {
+      height: 40px;
     }
 
-    .spacer.text {
-      max-height: 40px;
+    @media screen and (max-width: $break-lg) {
+      margin: 90px auto;
     }
 
-    .spacer.actions {
-      max-height: 90px;
-     }
-
-    .spacer.version {
-      max-height: 20px;
+    @media screen and (max-width: $break-md) {
+      margin: 70px auto;
     }
 
     @media screen and (max-width: $break-sm) {
-      margin-top: 0;
-      padding: 0 20px;
+      margin: 50px auto;
 
-      .spacer.text {
-        max-height: 30px;
-      }
-
-      .spacer.actions {
-        max-height: 60px;
-      }
-
-      .spacer.version {
-        max-height: 10px;
+      .navbar-spacer {
+        height: 10px;
       }
     }
   }
@@ -82,15 +68,13 @@
     font-family: $font-family-hero;
     font-size: $banner-hero-font-size;
     line-height: 1.25;
-    margin: 125px 0 20px;
+    margin: 0;
 
     @media screen and (max-width: $break-lg) {
-      margin: 120px 0 20px;
       font-size: $banner-hero-font-size * 0.9;
     }
 
     @media screen and (max-width: $break-md) {
-      margin: 70px 0 30px;
       font-size: $banner-hero-font-size * 0.8;
     }
 
@@ -113,7 +97,7 @@
     }
   }
 
-  h5 {
+  div.subtext {
     font-family: $font-family-title;
     color: #ffeb3b;
     opacity: 0.9;
@@ -288,17 +272,9 @@
 
   .tagline-bullets {
     list-style: none;
-    margin: 30px auto 180px;
+    margin: 40px auto 0;
     padding: 0;
     text-align: center;
-
-    @media screen and (max-width: $break-md) {
-      margin: 30px 30px 120px;
-    }
-
-    @media screen and (max-width: $break-sm) {
-      margin: 20px auto 70px;
-    }
 
     @media screen and (max-width: $break-xs) {
       text-align: left;

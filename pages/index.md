@@ -2,7 +2,7 @@ layout: front-page
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
-title: Tools for Systematic Machine Learning
+title: The ML Engineering Platform
 
 <div id="get-started-fab"></div>
 
@@ -17,11 +17,14 @@ title: Tools for Systematic Machine Learning
 
 ---
 
-<p class="highlight">
-Build better models faster and avoid costly errors from manual
-process. Guild AI automates and measures ML operations like training,
-data preparation, deployment, and serving. Use it to control and
-optimize your machine learning pipeline.
+<p class="highlight" markdown="1">
+
+Guild AI brings systematic control to ML so you can improve your
+models faster and avoid costly mistakes. It encourages engineering
+best practices for automation, measurement and governance. Use it to
+control and optimize all stages of your ML pipeline from data
+preparation to training to deployment.
+
 </p>
 
 <p class="highlight">
