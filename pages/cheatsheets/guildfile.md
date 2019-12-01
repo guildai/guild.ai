@@ -15,17 +15,17 @@ Run an operation implemented in the Python `train` module
 
 ``` yaml
 train:
-  flags-import: yes
+  flags-import: all
 ```
 
-^ Run Python `train` module using default flag import rules
+^ Run Python `train` module and import all auto-detected flags
 
 In this case, Guild imports all available flags defined in the `train`
 module. By default, Guild inspects the module for an appropriate flags
 interface: argument passing or global variables. Based on the detected
 interface, Guild detects available flags. See [Flags
 Interface](#flags-interface) below for examples on defining this
-interface.
+explicitly.
 
 Use the `main` attribute to be explicit or to use a value different
 from the operation name.
@@ -33,7 +33,7 @@ from the operation name.
 ``` yaml
 train:
   main: train_model
-  flags-import: yes
+  flags-import: all
 ```
 
 ^ Use `main` to explicitly define the Python main module
@@ -43,7 +43,7 @@ Run a script defined in a subdirectory:
 ``` yaml
 train:
   main: src/train_model
-  flags-import: yes
+  flags-import: all
 ```
 
 ^ Use a path to reference modules defined in directories
@@ -54,7 +54,7 @@ If the script is located in a package (i.e. the subdirectory contains
 ``` yaml
 train:
   main: my_package.train_model
-  flags-import: yes
+  flags-import: all
 ```
 
 Include base arguments in the main specification:
@@ -62,7 +62,7 @@ Include base arguments in the main specification:
 ``` yaml
 train:
   main: model --train
-  flags-import: yes
+  flags-import: all
 ```
 
 ^ Specify base (non flag) arguments to the module as needed
@@ -74,17 +74,20 @@ are not specified:
 
 ``` yaml
 train:
-  flags-import: [epochs, lr]
+  flags-import:
+    - epochs
+    - lr
 ```
 
-^ Import specific flags
+^ Import only specific flags
 
 To import all flags but a specified list of flags:
 
 ``` yaml
 train:
   flags-import: all
-  flags-import-skip: [num_classes]
+  flags-import-skip:
+    - num_classes
 ```
 
 ^ Import all but some flags
@@ -96,7 +99,8 @@ train:
 
 #### Flags Interface
 
-To control the flags interface, use `flags-dest`.
+For background, see [Flags Interface - Guild
+File](/guildfile.md#flags-interface).
 
 To force Guild to use an argument passing interface:
 
@@ -367,12 +371,118 @@ train:
       multiple lines to provide detailed help. Refer to
       [Flags](ref:flags) for details.
 
-Related Help Topics:
+Related help topics:
 
 - [Flags](ref:flags)
 
 
 ----------------------------
+
+### Source Code
+
+The `sourcecode` attribute determines which files Guild copies as
+source code for a run. Configuration can be specified for an operation
+or for a model. Model configuration applies to all operation defined
+for the model. Operation level configuration extends, rather than
+replaces, any model level configuration.
+
+Examples below apply source code configuration to a hypothetical
+`train` operation. Apply them to your own operations as needed.
+
+Disable source code snapshots:
+
+``` yaml
+train:
+  sourcecode: no
+```
+
+^ Disable source code for an operation
+
+Include only Python files and `guild.yml`:
+
+``` yaml
+train:
+  sourcecode:
+    - '*.py'
+    - guild.yml
+```
+
+^ Use a list of strings to include only those patterns
+
+Include PNG files in addition to source code files (text files < 1M):
+
+``` yaml
+train:
+  sourcecode:
+    - include: '*.png'
+```
+
+^ Extend the selection rules by adding `include` rules
+
+Exclude a file or directory:
+
+``` yaml
+train:
+  sourcecode:
+    - exclude: data
+    - exclude: dataset.csv
+```
+
+^ Restrict selections by adding `exclude` rules
+
+Model and operation level configuration:
+
+``` yaml
+- model: cnn
+  sourcecode:
+    - exclude: data
+    - exclude: '*.csv'
+
+  operations:
+    train:
+      sourcecode:
+        # Rules here are applied to those defined for model above.
+        - include: train-config.csv
+```
+
+^ Define model-level source code rules, which apply by default to operations
+
+Copy souce code from a different root location:
+
+``` yaml
+train:
+  sourcecode:
+    root: src
+```
+
+^ Use a mapping to provide additional source code attributes like
+  `root` --- see [Source Code Specs - Guild File
+  Reference](/reference/guildfile.md#source-code-specs) for more
+  information
+
+Copy source code from a different location and define selection rules:
+
+``` yaml
+train:
+  sourcecode:
+    root: src
+    select:
+      - guild.yml
+      - '*.py'
+```
+
+^ Use `select` to define the selection rules when specifying
+  additional attributes like `root`
+
+Other examples:
+
+- [Guild AI Example: Copy Source guild.yml
+  ->](https://github.com/guildai/examples/blob/master/copy-source/guild.yml)
+
+Related help topics:
+
+- [Source Code](ref:source-code)
+- [Operations](ref:operations)
 
 ### Output Scalars
 
@@ -413,99 +523,68 @@ Modify the default pattern:
 
 ``` yaml
 train:
-  output-scalars: '^scalar: (\name)=(\value)'
+  output-scalars: '^scalar: (\key)=(\value)'
 ```
 
-Other Examples:
+Other examples:
 
 - [Guild AI Example: Customizing Output Scalars
   ->](https://github.com/guildai/examples/tree/master/custom-scalars)
 
-##### Related Help Topics
+Related help topics:
 
 - [Output Scalars](ref:output-scalars)
 - [Operations](ref:operations)
 
-### Source Code
+### Optimizers
 
-The `sourcecode` attribute determines which files Guild copies as
-source code for a run. Configuration can be specified for an operation
-or for a model. Model configuration applies to all operation defined
-for the model. Operation level configuration extends, rather than
-replaces, any model level configuration.
-
-Examples below apply source code configuration to a hypothetical
-`train` operation. Apply them to your own operations as needed.
-
-Disable source code snapshots:
+The `optimizers` operation attribute can be used to specify default
+optimizer flags, define a default optimizer, and create alternative
+named optimizers.
 
 ``` yaml
 train:
-  sourcecode: no
+  optimizers:
+    gp:
+      default: yes
+      kappa: 1.5
+      noise: 0.001
+    gp-2:
+      algorithm: gp
+      kappa: 1.8
+      noise: gaussian
+      xi: 0.1
 ```
 
-Include only Python files and `guild.yml`:
+^ Define a default optimizer and an alternative named optimizer
 
-``` yaml
-train:
-  sourcecode:
-    - '*.py'
-    - guild.yml
+By default, optimizer names reference a Guild *operation*. In the
+example above, `gp` is a built-in operation that uses gaussian
+processes for Bayesian optimization. To use a different name, specify
+the the `algorithm` attribute as the optimizer operation. For example,
+the `gp-2` optimizer above uses the `algorithm` attribute to indicate
+that its operation is `gp`.
+
+Use the default optimizer:
+
+``` command
+guild run train --optimize
 ```
 
-Include PNG files in addition to source code files (text files < 1M):
+^ Use the default optimizer defined for an operation
 
-``` yaml
-train:
-  sourcecode:
-    - include: '*.png'
+Use a named optimizer:
+
+``` command
+guild run train --optimizer gp
 ```
 
-Exclude a file or directory:
+^ Use a named optimizer
 
-``` yaml
-train:
-  sourcecode:
-    - exclude: data
-    - exclude: dataset.csv
-```
+Related help topics:
 
-Model and operation level configuration:
-
-``` yaml
-- model: cnn
-  sourcecode:
-    - exclude: data
-    - exclude: '*.csv'
-
-  operations:
-    train:
-      sourcecode:
-        # Rules here are applied to those defined for model above.
-        - include: train-config.csv
-```
-
-Copy soucecode from a different root location:
-
-``` yaml
-train:
-  sourcecode:
-    root: src
-    # Omit select for default behavior.
-    select:
-      - guild.yml
-      - '*.py'
-```
-
-Other Examples:
-
-- [Guild AI Example: Copy Source guild.yml
-  ->](https://github.com/guildai/examples/blob/master/copy-source/guild.yml)
-
-Related Help Topics:
-
-- [Source Code](ref:source-code)
-- [Operations](ref:operations)
+- [`optimizers` operation
+  attribute](/reference/guildfile.md#operation-optimizers)
 
 ## Required Files
 
@@ -520,3 +599,34 @@ train:
   requires:
     - file: data.zip
 ```
+
+## Packages
+
+Package configuration is used by Guild when running
+[package](cmd:package).
+
+See [Packages - Guild File
+Reference](/reference/guildfile.md#packages) for a full list of
+supported package attributes.
+
+``` yaml
+- package: hello
+  description: Simple hello workd package
+  version: 1.0
+  url: https://github.com/guildai/packages/tree/master/gpkg/hello
+  author: Guild AI
+  author-email: packages@guild.ai
+  license: Apache 2.0
+  data-files:
+    - msg.txt
+
+- model: hello
+  operations:
+    say:
+      main: say
+      requires:
+        - file: msg.txt
+```
+
+^ Use a single `package` top-level object to define the Guild file
+  package

@@ -17,8 +17,10 @@ Guild files can be constructed using one of two formats:
 - Full format
 - Operation-only format
 
-<a id="full-format">*Full*</a> format is used to specify full project
-configuration. It contains a list of top-level objects in the format:
+### Full Format
+
+*Full format* is used to specify full project configuration. It
+contains a list of top-level objects in the format:
 
 ``` yaml
 - object_type: name
@@ -48,6 +50,8 @@ You can include any of the following types in full mode:
 `package`
 : Packages define how Guild generates Python wheel distributions. See
   [Packages](#packages) below.
+
+### Operation Only
 
 *Operation-only* format is a simplified format that contains a map of
 operations in the format:
@@ -170,7 +174,7 @@ If the Guild file is full format, they are applied as attributes of an
       ...
 ```
 
-`<mapping key>`
+`<mapping key>` <div id="operation-name"></div>
 : Operation name (required string)
 
     Operation names are specified as the key in a mapping. If the
@@ -186,24 +190,13 @@ If the Guild file is full format, they are applied as attributes of an
     empty and can be omitted.
 
 
-`description`
+`description` <div id="operation-description"></div>
 : Operation description (string)
 
     This value can span multiple lines. By convention, the first line
     is a short description that does not end in a period. Subsequent
     lines, separated by an empty line, should be written using full
     sentences.
-
-    Example of a multi-line description:
-
-        prepare-data:
-          description:
-            Prepares the data set for training
-
-            Use the flag `val-split` to specify the percentage of
-            examples reserved for validation.
-
-            When this operation is completed, run `train`.
 
 `main` <div id="operation-main"></div>
 : Operation main Python module (string)
@@ -245,11 +238,11 @@ If the Guild file is full format, they are applied as attributes of an
     flags are not invcluded in the operation command. To include
     flags, specify `${flag_args}` as an argument in the `exec` value.
 
-`steps`
+`steps` <div id="operation-steps"></div>
 : List of steps to run for workflow (list of string or [steps](#steps))
 
-    See [Workflow](/workflow.md) for more information on
-    implementing workflows in Guild.
+    Steps are used to implement sequential work flow in Guild. Refer
+    to [Steps](#steps) below for details.
 
 `flags` <div id="operation-flags"></div>
 : Operation flags (mapping of flag name to [Flag](#flags) definition)
@@ -278,7 +271,7 @@ If the Guild file is full format, they are applied as attributes of an
       in a dict defined as the attribute or key `train` of the global
       variable `params.
 
-`flags-import`
+`flags-import` <div id="operation-flags-import"></div>
 : List of flags to import (string or list of strings)
 
     By default, Guild does not import any flags.
@@ -294,14 +287,14 @@ If the Guild file is full format, they are applied as attributes of an
     string assignments. This interface can be controlled explicitly
     using the `flags-dest` attribute (see above).
 
-`flags-import-skip`
+`flags-import-skip` <div id="operation-flags-import-skip"></div>
 : List of flags to skip when importing all flags (list of strings)
 
     Use this attribute when setting `flags-import` to `yes` or `all`
     when it's more convenient to exclude a list of flags than it is to
     list flags to import.
 
-`requires`
+`requires` <div id="operation-requires"></div>
 : List of operation dependencies (list of [resources](#resources))
 
     By default run directories are empty, which means that any local
@@ -310,46 +303,26 @@ If the Guild file is full format, they are applied as attributes of an
     operation must specify the appropriate dependencies using the
     `requires` attribute.
 
-`env`
-: Additional environment variables available to the operation process
-  (mapping of names to values)
+    Refer to [Dependencies](#dependencies) below for details on
+    specifying this value.
 
-    Note that flag values are always available in the environment as
-    `FLAG_UPPER_NAME` variables, where `UPPER_NAME` is the upper case
-    flag name. A flag can specify a different environment variable
-    name using the [`env-name` flag attribute](#flag-env-name).
+`sourcecode` <div id="operation-sourcecode"></div>
+: Specification used to copy source code files ([source code
+  spec](#source-code-specs))
 
-`python-requires`
-: Requirement specification of Python needed for the operation
-  (string)
+    Guild copies source code for each run to provide a record
+    associated with the run. Furthermore, Python based operations are
+    isolated from their upstream project source code and rely on
+    copied source code.
 
-    The requirement must be specified without a package name using
-    only the version portion of a [](ref:pip-reqs).
+    By default, Guild copies text files that are less than 1M up to
+    100 files. Guild shows warnings for files that exceed these
+    limits.
 
-`python-path`
-: Path to use for `PYTHONPATH` when running the operation (string)
+    When the `sourcecode` attribute is defined, Guild does not apply
+    these checks and will not show sauch warnings.
 
-`stoppable`
-: Indicates whether user-termination of the operation should be
-  treated as a success (boolean)
-
-      By default, Guild designated user-terminated operations as
-      `terminated`. In some cases, you may may want to designate such
-      user-terminated operations as `completed`, in which case, set
-      this attribute to `yes`.
-
-`label`
-: Label template for the operation (string)
-
-    By default, Guild creates a label that includes user-provided flag
-    values. Use the `label` attribute to to define an alternative
-    default label template.
-
-    Use ``${FLAG_NAME}`` in the label to include specific flag
-    values. For example, to define a label template that includes the
-    flag `dropout_rate`, use ``dropout_rate=${dropout_rate}``.
-
-`output-scalars`
+`output-scalars` <div id="operation-output-scalars"></div>
 : List of output scalar patterns to apply to run standard output (list
   of [output scalar specs](#output-scalar-specs) or `no`)
 
@@ -361,40 +334,89 @@ If the Guild file is full format, they are applied as attributes of an
 
       To disable capturing of output scalars altogether, specify `no`.
 
-`objective`
-: Objective used by sequential optimizers (string or mapping)
+`env` <div id="operation-env"></div>
+: Additional environment variables available to the operation process
+  (mapping of names to values)
 
-    If `objective` is a string, optimizers attempt to minimize the
-    specified scalar value for runs.
+    Note that flag values are always available in the environment as
+    `FLAG_UPPER_NAME` variables, where `UPPER_NAME` is the upper case
+    flag name. A flag can specify a different environment variable
+    name using the [`env-name` flag attribute](#flag-env-name).
 
-    If `objective` is a mapping, it uses the following attributes:
+`python-requires` <div id="operation-python-requires"></div>
+: Requirement specification of Python needed for the operation
+  (string)
 
-    `
+    The requirement must be specified without a package name using
+    only the version portion of a [](ref:pip-reqs).
 
-`compare`
+`python-path` <div id="operation-python-path"></div>
+: Path to use for `PYTHONPATH` when running the operation (string)
+
+`stoppable` <div id="operation-stoppable"></div>
+: Indicates whether user-termination of the operation should be
+  treated as a success (boolean)
+
+      By default, Guild designated user-terminated operations as
+      `terminated`. In some cases, you may may want to designate such
+      user-terminated operations as `completed`, in which case, set
+      this attribute to `yes`.
+
+`label` <div id="operation-label"></div>
+: Label template for the operation (string)
+
+    By default, Guild creates a label that includes user-provided flag
+    values. Use the `label` attribute to to define an alternative
+    default label template.
+
+    Use ``${FLAG_NAME}`` in the label to include specific flag
+    values. For example, to define a label template that includes the
+    flag `dropout_rate`, use ``dropout_rate=${dropout_rate}``.
+
+`compare` <div id="operation-compare"></div>
 : List of columns to include for operation runs in [Guild
   Compare](/tools/compare.md) (list of [column specs](#column-specs))
 
-`default-max-trials`
+`default-max-trials` <div id="operation-default-max-trials"></div>
 : Default number of max trials when running batches (integer)
 
     By default, the max trials used when the user doesn't explicitly
     specify `--max-trials` is optimizer-specific --- however, it is
     usually 20.
 
-        self.objective = data.get("objective")
-        self.optimizers = _init_optimizers(data, self)
-        self.publish = _init_publish(data.get("publish"), self)
-        self.sourcecode = _init_sourcecode(
-            data.get("sourcecode"), self.guildfile)
-        self.default_flag_arg_skip = (
-            data.get("default-flag-arg-skip") or False)
+`objective` <div id="operation-objective"></div>
+: Objective used by sequential optimizers (string or mapping)
 
-### Output Scalar Specs
+    If `objective` is a string, optimizers attempt to minimize the
+    specified scalar value for runs.
 
-### Column Specs
+    As an alternative, to minimize a scalar, use the mapping
+    `minimize: SCALAR`.
 
-## Flags
+    Use a mapping of `maximize: SCALAR` to maximize a scalar value
+    when optimizing.
+
+`optimizers` <div id="operation-optimizers"></div>
+: Mapping of named optimizers associated with the operation
+
+    The mapping consists of default optimizer flags used when the
+    optimizer is specified for a run.
+
+    An optimizer defined in this section can be specified for a run
+    using its name with the `--optimizer` option.
+
+    By default, the optimizer operation is the same as the mapping
+    key. To use a different operation, use the special attribute
+    `algorithm`.
+
+    To designate an optimizer as the *default*, use the special
+    attribute `default` with a value of `yes`. Default optimizers as
+    used when the `--optimize` option is used with [run](cmd:run).
+
+    See [Optimizers - Guild File
+    Cheatsheet](/cheatsheets/guildfile.md#optimizers) for examples.
+
+### Flags
 
 Flags are defined as mappings under the `flags` operation
 attribute. The mapping key is the flag *name*.
@@ -402,23 +424,21 @@ attribute. The mapping key is the flag *name*.
 A mapping value may either a mapping of attributes or a default
 value. Available flag attribute are listed below.
 
-### Flag Attributes
-
-`<mapping key>`
+`<mapping key>` <div id="flag-name"></div>
 : Flag name (required string)
 
     The flag name is used when specifing a flag value. When specifying
     a value as an argument to the [run](cmd:run) command, the name is
     used as `NAME=VALUE`.
 
-`description`
+`description` <div id="flag-description"></div>
 : Flag description (string)
 
     The flag description is used in project and operation help. If the
     flag description contains more than one line, the first line is
     used for operation help.
 
-`type`
+`type` <div id="flag-type"></div>
 : Flag value type
 
     Flag type is used to both validate and convert flag values when
@@ -456,18 +476,18 @@ value. Available flag attribute are listed below.
      `existing-path`
      : Value is converted to a string and checked as an existing path.
 
-`default`
+`default` <div id="flag-default"></div>
 : Default flag value
 
     By default, flag values are `null`, which means they are not
     passed to the script.
 
-`required`
+`required` <div id="flag-required"></div>
 : Indicates whether or not a flag value is required (boolean)
 
     By default, flag values are not required.
 
-`arg-name`
+`arg-name` <div id="flag-arg-name"></div>
 : The argument name used when setting the flag value (string)
 
     If operation `flags-dest` is `args`, this attribute specifies the
@@ -480,7 +500,7 @@ value. Available flag attribute are listed below.
     specifies the key used when setting the flag in the `PARAM` global
     dict.
 
-`arg-skip`
+`arg-skip` <div id="flag-arg-skip"></div>
 : Indicates whether the flag is skipped as an argument (boolean)
 
     By default, all flags are set according to the operations
@@ -490,7 +510,7 @@ value. Available flag attribute are listed below.
     This value is used to skip flag arguments that are already
     specified in the `main` or `exec` operation attributes.
 
-`arg-switch`
+`arg-switch` <div id="flag-arg-switch"></div>
 : A value that, when specified, causes the flag to be set as a boolean
   switch
 
@@ -507,7 +527,7 @@ value. Available flag attribute are listed below.
     global variable `test` is set to `True` --- depending on the
     operation `flags-dest` setting.
 
-`choices`
+`choices` <div id="flag-choices"></div>
 : A list of allowed flag values (list of values or mappings)
 
     Each list item may be either a value, which indicates one of the
@@ -523,7 +543,7 @@ value. Available flag attribute are listed below.
 
         The choice description is used when showing operation help.
 
-`allow-other`
+`allow-other` <div id="flag-allow-other"></div>
 : Indicates whether the user may enter a non-choice value when
   `choices` is specified (boolean)
 
@@ -538,7 +558,7 @@ value. Available flag attribute are listed below.
 
      Use the `env-name` to control the environment variable name used.
 
-`null-label`
+`null-label` <div id="flag-null-label"></div>
 : Display label used in operation preview when flag value is `null` (string)
 
     By default, Guild uses the string ``default`` when showing null
@@ -548,7 +568,7 @@ value. Available flag attribute are listed below.
     `null-label` could be set to ``auto detected`` to help convey this
     to the user.
 
-`min`
+`min` <div id="flag-min"></div>
 : Minimum allowed value (number)
 
     By default, Guild does not check number ranges.
@@ -556,7 +576,7 @@ value. Available flag attribute are listed below.
     This value also serves as the default lower bound for values
     chosen by optimizers.
 
-`max`
+`max` <div id="flag-max"></div>
 : Maximum allowed value (number)
 
     By default, Guild does not check number ranges.
@@ -564,7 +584,7 @@ value. Available flag attribute are listed below.
     This value also serves as the default upper bound for values
     chosen by optimizers.
 
-`distribution`
+`distribution` <div id="flag-distribution"></div>
 : Distribution used when sampling values for flag
 
     Legal values are:
@@ -575,15 +595,359 @@ value. Available flag attribute are listed below.
     `log-uniform`
     : Sample from a log uniform distribution.
 
-## Source Code
+### Dependencies
 
-## Output Scalars
+An operation may require *resources* to run. Required resources are
+referred to as *dependencies*.
 
-## Resources
+Dependencies are specified using the `requires` attribute.
 
-## Steps
+Dependencies may be
+
+### Source Code Specs
+
+The operation [`sourcecode` attribute](#operation-sourcecode)
+specifies how source code is copied for a run.
+
+The `sourcecode` attribute value may be a list or a mapping. If the
+value is a mapping, it has the following attributes:
+
+`root` <div id="sourcecode-root"></div>
+: An alternative root from which to copy source code (string)
+
+    By default, Guild copies source relative to the Guild file
+    defining the operation. Use `root` to specify an alternative path.
+
+    This value may use `../` to reference source code outside the
+    Guild file directory.
+
+    Note that paths that refer to locations outside the Guild file
+    directory may break if the project is copied to another system.
+
+`select` <div id="sourcecode-select"></div>
+: A list of select rules
+
+    See below for a description of select rules.
+
+`digest` <div id="sourcecode-digest"></div>
+: Indicates whether or not Guild generates a digest for copied source
+  code (boolean)
+
+    By default Guild generates digests of copied source code. The
+    digest can be used to determine if source code used by two runs is
+    different.
+
+    In some cases, it may be too expensive to compute a digest and the
+    source code version may be available through an explicit
+    version. In such cases, you can disable the digest by setting this
+    attribute to `no`.
+
+If the `sourcecode` attribute is a list, it is treated as the value
+for `select` above and the Guild file directory is treated as `root`.
+
+Each select list item is an *include* or *exclude* rule. Each rule is
+either a string or a mapping.
+
+If the rule is a mapping, it must contain a type attribute of either
+`include` or `exclude`. The type attribute value is a [glob style
+->](https://en.wikipedia.org/wiki/Glob_(programming)) patterns or list
+of patterns.
+
+If the rule is a string, it implies a mapping type of `include` where
+the string is the rule pattern.
+
+When at least one rule pattern matches a path relative to the Guild
+file location, Guild applies the rule with the effect of including or
+excluding the path.
+
+Rules are applied in the order specified. Subsequent rules override
+previous rules.
+
+In addition to glob patterns, defined as the type attribute, you may
+specify additional mapping attributes, which are listed below.
+
+`type`
+: The type of path to match
+
+    This information is applied to the selection test, along with the
+    rule path pattern.
+
+    Type may be one of the following values:
+
+    `text`
+    : Matches only text files
+
+    `binary`
+    : Matches only binary files (i.e. non-text)
+
+    `dir`
+    : Matches only directories
+
+        Excluding `dir` types has a performance benefit as Guild will
+        not scan the contents of excluded directories.
+
+See [Source Code - Guild File
+Cheatsheet](/cheatsheets/guildfile.md#source-code) for examples on how
+to configure source code for an operation.
+
+### Output Scalar Specs
+
+*Output scalars* are numeric values that are written to standard
+output or standard error streams and logged during a run. Output
+scalar values correspond to a *key* and an optional *step*.
+
+Guild supports output scalars as an alternative to explicit logging to
+event logs. Use output scalars to log results by printing them as
+script output.
+
+By default, Guild logs output written in the format:
+
+``` output
+KEY: VALUE
+```
+
+- `KEY` must not be preceded by any white space
+- `VALUE` must be a value that can be decoded as number
+- Guild treats the key ``step`` as a special value, which is used to
+  set the *step* associated with subsequently logged values
+
+This scheme is designed for simple cases and can be modified using the
+`output-scalars` operation attribute.
+
+The `output-scalars` attribute may be a mapping of scalar keys to
+capturing pattern or a list of capturing patterns. If the value of
+`output-scalars` is a mapping, the mapping keys correspond to scalar
+keys and each value is a pattern that captures a numeric value as a
+group.
+
+``` yaml
+train:
+  output-scalars:
+    loss: 'test_loss=(\value)'
+    acc: 'test_acc=(\value)'
+    step: 'epoch=(\step)'
+```
+
+^ Sample mapping attribute --- keys are scalar keys and values are
+  capturing regular expression patterns
+
+If the value of `output-scalars` is a list, each item may be a mapping
+of keys to capturing patterns, which is treated identically as the
+mapping described above, or as strings. If an item is a string, it
+must define two capture groups. By default, the first capture group is
+the scalar key and the second capture group is the scalar value. Named
+capture groups may be used to reverse this order, using `key` and
+`value` group names for the captured key and value respectively.
+
+``` yaml
+train:
+  output-scalars:
+    - step: 'Results for \(step (\step)\):'
+    - '  (\key)=(\value)'
+```
+
+^ Sample list attribute --- items may be mappings of scalar keys to
+  capturing patterns or strings that capture both keys and values
+
+Patterns must be valid [regular expression](ref:regex).
+
+The special templates ``\key``, ``\value``, and ``\step`` may be used
+to represent regular expressions for valid keys, numeric values, and
+step values respectively.
+
+!!! tip
+    Use the `--test-output-scalars` option to [run](cmd:run) to
+    test strings from generated output. You can test a file or
+    interatively test strings that you type into the console (use
+    ``-`` as the file name to read from standard intput).
+
+See [Output Scalars - Guild File
+Cheatsheet](/cheatsheets/guildfile.md#output-scalars) for additional
+examples of output scalar capture patterns.
+
+### Column Specs
+
+By default Guild shows all flags and root output scalars for an
+operation run in [Guild Compare](/tools/compare.md). Use the `columns`
+operation attribute to define an alternative set of columns.
+
+Guild supports a special syntax for specifying columns, which is
+defined by the following grammar:
+
+```
+['first'|'last'|'min'|'max'|'total'|'avg'] SCALAR_KEY ['step'] ['as' DISPLAY_NAME]
+
+'=' FLAG_NAME ['as' DISPLAY_NAME]
+
+'.' RUN_ATTRIBUTE ['as' DISPLAY_NAME]
+```
+
+All columns can be named by appending `` as DISPLAY_NAME`` to the
+expression.
+
+To show *scalars*, specify the scalar key. You may optionally qualify
+which scalar value to show by preceding the expression with one of the
+qualifiers listed above. Scalars are logged per *step* and so there
+may be multiple values, each associated with a step value. Qualifiers
+indicate how a scalar should be presented as a single value. By
+default, the last scalar value is used --- the value associated with
+the largest step value.
+
+To show a run *flag*, precede the flag name with an equals sign ``=``.
+
+To show a run *attribute*, precede the run attribute name with a dot
+``.``. For a list of attributes, use ``guild ls -a -p .guild/attrs
+RUN`` for a run.
+
+For example:
+
+``` yaml
+train:
+  compare:
+    - max loss as max_loss
+    - max loss step as max_loss_step
+    - min loss as min_loss
+    - min loss step as min_loss_step
+```
+
+^ Use the `compare` operation attribute to define the columns shown in
+  [Guild Compare](/tools/compare.md)
+
+!!! note
+    Column specs are used with any column-spec command
+    option. For example, use the above syntax for `STEPS` in `guild
+    compare --columns SPECS`.
+
+### Steps
+
+Steps are used to implement sequential work flow in Guild. The `steps`
+attribute specifies a list of operations to run.
+
+Operations that define steps are referred to as *stepped operations*
+or *workflows*.
+
+The `step` attribute is a list of steps. Each step may be a string or
+a mapping. If a step item is a string, it is treated as a `run`
+command.
+
+A step mapping may have the following attributes:
+
+`run` <div id="step-run"></div>
+: An operation to run for the step (string)
+
+    You may include flag values as arguments to the
+    operation. Alternatively, use the `flags` attribute to list flag
+    assignments.
+
+`name` <div id="step-name"></div>
+: An alternative name used for the step (string)
+
+    By default, the operation name specified for `run` (or as the step
+    value if it is a string) is used as the name.
+
+    Names are used as links within the stepped run.
+
+`flags` <div id="step-flags"></div>
+: A list of flag assignment strings (list of strings)
+
+    Each string must be in the form ``NAME=VALUE``.
+
+`checks` <div id="step-checks"></div>
+: A list of checks to perform on the step (list of [step checks](#step-check))
+
+    Use checks to validate a step. Checks are used to implement tests
+    in Guild.
+
+`label` <div id="step-label"></div>
+: The label template for the step (string)
+
+    The label template overrides the `label` template defined for the
+    step operation. See [`label` operation
+    attribute](#operation-label) for details on how label templates
+    are applied.
+
+        self.checks = _init_checks(data)
+        self.label = _resolve_param(params, "label", parent_flags)
+        self.gpus = _resolve_param(params, "gpus", parent_flags)
+        self.no_gpus = params["no_gpus"]
+        self.stop_after = params["stop_after"]
+        self.needed = params["needed"]
+        self.optimizer = params["optimizer"]
+        self.opt_flags = params["opt_flags"]
+        self.max_trials = params["max_trials"]
+        self.random_seed = params["random_seed"]
+
+### Step Check
+
+A *step check* is a test that Guild applies to an operation step.
+
+Checks are identified by a type attribute, which may be one of the
+following:
+
+`file`
+: Tests a file generated by an operation.
+
+    See [`file` check attributes](#file-check-attributes) below for
+    additional attributes.
+
+`output`
+: Tests operation output.
+
+    See [`output` check attributes](#output-check-attributes) below
+    for additional attributes.
+
+Each check type supports a different set of attributes, which are
+described below.
+
+#### `file` Check Attributes
+
+`<mapping key>`
+: File path to check (required string)
+
+    Paths are considered relative to the step run directory.
+
+`compare-to`
+: Compares the run file to another file (string)
+
+    If the run file is different from the file specified by
+    `compare-to`, the check fails.
+
+    Guild assumes that the `compare-to` file is relative to the step
+    run directory.
+
+`contains`
+: Checks the run file for matching text (string)
+
+    `contains` must be a valid [regular expression](ref:regex).
+
+    If the run file output does not contain text that matches this
+    attribute value, the check fails.
+
+#### `output` Check Attributes
+
+`pattern`
+: Pattern to search for in run output (required string)
+
+    If the run did not generate output that matches this value, the
+    check fails.
 
 ## Models
+
+In Guild AI, a *model* is a set of related operations.
+
+Models are defined in [full format](term:full-format) Guild files
+using the `model` type attribute.
+
+``` yaml
+- model: svm
+  operations:
+    train:
+      main: train_svm
+```
+
+^ Sample model `svm` defined in using [full format](term:full-format)
+
+## Resources
 
 ## Packages
 
@@ -605,7 +969,7 @@ Define a package when you want to:
 By convention, we recommend that you define the package as the first
 object in a Guild file.
 
-### Attributes
+Package attributes are listed below.
 
 `package`
 : Package name (string)
@@ -664,23 +1028,9 @@ object in a Guild file.
     Default is the list of packages returned by
     `setuptools.find_packages()`.
 
-### Examples
-
-``` yaml
-- model: hello
-  operations:
-    say:
-      main: say
-
-- package: hello
-  description: Simple hello workd package
-  version: 1.0
-  url: https://github.com/guildai/packages/tree/master/gpkg/hello
-  author: Guild AI
-  author-email: packages@guild.ai
-  license: Apache 2.0
-  data-files:
-    - msg.txt
-```
+Refer to [Packages - Guild File
+Cheatsheet](/cheatsheets/guildfile.md#packages) for examples.
 
 ## Config
+
+XXX

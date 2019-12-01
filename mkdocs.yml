@@ -149,6 +149,12 @@ markdown_extensions:
           class: ext
           target: _blank
 
+        - link_pattern: ref:regex
+          href: https://docs.python.org/library/re.html
+          text: regular expression
+          class: ext
+          target: _blank
+
         - link_pattern: ref:terraform
           href: https://www.terraform.io/
           text: Terraform

@@ -1262,7 +1262,7 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
     @staticmethod
     def _dt_len(row):
         dt, _dd = row.getchildren()
-        return len(" ".join(dt.itertext()))
+        return len(list(dt.itertext())[0])
 
     @staticmethod
     def _apply_col_classes(row, dt_col_class, dd_col_class):
