@@ -8,7 +8,7 @@ sidenav_title: Guild File
 
 ### Python Based Operations
 
-#### Simple Operation
+#### Simple Operations
 
 Run an operation implemented in the Python `train` module
 (e.g. defined locally in `train.py`):
@@ -20,11 +20,12 @@ train:
 
 ^ Run Python `train` module using default flag import rules
 
-With this configuration, Guild imports all available flags defined in
-the `train` module. By default, Guild inspects the module for an
-appropriate flags interface: argument passing or global
-variables. Based on the detected interface, Guild detects available
-flags.
+In this case, Guild imports all available flags defined in the `train`
+module. By default, Guild inspects the module for an appropriate flags
+interface: argument passing or global variables. Based on the detected
+interface, Guild detects available flags. See [Flags
+Interface](#flags-interface) below for examples on defining this
+interface.
 
 Use the `main` attribute to be explicit or to use a value different
 from the operation name.
@@ -37,7 +38,26 @@ train:
 
 ^ Use `main` to explicitly define the Python main module
 
-You can include base arguments in the main specification.
+Run a script defined in a subdirectory:
+
+``` yaml
+train:
+  main: src/train_model
+  flags-import: yes
+```
+
+^ Use a path to reference modules defined in directories
+
+If the script is located in a package (i.e. the subdirectory contains
+`__init__.py`) use Python's package notation:
+
+``` yaml
+train:
+  main: my_package.train_model
+  flags-import: yes
+```
+
+Include base arguments in the main specification:
 
 ``` yaml
 train:
@@ -49,13 +69,12 @@ train:
 
 #### Flags Import
 
-To specify a list of flags to import, skipping any detected flags that
+Specify a list of flags to import, skipping any detected flags that
 are not specified:
 
 ``` yaml
 train:
   flags-import: [epochs, lr]
-  flags-import: yes
 ```
 
 ^ Import specific flags

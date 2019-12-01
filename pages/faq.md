@@ -8,6 +8,75 @@ hide_sidenav: yes
 
 [TOC]
 
+## About Guild AI
+
+### What is Guild AI?
+
+Guild AI is software platform used by machine learning engineers to
+control and measure machine learning work so that data scientists,
+engineers, and product managers can make informed decisions about
+model performance and safety.
+
+Refer to the [Guild AI front page](https://guild.ai) for a complete
+description, features, and links to documentation.
+
+Guild AI also refers to the company behind the platform. In cases
+where we differentiate the software from the company, we use *Guild AI
+platform* or *Guild AI software*.
+
+### Is Guild AI open source?
+
+Guild is 100% open source. It's freely available under the [Apache 2.0
+->](https://github.com/guildai/guildai/blob/master/LICENSE.txt)
+license.
+
+### Is Guild AI affiliated with a closed source platform or vendor?
+
+Guild AI is an independent open source company without ties to a
+proprietary platform or cloud.
+
+### What is Guild AI's business model?
+
+Guild AI is an open source company that generates revenue from
+services and support around the Guild AI platform. Guild AI supports
+companies in the development of controlled machine learning pipelines
+for the purpose of building higher performance models that meet the
+safety and ethical guidelines defined by the company and regulatory
+agencies.
+
+See [Guild AI Services](/services.md) for information on how Guild AI
+can support your organization.
+
+### Is it "Guild AI" or "guild.ai"?
+
+When writing Guild AI, use "Guild AI" --- not guild.ai.
+
+guild.ai is used in the logo and is also the product domain. Guild AI,
+with a space, is the correct use of the both the product and company
+names.
+
+## Using Guild AI
+
+### Guild AI seems magical at times --- can I make it explicit?
+
+*Guild AI lets you explicitly configure all aspects of your project.*
+
+Guild AI is designed to start quickly and easily and to evolve to
+support advanced functions as needed. To accomplish this, Guild
+supports a number auto-detect features:
+
+- User input interface: *command line arguments* or *global variables*
+- User input flag names, types, and descriptions
+- Output metrics
+
+All of these features can be controlled using explicit project
+configuration.
+
+Refer to [Guild Files](/guildfile.md) for information on configuring
+a project.
+
+<!--
+
 ### What is Guild AI?
 
 Guild AI is an experiment tracking system for machine learning. It's
@@ -41,7 +110,7 @@ the [Apache 2.0
 license.
 
 While Guild costs time and effort to learn, it's [easy to start
-with](start.md) and use features incrementally.
+with](/start.md) and use features incrementally.
 
 ### How is Guild different from other experiment management systems?
 
@@ -108,3 +177,5 @@ This has a number of benefits:
 Guild uses SQLite to index results for fast lookup. This is how [Guild
 Compare](ref:guild-compare) and [Guild View](ref:guild-view) both
 perform quickly.
+
+-->

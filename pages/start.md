@@ -21,7 +21,7 @@ When Guild is installed, check the environment:
 guild check
 ```
 
-Refer to [Install Guild AI](install.md) for detailed install
+Refer to [Install Guild AI](/install.md) for detailed install
 instructions or [ask for help](ref:slack).
 
 ## Get Help
@@ -87,7 +87,7 @@ Commands:
   watch            Watch run output.
 ```
 
-See [Command Reference](commands/index.md) for online help.
+See [Command Reference](/commands/index.md) for online help.
 
 ## Create a Sample Training Script
 

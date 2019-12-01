@@ -24,7 +24,7 @@ extra:
     - text: Pipeline Automation
       icon: hierarchy-10-gray
 
-    - text: Free and Independent
+    - text: Open Source
       icon: programming-flag-gray
 
   links:
@@ -175,10 +175,10 @@ markdown_extensions:
               flags: /guildfile.md#flags
               full-format: /reference/guildfile.md#full-format
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
-              guild-compare: /tools.md#guild-compare
+              guild-compare: /tools/compare.md
               guildfile: /guildfile.md
               guildfiles: /guildfile.md
-              guild-view: /tools.md#guild-view
+              guild-view: /tools/view.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
@@ -213,16 +213,21 @@ pages:
           - start/explore.md
 
       - Concepts:
-          - architecture.md
+          ##- architecture.md
           - cli.md
           - guildfile.md
           - runs.md
-          - tools.md
           - workflow.md
           - remote.md
           - backup-and-restore.md
           ##- publishing.md
           - environments.md
+
+      - Tools:
+          - tools/compare.md
+          - tools/view.md
+          - tools/tensorboard.md
+          - tools/diff.md
 
       - Guides:
           - guides/add.md

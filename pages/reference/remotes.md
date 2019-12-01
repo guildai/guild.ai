@@ -9,7 +9,7 @@ sidenav_title: Remotes
 This reference guide lists each remote type, its supported attributes,
 and provides examples.
 
-For information on using remotes, see [Remote Training](../remote.md).
+For information on using remotes, see [Remote Training](/remote.md).
 
 ## SSH
 
@@ -74,7 +74,7 @@ documentation for your system for additional security details.
 ### Examples
 
 For additional examples, see [Remote Cheatsheet -
-SSH](../cheatsheets/remotes.md#SSH).
+SSH](/cheatsheets/remotes.md#SSH).
 
 The following is a minimal SSH remote configuration. It used all of
 the default values. Runs will be located in `~/.guild` on the remote
@@ -198,7 +198,7 @@ between the local system (client) and the remote (server).
 ### Examples
 
 For additional examples, see [Remote Cheatsheet -
-EC2](../cheatsheets/remotes.md#EC2).
+EC2](/cheatsheets/remotes.md#EC2).
 
 The following is a minimal example of an EC2 remote:
 

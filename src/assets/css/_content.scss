@@ -113,6 +113,10 @@ div.dl {
 
     div.dt {
       color: $light-text-color;
+
+      code {
+        word-break: normal;
+      }
     }
 
     div.dd {

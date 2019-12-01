@@ -14,7 +14,7 @@ facility.
   operation
 
 For a complete reference on remote configuration, see [Remotes
-Reference](reference/remotes.md).
+Reference](/reference/remotes.md).
 
 ## Define a Remote
 
@@ -32,25 +32,22 @@ remotes:
 
 Guild supports a variety of remote types:
 
-[`ssh`](reference/remotes.md#ssh)
+[`ssh`](/reference/remotes.md#ssh)
 : Connect to a remote server over [SSH](term:ssh). Use this type to
   train on remote servers on-premises or on any cloud vendor. Guild
   does not support support starting of `ssh` remote types.
 
-[`ec2`](reference/remotes.md#ec2)
+[`ec2`](/reference/remotes.md#ec2)
 : Connect to a remote EC2 host over [SSH](term:ssh). This remote type
   supports [start](cmd:remote-start) and [stop](cmd:remote-stop) given
   EC2 specific configuration for the remote.
 
-[`s3`](reference/remotes.md#s3)
+[`s3`](/reference/remotes.md#s3)
 : Copy runs to and from S3. This remote type does not support runs but
   can be used for backup and restore.
 
 For a complete list of remote types, including examples, see
 [Remotes](ref:remote).
-
-
-
 
 ## Run a Remote Operation
 

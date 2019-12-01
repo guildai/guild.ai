@@ -84,5 +84,5 @@ remotes:
     ...
 ```
 
-Refer to [Remotes](remotes.md) for details on configuring remote
-types.
+Refer to [Remotes Reference](remotes.md) for details on configuring
+remote types.

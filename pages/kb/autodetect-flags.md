@@ -1,10 +1,4 @@
-# Auto-detecting Flags
-
-# TODO: cleanup blow
-
-[TOC]
-
-## Overview
+# Auto-Detecting Flags
 
 Guild AI generally adheres to the principles outlined in Tim Peter's
  [PEP 20 -- The Zen of Python
@@ -13,32 +7,51 @@ Guild AI generally adheres to the principles outlined in Tim Peter's
 
 > Explicit is better than implicit.
 
-In some cases Guild goes out of its way to support *implicit*
-behavior, some of which could be [considered magic
-->](https://en.wikipedia.org/wiki/Magic_(programming)).
+However, in some cases Guild goes out of its way to support *implicit*
+behavior by automatically detecting settings from a Python
+script. This behavior is motivated by the desire to hide complexity
+and remove barriers to getting started.
 
-Magic hides complexity and removes barriers to getting started. When
-magic causes unwanted results, its limitations can outweigh its
-benefits.
+Guild lets you generate an experiment without code change or
+configuration by simply running this command:
 
-In cases where Guild performs magic, it offers a path to change the
-implicit behavior through explicit configuration.
+``` command
+guild run train.py
+```
 
-The sections below discuss cases where Guild performs magic and how to
-change the behavior.
+In many cases, Guild's auto-detect behavior is sufficient and the
+operation works as expected. In cases where the auto-detect behavior
+is incorrect, or when you otherwise want to explicitly configure the
+behavior, Guild gives you full control in a [Guild
+file](ref:guildfile).
+
+*We strongly recommend that you use Guild files for all production
+work.*
+
+## Disabling Auto-Detection
+
+!!! note
+    Guild's auto-detection support currently applies only to
+    Python based operations. If you are using a language other than
+    Python, Guild does not inspect your script for flag information.
+
+To prevent Guild from inspecting a Python based operation, provide a
+`flags-dest` attribute.
+
+```
+train:
+  flags-dest: globals
+```
+
+^ Provide a `flags-dest` attribute for an operation to disable flag
+  auto-detect behavior
+
+For more information, see [Flags Interface - Guild
+File](/guildfile.md#flags-interface).
+
 
 ## Import Flags
 
-By default, Guild AI attempts to detect and import script flags. In
-some cases Guild gets this wrong. When it does, you can configure
-flags in a [Guild File](ref:guildfiles).
-
-### Motivation
-
-Guild AI attempts to remove barriers to experiment tracking. It's time
-consuming to write configuration files and so Guild doesn't require
-configuration to start. When you need to be explicit, you can add
-configuration in small steps as needed.
 
 ### Implementation
 
@@ -169,7 +182,7 @@ to source code.
 ### Motivation
 
 Guild AI tracks machine learning experiments and does so without
-requiring changes to your code. [Dependencies](dependencies.md)
+requiring changes to your code. [Dependencies](/kb/dependencies.md)
 describes the benefit to this approach.
 
 Because a number of machine learning scripts are written without

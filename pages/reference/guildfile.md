@@ -205,7 +205,7 @@ If the Guild file is full format, they are applied as attributes of an
 
             When this operation is completed, run `train`.
 
-`main`
+`main` <div id="operation-main"></div>
 : Operation main Python module (string)
 
     This value tells Guild what to execute when someone runs the
@@ -236,7 +236,7 @@ If the Guild file is full format, they are applied as attributes of an
 
     `main` must be provided if `exec` is not defined.
 
-`exec`
+`exec` <div id="operation-exec"></div>
 : Operation command (string)
 
     Guild uses this value to execute a system command.
@@ -248,13 +248,13 @@ If the Guild file is full format, they are applied as attributes of an
 `steps`
 : List of steps to run for workflow (list of string or [steps](#steps))
 
-    See [Workflow](../workflow.md) for more information on
+    See [Workflow](/workflow.md) for more information on
     implementing workflows in Guild.
 
-`flags`
-: Operation flags (mapping of flag name to [Flag](#flag) definition)
+`flags` <div id="operation-flags"></div>
+: Operation flags (mapping of flag name to [Flag](#flags) definition)
 
-`flags-dest`
+`flags-dest` <div id="operation-flags-dest"></div>
 : Destination for flag values (string)
 
     This value tells Guild how to communicate flag values to the
@@ -315,9 +315,9 @@ If the Guild file is full format, they are applied as attributes of an
   (mapping of names to values)
 
     Note that flag values are always available in the environment as
-    `FLAG_*` variables, where `*` is the upper case flag name. A flag
-    can specify a different environment variable name using the
-    `env-name` flag attribute.
+    `FLAG_UPPER_NAME` variables, where `UPPER_NAME` is the upper case
+    flag name. A flag can specify a different environment variable
+    name using the [`env-name` flag attribute](#flag-env-name).
 
 `python-requires`
 : Requirement specification of Python needed for the operation
@@ -329,23 +329,59 @@ If the Guild file is full format, they are applied as attributes of an
 `python-path`
 : Path to use for `PYTHONPATH` when running the operation (string)
 
----
+`stoppable`
+: Indicates whether user-termination of the operation should be
+  treated as a success (boolean)
 
+      By default, Guild designated user-terminated operations as
+      `terminated`. In some cases, you may may want to designate such
+      user-terminated operations as `completed`, in which case, set
+      this attribute to `yes`.
 
+`label`
+: Label template for the operation (string)
 
+    By default, Guild creates a label that includes user-provided flag
+    values. Use the `label` attribute to to define an alternative
+    default label template.
 
-        self.disable_plugins = _disable_plugins(data, modeldef.guildfile)
-        self.dependencies = _init_dependencies(data.get("requires"), self)
-        self.remote = data.get("remote") or False
-        self.stoppable = data.get("stoppable") or False
-        self.set_trace = data.get("set-trace") or False
-        self.label = data.get("label")
-        self.compare = data.get("compare")
-        self.handle_keyboard_interrupt = (
-            data.get("handle-keyboard-interrupt") or False)
-        self.flag_encoder = data.get("flag-encoder")
-        self.default_max_trials = data.get("default-max-trials")
-        self.output_scalars = data.get("output-scalars")
+    Use ``${FLAG_NAME}`` in the label to include specific flag
+    values. For example, to define a label template that includes the
+    flag `dropout_rate`, use ``dropout_rate=${dropout_rate}``.
+
+`output-scalars`
+: List of output scalar patterns to apply to run standard output (list
+  of [output scalar specs](#output-scalar-specs) or `no`)
+
+      By default, Guild captures output scalars using the pattern
+      ``^(\key): (\value)``.
+
+      Use the `output-scalars` attribute to customize the way Guild
+      captures scalars from standard output.
+
+      To disable capturing of output scalars altogether, specify `no`.
+
+`objective`
+: Objective used by sequential optimizers (string or mapping)
+
+    If `objective` is a string, optimizers attempt to minimize the
+    specified scalar value for runs.
+
+    If `objective` is a mapping, it uses the following attributes:
+
+    `
+
+`compare`
+: List of columns to include for operation runs in [Guild
+  Compare](/tools/compare.md) (list of [column specs](#column-specs))
+
+`default-max-trials`
+: Default number of max trials when running batches (integer)
+
+    By default, the max trials used when the user doesn't explicitly
+    specify `--max-trials` is optimizer-specific --- however, it is
+    usually 20.
+
         self.objective = data.get("objective")
         self.optimizers = _init_optimizers(data, self)
         self.publish = _init_publish(data.get("publish"), self)
@@ -354,9 +390,190 @@ If the Guild file is full format, they are applied as attributes of an
         self.default_flag_arg_skip = (
             data.get("default-flag-arg-skip") or False)
 
+### Output Scalar Specs
+
+### Column Specs
+
 ## Flags
 
-### Examples
+Flags are defined as mappings under the `flags` operation
+attribute. The mapping key is the flag *name*.
+
+A mapping value may either a mapping of attributes or a default
+value. Available flag attribute are listed below.
+
+### Flag Attributes
+
+`<mapping key>`
+: Flag name (required string)
+
+    The flag name is used when specifing a flag value. When specifying
+    a value as an argument to the [run](cmd:run) command, the name is
+    used as `NAME=VALUE`.
+
+`description`
+: Flag description (string)
+
+    The flag description is used in project and operation help. If the
+    flag description contains more than one line, the first line is
+    used for operation help.
+
+`type`
+: Flag value type
+
+    Flag type is used to both validate and convert flag values when
+    set as global variables. Note that all command line arguments and
+    environment variables are passed as strings and must be converted
+    by the script. Guild uses the type to validate user-provided input
+    in all cases.
+
+    By default, Guild converts user-input to values using YAML rules
+    for decoding.
+
+    Flag type may be one of:
+
+    `string`
+    : Value is converted to string regardless of how it would be
+      decoded as YAML.
+
+     `number`
+     : Value is converted to an integer when possible, otherwise it is
+       converted to a float.
+
+     `float`
+     : Value is converted to a float.
+
+     `int`
+     : Value is converted to an integer.
+
+     `boolean`
+     : Value is converted to a boolean.
+
+     `path`
+     : Value is converted to a string and must contain only valid path
+       characters.
+
+     `existing-path`
+     : Value is converted to a string and checked as an existing path.
+
+`default`
+: Default flag value
+
+    By default, flag values are `null`, which means they are not
+    passed to the script.
+
+`required`
+: Indicates whether or not a flag value is required (boolean)
+
+    By default, flag values are not required.
+
+`arg-name`
+: The argument name used when setting the flag value (string)
+
+    If operation `flags-dest` is `args`, this attribute specifies the
+    argument option name, used as ``--NAME VALUE``.
+
+    If operation `flags-dest` is `globals`, this attribute specifies
+    the global variable name.
+
+    If operation `flags-dest` is `global:PARAM`, this attribute
+    specifies the key used when setting the flag in the `PARAM` global
+    dict.
+
+`arg-skip`
+: Indicates whether the flag is skipped as an argument (boolean)
+
+    By default, all flags are set according to the operations
+    `args-dest` attribute. If `arg-skip` is set to `yes` for a flag,
+    that flag will not be set.
+
+    This value is used to skip flag arguments that are already
+    specified in the `main` or `exec` operation attributes.
+
+`arg-switch`
+: A value that, when specified, causes the flag to be set as a boolean
+  switch
+
+    By default, flags are set as values. When `arg-switch` is
+    specified, they are set as boolean switches if and only if the
+    user specifies the `arg-switch` value. A boolean switch is
+    specified as a ``--SWITCH`` command line argument and does not
+    provide a value. A boolean switch is specified as `True` when set
+    as a global variable.
+
+    For example, if `arg-switch` is `yes` for a flag named `test`,
+    when the user specifies ``test=yes``, the command line option
+    ``--test`` is provided without a value to the script --- or the
+    global variable `test` is set to `True` --- depending on the
+    operation `flags-dest` setting.
+
+`choices`
+: A list of allowed flag values (list of values or mappings)
+
+    Each list item may be either a value, which indicates one of the
+    valid choices, or a mapping of choice attributes.
+
+    When specified as a mapping, valid attributes are:
+
+    `value`
+    : The choice value
+
+    `description`
+    : A description of the choice
+
+        The choice description is used when showing operation help.
+
+`allow-other`
+: Indicates whether the user may enter a non-choice value when
+  `choices` is specified (boolean)
+
+`env-name` <div id="flag-env-name"></div>
+: The environment variable name used for the flag (string)
+
+     By default, Guild provides a flag value as the environment
+     variable `FLAG_UPPER_NAME` where `UPPER_NAME` is the flag name in
+     upper case. All non-alpha-numeric characters are converted to
+     underscores. So a flag named `learning-rate` is made available as
+     the environment variable `FLAG_LEARNING_RATE`.
+
+     Use the `env-name` to control the environment variable name used.
+
+`null-label`
+: Display label used in operation preview when flag value is `null` (string)
+
+    By default, Guild uses the string ``default`` when showing null
+    values in the operation preview. Use this attribute in cases where
+    another string would be clearer. For example, if the behavior of a
+    script is to auto-detect a value when a `dataset` flag is `null`,
+    `null-label` could be set to ``auto detected`` to help convey this
+    to the user.
+
+`min`
+: Minimum allowed value (number)
+
+    By default, Guild does not check number ranges.
+
+    This value also serves as the default lower bound for values
+    chosen by optimizers.
+
+`max`
+: Maximum allowed value (number)
+
+    By default, Guild does not check number ranges.
+
+    This value also serves as the default upper bound for values
+    chosen by optimizers.
+
+`distribution`
+: Distribution used when sampling values for flag
+
+    Legal values are:
+
+    `uniform`
+    : Sample from a uniform distribution.
+
+    `log-uniform`
+    : Sample from a log uniform distribution.
 
 ## Source Code
 

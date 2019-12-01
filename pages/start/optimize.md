@@ -2,7 +2,7 @@ tags: start
 
 # Optimize a Model
 
-In [the previous section](../start.md) you ran a *random search* to
+In [the previous section](/start.md) you ran a *random search* to
 find optimal values for `x`. In this section, you use two other
 methods: *grid search* and *Bayesian optimiation*.
 
@@ -31,7 +31,7 @@ them.
 
 To perform a grid search, you could run separate commands for each
 value of `x`. However, as you saw in [the previous
-section](../start.md), Guild lets you run multiple trials with a
+section](/start.md), Guild lets you run multiple trials with a
 single command.
 
 Run a search over three values of `x`:

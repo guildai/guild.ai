@@ -166,7 +166,7 @@ Operations defined per model ([full format](ref:full-format)):
     - When an operation name is the same as the Python module name, you
       can omit `main`.
 
-Refer to [Operations](../reference/guildfile.md#operations) for a full
+Refer to [Operations](/reference/guildfile.md#operations) for a full
 list of configuration options.
 
 See [Guild File Snippets](#guild-file-snippets) below for more

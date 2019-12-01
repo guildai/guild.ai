@@ -6,7 +6,7 @@ sidenav_title: Remotes
 
 The examples below apply to Guild [user
 configuration](ref:user-config). For a complete reference of remote
-configuration, see [Remotes Reference](../reference/remotes.md).
+configuration, see [Remotes Reference](/reference/remotes.md).
 
 !!! note
     Each example includes the top-level `remotes` attribute. This
@@ -18,7 +18,7 @@ configuration, see [Remotes Reference](../reference/remotes.md).
 ## s3 Examples
 
 s3 remotes must use the `s3` type. Refer to [Remotes Reference -
-S3](../reference/remotes.md#s3) for full configuration details.
+S3](/reference/remotes.md#s3) for full configuration details.
 
 ### Minimal Definition
 

@@ -192,8 +192,7 @@ guild check
 ```
 
 If there are problems with your installation, Guild will display the
-details and exit with an error. Refer to
-[Troubleshooting](/troubleshooting) for assistance.
+details and exit with an error.
 
 ## Next Steps
 

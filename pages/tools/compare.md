@@ -1,19 +1,8 @@
-tags: concept
+sidenav_title: Compare
 
-# Tools
+# Guild Compare
 
-[TOC]
-
-Once you generate runs, you can study and compare them to answer
-various questions.
-
-- Which set of hyperparameters leads to the highest accuracy?
-- Did a code change improve or degrade results?
-- What is the effect of dropout on time-to-converge?
-
-Guild provides a number of tools for comparing runs.
-
-## Guild Compare
+TODO
 
 Guild Compare is a [curses based application
 ->](https://en.wikipedia.org/wiki/Curses_(programming_library)) that
@@ -23,7 +12,7 @@ remote comparisons as it works equally well over ssh.
 Use Guild Compare to view runs in a spreadsheet format including flags
 and scalar values.
 
-![](/assets/img/compare-feature.png)
+![](/assets/img/compare-feature-2.png)
 
 ^ Guild Compare shows runs in a spreadsheet format
 
@@ -60,30 +49,3 @@ Exit
 
 You can use Guild Compare to generate JSON and CSV files with run
 details.
-
-## Guild View
-
-## TensorBoard
-
-### Summaries
-
-TODO
-
-### Images
-
-TODO
-
-### Hyperparameters
-
-TODO
-
-for your runs so you can compare results using [parallel coordinates
-->](https://en.wikipedia.org/wiki/Parallel_coordinates) and [scatter
-plot matrices
-->](https://en.wikipedia.org/wiki/Scatter_plot#Scatter_plot_matrices).
-
-## Diff Runs
-
-## View Files
-
-TODO
