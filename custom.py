@@ -840,7 +840,7 @@ class CmdHelpContext(object):
     def _init_cmd_url_base(cmd_help):
         prog = cmd_help["usage"]["prog"]
         cmd_path = prog.split(" ")[1:]
-        return "/docs/commands/{}".format("-".join(cmd_path))
+        return "/commands/{}".format("-".join(cmd_path))
 
     def cmd_url(self, cmd):
         return  "{}-{}/".format(self._cmd_url_base, cmd)

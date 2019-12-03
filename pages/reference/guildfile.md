@@ -245,7 +245,17 @@ If the Guild file is full format, they are applied as attributes of an
     to [Steps](#steps) below for details.
 
 `flags` <div id="operation-flags"></div>
-: Operation flags (mapping of flag name to [Flag](#flags) definition)
+: Operation flags (mapping of flag name to [flag](#flags))
+
+    Flags define the user-interface for an operation. Mapping keys are
+    flag names. See [Flags](#flags) for a list of flag attributes.
+
+    Guild supports the special `$include` mapping key, which may be a
+    string or list of strings. Each string may refer to either a model
+    operation or a config object.
+
+    See [Reuse Flag Definitions](#reuse-flag-definitions) below for
+    .
 
 `flags-dest` <div id="operation-flags-dest"></div>
 : Destination for flag values (string)
@@ -600,9 +610,33 @@ value. Available flag attribute are listed below.
 An operation may require *resources* to run. Required resources are
 referred to as *dependencies*.
 
-Dependencies are specified using the `requires` attribute.
+Dependencies are specified using the `requires` attribute. The value
+for `requires` is list of dependencies.
 
-Dependencies may be
+Dependencies may be *inline* or *named*. An inline resource is defined
+as part of the `requires` operation attribute. A named resource is
+defined as a model resource and is referenced using the resource name.
+
+When defining an inline resource, you may specify any supported
+resource attributes. In addition, you may include a `name` attribute,
+which is used when referencing the inline resource. By default, Guild
+generates a unique name using the resource source URIs.
+
+The following defines a list of both inline and named dependencies:
+
+``` yaml
+train:
+  required:
+    - prepared-data     # named resource
+    - file: config.yml  # inline resource
+```
+
+See [Resources](#resources) below for resource types and supported
+attributes.
+
+See [Required Files - Guild File
+Cheatsheet](/cheatsheets/guildfile.md#required-files) for more
+examples.
 
 ### Source Code Specs
 
@@ -947,7 +981,281 @@ using the `model` type attribute.
 
 ^ Sample model `svm` defined in using [full format](term:full-format)
 
+Model attribute include:
+
+`description`
+: Description of the model (multiline string)
+
+    Use `description` to provide a single line description as well as
+    multiline descriptions. The first line of a model description is
+    used in [models](cmd:models) output. Additional lines are used to
+    show model help.
+
+`extends`
+: One or more models or config objects to extend (string or list of
+  strings)
+
+    Use `extends` to inherit the a model definition from a `model` or
+    `config` top-level object.
+
+    For more information, see [Model Inheritance](#model-inheritance)
+    below.
+
+`references`
+: List of model sources and attributions (list of strings)
+
+    Guild includes model references in model help.
+
+`operations`
+: Model operations (mapping of [operations](#operations)
+
+    Use `operations` to define supported model operations. Mapping
+    keys are operation names. See [Operations](#operations) for
+    operation attributes.
+
+    Model operations are run using ``guild run MODEL:OPERATION`` where
+    `MODEL` is the model name and `OPERATION` is the operation name.
+
+`resources`
+: Resources defined for the model (mapping of [resources](#resources))
+
+    Use `resources` to define named resources, which may be referenced
+    by operations as dependencies using the resource name. Mapping
+    keys are resource names. See [Resources](#resources) for resource
+    attributes.
+
+`sourcecode`
+: Source code specification used for model operations ([source code
+  spec](#source-code-spec))
+
+    The `sourcecode` spec defined at the model level applies to all
+    model operations. Operation level `sourcecode` specs *extend* the
+    model level spec by effectively appending spec items to the end of
+    the model items.
+
+`python-requires`
+: Default Python requirement for model operations ([](ref:pip-reqs)
+
+    Operations may redefine this value as needed using their own
+    `python-requires` attribute.
+
 ## Resources
+
+Resources are files used by operations. Resources are specified as
+operation *dependencies* using the [`requires` operation
+attribute](#operation-requires).
+
+Resources may be defined *inline* as a item in `requires` or may be
+defined for a model under the `resources` attribute. In either case,
+resource attributes, which are described below, may be used.
+
+Resources define *sources*, which specify information about the files
+to resolve.
+
+Refer to [Resource Sources](#resource-sources) for supported
+attributes.
+
+Resources may refer to multiple files, as in the case of a local
+directory, an archive file, or run-generated files. In such cases, the
+resource may *select* required files using one or more regular
+expression patterns. See [`select` resource
+attribute](#resource-select) below for more information.
+
+A resource item may be a mapping or a list. If the resource is a
+mapping, the keys are assumed to be [*resource
+attributes*](#resource-attributes). If the value is a list, the list
+is assumed to be [*resource sources*](#resource-sources).
+
+Here's a resource definition mapping where sources are defined under
+the `sources` resource attribute:
+
+``` yaml
+- model: resnet
+  resources:
+    pretrained-model:
+      path: model
+      sources:
+        - url: http://my.co/models/resnet.tar.gz
+```
+
+Here's a resource definition list, which defines sources as list
+items:
+
+``` yaml
+- model: resnet
+  resources:
+    pretrained-model:
+      - url: http://my.co/models/resnet.tar.gz
+```
+
+To specify any resource attribute other than `sources`, you must use a
+mapping to define the resource.
+
+See [Required Files - Guild File
+Cheatsheet](/cheatsheets/guildfile.md#required-files) for examples.
+
+### Resource Attributes
+
+The following attribute may be used when defining a resoure using a
+mapping.
+
+`<mapping key>`
+: Resource name, when defined as a model resource (required)
+
+`flag-name`
+: Flag name used when setting resource source values using flags (string)
+
+    In cases where a user may configure a resource value, Guild uses
+    the resource name by default to reference the resource. In some
+    cases, it might be clearer to use an alternative name.
+
+    This value can also be used to associated the resource to a flag
+    definition of the same name. Use flag expose resources to users
+    through project help and run preview.
+
+`description`
+: Resource description (string)
+
+    This value is used to annotate the resource in the Guild file. It
+    is not otherwise used by Guild.
+
+`path`
+: Path to create resolved resources under (string)
+
+    By default, Guild creates links to resolved resource in the run
+    directory. `path` may be used to specify a subpath to create links
+    in.
+
+    This value serves as a default for resource sources, which may
+    define their own `path` attributes.
+
+`default-unpack`
+: Whether or not to unpack source archives by default (boolean)
+
+    By default, Guild unpacks resolved archives. Each resource source
+    may define `unpack`, which controls this
+    behavior. `default-unpack` may be used to define the default used
+    by sources.
+
+`sources`
+: Sources that define the resources to resolve (list of [resource
+  source](#resource-sources))
+
+### Resource Sources
+
+A resource source is specified by a type attribute, which may be one
+of the following:
+
+`file`
+: A local path relative to the Guild file location.
+
+    A file may refer to a file or a directory. The value of `file`
+    types is a local file path.
+
+`url`
+: A network accessible file.
+
+    The value for `url` types is a valid URL.
+
+`operation`
+: Files generated by an operation run.
+
+    The value for `operation` types is an operation name or a regular
+    expression pattern used match operation names.
+
+In addition to the type attribute, resource sources support these
+attributes:
+
+`name`
+: An optional name used to reference the source (string)
+
+    By default, Guild uses the type attribute value to generate a name
+    for the source.
+
+    Source names are used to set modify type attribute values using
+    flags.
+
+`path`
+: The path under the run directory in which to create resolved source
+  links (string)
+
+    By default, Guild creates links in the run directory. Use `path`
+    to specify a subpath.
+
+`sha256`
+: An optional digest used to validate a source file (string)
+
+    If specified, Guild will compare the resolved file to the
+    specified digest and generate an error if it does not match.
+
+    If the source is a directory, Guild ignores this value and prints
+    a warning message.
+
+`unpack`
+: Indicates whether or not Guild unpacks resolved archives (boolean)
+
+    By default, Guild unpacks resolved archives. Set this value to
+    `yes` disable unpacking.
+
+    If this attribute is not specified, Guild uses the resource
+    `default-unpack` attribute, if defined.
+
+`select`
+: A list of patterns used to select files from an archive or directory
+  (string or list of strings)
+
+    If a file path within an archive or directory matches one of the
+    specified select patterns, that file is selected, otherwise the
+    file is not selected.
+
+    Archives must be unpacked to select files.
+
+    This setting is ignored for single file sources.
+
+`select-min` and `select-max`
+: A pattern used to select a file matching minimum or maximum captured
+  value (string)
+
+    Use o select one file from a list of archive or directory files
+    using a captured group value. For example, if a directory contains
+    `file-1` and `file-2`, the `select-min` value ``file-([0-9]+)``
+    will select `file-1`. Similarly, `select-max` would select
+    `file-2`.
+
+    This attribute is often used with the `operation` type to select
+    trained models that are saved in files containing performance
+    values such as *loss* and *accuracy*.
+
+`rename`
+: Specification for renaming resolved files (string or mapping)
+
+    If the value is a string, it must be in the form `PATTERN REPL`
+    where `PATTERN` is a regular expression to match and `REPL` is the
+    value used to replace matched patterns.
+
+    If the value is a mapping, it must define the following
+    attributes:
+
+    `pattern`
+    : The pattern to match (string)
+
+    `repl`
+    : The value to replace matching patterns (string)
+
+`post-process`
+: A command to run once to process a resource (string)
+
+    When Guild first resolves a resource, it runs `post-process` if
+    specified. This command is run once per command value. If the
+    value is changed, Guild will re-run the command when resolving the
+    resoure.
+
+    Use this value to perform tasks on a resolved resource. For
+    example, to apply patches, compile source, etc.
+
+`help`
+: A message to show the user if the resouce cannot be resolved
+  (string)
 
 ## Packages
 
@@ -1033,4 +1341,23 @@ Cheatsheet](/cheatsheets/guildfile.md#packages) for examples.
 
 ## Config
 
-XXX
+A config top-level object can be used to create reusable configuration
+within a Guild file.
+
+Use config objects to:
+
+- Define config that can be inherited by models
+- Define reusable sets of flags
+- Define reusable sets of operations
+
+## Model Inheritance
+
+Models may use the `extends`
+
+## Mapping Includes
+
+### Reuse Flag Definitions
+
+### Reuse Operation Definitions
+
+## Guild File Includes

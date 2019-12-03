@@ -24,7 +24,7 @@ extra:
     - text: Pipeline Automation
       icon: hierarchy-10-gray
 
-    - text: Open Source
+    - text: Open Source & Independent
       icon: programming-flag-gray
 
   links:
@@ -221,8 +221,8 @@ pages:
       - Concepts:
           ##- architecture.md
           - cli.md
-          - guildfile.md
           - runs.md
+          - guildfile.md
           - workflow.md
           - remote.md
           - backup-and-restore.md

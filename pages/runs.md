@@ -138,6 +138,15 @@ If you want to bypass the confirmation --- or you are running the
 command in a script or other unattended mode --- specify the `--yes`
 option.
 
+### Specify Run Flags
+
+*Flags* are run settings that can be specified as arguments to the
+`run` command. Flags are specified using the format
+``NAME=VALUE``. Each flag assignment must be provided as a single
+`run` command argument.
+
+For example, the following
+
 ### Run in the Background
 
 By default, Guild executes runs in the foreground. To run an operation
@@ -149,6 +158,80 @@ You can watch the progress of a background run using
 --- it merely tails the operation log. Therefore pressing `Ctrl-C`
 when watching a run will not terminate the run. To stop a background
 run, use [](cmd:stop).
+
+## List Runs
+
+Use [runs](cmd:runs) to list available runs.
+
+```
+guild runs
+```
+
+![](assets/img/runs.png)
+
+^ Sample runs list
+
+Guild shows the following run information:
+
+Runs list index and run ID
+: The first column contains the runs list index and run ID, which are
+  separated by a colon. The runs list index starts with 1 and is
+  incremented by 1 for each subsequent run. The index value may be
+  used reference a run by its position in the list. The run ID is the
+  first eight characters of the unique full run ID. Use the run ID to
+  reference a run independent of its order in a list.
+
+    Note that the runs list index changes based on the number of runs
+    and the filter used in the `runs` command.
+
+    Either the index or run ID can be used whenever a ``RUN`` argument
+    is supported for a Guild command. For example, to show information
+    for the second run in the list (index `2`), use ``guild runs info
+    2``.
+
+Operation
+: The second column of the runs list shows the run operation. The
+  operation name is used in the [run](cmd:run) command. You can filter
+  the runs list by operation name using the `-o` or `--operation`
+  option. For example, to show only runs containing "train" in their
+  operation, use ``guild runs -o train``.
+
+Start date and time
+: The third column shows the start date and time of the run. You can
+  filter runs by start time using the `-s` or `--started`
+  option. Guild supports a flexible filter specification for start
+  time. Refer to [Filter Runs by Start
+  Time](/commands/runs-list.md#filter-by-run-start-time) for more
+  information on limiting runs by start time.
+
+Run status
+: The fourth column shows the run status. Refer to [Run Status](#run-stats)
+  for a list of possible values for this column.
+
+Label
+
+: The fifth column shows the run label. Run labels are arbitrary
+  strings used to identify a run. By default, Guild assigns a run
+  label based on user provided flag values. You can set the label for
+  a run using the `-l` or `--label` option of the `run` command. See
+  [Label Runs](#label-runs) for more information.
+
+<!-- TODO Elaborate on start time filter in user docs here -->
+
+The `runs` command supports a number of options for filtering
+runs. For example, to show only *terminated* runs, use the `-T` or
+`--terminated` option.
+
+To filter runs by operation, use `-o` or `--operation`. Guild shows
+all runs whose operations contain the specified value.
+
+For a complete list of filters, see [runs](cmd:runs).
+
+By default, Guild shows only the latest 20 runs. To view more runs,
+use the `-m` or `--more` option, which shows an additional 20 runs for
+each occurrence.
+
+To show all runs, use `-a` or `--all`.
 
 ## Get Information About a Run
 
@@ -179,18 +262,69 @@ executed.
 
 ### List Run Files
 
-To list files associated with a run, use [ls](cmd:ls). The command is
-named after the shell command for listing files for a directory.
+To list files associated with a run, use [ls](cmd:ls). By default,
+Guild shows files associated with the latest run. You can specify an
+alternative run, using an index or a run ID.
 
-By default, Guild shows all non-private files in the [run directory](ref:rundir)
+``` command
+guild ls [RUN]
+```
+
+Run files are stored in the [run directory](ref:run-dir).
+
+Commonly used [ls](cmd:ls) options include:
+
+`-f, --full-path`
+: Show the full path for each run file. This is useful when you want
+  to access a run file using its full path.
+
+`-a, --all`
+: Show all run files, including Guild-managed files, which are located
+  in the `.guild` subdirectory.
+
+`-L, --follow-links`
+: Show files under symbolic link directories. By default, Guild does
+  not follow linked directories.
+
+`-p, --path`
+: List contents of a subpath with the run directory.
+
+For a complete list of options, see the [``ls``
+command](/commands/ls).
 
 ### View Run File Contents
 
-TODO
+To view the contents of a run file, use [cat](cmd:cat) with the ``-p,
+--path`` option. By default, the ``cat`` command applies to the latest
+run. To view a file for a different run, specify the run index or run
+ID.
 
-## List Runs
+``` command
+guild cat [RUN] -p PATH
+```
 
-TODO
+!!! note
+    [cat](cmd:cat) prints file contents to standard output and is
+    therefore typically used to view text files. You can use `cat` to
+    copy a file using [IO redirection
+    ->](https://www.tldp.org/LDP/abs/html/io-redirection.html). For
+    example, to write a file `model.ckpt` to `/tmp/model.ckpt`, use
+    ``guild cat -p model.ckpt > /tmp/model.ckpt``.
+
+### View Run Output
+
+To view run outout, use [cat](cmd:cat) with the `--output` option:
+
+``` command
+guild cat --output [RUN]
+```
+
+Use the `--page` option to use a pager when viewing long files or
+output.
+
+``` command
+guild cat --output --page
+```
 
 ## Compare Runs
 

@@ -30,6 +30,11 @@ a > code {
   color: $link-color;
 }
 
+a.cmd {
+  background-color: $code-inline-bg-color;
+  padding: 0 3px;
+}
+
 h1 code,
 h2 code,
 h3 code,

@@ -20,8 +20,8 @@ title: The ML Engineering Platform
 <p class="highlight" markdown="1">
 
 Guild AI brings systematic control to ML so you can improve your
-models faster and avoid costly mistakes. It encourages engineering
-best practices for automation, measurement and governance. Use it to
+models faster and avoid mistakes. It encourages engineering best
+practices for automation, measurement and governance. Use it to
 control and optimize all stages of your ML pipeline from data
 preparation to training to deployment.
 

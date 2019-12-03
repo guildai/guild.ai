@@ -9,7 +9,7 @@ tags: concept
 Guild files are named `guild.yml` and are located in project
 directories. They provide information about your project.
 
-- Scripts to generate experiments
+- Scripts used to generate experiments
 - User input parameters
 - Generated metrics
 - Script source code
@@ -73,15 +73,15 @@ operation, Guild executes the `train` module with the specified flag
 values. Guild generates a *run*, which is a record of the operation
 inputs and outputs.
 
-For information about managing runs, see [Runs](/runs.md).
+For information on managing runs, see [Runs](/runs.md).
 
-### Python Based Operation
+### Python Operation
 
-Guild provides specialize support for Python based operations. To
-define a Python based operation, use the `main` operation
-attribute. The `main` attribute specifies the Python main module. This
-is a Python module that performs some task when loaded by the Python
-interpreter as `__main__`.
+Guild provides special support for Python-based operations. To define
+a Python based operation, use the `main` operation attribute. The
+`main` attribute specifies the Python main module. This is a Python
+module that performs some task when loaded by the Python interpreter
+as `__main__`.
 
 Consider a script named `train_classifier.py` that is run using Python
 as follows:
@@ -98,9 +98,10 @@ train:
   main: train_classifier
 ```
 
-Do not include the file name extension when specifying a main module
-for an operation. The attribute value specifies a Python *module* and
-not a file name.
+!!! note
+    Do not include the file name extension when specifying a main
+    module for an operation. The attribute value specifies a Python
+    *module* and not a file name.
 
 See also:
 
