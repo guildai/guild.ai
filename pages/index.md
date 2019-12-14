@@ -129,7 +129,7 @@ under the Apache 2.0 open source license.
 <div class="row img-features">
 
   <div class="col col-sm-6 match-height">
-    <h5>Governance and Auditability</h5>
+    <h5>Systematic Measurement and Control</h5>
     <img class="md shadow" src="/assets/img/view-feature.png">
     <p>
       Record each operation, including source code, hyperparameters,
@@ -139,22 +139,12 @@ under the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Go Beyond Notebooks</h5>
+    <h5>Beyond Notebooks</h5>
     <img class="md shadow" src="/assets/img/plot-feature.png">
     <p>
       Run your Notebook code in Guild to record summaries over the
       entire life cycle of your models. Know what changed three hours
       ago, or three years!
-    </p>
-  </div>
-
-  <div class="col col-sm-6 match-height">
-    <h5>Hyperparameter Tuning</h5>
-    <img class="md shadow" src="/assets/img/hparams-2-feature.png">
-    <p>
-      Apply state-of-the-art tuning algorithms to your models with
-      simple commands. Easily optimize with upstream changes to data
-      or model architecture.
     </p>
   </div>
 
@@ -165,6 +155,16 @@ under the Apache 2.0 open source license.
       Integrate Guild features into any environment without
       reengineering effort. Commands are POSIX compliant and run
       without external dependencies.
+    </p>
+  </div>
+
+  <div class="col col-sm-6 match-height">
+    <h5>Hyperparameter Tuning</h5>
+    <img class="md shadow" src="/assets/img/hparams-2-feature.png">
+    <p>
+      Apply state-of-the-art tuning algorithms to your models with
+      simple commands. Easily optimize with upstream changes to data
+      or model architecture.
     </p>
   </div>
 
@@ -225,7 +225,7 @@ under the Apache 2.0 open source license.
 <div class="row display-flex">
 <div class="col col-md-6">
 <div class="promo left match-height">
-<h3><img src="/assets/icons/cursor-double-click-bold.svg"> Get Started</h3>
+<h3><img src="/assets/icons/space-rocket-flying.svg"> Get Started</h3>
 <p class="expand">
 
 Start using Guild AI in minutes to track and measure experiments.

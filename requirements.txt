@@ -1,2 +1,3 @@
 mkdocs==0.17.5
 markdown==2.6.11
+markdown-include>=0.5.1

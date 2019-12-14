@@ -18,11 +18,11 @@ extra:
     - text: Experiment Tracking
       icon: folder-check-gray
 
-    - text: Auto ML
-      icon: seo-search-graph-gray
-
     - text: Pipeline Automation
       icon: hierarchy-10-gray
+
+    - text: Auto ML
+      icon: seo-search-graph-gray
 
     - text: Open Source & Independent
       icon: programming-flag-gray

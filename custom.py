@@ -1421,7 +1421,8 @@ class Serve(BasePlugin):
             return {
                 "func": builder,
                 "ignore": ignore,
-                "delay": None
+                "delay": None,
+                "mtimes": {},
             }
         server.watcher._tasks = {
             "mkdocs.yml": task(),
