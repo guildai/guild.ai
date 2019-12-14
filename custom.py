@@ -336,7 +336,9 @@ class LinkTemplate(object):
 
     @staticmethod
     def _link_body(link):
-        children = "".join([etree.tostring(e) for e in link.getchildren()])
+        children = "".join([
+            etree.tostring(e).decode() for e in link.getchildren()
+        ])
         return (link.text or "") + children
 
     def _applied_link_href(self, args, link):
