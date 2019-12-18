@@ -139,7 +139,7 @@ under the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Beyond Notebooks</h5>
+    <h5>Notebooks and Beyond</h5>
     <img class="md shadow" src="/assets/img/plot-feature.png">
     <p>
       Run your Notebook code in Guild to record summaries over the
