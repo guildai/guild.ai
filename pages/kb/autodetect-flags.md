@@ -1,5 +1,7 @@
 # Auto-Detecting Flags
 
+TODO: Move this content into configure-flags.md.
+
 Guild AI generally adheres to the principles outlined in Tim Peter's
  [PEP 20 -- The Zen of Python
  ->](https://www.python.org/dev/peps/pep-0020/). One of those

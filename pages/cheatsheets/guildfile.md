@@ -4,6 +4,132 @@ sidenav_title: Guild File
 
 [TOC]
 
+## Python Based Operations
+
+### Flags as Globals
+
+#### Auto-Detect Globals
+
+<div class="col-md-5 mt-4" markdown="1">
+
+Use `flags-import` to import all flags or a list of flags.
+
+</div>
+<div class="col-md-7" markdown="1">
+
+``` yaml
+train:
+  flags-import: all
+```
+
+^ `guild.yml`
+
+</div>
+
+<div class="col-md-5 mt-4" markdown="1">
+
+Python module uses global variables to define flags.
+
+</div>
+<div class="col-md-7" markdown="1">
+
+``` python
+x = 1
+y = 2
+z = x + 1
+print("z: %i" % z)
+```
+
+^ `train.py`
+
+</div>
+
+<div class="col-md-5 mt-4" markdown="1">
+
+Guild detects default flag values and sets global values for a run.
+
+</div>
+<div class="col-md-7" markdown="1">
+
+``` command
+guild run train y=3
+```
+
+^ Run `train` operation with a new value for `y`
+
+``` output
+You are about to run train
+  x: 1
+  y: 3
+Continue? (Y/n)
+z: 4
+```
+
+^ Output for script
+
+</div>
+
+#### Variations
+
+<div class="col-md-5 mt-4" markdown="1">
+
+Explicitly define *globals* interface.
+
+</div>
+<div class="col-md-7" markdown="1">
+
+``` yaml
+train:
+  flags-dest: globals
+  flags-import: all
+```
+
+^ `guild.yml`
+
+</div>
+
+
+#### Control Imports
+
+<div class="col-md-5 mt-4" markdown="1">
+
+Only import `x`.
+
+</div>
+<div class="col-md-7" markdown="1">
+
+``` yaml
+train:
+  flags-import:
+    - x
+```
+
+</div>
+
+
+### Flags as Command Line Args
+
+<!-- template
+<div class="col-md-5 mt-4" markdown="1">
+
+
+
+</div>
+<div class="col-md-7" markdown="1">
+
+
+
+</div>
+-->
+
+
+
+
+-----------
+
+OLD:
+
+
 ## Operations
 
 ### Python Based Operations
@@ -131,13 +257,6 @@ train:
 ```
 
 ^ Set flag values as elements of global dict `params` in `train` module
-
-!!! tip
-    By specifying `flags-dest` and not importing all flags, you
-    disable Guild's automatic flags detection scan.  See
-    [Auto-detecting Flags](ref:autodetect-flags) for information on
-    how Guild scans modules for interface type and how it sets module
-    global variables.
 
 ### Other Language Operations
 

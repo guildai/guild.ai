@@ -306,10 +306,11 @@ pages:
           - reference/remotes.md
 
       - Knowledge Base:
-          - kb/dependencies.md
-          - kb/autodetect-flags.md
-          - kb/model-reuse.md
-          - kb/git-for-tracking.md
+          - kb/configure-flags.md
+          - kb/guild-vs-others.md
+          #- kb/dependencies.md
+          #- kb/autodetect-flags.md
+          #- kb/model-reuse.md
 
       - Cheatsheets:
           - cheatsheets/commands.md

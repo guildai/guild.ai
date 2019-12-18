@@ -752,7 +752,7 @@ class FigureProcessor(treeprocessors.Treeprocessor):
 
     def run(self, root):
         prev = None
-        for el in root:
+        for el in list(root):
             if (el.tag == "p" and
                 el.text and el.text.startswith("^ ") and
                 prev is not None):

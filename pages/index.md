@@ -114,7 +114,7 @@ under the Apache 2.0 open source license.
 
   <div class="col-sm-6">
     <img class="feature-icon" src="/assets/icons/file-py.svg">
-    <h4>Jupyter Notebook Friendly</h4>
+    <h4>Jupyter Notebook Integration</h4>
     <p>
 
       Use Notebooks or interactive shells with Guild's Python
