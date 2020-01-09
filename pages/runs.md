@@ -60,17 +60,28 @@ isolation.
 ### Run Directory
 
 A *run directory* is a unique directory created for a run process. Run
-directories are stored under the *Guild home* for an environment. See
-[Environments](cmd:environments.md) for information about Guild home
-and the location of runs.
+directories are stored under [Guild home](term:guild-home) for an
+environment. See [Environments](/environments.md) for information
+about Guild home and the location of runs.
 
-All run metadata and generated files are located in a run directory.
+All metadata and generated files associated with a run are located in
+the run directory.
 
-A run directory can be deleted to remove the run. Note however, that
-deleted run directories for in-process runs will result in an orphaned
-run process that Guild cannot manage. To safely delete a run, either
-use [runs delete](cmd:runs-delete) or stop the run first, either using
-[stop](cmd:stop) or by terminating the run operating system process.
+You may move or delete a run directory, however, keep in mind the
+following:
+
+- Avoid moving or deleting a run directory while the run is in a
+  `running` status. Stop the run first using [stop](cmd:stop) or by
+  terminating the run process (use [runs info](cmd:runs-info) to show
+  the run `pid`).
+
+- You can relocated a run using [export](cmd:export) rather than
+  moving the directory.
+
+- You can delete a run using [runs delete](cmd:runs-delete). This
+  command provides a safe-guard for deleting running runs. It also
+  lets you restore deleted runs, provided you don't specify the
+  command `--permanent` option.
 
 ### Run Status
 

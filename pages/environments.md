@@ -14,8 +14,6 @@ You can view information about the current environment using
 guild check
 ```
 
-^ Use `check` to view Guild environment info
-
 The `guild_home` attribute in the `check` output identifies the
 location of the Guild environment. By default, the Guild environment
 is `~/.guild` where `~` is the active user home directory.
@@ -60,7 +58,7 @@ To set Guild home for one command, use one of these methods:
 GUILD_HOME=<path> guild COMMAND ...
 ```
 
-or
+or:
 
 ```
 guild -H <path> COMMAND ...
@@ -79,8 +77,9 @@ New environments may be created using various techniques.
 - Create a new directory and [set it as Guild home](#set-guild-home)
 
 Guild's [](cmd:init) command uses `virtualenv` to create a new virtual
-environment. The commands performs additional steps to streamline the
-process of creating a virtualized Guild environment for a project:
+environment. When running `init`, Guild performs additional steps to
+streamline the process of creating a virtualized Guild environment for
+a project:
 
 - Use a [Python version
   requirement](/guides/reproducibility.md#python-version) to select an

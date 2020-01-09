@@ -182,9 +182,10 @@ markdown_extensions:
               full-format: /reference/guildfile.md#full-format
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools/compare.md
+              guild-home: /environments/#set-guild-home
+              guild-view: /tools/view.md
               guildfile: /guildfile.md
               guildfiles: /guildfile.md
-              guild-view: /tools/view.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
@@ -195,12 +196,12 @@ markdown_extensions:
               random-search: https://en.wikipedia.org/wiki/Random_search
               remotes: /reference/remotes.md
               requirements: /guildfile.md#required-resources
-              run: /runs.md
               run-dir: /runs.md#run-directory
+              run: /runs.md
+              source-code: /guildfile.md#source-code
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
               step: /reference/guildfile.md#steps
               steps: /reference/guildfile.md#steps
-              source-code: /guildfile.md#source-code
               user-config: /reference/user-config.md
 
 pages:
@@ -211,6 +212,7 @@ pages:
 
       - Get Started:
           - start.md
+          - start/tips.md
           - start/optimize.md
           - start/runs.md
           - start/guildfile.md

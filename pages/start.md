@@ -3,17 +3,25 @@ tags: start
 
 # Quick Start
 
+[TOC]
+
 ## Install Guild AI
 
-In an activated [virtualenv
-->](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-or [conda
-->](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-environment, install Guild AI by running:
+If you're familiar with installing Python packages using `pip`, simply
+install the `guildai` package.
 
 ``` command
 pip install guildai
 ```
+
+or to install to the user install directory:
+
+``` command
+pip install guildai --user
+```
+
+For detailed installation instructions, see [Install Guild
+AI](/install.md).
 
 When Guild is installed, check the environment:
 
@@ -21,16 +29,16 @@ When Guild is installed, check the environment:
 guild check
 ```
 
-Refer to [Install Guild AI](/install.md) for detailed install
-instructions or [ask for help](ref:slack).
+For help troubleshooting, [ask for help](ref:slack) on the Guild AI
+Slack workspace.
 
-## Get Help
+## Get Command Help
 
-Guild is a command line tool. Commands are run using the format
-``guild COMMAND``. Use the `--help` option to show information for a
-command.
+This guide focuses on Guild's [command line
+interface](/cli.md). Commands are run using the format ``guild
+COMMAND``. Use the `--help` option to show information for a command.
 
-Show available commands:
+To show all available commands, run:
 
 ``` command
 guild --help
@@ -87,41 +95,47 @@ Commands:
   watch            Watch run output.
 ```
 
-See [Command Reference](/commands/index.md) for online help.
+See [Commands](/commands/index.md) for online help.
 
 ## Create a Sample Training Script
 
-Create a new directory:
+In the steps below, you create a sample training script and run it to
+generate experiments.
+
+Create a new project directory:
 
 ``` command
 mkdir guild-start
 ```
 
-Change to the new directory:
+Change to the project directory:
 
 ``` command
 cd guild-start
 ```
 
-In the new directory, create a file named `train.py` that contains
+In the project directory, create a file named `train.py` that contains
 this Python code:
 
 ``` python
 import numpy as np
 
+# Hyperparameters
 x = 0.1
+noise = 0.1
 
-loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * 0.1)
+# Simulated training loss
+loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
 
 print("loss: %f" % loss)
 ```
 
-^ Sample training script `train.py`
+^ Sample script `train.py`
 
-This script simulates a loss function. It accepts a hyperparameter `x`
-and prints the resulting `loss`.
+This script simulates a loss function. It accepts hyperparameters `x`
+and `noise` and prints the resulting `loss`.
 
-The new directory should look like this:
+The project directory should look like this:
 
 <div class="file-tree">
 <ul>
@@ -143,11 +157,12 @@ guild run train.py
 
 ``` output
 You are about to run train.py
+  noise: 0.1
   x: 0.1
-  Continue? (Y/n)
+Continue? (Y/n)
 ```
 
-Press `Enter` to confirm.
+Press `Enter` to start the operation.
 
 Guild runs `train.py`, which prints a simulated loss. Guild lets you
 run any unmodified script this way.
@@ -155,19 +170,23 @@ run any unmodified script this way.
 When Guild runs a script, it generates a new experiment, or
 [run](term:run). Each run tracks experiment details including results.
 
-List available runs:
+## View Run Results
+
+Show the current runs:
 
 ``` command
 guild runs
 ```
 
 ``` output
-[1:91a5d7e1]  train.py  2019-09-17 06:19:40  completed
+[1:50cec0c8]  train.py  2020-01-09 15:55:15  completed  noise=0.1 x=0.1
 ```
 
-Information about each run is saved in a *run directory*, including
-metadata and results. Guild [does not use databases](ref:no-databases)
-to save results.
+Guild shows available runs, including the run ID, operation name,
+start time, status, and label.
+
+Information about each run is saved in a [run
+directory](term:run-dir), including metadata and results.
 
 View information for the latest run:
 
@@ -176,67 +195,135 @@ guild runs info
 ```
 
 ``` output
-id: 91a5d7e1adb54291a1cb2fab97cfac23
+id: 50cec0c8513c40e7883e1d76f9828f6c
 operation: train.py
-from: ~/guild-start
+from: ~/Projects/guild-start
 status: completed
-started: 2019-09-17 06:19:40
-stopped: 2019-09-17 06:19:40
+started: 2020-01-09 15:55:15
+stopped: 2020-01-09 15:55:15
 marked: no
-label:
-sourcecode_digest: 3b323a26ebfe99fbad95095d2b4adfd1
-run_dir: ~/Env/guild-start/.guild/runs/91a5d7e1adb54291a1cb2fab97cfac23
-command: ~/Env/guild-start/bin/python3.7 -um guild.op_main train --x 0.1
+label: noise=0.1 x=0.1
+sourcecode_digest: 9d846ffb2022c9540d7b01a160617881
+vcs_commit:
+run_dir: ~/.guild/runs/50cec0c8513c40e7883e1d76f9828f6c
+command: /usr/bin/python -um guild.op_main train --noise 0.1 --x 0.1
 exit_status: 0
 pid:
 flags:
+  noise: 0.1
   x: 0.1
 scalars:
-  loss: 0.592545 (step 0)
+  loss: 0.432132 (step 0)
 ```
 
-^ Information captured by Guild --- your output will differ slightly
-
-Guild provides a number of tools to leverage experiment data, which
-you learn about later.
-
-!!! highlight
-    - No code changes
-    - No system daemons (databases, web services, etc.)
-
-## Search for Better Results
-
-In the pervious step, you ran `train.py` with the default value for
-`x` of 0.1. This results in a `loss` of approximately 0.5 (plus or
-minus some random noise).
-
-Let's try to find values `x` that result in lower `loss`.
-
-Run ten new experiments:
+List the source code files used for the run:
 
 ``` command
-guild run train.py x=uniform[-2.0:2.0] --max-trials 10
+guild ls --sourcecode
 ```
 
 ``` output
-You are about to run train.py with random search (max 10 trials)
-  x: uniform[-2.0:2.0]
+~/.guild/runs/50cec0c8513c40e7883e1d76f9828f6c:
+  .guild/sourcecode/
+  .guild/sourcecode/train.py
+```
+
+Show the source code for the `train.py` module:
+
+``` command
+guild cat --sourcecode --path train.py
+```
+
+``` output
+import numpy as np
+
+# Hyperparameters
+x = 0.1
+noise = 0.1
+
+# Simulated training loss
+loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
+
+print("loss: %f" % loss)
+```
+
+Guild captures important details associated with a run:
+
+- Run metadata: operation name, flags, OS process status, start time,
+  source code digest, etc.
+- Run scalars (i.e. metrics generated by the run)
+- Files generated by the run (in this case our sample does not generate files)
+- Source code files
+
+There are many benefits to capturing this information:
+
+- Formally track your model development progress
+- Document metrics used when evaluating model performance
+- Create an audit trail for models that you deploy
+- Compare differences across runs
+
+In the steps that follow, you use Guild to optimize hyperparameter and
+compare run results.
+
+## Optimize Training Loss
+
+Guild has built-in support for hyperparameter optimization using
+various search methods:
+
+- [Random search ->](term:random-search)
+- [Grid search ->](term:grid-search)
+- [Bayesian optimization ->](term:bayesian-optimization)
+
+In this section, you use each technique to find values for `x` that
+minimize `loss`.
+
+### Random Search
+
+To search over a range of values, specify a flag value in the format
+`[MIN:MAX]`. By default, Guild runs 20 trials using randomly chosen
+values within the specified range. Use `--max-trials` to specify the
+number of trials to run.
+
+Start a random search over `x` using ten trials:
+
+``` command
+guild run train.py x=[-2.0:2.0] --max-trials 10
+```
+
+``` output
+You are about to run train.py with random search (max 10 trials, minimize loss)
+  x: [-2.0:2.0]
 Continue? (Y/n)
 ```
 
-Press `Enter` to confirm.
+Press `Enter` to start the operation.
 
-Guild runs `train.py` ten times using different values for `x`. Values
-are randomly sampled from a uniform distribution from -2.0 to
-2.0. This is a [random search](term:random-search). Guild supports
-other search types including [grid search](term:grid-search) and
-[Bayesian optimization](term:bayesian-optimization). You use these in
-later steps.
+Guild runs `train.py` ten times using values for `x` that randomly
+sampled from a uniform distribution from -2.0 to 2.0.
+
+Show the runs:
+
+``` command
+guild runs
+```
+
+### Grid Search
+
+To run trials with specific values, specify a flag value in the format
+`[VAL1,VAL2,...,VALN]`. When you specify values using this format for
+multiple flags, Guild runs trials over the cartesian product of
+specified values.
+
+Run four trials over values for `x` and `noise`:
+
+``` command
+guild run train.py x=[-1,1] noise=[0,0.1]
+```
 
 ## Compare Runs
 
-Compare your experiment results in a console-based spreadsheet
-application:
+Use [guild compare](cmd:compare) to start a spreadsheet-like
+application to compare run results.
 
 ``` command
 guild compare --min loss
@@ -270,18 +357,32 @@ applicable tab.
 
 ![](/assets/img/tb-hparams.png)
 
-^ Compare runs using parallel coordinates
+^ Compare runs using Parallel Coordinates View
 
-!!! highlight
-    Guild gives you tools to optimize your models.
+## Delete Runs
 
-    - Automate hyperparameter search
-    - Study and compare results in various ways
+Use [guild runs delete](cmd:runs-delete) (or its alias ``guild runs
+rm``) to delete runs. By default, Guild saves deleted runs so they can
+be restored using [guild runs restore](cmd:runs-restore).
 
-## Next Steps
+Delete all of the current runs (don't worry, you will restore these
+runs later):
 
-In this section, you ran a sample training script and compared results
-using various methods.
+``` command
+guild runs rm
+```
 
-In the next section, you use *grid search* and *Bayesian optimization*
-to further explore the relationship between `x` and `loss`.
+Press `Enter` to delete the runs.
+
+Guild deletes all of the runs.
+
+Show deleted runs by specifying the `--deleted` option:
+
+``` command
+guild runs --deleted
+```
+
+Restore
+
+You can restore deleted runs using [guild runs
+restore](cmd:runs-restore).
