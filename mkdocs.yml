@@ -1,9 +1,10 @@
 site_name: Guild AI
 docs_dir: pages
-copyright: 2018-2019 TensorHub, Inc.
+copyright: 2018-2020 TensorHub, Inc.
 strict: true
 extra:
-  version: 0.6.6
+  version: 0.7.0
+  contact_email: contact@guild.ai
 
   tagline_width: 30em
 
@@ -212,24 +213,29 @@ pages:
 
       - Get Started:
           - start.md
-          - start/tips.md
           - start/optimize.md
           - start/runs.md
-          - start/guildfile.md
-          - start/classifier.md
-          - start/workflow.md
-          - start/explore.md
+          - start/tips.md
+          #- start/guildfile.md
+          #- start/classifier.md
+          #- start/workflow.md
+          #- start/explore.md
 
       - Concepts:
-          ##- architecture.md
+          #- architecture.md
           - cli.md
+          - environments.md
           - runs.md
+          - batches.md
           - guildfile.md
+          - flags.md
+          - scalars.md
+          - dependencies.md
           - workflow.md
+          - run-isolation.md
           - remote.md
           - backup-and-restore.md
-          ##- publishing.md
-          - environments.md
+          #- publishing.md
 
       - Tools:
           - tools/compare.md
@@ -238,15 +244,16 @@ pages:
           - tools/diff.md
 
       - Guides:
-          - guides/add.md
-          - guides/compare.md
-          ##- guides/workflow.md
-          - guides/reproducibility.md
-          ##- guides/schedule.md
-          ##- guides/remote.md
-          ##- guides/backup.md
-          - guides/notebooks.md
-          - guides/troubleshoot.md
+          - guides/dependencies.md
+          #- guides/add.md
+          #- guides/compare.md
+          #- guides/workflow.md
+          #- guides/reproducibility.md
+          #- guides/schedule.md
+          #- guides/remote.md
+          #- guides/backup.md
+          #- guides/notebooks.md
+          #- guides/troubleshoot.md
 
       - Commands:
           - commands/index.md
@@ -307,12 +314,12 @@ pages:
           - reference/user-config.md
           - reference/remotes.md
 
-      - Knowledge Base:
-          - kb/configure-flags.md
-          - kb/guild-vs-others.md
-          #- kb/dependencies.md
-          #- kb/autodetect-flags.md
-          #- kb/model-reuse.md
+      #- Knowledge Base:
+      #    - kb/configure-flags.md
+      #    - kb/guild-vs-others.md
+      #    #- kb/dependencies.md
+      #    #- kb/autodetect-flags.md
+      #    #- kb/model-reuse.md
 
       - Cheatsheets:
           - cheatsheets/commands.md

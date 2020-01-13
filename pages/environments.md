@@ -81,9 +81,9 @@ environment. When running `init`, Guild performs additional steps to
 streamline the process of creating a virtualized Guild environment for
 a project:
 
-- Use a [Python version
-  requirement](/guides/reproducibility.md#python-version) to select an
+- Uses a [Python version
+  requirement](/commands/init.md#required-python-version) to select an
   appropriate Python version when creating the virtual environment
 
-- Run `pip install -r requirements.txt` if `requirements.txt` is
+- Runs `pip install -r requirements.txt` if `requirements.txt` is
   defined for a project

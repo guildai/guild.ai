@@ -53,11 +53,11 @@ When writing Guild AI, use "Guild AI" --- not guild.ai.
 
 guild.ai is used in the logo and is also the product domain. Guild AI,
 with a space, is the correct use of the both the product and company
-names.
+name.
 
 ## Using Guild AI
 
-### Guild AI seems magical at times --- can I make it explicit?
+### Guild uses too much magic - can I make it explicit?
 
 *Guild AI lets you explicitly configure all aspects of your project.*
 
@@ -74,6 +74,19 @@ configuration.
 
 Refer to [Guild Files](/guildfile.md) for information on configuring
 a project.
+
+### My script relies on a file but can't find it!
+
+Guild executes each run in the context of a [run
+directory](term:run-dir), which is initially empty. Your script
+typically assumes that it's run from your *project directory*. Any
+files that your script requires *must be explicitly configured using a
+Guild file*.
+
+Refer to [Dependencies](/dependencies.md) for details on configuring
+required resources for your operations.
+
+
 
 <!--
 

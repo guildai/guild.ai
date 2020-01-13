@@ -24,7 +24,7 @@ This guide discusses the various elements of reproducibility.
 
 ## Runtime Environments
 
-A runtime environment can play an important role in reproducing
+A runtime environment plays an important role in reproducing
 results. Guild captures platform attributes such as Python version,
 operating system details, and installed library versions. Use this
 information to compare results.
@@ -34,6 +34,9 @@ facilitate consistency across runs. Developers are responsible for
 configuring their projects as needed.
 
 ### Python Version
+
+TODO: This content has been moved to the `init` command
+help. Reference that link from here.
 
 You can specify a Python requirement in either a project Guild file or
 within a `requirements.txt` file.

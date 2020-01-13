@@ -1,5 +1,3 @@
-sidenav_title: Compare
-
 # Guild Compare
 
 TODO

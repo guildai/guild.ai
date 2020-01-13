@@ -1,4 +1,7 @@
-# Tips
+title: Tips
+tags: start
+
+# Get Started - Tips
 
 [TOC]
 
@@ -11,7 +14,7 @@ Any Guild commands that prompts for confirmation can be run with the
 when you don't need to manually verify it first. It's also useful when
 running Guild in unattended scripts.
 
-### Quick access to run files via shell (Linux and macOS)
+### Quick access to run files via shell (Linux and macOS only)
 
 If you are comfortable using a terminal to view files, the
 [open](cmd:open) command supports a `--shell` option that opens a new

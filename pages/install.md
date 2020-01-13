@@ -199,30 +199,32 @@ details and exit with an error.
 Congratulations, you've installed Guild AI! We've outlined some next
 steps for you below.
 
-<div class="row match-height mt-4">
-<div class="col col-md-4">
-<div class="promo left">
-<h3>Guild AI Quick Start</h3>
-<p class="expand">
+<div class="row mt-4 match-height">
 
-Start using Guild to run, track, and compare experiments.
+  <div class="col col-md-6">
+    <div class="promo left">
+      <h3>Get Started</h3>
+      <p class="expand">
 
-</p>
-<a class="btn btn-primary cta" href="/start/"
-  >Get Started <i class="fa next"></i></a>
-</div>
-</div>
+        Start using Guild to run, track, and compare experiments.
 
-<div class="col col-md-6">
-<div class="promo left">
-<h3>Browse the Docs</h3>
-<p class="expand">
+      </p>
+      <a class="btn btn-primary cta" href="/start/"
+         >Get Started <i class="fa next"></i></a>
+    </div>
+  </div>
 
-If you're interested in a complete picture of Guild AI, browse the
-comprehensives documentation.
+  <div class="col col-md-6">
+    <div class="promo left">
+      <h3>Browse the Docs</h3>
+      <p class="expand">
 
-</p>
-<a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
-</div>
-</div>
+        For a complete picture of Guild AI, browse the comprehensives
+        documentation.
+
+      </p>
+
+      <a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
+    </div>
+  </div>
 </div>

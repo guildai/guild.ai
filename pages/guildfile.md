@@ -22,7 +22,7 @@ formally define your project operations.
 
 More about Guild files:
 
-- [Get Started - Add a Guild File](/start/guildfile.md) --- step-by-step
+- [Get Started - Add a Guild File](/start/guildfile_xxx) --- step-by-step
 example creating a simple Guild file
 
 - [Guild File Reference](/reference/guildfile.md) --- complete list of

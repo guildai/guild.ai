@@ -2,6 +2,8 @@ tags: start
 
 # Manage Runs
 
+[TOC]
+
 In [the previous section](optimize.md) you searched for optimal values
 of a hypeparameter `x` for a simulated loss function.
 
