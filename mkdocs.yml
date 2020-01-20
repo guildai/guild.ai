@@ -177,9 +177,11 @@ markdown_extensions:
             - {}
             -
               autodetect-flags: /kb/autodetect-flags.md
+              batch: /batches.md
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
-              flag: /guildfile.md#flags
-              flags: /guildfile.md#flags
+              flag: /flags.md
+              flags: /flags.md
+              flag-sequence-function: /flags.md#sequence-functions
               full-format: /reference/guildfile.md#full-format
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools/compare.md
@@ -224,7 +226,6 @@ pages:
       - Concepts:
           #- architecture.md
           - cli.md
-          - environments.md
           - runs.md
           - batches.md
           - guildfile.md
@@ -232,7 +233,7 @@ pages:
           - scalars.md
           - dependencies.md
           - workflow.md
-          - run-isolation.md
+          - environments.md
           - remote.md
           - backup-and-restore.md
           #- publishing.md

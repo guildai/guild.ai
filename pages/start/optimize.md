@@ -13,19 +13,36 @@ known as [hyperparameter optimization
 ->](term:https://en.wikipedia.org/wiki/Hyperparameter_optimization),
 or hyperparameter tuning.
 
-When you modify your model architecture or train on a new data set,
-it's a good idea to optimize your model by tuning
-hyperparameters. Guild makes this easy.
+When you change a model implementation or train on a new data set,
+it's a good idea to optimize your training objective (e.g. *loss*,
+*accuracy*, etc.) by tuning hyperparameters.
 
 Guild supports hyperparameter optimization using various search
 methods:
 
 - Manual search
+- [Grid Search ->](term:grid-search)
 - [Random search ->](term:random-search)
 - [Bayesian optimization ->](term:bayesian-optimization)
 
-In this guide, you use each technique to find values for `x` that
-minimize `loss`.
+You use each of these methods below to find optimal values for `x`.
+
+For review, here's the loss function used in `train.py`:
+
+``` python
+loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
+```
+
+The relationship between `x` and `loss` is plotted below. We know that
+optimal values for `x` will be around -0.3. In a real scenario, we
+don't know the optimal hyperparameter values.
+
+![](/assets/img/bayesian-optimization.png)
+
+^ Plot of `x` (horizontal axis) to `loss` (vertical axis) [^hparam-plot]
+
+[^hparam-plot]: Image credit: [Bayesian optimization with skopt
+    ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
 
 ## Manual Search
 
@@ -60,15 +77,18 @@ guild runs
 ```
 
 ``` output
-[1:be0f9be1]  train.py   2020-01-13 08:56:18  completed  noise=0.1 x=1
-[2:77a92762]  train.py   2020-01-13 08:56:17  completed  noise=0.1 x=0
-[3:a7802dc5]  train.py   2020-01-13 08:56:17  completed  noise=0.1 x=-1
-[4:4cc17454]  train.py+  2020-01-13 08:56:16  completed
-[5:629f7b73]  train.py   2020-01-13 07:27:20  completed  noise=0.1 x=0.1
+[1:1933bdcb]  train.py   2020-01-14 09:38:15  completed  noise=0.1 x=1
+[2:83dc048d]  train.py   2020-01-14 09:38:14  completed  noise=0.1 x=0
+[3:468bb240]  train.py   2020-01-14 09:38:14  completed  noise=0.1 x=-1
+[4:bfcff413]  train.py+  2020-01-14 09:38:13  completed
+[5:68f4da74]  train.py   2020-01-14 08:42:54  completed  noise=0.1 x=0.1
 ```
 
-Note that the runs list does not show `loss`. To compare loss across
-runs, use the [compare](cmd:compare) command:
+Run 4, named `train.py+`, is a [batch](term:batch) run and denoted by
+a ``+`` in its name. Batch runs are responsible for running
+trials. Runs 1 through 3 are the trials.
+
+To compare `loss` across runs, use the [compare](cmd:compare) command:
 
 ``` command
 guild compare --min loss
@@ -77,21 +97,21 @@ guild compare --min loss
 Guild starts an interactive application that lets you browse
 experiment results. Runs with lower `loss` appear at the top of the
 list. Use your arrow keys to navigate. Press `1` to sort by the
-current column (ascending) or `2` (descending).
+current column in ascending order or `2` to sort in descending
+order. Press `?` for a list of supported commands.
 
 ![](/assets/img/compare-start.png)
 
-^ Compare experiment results --- press `?` for a list of commands;
-  press `q` to exit
+^ Compare experiment results --- press `?` for a list of commands, `q`
+  to exit
 
 Exit Guild Compare by pressing `q`.
 
-You can specify multiple values for more than one flag. Guild runs
-trials for all possible flag value combinations.
+When you specify lists for more than one flag, Guild runs trials for
+each flag value combination (the cartesian product of flag values).
 
-Run trials for multiple values of `x` and `noise` (the `noise` flag is
-a second sample hyperparameter that determines how much random noise
-is used when calculating the mock value for `loss`):
+The following command generates four runs --- one for for each unique
+combination of flag values:
 
 ``` command
 guild run train.py x=[-0.5,0.5] noise=[0.1,0.2]
@@ -106,19 +126,33 @@ Continue? (Y/n)
 
 Press `Enter` to start the trials.
 
-Guild runs `train.py` four times, once for each of the four possible
-combinations of the specified values.
-
-Compare the results top 3 best runs:
+Show the top-3 best runs:
 
 ``` command
 guild compare --table --min loss --top 3
 ```
 
-The `--table` option tells Guild to print the results as a table
-without running in interactive mode. The `--top` option tells Guild to
-show only the top-N results. In this case, we sort by `loss` so it
-effecitvely shows the top 3 best runs.
+The `--table` option tells Guild to show results without running in
+interactive mode. The `--top` option tells Guild to show only the
+top-N runs based on the sort order. In this case, we use `--min loss`
+to sort by loss in ascending order.
+
+Note that runs where `x` is `-0.5` have the lowest `loss`. This is
+consistent with our expectation from the plot above.
+
+Next, use TensorBoard to compare runs. Start TensorBoard using Guild
+by running:
+
+``` command
+guild tensorboard
+```
+
+Guild starts TensorBoard and opens a new tab in your browser.
+
+Select the **HPARAMS** tab and then select the **PARALLEL COORDINATES
+VIEW** subtab.
+
+## Grid Search
 
 ## Random Search
 
@@ -180,71 +214,51 @@ View your runs using TensorBoard:
 guild tensorboard
 ```
 
-Guild opens TensorBoard in your browser. Click the **HPARAMS** tab to
-compare run performance. You can visualize the runs using **PARALLEL
-COORDINATES VIEW** and **SCATTER PLOT MATRIX VIEW** by clicking the
-applicable tab.
+Guild opens TensorBoard in your browser.
+
+Click the **HPARAMS** tab to compare run performance.
+
+You can visualize the runs using **PARALLEL COORDINATES VIEW** and
+**SCATTER PLOT MATRIX VIEW** by clicking the applicable tab.
 
 ![](/assets/img/tb-hparams.png)
 
-^ Compare runs using Parallel Coordinates View
+^ Compare runs using Parallel Coordinates View --- click-and-drag over
+  a vertical axis to highlight runs for a particular range of values
+  (e.g. runs with the lowest loss)
 
+The *Parellal Coordinates View* in particular is useful for
+highlighting runs that perform better along various axes. For example,
+click-and-drag along the `loss` axis to highlight runs with the lowest
+values.
 
-
----------------------------------------------------
-
-OLD:
-
-In [the previous section](/start.md) you ran a *random search* to
-find optimal values for `x`. In this section, you use two other
-methods: *grid search* and *Bayesian optimiation*.
-
-For review, here's the loss function used in `train.py`:
-
-``` python
-loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * 0.1)
-```
-
-The relationship between `x` and `loss` is plotted below. We know that
-optimal values for `x` will be around -0.3. In a real scenario, we
-don't know the optimal hyperparameter values. We have to search for
-them.
-
-![](/assets/img/bayesian-optimization.png)
-
-^ Plot of `x` (horizontal axis) to `loss` (vertical axis) [^hparam-plot]
-
-[^hparam-plot]: Image credit: [Bayesian optimization with skopt
-    ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
+In addition to hyperparameters (`x` and `noise`) and generated metrics
+(`loss`), Guild includes axes for `time` and `sourcecode`. The `time`
+axis shows how long a run took to execute. Generally speaking, runs
+that take less time are preferred to runs that take longer time, other
+factors held constant. The `sourcecode` axis diffentiates source code
+digests, helping to avoid hyperparameter comparisons across
+potentially different model implementations.
 
 ## Grid Search
 
-[Grid search](term:grid-search) --- also called a *parameter sweep*
---- tries specific values.
+*Grid search* is a systematic search across a search space. If every
+hyperparameter has a finite list of discrete values, it's possible to
+conduct an exhaustive search over every combination of values, thereby
+ensuring optimal values. However, in most cases, hyperparameters are
+either continuous or it would take too long to conduct an exhaustive
+search.
 
-To perform a grid search, you could run separate commands for each
-value of `x`. However, as you saw in [the previous
-section](/start.md), Guild lets you run multiple trials with a
-single command.
+As you saw in the previous section, Guild supports *batch* runs for
+sets of flag values. You can conduct grid searches by manually
+specifying sets of flag values that cover the target search
+space. Alternatively, you can use [flag sequence
+functions](term:flag-sequence-function) to specify a sequence of
+values.
 
-Run a search over three values of `x`:
 
-``` command
-guild run train.py x=[-2,0,2]
-```
 
-``` output
-You are about to run train.py in a batch
-  x: [-2, 0, 2]
-Continue? (Y/n)
-```
-
-Press `Enter` to confirm.
-
-Guild generates three runs, one for each specified value of `x`.
-
-From the plot above, we expect the `loss` for these runs to be
-approximately 0, which is not very close to the minimum.
+## Random Search
 
 ## Bayesian Optimization
 

@@ -1,5 +1,5 @@
 tags: start
-title: Introduction
+sidenav_title: Introduction
 
 # Get Started with Guild AI
 
@@ -185,7 +185,7 @@ guild runs
 ```
 
 ``` output
-[1:50cec0c8]  train.py  2020-01-09 15:55:15  completed  noise=0.1 x=0.1
+[1:68f4da74]  train.py  2020-01-14 08:42:54  completed  noise=0.1 x=0.1
 ```
 
 Guild shows available runs, including the run ID, operation name,
@@ -203,17 +203,17 @@ guild runs info
 ```
 
 ``` output
-id: 50cec0c8513c40e7883e1d76f9828f6c
+id: 68f4da7428bd49b5a8946863909f84dc
 operation: train.py
 from: ~/Projects/guild-start
 status: completed
-started: 2020-01-09 15:55:15
-stopped: 2020-01-09 15:55:15
+started: 2020-01-14 08:42:54
+stopped: 2020-01-14 08:42:54
 marked: no
 label: noise=0.1 x=0.1
 sourcecode_digest: 9d846ffb2022c9540d7b01a160617881
 vcs_commit:
-run_dir: ~/.guild/runs/50cec0c8513c40e7883e1d76f9828f6c
+run_dir: ~/.guild/runs/68f4da7428bd49b5a8946863909f84dc
 command: /usr/bin/python -um guild.op_main train --noise 0.1 --x 0.1
 exit_status: 0
 pid:
@@ -221,7 +221,7 @@ flags:
   noise: 0.1
   x: 0.1
 scalars:
-  loss: 0.432132 (step 0)
+  loss: 0.388010 (step 0)
 ```
 
 By default, Guild shows information for the latest run. You can show
@@ -245,7 +245,7 @@ guild ls --sourcecode
 ```
 
 ``` output
-~/.guild/runs/50cec0c8513c40e7883e1d76f9828f6c:
+~/.guild/runs/68f4da7428bd49b5a8946863909f84dc:
   .guild/sourcecode/
   .guild/sourcecode/train.py
 ```
@@ -271,8 +271,8 @@ print("loss: %f" % loss)
 
 !!! highlight
     Source code files are copied for each run so that you
-    have an exact record.This lets you experiment without having to
-    commit each iteration to revision control.
+    have an exact record of what was run. This lets you experiment
+    without having to commit each iteration to revision control.
 
 You can also open a run file using a system program.
 
@@ -282,8 +282,8 @@ Open the `train.py` source code file for the latest run:
 guild open --sourcecode --path train.py
 ```
 
-Guild opens the snapshotted `train.py` using the default system
-program for `py` files.
+Guild opens the copy `train.py` used for the run with the default
+system program for `py` files.
 
 ![](/assets/img/code-start.png)
 
@@ -312,19 +312,20 @@ in TensorBoard.
 ^ Guild View, a web based application for viewing and comparing run
   results
 
-When you're done exploring your run, exit Guild View by returning to
-your terminal window and pressing `Ctrl-C`.
+Exit Guild View by returning to your terminal window and pressing
+`Ctrl-C`.
 
 ## Summary
 
-In this guide you installed Guild AI and used it to generate
-experiments, or [runs](term:run), for a sample training script.
+In this guide, you use Guild AI to generate experiments, or
+[runs](term:run), for a sample training script.
 
-- Start tracking experiments without complicated setup or code change
-- Record results to make informed decisions and improve your models
-  faster
-- Maintain a record of results as needed for reproducibility, audit,
-  and compliance
+!!! highlight
+    - Track experiments without complicated setup or code change
+    - Record results for comparison to make informed decisions and
+      improve your models faster
+    - Maintain a record of results as needed for reproducibility, audit,
+      and compliance
 
 In the next section, you use Guild's built-in hyperparamter tuning
 features to find values for `x` that minimize `loss` for `train.py`.
