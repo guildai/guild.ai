@@ -96,7 +96,7 @@ Commands:
   watch            Watch run output.
 ```
 
-See [Commands](/commands/index.md) for online help.
+See [Commands Referencex](/commands/index.md) for online help.
 
 ## Create a Sample Training Script
 
@@ -171,14 +171,22 @@ When Guild runs a script, it generates a new experiment, or
 [run](term:run). Each run tracks experiment details including results.
 
 !!! highlight
-    To run unmodified scripts, Guild makes assumptions about
-    hyperparameters and results. Later you learn about these
-    assumptions and how to explicitly configure Guild to control every
-    details of an operation.
+    Guild lets you track experiments without changing your
+    scripts. This saves you time and keeps your source independent of
+    an experiment management framework.
+
+Guild detects two hyperparameters from `train.py`: *noise* and
+*x*. Guild refers to these variables as [flags](term:flag). By
+default, Guild treats global constants in Python scripts as
+flags. This behavior can be controlled through explicit
+configuration. You learn about this in later steps.
+
+Guild scans script output for values printed in the format ``key:
+value`` and logs them as [scalars](term:scalar).
 
 ## View Results
 
-Show the current runs:
+List the current runs:
 
 ``` command
 guild runs
@@ -188,9 +196,9 @@ guild runs
 [1:68f4da74]  train.py  2020-01-14 08:42:54  completed  noise=0.1 x=0.1
 ```
 
-Guild shows available runs, including the run ID, operation name,
-start time, status, and label. As you generate more runs, they appear
-in this list.
+Guild lists runs, showing the run ID, operation name, start time,
+status, and label. As you generate more runs, they appear in this
+list.
 
 Information about each run is saved in a [run
 directory](term:run-dir), including metadata, flag inputs, and
@@ -224,14 +232,13 @@ scalars:
   loss: 0.388010 (step 0)
 ```
 
-By default, Guild shows information for the latest run. You can show
-run info for other runs by specifying a run ID or runs list index.
+By default, Guild shows information for the latest run.
 
 !!! highlight
     Guild captures detailed information for each run so you
-    have a complete record of your work. Use this information to
-    make informed decisions to improve your model measure quality at
-    each stage of your ML pipeline.
+    have a complete record of each result. This information is
+    essential for making informed decisions and tracking changes to
+    your model.
 
 ### Source Code Snapshot
 
@@ -250,7 +257,7 @@ guild ls --sourcecode
   .guild/sourcecode/train.py
 ```
 
-Show the source code for `train.py` with the [cat](cmd:cat) command:
+Print the source code for `train.py` with the [cat](cmd:cat) command:
 
 ``` command
 guild cat --sourcecode --path train.py
@@ -270,9 +277,8 @@ print("loss: %f" % loss)
 ```
 
 !!! highlight
-    Source code files are copied for each run so that you
-    have an exact record of what was run. This lets you experiment
-    without having to commit each iteration to revision control.
+    Guild copies source code files for each run so you have
+    an exact record of what generated the result.
 
 You can also open a run file using a system program.
 
@@ -293,14 +299,13 @@ system program for `py` files.
 
 Guild provides a graphical program for exploring and comparing runs.
 
-From the command terminal, start the [Guild View](/tools/view.md)
-application:
+Start the [Guild View](/tools/view.md) application:
 
 ``` command
 guild view
 ```
 
-Guild starts Guild View, a web application, and opens a tab in your
+Guild starts *Guild View*, a web application, and opens a tab in your
 browser. Guild View runs in the background in the command terminal.
 
 Use Guild View to browse runs, view run details including metadata,
@@ -321,11 +326,10 @@ In this guide, you use Guild AI to generate experiments, or
 [runs](term:run), for a sample training script.
 
 !!! highlight
-    - Track experiments without complicated setup or code change
-    - Record results for comparison to make informed decisions and
-      improve your models faster
-    - Maintain a record of results as needed for reproducibility, audit,
-      and compliance
+    - Track experiments without excessive setup or code change
+    - Automatically capture result
+    - Maintain a record of results as needed for ongoing model
+      improvement, reproducibility, audit, and compliance
 
 In the next section, you use Guild's built-in hyperparamter tuning
 features to find values for `x` that minimize `loss` for `train.py`.

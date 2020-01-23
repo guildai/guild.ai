@@ -22,7 +22,7 @@ context. For example, to "stop a run" means to terminate the operating
 system process associated with a run. To "delete a run" means to
 delete the run directory.
 
-### Guild Runs vs Scripts
+### Guild Runs vs Script Execution
 
 A Guild run is similar to traditional script execution:
 

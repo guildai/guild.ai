@@ -1,6 +1,6 @@
 sidenav_title: Overview
 tags: reference
 
-# Commands
+# Commands Reference
 
 {! cmd-categories.md !}

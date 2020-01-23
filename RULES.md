@@ -49,55 +49,35 @@ Bad:
 
 - Next, train the model.
 
-## Present Tense
+## Past, Present, and Future Tense
 
-*Unless it would make a statement confusing or incorrect, use present
-tense, even when addressing events that are described earlier or
-later.*
+*When referring to something that obviously occurred in the past, use
+past tense.*
+
+*Otherwise, use present tense, even when an event will occur in the
+future.*
 
 Good:
-
-- In the previous section, you train a model.
-
-Bad:
 
 - In the previous section, you trained a model.
-
-UPDATE: This example shows how use of present tense when referring to
-something that occurred in the past is confusing.
-
-"In the previous section, you trained a model." is a very natural
-sentence. The "previous section" is a cue that the event occurred in
-the past. The use of present tense after this cue I think is
-confusing.
-
-I don't think this dynamic is confusing for future steps. E.g. "In the
-next section, you train a model" is clear and easier to read than "In
-the next section, you will train a model".
-
-On the other hand, "Your results differ" is strange when compared to
-"Your results will differ".
-
-PROPOSED CHANGE: *Unless it would make a statement confusing or
-incorrect, use present tense.*
-
-Use a different example.
-
-Good:
-
 - In the next section, you train a model.
-- In the previous section, you trained a model.
 - (at the end of the section) In this section, you trained a model.
 - (at the start of the section) In this section, you train a model.
 
 Bad:
 
-- In the next section, you will train a model.
 - In the previous section, you train a model.
-- In this section, you trained a model.
-- (at the end of the section) In this section, you train a model.
-- (at the start of the section) In this section, you will train a
-  model.
+- In the next section, you will train a model.
+
+If an expression using present tense is confusing, use future.
+
+Good:
+
+- Your results will differ
+
+Bad:
+
+- Your results differ
 
 ## Passive Voice
 

@@ -2,15 +2,6 @@ tags: concept
 
 # Command Line Interface
 
-> The command line is the ultimate seat of power on your
-> computer. Using the command line, you can perform amazing feats of
-> wizardry and speed, taming your computer and getting it to do
-> precisely what you want.
-
-<div markdown="1" style="text-align:right;padding-right:20px;margin-top:-18px">
----David Baumgold in *Getting to Know the Command Line*
-</div>
-
 Guild's primary interface is via the command line. Guild also supports
 a [Python interface for work in Jupyter
 Notebooks](guides/notebooks/).
@@ -23,9 +14,6 @@ toolchains. This has a number of benefits:
   arguments and exit codes
 - Commands are programming language agnostic
 - Commands can be integrated into most development environments
-
-While it can take time and effort to learn command line techniques, we
-feel the benefits are well worth the investment!
 
 If you're not familiar with running commands from a terminal, we
 suggest reading one of the following guides for your platform.
@@ -49,3 +37,14 @@ suggest reading one of the following guides for your platform.
 **General**
 : [Getting to Know the Command Line
   ->](https://www.davidbaumgold.com/tutorials/command-line/)
+
+> The command line is the ultimate seat of power on your
+> computer. Using the command line, you can perform amazing feats of
+> wizardry and speed, taming your computer and getting it to do
+> precisely what you want.
+
+<div style="text-align:right;padding-right:20px;margin-top:-18px">
+&mdash;David Baumgold in
+<em><a href="https://www.davidbaumgold.com/tutorials/command-line/" target="_blank"
+>Getting to Know the Command Line</a></em>
+</div>

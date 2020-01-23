@@ -24,14 +24,7 @@ table.dl tr td.dt code {
   white-space: nowrap;
 }
 
-a.cmd,
-a.pkg,
-a > code {
-  color: $link-color;
-}
-
 a.cmd {
-  background-color: $code-inline-bg-color;
   padding: 0 3px;
 }
 

@@ -734,16 +734,21 @@ Guild supports output scalars as an alternative to explicit logging to
 event logs. Use output scalars to log results by printing them as
 script output.
 
+Output is matched using [regular expressions](term:regex). Values are
+captured using capture groups. The special escape values ``\key``,
+``\value``, and ``\step`` can be used to match keys, values, and step
+values respectively.
+
 By default, Guild logs output written in the format:
 
 ``` output
-KEY: VALUE
+key: value
 ```
 
-- `KEY` must not be preceded by any white space
-- `VALUE` must be a value that can be decoded as number
-- Guild treats the key ``step`` as a special value, which is used to
-  set the *step* associated with subsequently logged values
+- `key` must not be preceded by any white space
+- `value` must be a value that can be decoded as number
+- Guild treats the key literal ``step`` as a special value, which is
+  used to set the *step* associated with subsequently logged values
 
 This scheme is designed for simple cases and can be modified using the
 `output-scalars` operation attribute.

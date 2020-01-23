@@ -65,12 +65,12 @@ ul.md {
 
     &::before {
       position: absolute;
-      content: "\f054";
+      content: "\f0c8";
       font-family: FontAwesome;
       top: 0;
-      left: 2px;
-      font-size: 10px;
-      color: $border-color-darker;
+      left: 5px;
+      font-size: 6px;
+      color: $gray-text-color;
     }
   }
 }

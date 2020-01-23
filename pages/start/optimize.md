@@ -6,16 +6,12 @@ tags: start
 
 ## Overview
 
-In the [previous section](/start.md) you run a sample training script
-`train.py`. In this section, you run the same script with different
-hyperparameter values to find lower values of `loss`. This process is
-known as [hyperparameter optimization
+In the [previous section](/start/index.md) you ran a sample training
+script `train.py`. In this section, you run the same script with
+different hyperparameter values to find lower values of `loss`. This
+process is known as [hyperparameter optimization
 ->](term:https://en.wikipedia.org/wiki/Hyperparameter_optimization),
 or hyperparameter tuning.
-
-When you change a model implementation or train on a new data set,
-it's a good idea to optimize your training objective (e.g. *loss*,
-*accuracy*, etc.) by tuning hyperparameters.
 
 Guild supports hyperparameter optimization using various search
 methods:
@@ -25,29 +21,28 @@ methods:
 - [Random search ->](term:random-search)
 - [Bayesian optimization ->](term:bayesian-optimization)
 
-You use each of these methods below to find optimal values for `x`.
-
 For review, here's the loss function used in `train.py`:
 
 ``` python
 loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
 ```
 
-The relationship between `x` and `loss` is plotted below. We know that
-optimal values for `x` will be around -0.3. In a real scenario, we
-don't know the optimal hyperparameter values.
+The relationship between `x` and `loss` is plotted below. Optimal
+values for `x` are around -0.3. In a real scenario, we don't know the
+optimal hyperparameter values --- we need to search for them.
 
 ![](/assets/img/bayesian-optimization.png)
 
-^ Plot of `x` (horizontal axis) to `loss` (vertical axis) [^hparam-plot]
+^ Plot of `x` on the horizontal axis to `loss` on the vertical axis
+  [^hparam-plot]
 
 [^hparam-plot]: Image credit: [Bayesian optimization with skopt
     ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
 
 ## Manual Search
 
-When you are experimenting with hyperparameters, it's often useful to
-try values based on experience or intuition.
+When experimenting with hyperparameters, it's sometimes useful to try
+values based on experience or intuition.
 
 Guild lets you run multiple trials in a batch by specifying them as a
 list in the form ``[VAL1,VAL2,...VALN]``.
@@ -59,13 +54,13 @@ guild run train.py x=[-1,0,1]
 ```
 
 ``` output
-You are about to run train.py as a batch (max 20 trials, minimize loss)
+You are about to run train.py as a batch (3 trials, minimize loss)
   noise: 0.1
   x: [-1, 0, 1]
 Continue? (Y/n)
 ```
 
-Press `Enter` to start the trials.
+Press `Enter` to start the batch.
 
 Guild runs `train.py` three times, once for each specified value of
 `x`.
@@ -84,9 +79,11 @@ guild runs
 [5:68f4da74]  train.py   2020-01-14 08:42:54  completed  noise=0.1 x=0.1
 ```
 
-Run 4, named `train.py+`, is a [batch](term:batch) run and denoted by
-a ``+`` in its name. Batch runs are responsible for running
-trials. Runs 1 through 3 are the trials.
+Run 4 is a [batch run](term:batch). A batch run is denoted using ``+``
+in its name. Batch runs are responsible for running trials. Runs 1
+through 3 are the batch trials.
+
+### Compare Runs
 
 To compare `loss` across runs, use the [compare](cmd:compare) command:
 
@@ -95,23 +92,23 @@ guild compare --min loss
 ```
 
 Guild starts an interactive application that lets you browse
-experiment results. Runs with lower `loss` appear at the top of the
-list. Use your arrow keys to navigate. Press `1` to sort by the
-current column in ascending order or `2` to sort in descending
-order. Press `?` for a list of supported commands.
+experiment results. Runs with lower `loss` appear at the top. Use your
+arrow keys to navigate. Press `1` to sort by the current column in
+ascending order or `2` to sort in descending order. Press `?` for a
+list of supported commands.
 
 ![](/assets/img/compare-start.png)
 
 ^ Compare experiment results --- press `?` for a list of commands, `q`
   to exit
 
-Exit Guild Compare by pressing `q`.
+Exit *Guild Compare* by pressing `q`.
 
 When you specify lists for more than one flag, Guild runs trials for
 each flag value combination (the cartesian product of flag values).
 
-The following command generates four runs --- one for for each unique
-combination of flag values:
+The following command generates *four* runs --- one for for each
+unique combination of flag values:
 
 ``` command
 guild run train.py x=[-0.5,0.5] noise=[0.1,0.2]
@@ -124,7 +121,7 @@ You are about to run train.py as a batch (max 20 trials, minimize loss)
 Continue? (Y/n)
 ```
 
-Press `Enter` to start the trials.
+Press `Enter` to start the batch.
 
 Show the top-3 best runs:
 
@@ -134,183 +131,262 @@ guild compare --table --min loss --top 3
 
 The `--table` option tells Guild to show results without running in
 interactive mode. The `--top` option tells Guild to show only the
-top-N runs based on the sort order. In this case, we use `--min loss`
-to sort by loss in ascending order.
+top-N runs based on the sort order. In this case `--min loss` sorts by
+loss in ascending order.
 
 Note that runs where `x` is `-0.5` have the lowest `loss`. This is
 consistent with our expectation from the plot above.
 
-Next, use TensorBoard to compare runs. Start TensorBoard using Guild
-by running:
+### View Runs in TensorBoard
+
+View runs in [TensorBoard](ref:tensorboard) with the
+[tensorboard](cmd:tensorboard) command:
 
 ``` command
 guild tensorboard
 ```
 
-Guild starts TensorBoard and opens a new tab in your browser.
+Guild starts TensorBoard and opens a new tab in your
+browser. TensorBoard board is used to view run results, including
+scalars, images, embeddings, and hyperparameters.
 
 Select the **HPARAMS** tab and then select the **PARALLEL COORDINATES
 VIEW** subtab.
 
+![](/assets/img/tb-hparams.png)
+
+^ Compare runs using **Parallel Coordinates View**
+
+The *Parallel Coordinates View* highlights runs that perform better
+along various axes. Click-and-drag along the `loss` axis to highlight
+runs with the lowest values.
+
+!!! highlight
+    Guild automatically generates *HParam* summaries from
+    Guild runs to simply the process of comparing runs in TensorBoard.
+
+To continue with this guide using the same terminal, stop TensorBoard
+by typing `Ctrl-C` in the terminal. Alternatively, open a new command
+terminal, leaving TensorBoard running in the background and continue
+the steps below.
+
 ## Grid Search
 
-## Random Search
+[Grid search](term:grid-search) is a systematic search across a subset
+of hyperparameter space. Guild supports a special [flag sequence
+syntax](term:flag-sequence-function) for specifying value
+ranges. Ranges are specified using the format
+``FUNCTION[START:END:STEP_OR_COUNT]`` where `FUNCTION` is the type of
+sequence and `START` and `END` mark the start and end of the sequence
+respectively. `STEP_OR_COUNT` is the range step or value count,
+depending on the function used.
 
-To search over a range of values, specify a flag value in the format
-`[MIN:MAX]`. By default, Guild runs 20 trials using randomly chosen
-values within the specified range. Use `--max-trials` to specify the
-number of trials to run.
-
-Start a random search over `x` using ten trials:
+Use the [`linspace`](/flags.md#linspace) function to run four trials
+where `x` is evenly spaced between `-2.0` and `2.0`:
 
 ``` command
-guild run train.py x=[-2.0:2.0] --max-trials 10
+guild run train.py x=linspace[-0.6:0.6:4]
 ```
 
 ``` output
-You are about to run train.py with random search (max 10 trials, minimize loss)
+You are about to run train.py as a batch (max 20 trials, minimize loss)
+  noise: 0.1
+  x: [-0.6, -0.2, 0.2, 0.6]
+Continue? (Y/n)
+```
+
+Guild expands the function `linspace[-0.6:0.6:4]` to the sequence of
+values `[-0.6, -0.2, 0.2, 0.6]`. The value `4` indicates how many
+values appear in the list.
+
+Press `Enter` to start the batch.
+
+Guild runs trials for each value of `x` generated by the `linspace`
+function.
+
+!!! tip
+    Use sequence functions for multiple flags to expand a grid
+    search to the catesian product of each set of values.
+
+## Random Search
+
+Guild supports [random search](term:random-search) over a both uniform
+and log-uniform distributions.
+
+Search space is specified by [special flag
+functions](/flags.md#search-space-functions), which include
+[`uniform`](/flags.md#uniform) and
+[`loguniform`](/flags.md#loguniform). The `uniform` function name may
+be omitted.
+
+To search over a uniformly distributed range of values, specify a flag
+value in the format `[MIN:MAX]`. By default, Guild runs 20 trials
+using randomly chosen values within the specified range. Use
+`--max-trials` to specify the number of trials to run.
+
+Start a random search over `x` with 5 trials:
+
+``` command
+guild run train.py x=[-2.0:2.0] --max-trials 5
+```
+
+``` output
+You are about to run train.py with random search (max 5 trials, minimize loss)
+  noise: 0.1
   x: [-2.0:2.0]
 Continue? (Y/n)
 ```
 
-Press `Enter` to start the operation.
+Press `Enter` to start the batch.
 
-Guild runs `train.py` ten times using values for `x` that randomly
-sampled from a uniform distribution from -2.0 to 2.0.
-
-Show the runs:
-
-``` command
-guild runs
-```
-
-## Compare Runs
-
-Use [guild compare](cmd:compare) to start a spreadsheet-like
-application to compare run results.
-
-``` command
-guild compare --min loss
-```
-
-Guild starts an interactive application that lets you browse
-experiment results. Runs with lower `loss` appear at the top of the
-list. Use your arrow keys to navigate. Press `1` to sort by the
-current column (ascending) or `2` (descending).
-
-![](/assets/img/compare-start.png)
-
-^ Compare experiment results --- press `q` to exit
-
-Your results will differ as values for `x` are randomly generated.
-
-Exit Guild Compare by pressing `q`.
-
-## View Runs in TensorBoard
-
-View your runs using TensorBoard:
-
-``` command
-guild tensorboard
-```
-
-Guild opens TensorBoard in your browser.
-
-Click the **HPARAMS** tab to compare run performance.
-
-You can visualize the runs using **PARALLEL COORDINATES VIEW** and
-**SCATTER PLOT MATRIX VIEW** by clicking the applicable tab.
-
-![](/assets/img/tb-hparams.png)
-
-^ Compare runs using Parallel Coordinates View --- click-and-drag over
-  a vertical axis to highlight runs for a particular range of values
-  (e.g. runs with the lowest loss)
-
-The *Parellal Coordinates View* in particular is useful for
-highlighting runs that perform better along various axes. For example,
-click-and-drag along the `loss` axis to highlight runs with the lowest
-values.
-
-In addition to hyperparameters (`x` and `noise`) and generated metrics
-(`loss`), Guild includes axes for `time` and `sourcecode`. The `time`
-axis shows how long a run took to execute. Generally speaking, runs
-that take less time are preferred to runs that take longer time, other
-factors held constant. The `sourcecode` axis diffentiates source code
-digests, helping to avoid hyperparameter comparisons across
-potentially different model implementations.
-
-## Grid Search
-
-*Grid search* is a systematic search across a search space. If every
-hyperparameter has a finite list of discrete values, it's possible to
-conduct an exhaustive search over every combination of values, thereby
-ensuring optimal values. However, in most cases, hyperparameters are
-either continuous or it would take too long to conduct an exhaustive
-search.
-
-As you saw in the previous section, Guild supports *batch* runs for
-sets of flag values. You can conduct grid searches by manually
-specifying sets of flag values that cover the target search
-space. Alternatively, you can use [flag sequence
-functions](term:flag-sequence-function) to specify a sequence of
-values.
-
-
-
-## Random Search
+Guild runs `train.py` five times using randomly sampled values for `x`
+from `-2.0` to `2.0`.
 
 ## Bayesian Optimization
 
-*Bayesian optimization* methods use light weight probabilistic models
-that use results from previous runs to suggest promising
-hyperparameter values.
+*Bayesian optimization* methods use light-weight probabilistic models
+to suggest hyperparameter values believed to optimize an *objective*
+based on previous results.
 
-Run ten trials using a Bayesian optimizer with gaussian processes:
+By default, Guild attempts to minimize `loss`, which is logged by our
+sample `train.py` script. If the script used a different objective,
+you would specify it using the `--mininize` or `--maximize` options
+for [run](cmd:run).
+
+Run ten trials using the [`gp`](/reference/optimizers.md#gp)
+optimizer, which uses Bayesian optimization with *gaussian processes*:
 
 ``` command
-guild run train.py --max-trials 10 --optimizer gp x=[-2.0:2.0]
+guild run train.py x=[-2.0:2.0] --optimizer gp --max-trials 10
 ```
 
 ``` output
-You are about to run train.py with 'gp' optimizer (max 10 trials)
+You are about to run train.py with 'skopt:gp' optimizer (max 10 trials, minimize loss)
+  noise: 0.1
   x: [-2.0:2.0]
 Continue? (Y/n)
 ```
 
-Press `Enter` to confirm.
+Press `Enter` to start the batch.
 
-Guild generates ten trials. The optimizer uses past experience to
-explore areas of the search space that have a higher probability of
-minimizing `loss`.
+The `gp` optimizer seeds the batch with three random starts. After the
+third random start, the optimizer uses previous results to suggest
+candidates for `x` to minimize `loss`.
 
-With some luck (results are non-deterministic due to random effects),
-the search will spend more time exploring values of `x` close to the
-optimal value -0.3.
+### Restart Batch to Continue Optimization
 
-!!! highlight
-    Guild uses a standard interface to run scripts using
-    variety of methods: *single runs*, *grid search*, *random search*,
-    and *Bayesian optimization*.
+Guild optimizers use previous results *from trials of the same
+batch*. If you want to continue a search for better hyperparameters
+using Bayesian optimization, you must restart the batch run.
 
-## Show the Best Runs
+To restart a run, you need the target run ID.
 
-Show the five runs with the lowest values for `loss`:
+To get the run ID of the `gp` batch, run:
 
 ``` command
-guild compare --top 5 --min loss --table
+guild runs info --operation train.py+gp
 ```
 
-The `--table` option tells Guild to print the results to standard
-output rather than run interactively.
+``` output
+id: <run ID used for restart below>
+operation: train.py+gp
+from: guildai
+status: completed
+...
+```
 
-You can also save the comparison data as a CSV file.
+Note the ID for the batch run, which is shown on the first line.
+
+Restart the batch to generate another ten trials, replacing ``<batch
+run ID>`` below with the `train.py+gp` run ID from above:
+
+``` command
+guild run -Fo random-starts=0 --restart <batch run ID>
+```
+
+``` output
+You are about to start ... (train.py) with 'skopt:gp' optimizer (max 10 trials)
+  noise: 0.1
+  x: [-2.0:2.0]
+Continue? (Y/n)
+```
+
+Press `Enter` to restart the batch.
+
+Guild generates another ten trials for the batch. Guild uses the
+previous trials generated earlier as inputs to the optimization.
+
+The option ``-Fo random-starts=0`` prevents the optimizer from using
+additional random starts.
+
+### Evaluate Bayesian Optimization Results
+
+Run [Guild Compare](ref:guild-compare) on the last 20 runs to evaluate
+the results of the Bayesian optimization:
+
+``` command
+guild compare 1:20
+```
+
+By default, Guild shows runs ordered by start time starting with the
+latest run first. Note the values for `x` that the `gp` optimizer
+suggested. If the optimizer is effective in finding values for `x`
+that minimize `loss`, you should see more values around `-0.3` as the
+runs progress.
+
+Press `q` to exit Guild Compare.
+
+You can also use TensorBoard to evaluate optimization results.
+
+Start TensorBoard to view the last 20 runs:
+
+``` command
+guild tensorboard 1:20
+```
+
+Guild starts TensorBoard and opens a new browser tab.
+
+Click **HPARAMS** and then click **SCATTER PLOT MATRIX VIEW**.
+
+TensorBoard displays scatter plots of hypermaraters and metrics.
+
+In the left side panel, *deselect* the following hyperparameters:
+
+- `noise`
+- `sourcecode`
+
+In the same panel, *deselect* the following metrics:
+
+- `time`
+- Xxx Yss
+
+TensorBoard displays a plot of `loss` against `x`. Each point on the
+plot represents a trial. Over 20 trials, the Bayesian optimizer should
+spend more time exporing values for `x` around `-0.3`. This will
+appear as a cluster of trials along the bottom of the plot.
+
+![](/assets/img/tb-hparams-scatter.png)
+
+^ Plot `loss` against `x` to evaluate the Bayesian optimization
+  results
+
+Return to the command terminal and press `Ctrl-C` to stop TensorBoard.
+
+## Save Run Comparison to CSV
+
+Use Guild to save run results to a CSV:
 
 ``` command
 guild compare --csv results.csv
 ```
 
-## Next Steps
+Use
+
+!!! highlight
+    Use Guild to replace manual experiment tracking and
+    spreadsheets.
+
+## Summary
 
 In this section, you ran a grid search and performed Bayesian
 optimization to find optimal values of `x`.

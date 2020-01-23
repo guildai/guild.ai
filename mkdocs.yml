@@ -150,9 +150,15 @@ markdown_extensions:
           class: ext
           target: _blank
 
-        - link_pattern: ref:regex
-          href: https://docs.python.org/library/re.html
+        - link_pattern: (ref|term):regex
+          href: https://docs.python.org/library/re.html#regular-expression-syntax
           text: regular expression
+          class: ext {1}
+          target: _blank
+
+        - link_pattern: ref:tensorboard
+          href: https://www.tensorflow.org/tensorboard
+          text: TensorBoard
           class: ext
           target: _blank
 
@@ -201,6 +207,8 @@ markdown_extensions:
               requirements: /guildfile.md#required-resources
               run-dir: /runs.md#run-directory
               run: /runs.md
+              scalar: /scalars.md
+              sequence-function: /flags.md#sequence-functions
               source-code: /guildfile.md#source-code
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
               step: /reference/guildfile.md#steps
@@ -214,7 +222,7 @@ pages:
       - install.md
 
       - Get Started:
-          - start.md
+          - start/index.md
           - start/optimize.md
           - start/runs.md
           - start/tips.md
@@ -312,8 +320,9 @@ pages:
 
       - Reference:
           - reference/guildfile.md
-          - reference/user-config.md
+          - reference/optimizers.md
           - reference/remotes.md
+          - reference/user-config.md
 
       #- Knowledge Base:
       #    - kb/configure-flags.md

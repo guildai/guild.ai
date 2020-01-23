@@ -4,184 +4,512 @@ sidenav_title: Guild File
 
 [TOC]
 
-## Python Based Operations
+## Operations
 
-### Flags as Globals
+#### Default operation
 
-#### Auto-Detect Globals
+Guild assumes that an operation that does not define `main` or `exec`
+is a Python operation implemented in a module with the same name as
+the operation.
 
-<div class="col-md-5 mt-4" markdown="1">
+``` yaml
+train:
+  description: Python operation implemented in train module
+```
 
-Use `flags-import` to import all flags or a list of flags.
+!!! note
+    Invalid characters in the operation name are converted to
+    underscores ``_``. E.g. Guild assumes that the operation
+    ``mnist-train`` is implemented in the Python module named
+    ``mnist_train``.
 
-</div>
-<div class="col-md-7" markdown="1">
+#### Python based operation
+
+Use the `main` attribute to specify the main Python module for an
+operation.
+
+``` yaml
+train:
+  main: mnist_train
+```
+
+Use standard Python dot notation to reference a module within a package.
+
+``` yaml
+train:
+  main: mypackage.train
+```
+
+If a module is defined in a sub-directory, precede the module name
+with the path.
+
+``` yaml
+train:
+  main: src/train
+```
+
+Provide arguments to a module as needed.
+
+``` yaml
+train:
+  main: main --train
+```
+
+!!! note
+    Guild automatically appends all flag arguments to the `main`
+    spec when the flags interface is `args`. To prevent a flag value
+    from appearing as an argument, set its `arg-skip` attribute to
+    `yes`.
+
+#### Non-Python based operation
+
+Use `exec` to define a command for running an operation.
+
+``` yaml
+train:
+  exec: Rscript train.r
+```
+
+Flag values are available as environment variables named
+`FLAG_<name>`. For example, a flag named `learning_rate` is available
+as the environment variable `FLAG_learning_rate`.
+
+Alternatively, use command arguments are needed to pass flag values.
+
+``` yaml
+train:
+  exec: Rscript train.r --learning-rate ${learning-rate}
+  flags:
+    learning-rate: 0.1
+```
+
+Use ``${flag_args}`` to pass all flags as arguments.
+
+``` yaml
+train:
+  exec: Rscript train.r ${flag_args}
+  flags:
+    learning-rate: 0.1
+    batch-size: 100
+```
+
+## Source Code
+
+!!! important
+    Guild executes operation code in new, empty [run
+    directories](term:run-dir). Operations must be configured so that
+    all required source code is available for a run.
+
+    By default, Guild copies text files under 1M as source code. As a
+    safeguard, Guild will not copy more than 1000 files. The examples
+    in this sction illustrate how to explicitly configure operation
+    source code.
+
+#### Disable source code snapshot
+
+Use to skip the source code snapshot.
+
+``` yaml
+train:
+  sourcecode: no
+```
+
+#### Limit source code to matching patterns
+
+``` yaml
+train:
+  sourcecode:
+    - `*.py`
+    - `*.yml`
+```
+
+#### Exclude patterns
+
+``` yaml
+train:
+  sourcecode:
+    - exclude: '*.ini'
+```
+
+#### Skip matching directories
+
+Guild scans all project directories for matching source code
+files. Directories that contain a large number of files may take a
+long time to scan.
+
+Exclude these directories using the `dir` attribute of a mapping.
+
+``` yaml
+train:
+  sourcecode:
+    - exclude:
+        dir: dir-with-many-files
+```
+
+#### Use alternate root for source code
+
+When source code is located outside of the project directory (i.e. the
+directory containing `guild.yml`), use the `root` attribute of
+`sourcecode`.
+
+``` yaml
+train:
+  sourcecode:
+    root: ../src
+```
+
+To specify selection criteria, use the `select` attribute:
+
+``` yaml
+train:
+  sourcecode:
+    root: ../src
+    select:
+      - '*.yml'
+      - '*.py'
+```
+
+## Flags
+
+Related help:
+
+- [Flags Overview](/flags.md)
+- [Flags - Guild File Reference](/reference/guildfile.md#flags)
+
+### Flag Imports
+
+#### Import all flags
+
+Use when Guild correctly detects your script flags and you want to
+import all of them.
 
 ``` yaml
 train:
   flags-import: all
 ```
 
-^ `guild.yml`
+#### Import some flags
 
-</div>
-
-<div class="col-md-5 mt-4" markdown="1">
-
-Python module uses global variables to define flags.
-
-</div>
-<div class="col-md-7" markdown="1">
-
-``` python
-x = 1
-y = 2
-z = x + 1
-print("z: %i" % z)
-```
-
-^ `train.py`
-
-</div>
-
-<div class="col-md-5 mt-4" markdown="1">
-
-Guild detects default flag values and sets global values for a run.
-
-</div>
-<div class="col-md-7" markdown="1">
-
-``` command
-guild run train y=3
-```
-
-^ Run `train` operation with a new value for `y`
-
-``` output
-You are about to run train
-  x: 1
-  y: 3
-Continue? (Y/n)
-z: 4
-```
-
-^ Output for script
-
-</div>
-
-#### Variations
-
-<div class="col-md-5 mt-4" markdown="1">
-
-Explicitly define *globals* interface.
-
-</div>
-<div class="col-md-7" markdown="1">
-
-``` yaml
-train:
-  flags-dest: globals
-  flags-import: all
-```
-
-^ `guild.yml`
-
-</div>
-
-
-#### Control Imports
-
-<div class="col-md-5 mt-4" markdown="1">
-
-Only import `x`.
-
-</div>
-<div class="col-md-7" markdown="1">
+Use to control the flags that Guild imports. If the list is large,
+consider [importing all flags but skipping
+some](#import-all-but-some-flags).
 
 ``` yaml
 train:
   flags-import:
-    - x
+    - learning_rate
+    - batch_size
+    - dropout
 ```
 
-</div>
+#### Import all but some flags
 
-
-### Flags as Command Line Args
-
-<!-- template
-<div class="col-md-5 mt-4" markdown="1">
-
-
-
-</div>
-<div class="col-md-7" markdown="1">
-
-
-
-</div>
--->
-
-
-
-
------------
-
-OLD:
-
-
-## Operations
-
-### Python Based Operations
-
-#### Simple Operations
-
-Run an operation implemented in the Python `train` module
-(e.g. defined locally in `train.py`):
+Use when Guild detects most of the flags correctly but you want to
+skip some.
 
 ``` yaml
 train:
   flags-import: all
+  flags-import-skip:
+    - not_a_flag_1
+    - not_a_flag_1
 ```
 
-^ Run Python `train` module and import all auto-detected flags
+### Flag Interface
 
-In this case, Guild imports all available flags defined in the `train`
-module. By default, Guild inspects the module for an appropriate flags
-interface: argument passing or global variables. Based on the detected
-interface, Guild detects available flags. See [Flags
-Interface](#flags-interface) below for examples on defining this
-explicitly.
+By default, Guild automatically detects the flags interface for a
+Python script as one of either:
 
-Use the `main` attribute to be explicit or to use a value different
-from the operation name.
+- `globals` --- sets flags via Python global variables
+- `args` --- sets flags using command line options
+
+Guild does not automatically support a flags interface for non-Python
+scripts --- i.e. scripts run using the `exec` operation attribute.
+
+#### Use global variables for Python scripts
+
+If your script does not import `argparse`, Guild will automatically
+use `globals` as the flags interface. Use this method to explicitly
+set the interface to `globals.
 
 ``` yaml
 train:
-  main: train_model
-  flags-import: all
+  flags-dest: globals
 ```
 
-^ Use `main` to explicitly define the Python main module
+#### Use command line arguments for Python scripts
 
-Run a script defined in a subdirectory:
+Use when your script does not import `argparse` or to cause Guild to
+skip the check for `argparse` imports.
 
 ``` yaml
 train:
-  main: src/train_model
-  flags-import: all
+  flags-dest: args
 ```
 
-^ Use a path to reference modules defined in directories
+#### Use a global dict for Python scripts
 
-If the script is located in a package (i.e. the subdirectory contains
-`__init__.py`) use Python's package notation:
+Flags will be written to the `params` global variable.
 
 ``` yaml
 train:
-  main: my_package.train_model
-  flags-import: all
+  flags-dest: global:params
 ```
+
+#### Use all flag args with `exec`
+
+Use `exec` for non-Python scripts. Flags may be specified as command
+line arguments using ``${flag_args}`` in an `exec` command.
+
+``` yaml
+train:
+  exec: echo ${flag_args}
+  flags:
+    msg: hello
+```
+
+Example:
+
+``` command
+guild run train
+```
+
+``` output
+You are about to run test
+  msg: hello
+Continue? (Y/n)
+--msg hello
+```
+
+#### Use flag values with `exec`
+
+Include specific flag values in an `exec` command using the format
+``${FLAG_NAME}``.
+
+``` yaml
+train:
+  exec: echo ${msg}
+  flags:
+    msg: hello
+```
+
+Example:
+
+``` command
+guild run train
+```
+
+``` output
+You are about to run test
+  msg: hello
+Continue? (Y/n)
+hello
+```
+
+### Flag Definitions
+
+Flags are defined by the `flags` operation attribute. If a flag is
+imported, a flag definition modifies the imported attributes.
+
+#### Simple flag definition
+
+When a flag definition consists of a single value, the value is used
+as the default flag value.
+
+``` yaml
+train:
+  flags:
+    learning-rate: 0.1
+    batch-size: 100
+```
+
+This is equivalent to:
+
+``` yaml
+train:
+  flags:
+    learning-rate:
+      default: 0.1
+    batch-size:
+      default: 100
+```
+
+Include a description (used in operation help):
+
+``` yaml
+train:
+  flags:
+    learning-rate:
+      description: Learning rate used for training
+      default: 0.1
+    batch-size:
+      description: Batch size used for training
+      default: 100
+```
+
+#### Required flag value
+
+``` yaml
+train:
+  flags:
+    data:
+      description: Location of data file
+      required: yes
+```
+
+#### Flag choices
+
+``` yaml
+train:
+  flags:
+    optimizer:
+      choices:
+       - adam
+       - sgd
+       - rmsprop
+      default: sgd
+```
+
+Choices with description:
+
+``` yaml
+train:
+  flags:
+    optimizer:
+      choices:
+       - value: adam
+         description: Adam optimizer
+       - value: sgd
+         description: Stochastic gradient descent optimizer
+       - value: rmsprop
+         description: RMSProp optimizer
+      default: sgd
+```
+
+Required choice:
+
+``` yaml
+train:
+  flags:
+    dropout:
+      choices: [0.1, 0.2, 0.3]
+      required: yes
+```
+
+#### Flag types
+
+Related help:
+
+- [Flag Value Types](/flags.md#flag-value-types)
+- [Flag Value Decoding](/flags.md#flag-value-decoding)
+
+By default, Guild applies the rules described in [Flag Value
+Decoding](/flags.md#flag-value-decoding) when decoding user-provided
+flag values. Define a type when you need to validate user input or
+explicitly convert values that might be incorrectly decoded.
+
+``` yaml
+train:
+  flags:
+    data:
+      type: existing-path
+      default: data
+    data-digest:
+      type: string
+      required: yes
+    learning-rate:
+      type: float
+      default: 0.1
+```
+
+#### Rename flag arg
+
+``` yaml
+train:
+  flags:
+    learning-rate:
+      arg-name: lr
+```
+
+If the flag interface is `args` (i.e. command line arguments), the
+flag option is ``--lr VAL`` rather than ``--learning-rate VAL``.
+
+Similarly, if the flag interface is `globals`, the target variable
+name is `lr`.
+
+###
+
+## Output Scalars
+
+Related help:
+
+- [Scalars Overview](/scalars.md)
+- [Output Scalars Spec - Guild File
+  Reference](/reference/guildfile.md#output-scalar-specs)
+
+#### Disable output scalars
+
+Use when you log scalars explicitly to TFEvent files.
+
+``` yaml
+train:
+  output-scalars: no
+```
+
+#### Map scalar keys to patterns
+
+Use when you have a limited number of scalars or want to strictly
+control what's captured.
+
+``` yaml
+train:
+  output-scalars:
+    step: 'Training epoch (\step)'
+    loss: 'Validation loss: (\value)'
+```
+
+#### Capture scalar key
+
+Capture both key and value. Use when possible as this method
+automatically captures new scalars that match the format.
+
+``` yaml
+train:
+  output-scalars: ' - (\key): (\value)'
+```
+
+!!! note
+    The captured key is always the *first group* and value is the
+    *second group*. ``\key`` and ``\value`` above are pattern
+    templates and are not used to identify what is captured.
+
+
+#### Named capture groups
+
+Use named capture groups to specify the key for a paricular pattern.
+
+``` yaml
+train:
+  output-scalars: 'epoch (?P<step>\step) - train loss (?P<loss>\value) - val loss (?P<val_loss>\value)'
+```
+
+#### Multiple output scalar specs
+
+Use a list of specs as needed to define output scalars.
+
+``` yaml
+train:
+  output-scalars:
+    - 'Epoch (?P<step>\step)'
+    - loss: 'loss: (\value)'
+      acc: 'accuracy: (\value)'
+    - '(\key)=(\value)'
+```
+
+################################################################
+
+## Operations (OLD)
+
 
 Include base arguments in the main specification:
 
@@ -191,7 +519,6 @@ train:
   flags-import: all
 ```
 
-^ Specify base (non flag) arguments to the module as needed
 
 #### Flags Import
 
@@ -205,8 +532,6 @@ train:
     - lr
 ```
 
-^ Import only specific flags
-
 To import all flags but a specified list of flags:
 
 ``` yaml
@@ -215,8 +540,6 @@ train:
   flags-import-skip:
     - num_classes
 ```
-
-^ Import all but some flags
 
 !!! note
     The values `all` and `yes` for `flags-import` are
@@ -236,8 +559,6 @@ train:
   flags-import: all
 ```
 
-^ Pass flag values to `train` module as arguments
-
 To force Guild to use a globals interface:
 
 ``` yaml
@@ -246,8 +567,6 @@ train:
   flags-import: all
 ```
 
-^ Set flag values as `train` module global variables
-
 To write flag values to a global Python dict named `params`:
 
 ``` yaml
@@ -255,8 +574,6 @@ train:
   flags-dest: global:params
   flags-import: all
 ```
-
-^ Set flag values as elements of global dict `params` in `train` module
 
 ### Other Language Operations
 
@@ -279,9 +596,6 @@ train:
     - file: train.jar
 ```
 
-^ Use `${flag_args}` in `exec` to insert flag values as long-form
-  getopt args
-
 ``` command
 guild run train --print-cmd
 ```
@@ -303,7 +617,7 @@ train:
     - file: train.jar
 ```
 
-^ Specify value for `epochs` flag as a command argument
+^ guild.yml
 
 ``` command
 guild run train --print-cmd
@@ -328,7 +642,7 @@ train:
     epochs: 100
 ```
 
-^ Flags defined using their default values
+^ guild.yml
 
 All other flag configurations require a mapping.
 
@@ -343,7 +657,7 @@ train:
       default: 100
 ```
 
-^ Flags with descriptions and default values
+^ guild.yml
 
 #### Required Values
 
@@ -400,8 +714,6 @@ train:
         - linear
 ```
 
-^ Use choices to limit flag values
-
 Provide descriptions for each choice to help the user understand each.
 
 ``` yaml
@@ -417,8 +729,6 @@ train:
         - value: linear
           description: No transform
 ```
-
-^ Choices with descriptions --- used to display help to the user
 
 ``` command
 guild run train --help-op
@@ -515,8 +825,6 @@ train:
   sourcecode: no
 ```
 
-^ Disable source code for an operation
-
 Include only Python files and `guild.yml`:
 
 ``` yaml
@@ -526,8 +834,6 @@ train:
     - guild.yml
 ```
 
-^ Use a list of strings to include only those patterns
-
 Include PNG files in addition to source code files (text files < 1M):
 
 ``` yaml
@@ -535,8 +841,6 @@ train:
   sourcecode:
     - include: '*.png'
 ```
-
-^ Extend the selection rules by adding `include` rules
 
 Exclude a file or directory:
 
@@ -546,8 +850,6 @@ train:
     - exclude: data
     - exclude: dataset.csv
 ```
-
-^ Restrict selections by adding `exclude` rules
 
 Model and operation level configuration:
 
@@ -563,8 +865,6 @@ Model and operation level configuration:
         # Rules here are applied to those defined for model above.
         - include: train-config.csv
 ```
-
-^ Define model-level source code rules, which apply by default to operations
 
 Copy souce code from a different root location:
 
@@ -603,57 +903,6 @@ Related help topics:
 - [Source Code](ref:source-code)
 - [Operations](ref:operations)
 
-### Output Scalars
-
-Examples below define `output-scalars` under a hypothetical `train`
-operation. Apply them to your operations as needed.
-
-Output scalars control how Guild logs scalar values from run
-output. Patterns are defined as [regular
-expressions](https://docs.python.org/3/library/re.html#regular-expression-syntax). Scalar
-values are captured using a regular expression capturing group. The
-special escape values `\key`, `\value`, and `\step` can be used to
-match keys, values, and step values respectively.
-
-By default, Guild detects scalars from output in the format `KEY:
-NUMBER` where `KEY` occurs at the start of the line.
-
-The special `step` key is used to capture the current step.
-
-Disable output scalar logging (e.g. you're logging scalars directly
-using a TF Event summary writer):
-
-``` yaml
-train:
-  output-scalars: no
-```
-
-Specify patterns as a mapping of scalar key to output pattern:
-
-``` yaml
-train:
-  output-scalars:
-    step: 'Training epoch (\step)'
-    loss: 'Validation loss: (\value)'
-    acc: 'Accuracy: (\value)'
-```
-
-Modify the default pattern:
-
-``` yaml
-train:
-  output-scalars: '^scalar: (\key)=(\value)'
-```
-
-Other examples:
-
-- [Guild AI Example: Customizing Output Scalars
-  ->](https://github.com/guildai/examples/tree/master/custom-scalars)
-
-Related help topics:
-
-- [Output Scalars](ref:output-scalars)
-- [Operations](ref:operations)
 
 ### Optimizers
 
@@ -675,8 +924,6 @@ train:
       xi: 0.1
 ```
 
-^ Define a default optimizer and an alternative named optimizer
-
 By default, optimizer names reference a Guild *operation*. In the
 example above, `gp` is a built-in operation that uses gaussian
 processes for Bayesian optimization. To use a different name, specify
@@ -690,22 +937,18 @@ Use the default optimizer:
 guild run train --optimize
 ```
 
-^ Use the default optimizer defined for an operation
-
 Use a named optimizer:
 
 ``` command
 guild run train --optimizer gp
 ```
 
-^ Use a named optimizer
-
 Related help topics:
 
 - [`optimizers` operation
   attribute](/reference/guildfile.md#operation-optimizers)
 
-## Required Files
+## Required Files (OLD)
 
 Run directories are initially empty. To make files available to
 operations, specify [required resources](ref:requirements) using
@@ -721,7 +964,7 @@ train:
 
 
 
-## Packages
+## Packages (OLD)
 
 Package configuration is used by Guild when running
 [package](cmd:package).
@@ -748,6 +991,3 @@ supported package attributes.
       requires:
         - file: msg.txt
 ```
-
-^ Use a single `package` top-level object to define the Guild file
-  package

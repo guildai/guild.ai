@@ -287,80 +287,12 @@ TODO
 
 ### Output Scalars
 
-Output scalars are logged scalars generated from script output. Guild
-uses regular expressions to match output and associate values with
-keys.
-
-By default, Guild looks for the pattern ``^(\key): (\value)``.
-
-`^`
-: Indicates the pattern must occur at the start of the line.
-
-`(\key)`
-: Captures a pattern matching a legal scalar key.
-
-`(\value)`
-: Captires a pattern matching a legal scalar value (a number).
-
-Consider the following output:
-
-``` output
-Hello
-x: 1.0
-y: 2.0
- z: 3.0
-```
-
-With the default output scalar configuration, Guild logs the following
-scalars:
-
-| key | value | step |
-|-----|-------|------|
-| `x` | 1.0   | 0    |
-| `y` | 2.0   | 0    |
-
-Guild does not log `z` because the line starts with a space.
-
-Note that Guild uses a step value of 0. This value can be controlled
-by setting the special key `step`. See [Scalar Step](#scalar-step)
-below for more information.
-
 In some cases, Guild applies additional rules to capture scalars
 logged by known frameworks. Refer to [Framework
 Scalars](#framework-scalars) below for more information.
 
 The sections that follow describe how you can configure Guild's output
 scalar behavior.
-
-#### Scalar Step
-
-When logging scalars, Guild associates each value with a current
-*step*. This lets you log several values for a key over a number of
-steps. For example, it's common to log training *loss* at various
-steps during the run.
-
-Guild uses the special scalar key `step` to denote the step used when
-logging other scalars.
-
-Consider the following output:
-
-``` output
-step: 1
-loss: 1.0
-step: 2
-loss: 0.2
-steP: 3
-loss: 0.1
-```
-
-Using Guild's default capture rule (see above), Guild would log the
-following scalar values.
-
-| key | value | step |
-|-----|-------|------|
-| `x` | 1.0   | 1    |
-| `x` | 0.2   | 2    |
-| `x` | 0.1   | 3    |
 
 #### Custom Output Scalars
 
@@ -405,9 +337,11 @@ By default, Guild applies the following patterns when running Keras
 operations:
 
 `Epoch (?P<step>[0-9]+)`
-: Captures `step`
+: Sets the current `step` used for subsequently logged scalar values
 
-    r" - ([a-z_]+): (\value)"
+` - ([a-z_]+): (\value)`
+: Captures scalar values staring with lower case (skips `ETA`, which
+  would otherwise be logged as a scalar)
 
 ### Dependencies
 

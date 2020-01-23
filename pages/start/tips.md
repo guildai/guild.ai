@@ -63,3 +63,17 @@ To show runs started in the last hour:
 ``` command
 guild runs --started 'last hour'
 ```
+
+### Evaluate learning rates using `logspace`
+
+The [`logspace`](/flags/#logspace) function is handy for generating a
+list of learning rates over a logarithmic scale.
+
+To evaluate learning rates at each order of magnitude from `1.0e-5` to
+`0.1`, use a flag value of `logspace[-5:-1:5]`.
+
+For example:
+
+``` command
+guild run train learning-rate=logspace[-5:-1:5]
+```
