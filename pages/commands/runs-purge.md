@@ -6,4 +6,4 @@ tags: runs
 
 [TOC]
 
-[CMD-HELP runs purge]
+[CMD-HELP 'runs purge']

@@ -6,4 +6,4 @@ tags: runs
 
 [TOC]
 
-[CMD-HELP runs delete]
+[CMD-HELP 'runs delete']

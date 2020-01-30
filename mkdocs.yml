@@ -25,7 +25,7 @@ extra:
     - text: Auto ML
       icon: seo-search-graph-gray
 
-    - text: Open Source & Independent
+    - text: 100% Open Source
       icon: programming-flag-gray
 
   links:
@@ -184,10 +184,12 @@ markdown_extensions:
             -
               autodetect-flags: /kb/autodetect-flags.md
               batch: /batches.md
+              batch-file: /batches.md#batch-files
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
+              flag-sequence-function: /flags.md#sequence-functions
               flag: /flags.md
               flags: /flags.md
-              flag-sequence-function: /flags.md#sequence-functions
+              flags-interface: /flags.md#flags-interface
               full-format: /reference/guildfile.md#full-format
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools/compare.md
@@ -198,10 +200,10 @@ markdown_extensions:
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
-              operation: /guildfile.md#operations
-              operations: /guildfile.md#operations
-              output-scalar: /guildfile.md#output-scalars
-              output-scalars: /guildfile.md#output-scalars
+              operation: /operations.md
+              operations: /operations.md
+              output-scalar: /scalars.md#output-scalars
+              output-scalars: /scalars.md#output-scalars
               random-search: https://en.wikipedia.org/wiki/Random_search
               remotes: /reference/remotes.md
               requirements: /guildfile.md#required-resources
@@ -225,9 +227,8 @@ pages:
           - start/index.md
           - start/optimize.md
           - start/runs.md
+          - start/configure.md
           - start/tips.md
-          #- start/guildfile.md
-          #- start/classifier.md
           #- start/workflow.md
           #- start/explore.md
 
@@ -237,13 +238,14 @@ pages:
           - runs.md
           - batches.md
           - guildfile.md
+          - operations.md
           - flags.md
           - scalars.md
           - dependencies.md
           - workflow.md
+          - queues.md
           - environments.md
-          - remote.md
-          - backup-and-restore.md
+          - remotes.md
           #- publishing.md
 
       - Tools:
@@ -282,18 +284,19 @@ pages:
           - commands/open.md
           - commands/operations.md
           - commands/package.md
+          - commands/packages.md
           - commands/packages-delete.md
           - commands/packages-info.md
           - commands/packages-list.md
-          - commands/packages.md
           - commands/pull.md
           - commands/push.md
+          - commands/remote.md
           - commands/remote-start.md
           - commands/remote-status.md
           - commands/remote-stop.md
-          - commands/remote.md
           - commands/remotes.md
           - commands/run.md
+          - commands/runs.md
           - commands/runs-delete.md
           - commands/runs-diff.md
           - commands/runs-export.md
@@ -305,15 +308,16 @@ pages:
           - commands/runs-purge.md
           - commands/runs-push.md
           - commands/runs-restore.md
+          - commands/runs-rm.md
           - commands/runs-stop.md
-          - commands/runs.md
           - commands/search.md
+          - commands/select.md
           - commands/shell.md
           - commands/stop.md
           - commands/sync.md
           - commands/tensorboard.md
-          - commands/tensorflow-inspect.md
           - commands/tensorflow.md
+          - commands/tensorflow-inspect.md
           - commands/uninstall.md
           - commands/view.md
           - commands/watch.md
@@ -323,6 +327,7 @@ pages:
           - reference/optimizers.md
           - reference/remotes.md
           - reference/user-config.md
+          - reference/defaults.md
 
       #- Knowledge Base:
       #    - kb/configure-flags.md

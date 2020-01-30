@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP runs stop]
+[CMD-HELP 'runs stop']

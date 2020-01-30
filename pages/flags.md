@@ -6,8 +6,27 @@ tags: concept
 
 ## Overview
 
-Flags are parameter values used as inputs to an operation. Flags are
-used to specify a variety of values such as hyperparameters, file and
+Flags are user-specifies inputs to an operation. Flags may define any
+type of information. They are commonly used for:
+
+- Hyperparameters
+- Data file locations
+- Data set names
+
+Flags are specified for an operation using ``NAME=VALUE`` arguments to
+the [run](cmd:run) command.
+
+The following command sets two flag values:
+
+``` command
+guild run train learning-rate=0.1 batch-size=100
+```
+
+Flags may also be defined in [batch files](def:batch-file).
+
+## Flags Interface
+
+
 directory paths, and data set names.
 
 ------------------------
@@ -18,20 +37,6 @@ OLD - need to merge ^
 
 XXX
 
-## Automatic Flag Detection
-
-Unless otherwise configured in a Guild file, Guild attempts to detect
-script flags by inspecting the script Python module.
-
-Guild first attempts to determine if the Python script uses command
-line arguments or if it used global variables.
-
-- If the main module imports the [`argparse` module
-  ->](https://docs.python.org/library/argparse.html), Guild assumes
-  that flags are set using command line arguments.
-
-- If the main module does not import `argparse`, Guild assumes that
-  flags are defined in global variables.
 
 ## Explicit Flag Configuration
 

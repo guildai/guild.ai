@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP runs diff]
+[CMD-HELP 'runs diff']

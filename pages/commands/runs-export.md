@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP runs export]
+[CMD-HELP 'runs export']

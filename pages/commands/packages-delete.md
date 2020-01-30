@@ -6,4 +6,4 @@ tags: packaging
 
 [TOC]
 
-[CMD-HELP packages delete]
+[CMD-HELP 'packages delete']

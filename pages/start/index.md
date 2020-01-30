@@ -85,6 +85,7 @@ Commands:
   run              Run a model operation.
   runs             Show or manage runs.
   search           Search for a package.
+  select           Select a run and shows its ID.
   shell            Start a Python shell for API use.
   stop             Stop one or more runs.
   sync             Synchronize remote runs.
@@ -186,7 +187,33 @@ value`` and logs them as [scalars](term:scalar).
 
 ## View Results
 
-List the current runs:
+Start the [Guild View](/tools/view.md) application:
+
+``` command
+guild view
+```
+
+Guild starts the application, and opens a tab in your browser. Guild
+View runs in the background in the command terminal.
+
+Use Guild View to browse runs, view run details including metadata,
+files, and log output. You can compare run results and run artifacts
+in TensorBoard.
+
+![](/assets/img/view-start.png)
+
+^ Guild View, a web based application for viewing and comparing run
+  results
+
+Exit Guild View by returning to your terminal window and pressing
+`Ctrl-C`.
+
+### Results from the Terminal
+
+When working in a command line environment, it's often more convient
+to use the terminal to view run results.
+
+From your terminal, list the current runs:
 
 ``` command
 guild runs
@@ -240,10 +267,10 @@ By default, Guild shows information for the latest run.
     essential for making informed decisions and tracking changes to
     your model.
 
-### Source Code Snapshot
+### Experiment Source Code
 
 Guild records project source code for each run. This lets you compare
-    run results by examining changes to your project source code.
+run results by examining changes to your project source code.
 
 List the source code files used for the run:
 
@@ -278,9 +305,9 @@ print("loss: %f" % loss)
 
 !!! highlight
     Guild copies source code files for each run so you have
-    an exact record of what generated the result.
+    an exact record of the code that generated the result.
 
-You can also open a run file using a system program.
+You can open a run file using a system program.
 
 Open the `train.py` source code file for the latest run:
 
@@ -295,41 +322,19 @@ system program for `py` files.
 
 ^ View a run file using the [open](cmd:open) command
 
-### Guild View
-
-Guild provides a graphical program for exploring and comparing runs.
-
-Start the [Guild View](/tools/view.md) application:
-
-``` command
-guild view
-```
-
-Guild starts *Guild View*, a web application, and opens a tab in your
-browser. Guild View runs in the background in the command terminal.
-
-Use Guild View to browse runs, view run details including metadata,
-files, and log output. You can compare run results and run artifacts
-in TensorBoard.
-
-![](/assets/img/view-start.png)
-
-^ Guild View, a web based application for viewing and comparing run
-  results
-
-Exit Guild View by returning to your terminal window and pressing
-`Ctrl-C`.
-
 ## Summary
 
-In this guide, you use Guild AI to generate experiments, or
-[runs](term:run), for a sample training script.
+You used Guild AI to capture experiments for a sample training script.
 
-!!! highlight
-    - Track experiments without excessive setup or code change
-    - Automatically capture result
-    - Maintain a record of results as needed for ongoing model
-      improvement, reproducibility, audit, and compliance
+!!! highlights
+    - Track experiments without changing your code --- simply run
+      a training script with Guild.
+
+    - Guild is easy to install. It doesn't require databases or external
+      systems.
+
+    - Guild captures every detail about your run. You use this information
+      to optimize your model, catch mistakes, and resolve issues.
 
 In the next section, you use Guild's built-in hyperparamter tuning
 features to find values for `x` that minimize `loss` for `train.py`.

@@ -6,4 +6,4 @@ tags: remote
 
 [TOC]
 
-[CMD-HELP remote status]
+[CMD-HELP 'remote status']

@@ -35,6 +35,11 @@
     color: $callout-tip-color;
   }
 
+  &.highlights .admonition-title:before {
+    content: "\f0a1";
+    color: $callout-tip-color;
+  }
+
   &.info .admonition-title:before,
   &.note .admonition-title:before {
     content: "\f05a";
@@ -56,6 +61,10 @@
   }
 
   &.highlight {
+    @include callout-variant($callout-tip-color);
+  }
+
+  &.highlights {
     @include callout-variant($callout-tip-color);
   }
 

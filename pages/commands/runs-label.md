@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP runs label]
+[CMD-HELP 'runs label']

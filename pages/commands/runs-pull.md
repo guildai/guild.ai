@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP runs pull]
+[CMD-HELP 'runs pull']

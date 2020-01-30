@@ -4,10 +4,13 @@ tags: start
 
 [TOC]
 
-In [the previous section](optimize.md) you searched for optimal values
-of a hypeparameter `x` for a simulated loss function.
+In [the previous section](optimize.md) you generate several runs in
+search of optimal hyperparameters for the `train.py` sample
+script. When developing models, it's not uncommon to run dozens or
+hundreds of experiments as you try different approaches, data sets,
+and hyperparameters.
 
-In this section, you learn more about runs.
+In this section, you learn various Guild commands for managing runs.
 
 ## Show Runs
 
@@ -18,13 +21,21 @@ runs. By default, Guild only shows the last 20.
 guild runs
 ```
 
-You can show additional runs using `--more` or all runs using `--all`.
+You can show 20 additional runs using `--more` or `-m` option.
 
 ``` command
-guild runs --more
+guild runs -m
 ```
 
+You can specify `m` multiple times --- e.g. `-mm` shows 40 additional
+runs, and so on.
+
+To show all runs, use `--all` or `-a`.
+
 ## Delete Runs
+
+Use [runs rm](cmd:runs-rm) or [runs delete](cmd:runs-delete) to delete
+one or more runs.
 
 Delete all of the runs. Don't worry, you restore them in next step.
 

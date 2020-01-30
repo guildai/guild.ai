@@ -6,10 +6,10 @@ tags: start
 
 ## Overview
 
-In the [previous section](/start/index.md) you ran a sample training
-script `train.py`. In this section, you run the same script with
-different hyperparameter values to find lower values of `loss`. This
-process is known as [hyperparameter optimization
+In the [previous section](/start/index.md), you use Guild to run
+`train.py` --- a sample training script. In this section, you run the
+same script with different hyperparameter values to find lower values
+of `loss`. This process is known as [hyperparameter optimization
 ->](term:https://en.wikipedia.org/wiki/Hyperparameter_optimization),
 or hyperparameter tuning.
 
@@ -28,8 +28,7 @@ loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
 ```
 
 The relationship between `x` and `loss` is plotted below. Optimal
-values for `x` are around -0.3. In a real scenario, we don't know the
-optimal hyperparameter values --- we need to search for them.
+values for `x` are around -0.3.
 
 ![](/assets/img/bayesian-optimization.png)
 
@@ -38,6 +37,9 @@ optimal hyperparameter values --- we need to search for them.
 
 [^hparam-plot]: Image credit: [Bayesian optimization with skopt
     ->](https://scikit-optimize.github.io/notebooks/bayesian-optimization.html)
+
+In a real scenario, we don't know the optimal hyperparameter values
+--- we need to search for them.
 
 ## Manual Search
 
@@ -54,7 +56,7 @@ guild run train.py x=[-1,0,1]
 ```
 
 ``` output
-You are about to run train.py as a batch (3 trials, minimize loss)
+You are about to run train.py as a batch (3 trials)
   noise: 0.1
   x: [-1, 0, 1]
 Continue? (Y/n)

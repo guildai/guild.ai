@@ -9,7 +9,7 @@ sidenav_title: Remotes
 This reference guide lists each remote type, its supported attributes,
 and provides examples.
 
-For information on using remotes, see [Remote Training](/remote.md).
+For information on using remotes, see [Remote Training](/remotes.md).
 
 ## SSH
 

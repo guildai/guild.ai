@@ -6,4 +6,4 @@ tags: run-info, common
 
 [TOC]
 
-[CMD-HELP runs info]
+[CMD-HELP 'runs info']

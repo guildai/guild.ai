@@ -1,6 +1,8 @@
 tags: concept
 
-# Remote Training
+# Remotes
+
+TODO: include backup and restore here
 
 [TOC]
 

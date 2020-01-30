@@ -882,10 +882,36 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             if el.tag == "p":
                 m = self._marker_re.match(el.text or "")
                 if m:
-                    self._handle_cmd(m.group(1), el, root)
+                    cmd, src = self._parse_marker_arg(m.group(1))
+                    assert src.endswith(".py") and os.path.exists(src), (
+                        "invalid src %r for cmd %r (defined in %r)"
+                        % (src, cmd, el.text)
+                    )
+                    self._handle_cmd(cmd, src, el, root)
 
-    def _handle_cmd(self, cmd, target, parent):
-        cmd_help = self._get_cmd_help(cmd)
+    def _parse_marker_arg(self, arg):
+        parts = shlex.split(arg)
+        if len(parts) == 1:
+            return parts[0], self._cmd_src(parts[0])
+        elif len(parts) == 2:
+            return parts
+        else:
+            assert False, "invalid CMD-HELP usage %r: expected CMD [SRC]" % parts
+
+    def _cmd_src(self, cmd):
+        basename = re.sub(r"[ \-]", "_", cmd)
+        patterns = [
+            os.path.join(self._src_path, "{}.py"),
+            os.path.join(self._src_path, "{}_.py"),
+        ]
+        for p in patterns:
+            path = p.format(basename)
+            if os.path.exists(path):
+                return path
+        assert False, "cannot find source for cmd %s" % cmd
+
+    def _handle_cmd(self, cmd, src, target, parent):
+        cmd_help = self._get_cmd_help(cmd, src)
         ctx = CmdHelpContext(cmd_help)
         rendered = self._template.render(cmd=cmd_help, ctx=ctx)
         rendered = rendered.replace("<p>\b\n", "<p style=\"white-space: pre\">")
@@ -898,8 +924,8 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             raise
         _replace_el(parent, target, help_el)
 
-    def _get_cmd_help(self, cmd):
-        cmd_help = self._get_cached_cmd_help(cmd)
+    def _get_cmd_help(self, cmd, src):
+        cmd_help = self._get_cached_cmd_help(cmd, src)
         if cmd_help is None:
             log.info("Generating help for '%s' command", cmd)
             args = ["guild/guild/scripts/guild"] + shlex.split(cmd) + ["--help"]
@@ -910,12 +936,11 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             self._cache_cmd_help(cmd, cmd_help)
         return cmd_help
 
-    def _get_cached_cmd_help(self, cmd):
+    def _get_cached_cmd_help(self, cmd, src):
         cache_path = self._cached_cmd_help_filename(cmd)
         if not os.path.exists(cache_path):
             return None
-        src_path = self._cmd_source(cmd)
-        if os.path.getmtime(src_path) > os.path.getmtime(cache_path):
+        if os.path.getmtime(src) > os.path.getmtime(cache_path):
             return None
         return json.load(open(cache_path, "r"))
 
@@ -923,18 +948,6 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
     def _cached_cmd_help_filename(cmd):
         basename = cmd.replace(" ", "-")
         return "/tmp/guild-ai-cmd-help/{}.json".format(basename)
-
-    def _cmd_source(self, cmd):
-        basename = re.sub(r"[ \-]", "_", cmd)
-        patterns = [
-            os.path.join(self._src_path, "{}.py"),
-            os.path.join(self._src_path, "{}_.py"),
-        ]
-        for p in patterns:
-            path = p.format(basename)
-            if os.path.exists(path):
-                return path
-        raise AssertionError(cmd)
 
     def _cache_cmd_help(self, cmd, cmd_help):
         path = self._cached_cmd_help_filename(cmd)
@@ -967,7 +980,9 @@ class CmdHelp(Extension):
         md.treeprocessors.add(
             "cmd-help",
             CmdHelpProcessor(md, self._src_path),
-            "_end")
+            # Must insert before smarty as CMD-HELP args use
+            # single/double to quote args containing spaces.
+            "<smarty")
 
 class PkgHelpProcessor(treeprocessors.Treeprocessor):
 
@@ -1087,12 +1102,12 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         _replace_el(parent, target, help_el)
 
     def _get_models(self, path):
-        gf = guildfile.from_dir(os.path.join(self._src_path, path))
+        gf = guildfile.for_dir(os.path.join(self._src_path, path))
         return [gf.models[name] for name in sorted(gf.models)]
 
     def _get_pkg(self, path):
         pkg_dir = os.path.join(self._src_path, path)
-        gf = guildfile.from_dir(pkg_dir)
+        gf = guildfile.for_dir(pkg_dir)
         if not gf.package:
             raise AssertionError("no package in {}".format(gf.src))
         return gf.package
@@ -1172,7 +1187,7 @@ class CmdHelpUrlProcessor(treeprocessors.Treeprocessor):
                 el.set("class", "cmd")
                 cmd = " ".join(m.groups())
                 el.text = cmd
-                href = "/docs/commands/{}/".format(cmd.replace(" ", "-"))
+                href = "/commands/{}/".format(cmd.replace(" ", "-"))
                 el.set("href", href)
 
 class CmdHelpUrl(Extension):
@@ -1189,12 +1204,12 @@ class CmdHelpUrl(Extension):
     A link to `run` help:
 
     >>> print(md.convert("``guild run --help``"))
-    <p><a class="cmd" href="/docs/commands/run/">run</a></p>
+    <p><a class="cmd" href="/commands/run/">run</a></p>
 
     A link to `runs rm` help:
 
     >>> print(md.convert("``guild runs rm --help``"))
-    <p><a class="cmd" href="/docs/commands/runs-rm/">runs rm</a></p>
+    <p><a class="cmd" href="/commands/runs-rm/">runs rm</a></p>
 
     """
 
@@ -1358,7 +1373,7 @@ class PkgConfigListProcessor(treeprocessors.Treeprocessor):
 
     def _get_sorted_configs(self, path, tag):
         pkg_dir = os.path.join(self._src_path, path)
-        gf = guildfile.from_dir(pkg_dir)
+        gf = guildfile.for_dir(pkg_dir)
         configs = []
         for obj in gf.data:
             try:
