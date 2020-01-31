@@ -126,34 +126,6 @@ available on your PATH using one of these methods:
 - Create a symlink to `GUILD_SOURCE_DIR/guild/scripts/guild` that is
   available on your PATH
 
-## Install TensorFlow
-
-!!! important
-    Guild requires TensorFlow for integrated TensorBoard
-    support only --- you are not required to use TensorFlow in your
-    work.
-
-Guild requires TensorFlow but does not install it for
-you.[^tf-install] You can use `pip` to install TensorFlow by running:
-
-[^tf-install]:
-    TensorFlow is a rapidly evolving software library and is provided as
-    both CPU and GPU supported packages. Guild leaves the specific package
-    and version of TensorFlow up to the user.
-
-``` command
-pip install tensorflow
-```
-
-If your system has a GPU, install the GPU enabled package by running:
-
-``` command
-pip install tensorflow-gpu
-```
-
-For alternative installation methods, refer to [Installing TensorFlow
-->](https://www.tensorflow.org/install/).
-
 ## Install Optional Libraries
 
 If you system has a GPU or other accelerator supported by TensorFlow,

@@ -5,17 +5,17 @@ tags: start
 [TOC]
 
 In [the previous section](optimize.md) you generate several runs in
-search of optimal hyperparameters for the `train.py` sample
-script. When developing models, it's not uncommon to run dozens or
-hundreds of experiments as you try different approaches, data sets,
-and hyperparameters.
+search of optimal hyperparameters for the `train.py` script. When
+developing models, it's not uncommon to run dozens or hundreds of
+experiments as you try different approaches, data sets, and
+hyperparameters.
 
-In this section, you learn various Guild commands for managing runs.
+In this section, you learn about Guild commands for managing runs.
 
 ## Show Runs
 
 Use [runs](cmd:runs) or [runs list](cmd:runs-list) to show current
-runs. By default, Guild only shows the last 20.
+runs. By default, Guild only shows the latest 20.
 
 ``` command
 guild runs
@@ -27,58 +27,90 @@ You can show 20 additional runs using `--more` or `-m` option.
 guild runs -m
 ```
 
-You can specify `m` multiple times --- e.g. `-mm` shows 40 additional
-runs, and so on.
+Specify `m` multiple times as needed in increase the number ---
+e.g. `-mm` shows 40 additional runs.
 
 To show all runs, use `--all` or `-a`.
+
+``` command
+guild runs -a
+```
 
 ## Delete Runs
 
 Use [runs rm](cmd:runs-rm) or [runs delete](cmd:runs-delete) to delete
-one or more runs.
+one or more runs. You can restore deleted runs if make a mistake.
 
-Delete all of the runs. Don't worry, you restore them in next step.
+Delete all of the runs (you restore them later):
 
 ``` command
 guild runs rm
 ```
 
-Press `Enter` to confirm.
+Guild shows the list of runs to delete. Press `Enter` to confirm.
 
-Guild deletes all of the runs.
+Guild moves deleted runs to *trash* [^trash] where they can be viewed,
+restored, or purged if you want to permanently delete them.
 
-!!! note
-    Guild does not permanentaly delete runs unless you specify
-    the `--permanent` option.
+[^trash]: Deleted runs are moved to `$GUILD_HOME/trash/runs`. Use
+    [check](cmd:check) to show the location of `GUILD_HOME` for the
+    current environment.
 
-## Restore Runs
-
-Guild lets you restore deleted runs as a safeguard.
-
-Show deleted runs:
+Show deleted runs by using the `--deleted` option with
+[runs](cmd:runs):
 
 ``` command
 guild runs --deleted
 ```
 
-Restore the last 5 deleted runs:
+## Restore Runs
+
+If you want restore a delete run, use [runs
+restore](cmd:runs-restore).
+
+Restore all of the deleted runs:
 
 ``` command
-guild runs restore 1:5
+guild runs restore
 ```
 
-Press `Enter` to continue.
+Guild shows the runs to restore. Press `Enter` to confirm.
 
-The argument `1:5` indicates that runs one through five are restored.
-
-Restore the remaining deleted runs:
+Verify that the runs appear in the runs list:
 
 ``` command
-guild runs restore --yes
+guild runs
 ```
 
-Guild does not prompt you in this case because you specified the
-`--yes` option.
+## Label a Run
+
+
+
+## Mark a Run
+
+## Filter Runs for a Command
+
+Run-related commands support a common interface for filtering runs
+effected by the command.
+
+Runs can be filtered by:
+
+- Operation name
+- Label
+- Run status
+- Marked status
+- When the run was started
+- Source code digest
+
+For availble filter options, refer to command help, either
+[online](/commands) or using `--help` with the command.
+
+For example, to show runs that were started within the last 15
+minutes, run:
+
+``` command
+guild runs --started 'last 15 minutes'
+```
 
 ## Export Runs
 

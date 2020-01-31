@@ -6,6 +6,12 @@ code, kbd, pre, samp, a.cmd, a.pkg {
   font-size: 0.875em;
 }
 
+a.cmd code {
+  // Avoid doubling up on padding when cmds are
+  // accidentally quoted ala [`cmd`]
+  padding: 0;
+}
+
 h1, h2, h3, h4, h5 {
   code {
     font-size: 0.93em;
@@ -22,10 +28,6 @@ code.lit {
 
 table.dl tr td.dt code {
   white-space: nowrap;
-}
-
-a.cmd {
-  padding: 0;
 }
 
 h1 code,

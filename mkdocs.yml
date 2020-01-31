@@ -183,8 +183,8 @@ markdown_extensions:
             - {}
             -
               autodetect-flags: /kb/autodetect-flags.md
-              batch: /batches.md
-              batch-file: /batches.md#batch-files
+              batch: /runs.md#batches
+              batch-file: /runs.md#batch-files
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
               flag-sequence-function: /flags.md#sequence-functions
               flag: /flags.md
@@ -228,7 +228,6 @@ pages:
           - start/optimize.md
           - start/runs.md
           - start/configure.md
-          - start/tips.md
           #- start/workflow.md
           #- start/explore.md
 
@@ -236,12 +235,12 @@ pages:
           #- architecture.md
           - cli.md
           - runs.md
-          - batches.md
           - guildfile.md
           - operations.md
           - flags.md
           - scalars.md
           - dependencies.md
+          - optimizers.md
           - workflow.md
           - queues.md
           - environments.md
@@ -256,6 +255,7 @@ pages:
 
       - Guides:
           - guides/dependencies.md
+          - guides/tips-and-techniques.md
           #- guides/add.md
           #- guides/compare.md
           #- guides/workflow.md

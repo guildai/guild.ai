@@ -224,6 +224,7 @@ module.exports = function(grunt) {
         const recordOverhead = 2000; // Fudge factor for keeping size under 1K
         const textSize = maxRecord - titleLocationLen - recordOverhead;
         doc.text = doc.text.slice(0, textSize);
+        doc.location = doc.location.replace("/docs/", "/")
       });
       grunt.file.write("/tmp/guildai-index.json", JSON.stringify(objects));
       return index.addObjects(objects);
