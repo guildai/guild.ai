@@ -52,13 +52,13 @@ guild runs rm --terminated --operation train
 To export runs with a label containing `best`, use:
 
 ``` command
-guild export --label best exported-runs
+guild runs --label best
 ```
 
 To show runs started in the last hour:
 
 ``` command
-guild runs --started 'last hour'
+guild export --started 'last hour'
 ```
 
 ### Evaluate learning rates using `logspace`

@@ -102,6 +102,8 @@ Refer to the sections below for details on each function.
 
 #### range
 
+Usage:
+
     range[START:END:STEP=1]
 
 Generates a list of values starting with `START` and ending with `END`
@@ -122,6 +124,8 @@ value `1` is used.
 
 #### linspace
 
+Usage:
+
     linspace[START:END:COUNT=5]
 
 Generates `COUNT` values that are evenly spaced between `START` and
@@ -137,6 +141,8 @@ Generates `COUNT` values that are evenly spaced between `START` and
 : `[1.0, 3.0, 5.0]`
 
 #### logspace
+
+Usage:
 
     logspace[LOW:HIGH:COUNT=5:BASE=10]
 

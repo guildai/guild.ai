@@ -65,7 +65,7 @@ guild runs --deleted
 
 ## Restore Runs
 
-If you want restore a delete run, use [runs
+If you want to restore a deleted run, use [runs
 restore](cmd:runs-restore).
 
 Restore all of the deleted runs:
@@ -82,9 +82,16 @@ Verify that the runs appear in the runs list:
 guild runs
 ```
 
+!!! tip
+    You may be surprised how often you consult deleted runs to
+    learn something about an error you encountered earlier. When
+    deleting runs, avoid the temptation to use `--permanent` flag so
+    that you have the option of restoring them later.
+
 ## Label a Run
 
-
+Labels are string values that help identify a run. Guild shows run
+labels when listing and comparing runs.
 
 ## Mark a Run
 
