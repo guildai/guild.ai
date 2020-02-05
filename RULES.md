@@ -51,25 +51,22 @@ Bad:
 
 ## Past, Present, and Future Tense
 
-*When referring to something that obviously occurred in the past, use
-past tense.*
-
-*Otherwise, use present tense, even when an event will occur in the
-future.*
+UPDATE (again): *Use present tense unless the sentence is
+nonsensical.*
 
 Good:
 
-- In the previous section, you trained a model.
+- In the previous section, you trai a model.
 - In the next section, you train a model.
-- (at the end of the section) In this section, you trained a model.
+- (at the end of the section) In this section, you trai a model.
 - (at the start of the section) In this section, you train a model.
 
 Bad:
 
-- In the previous section, you train a model.
+- In the previous section, you trained a model.
 - In the next section, you will train a model.
 
-If an expression using present tense is confusing, use future.
+Examples of not using present tense when the sentense makes no sense.
 
 Good:
 

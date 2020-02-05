@@ -390,7 +390,14 @@ Use
 
 ## Summary
 
-In this section, you ran a grid search and performed Bayesian
+In this section, you use various techniques to run `train.py`.
+
+!!! highlights
+    - Run experiments with manually assigned hyperparameters.
+    - Automate larger runs using *grid* and *random* search.
+    - Optimize model performance using Bayesian methods.
+
+In this section, you run a grid search and performed Bayesian
 optimization to find optimal values of `x`.
 
 In the next section, you learn about more about runs.

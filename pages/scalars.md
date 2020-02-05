@@ -18,13 +18,16 @@ where a step does not apply, the step is `0`.
 Scalars may be logged using one of two methods:
 
 - Writing values to script output
-- Explicit logging to a TFEvent file
+- Explicit logging of TensorBoard summaries
 
 A scalar that is written to script output is known as an *output
-scalar*.
+scalar*. For more information, see [Output Scalars](#output-scalars)
+below.
 
-A *TFEvent* file is a log format supported by
-[TensorBoard](ref:tensorboard) and other machine learning tools.
+TensorBoard summaries are written to files supported by
+[TensorBoard](ref:tensorboard) and other machine learning tools. For
+more information, see [TensorBoard Summaries](#tensorboard-summaries)
+below.
 
 ### Output Scalars
 
@@ -95,8 +98,12 @@ Refer to [Output Scalars - Guild File
 Cheatsheet](/cheatsheets/guildfile.md#output-scalars) for examples of
 `output-scalars`.
 
-### TFEvent Files
+### TensorBoard Summaries
 
-XXX
+TODO Include ways to write summaries:
+
+- https://www.tensorflow.org/api_docs/python/tf/summary
+- https://pytorch.org/docs/stable/tensorboard.html
+- https://github.com/lanpa/tensorboardX
 
 ## Viewing Run Scalars

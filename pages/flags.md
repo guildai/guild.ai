@@ -26,8 +26,17 @@ Flags may also be defined in [batch files](def:batch-file).
 
 ## Flags Interface
 
+TODO
 
-directory paths, and data set names.
+## Flag Imports
+
+### Flag Detection
+
+### Import All Flags
+
+### Import Some Flags
+
+### Skip Some Flags
 
 ------------------------
 OLD - need to merge ^

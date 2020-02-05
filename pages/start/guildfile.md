@@ -1,0 +1,189 @@
+tags: start
+
+# Create a Guild File
+
+[TOC]
+
+## Overview
+
+Up to this point, you have run `train.py` directly without providing
+additional information about the script. When Guild runs an operation,
+it determines several things:
+
+- How does the script read user-provided values, or
+  [flags](term:flag)?
+- How does the script communicate numeric results, or
+  [scalars](term:scalar), such as training loss and accuracy?
+- Does the script require additional files such as other source code
+  files and data sets?
+
+Unless configured otherwise, Guild makes assumptions about the script
+to answer these questions. Refer to [Default
+Behavior](/reference/defaults.md) for information on how runs scripts
+by default.
+
+You can configure this information explicitly using a [Guild
+file](term:guildfile). A Guild file is a human-readable text file
+named `guild.yml` that resides in a project directory.
+
+## Create a Guild File
+
+In your `guild-start` project directory, create a file named
+`guild.yml` that contains this YAML code:
+
+``` yaml
+train:
+  description: Sample training script
+  main: train
+  flags-dest: globals
+  flags-import:
+    - noise
+    - x
+  output-scalars:
+    loss: '(\key): (\value)'
+```
+
+^ Project Guild file `train.yml`
+
+Your project directory should look like this:
+
+<div class="file-tree">
+<ul>
+<li class="is-folder open">guild-start
+ <ul>
+ <li class="is-file">guild.yml</li>
+ <li class="is-file">train.py</li>
+ </ul>
+</li>
+</ul>
+</div>
+
+This Guild file explicitly defines how Guild runs the `train`
+operation.
+
+Below is a description of each setting.
+
+`description`
+: This value appears when listing the operation and in project
+  help. See [Get Project Info](#get-project-info) below.
+
+`main`
+: Guild loads the specified Python module when running the
+  operation. By default, Guild uses the operation name. For more
+  information, see [Python Based
+  Operations](/operations.md#python-based-operations).
+
+`flags-dest`
+: Guild uses this value to set user inputs ([flags](term:flag)) for
+  the operation. By default, Guild examines the Python script to infer
+  this setting. For more information see [Flags
+  Interface](ref:flags-interface).
+
+`flags-import`
+: Guild uses the flags interface (either defined explicit with
+  `flags-dest` or auto-detected) to import operation flags. In this
+  case, Guild examines the `train` module for global value assignments
+  and infers that they are importable flags. For more information, see
+  [Flag Imports](ref:flags-import).
+
+`output-scalars`
+: Numeric values like *loss* and *accuracy* are referred to as
+  [scalars](term:scalar) in Guild. Guild supports scalar logging
+  through script output. By default, Guild captures scalars written to
+  output in the format ``KEY: VALUE``. The `output-scalars` operation
+  attribute explicitly defines the patterns that Guild uses. For more
+  information, see [Output Scalars](ref:output-scalars).
+
+## Get Project Info
+
+Once you have saved `guild.yml` above, from the command prompt, list
+the project operations:
+
+``` command
+guild operations
+```
+
+``` output
+train  Sample training script
+```
+
+Show help for the project:
+
+``` command
+guild help
+```
+
+``` output
+OVERVIEW
+
+    You are viewing help for operations defined in the current directory.
+
+    To run an operation use 'guild run OPERATION' where OPERATION is one
+    of options listed below. If an operation is associated with a model,
+    include the model name as MODEL:OPERATION when running the operation.
+
+    To list available operations, run 'guild operations'.
+
+    Set operation flags using 'FLAG=VALUE' arguments to the run command.
+    Refer to the operations below for a list of supported flags.
+
+    For more information on running operations, try 'guild run --help'.
+    For general information, try 'guild --help'.
+
+BASE OPERATIONS
+
+    train
+      Sample training script
+
+      Flags:
+        noise  (default is 0.1)
+        x      (default is 0.1)
+
+```
+
+!!! highlight
+    Guild files define the user-facing interface to your
+    project. This encourages reproducibility as operations are easy to
+    recall, run, and compare.
+
+## Run the Operation
+
+Run the `train` operation:
+
+``` command
+guild run train
+```
+
+``` output
+You are about to run train
+  noise: 0.1
+  x: 0.1
+Continue? (Y/n)
+```
+
+Note that you run `train` and not `train.py`. `train` is the
+*operation* defined in `guild.yml` (above). `train.py` refers to the
+Python script directly. While Guild supports both models of operation
+--- running operation defined in Guild files and running scripts
+directly --- we encourage you to use operations in your project
+work.
+
+## Summary
+
+In this section, you create a Guild file to explicitly define a
+`train` operation.
+
+!!! highlights
+    - Use Guild files to explicitly define your operations.
+    - Guild files help you and your colleagues effectively use a
+      project. This supports consistent project use, including the
+      ability to capture and compare experiments.
+    - Guild files let you control and customize Guild support *without
+      modifying your source code*. This ensures that your project code
+      and your tools remain independent from one another.
+
+For details on Guild files, refer to [Guild File
+Reference](/reference/guildfile.md).
+
+In the next section, you create a real-world classifier and use Guild
+to track and compare results.

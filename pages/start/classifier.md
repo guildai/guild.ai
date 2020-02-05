@@ -2,7 +2,7 @@ tags: start
 
 # Create a Classifier
 
-In the previous sections, you created a [Guild file](ref:guildfiles) in
+In the previous sections, you create a [Guild file](ref:guildfile) in
 the `guild-start` project directory. In this section, you enhance the
 project by adding a classifier.
 

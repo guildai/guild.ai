@@ -324,7 +324,8 @@ system program for `py` files.
 
 ## Summary
 
-You used Guild AI to capture experiments for a sample training script.
+In this section, you use Guild AI to capture experiments for a sample
+training script.
 
 !!! highlights
     - Track experiments without changing your code --- simply run

@@ -12,7 +12,7 @@ The topics cover a number of topics:
 - [Flags interface](ref:flags-interface)
 - [Output scalars](ref:output-scalars)
 
-## General Python Scripts
+## Python Scripts
 
 Unless otherwise configured in a [Guild file](ref:guildfile), Guild
 makes a number of assumptions when running Python scripts. This
