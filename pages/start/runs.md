@@ -214,5 +214,10 @@ In this section you use various commands to manage your runs:
 - Label a run
 - Export (archive) runs to a local directory
 
+!!! highlight
+    Use Guild to label, archive, and delete runs as needed
+    to help you focus on the most promising results without losing
+    information from other experiments.
+
 In the next section, you use a [Guild file](ref:guildfiles) to define
 operations your project.

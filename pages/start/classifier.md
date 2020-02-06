@@ -8,8 +8,8 @@ project by adding a classifier.
 
 ## Download Classifier Script
 
-Download the file
-[`plot_iris_exercise.py`](ext:https://raw.githubusercontent.com/guildai/examples/master/iris-svm/plot_iris_exercise.py)
+[Download
+`plot_iris_exercise.py`](ext:https://raw.githubusercontent.com/guildai/examples/master/iris-svm/plot_iris_exercise.py)
 and save it to the `guild-start` directory.
 
 The script trains a model on the Iris benchmark data set. [^iris-script]

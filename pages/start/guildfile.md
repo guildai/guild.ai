@@ -94,6 +94,9 @@ Below is a description of each setting.
   attribute explicitly defines the patterns that Guild uses. For more
   information, see [Output Scalars](ref:output-scalars).
 
+Refer to [Guild File Reference](/reference/guildfile.md) for details
+about the Guild file format and available configuration options.
+
 ## Get Project Info
 
 Once you have saved `guild.yml` above, from the command prompt, list
@@ -174,16 +177,13 @@ In this section, you create a Guild file to explicitly define a
 `train` operation.
 
 !!! highlights
-    - Use Guild files to explicitly define your operations.
     - Guild files help you and your colleagues effectively use a
-      project. This supports consistent project use, including the
-      ability to capture and compare experiments.
-    - Guild files let you control and customize Guild support *without
-      modifying your source code*. This ensures that your project code
-      and your tools remain independent from one another.
+      project.
+    - Guild files let you control and customize Guild support without
+      modifying your source code. This ensures that your project code
+      and your tools remain independent.
 
-For details on Guild files, refer to [Guild File
-Reference](/reference/guildfile.md).
+For more information, see [Guild Files](/guildfile.md).
 
 In the next section, you create a real-world classifier and use Guild
 to track and compare results.
