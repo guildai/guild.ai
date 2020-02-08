@@ -8,4 +8,4 @@ tags: runs
 
 `runs rm` is an alias for [`runs delete`](cmd:runs-delete).
 
-[CMD-HELP 'runs rm' guild/guild/commands/runs_delete.py]
+[CMD-HELP runs rm (guild/guild/commands/runs_delete.py)]

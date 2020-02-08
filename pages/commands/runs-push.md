@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP 'runs push']
+[CMD-HELP runs push]

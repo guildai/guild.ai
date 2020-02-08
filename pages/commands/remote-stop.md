@@ -6,4 +6,4 @@ tags: remote
 
 [TOC]
 
-[CMD-HELP 'remote stop']
+[CMD-HELP remote stop]

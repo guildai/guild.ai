@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP 'runs import']
+[CMD-HELP runs import]

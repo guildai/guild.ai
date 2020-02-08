@@ -6,4 +6,4 @@ tags: runs
 
 [TOC]
 
-[CMD-HELP 'runs restore']
+[CMD-HELP runs restore]

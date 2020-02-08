@@ -529,6 +529,16 @@ class Link(Extension):
     >>> print(md.convert("[Open ->](external.html)"))
     <p><a class="ext" href="external.html" target="_blank">Open</a></p>
 
+    If formatting is applied, this fails:
+
+    >>> print(md.convert("[`Open` ->](external.html)"))
+    <p><a href="external.html"><code>Open</code> -&gt;</a></p>
+
+    The failure here is due to the conversion of `>` to `&gt;`, which
+    isn't matched by the pattern above. Patterns must support
+    inadvertent text conversions because the filter is applied _after_
+    inline conversions.
+
     Argument maps are applied to user-provided arguments:
 
     >>> print(md.convert("[](mapped:a)"))
@@ -849,7 +859,8 @@ class CmdHelpContext(object):
 
 class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
-    _marker_re = re.compile(r"\[CMD-HELP (.+?)\]$")
+    _marker_re = re.compile(r"\[CMD-HELP\s*(.+?)\s*\]$")
+    _cmd_with_src_re = re.compile(r"(.+?)(?:\s+\((.+)\))")
 
     def __init__(self, md, src_path):
         super(CmdHelpProcessor, self).__init__(md)
@@ -890,13 +901,14 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
                     self._handle_cmd(cmd, src, el, root)
 
     def _parse_marker_arg(self, arg):
-        parts = shlex.split(arg)
-        if len(parts) == 1:
-            return parts[0], self._cmd_src(parts[0])
-        elif len(parts) == 2:
-            return parts
-        else:
-            assert False, "invalid CMD-HELP usage %r: expected CMD [SRC]" % parts
+        """Returns a tuple of cmd, cmd_src for arg
+
+        arg must be in the format `CMD` or `CMD (SRC)`.
+        """
+        m = self._cmd_with_src_re.match(arg)
+        if m:
+            return m.groups()
+        return arg, self._cmd_src(arg)
 
     def _cmd_src(self, cmd):
         basename = re.sub(r"[ \-]", "_", cmd)
@@ -908,7 +920,7 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             path = p.format(basename)
             if os.path.exists(path):
                 return path
-        assert False, "cannot find source for cmd %s" % cmd
+        assert False, "cannot find source for cmd %r" % cmd
 
     def _handle_cmd(self, cmd, src, target, parent):
         cmd_help = self._get_cmd_help(cmd, src)
@@ -980,9 +992,7 @@ class CmdHelp(Extension):
         md.treeprocessors.add(
             "cmd-help",
             CmdHelpProcessor(md, self._src_path),
-            # Must insert before smarty as CMD-HELP args use
-            # single/double to quote args containing spaces.
-            "<smarty")
+            "_end")
 
 class PkgHelpProcessor(treeprocessors.Treeprocessor):
 

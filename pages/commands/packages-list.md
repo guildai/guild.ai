@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP 'packages list']
+[CMD-HELP packages list]

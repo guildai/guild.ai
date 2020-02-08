@@ -6,4 +6,4 @@ tags: alias
 
 [TOC]
 
-[CMD-HELP 'runs list']
+[CMD-HELP runs list]

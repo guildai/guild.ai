@@ -6,4 +6,4 @@ tags: remote
 
 [TOC]
 
-[CMD-HELP 'remote start']
+[CMD-HELP remote start]

@@ -6,4 +6,4 @@ tags: util
 
 [TOC]
 
-[CMD-HELP 'tensorflow inspect']
+[CMD-HELP tensorflow inspect]

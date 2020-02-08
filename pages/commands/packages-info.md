@@ -6,4 +6,4 @@ tags: packaging
 
 [TOC]
 
-[CMD-HELP 'packages info']
+[CMD-HELP packages info]
