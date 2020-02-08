@@ -49,9 +49,29 @@ XXX
 
 ## Explicit Flag Configuration
 
+TODO
+
 ## Command Line Arguments
 
+TODO
+
 ## Batch Files
+
+Batch files are files that contain one or more sets of flags to use
+for a run.
+
+Specify batch files for a run using one or more arguments with the
+syntax ``@PATH``.
+
+For example, to use the batch file `trials.csv` for operation `train`,
+run:
+
+``` command
+guild run @trials.csv
+```
+
+For information on batch file format, see [Batch
+Files](/runs.md#batch-files).
 
 ## Special Flag Values
 

@@ -371,14 +371,14 @@ A *batch run* is a run that generates other runs, or *trials*.
 
 Guild supports different ways to run a batch:
 
-- Specify a flag value containing a [list of values](ref:flag-value-list)
+- Specify a [flag value list](ref:flag-value-list)
 - Specify a flag value that uses a [search space
   function](ref:search-space-function)
-- Run using `--optimize` or `--optimizer`
-- Run with batch file arguments
+- Run using `--optimize` or `--optimizer` option with [run](cmd:run)
+- Run with [batch file](#batch-files) arguments
 
-Batch runs are separate from trial runs. Batch runs use a distinct
-naming convention:
+Batch runs are distinct from trial runs and appear in run lists
+separately. Batch runs use a distinct naming convention:
 
 ```
 OPERATION+[OPTIMIZER]
