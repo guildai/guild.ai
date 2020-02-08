@@ -2,11 +2,16 @@ code, kbd, pre, samp, a.cmd, a.pkg {
   font-family: $font-family-code;
   color: $code-inline-color;
   background: inherit;
-  padding: 0 4px;
+  padding: 0 2px;
   font-size: 0.875em;
 }
 
-a.cmd code {
+a code {
+  color: $link-color;
+}
+
+a.cmd code,
+a.pkg code {
   // Avoid doubling up on padding when cmds are
   // accidentally quoted ala [`cmd`]
   padding: 0;
@@ -22,7 +27,7 @@ code.lit {
   color: $code-literal-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
-  padding: 1.5px 5px;
+  padding: 1.5px 2px;
   border-radius: 2px;
 }
 

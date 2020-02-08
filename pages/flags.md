@@ -249,3 +249,10 @@ train:
 ```
 
 In this case, Guild will explicitly decode string input to `float`.
+
+
+## Python Global Variables
+
+TODO: merge into above where it belongs
+
+Guild is designed to avoid changes to your code.

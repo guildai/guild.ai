@@ -426,6 +426,14 @@ If the Guild file is full format, they are applied as attributes of an
     See [Optimizers - Guild File
     Cheatsheet](/cheatsheets/guildfile.md#optimizers) for examples.
 
+`plugins` <div id="operation-plugins"></div>
+: List of plugins to enable for the operation
+
+    Use the value `all` to enable all plugins. To enable all
+    summary-related plugins (`cpu`, `gpu`, `disk`, `memory`, and
+    `perf`) use the value `summary`. See
+    [Plugins](/reference/plugins.md) for more information.
+
 ### Flags
 
 Flags are defined as mappings under the `flags` operation

@@ -177,7 +177,20 @@ guild export --move archived-runs
 
 Press `Enter` to confirm.
 
-Guild moves all of your runs into `archived-runs`.
+Guild moves your runs into a local `archived-runs` directory. Your
+`guild-start` project directory should look like this:
+
+<div class="file-tree">
+<ul>
+<li class="is-folder open">guild-start
+ <ul>
+ <li class="is-folder">archived-runs</li>
+ <li class="is-file">guild.yml</li>
+ <li class="is-file">train.yml</li>
+ </ul>
+</li>
+</ul>
+</div>
 
 Verify that your runs list is empty:
 

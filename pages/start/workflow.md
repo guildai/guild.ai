@@ -2,11 +2,15 @@ tags: start
 
 # Automate Workflow
 
-In the previous section, you added `iris-svm` to your project Guild
-file `guild.yml`. In this section, you add a new operation to
-`iris-svm` to automate search steps.
+[TOC]
 
-## Add `search` Operation to `iris-svm`
+## Overview
+
+In the [previous section](/start/classifier.md), you add the
+classifier `iris-svm` to your project. In this section, you add a new
+operation to `iris-svm` to automate search steps.
+
+## Add `search` Operation to `guild.yml`
 
 In the `guild-start` directory, modify `guild.yml` by adding the
 `search` operation below to the `iris-svn` model.
@@ -18,13 +22,19 @@ The final modified `guild.yml` should be:
   description: A sample model
   operations:
     train:
-      description: Generate a sample loss
+      description: Sample training script
+      main: train
+      flags-dest: globals
+      flags-import:
+        - noise
+        - x
+      output-scalars: '(\key): (\value)'
 
 - model: iris-svm
-  description: Iris classifier using a SVM
+  description: Iris classifier using a support vector machine (SVM)
   operations:
-    fit:
-      description: Fit SVM model
+    train:
+      description: Train SVM model on Iris data set
       main: plot_iris_exercise
       flags:
         kernel:
@@ -46,33 +56,28 @@ The final modified `guild.yml` should be:
       output-scalars:
         train_accuracy: 'Train accuracy: (\value)'
         test_accuracy: 'Test accuracy: (\value)'
-
     search:
-      description: Run a grid search
+      description: Generate runs to find optimal hyperparameters
       steps:
-        - run: fit
+        - run: train
           flags:
             kernel: [linear, poly, rbf]
             gamma: [0.1, 0.5, 1, 5, 10, 25]
-            random_seed: ${random_seed}
-        - run: fit
+        - run: train
           flags:
             kernel: poly
             degree: [2, 3, 4]
-            random_seed: ${random_seed}
-      flags:
-        random_seed:
-          description: Random seed used for trials
-          default: 0
 ```
 
-^ `guild.yml` after adding `search` operation
+^ `guild.yml` after adding `iris-svm:search` operation
 
-The `search` operation defines two [steps](term:step) --- each runs
-the `fit` operation with the specified flags. Guild executes these in
+The `search` operation defines two [steps](term:step). Each step runs
+`iris-svm:train` with the specified flags. Guild executes these in
 order when you run `search`.
 
-Use `steps` to define higher-order operations, or *workflows*.
+!!! highlight
+    Use `steps` to define higher-order operations, or
+    [workflows](term:workflow).
 
 Verify that the `search` operation is available:
 
@@ -81,27 +86,35 @@ guild ops
 ```
 
 ``` output
-iris-svm:fit     Fit SVM model
-iris-svm:search  Run a grid search
-sample:train     Generate a sample loss
+iris-svm:search  Generate runs to find optimal hyperparameters
+iris-svm:train   Train SVM model on Iris data set
+sample:train     Sample training script
 ```
 
-If you don't see `iris-svm:search`, check that your `guild.yml` is the
+If you don't see `iris-svm:search`, verify that `guild.yml` is the
 same as above and that you're running the command from `guild-start`.
 
 ## Run Search
 
-Run the newly added `search` operation:
+Run `iris-svm:search`:
 
 ``` command
-guild run iris-svm:search random_seed=[0,42]
+guild run iris-svm:search
 ```
 
 Press `Enter` to confirm.
 
-Guild runs a series of trials as defined by the flags in `search`. It
-runs this series twice, one for each `random_seed`. We try different
-random seeds to gauge the influence of randomness on the results.
+Guild runs a series of trials as defined by the flags in `search`.
+
+- 18 trials for the first step: six trials for each of the three
+  `kernel` values (`linear`, `poly`, `rbf`), each with a different
+  value for `gamma` (`0.1`, `0.5`, `1`, `5`, `10`, `25`)
+
+- 3 trials for the second step: one for each of the specified `degree`
+  values (`2`, `3`, `4`).
+
+These values are manually selected to provide a first-pass coverage of
+the hyperparameter search space. See
 
 ## View Results in TensorBoard
 
@@ -129,7 +142,7 @@ Click **PARALLEL COORDINATES VIEW**. TensorBoard shows the results for
 the `iris-svm:fit` runs, including **train_accuracy** and
 **test_accuracy**.
 
-![](/assets/img/workflow-hparams.png)
+![](/assets/img/tb-hparams2.png)
 
 ^ Parallel coordinates view
 

@@ -1,22 +1,12 @@
 tags: start
 
-# Explore Guild Features
+# Next Steps
 
 TODO:
 
-- Add Guild to a Project
+Point to guides:
+
+- Add Guild to Project
 
 
----
-
-old:
-
-## Environments
-
-## Export and Import
-
-## Workflow
-
-## Remote Backup and Restore
-
-## Remote Training
+- Updraging from Previous Versions

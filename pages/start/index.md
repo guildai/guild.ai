@@ -39,7 +39,7 @@ Guild's primary interface is the [command line](/cli.md). Commands are
 run using the format ``guild COMMAND``. Use the `--help` option to
 show information for a command.
 
-To show all available commands, run:
+Show all Guild commands:
 
 ``` command
 guild --help
@@ -97,7 +97,7 @@ Commands:
   watch            Watch run output.
 ```
 
-See [Commands Referencex](/commands/index.md) for online help.
+See [Commands Reference](/commands/index.md) for online help.
 
 ## Create a Sample Training Script
 
@@ -173,17 +173,14 @@ When Guild runs a script, it generates a new experiment, or
 
 !!! highlight
     Guild lets you track experiments without changing your
-    scripts. This saves you time and keeps your source independent of
-    an experiment management framework.
+    scripts. This saves time and keeps your source independent of an
+    experiment management framework.
 
 Guild detects two hyperparameters from `train.py`: *noise* and
 *x*. Guild refers to these variables as [flags](term:flag). By
 default, Guild treats global constants in Python scripts as
-flags. This behavior can be controlled through explicit
-configuration. You learn about this in later steps.
-
-Guild scans script output for values printed in the format ``key:
-value`` and logs them as [scalars](term:scalar).
+flags. This behavior can be controlled through explicit configuration,
+which you learn about in later steps.
 
 ## View Results
 
@@ -202,16 +199,16 @@ in TensorBoard.
 
 ![](/assets/img/view-start.png)
 
-^ Guild View, a web based application for viewing and comparing run
-  results
+^ Guild View --- a web based application for viewing runs and
+  comparing results
 
 Exit Guild View by returning to your terminal window and pressing
 `Ctrl-C`.
 
-### Results from the Terminal
+### View Results from the Terminal
 
-When working in a command line environment, it's often more convient
-to use the terminal to view run results.
+When working in a command line environment, it's convient to use the
+terminal to view run results.
 
 From your terminal, list the current runs:
 
@@ -269,10 +266,10 @@ By default, Guild shows information for the latest run.
 
 ### Experiment Source Code
 
-Guild records project source code for each run. This lets you compare
-run results by examining changes to your project source code.
+Guild records project source code for each run so you know exactly
+what is executed.
 
-List the source code files used for the run:
+List the run source code files with the [ls](cmd:ls) command:
 
 ``` command
 guild ls --sourcecode
@@ -284,7 +281,7 @@ guild ls --sourcecode
   .guild/sourcecode/train.py
 ```
 
-Print the source code for `train.py` with the [cat](cmd:cat) command:
+Show the source code for `train.py` with the [cat](cmd:cat) command:
 
 ``` command
 guild cat --sourcecode --path train.py

@@ -90,7 +90,7 @@ markdown_extensions:
       templates:
 
         # external link
-        - text_pattern: '(.+?)\s?->'
+        - text_pattern: '(.+?)\s?-(?:>|&gt;)'
           text: '{}'
           class: ext
           target: _blank
@@ -186,6 +186,8 @@ markdown_extensions:
               batch: /runs.md#batches
               batch-file: /runs.md#batch-files
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
+              cli: /cli.md
+              environment: /environments.md
               flag-sequence-function: /flags.md#sequence-functions
               flag: /flags.md
               flags: /flags.md
@@ -199,6 +201,7 @@ markdown_extensions:
               guildfile: /guildfile.md
               guildfiles: /guildfile.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
+              model: /guildfile.md#models
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
               operation: /operations.md
@@ -214,10 +217,11 @@ markdown_extensions:
               sequence-function: /flags.md#sequence-functions
               source-code: /guildfile.md#source-code
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
-              step: /reference/guildfile.md#steps
-              steps: /reference/guildfile.md#steps
+              step: /workflow.md#steps
+              steps: /workflow.md#steps
               summaries: /tools/tensorboard.md#summaries
               user-config: /reference/user-config.md
+              workflow: /workflow.md
 
 pages:
   - index.md
@@ -231,8 +235,8 @@ pages:
           - start/runs.md
           - start/guildfile.md
           - start/classifier.md
-          #- start/workflow.md
-          #- start/explore.md
+          - start/workflow.md
+          - start/nextsteps.md
 
       - Concepts:
           #- architecture.md
@@ -248,6 +252,7 @@ pages:
           - queues.md
           - environments.md
           - remotes.md
+          - notebooks.md
           #- publishing.md
 
       - Tools:
@@ -257,7 +262,9 @@ pages:
           - tools/diff.md
 
       - Guides:
-          - guides/project.md
+          - guides/add-guild.md
+          - guides/dependencies.md
+          - guides/upgrade.md
           - guides/tips-and-techniques.md
           #- guides/dependencies.md
           #- guides/add.md
@@ -331,7 +338,9 @@ pages:
           - reference/optimizers.md
           - reference/remotes.md
           - reference/user-config.md
+          - reference/plugins.md
           - reference/defaults.md
+          - reference/design.md
 
       #- Knowledge Base:
       #    - kb/configure-flags.md
@@ -345,6 +354,5 @@ pages:
           - cheatsheets/guildfile.md
           - cheatsheets/remotes.md
 
-  #- examples.md
   - faq.md
   - services.md

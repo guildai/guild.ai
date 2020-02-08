@@ -35,12 +35,8 @@ In your `guild-start` project directory, create a file named
 train:
   description: Sample training script
   main: train
-  flags-dest: globals
-  flags-import:
-    - noise
-    - x
-  output-scalars:
-    loss: '(\key): (\value)'
+  flags-import: all
+  output-scalars: '(\key): (\value)'
 ```
 
 ^ Project Guild file `train.yml`
@@ -73,18 +69,13 @@ Below is a description of each setting.
   information, see [Python Based
   Operations](/operations.md#python-based-operations).
 
-`flags-dest`
-: Guild uses this value to set user inputs ([flags](term:flag)) for
-  the operation. By default, Guild examines the Python script to infer
-  this setting. For more information see [Flags
-  Interface](ref:flags-interface).
-
 `flags-import`
-: Guild uses the flags interface (either defined explicit with
-  `flags-dest` or auto-detected) to import operation flags. In this
-  case, Guild examines the `train` module for global value assignments
-  and infers that they are importable flags. For more information, see
-  [Flag Imports](ref:flags-import).
+: Guild lets you define operation [flags](term:flags) in a Guild
+  file. To save you time and simplify configuration, Guild can inspect
+  the Python module and import flags. Setting `flags-import` to `all`
+  tells Guild to use all of the flags it discovers. For more
+  information on defining flags for an operation, see
+  [Flags](/flags.md).
 
 `output-scalars`
 : Numeric values like *loss* and *accuracy* are referred to as
@@ -164,12 +155,15 @@ You are about to run train
 Continue? (Y/n)
 ```
 
-Note that you run `train` and not `train.py`. `train` is the
-*operation* defined in `guild.yml` (above). `train.py` refers to the
-Python script directly. While Guild supports both models of operation
---- running operation defined in Guild files and running scripts
-directly --- we encourage you to use operations in your project
-work.
+Note that you run `train` and not `train.py` above. `train` is the
+*operation* defined in the Guild file. `train.py` refers to the Python
+script directly. Guild supports both methods: running operations
+defined in Guild files and running scripts.
+
+!!! tip While it's convenient to run scripts directly in Guild, we
+    recommend that you use a Guild file to explicitly define
+    operations for your day-to-day workflow. When running scripts
+    directly, Guild makes some assumptions about your script
 
 ## Summary
 

@@ -506,7 +506,28 @@ train:
     - '(\key)=(\value)'
 ```
 
-################################################################
+## Other
+
+### Operation Plugins
+
+Enable summary-related plugins, which log additional scalars for each
+step.
+
+```yaml
+train:
+  plugins: summary
+```
+
+Explicitly enable each summary-related plugin.
+
+``` yaml
+train:
+  plugins: [cpu, gpu, disk, memory, perf]
+```
+
+{! summary-plugin-support-notice.md !}
+
+---------------
 
 ## Operations (OLD)
 

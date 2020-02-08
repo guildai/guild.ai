@@ -21,13 +21,8 @@ title: The ML Engineering Platform
 
 Guild AI brings systematic control to ML so you can build better
 models faster and avoid errors. It enables engineering best practices
-for automation, measurement, and governance.
-
-</p>
-
-<p class="highlight">
-
-Guild AI is freely available under the Apache 2.0 open source license.
+for automation, measurement, and governance. Guild AI is freely
+available under the Apache 2.0 open source license.
 
 </p>
 

@@ -1,6 +1,6 @@
 sidenav_title: runs rm
 overview_title: runs rm
-tags: runs
+tags: common, alias
 
 # runs rm
 

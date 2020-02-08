@@ -1,6 +1,6 @@
 sidenav_title: diff
 overview_title: diff
-tags: compare, visual
+tags: compare, tool, run-info
 
 # diff
 

@@ -75,12 +75,67 @@ For example:
 guild run train learning-rate=logspace[-5:-1:5]
 ```
 
+### Use project specific virtual environments
+
+Unless otherwise configured, Guild runs operations in the *default
+environment*: [^default_env]
+
+[^default_env]: The default environment is located in `~/.guild` where
+`~` is the active user home directory.
+
+- Guild uses the default system or user Python runtime
+- Operations use the system and user installed Python libraries
+- Guild saves runs under the active user home directory
+
+You can check the current environment using [check](cmd:check):
+
+``` command
+guild check
+```
+
+Note the location of ``guild_home`` in the output.
+
+Unless you need to compare runs across projects, it can be helpful to
+isolate your project runs in a virtual environment.
+
+In an activated virtual environment:
+
+- Guild uses the virtual environment Python runtime
+- Operations use Python libraries available in the virtual environment
+- Guild saves runs within the virtual environment [^guild_home_runs]
+
+[^guild_home_runs]: You can change this behavior by setting the
+``GUILD_HOME`` environment variable, for example, to save runs to a
+different location. For more information, see
+[Environments](/environments.md).
+
+Virtual environments also isolate installed libraries, allowing you to
+maintain different library configuation for each environment.
+
+The easiest way to create a project specific environment is to change
+to the project and run [init](cmd:init):
+
+``` command
+guild init
+```
+
+To activate environment once it's created, use:
+
+``` command
+source guild-env
+```
+
+You may alternatively use [virtualenv](ref:virtualenv) or
+[conda](ref:conda) to create and activate an environment.
+
+For more information, see [Environments](/environments.md).
+
 ### Maintain a clean working environment
 
 Over time you will generate many runs, some of which will fail with an
-error message or yield disappointing results. Use one of the following
-techniques to move these runs out of your working environment so you
-can focus on the runs you're interested in.
+error message or otherwise yield disappointing results. Use one of the
+following techniques to move these runs out of your working
+environment so you can focus on the runs you're interested in.
 
 #### Delete failed runs
 

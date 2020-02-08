@@ -4,6 +4,8 @@ tags: concept
 
 [TOC]
 
+## Overview
+
 A *Guild environment* is a system runtime used to manage runs. All
 Guild commands are executed in the context of a Guild environment.
 
@@ -25,7 +27,7 @@ Guild stores the following under `guild_home`:
 - Cached run output scalars
 - Remote state
 
-### Guild Environments vs Virtual Environments
+## Guild Environments vs Virtual Environments
 
 By default, Guild environments correspond to activated virtual
 environments. Use virtual environments created using [](ref:conda) or
@@ -33,6 +35,13 @@ environments. Use virtual environments created using [](ref:conda) or
 
 You can change this behavior by setting Guild home, which is described
 below.
+
+!!! important
+    When using a virtual environment, bear in mind that runs
+    are saved *within the environment*. Take care when deleting
+    virtual environments as they may contain Guild runs. Look for
+    `.guild/runs` within the virtual environment directory to verify
+    that you're not deleting runs.
 
 ## Set Guild Home
 

@@ -3,8 +3,7 @@ tags: concept
 # Command Line Interface
 
 Guild's primary interface is via the command line. Guild also supports
-a [Python interface for work in Jupyter
-Notebooks](guides/notebooks/).
+a [Python interface for work in Jupyter Notebooks](/notebooks.md).
 
 As an engineering tool, Guild fits the ecosystem of traditional POSIX
 toolchains. This has a number of benefits:
@@ -18,15 +17,15 @@ toolchains. This has a number of benefits:
 If you're not familiar with running commands from a terminal, we
 suggest reading one of the following guides for your platform.
 
-**Linux**
+*Linux*
 : [The Command Line for Beginners -- Ubuntu Tutorials
   ->](https://tutorials.ubuntu.com/tutorial/command-line-for-beginners)
 
-**macOS**
+*macOS*
 : [Command Line Primer -- Apple Developer
   ->](https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html)
 
-**Windows**
+*Windows*
 : [How to use the Windows command line ->](https://www.computerhope.com/issues/chusedos.htm)
   <br>
   [Coding in Windows -- Setting Up Git and Cmder
@@ -34,7 +33,7 @@ suggest reading one of the following guides for your platform.
   <br>
   [Git + MinGW Command Line ->](https://learn.adafruit.com/windows-tools-for-the-electrical-engineer/git-plus-command-line-tools)
 
-**General**
+*General*
 : [Getting to Know the Command Line
   ->](https://www.davidbaumgold.com/tutorials/command-line/)
 
