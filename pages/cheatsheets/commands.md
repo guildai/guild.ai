@@ -6,95 +6,123 @@ sidenav_title: Commands
 
 ## Get Command Help
 
-List Guild commands:
+#### Show available Guild commands
 
 ``` command
 guild
 ```
 
-Get help for a command:
+#### Command specific help
 
 ``` command
-guild command --help
+guild COMMAND --help
 ```
 
 ## Run a Script
 
-Use Guild to run a Python script to generate a unique experiment.
+Use the [run](cmd:run) command to run a Python script or executable.
+
+#### Run a Python script
 
 ``` command
 guild run script.py flag1=val1 flag2=val2
 ```
 
-*Command help: [run](cmd:run)*
+#### Run an executable
+
+``` command
+guild run script.sh flag1=val flag2=val2
+```
 
 ## Run an Operation
 
-Operations are defined in a [Guild file](ref:guildfiles).
+Use the [run](cmd:run) command to run operations defined in a [Guild
+file](ref:guildfile).
 
-Run an operation with default flag values:
-
-``` command
-guild run train
-```
-
-Specify flag values:
-
-``` command
-guild run train flag1=val1 flag2=val2
-```
-
-Run a grid search, which generates trials for each flag combination:
-
-``` command
-guild run train learning-rate=[0.01,0.1] batch-size=[50,100]
-```
-
-Run 10 trials using random search:
-
-``` command
-guild run train -m 10 lr=loguniform[1e-5:1e-2] batch_size=50
-```
-
-``` command
-guild run train dropout=uniform[0.1:0.8]
-```
-
-The previous command can be also run as:
-
-``` command
-guild run train dropout=[0.1:0.8]
-```
-
-10 trials using Bayesian optimization with gaussian processes:
-
-``` command
-guild run train -m 10 -o gp lr=loguniform[1e-5:1e-2] batch_size=50
-```
-
-Save trials to a CSV batch file:
-
-``` command
-guild run train dropout=[0.1,0.2,0.3] --save-trials trials.csv
-```
-
-Use batch file to generate multiple runs:
-
-``` command
-guild run train @trials.csv
-```
-
-*Command help: [run](cmd:run)*
-
-## Get Operation Help
-
-List available operations:
+#### Show available operations
 
 ``` command
 guild operations
 ```
 
-Get help for the current project:
+#### Run with default flag values
+
+``` command
+guild run train
+```
+
+#### Specify flag values
+
+``` command
+guild run train flag1=val1 flag2=val2
+```
+
+#### Run a batch using flag value lists
+
+The following command generates 4 trials --- one for each combination
+of flag values:
+
+``` command
+guild run train learning-rate=[0.01,0.1] batch-size=[50,100]
+```
+
+For more information, see [Flag Value Lists](ref:flag-value-list).
+
+#### Run a random search
+
+Use [search space functions](term:flag-search-space-function) to
+implicitly trigger the use of the `random` optiizer.
+
+``` command
+guild run train -m 10 lr=loguniform[1e-5:1e-2] batch_size=50
+```
+
+^ Use [`loguniform`](/flags.md#loguniform) to sample from a
+log-uniform distribution
+
+
+``` command
+guild run train dropout=uniform[0.1:0.8]
+```
+
+^ Use [`uniform`](/flags.md#uniform) to sample from a uniform
+distribution
+
+``` command
+guild run train dropout=[0.1:0.8]
+```
+
+^ When you omit the function name, Guild assumes
+[`uniform`](/flags.md#uniform) --- this command is identical to the
+previous example
+
+#### Run Bayesian optimization
+
+``` command
+guild run train -m 10 -o gp lr=loguniform[1e-5:1e-2] batch_size=50
+```
+
+#### Save trials to a batch file
+
+``` command
+guild run train dropout=[0.1,0.2,0.3] --save-trials trials.csv
+```
+
+#### Use a batch file
+
+``` command
+guild run train @trials.csv
+```
+
+## Get Project Help
+
+#### List available operations
+
+``` command
+guild operations
+```
+
+#### View project help
 
 ``` command
 guild help
@@ -106,85 +134,19 @@ Get help with running a particular operation:
 guild run operation --help-op
 ```
 
-*Command help: [operations](cmd:operations), [help](cmd:help), [run](cmd:run)*
-
-## Define an Operation
-
-The examples below can be added to a [Guild file](ref:guildfiles) and
-adopted as needed.
-
-Operations defined top-level of `guild.yml` ([operation only
-format](ref:operations-only-format)):
-
-``` yaml
-prepare-data:
-  descrition: Prepare data for training
-  main: prepare
-  flags:
-    val-split:
-      description: Percent of examples to use for validation
-      default: 0.2
-
-train:
-  description: Train a model on prepared data
-  main: train
-  flags:
-    learning-rate:
-      description: Learning rate
-      default: 0.1
-    batch-size:
-      description: Batch size
-      default: 100
-  requires:
-    - operation: prepare-data
-```
-
-^ Sample operations for guild.yml
-
-Operations defined per model ([full format](ref:full-format)):
-
-``` yaml
-- model: cnn
-  operations:
-    train:
-      description: Train the CNN
-      main: train
-```
-
-^ Sample operation defined for a model in guild.yml
-
-!!! tips
-    - Guild automatically imports flags from Python modules so you
-      don't need to re-specify them in the Guild file.
-
-    - To only import certain flags, use `flags-import`.
-
-    - To skip importing certain flags, use `flags-import-skip`.
-
-    - To disable importing flags altogether, use `flags-import: no`.
-
-    - When an operation name is the same as the Python module name, you
-      can omit `main`.
-
-Refer to [Operations](/reference/guildfile.md#operations) for a full
-list of configuration options.
-
-See [Guild File Snippets](#guild-file-snippets) below for more
-examples.
-
 ## List Runs
 
 ``` command
 guild runs
 ```
 
-Show only runs whose operation name contains "train":
+#### Filter runs by operation
 
 ``` command
 guild runs -o train
 ```
 
-Show runs that were started within various intervals:
+#### Filter runs by start time
 
 ``` command
 guild runs -s today
@@ -198,7 +160,7 @@ guild runs -s '1 week ago'
 guild runs -s 'last 15 minutes'
 ```
 
-Show runs with various status:
+#### Filter runs by status
 
 ``` command
 guild runs --terminated
@@ -216,50 +178,40 @@ guild runs --terminates --error
 guild runs -TE
 ```
 
-*Command help: [runs list](cmd:runs-list)*
-
 ## Show Run Details
 
 The examples below apply to the latest run. To apply them to another
 run, include the run index or run ID in the command.
 
-Show latest run metadata including flags:
-
 ``` command
 guild runs info
 ```
 
-Include scalars (metrics):
-
-``` command
-guid runs info -S
-```
-
-List run files:
+#### List run files
 
 ``` command
 guild ls
 ```
 
-List run source code:
+#### List run source code files
 
 ``` command
 guild ls --sourcecode
 ```
 
-Show run output:
+#### Show run output
 
 ``` command
 guild cat --output
 ```
 
-Print a run text file to the console:
+#### Print file contents
 
 ``` command
 guild cat -p model.txt
 ```
 
-Open a run file or directory using the desktop file browser:
+#### Open a file or directory
 
 ``` command
 guild open -p plot.png
@@ -269,55 +221,63 @@ guild open -p plot.png
 guild open -p plots
 ```
 
-*Command help: [runs info](cmd:runs-info), [ls](cmd:ls),
-[cat](cmd:cat), [open](cmd:open)*
-
 ## Compare Runs
 
 ``` command
 guild compare
 ```
 
-Compare only runs whose operations contain "cnn" that were started
-today:
+#### Filter runs for compare
 
 ``` command
 guild compare -o cnn -s today
 ```
 
-Write compare data to a CSV:
+#### Save compare data to a file
+
 
 ``` command
 guild compare --csv compare.csv
 ```
 
-Compare runs using TensorBoard:
+#### Print compare data to the console
+
+``` command
+guild compare --csv -
+```
+
+#### Compare using alternate tools
+
+``` command
+guild compare --tool hiplot
+```
+
+^ Copmare runs using [HiPlot](ref:hiplot)
+
+#### Compare runs using TensorBoard
 
 ``` command
 guild tensorboard
 ```
 
-Compare runs using Guild View:
+#### Compare runs using Guild View
 
 ``` command
 guild view
 ```
-
-*Command help: [compare](cmd:compare), [tensorboard](cmd:tensorboard),
-[view](cmd:view)*
 
 ## Diff Runs
 
 The examples below diff the last two runs. To diff different runs,
 include their indexes or IDs in the command in the form `FROM TO`.
 
-Diff the last two runs:
+#### Diff the last two runs
 
 ``` command
 guild diff
 ```
 
-Diff various information of the last two runs:
+#### Diff specific run information
 
 ``` command
 guild diff --flags
@@ -331,7 +291,7 @@ guild diff --sourcecode
 guild diff --output
 ```
 
-Diff a run file or directory:
+#### Diff a run file or directory
 
 ``` command
 guild diff -p model.txt
@@ -341,23 +301,16 @@ guild diff -p model.txt
 guild diff -p checkpoints
 ```
 
-Use [Meld ->](https://meldmerge.org/) to diff runs:
+#### Diff using alternate commands
 
 ``` command
 guild diff --cmd meld
 ```
 
-To save Meld as the default program to diff runs, edit
-`~/.guild/config.yml` and include this configuration:
+^ Diff using [Meld](ref:meld)
 
-``` yaml
-diff:
-  command: meld
-```
-
-^ Snippet for ~/.guild/config.yml
-
-*Command help: [diff](cmd:diff)*
+See [Diff - User Config](/reference/user-config.md#diff) for details
+on setting the default command used by [diff](cmd:diff).
 
 ## Install Guild AI
 
@@ -365,25 +318,25 @@ diff:
 pip install guildai
 ```
 
-Install without admin privileges:
+#### Install without admin privileges
 
 ``` command
 pip install guildai --user
 ```
 
-Install with elevated priviledges (Linux and macOS):
+#### Install with elevated priviledges (Linux and macOS)
 
 ``` command
 sudo pip install guildai
 ```
 
-Verify that Guild is installed:
+#### Verify Guild installation
 
 ``` command
 guild check
 ```
 
-Upgrade Guild:
+#### Upgrade Guild
 
 ``` command
 pip install --upgrade guildai
@@ -391,20 +344,39 @@ pip install --upgrade guildai
 
 ## Debug Operations
 
-Show the full command that Guild uses when running an operation:
+#### Show underlying operation command
 
 ``` command
 guild run train --print-cmd
 ```
 
-Test output scalars:
+^ Prints the command that Guild uses for `train` and exit without
+running the operation
+
+#### Test output scalars
+
+``` command
+guild run train --test-output-scalars sample-output.txt
+```
+
+^ Apply source code copy rules for `train` to contents of
+`sample-output.txt`
 
 ``` command
 guild run train --test-output-scalars -
 ```
 
-Stage a run directory without running an operation:
+^ Test interactively --- type a sample output line and press `Enter`
+to evaluate it using source code copy rules for `train`
+
+#### Test source code configuration
 
 ``` command
-guild run train --stage /tmp/train-stage
+guild run train --test-sourcecode
+```
+
+#### Stage a run for debugging
+
+``` command
+guild run train --stage --run-dir /tmp/staged-run
 ```

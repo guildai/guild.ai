@@ -83,8 +83,8 @@ run should be generated for each value appearing in the list. If a
 list is specified for multiple flag, Guild runs the operation for each
 unique combination of flag values.
 
-For example, the following command runs the `train` operation a total
-of *nine* times:
+The following command runs the `train` operation a total of *nine*
+times --- one for each combination of flag values:
 
 ``` command
 guild run train lr=[0.001,0.01,0.1] batch-size=[100,500,1000]
@@ -93,7 +93,8 @@ guild run train lr=[0.001,0.01,0.1] batch-size=[100,500,1000]
 ### Sequence Functions
 
 Sequence functions are specified in the format ``NAME[ARGS]`` where
-args is a list of values separated by a colon.
+``NAME`` is one of the functions below and ``ARGS`` is a list of
+values separated by a colon ``:``.
 
 [`range`](#range)
 : Specifies a range with *start*, *end*, and an optional step size.
@@ -109,7 +110,7 @@ args is a list of values separated by a colon.
 
 Refer to the sections below for details on each function.
 
-#### range
+#### `range`
 
 Usage:
 
@@ -131,7 +132,7 @@ value `1` is used.
 `range[0:0.3:0.1]`
 : `[0.0, 0.1, 0.2, 0.3]`
 
-#### linspace
+#### `linspace`
 
 Usage:
 
@@ -149,7 +150,7 @@ Generates `COUNT` values that are evenly spaced between `START` and
 `linspace[1:5:3]`
 : `[1.0, 3.0, 5.0]`
 
-#### logspace
+#### `logspace`
 
 Usage:
 

@@ -126,6 +126,12 @@ markdown_extensions:
           target: _blank
           href: https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html
 
+        - link_pattern: ref:hiplot
+          text: HiPlot
+          class: ext
+          target: _blank
+          href: https://facebookresearch.github.io/hiplot/index.html
+
         - link_pattern: ref:meld
           text: Meld
           class: ext
@@ -188,7 +194,9 @@ markdown_extensions:
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
               cli: /cli.md
               environment: /environments.md
+              flag-search-space-function: /flags.md#search-space-functions
               flag-sequence-function: /flags.md#sequence-functions
+              flag-value-list: /flags.md#value-lists
               flag: /flags.md
               flags: /flags.md
               flags-import: /flags.md#flag-imports

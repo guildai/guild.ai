@@ -132,7 +132,10 @@ loss = (np.sin(5 * x) * (1 - np.tanh(x ** 2)) + np.random.randn() * noise)
 print("loss: %f" % loss)
 ```
 
-^ Sample script `train.py`
+^ Sample script `train.py` [^script-credit]
+
+[^script-credit]: Adapted from [*Bayesian optimization with skopt*
+    ->](https://scikit-optimize.github.io/auto_examples/bayesian-optimization.html)
 
 This script simulates a loss function. It accepts hyperparameters `x`
 and `noise` and prints the resulting `loss`.
@@ -264,7 +267,7 @@ By default, Guild shows information for the latest run.
     essential for making informed decisions and tracking changes to
     your model.
 
-### Experiment Source Code
+### Project Source Code
 
 Guild records project source code for each run so you know exactly
 what is executed.
@@ -325,14 +328,14 @@ In this section, you use Guild AI to capture experiments for a sample
 training script.
 
 !!! highlights
-    - Track experiments without changing your code --- simply run
-      a training script with Guild.
+    - Track experiments without changing your code.
 
-    - Guild is easy to install. It doesn't require databases or external
-      systems.
+    - Guild is easy to install and use. It doesn't require databases
+      or external systems.
 
-    - Guild captures every detail about your run. You use this information
+    - Guild captures every detail about your run. Use this information
       to optimize your model, catch mistakes, and resolve issues.
 
 In the next section, you use Guild's built-in hyperparamter tuning
-features to find values for `x` that minimize `loss` for `train.py`.
+features to find values for `x` that minimize `loss` for the sample
+training script.

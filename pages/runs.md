@@ -365,6 +365,36 @@ TODO
 
 TODO
 
+## Batches
+
+A *batch run* is a run that generates other runs, or *trials*.
+
+Guild supports different ways to run a batch:
+
+- Specify a flag value containing a [list of values](ref:flag-value-list)
+- Specify a flag value that uses a [search space
+  function](ref:search-space-function)
+- Run using `--optimize` or `--optimizer`
+- Run with batch file arguments
+
+Batch runs are separate from trial runs. Batch runs use a distinct
+naming convention:
+
+```
+OPERATION+[OPTIMIZER]
+```
+
+### Implied Batch Runs
+
+TODO:
+
+- Implied by flag value lists
+- Implied by flag range functions
+
+### Optimizing Batch Runs
+
+TODO
+
 ## Batch Files
 
 TODO: merge into above
