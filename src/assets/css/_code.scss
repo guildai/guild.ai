@@ -27,7 +27,7 @@ code.lit {
   color: $code-literal-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
-  padding: 1.5px 2px;
+  padding: 1.5px 4px;  // intentionally more padding than non-literal code
   border-radius: 2px;
 }
 

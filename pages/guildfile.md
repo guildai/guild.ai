@@ -351,7 +351,27 @@ TODO
 
 ## Models
 
+A *model* defines a set of related operations. Generally models
+correspond to the structures that you train, evaluate, and
+deploy. However, Guild models may define any operations or even be
+used for non-modeling functions.
+
+Models must be defined using [full format](ref:full-format) Guild
+files. Models are top-level objects with a `model` attribute.
+
+``` yaml
+- model: mnist
+  operations:
+    train: mnist_train
+    validate: mnist_val
+```
+
+^ Sample `mnist` model definition with two operations: `train` and `validate`
+
 TODO
+
+- Other attributes - why use models and not just operations?
+- Inheritance using config
 
 ## Resources
 
@@ -363,8 +383,66 @@ TODO
 
 ## Resuable Config
 
-TODO
+Guild supports reusable configuration through top-level `config` objects.
+
+Configuration must be defined using [full format](ref:full-format)
+Guild files.
+
+Configuration objects may contain any attributes. Attributes are
+applied based on how the object is used.
+
+Guild supports two uses of `config` objects:
+
+- [Top-level object inheritance](#inheritance)
+- [Attribute includes](#attribute-includes)
+
+Below is a sample `config` object.
+
+``` yaml
+- config: base-model
+  operations:
+    train: '{{name}}_train'
+    validate: '{{name}}_val'
+```
+
+^ Top-level `config` object named `base-model` that defines an
+`operations` attribute
+
+This configuration can be referenced using the `extends` attribute of
+another top-level object to inherit the configuration attributes.
+
+``` yaml
+- model: mnist
+  extends: base-model
+  params:
+    name: mnist
+```
+
+^ Top-level `model` object that *extends* `base-model` --- it defines
+a `name` param, which resolves references in the inherited attributes
 
 ## Inheritance
 
+TODO
+
+## Attribute Includes
+
+TODO
+
 ## Including Files
+
+Guild files can include other YAML files by using a top-level
+`include` object. The `include` type attribute specifies the path of
+the file to include. Paths are considered relative to the including
+Guild file.
+
+Here is a sample `guild.yml` file that includes two files.
+
+``` yaml
+- include: guild-mnist.yml
+- include: guild-cifar.yml
+```
+
+The included files must be valid full format Guild files. Their
+contents are included in the Guild including file at the location each
+is defined.

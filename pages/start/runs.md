@@ -4,13 +4,12 @@ tags: start
 
 [TOC]
 
-In [the previous section](optimize.md) you generate several runs in
-search of optimal hyperparameters for the `train.py` script. When
-developing models, it's not uncommon to run dozens or hundreds of
-experiments as you try different approaches, data sets, and
-hyperparameters.
+In [the previous section](optimize.md) you generate runs in search of
+optimal hyperparameters for the `train.py` script. When developing
+models, it's not uncommon to run dozens or hundreds of experiments as
+you try different approaches, data sets, and hyperparameters.
 
-In this section, you learn about Guild commands for managing runs.
+In this section, you learn techniques for managing runs.
 
 ## Show Runs
 
@@ -49,6 +48,12 @@ guild runs rm
 
 Guild shows the list of runs to delete. Press `Enter` to confirm.
 
+Verify that the runs list is empty:
+
+``` command
+guild runs
+```
+
 Guild moves deleted runs to *trash* [^trash] where they can be viewed,
 restored, or purged if you want to permanently delete them.
 
@@ -56,8 +61,7 @@ restored, or purged if you want to permanently delete them.
     [check](cmd:check) to show the location of `GUILD_HOME` for the
     current environment.
 
-Show deleted runs by using the `--deleted` option with
-[runs](cmd:runs):
+Show deleted runs by specifying the `--deleted` option:
 
 ``` command
 guild runs --deleted
@@ -65,8 +69,7 @@ guild runs --deleted
 
 ## Restore Runs
 
-If you want to restore a deleted run, use [runs
-restore](cmd:runs-restore).
+To restore a deleted run, use [runs restore](cmd:runs-restore).
 
 Restore all of the deleted runs:
 
@@ -82,30 +85,26 @@ Verify that the runs appear in the runs list:
 guild runs
 ```
 
-!!! tip
-    When deleting runs, avoid the temptation to use `--permanent`
-    flag so that you have the option of restoring them later.
-
 ## Label a Run
 
-Labels are string values that help identify a run. Guild shows run
+A label is a short description associated with a run. Guild shows
 labels when listing and comparing runs.
 
 By default, Guild generates a default label for each run containing
-the flag values. You can specify a different label using the `--label`
-or `--tag` options.
+assigned flag values. You can specify a different label using the
+`--label` or `--tag` options.
 
-After a run is started, you can set the label using the
+After a run is started, you can modify its label using the
 [label](cmd:label) command.
 
-First, find the run with the lowest `loss` using [compare](cmd:compare):
+Find the run with the lowest `loss` using [compare](cmd:compare):
 
 ``` command
 guild select -o train.py --min loss
 ```
 
 Guild shows the run ID with the lowest loss. You can confirm this by
-running ``guild compare -o train.py --min loss`` -- the run with the
+running ``guild compare -o train.py --min loss`` --- the run with the
 lowest loss appears at the top of the list.
 
 Use the `--tag` option with the [label](cmd:label) command to prepend
@@ -120,12 +119,12 @@ the run label.
 
 !!! tip
     If you are running on Linux, macOS, or another POSIX
-    compatible operating system, you can use [command substitution
+    environment, you can use [command substitution
     ->](https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html)
-    and the [select](cmd:select) command to specify a run ID. For
-    example, ``guild run --tag best $(guild select -o train --min
-    loss)`` can be used to tag the "best" run (i.e. with the lowest
-    `loss`) of `train.py`.
+    and the [select](cmd:select) command to specify a run ID
+    argument. For example, ``guild run --tag best $(guild select -o
+    train --min loss)`` can be used to tag the "best" run --- i.e. with
+    the lowest `loss`.
 
 Show runs with "best" in their label:
 
@@ -138,12 +137,12 @@ guild runs -l best
 ```
 
 Due to random effects, the selected run in your case may have a
-different value for `x`. The optimal value of `x` is be near `-0.3`.
+different value for `x`. The optimal value of `x` is around `-0.3`.
 
-## Filter Runs for a Command
+## Filter Runs
 
 Run-related commands support a common interface for filtering runs
-effected by the command.
+affected by the command.
 
 Runs can be filtered by:
 
@@ -154,20 +153,19 @@ Runs can be filtered by:
 - When the run was started
 - Source code digest
 
-For example, to show runs that were started within the last 15
-minutes, run:
+To show runs that were started within the last 15 minutes, run:
 
 ``` command
 guild runs --started 'last 15 minutes'
 ```
 
-For availble filter options, refer to command help, either
-[online](/commands) or using `--help` with the command.
+For help filtering runs, refer to the applicable command in [Commands
+Reference](/commands/index.md) or use `--help` with the command.
 
 ## Export Runs
 
-You can export runs to a directory for backup or to clear runs from
-your list.
+Export runs to a directory for backup or to clear runs from your
+environment.
 
 Export all runs to a local `archived-runs` directory:
 
@@ -175,9 +173,10 @@ Export all runs to a local `archived-runs` directory:
 guild export --move archived-runs
 ```
 
-Press `Enter` to confirm.
+Guild shows the list of runs to export (move). Press `Enter` to
+confirm.
 
-Guild moves your runs into a local `archived-runs` directory. Your
+Guild moves your runs into a local `archived-runs` directory. The
 `guild-start` project directory should look like this:
 
 <div class="file-tree">
@@ -225,12 +224,12 @@ In this section you use various commands to manage your runs:
 - Delete runs
 - Restore deleted runs
 - Label a run
-- Export (archive) runs to a local directory
+- Export runs to a local directory
 
 !!! highlight
     Use Guild to label, archive, and delete runs as needed
     to help you focus on the most promising results without losing
     information from other experiments.
 
-In the next section, you use a [Guild file](ref:guildfiles) to define
-operations your project.
+In the next section, you use a [Guild file](ref:guildfiles) to
+explicitly define operations your project.

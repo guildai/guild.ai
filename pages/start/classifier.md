@@ -7,8 +7,8 @@ tags: start
 ## Overview
 
 In the [previous section](/start/guildfile.md), you use a Guild file
-to define a sample `train` operation. In this section, you enhance the
-project by adding a classifier.
+to define a `train` operation. In this section, you enhance the
+project by adding a real-world classifier.
 
 You learn how to:
 

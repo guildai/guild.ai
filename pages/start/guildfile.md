@@ -6,29 +6,25 @@ tags: start
 
 ## Overview
 
-Up to this point, you have run `train.py` directly without providing
-additional information about the script. When Guild runs an operation,
-it determines several things:
+Up to this point, you run `train.py` directly without providing
+additional information about the script.
 
-- How does the script read user-provided values, or
-  [flags](term:flag)?
-- How does the script communicate numeric results, or
-  [scalars](term:scalar), such as training loss and accuracy?
-- Does the script require additional files such as other source code
-  files and data sets?
+When Guild runs an operation, it determines the following:
 
-Unless configured otherwise, Guild makes assumptions about the script
-to answer these questions. Refer to [Default
-Behavior](/reference/defaults.md) for information on how runs scripts
-by default.
+- How the script accesses user-provided values ([flags](term:flag))
+- How the script communicates numeric results ([scalars](term:scalar))
+  such as training *loss* and *accuracy*
+
+Unless configured otherwise, Guild uses [default
+rules](/reference/defaults.md) to determine this information.
 
 You can configure this information explicitly using a [Guild
 file](term:guildfile). A Guild file is a human-readable text file
-named `guild.yml` that resides in a project directory.
+named `guild.yml` located in a project directory.
 
 ## Create a Guild File
 
-In your `guild-start` project directory, create a file named
+In the `guild-start` project directory, create a file named
 `guild.yml` that contains this YAML code:
 
 ``` yaml
@@ -41,12 +37,13 @@ train:
 
 ^ Project Guild file `train.yml`
 
-Your project directory should look like this:
+The project directory should look like this:
 
 <div class="file-tree">
 <ul>
 <li class="is-folder open">guild-start
  <ul>
+ <li class="is-folder">archived-runs</li>
  <li class="is-file">guild.yml</li>
  <li class="is-file">train.py</li>
  </ul>
@@ -70,27 +67,32 @@ Below is a description of each setting.
   Operations](/operations.md#python-based-operations).
 
 `flags-import`
-: Guild lets you define operation [flags](term:flags) in a Guild
-  file. To save you time and simplify configuration, Guild can inspect
-  the Python module and import flags. Setting `flags-import` to `all`
-  tells Guild to use all of the flags it discovers. For more
-  information on defining flags for an operation, see
-  [Flags](/flags.md).
+: To save time and simplify configuration, Guild can inspect the
+  Python module and import detected flags. Setting `flags-import` to
+  `all` tells Guild to use all of the flags it detects. For more
+  information, see [Flags](/flags.md).
 
 `output-scalars`
-: Numeric values like *loss* and *accuracy* are referred to as
-  [scalars](term:scalar) in Guild. Guild supports scalar logging
-  through script output. By default, Guild captures scalars written to
-  output in the format ``KEY: VALUE``. The `output-scalars` operation
-  attribute explicitly defines the patterns that Guild uses. For more
-  information, see [Output Scalars](ref:output-scalars).
+: Guild refers to numeric results like *loss* and *accuracy* as
+  [scalars](term:scalar). Guild can detect scalars logged by script
+  output (e.g. using `print` in Python). By default, Guild captures
+  scalars written to output in the format ``KEY: VALUE``. The
+  `output-scalars` operation attribute explicitly defines the patterns
+  that Guild uses. For more information, see [Output
+  Scalars](ref:output-scalars).
 
 Refer to [Guild File Reference](/reference/guildfile.md) for details
 about the Guild file format and available configuration options.
 
+!!! note
+    The values for `flags-import` and `output-scalars` used in
+    the Guild file above are equal to the defaults used by Guild. They
+    can be omitted without changing the behavior of the operation. We
+    define them explicitly for illustration purposes.
+
 ## Get Project Info
 
-Once you have saved `guild.yml` above, from the command prompt, list
+When you have saved `guild.yml` above, from the command prompt, list
 the project operations:
 
 ``` command
@@ -135,6 +137,8 @@ BASE OPERATIONS
 
 ```
 
+Press `q` to exit help.
+
 !!! highlight
     Guild files define the user-facing interface to your
     project. This encourages reproducibility as operations are easy to
@@ -155,15 +159,19 @@ You are about to run train
 Continue? (Y/n)
 ```
 
-Note that you run `train` and not `train.py` above. `train` is the
+Note that you run `train` rather than `train.py` above. `train` is the
 *operation* defined in the Guild file. `train.py` refers to the Python
 script directly. Guild supports both methods: running operations
 defined in Guild files and running scripts.
 
-!!! tip While it's convenient to run scripts directly in Guild, we
+!!! tip
+    While it's convenient to run scripts directly in Guild, we
     recommend that you use a Guild file to explicitly define
-    operations for your day-to-day workflow. When running scripts
-    directly, Guild makes some assumptions about your script
+    operations for your day-to-day workflow. Guild file operations are
+    configured explicitly and discoverable as show above. They support
+    a wide range of features that are not available when running
+    scripts directly. For more information, see [Guild File
+    Reference](/reference/guildfile.md).
 
 ## Summary
 
@@ -176,8 +184,6 @@ In this section, you create a Guild file to explicitly define a
     - Guild files let you control and customize Guild support without
       modifying your source code. This ensures that your project code
       and your tools remain independent.
-
-For more information, see [Guild Files](/guildfile.md).
 
 In the next section, you create a real-world classifier and use Guild
 to track and compare results.

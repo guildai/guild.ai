@@ -26,11 +26,3 @@ train:
 specify `all` or a list of flag names.
 
 For more information, see [Flags](/flags.md).
-
-### Changes to command line interface
-
-The options below are renamed from `0.6.x`.
-
-| Command        | Current Option | Renamed From |
-|----------------|----------------|--------------|
-| [run](cmd:run) | `-F`           | `-Fo`        |
