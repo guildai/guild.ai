@@ -51,7 +51,7 @@ You can include any of the following types in full mode:
 : Packages define how Guild generates Python wheel distributions. See
   [Packages](#packages) below.
 
-### Operation Only
+### Operation Only Format
 
 *Operation-only* format is a simplified format that contains a map of
 operations in the format:
@@ -1011,8 +1011,16 @@ Model attribute include:
     Use `extends` to inherit the a model definition from a `model` or
     `config` top-level object.
 
-    For more information, see [Model Inheritance](#model-inheritance)
+    For more information, see [Inheritance](#inheritance)
     below.
+
+`params`
+: A mapping of parameter names to values
+
+    Use `params` to define or redefine parameter values used in
+    configuration.
+
+    For more information, see [Parameters](#parameters).
 
 `references`
 : List of model sources and attributions (list of strings)
@@ -1354,8 +1362,8 @@ Cheatsheet](/cheatsheets/guildfile.md#packages) for examples.
 
 ## Config
 
-A config top-level object can be used to create reusable configuration
-within a Guild file.
+A `config` top-level object can be used to create reusable
+configuration within a Guild file.
 
 Use config objects to:
 
@@ -1363,9 +1371,67 @@ Use config objects to:
 - Define reusable sets of flags
 - Define reusable sets of operations
 
-## Model Inheritance
+## Inheritance
 
-Models may use the `extends`
+A `model` object may used the `extends` attribute to extend one or
+more top-level objects. `extends` may be a string or a list of
+strings, each string referring to the top-level object name being
+inherited.
+
+``` yaml
+- model: child
+  extends: parent
+```
+
+^ Inheriting from a single parent
+
+``` yaml
+- model: child
+  extends:
+    - parent-1
+    - parent-2
+```
+
+^ Inheriting from multiple parents
+
+## Parameters
+
+Parent configuration may use *parameters* in both attribute name and
+values. A parameter reference uses the format ``{{ NAME }}``.
+
+Parameter values are defined using the `params` attribute. Parameters
+are inherited and may be redefined by children.
+
+The following example illustrates the use of parameters to define flag
+value defaults.
+
+``` yaml
+- model: base
+  params:
+    default-lr: 0.1
+    default-dropout: 0.2
+  operations:
+    train:
+      flags:
+        lr: '{{ default-lr }}'
+        dropout: '{{ default-dropout }}'
+
+- model: a
+  extends: base
+
+- model: b
+  extends: base
+  params:
+    default-lr: 0.01
+    default-dropout: 0.3
+```
+
+^ Use parameters to define flag value defaults
+
+!!! important
+    YAML formatting rules require that `{{...}}` be quoted
+    when used at the start of a value. Note the single-quotes used in
+    the example above.
 
 ## Mapping Includes
 

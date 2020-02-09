@@ -10,10 +10,10 @@ In the [previous section](/start/guildfile.md), you use a Guild file
 to define a `train` operation. In this section, you enhance the
 project by adding a real-world classifier.
 
-You learn how to:
+You cover:
 
-- Support multiple [models](term:model) in a single project
-- Use Guild [environments](term:environment) to isolate project work
+- Multiple [models](term:model) in a single project
+- Guild [environments](term:environment) to isolate project work
 
 ## Download Classifier Script
 
@@ -56,10 +56,7 @@ The final modified `guild.yml` should be:
     train:
       description: Sample training script
       main: train
-      flags-dest: globals
-      flags-import:
-        - noise
-        - x
+      flags-import: all
       output-scalars: '(\key): (\value)'
 
 - model: iris-svm
@@ -92,19 +89,47 @@ The final modified `guild.yml` should be:
 
 ^ `guild.yml` after adding `iris-svm` model
 
-Note the changes to `guild.yml`:
+The file defines two models: `sample` and `iris-svm`. The `sample`
+model provides the `train` operation from the [previous
+step](/start/guildfile.md). The `iris-svm` is a new model, which you
+add in this section.
 
-- The format changes from a mapping of operations to a list of
-  top-level objects. Guild supports these two formats for Guild files:
-  [operation only format](term:operation-only-format) and [full
-  format](term:full-format).
+The Guild file *format* changes from a mapping of operations
+([operation only format](term:operation-only-format)) to a list of
+top-level objects ([full format](term:full-format)). Guild supports
+both formats to accommodate different requirements. Use *operation
+only format* when starting to keep your Guild file as simple as
+possible. Migrate to *full format* as needed to support more
+configuration. For more information, see [*Guild File
+Reference*](/reference/guildfile.md).
 
-- The file defines two models: `sample` and `iris-svm`. The `sample`
-  model defines the `train` operation from the [previous
-  step](/start/guildfile.md). The `iris-svm` is a new model, which you
-  add in this section.
+Below is a description of the `iris-svm:train` attributes.
 
-Verify that the two operations are available:
+`description`
+: A description of the operation.
+
+`main`
+: The Python module that implements the operation.
+
+`flags`
+: A mapping of flag name to flag definition. Each flag provides a
+  description, which is used in help text, and a default value. The
+  `kernel` flag defines a list of valid *choices* --- one for each
+  supported kernel. For more information, see [*Flags*](/flags.md).
+
+`output-scalars`
+: Patterns used to capture [output scalars](term:output-scalar). In
+  this case, the capture patterns are different from those of
+  `sample:train`. This is to accomodate the different output
+  generatred by the scripts.
+
+!!! highlight
+    Rather than require a change to `plot_iris_exercise.py`
+    to support a particular output pattern, Guild lets you change
+    `guild.yml`. This keeps your project source code independent of
+    external tooling.
+
+Verify that the operations are available:
 
 ``` command
 guild ops
@@ -115,9 +140,13 @@ iris-svm:train  Train SVM model on Iris data set
 sample:train    Generate a sample loss
 ```
 
-If you don't see `iris-svm:fit` in the list above, verify that
-`guild.yml` is the same as above and that you're running the command
-from `guild-start`.
+!!! note
+    The [ops](cmd:ops) command is an alias for
+    [operations](cmd:operations).
+
+If you don't see `iris-svm:fit` in the list, verify that `guild.yml`
+is the same as above and that you're running the command from
+`guild-start`.
 
 Show the project models:
 
@@ -130,7 +159,7 @@ iris-svm  Iris classifier using a support vector machine (SVM)
 sample    A sample model
 ```
 
-Finally, show help for the project:
+Show help for the project:
 
 ``` command
 guild help
@@ -143,7 +172,7 @@ OVERVIEW
 
     To run an operation use 'guild run OPERATION' where OPERATION is one
     of options listed below. If an operation is associated with a model,
-    include the model name as MODEL:OPERATION when running the operation.
+    include the model name as MODEL:OPERATION.
 
     To list available operations, run 'guild operations'.
 
@@ -190,30 +219,28 @@ MODELS
 ```
 
 !!! highlight
-    Update your project Guild file to reflect your project
-    features. This is not just useful documentation. You can *run*
-    each operation to generate experiments.
+    Use a Guild file to document your project capabilities
+    to help others use it more effectively.
 
 ## Create a Guild Environment
 
 Up to this point, you run experiments in the default Guild
 environment, which stores runs under your user directory.
 
-In this section, we create a project-specific environment to keep
-project libraries and runs separate from other projects. See [*Use
-project specific virtual
+In this section, you create a project-specific
+[environment](term:environment) to keep project libraries and runs
+separate from other projects. See [*Use project specific virtual
 environments*](/guides/tips-and-techniques.md#use-project-specific-virtual-environments)
-in [Tips & Techniques](/guides/tips-and-techniques.md) for the
-rationale for using project environments.
+in for the rationale for using project environments.
 
 ### Create `requirements.txt`
 
-Guild uses `requirements.txt` to install required packages when
-creating an environment.
+Guild uses `requirements.txt` to automatically install required
+packages when creating an environment.
 
 In the `guild-start` project directory, create a file named
 `requirements.txt` that specifies the Python packages required by the
-project. `requirements.txt` should be:
+project. The file should be:
 
 ``` txt
 matplotlib
@@ -241,7 +268,7 @@ Your project directory should look like this:
 
 ### Initialize the Environment
 
-Initialize the environment using [init](cmd:init):
+Initialize a new environment in the project using [init](cmd:init):
 
 ``` command
 guild init
@@ -253,18 +280,19 @@ the environment.
 Guild initializes a virtual environment in the project under a `venv`
 subdirectory.
 
-Your project directory should look like this:
+When the `init` command finishes, the project directory should look
+like this:
 
 <div class="file-tree">
 <ul>
 <li class="is-folder open">guild-start
  <ul>
  <li class="is-folder">archived-runs</li>
- <li class="is-folder">venv</li>
  <li class="is-file">guild.yml</li>
  <li class="is-file">plot_iris_exercise.py</li>
  <li class="is-file">requirements.txt</li>
  <li class="is-file">train.yml</li>
+ <li class="is-folder">venv</li>
  </ul>
 </li>
 </ul>
@@ -282,14 +310,14 @@ source guild-env
 ```
 
 When you activate an environment, software libraries and runs are
-isolated within the environment.
-
-The command prompt is modified to reflect the activated environment.
+isolated within the environment and the command prompt reflects the
+activated environment.
 
 !!! note
     You can alternatively use the traditional method, which is to
     source the virtual environment script `bin/activate` --- for
-    example, by running ``source venv/bin/activate``.
+    example, by running ``source venv/bin/activate``. Guild
+    environments are standard Python virtual environments.
 
 Verify that the environment is activated using [check](cmd:check):
 
@@ -330,13 +358,54 @@ Continue? (Y/n)
 Press `Enter` to start the operation.
 
 Guild runs the operation, which is implemented by the
-[`plot_iris_exercise` Python module
-->](https://raw.githubusercontent.com/guildai/examples/master/iris-svm/plot_iris_exercise.py).
+[`plot_iris_exercise` module
+->](https://github.com/guildai/guildai/blob/master/examples/iris-svm/plot_iris_exercise.py).
 
 Guild uses the default flag values defined for the operation in
 `guild.yml` (see above).
 
-Run `mnist-svm:train` again using each of the other kernels:
+## View Results
+
+List files generated by the run:
+
+``` command
+guild ls
+```
+
+``` output
+~/guild-start/venv/.guild/runs/c564a767a188438282b925389de45e40:
+  plot.png
+```
+
+In addition to fitting a model and printing accuracy results, the
+operation [generates a plot
+->](https://github.com/guildai/guildai/blob/master/examples/iris-svm/plot_iris_exercise.py#L49-L74)
+showing classification results of the Iris test data set.
+
+Open the plot using the default application for your system:
+
+``` command
+guild open -p plot.png
+```
+
+Guild opens the plot generate by `iris-svm:train`, which shows how
+test samples are classified.
+
+<img class="md" src="/assets/img/classifier-plot.png" width="480">
+
+^ Viewing `plot.png` on Mint Linux using Xviewer
+
+Use an alternative program to open a file by specifying the `--cmd`
+option. For example, to open `plot.png` in GIMP, use ``guild open -p
+plot.png --cmd gimp``.
+
+!!! highlight
+    Guild integrates with your favorite tools, rather than
+    attempt to replace them.
+
+## Experiment with Different Kernels
+
+Run `mnist-svm:train` again using each the other kernels:
 
 ``` command
 guild run iris-svm:train kernel=[linear,poly]
@@ -370,12 +439,27 @@ other two, at least with the default hyperparameters.
 
 Press `q` to exit Guild Compare.
 
+Compare run plots using TensorBoard:
+
+``` command
+guild tensorboard --tag images
+```
+
+![](/assets/img/classifier-tb.png)
+
+^ Compare run-generated images using TensorBoard
+
+!!! highlight
+    Guild automatically shows run-generated images in
+    TensorBoard so you don't need to log them as summaries. This
+    provides a useful way to compare plots and other images
+    side-by-side.
+
 ## Summary
 
-In this section you added a new model `iris-svm` to your project. The
-model defines a `train` operation, which runs the Python module
-`plot_iris_exercise` to fit a support vector machine to the Iris data
-set.
+In this section you add `iris-svm` to your project. The model defines
+a `train` operation, which runs the Python module `plot_iris_exercise`
+to fit a support vector machine to the Iris data set.
 
-In the next section, you add a new operation to `iris-svm` that
-automates a more complete search.
+In the next section, you add an operation to `iris-svm` that automates
+hyperparameter search.

@@ -302,6 +302,7 @@ pages:
           - commands/models.md
           - commands/open.md
           - commands/operations.md
+          - commands/ops.md
           - commands/package.md
           - commands/packages.md
           - commands/packages-delete.md

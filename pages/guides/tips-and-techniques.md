@@ -215,3 +215,8 @@ To import the runs from the last 7 days
 ``` command
 guild import --move --started 'last 7 days' saved-runs
 ```
+
+### Check disk space used by Guild runs and cached resources
+
+Use the `--space` option with [check](cmd:check) to show disk space
+used by Guild, including runs and cached resources.

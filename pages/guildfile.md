@@ -401,8 +401,8 @@ Below is a sample `config` object.
 ``` yaml
 - config: base-model
   operations:
-    train: '{{name}}_train'
-    validate: '{{name}}_val'
+    train: '{{ name }}_train'
+    validate: '{{ name }}_val'
 ```
 
 ^ Top-level `config` object named `base-model` that defines an
@@ -423,7 +423,17 @@ a `name` param, which resolves references in the inherited attributes
 
 ## Inheritance
 
-TODO
+Guild files support *inheritance* where attributes of one object
+(parent) are applied by default to anothe object (child). A child may
+redefine attributes as needed.
+
+Here's an example of a `model` object inheriting the attributes from a
+`config` object:
+
+``` yaml
+- config: base
+  operations
+```
 
 ## Attribute Includes
 
@@ -443,6 +453,26 @@ Here is a sample `guild.yml` file that includes two files.
 - include: guild-cifar.yml
 ```
 
+^ `guild.yml` --- includes two files
+
 The included files must be valid full format Guild files. Their
 contents are included in the Guild including file at the location each
 is defined.
+
+``` yaml
+- model: mnist
+  operations:
+    train: mnist_train
+    validate: mnist_valiate
+```
+
+^ `guild-mnist.yml` --- included by `guild.yml` above
+
+``` yaml
+- model: cifar
+  operations:
+    train: cifar_train
+    validate: cifar_valiate
+```
+
+^ `guild-cifar.yml` --- also included by `guild.yml` above

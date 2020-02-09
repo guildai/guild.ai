@@ -90,6 +90,13 @@ about the Guild file format and available configuration options.
     can be omitted without changing the behavior of the operation. We
     define them explicitly for illustration purposes.
 
+!!! important
+    When you define an operation in a Guild file, Guild will
+    not automatically import flags as it does when you run a script
+    directly. You must use `flags-import` to explicitly tell Guild
+    which flags you want to import. If you want to import all flags,
+    use the value `all`.
+
 ## Get Project Info
 
 When you have saved `guild.yml` above, from the command prompt, list
@@ -116,7 +123,7 @@ OVERVIEW
 
     To run an operation use 'guild run OPERATION' where OPERATION is one
     of options listed below. If an operation is associated with a model,
-    include the model name as MODEL:OPERATION when running the operation.
+    include the model name as MODEL:OPERATION.
 
     To list available operations, run 'guild operations'.
 

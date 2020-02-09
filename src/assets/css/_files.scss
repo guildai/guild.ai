@@ -69,6 +69,8 @@
   li {
     line-height: 30px;
     position: relative;
+    font-family: $font-family-file;
+    font-size: $file-font-size;
 
     > i {
       color: $light-gray-text-color;
