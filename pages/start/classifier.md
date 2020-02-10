@@ -451,9 +451,10 @@ guild tensorboard --tag images
 
 !!! highlight
     Guild automatically shows run-generated images in
-    TensorBoard so you don't need to log them as summaries. This
-    provides a useful way to compare plots and other images
-    side-by-side.
+    TensorBoard so you don't need to log them as summaries. This is a
+    useful way to compare run plots and other images side-by-side.
+
+Return to the command terminal and type `Ctrl-C` to stop TensorBoard.
 
 ## Summary
 
@@ -461,5 +462,5 @@ In this section you add `iris-svm` to your project. The model defines
 a `train` operation, which runs the Python module `plot_iris_exercise`
 to fit a support vector machine to the Iris data set.
 
-In the next section, you add an operation to `iris-svm` that automates
-hyperparameter search.
+In the [next section](/start/nextsteps.md), you explore other core
+features in *Get Started with Guild AI*.

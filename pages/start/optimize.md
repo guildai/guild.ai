@@ -163,10 +163,7 @@ runs with the lowest values.
     Guild automatically generates *HParam* summaries from
     Guild runs to simply the process of comparing runs in TensorBoard.
 
-To continue with this guide using the same terminal, stop TensorBoard
-by typing `Ctrl-C` in the terminal. Alternatively, open a new command
-terminal, leaving TensorBoard running in the background and continue
-the steps below.
+Return to the command terminal and type `Ctrl-C` to stop TensorBoard.
 
 ## Grid Search
 
@@ -387,7 +384,7 @@ cluster of trials along the bottom of the plot between `-0.4` and
 ^ Plot `loss` against `x` to evaluate the Bayesian optimization
   results
 
-Return to the command terminal and press `Ctrl-C` to stop TensorBoard.
+Return to the command terminal and type `Ctrl-C` to stop TensorBoard.
 
 ## Summary
 
@@ -398,4 +395,4 @@ In this section, you use various techniques to run `train.py`.
     different hyperparameters including grid search, random search,
     and Bayesian optimization.
 
-In the next section, you learn how to manage runs.
+In the [next section](/start/runs.md), you learn how to manage runs.

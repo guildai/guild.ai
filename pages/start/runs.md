@@ -231,5 +231,5 @@ In this section you use various commands to manage your runs:
     to help you focus on the most promising results without losing
     information from other experiments.
 
-In the next section, you use a [Guild file](ref:guildfiles) to
+In the [next section](/start/guildfile.md), you use a *Guild file* to
 explicitly define operations your project.

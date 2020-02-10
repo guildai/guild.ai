@@ -192,5 +192,5 @@ In this section, you create a Guild file to explicitly define a
       modifying your source code. This ensures that your project code
       and your tools remain independent.
 
-In the next section, you create a real-world classifier and use Guild
-to track and compare results.
+In the [next section](/start/classifier.md), you create a real-world
+classifier and use Guild to track and compare results.

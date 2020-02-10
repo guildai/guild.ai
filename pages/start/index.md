@@ -205,8 +205,7 @@ in TensorBoard.
 ^ Guild View --- a web based application for viewing runs and
   comparing results
 
-Exit Guild View by returning to your terminal window and pressing
-`Ctrl-C`.
+Return to the command terminal and type `Ctrl-C` to stop Guild View.
 
 ### View Results from the Terminal
 
@@ -336,6 +335,6 @@ training script.
     - Guild captures every detail about your run. Use this information
       to optimize your model, catch mistakes, and resolve issues.
 
-In the next section, you use Guild's built-in hyperparamter tuning
-features to find values for `x` that minimize `loss` for the sample
-training script.
+In the [next section](/start/optimize.md), you use Guild's built-in
+hyperparamter tuning features to find values for `x` that minimize
+`loss` for the sample training script.

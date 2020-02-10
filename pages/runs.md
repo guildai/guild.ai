@@ -166,9 +166,9 @@ option.
 
 You can watch the progress of a background run using
 [](cmd:watch). Note that watching a run does not attach to the process
---- it merely tails the operation log. Therefore pressing `Ctrl-C`
-when watching a run will not terminate the run. To stop a background
-run, use [](cmd:stop).
+--- it merely tails the operation log. Therefore typing `Ctrl-C` in a
+command terminal when watching a run will not terminate the run. To
+stop a background run, use [](cmd:stop).
 
 ## List Runs
 

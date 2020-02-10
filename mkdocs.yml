@@ -120,6 +120,12 @@ markdown_extensions:
           href: /packages/{1}/
           class: pkg
 
+        # specific references
+
+        - link_pattern: ref:get-help
+          text: ask for help
+          href: /services.md#support
+
         - link_pattern: ref:conda
           text: Conda
           class: ext
@@ -243,7 +249,6 @@ pages:
           - start/runs.md
           - start/guildfile.md
           - start/classifier.md
-          - start/workflow.md
           - start/nextsteps.md
 
       - Concepts:
@@ -270,8 +275,10 @@ pages:
           - tools/diff.md
 
       - Guides:
+          - guides/workflow.md
           - guides/add-guild.md
           - guides/dependencies.md
+          - guides/backup-restore.md
           - guides/upgrade.md
           - guides/tips-and-techniques.md
           #- guides/dependencies.md
@@ -281,7 +288,6 @@ pages:
           #- guides/reproducibility.md
           #- guides/schedule.md
           #- guides/remote.md
-          #- guides/backup.md
           #- guides/notebooks.md
           #- guides/troubleshoot.md
 

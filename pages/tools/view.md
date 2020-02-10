@@ -31,7 +31,7 @@ guild view --port 8080
 ```
 
 ``` output
-Running Guild View at http://hostname:8080 (Press Ctrl-C to quit)
+Running Guild View at http://hostname:8080 (Type Ctrl-C to quit)
 ```
 
 !!! important

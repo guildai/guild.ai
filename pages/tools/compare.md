@@ -143,8 +143,6 @@ To use HiPlot with Guild Compare, run:
 guild compare --tool hiplot
 ```
 
-#### Alternate location of `hiplot-render`
-
 Use the `HIPLOT_RENDER` environment variable to specify an alternative
 location to the `hiplot-render` program. This is useful when running
 HiPlot from a location that isn't on your system path.

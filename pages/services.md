@@ -8,8 +8,6 @@ hide_pagenav: yes
 
 ## Support
 
-<div class="row" style="margin-top:-20px"></div> <!-- hack to support md in divs below -->
-
 <div class="col col-lg-4" markdown="1">
 ### <i class="fab fa-slack"></i> Ask a Question
 
@@ -41,74 +39,67 @@ option. We'll address your issue while maintaining your privacy.
 
 ## Professional Services
 
-<div class="col col-lg-4" markdown="1">
-### Data Assessment
+Guild AI provides data scientists and ML engineering experts to help
+you build effective and efficient ML systems.
 
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
 
-</div>
+### <img src="/assets/icons/maps-pin.svg" height="28" style="margin-top:-8px"> Problem Definition and Assessment
 
-<div class="col col-lg-4" markdown="1">
-### Problem Definition
+Before investing in data engineering and model development, verify
+that you've identified solvable problems that are meaningful to your
+organization. What is current state-of-the-art for the tasks you want
+to perform? Do you have access to enough of the right data? What will
+it cost to get the data? Guild AI can help you answer these questions
+and position your project for success during implementation.
 
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
+### <img src="/assets/icons/database-hand.svg" height="30" style="margin-top:-6px"> Data Engineering
 
-</div>
+Without the right data, you can't build useful models. This often an
+under-appreciated fact when building ML-enabled
+applications. Effective data engineering requires data science
+expertise and creativity to obtain the right raw data and transform
+them into learnable features. Guild AI offers years of experience in
+data engineering and can help orient your project for success in model
+development phases.
 
-<div class="col col-lg-4" markdown="1">
-### Model Development
+### <img src="/assets/icons/file-code-refresh.svg" height="30" style="margin-top:-6px;model-right:2px"> Model Development
 
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
+Model development recevies most of the attention when building ML
+applications. However, model development is an iterative process
+intricately related to problem definition and data engineering
+efforts. As you experiment with different data sets and model
+architectures, you continually consider and expore alternatives and
+refine your pipelines. Guild AI specializes in this process and can
+help build model development best practices in your organization.
 
-</div>
+### <img src="/assets/icons/hierarchy-2.svg" height="26" style="margin-top:-6px;margin-right:8px">Pipeline Development
 
-<div class="col col-lg-4" markdown="1">
-### Model Support
+Pipelines are continuous processes that build and verify models. They
+can be simple, such as Guild AI enabled project, or complex, such as a
+distributed containerized build system in Kubernetes. Guild AI offers
+deep engineering capabilities to help scope and build the right ML
+pipelines for your organization.
 
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
+### <img src="/assets/icons/monitor-heart-beat-search.svg" height="32" style="margin-top:-6px;margin-right:6px">Application Monitoring and Support
 
-</div>
+ML applications require ongoing monitoring and improvement. Underlying
+processes change, new data arrive, and state-of-the-art
+improves. These changes have important implications for running
+systems. Without proper monitoring, predictive performance can fall
+without being noticed, exposing your organization to risk of unhappy
+users or regulatory violations. Guild AI can help you identify
+application monitoring and support requirements at the start of a
+project and support your organization through development and ongoing
+operations.
 
-<div class="col col-lg-4" markdown="1">
-### Pipeline Development
+### <img src="/assets/icons/headphones-customer-support-human.svg" height="28" style="margin-top:-8px"> Priority Guild AI Support
 
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
+Organizations that rely on Guild AI open source software can purchase
+priority support contracts from Guild AI.
 
-</div>
+- Priority support tickets
+- Priority bug fixes
+- Priority feature requests and custom development
 
-<div class="col col-lg-4" markdown="1">
-### Pipeline Monitoring
-
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
-
-</div>
-
-<div class="col col-lg-4" markdown="1">
-### Priority Guild AI Support
-
-Ut interdum purus leo, ut pulvinar risus convallis vel. Phasellus sed
-accumsan magna, sit amet hendrerit nibh. Ut eleifend, libero ac
-laoreet egestas, orci massa ultrices sem, quis placerat eros ante quis
-nunc.
-
-</div>
-
-<div class="row" style="margin-top:-20px"></div> <!-- clear for row hack above -->
+For help with any of these services, please send us an email at
+[support@guild.ai ->](mailto:support@guild.ai).
