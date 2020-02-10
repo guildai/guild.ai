@@ -26,14 +26,14 @@ train:
 #### Python based operation
 
 Use the `main` attribute to specify the main Python module for an
-operation.
+operation:
 
 ``` yaml
 train:
   main: mnist_train
 ```
 
-Use standard Python dot notation to reference a module within a package.
+Use standard Python dot notation to reference a module within a package:
 
 ``` yaml
 train:
@@ -41,14 +41,14 @@ train:
 ```
 
 If a module is defined in a sub-directory, precede the module name
-with the path.
+with the path:
 
 ``` yaml
 train:
   main: src/train
 ```
 
-Provide arguments to a module as needed.
+Provide arguments to a module as needed:
 
 ``` yaml
 train:
@@ -74,7 +74,7 @@ Flag values are available as environment variables named
 `FLAG_<name>`. For example, a flag named `learning_rate` is available
 as the environment variable `FLAG_learning_rate`.
 
-Alternatively, use command arguments are needed to pass flag values.
+Alternatively, use command arguments are needed to pass flag values:
 
 ``` yaml
 train:
@@ -83,7 +83,7 @@ train:
     learning-rate: 0.1
 ```
 
-Use ``${flag_args}`` to pass all flags as arguments.
+Use ``${flag_args}`` to pass all flags as arguments:
 
 ``` yaml
 train:
@@ -107,7 +107,7 @@ train:
 
 #### Disable source code snapshot
 
-Use to skip the source code snapshot.
+Use to skip the source code snapshot:
 
 ``` yaml
 train:
@@ -137,7 +137,7 @@ Guild scans all project directories for matching source code
 files. Directories that contain a large number of files may take a
 long time to scan.
 
-Exclude these directories using the `dir` attribute of a mapping.
+Exclude these directories using the `dir` attribute of a mapping:
 
 ``` yaml
 train:
@@ -180,8 +180,8 @@ Related help:
 
 #### Import all flags
 
-Use when Guild correctly detects your script flags and you want to
-import all of them.
+When Guild correctly detects your script flags and you want to import
+all of them:
 
 ``` yaml
 train:
@@ -190,9 +190,7 @@ train:
 
 #### Import some flags
 
-Use to control the flags that Guild imports. If the list is large,
-consider [importing all flags but skipping
-some](#import-all-but-some-flags).
+Specify the flags that Guild imports:
 
 ``` yaml
 train:
@@ -202,10 +200,13 @@ train:
     - dropout
 ```
 
+If the list is large, consider [importing all flags but skipping
+some](#import-all-but-some-flags).
+
 #### Import all but some flags
 
 Use when Guild detects most of the flags correctly but you want to
-skip some.
+skip some:
 
 ``` yaml
 train:
@@ -229,8 +230,9 @@ scripts --- i.e. scripts run using the `exec` operation attribute.
 #### Use global variables for Python scripts
 
 If your script does not import `argparse`, Guild will automatically
-use `globals` as the flags interface. Use this method to explicitly
-set the interface to `globals.
+use `globals` as the flags interface.
+
+Set `globals` explicitly:
 
 ``` yaml
 train:
@@ -240,7 +242,7 @@ train:
 #### Use command line arguments for Python scripts
 
 Use when your script does not import `argparse` or to cause Guild to
-skip the check for `argparse` imports.
+skip the check for `argparse` imports:
 
 ``` yaml
 train:
@@ -249,7 +251,7 @@ train:
 
 #### Use a global dict for Python scripts
 
-Flags will be written to the `params` global variable.
+Set flag values as items of the `params` global variable:
 
 ``` yaml
 train:
@@ -268,7 +270,7 @@ train:
     msg: hello
 ```
 
-Example:
+Example use:
 
 ``` command
 guild run train
@@ -284,7 +286,7 @@ Continue? (Y/n)
 #### Use flag values with `exec`
 
 Include specific flag values in an `exec` command using the format
-``${FLAG_NAME}``.
+``${FLAG_NAME}``:
 
 ``` yaml
 train:
@@ -293,7 +295,7 @@ train:
     msg: hello
 ```
 
-Example:
+Example use:
 
 ``` command
 guild run train
@@ -437,8 +439,6 @@ flag option is ``--lr VAL`` rather than ``--learning-rate VAL``.
 Similarly, if the flag interface is `globals`, the target variable
 name is `lr`.
 
-###
-
 ## Output Scalars
 
 Related help:
@@ -449,7 +449,7 @@ Related help:
 
 #### Disable output scalars
 
-Use when you log scalars explicitly to TFEvent files.
+Disable output scalars when you log scalars explicitly to summaries:
 
 ``` yaml
 train:
@@ -505,6 +505,49 @@ train:
       acc: 'accuracy: (\value)'
     - '(\key)=(\value)'
 ```
+
+
+## Resources
+
+### Required Files
+
+#### Require project files and directories
+
+``` yaml
+train:
+  requires:
+    - file: data.csv
+```
+
+Unpack and link to archive contents:
+
+``` yaml
+train:
+  requires:
+    - file: data.tar.gz
+```
+
+Link to archive files matching pattern:
+
+``` yaml
+train:
+  requires:
+    - file: data.tar.gz
+      select: train/
+```
+
+Link to archive without unpacking:
+
+``` yaml
+train:
+  requires:
+    - file: data.tar.gz
+      unpack: no
+```
+
+### Required Modules
+
+### Required Configuration
 
 ## Other
 

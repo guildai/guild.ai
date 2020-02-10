@@ -199,6 +199,7 @@ markdown_extensions:
               batch-file: /runs.md#batch-files
               bayesian-optimization: https://en.wikipedia.org/wiki/Bayesian_optimization
               cli: /cli.md
+              dependency: /dependencies.md
               environment: /environments.md
               flag-search-space-function: /flags.md#search-space-functions
               flag-sequence-function: /flags.md#sequence-functions
