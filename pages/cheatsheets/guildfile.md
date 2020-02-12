@@ -519,6 +519,12 @@ train:
     - file: data.csv
 ```
 
+``` yaml
+train:
+  requires:
+    - file: data-dir
+```
+
 Unpack and link to archive contents:
 
 ``` yaml
@@ -545,9 +551,33 @@ train:
       unpack: no
 ```
 
-### Required Modules
+### Other Required Resources
 
-### Required Configuration
+#### Verify required Python modules
+
+``` yaml
+train:
+  requires:
+    - module: pandas
+    - module: sklearn
+    - module: matplotlib
+```
+
+!!! note
+    Guild will not install modules listed under `requires`. Guild
+    verifies the availability of the modules and exits with an error
+    message if they cannot be loaded.
+
+#### Configuration files
+
+When resolve, configuration files are re-written to include run flag
+values.
+
+``` yaml
+train:
+  requires:
+    - config: config.yml
+```
 
 ## Other
 

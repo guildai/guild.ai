@@ -22,38 +22,283 @@ The following command sets two flag values:
 guild run train learning-rate=0.1 batch-size=100
 ```
 
-Flags may also be defined in [batch files](def:batch-file).
+Flags may also be defined in [batch files](#batch-files).
 
 ## Flags Interface
 
-TODO
+Guild makes flag values available to a script using a *flags
+interface*. Guild supports different interfaces:
 
-## Flag Imports
+- Command line arguments
+- Environment variables
+- Python global variables
+
+Guild works across platforms and languages using standard interfaces
+when possible. Guild does not require changes to script code to
+support Guild-specific flag configuration. Guild uses script
+inspection and explicit configuration in [Guild files](term:guildfile)
+to get flag information.
+
+When Guild does not have explicit configuration (e.g. when a script is
+run directly) it attempts to infer the flags interface by inspecting
+the script. See [*Default Behavior - Flags
+Interface*](/reference/defaults.md#flags-interface) for more
+information.
+
+The flags interface is configured for an operation using the
+`flags-dest` attribute. See [`flags-dest` in *Guild File
+Reference*](/reference/guildfile.md#operation-flags-dest) for
+configuration details.
+
+For example of different interfaces, see [*Guild File Cheatsheet -
+    Flags Interface*](/cheatsheets/guildfile.md#flag-interface).
+
+### Command Line Arguments
+
+Unless otherwise configured (or inferred by inspecting the script),
+Guild uses a command line interface to pass flag values to a script.
+
+This interface can be explicitly configured by setting `flags-dest` to
+`args`.
+
+Flag values are included as command line arguments using the format:
+
+```
+--FLAG_ARG_NAME ENCODED_FLAG_VALUE
+```
+
+By default, `FLAG_ARG_NAME` is the flag name. If the `arg-name`
+attribute is specified for a flag definition, Guild uses the attribute
+value instead.
+
+`ENCODED_FLAG_VALUE` is the JSON-encoded flag value.
+
+Each non-null flag value is specified as arguments following this
+format.
+
+Consider the following command:
+
+``` command
+guild run train.py learning-rate=0.1 batch-size=100
+```
+
+Guild passes the two flag values to `train.py` this way:
+
+``` command
+python -m train --learning-rate=0.1 --batch-size=100
+```
+
+The following Guild file configuration changes the argument names for
+each flag:
+
+
+``` yaml
+train:
+  flags:
+    learning-rate:
+      arg-name: lr
+    batch-size:
+      arg-name: bs
+```
+
+!!! tip
+    Use the `--print-cmd` option with [run](cmd:run) to print the
+    full command Guild uses when running an operation. This command
+    includes the flag related options as described above.
+
+### Environment Variables
+
+Guild makes flag values available as environment variables to each run
+process. Environment variables are named ``FLAG_<upper case flag
+name>``.
+
+For example, the value for flag `x` can be read as environment
+variable named ``FLAG_X``.
+
+Use the `env-name` attribute to specify a different environment
+variable name for a flag.
+
+For example, the following configuration tells Guild to convey `x`
+using the environment variable ``X`` instead of ``FLAG_X``.
+
+``` yaml
+op:
+  flags:
+    x:
+      env-name: X
+```
+
+!!! tip
+    Use environment variables from non-Python scripts as a
+    convenient way to read flag values without having to process
+    command line arguments.
+
+### Python Global Variables
+
+Guild sets flag values as global variables in a Python script when
+`flags-dest` is set to ``globals`` or when Guild otherwise [detects
+this interface through
+inspection](/reference/defaults.md#flags-interface).
+
+Guild only sets global variables when they are already defined in a
+script. Guild does not create new variables in a script.
+
+The following operation uses a global variables interface to set
+values for flags `x` and `y`:
+
+``` yaml
+train:
+  flags-dest: globals
+  flags-import: [x, y]
+```
+
+Here is a Python script that uses `x` and `y`:
+
+``` python
+x = 1
+y = 2
+
+print("z: %i" % (x + y))
+```
+
+^ `train.py` using global varaibles for flags
+
+You can alternatively set flag values in a Python global dict variable
+``global:<variable name>`` for `flags-dest`.
+
+The following configuration sets flag values as items in the `params`
+global variable.
+
+``` yaml
+train:
+  flags-dest: global:params
+  flags-import: [x, y]
+```
+
+The following Python script shows how `train` might be implemented
+using `params`:
+
+``` python
+params = {"x": 1, "y": 2}
+
+print("z: %i" % (params["x"] + params["y"]))
+```
+
+^ `train.py` using global `param` dict for flags
+
+The variable specified using ``global:<variable>`` must be defined in
+the Python module. Guild does not define new variables in modules.
+
+## Import Flags
+
+To avoid duplicating flag definitions in scripts and in Guild files,
+Guild lets you *import* flag definitions.
 
 ### Flag Detection
 
-### Import All Flags
+To import flags, Guild must inspect a script and look for possible
+flag definitions based on the [flags interface](#flags-interface). As
+described above, the flags interface may be explicitly
+configured. Otherwise Guild attempts to infer the interface.
 
-### Import Some Flags
+Guild uses the rules below for inferring flags according to the
+specified interface.
 
-### Skip Some Flags
+*Interface*
+: *Flag Detection Method*
 
-------------------------
-OLD - need to merge ^
-------------------------
+`args`
+: Guild runs the script with the `--help` option and inspects
+  `argparse` generated option. From this Guild infers flag name,
+  description, type, available choices, and default value.
 
-## Flags Interface
+`globals`
+: Guild inspects the Python module and looks for global variables
+  that are assigned numbers, strings, or boolean constants. Guild does
+  not import variables that start with ``_``. From this Guild infers
+  flag name, type, and default value.
 
-XXX
+`global:<name>`
+: Guild inspects the Python module and looks for the specified global
+  variable. Guild infers flags if the variable references a
+  dict. Guild infers flags from dict items that are number, string, or
+  boolean constants. From these items, Guild infers flag name, type,
+  and default value.
 
+Guild does not currently support flag imports for non-Python
+scripts. In such cases you must explicitly define each flag and use
+command line arguments or environment variables to access flags.
 
-## Explicit Flag Configuration
+### Flag Import Configurtion
 
-TODO
+Guild supports different import scenarios:
 
-## Command Line Arguments
+- Disable flag imports
+- Import all detected flags
+- Import a list of detected flags
+- Import all but some detected flags
 
-TODO
+To disable Guild support for detecting and importing flags, use the
+value ``no`` for `flags-import`.
+
+``` yaml
+op:
+  flags-import: no
+```
+
+^ Disable flag imports
+
+In this case, you must explicitly define each flag your script
+supports.
+
+!!! tip
+    When `flags-import` is ``no``, Guild will not inspect your
+    script for flags. Use this value to avoid processing your scripts
+    when you don't need to.
+
+To import all detected flags, use the value ``all`` or ``yes`` for
+`flags-import`.
+
+``` yaml
+op:
+  flags-import: all
+```
+
+^ Import all flags
+
+To import a list of detected flags, specify the flag names in a list.
+
+```
+op:
+  flags-import: [x, y, z]
+```
+
+^ Import some flags
+
+You may alternatively omit `flags-import` and define the flags.
+
+```
+op:
+  flags:
+    x: 1
+    y: 2
+    z: 3
+```
+
+^ Implicitly import each defined flags --- use `flags-import` or
+`flags-import-skip` to control this
+
+You can combine `flags-import: all` with `flags-import-skip` to import
+all flags but skip those specified.
+
+``` yaml
+op:
+  flags-import: all
+  flags-import-skip: [x, y]
+```
+
+This pattern is useful when Guild mistakenly infers a command line
+option or variable as a flag.
 
 ## Batch Files
 
@@ -223,12 +468,11 @@ Search space from `START` to `END` from a uniform distribution.
 
 Search space from `START` to `END` from a log-uniform distribution.
 
+<!-- TODO
+
 ## Flag Value Types
 
-TODO: merge smartly
-
-
-
+-->
 
 ## Flag Value Decoding
 
@@ -270,10 +514,3 @@ train:
 ```
 
 In this case, Guild will explicitly decode string input to `float`.
-
-
-## Python Global Variables
-
-TODO: merge into above where it belongs
-
-Guild is designed to avoid changes to your code.

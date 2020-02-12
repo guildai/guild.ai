@@ -93,6 +93,5 @@ a project:
 - Uses a [Python version
   requirement](/commands/init.md#required-python-version) to select an
   appropriate Python version when creating the virtual environment
-
 - Runs `pip install -r requirements.txt` if `requirements.txt` is
   defined for a project

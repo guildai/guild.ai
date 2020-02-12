@@ -33,35 +33,53 @@ file `data.csv` as follows:
 
 Use dependencies to ensure that an operation has what it needs to run.
 
-## Declare Dependencies
+## Required Resources
 
 Use the `requires` operation attribute to declare that the operation
-requires a resource.
+requires one or more resources.
 
 A resource declaration may be one of two types:
 
 - Resource name
 - Inline resource definition
 
-Resource *names* must refer to a top-level resource definition in a
-[full format](ref:full-format) Guild file. See [Define
-Resources](#define-resources) below to details on defining a resource.
+Resource definition format is the same in either case. Refer to
+[*Guild File Reference -
+Resources*](/reference/guildfile.md#resources) for a complete
+description of the resource format.
+
+### Named Resources
+
+Resource *names* must refer named resources, defined in a model using
+[full format](ref:full-format) Guild file.
+
+Below is an example of an operation that requires a named resource.
 
 ``` yaml
 - operations:
     train:
       requires:
        - data
+
   resources:
     data:
      - file: data.csv
 ```
 
-^ Sample operation using a *named resource* --- requires a full format
-  Guild file
+^ Sample operation using *named resource* `data` --- requires a full
+  format Guild file
 
-A resource may alternatively be defined *inline* using the resource
-format described [below](#define-resources).
+The `data` resource defines a single dependency, or *resource source:*
+a `data.csv` file, located in the project directory. Guild resolves
+this dependency prior to executing the train script by creating a link
+to the file in the run directory. If Guild can't resolve the
+dependency --- e.g. the file is missing --- it exits with an error
+message.
+
+### Inline Resources
+
+A resource may alternatively be defined *inline* as an item of the
+operation `requires` attribute.
 
 
 ``` yaml
@@ -74,27 +92,7 @@ Use named resources when more than one operation requires the same
 resource, or simply to consolidate resource definitions. Otherwise use
 inline resources.
 
-## Define Resources
-
-A resource is an object that is identified by a resource type
-attribute. Refer to [*Resources
-Reference*](/reference/guildfile.md#resources) for supported resource
-types and their attributes.
-
-A named resource may be defined for a model as an attribute of model
-`resources`.
-
-``` yaml
-- model: mnist
-  operations:
-    train:
-      requires: data
-  resources:
-    data:
-     - file: data.csv
-```
-
-## Sharing Resources Across Models
+## Share Resources Across Models
 
 Use `config` objects and inheritance to share resource definitions
 across models.
@@ -106,17 +104,31 @@ Example:
   resources:
     data:
      - file: data.csv
-    prepared-data:
-     - operation: prepare-data
-       select: data.csv
+
+- model: a
+  extends: shared-resources
+  operations:
+    train:
+      main: train_a
+      requires: data
+
+- model: b
+  extends: shared-resources
+  operations:
+    train:
+      main: train_b
+      requires: data
 ```
 
-## Resource Types
+^ Use of inheritance to share a common resource `data` across
+  models
 
-Guild supports a number of resource types, which are described
-below. Refer to [Resources
-Reference](/reference/guildfile.md#resources) for a full specification
-of each type.
+## Dependency Types
+
+Guild supports a number of dependency types, or *resource source*
+types, which are described below. Refer to [Guild File Reference -
+Resource Sources](/reference/guildfile.md#resource-sources) for a
+specification of each type.
 
 ### Files
 
@@ -186,8 +198,8 @@ train:
 ^ Sample operation that requires `data.csv` located in the project
   directory as `train-data.csv`
 
-For more examples, see [Guildfile
-Cheatsheet](/cheatsheets/guildfile.md#resources).
+For more examples, see [Guildfile Cheatsheet -
+Resources](/cheatsheets/guildfile.md#resources).
 
 ### Modules
 
@@ -219,3 +231,48 @@ Use a required module to preemptly verify that the module is available
 before starting the script.
 
 ### Configuration
+
+An operation can require a configuration file. Guild resolves
+configuration files by re-writing the specified file to include run
+flag values.
+
+Guild currently supports only YAML formatted configuration files.
+
+- JSON
+- YAML
+
+Consider a sample configuration `config.yml`:
+
+``` yaml
+learning-rate: 0.1
+batch-size: 100
+dropout: 0.2
+```
+
+The following operation declares that it requires `config.yml`:
+
+``` yaml
+train:
+  requires:
+    - config: config.yml
+```
+
+When Guild resolves the dependency, it re-writes `config.yml` to
+reflect modified flag values.
+
+Consider the following command:
+
+``` command
+guild run train learning-rate=0.2 dropout=0.3
+```
+
+Guild writes the resolved `config.yml` as:
+
+``` yaml
+learning-rate: 0.2
+batch-size: 100
+dropout: 0.3
+```
+
+^ Resolved version of `config.yml` reflects the flag values for the
+  run

@@ -211,7 +211,9 @@ markdown_extensions:
               full-format: /reference/guildfile.md#full-format
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools/compare.md
+              guild-diff: /tools/diff.md
               guild-home: /environments/#set-guild-home
+              guild-tensorboard: /tools/tensorboard.md
               guild-view: /tools/view.md
               guildfile: /guildfile.md
               guildfiles: /guildfile.md
@@ -229,7 +231,6 @@ markdown_extensions:
               run-dir: /runs.md#run-directory
               run: /runs.md
               scalar: /scalars.md
-              sequence-function: /flags.md#sequence-functions
               source-code: /guildfile.md#source-code
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
               step: /workflow.md#steps

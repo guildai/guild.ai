@@ -11,14 +11,14 @@ If you're familiar with installing Python packages using `pip`, simply
 install the `guildai` package.
 
 ``` command
-pip install guildai
+pip install guildai --pre
 ```
 
 Altnernatively, to install to the [user install directory
 ->](https://pip.pypa.io/en/stable/reference/pip_install/#cmdoption-user):
 
 ``` command
-pip install guildai --user
+pip install guildai --pre --user
 ```
 
 For detailed installation instructions, see [Install Guild

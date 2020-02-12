@@ -1,5 +1,11 @@
 # To do
 
+## Working list
+
+- Need a flag function reference - move reference material from flags
+  concept (/flags.md) to a reference
+  (e.g. /reference/flag-functions.md)
+
 ## 0.7 Tagline
 
 Want strategic value

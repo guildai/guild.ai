@@ -1,6 +1,9 @@
+code, kbd, pre, samp {
+  color: $code-inline-color;
+}
+
 code, kbd, pre, samp, a.cmd, a.pkg {
   font-family: $font-family-code;
-  color: $code-inline-color;
   background: inherit;
   padding: 0 2px;
   font-size: 0.875em;

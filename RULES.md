@@ -31,7 +31,7 @@ would be incorrect without their use.*
 
 Good:
 
-- You configure the project using a Guild File.
+- Configure the project using a Guild File.
 
 Bad:
 

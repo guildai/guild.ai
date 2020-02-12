@@ -1184,6 +1184,25 @@ of the following:
     The value for `operation` types is an operation name or a regular
     expression pattern used match operation names.
 
+`config`
+: A required configuration file.
+
+    The value for `config` is a project-relative path to a file.
+
+    The file must be a supported type: JSON, YAML.
+
+    Guild resolves config sources by re-writing the files with the run
+    flag values that are different from those defined in the original
+    file.
+
+`module`
+: A required software library.
+
+    The value for `module` types is a module name.
+
+    Guild resolves module types by verifying that the module is
+    available for a run.
+
 In addition to the type attribute, resource sources support these
 attributes:
 

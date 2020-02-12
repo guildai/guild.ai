@@ -1,4 +1,4 @@
-# Design Rationale
+# Guild Design
 
 [TOC]
 
@@ -21,7 +21,18 @@ Developers should measure results early in a project life cycle.
 <div id="source-code-change"></div>
 ## Avoid Changes to Project Source Code
 
-Yelp
+Guild avoids asking you to change your source code to support Guild
+features. By keeping your source code free of Guild-specific
+changes, you enjoy several benefits:
+
+- Your code continues to work without Guild. This means you can share
+  your code with others without requiring that they use Guild.
+
+- Start using Guild immediately.
+
+- Add Guild support to someone else's code. For example, to enable
+  experiment tracking for someone else's project, add a Guild file and
+  submit a pull request.
 
 <div id="dependencies"></div>
 ## Minimize Dependencies
@@ -96,3 +107,10 @@ making it optional.
 *Keras*
 : Guild detects Keras scripts and applies the [applicable default
   settings](/reference/defaults.md#keras-scripts) for output scalars
+
+<!-- TODO
+
+- Section ellaborating on lifecycle of Guild - using it as soon as a
+  project is started.
+
+-->

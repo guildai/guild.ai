@@ -1,5 +1,12 @@
 tags: concept
 
+<!-- TODO
+
+- Section on Run Filters - refer to this wherever filters are
+  referenced
+
+-->
+
 # Runs
 
 [TOC]
@@ -174,7 +181,7 @@ stop a background run, use [](cmd:stop).
 
 Use [runs](cmd:runs) to list available runs.
 
-```
+``` command
 guild runs
 ```
 
@@ -227,7 +234,11 @@ Label
   a run using the `-l` or `--label` option of the `run` command. See
   [Label Runs](#label-runs) for more information.
 
-<!-- TODO Elaborate on start time filter in user docs here -->
+<!-- TODO
+
+- Elaborate on start time filter in user docs here
+
+-->
 
 The `runs` command supports a number of options for filtering
 runs. For example, to show only *terminated* runs, use the `-T` or
@@ -339,31 +350,132 @@ guild cat --output --page
 
 ## Compare Runs
 
-TODO
+Guild provides several ways to compare runs. Refer to the
+documentation for each of these tools for more information.
+
+[Guild Compare](ref:guild-compare)
+: Curses based application (terminal friendly) for comparing runs and
+  exporting comparison data to CSV.
+
+[Guild View](ref:guild-view)
+: Visual application to compare runs and expore run results.
+
+[Guild Diff](ref:guild-diff)
+: Integration with diffing tools to compare run files.
+
+[TensorBoard](ref:guild-tensorboard)
+: Visual application developed by the TensorFlow team for comparing
+  run scalars, images, hyperparameters, and other run summaries.
 
 ## Delete Runs
 
-TODO
+Use [runs delete](cmd:runs-delete) or its alias [runs rm](cmd:runs-rm)
+to delete runs.
+
+By default Guild prompts you with the full list of runs it will delete
+before deleting them. This gives you an opportunity to review the list
+before deleting runs. If you want to bypass this prompt and have Guild
+delete the runs directly, use the `--yes` or `-y` option.
+
+By default, you can restore deleted runs using [runs
+restore(cmd:runs-restore) (see below). If you want to permanently
+delete runs, use the `--permanent` or `-p` option.
+
+!!! important
+    Permanently deleted runs cannot be restored.
+
+!!! tip
+    Avoid using `--permanent` when deleting runs. Deleted runs can
+    be purged later (see below), after time has passed and you're more
+    certain that you won't need them.
+
+You can list deleted runs by specifying the `--deleted` option to
+[runs](cmd:runs).
 
 ### Restore Deleted Runs
 
-TODO
+If you make a mistake and need to restore a deleted run, use [runs
+restore](cmd:runs-restore).
 
-### Permanently Delete Runs
+As with other run management operations, Guild prompts you with the
+list of runs it will restore. To bypass this prompt, use the `--yes`
+or `-y` option.
 
-TODO
+!!! tip
+    If you find yourself restoring runs frequently, consder using
+    [export](cmd:export) with the `--move` option to archive runs you
+    no longer need. Archives runs are stored in a directory that you
+    control and cannot be deleted using [runs purge](cmd:runs-purge).
+
+### Purge Deleted Runs
+
+Deleted runs, provided they weren't deleted with the `--permanent` or
+`-p` option, still reside on disk. To permamently delete these runs,
+use [runs purge](cmd:runs-purge).
+
+!!! tip
+    Use [check](cmd:check) with the `--space` option to show disk
+    space consumed by delete runs.
+
+Guild prompts you with the list of runs to purge before proceeding.
+
+!!! important
+    Permanently deleted runs cannot be restored.
 
 ## Export and Import Runs
 
-TODO
+Runs can be exported from the Guild environment using
+[export](cmd:export). By default, runs are *copied* from the
+environment to the specified directory. You can alternatively *move*
+runs using the `--move` option.
+
+By default, Guild exports all runs. You can select specific runs or
+use filter options to limit the exported runs. Refer to [`export`
+command help](/commands/export.md) for details on supported filter
+options.
+
+For example, to export runs to a local directory ``exported-runs`` by
+moving them, run:
+
+``` command
+guild export --move exported-runs
+```
+
+Exported runs reside in a directory of your choosing. You can move the
+directory as needed and still be able to import its runs later, either
+on the same system or a different system.
+
+List runs in an archive directory using [runs](cmd:runs) with the
+`--archive` or `-A` option.
+
+``` command
+guild runs --archive exported-runs
+```
+
+!!! tip
+    Use [export](cmd:export) with `--move` to keep your working
+    environment clean without risk of accidentally deleting useful
+    runs. Use different archive directories to organize runs that
+    you're not currently working with.
+
+To import runs from a directory, use [import](cmd:import). By default,
+Guild *copies* runs from a directory into the environment when
+importing. Use the `--move` option to move them instead.
+
+By default, Guild imports all runs from an archive directory. You can
+alternatively select specific runs or use filter options to limit the
+imported runs. See [`import` command help](/commands/import.md) for a
+list of filter options.
 
 ## Label Runs
 
 TODO
 
+<!-- TODO
+
 ## Sync Runs with Remote Systems
 
-TODO
+-->
 
 ## Batches
 
@@ -384,20 +496,146 @@ separately. Batch runs use a distinct naming convention:
 OPERATION+[OPTIMIZER]
 ```
 
-### Implied Batch Runs
+Batches generate trials. Limit the number of trials using
+`--max-trials` or `-m`. If this option is omitted, a batch is limited
+to a default number of trials based on the batch type.
 
-TODO:
+### Standard Batch
 
-- Implied by flag value lists
-- Implied by flag range functions
+A *standard batch* is run by specifying [value
+lists](ref:flag-value-list) for one or more flag values.
 
-### Optimizing Batch Runs
+The following command starts a batch of three trials --- one for each
+item in the value list:
 
-TODO
+``` command
+guild run x=[1,2,3]
+```
+
+When more than one flag value is a list, Guild runs trials for all
+possible flag value combinations.
+
+For example, the following command starts a batch of four trials:
+
+``` command
+guild run x=[1,2] y=[3,4]
+```
+
+Generated trials:
+
+- `x=1` `y=3`
+- `x=1` `y=4`
+- `x=2` `y=3`
+- `x=2` `y=4`
+
+Standard batches are named as ``OPERATION+`` where `OPERATION` is the
+trial operation.
+
+Use [sequence functions](ref:flag-sequence-function) to generate value
+lists. For example, the following commands are equivalent:
+
+``` command
+guild run x=range[1:5]
+```
+
+^ Use [sequence functions](ref:flag-sequence-function) to generate
+  value lists
+
+``` command
+guild run x=[1,2,3,4,5]
+```
+
+^ The flag function ``range[1:5]`` generates the list value
+  ``[1,2,3,4,5]``
+
+By default, Guild runs all possible flag value combination (i.e. the
+Cartesian product of the flag value lists). Use `--max-trials` or `-m`
+to limit the trials. When limited, Guild selects trials at random from
+the original set.xs
+
+!!! important
+    When running grid searches, the number of trials grows
+    combinatorially with each flag value list. Use `--max-trials` to
+    limit the number of trials based on budgeted time and resources.
+
+### Random Search Batch
+
+Guild runs a *random search batch* under the following conditions:
+
+- At least one flag value is a [search space
+function](ref:flag-search-space-function)
+- The run command does not include `--optimize` or `--optimizer`
+
+In this case, Guild implicitly uses
+[`random`](/reference/optimizers.md#random) as the optimizer. See
+[Optimizer Batch](#optimizer-batch) below for more information on
+optimizers.
+
+For example, the following commands starts a random search batch:
+
+``` command
+guild run x=uniform[0:1000]
+```
+
+^ Use of [`uniform`](/flags.md#uniform) function implies a random
+  search
+
+By default, the maximum trials for a random search is 20. Change this
+limit using the `--max-trials` or `-m` option.
+
+### Optimizer Batch
+
+Guild runs a batch when `--optimizer` or `--optimize` options are
+specified. Optimizers are standard Guild operations that specialize in
+generating and running trials.
+
+For a list of supported optimizers, see [Optimizer
+Reference](/reference/optimizers.md).
+
+Each optimizer may have its own default max trials setting. However,
+most optimizers limit trials to 20. Change this limit using the
+`--max-trials` or `-m` option.
+
+#### Default Optimizer
+
+Operations support a default optimizer, which can be used by
+specifying the `--optimize` or `-O` option.
+
+``` command
+guild run train --optimize
+```
+
+^ Start an optimizer batch using the default optimizer for `train`
+
+See [*Guild File Reference - Operation
+Optimizers*](/reference/guildfile.md#operation-optimizers) for
+information on configuring a default optimizer.
+
+#### Optimizer Flags
+
+Optimizers support their own set of flags. Use `--help-op` with the
+optimizer name for help with optimizer flags.
+
+For example, to show operation help for the [`gp`
+optimizer](/reference/optimizers.md#gp), run:
+
+``` command
+guild run gp --help-op
+```
+
+Specify an optimizer flag values using the `--opt-flag` or `-Fo`
+option. Use these options multiple times as needed to set more than
+one optimizer flag.
+
+For example, to use the `gp` optimizer with different values for
+`random-starts` and `xi`:
+
+``` command
+guild run --optimizer gp -Fo random-starts=10 -Fo xi=0.1
+```
+
 
 ## Batch Files
-
-TODO: merge into above
 
 A batch file is a data file that contains one or more sets of flag
 values for use in an operation. Batch files may be defined using
@@ -459,3 +697,9 @@ And in YAML format:
 ```
 
 ^ `batch.yml`
+
+<!-- TODO
+
+- Section about saving trials
+
+-->
