@@ -12,6 +12,13 @@
 
 - Make sure that each page is tagged correctly.
 
+- About page
+
+- For release:
+
+  - Make sure versions are correct
+  - Replace www-pre links with the real thing
+
 ## 0.7 Tagline
 
 Want strategic value

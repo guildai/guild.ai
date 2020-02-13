@@ -36,11 +36,12 @@ What's next?
 
 <h4 class="promo-next"><a href="/docs/"><img src="/assets/icons/book-flip-page.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Browse Documentation</a></h4>
 
-<h4 class="promo-next"><a href="https://github.com/guildai/examples" target="_blank"><img src="/assets/icons/folder-star-alternate.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Sample Projects</a></h4>
+<h4 class="promo-next"><a href="https://github.com/guildai/guildai/tree/master/examples" target="_blank"><img src="/assets/icons/folder-star-alternate.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Sample Projects</a></h4>
 
 <h4 class="promo-next"><a href="/docs/#cheatsheets"><img src="/assets/icons/copy-paste.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Cheatsheets</a></h4>
 
 <h4 class="promo-next"><a href="/guides/tips-and-techniques/"><img src="/assets/icons/idea-settings.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Tips &amp; Techniques</a></h4>
 
 If you want to read the documentation from start-to-finish, use the
-navigation links below.
+**NEXT** navigation link at the bottom of each page to move to the
+next document.
