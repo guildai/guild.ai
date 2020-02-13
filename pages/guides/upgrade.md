@@ -22,6 +22,7 @@ train:
   flags-import: all
 ```
 
+
 ^ Guild no longer imports flags by default. Use `flags-import` to
 specify `all` or a list of flag names.
 
@@ -32,9 +33,9 @@ For more information, see [Flags](/flags.md).
 The following command line short-form options have changed from
 `0.6.x`:
 
-| Command          | Option in `0.6.x` | Changed To | Description                |
-|------------------|-------------------|------------|----------------------------|
-| multiple         | `-st`             | `-S`       | Filter by start time       |
-| multiple         | `-u`              | `-U`       | Filter by unlabeled status |
-| multiple         | `-U`              | `-N`       | Filter by unmarked status  |
-| [diff](cmd:diff) | `-g`              | `-f`       | Diff flags                 |
+| Command          | Short-Form Option in `0.6.x` | Changed To | Description                |
+|------------------|------------------------------|------------|----------------------------|
+| multiple         | `-st`                        | `-S`       | Filter by start time       |
+| multiple         | `-u`                         | `-U`       | Filter by unlabeled status |
+| multiple         | `-U`                         | `-N`       | Filter by unmarked status  |
+| [diff](cmd:diff) | `-g`                         | `-f`       | Diff run flags             |

@@ -2,6 +2,10 @@
 
 ## Working list
 
+- We don't link to examples anywhere. These are like cheatsheets.
+
+- Be systematic about linking to examples and cheatsheets.
+
 - Need a flag function reference - move reference material from flags
   concept (/flags.md) to a reference
   (e.g. /reference/flag-functions.md)

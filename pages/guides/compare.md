@@ -1,5 +1,0 @@
-# Compare Results
-
-[TOC]
-
-## Overview

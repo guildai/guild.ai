@@ -1,14 +1,17 @@
 tags: start
 
-# Automate Workflow
+# Workflow
 
 [TOC]
 
 ## Overview
 
-In the [previous section](/start/classifier.md), you add the
-classifier `iris-svm` to your project. In this section, you add a new
-operation to `iris-svm` to automate search steps.
+This guide relies on steps you complete in [Get
+Started](/start/classifier.md).
+
+In the [Get Started](/start/classifier.md), you add the classifier
+`iris-svm` to your project. In this section, you add a new operation
+to `iris-svm` to automate search steps.
 
 ## Add `search` Operation to `guild.yml`
 

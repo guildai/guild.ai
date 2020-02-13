@@ -220,3 +220,13 @@ guild import --move --started 'last 7 days' saved-runs
 
 Use the `--space` option with [check](cmd:check) to show disk space
 used by Guild, including runs and cached resources.
+
+<!-- TODO
+
+### Debug Output Scalars
+
+### Debug Source Code Copy
+
+### Debug Flag Configuration
+
+-->

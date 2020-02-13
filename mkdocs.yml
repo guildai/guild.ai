@@ -254,7 +254,6 @@ pages:
           - start/nextsteps.md
 
       - Concepts:
-          #- architecture.md
           - cli.md
           - runs.md
           - guildfile.md
@@ -262,7 +261,6 @@ pages:
           - flags.md
           - scalars.md
           - dependencies.md
-          - optimizers.md
           - workflow.md
           - queues.md
           - environments.md
@@ -278,20 +276,12 @@ pages:
 
       - Guides:
           - guides/workflow.md
-          - guides/add-guild.md
-          - guides/dependencies.md
+          #- guides/add-guild.md
+          #- guides/dependencies.md
           - guides/backup-restore.md
           - guides/upgrade.md
           - guides/tips-and-techniques.md
-          #- guides/dependencies.md
-          #- guides/add.md
-          #- guides/compare.md
-          #- guides/workflow.md
           #- guides/reproducibility.md
-          #- guides/schedule.md
-          #- guides/remote.md
-          #- guides/notebooks.md
-          #- guides/troubleshoot.md
 
       - Commands:
           - commands/index.md

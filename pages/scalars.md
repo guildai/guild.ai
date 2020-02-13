@@ -100,10 +100,56 @@ Cheatsheet](/cheatsheets/guildfile.md#output-scalars) for examples of
 
 ### TensorBoard Summaries
 
-TODO Include ways to write summaries:
+Guild detects scalars logged to TensorBoard summaries.
 
-- https://www.tensorflow.org/api_docs/python/tf/summary
-- https://pytorch.org/docs/stable/tensorboard.html
-- https://github.com/lanpa/tensorboardX
+If you log scalars to TensorBoars summaries, disable output scalar
+logging by setting `output-scalars` to ``off``.
+
+``` yaml
+op:
+  output-scalars: off
+```
+
+^ Disable output scalar detection --- use when you log scalars
+  yourself to TensorBoard summaries
+
+There are several methods for logging TensorBoard summaries. Refer to
+the links below for more information including sample code.
+
+*Method*
+: *When to Use*
+
+[TensorFlow API ->](https://www.tensorflow.org/api_docs/python/tf/summary)
+: Operation uses TensorFlow or Keras
+
+[PyTorch API ->](https://pytorch.org/docs/stable/tensorboard.html)
+: Operation uses PyTorch
+
+[MXBoard ->](https://github.com/awslabs/mxboard)
+: Operation uses MXNet
+
+[tensorBoardX ->](https://github.com/lanpa/tensorboardX)
+: Log TensorBoard sumaries without incurring a large framework dependency
+
+!!! tip
+    [tensorBoardX ->](https://github.com/lanpa/tensorboardX) is a
+    light-weight library that is not tied to a large framework like
+    TensorFlow or PyTorch. If you don't otherwise have access to a
+    summary logging API, we recommend that you use this library.
 
 ## Viewing Run Scalars
+
+Show runs scalars using [runs info](cmd:runs-info).
+
+``` command
+guild runs info
+```
+
+By default, Guild omits scalars starting with `sys/` as these scalars
+are systems-related can overwhelm the list of scalars.
+
+To include system scalars, use the `--all-scalars` option:
+
+``` command
+guild runs info --all-scalars
+```
