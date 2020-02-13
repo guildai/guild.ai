@@ -24,6 +24,8 @@
 - Go through production www and make sure we copy over any useful
   content.
 
+- Make sure clicky ID is prod on release.
+
 ## 0.7 Tagline
 
 Want strategic value
