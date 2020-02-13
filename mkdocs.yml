@@ -44,6 +44,12 @@ extra:
       title: Guild AI on Twitter
       icon_class: 'fab fa-twitter'
 
+  clicky:
+    # These are not used automatically - you must manually apply to
+    # src/base.html
+    prod: 100935573
+    pre: 101236283
+
 theme:
   name: null
   custom_dir: src
