@@ -12,12 +12,17 @@
 
 - Make sure that each page is tagged correctly.
 
+- Major work needed on /guildfile.md - see TODOs in that page.
+
 - About page
 
 - For release:
 
   - Make sure versions are correct
   - Replace www-pre links with the real thing
+
+- Go through production www and make sure we copy over any useful
+  content.
 
 ## 0.7 Tagline
 

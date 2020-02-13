@@ -1,5 +1,11 @@
 tags: concept
 
+<!-- TODO
+
+Requires major work - see TODO below.
+
+-->
+
 # Guild Files
 
 [TOC]
@@ -227,7 +233,8 @@ See also:
 
 ##### Flags as Global Variables (Python scripts only)
 
-When `flags-dest` is `globals`, Guild sets flag values as script global variables.
+When `flags-dest` is `globals`, Guild sets flag values as script
+global variables.
 
 #### Automatically Import Flags (Python scripts only)
 
@@ -238,11 +245,7 @@ import flags from Python scripts.
 To import flags from a Python script, use the `flags-import` operation
 attribute.
 
-
-```
-```
-
-
+<!-- TODO
 
 #### Default Values
 
@@ -273,8 +276,6 @@ attribute.
         self.extra = _data
 
 
-TODO:
-
 - Used as inputs to a run
 - Can be defined in both in the script and in the guild file
 - Definition in Guild file redefines any imported defs
@@ -283,7 +284,7 @@ TODO:
 
 ### Source Code
 
-TODO
+-->
 
 ### Output Scalars
 
@@ -368,18 +369,18 @@ files. Models are top-level objects with a `model` attribute.
 
 ^ Sample `mnist` model definition with two operations: `train` and `validate`
 
-TODO
+<!-- TODO
 
 - Other attributes - why use models and not just operations?
 - Inheritance using config
 
 ## Resources
 
-TODO
 
 ## Packages
 
-TODO
+
+-->
 
 ## Reusable Config
 
@@ -435,9 +436,13 @@ Here's an example of a `model` object inheriting the attributes from a
   operations
 ```
 
+<!-- TODO
+
 ## Attribute Includes
 
 TODO
+
+-->
 
 ## Including Files
 

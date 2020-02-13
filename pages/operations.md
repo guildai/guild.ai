@@ -59,7 +59,8 @@ guild operations
 ```
 
 !!! tip
-    The [ops](cmd:ops) command is a short alias for `operations`.
+    The [ops](cmd:ops) command is a shortened alias for
+    `operations`.
 
 ## Python Based Operations
 

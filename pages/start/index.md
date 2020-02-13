@@ -183,7 +183,7 @@ Guild detects two hyperparameters from `train.py`: *noise* and
 *x*. Guild refers to these variables as [flags](term:flag). By
 default, Guild treats global constants in Python scripts as
 flags. This behavior can be controlled through explicit configuration,
-which you learn about in later steps.
+which you learn about later.
 
 ## View Results
 
@@ -268,8 +268,8 @@ By default, Guild shows information for the latest run.
 
 ### Project Source Code
 
-Guild records project source code for each run so you know exactly
-what is executed.
+Guild saves project source code for each run so you know exactly what
+is executed.
 
 List the run source code files with the [ls](cmd:ls) command:
 
@@ -332,7 +332,7 @@ training script.
     - Guild is easy to install and use. It doesn't require databases
       or external systems.
 
-    - Guild captures every detail about your run. Use this information
+    - Guild details about your run. Use this information
       to optimize your model, catch mistakes, and resolve issues.
 
 In the [next section](/start/optimize.md), you use Guild's built-in

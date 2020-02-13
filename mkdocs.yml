@@ -225,13 +225,16 @@ markdown_extensions:
               guildfiles: /guildfile.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               model: /guildfile.md#models
+              models: /guildfile.md#models
               no-databases: /faq/#how-does-guild-save-results
               operation-only-format: /reference/guildfile.md#operation-only-format
               operation: /operations.md
               operations: /operations.md
+              optimizer-flag: /runs.md#optimizer-flags
               output-scalar: /scalars.md#output-scalars
               output-scalars: /scalars.md#output-scalars
               random-search: https://en.wikipedia.org/wiki/Random_search
+              remote: /reference/remotes.md
               remotes: /reference/remotes.md
               requirements: /guildfile.md#required-resources
               run-dir: /runs.md#run-directory

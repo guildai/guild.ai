@@ -7,7 +7,7 @@
 Up to this point, you run `train.py` directly without providing
 additional information about the script.
 
-When Guild runs an operation, it determines the following:
+When Guild runs an operation, it must determine the following:
 
 - How the script accesses user-provided values ([flags](term:flag))
 - How the script communicates numeric results ([scalars](term:scalar))
@@ -49,26 +49,26 @@ The project directory should look like this:
 </ul>
 </div>
 
-This Guild file explicitly defines how Guild runs the `train`
+The Guild file explicitly defines how Guild runs the `train`
 operation.
 
 Below is a description of each setting.
 
 `description`
 : This value appears when listing the operation and in project
-  help. See [Get Project Info](#get-project-info) below.
+  help. See [*Get Project Info*](#get-project-info) below.
 
 `main`
 : Guild loads the specified Python module when running the
   operation. By default, Guild uses the operation name. For more
-  information, see [Python Based
-  Operations](/operations.md#python-based-operations).
+  information, see [*Python Based
+  Operations*](/operations.md#python-based-operations).
 
 `flags-import`
 : To save time and simplify configuration, Guild can inspect the
   Python module and import detected flags. Setting `flags-import` to
   `all` tells Guild to use all of the flags it detects. For more
-  information, see [Flags](/flags.md).
+  information, see [*Flags*](/flags.md).
 
 `output-scalars`
 : Guild refers to numeric results like *loss* and *accuracy* as
@@ -76,24 +76,17 @@ Below is a description of each setting.
   output (e.g. using `print` in Python). By default, Guild captures
   scalars written to output in the format ``KEY: VALUE``. The
   `output-scalars` operation attribute explicitly defines the patterns
-  that Guild uses. For more information, see [Output
-  Scalars](ref:output-scalars).
+  that Guild uses. For more information, see [*Output
+  Scalars*](ref:output-scalars).
 
-Refer to [Guild File Reference](/reference/guildfile.md) for details
+Refer to [*Guild File Reference*](/reference/guildfile.md) for details
 about the Guild file format and available configuration options.
 
 !!! note
     The values for `flags-import` and `output-scalars` used in
-    the Guild file above are equal to the defaults used by Guild. They
-    can be omitted without changing the behavior of the operation. We
-    define them explicitly for illustration purposes.
-
-!!! important
-    When you define an operation in a Guild file, Guild will
-    not automatically import flags as it does when you run a script
-    directly. You must use `flags-import` to explicitly tell Guild
-    which flags you want to import. If you want to import all flags,
-    use the value `all`.
+    the Guild file above are equivalent to the defaults used by
+    Guild. They can be omitted without changing the behavior of the
+    operation. We define them explicitly for illustration purposes.
 
 ## Get Project Info
 
@@ -145,7 +138,7 @@ BASE OPERATIONS
 Press `q` to exit help.
 
 !!! highlight
-    Guild files define the user-facing interface to your
+    Guild files define the user interface to your
     project. This encourages reproducibility as operations are easy to
     recall, run, and compare.
 
@@ -164,10 +157,16 @@ You are about to run train
 Continue? (Y/n)
 ```
 
-Note that you run `train` rather than `train.py` above. `train` is the
-*operation* defined in the Guild file. `train.py` refers to the Python
-script directly. Guild supports both methods: running operations
-defined in Guild files and running scripts.
+!!! note
+    You use ``train`` rather than ``train.py`` above. `train` is
+    the *operation* defined in the Guild file. `train.py` refers to
+    the Python script directly. Guild supports both methods: running
+    operations defined in Guild files and running scripts.
+
+Press `Enter` to start the operation.
+
+Guild runs `train`, which is equivalent to the operations you've run
+to this point, but is explicitly defined in `guild.yml`.
 
 !!! tip
     While it's convenient to run scripts directly in Guild, we
@@ -175,8 +174,8 @@ defined in Guild files and running scripts.
     operations for your day-to-day workflow. Guild file operations are
     configured explicitly and discoverable as show above. They support
     a wide range of features that are not available when running
-    scripts directly. For more information, see [Guild File
-    Reference](/reference/guildfile.md).
+    scripts directly. For more information, see [*Guild File
+    Reference*](/reference/guildfile.md).
 
 ## Summary
 

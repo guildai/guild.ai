@@ -20,14 +20,15 @@ Based on user type?
 
 # Next Steps
 
-Congratulations! You completed the introduction to Guild AI!
+Congratulations --- you completed the introduction to Guild AI!
 
-In this guide, you learned about:
+In *Get Started with Guild AI*, you cover fundamental concepts and
+practices:
 
 - Runs, which record experiment results
 - Operations, which define what to run
 - Techniques for finding optimal hyperparameters
-- Ways to compare runs
+- Methods to evaluate and compare runs
 - Environments, which isolate project work
 
 What's next?

@@ -4,7 +4,7 @@ tags: start
 
 [TOC]
 
-In [the previous section](optimize.md) you generate runs in search of
+In [the previous section](optimize.md), you generate runs to find
 optimal hyperparameters for the `train.py` script. When developing
 models, it's not uncommon to run dozens or hundreds of experiments as
 you try different approaches, data sets, and hyperparameters.
@@ -26,8 +26,8 @@ You can show 20 additional runs using `--more` or `-m` option.
 guild runs -m
 ```
 
-Specify `m` multiple times as needed in increase the number ---
-e.g. `-mm` shows 40 additional runs.
+Specify ``m`` multiple times as needed in increase the number ---
+e.g. ``-mm`` shows 40 additional runs.
 
 To show all runs, use `--all` or `-a`.
 
@@ -103,9 +103,14 @@ Find the run with the lowest `loss` using [compare](cmd:compare):
 guild select -o train.py --min loss
 ```
 
-Guild shows the run ID with the lowest loss. You can confirm this by
-running ``guild compare -o train.py --min loss`` --- the run with the
-lowest loss appears at the top of the list.
+Guild shows the run ID with the lowest loss. Confirm this by
+running:
+
+``` command
+guild compare -o train.py --min loss --top 1 --table
+```
+
+Guild shows the `train.py` run with the lowest loss.
 
 Use the `--tag` option with the [label](cmd:label) command to prepend
 "best" to the run label:
@@ -162,6 +167,12 @@ guild runs --started 'last 15 minutes'
 For help filtering runs, refer to the applicable command in [Commands
 Reference](/commands/index.md) or use `--help` with the command.
 
+<!-- TODO
+
+Wildly hand-wavy - need to reference a section on filtering.
+
+-->
+
 ## Export Runs
 
 Export runs to a directory for backup or to clear runs from your
@@ -184,7 +195,6 @@ Guild moves your runs into a local `archived-runs` directory. The
 <li class="is-folder open">guild-start
  <ul>
  <li class="is-folder">archived-runs</li>
- <li class="is-file">guild.yml</li>
  <li class="is-file">train.yml</li>
  </ul>
 </li>

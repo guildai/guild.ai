@@ -107,7 +107,7 @@ In an activated virtual environment:
 [^guild_home_runs]: You can change this behavior by setting the
 ``GUILD_HOME`` environment variable, for example, to save runs to a
 different location. For more information, see
-[Environments](/environments.md).
+[*Environments*](/environments.md).
 
 Virtual environments also isolate installed libraries, allowing you to
 maintain different library configuration for each environment.
@@ -128,7 +128,7 @@ source guild-env
 You may alternatively use [virtualenv](ref:virtualenv) or
 [conda](ref:conda) to create and activate an environment.
 
-For more information, see [Environments](/environments.md).
+For more information, see [*Environments*](/environments.md).
 
 ### Maintain a clean working environment
 
