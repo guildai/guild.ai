@@ -101,4 +101,4 @@ priority support contracts from Guild AI.
 - Priority feature requests and custom development
 
 For help with any of these services, please send us an email at
-[support@guild.ai ->](mailto:support@guild.ai).
+[contact@guild.ai ->](mailto:contact@guild.ai).

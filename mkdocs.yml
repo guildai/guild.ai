@@ -36,7 +36,7 @@ extra:
       header: yes
     - name: slack
       url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
-      title: Guild AI Slack Channel
+      title: Guild AI on Slack
       icon_class: 'fab fa-slack-hash'
       header: yes
     - name: twitter
@@ -369,3 +369,4 @@ pages:
 
   - faq.md
   - services.md
+  - about.md
