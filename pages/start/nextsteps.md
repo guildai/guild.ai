@@ -1,9 +1,20 @@
 title: Next Steps
-tags: start
 
 <!-- TODO
 
 - Beef this up with some compelling next steps - icons, etc.
+
+Obviously missing content - what would someone be interested in doing
+next?
+
+- Some master huge master example - grueling - to let them cover
+  everything
+- Add Guild to a project
+
+Based on user type?
+
+- Uses a Notebook
+- ???
 
 -->
 
@@ -19,31 +30,17 @@ In this guide, you learned about:
 - Ways to compare runs
 - Environments, which isolate project work
 
-To learn more about Guild, visit the links below.
+What's next?
 
-- [Browse Documentation](/index.md)
+<h4 class="promo-next"><a href="https://bit.ly/guild-ai-slack" target="_blank"><img src="/assets/icons/messages-bubble-square-smile-alternate.svg" height="32" style="margin-top:0;margin-right:4px;"> Join the Community on Slack</a></h4>
+
+<h4 class="promo-next"><a href="/docs/"><img src="/assets/icons/book-flip-page.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Browse Documentation</a></h4>
+
+<h4 class="promo-next"><a href="https://github.com/guildai/examples" target="_blank"><img src="/assets/icons/folder-star-alternate.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Sample Projects</a></h4>
+
+<h4 class="promo-next"><a href="/docs/#cheatsheets"><img src="/assets/icons/copy-paste.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Cheatsheets</a></h4>
+
+<h4 class="promo-next"><a href="/guides/tips-and-techniques/"><img src="/assets/icons/idea-settings.svg" height="32" style="margin-top:-6px;margin-right:4px;"> Tips &amp; Techniques</a></h4>
 
 If you want to read the documentation from start-to-finish, use the
 navigation links below.
-
-To continue learning about Guild, visit
-
-TODO:
-
-Point to guides:
-
-- Add Guild to Project
-
-- Updraging from Previous Versions
-
-- Examples
-
-- Cheatsheets
-
-- Tips & Techniques
-
-- Remote guides
-
-Possibly structure this with a split: people who use Notebooks vs
-people who are automating things. Use this as a way to think about
-user scenarios.

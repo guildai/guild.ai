@@ -132,6 +132,12 @@ markdown_extensions:
           target: _blank
           href: https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html
 
+        - link_patern: ref:guild-examples
+          text: Guild examples
+          class: ext
+          taget: _blank
+          href: https://github.com/guildai/examples
+
         - link_pattern: ref:hiplot
           text: HiPlot
           class: ext

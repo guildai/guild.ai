@@ -10,6 +10,8 @@
   concept (/flags.md) to a reference
   (e.g. /reference/flag-functions.md)
 
+- Make sure that each page is tagged correctly.
+
 ## 0.7 Tagline
 
 Want strategic value

@@ -1,5 +1,3 @@
-tags: start
-
 # Create a Guild File
 
 [TOC]

@@ -38,6 +38,8 @@ configuration syntax.
 
 - [](category:/reference/#)
 
+<!-- TODO
+
 ## Knowledge Base
 
 The knowledge base (KB) articles below provide added context and
@@ -45,7 +47,10 @@ detail to help you get the most out of Guild.
 
 - [](category:/kb/#)
 
-## Cheat Sheets
+-->
+
+
+## Cheatsheets
 
 Guild power users should bookmark the cheatsheets below for fast
 access to the most common commands and configuration snippets.

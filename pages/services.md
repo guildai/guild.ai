@@ -42,7 +42,6 @@ option. We'll address your issue while maintaining your privacy.
 Guild AI provides data scientists and ML engineering experts to help
 you build effective and efficient ML systems.
 
-
 ### <img src="/assets/icons/maps-pin.svg" height="28" style="margin-top:-8px"> Problem Definition and Assessment
 
 Before investing in data engineering and model development, verify

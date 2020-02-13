@@ -1,5 +1,3 @@
-tags: start
-
 # Add a Classifier
 
 [TOC]
