@@ -34,7 +34,7 @@ some cases, dedicated support staff.
 Feature limitation cost is when a library feature limits your
 abilities in other areas. If an experiment tracking library requires
 that models adhere to a specific interface to be used in experiment
-tracking, any model that doesn't ahere to that interface can't be
+tracking, any model that doesn't adhere to that interface can't be
 used.
 
 A breaking change cost is incurred when your upstream experiment
@@ -82,7 +82,7 @@ tracking.
 Consider modifications to `train.py` that add support for experiment
 tracking provided by a hypothetical library named `experiments`.
 
-``` pythonOB
+``` python
 import experiments as exp
 
 import fashion_mnist
@@ -114,8 +114,8 @@ The call to `exp.save_model()` is high cost if it limits the types of
 models that can be saved. This is a feature limitation cost. The save
 operation might work in the case of our sample, but if the author
 wants to change the model implementation (e.g. from TensorFlow to
-PyTorch, PyTorch to Keras, etc.) the save operataion may not work. If
-not, the author may be forced to reimplement the model simply to
+PyTorch, PyTorch to Keras, etc.) the save operation may not work. If
+not, the author may be forced to re-implement the model simply to
 satisfy the requirements of an experiment management framework.
 
 If `experiments` saves models to a database, you incur complexity
@@ -130,4 +130,4 @@ the metrics are written to a database, the database must be available.
 
 Guild AI takes a strong position on dependencies. They're something to
 avoid whenever possible. When a dependency is required, it should be
-minimized as much as possible without comprimising features.
+minimized as much as possible without compromising features.

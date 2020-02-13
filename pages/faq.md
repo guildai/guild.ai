@@ -108,7 +108,7 @@ you want to:
 - Establish performance baselines for ongoing work and comparison
 - Tune hyperparameters
 - Simplify reproducibility for yourself and others
-- Create an audit trail for explanability and compliance
+- Create an audit trail for explainability and compliance
 
 You can start using Guild at any stage if your project lifecycle. Use
 it early to measure progress or after the project stabilizes to tune
@@ -143,9 +143,9 @@ relies on the infrastructure and services that software uses:
  - Servers
  - Container management systems
  - Distributed file systems
- - Non-free (closed-source, paid) backend services
+ - Non-free (closed-source, paid) back-end services
 
-Simple changes to your code (e.g. a few decorated functions) baloon
+Simple changes to your code (e.g. a few decorated functions) balloon
 into higher costs:
 
  - System installation and maintenance
@@ -164,7 +164,7 @@ Guild is designed as a traditional build tool. It relies on external
 configuration and operating system conventions to perform its work.
 
 Guild interfaces with your scripts using standard operating system
-conventions (command arguments, environment variables, standard ouput,
+conventions (command arguments, environment variables, standard output,
 file systems, etc.). This interface is available for any language,
 framework, and platform, making Guild flexible for a wide range of
 applications.

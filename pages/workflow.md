@@ -108,7 +108,7 @@ op:
 
 <!-- TODO
 
-- Elaborate on the aboce
+- Elaborate on the above
 - Docs for other step attributes (e.g. gpu, etc.)
 
 -->

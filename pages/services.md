@@ -29,7 +29,7 @@ repository. This is the best way to track resolution of a problem.
 <div class="col col-lg-4" markdown="1">
 ### <i class="far fa-paper-plane"></i> Send an Email
 
-To keep your correspondance confidential, email is your best
+To keep your correspondence confidential, email is your best
 option. We'll address your issue while maintaining your privacy.
 
 [Email support@guild.ai ->](mailto:support@guild.ai)
@@ -63,11 +63,11 @@ development phases.
 
 ### <img src="/assets/icons/file-code-refresh.svg" height="30" style="margin-top:-6px;model-right:2px"> Model Development
 
-Model development recevies most of the attention when building ML
+Model development receives most of the attention when building ML
 applications. However, model development is an iterative process
 intricately related to problem definition and data engineering
 efforts. As you experiment with different data sets and model
-architectures, you continually consider and expore alternatives and
+architectures, you continually consider and explore alternatives and
 refine your pipelines. Guild AI specializes in this process and can
 help build model development best practices in your organization.
 

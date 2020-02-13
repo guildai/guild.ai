@@ -19,7 +19,7 @@ specified when calling [run](cmd:run) in the format:
 guild run OPERATION
 ```
 
-Operations are defind in [Guild files](term:guildfile).
+Operations are defined in [Guild files](term:guildfile).
 
 Operations are defined using one of two formats:
 
@@ -176,9 +176,9 @@ access flags as they don't require command line processing.
 
 Guild saves source code for an operation with each run. This ensures
 that the run has a record of the source code used and that changes to
-project code dont affect runs in progress.
+project code don't affect runs in progress.
 
-By deault, Guild copies text files within the project directory as
+By default, Guild copies text files within the project directory as
 source code. As a safe-guard, Guild skips files larger than 1M and
 will not copy more than 100 files. Configures these rules using the
 `sourcecode` operation attribute.

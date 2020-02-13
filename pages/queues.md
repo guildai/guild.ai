@@ -5,7 +5,7 @@ tags: concept
 <!-- TODO
 
 This page needs to be filled out. There's a conceptual problem with
-queues and parallel runs, escp with batches.
+queues and parallel runs, esp with batches.
 
 -->
 
@@ -45,7 +45,7 @@ A run matches a queue GPU affinity when:
   the staged run does specify a GPU affinity
 - The queue `gpu` flag value matches the staged run GPU affinity
 
-Queues coordinate amoung themselves when starting runs so you can
+Queues coordinate among themselves when starting runs so you can
 start multiple queues as needed.
 
 ## Schedule Staged Runs

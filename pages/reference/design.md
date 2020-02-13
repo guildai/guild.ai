@@ -44,7 +44,7 @@ Dependencies have both up-front and hidden costs:
 - Ongoing risk of outages
 - Reduced portability and flexibility
 
-Guild minizes dependencies, both in terms of required software
+Guild minimizes dependencies, both in terms of required software
 libraries and required system components.
 
 Guild avoid dependencies on:
@@ -62,7 +62,7 @@ not provide core functionality, Guild is designed to run without it,
 making it optional.
 
 *Pillow*
-: Cnverting images to raw format for TensorBoard summaries
+: Converting images to raw format for TensorBoard summaries
 
 *PyYAML*
 : YAML file decoding
@@ -110,7 +110,7 @@ making it optional.
 
 <!-- TODO
 
-- Section ellaborating on lifecycle of Guild - using it as soon as a
+- Section elaborating on lifecycle of Guild - using it as soon as a
   project is started.
 
 -->

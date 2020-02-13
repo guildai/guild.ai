@@ -54,7 +54,7 @@ Options:
   --version  Show the version and exit.
   -C PATH    Use PATH as current directory for referencing guild files
              (guild.yml).
-  -H PATH    Use PATH as Guild home (default is /home/garrett/.guild).
+  -H PATH    Use PATH as Guild home (default is ~/.guild).
   --debug    Log more information during command.
   --help     Show this message and exit.
 

@@ -69,7 +69,7 @@ Remote management commands are:
 : Show status for a remote.
 
 [remote start](cmd:remote-start)
-: Start a remote. Not all remote types can be startd.
+: Start a remote. Not all remote types can be started.
 
 [remote stop](cmd:remote-start)
 : Stop a remote. Not all remote types can be stopped.
@@ -120,7 +120,7 @@ Remote commands include:
 [runs delete](cmd:runs-delete)
 : Delete runs on a remote.
 
-[runs restore](cmd:runs-restire)
+[runs restore](cmd:runs-restore)
 : Restore deleted runs on a remote.
 
 [runs purge](cmd:runs-purge)

@@ -410,7 +410,7 @@ train:
 
 #### Named capture groups
 
-Use named capture groups to specify the key for a paricular pattern.
+Use named capture groups to specify the key for a particular pattern.
 
 ``` yaml
 train:
@@ -512,7 +512,7 @@ train:
 
     By default, Guild copies text files under 1M as source code. As a
     safeguard, Guild will not copy more than 1000 files. The examples
-    in this sction illustrate how to explicitly configure operation
+    in this section illustrate how to explicitly configure operation
     source code.
 
 #### Disable source code snapshot

@@ -164,7 +164,7 @@ See [Flags Interface](#flags-interface) below for information on how
 Guild conveys flag values to a script.
 
 Guild records flag values used for each run. Flag values are displayed
-in serveral contexts:
+in several contexts:
 
 - Output from [runs info](cmd:runs-info)
 - Columns in [Guild Compare](/tools/compare.md)
@@ -296,7 +296,7 @@ scalar behavior.
 
 #### Custom Output Scalars
 
-Configure output scalars for an opertion by defining a
+Configure output scalars for an operation by defining a
 `output-scalars` attribute. Guild supports two schemes:
 
 - Pattern mapping
@@ -381,7 +381,7 @@ TODO
 
 TODO
 
-## Resuable Config
+## Reusable Config
 
 Guild supports reusable configuration through top-level `config` objects.
 
@@ -424,7 +424,7 @@ a `name` param, which resolves references in the inherited attributes
 ## Inheritance
 
 Guild files support *inheritance* where attributes of one object
-(parent) are applied by default to anothe object (child). A child may
+(parent) are applied by default to another object (child). A child may
 redefine attributes as needed.
 
 Here's an example of a `model` object inheriting the attributes from a
@@ -463,7 +463,7 @@ is defined.
 - model: mnist
   operations:
     train: mnist_train
-    validate: mnist_valiate
+    validate: mnist_validate
 ```
 
 ^ `guild-mnist.yml` --- included by `guild.yml` above
@@ -472,7 +472,7 @@ is defined.
 - model: cifar
   operations:
     train: cifar_train
-    validate: cifar_valiate
+    validate: cifar_valuate
 ```
 
 ^ `guild-cifar.yml` --- also included by `guild.yml` above

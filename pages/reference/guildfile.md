@@ -1360,8 +1360,6 @@ Package attributes are listed below.
     `README.*`. The list of files specified by this attribute is added
     to this list.
 
-    This is another paragraph yop.
-
 `python-requires`
 : Version of Python required by the package (string)
 

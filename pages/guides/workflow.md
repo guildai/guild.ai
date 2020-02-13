@@ -156,14 +156,14 @@ the `iris-svm:fit` runs, including **train_accuracy** and
   left and top of the view.
 
 - When you click a line, TensorBoard shows the associated run details
-  below the coorindates plot.
+  below the coordinates plot.
 
 - You can highlight runs associated with specific ranges along each
   axis. Click-and-drag your cursor on each vertical axis for the range
   you want to highlight.
 
 Note the values along the **test_accuracy** vertical axis. Click the
-run with the higest value for **test_accuracy** and note the
+run with the highest value for **test_accuracy** and note the
 corresponding value in **train_accuracy**. The run is highly
 overfit.
 
@@ -172,7 +172,7 @@ between 0.76 and 0.72 (see *Parallel coordinates view* above). This
 range is where the model appears to perform the best without
 overfitting.
 
-The hyperparameters that appear to contrbute most clearly to these
+The hyperparameters that appear to contribute most clearly to these
 results:
 
 - `degree` is 3

@@ -21,8 +21,8 @@ However, Guild will use project configuration if available to find a
 suitable version of Python when creating a virtual environment.
 
 If a project defines a `python-requires` spec in a `package`
-definition, Guild will use that spec to find a suitable Python verions
-on the sytem
+definition, Guild will use that spec to find a suitable Python versions
+on the system
 
 The spec must comply with the [](ref:pip-reqs).
 

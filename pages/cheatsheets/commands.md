@@ -71,7 +71,7 @@ For more information, see [Flag Value Lists](ref:flag-value-list).
 #### Run a random search
 
 Use [search space functions](term:flag-search-space-function) to
-implicitly trigger the use of the `random` optiizer.
+implicitly trigger the use of the `random` optimizer.
 
 ``` command
 guild run train -m 10 lr=loguniform[1e-5:1e-2] batch_size=50
@@ -252,7 +252,7 @@ guild compare --csv -
 guild compare --tool hiplot
 ```
 
-^ Copmare runs using [HiPlot](ref:hiplot)
+^ Compare runs using [HiPlot](ref:hiplot)
 
 #### Compare runs using TensorBoard
 
@@ -324,7 +324,7 @@ pip install guildai
 pip install guildai --user
 ```
 
-#### Install with elevated priviledges (Linux and macOS)
+#### Install with elevated privileges (Linux and macOS)
 
 ``` command
 sudo pip install guildai

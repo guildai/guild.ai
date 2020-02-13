@@ -13,7 +13,7 @@ trials.
 Below is a list of supported optimizers.
 
 [`gp`](#gp)
-: Sequential optimizer using guassian processes.
+: Sequential optimizer using Gaussian processes.
 
 [`forest`](#forest)
 : Sequential optimizer using decision trees.

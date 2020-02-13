@@ -102,7 +102,7 @@ Cheatsheet](/cheatsheets/guildfile.md#output-scalars) for examples of
 
 Guild detects scalars logged to TensorBoard summaries.
 
-If you log scalars to TensorBoars summaries, disable output scalar
+If you log scalars to TensorBoard summaries, disable output scalar
 logging by setting `output-scalars` to ``off``.
 
 ``` yaml
@@ -129,7 +129,7 @@ the links below for more information including sample code.
 : Operation uses MXNet
 
 [tensorBoardX ->](https://github.com/lanpa/tensorboardX)
-: Log TensorBoard sumaries without incurring a large framework dependency
+: Log TensorBoard summaries without incurring a large framework dependency
 
 !!! tip
     [tensorBoardX ->](https://github.com/lanpa/tensorboardX) is a

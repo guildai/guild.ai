@@ -337,7 +337,7 @@ guild cat [RUN] -p PATH
 
 ### View Run Output
 
-To view run outout, use [cat](cmd:cat) with the `--output` option:
+To view run output, use [cat](cmd:cat) with the `--output` option:
 
 ``` command
 guild cat --output [RUN]
@@ -360,7 +360,7 @@ documentation for each of these tools for more information.
   exporting comparison data to CSV.
 
 [Guild View](ref:guild-view)
-: Visual application to compare runs and expore run results.
+: Visual application to compare runs and explore run results.
 
 [Guild Diff](ref:guild-diff)
 : Integration with diffing tools to compare run files.
@@ -404,7 +404,7 @@ list of runs it will restore. To bypass this prompt, use the `--yes`
 or `-y` option.
 
 !!! tip
-    If you find yourself restoring runs frequently, consder using
+    If you find yourself restoring runs frequently, consider using
     [export](cmd:export) with the `--move` option to archive runs you
     no longer need. Archives runs are stored in a directory that you
     control and cannot be deleted using [runs purge](cmd:runs-purge).
@@ -412,7 +412,7 @@ or `-y` option.
 ### Purge Deleted Runs
 
 Deleted runs, provided they weren't deleted with the `--permanent` or
-`-p` option, still reside on disk. To permamently delete these runs,
+`-p` option, still reside on disk. To permanently delete these runs,
 use [runs purge](cmd:runs-purge).
 
 !!! tip

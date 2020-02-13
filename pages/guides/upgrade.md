@@ -11,7 +11,7 @@
 ### Guild no longer imports flags by default
 
 Prior to `0.7`, Guild automatically imported all detected flags for
-operations defined in a Gulid file. Guild no longer imports flags by
+operations defined in a Guild file. Guild no longer imports flags by
 default. You must either use `flags-import` or define the complete set
 of flags.
 

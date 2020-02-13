@@ -110,7 +110,7 @@ different location. For more information, see
 [Environments](/environments.md).
 
 Virtual environments also isolate installed libraries, allowing you to
-maintain different library configuation for each environment.
+maintain different library configuration for each environment.
 
 The easiest way to create a project specific environment is to change
 to the project and run [init](cmd:init):
@@ -142,7 +142,7 @@ environment so you can focus on the runs you're interested in.
 Use `--error` or `-E` with [runs rm](cmd:runs-rm) to delete failed
 runs (i.e. runs with the **error** status). Avoid the temptation of
 permanently deleting them with the `--permanent` option. Failed runs
-are often a souce of useful information. You can purge old runs when
+are often a source of useful information. You can purge old runs when
 you need to free up disk space (see below).
 
 ``` command

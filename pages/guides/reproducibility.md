@@ -79,7 +79,7 @@ keras
 
 The first line of `requirements.txt` is a comment and therefore
 ignored by `pip`. However, Guild uses the comment to find a suitable
-Python intpreter when creating a virtual environment via [](cmd:init).
+Python interpreter when creating a virtual environment via [](cmd:init).
 
 Note that you must use [guild init](cmd:init) when creating a virtual
 environment to use Python requirement information. Neither Conda nor
@@ -88,7 +88,7 @@ virtualenv will use this information.
 ## Operations
 
 Operations are central to Guild's support of
-reproducibility. Operations define how runs are executed, inluding:
+reproducibility. Operations define how runs are executed, including:
 
 - Program command
 - Program environment
@@ -97,7 +97,7 @@ reproducibility. Operations define how runs are executed, inluding:
 Guild measures both inputs and outputs for each run and supports
 detailed diffs between runs.
 
-For generaion informations about operations, see
+For general information about operations, see
 [Operations](ref:operations).
 
 To compare run flags and logged metrics (output scalars), use

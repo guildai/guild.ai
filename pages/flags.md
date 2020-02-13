@@ -161,7 +161,7 @@ y = 2
 print("z: %i" % (x + y))
 ```
 
-^ `train.py` using global varaibles for flags
+^ `train.py` using global variables for flags
 
 You can alternatively set flag values in a Python global dict variable
 ``global:<variable name>`` for `flags-dest`.
@@ -229,7 +229,7 @@ Guild does not currently support flag imports for non-Python
 scripts. In such cases you must explicitly define each flag and use
 command line arguments or environment variables to access flags.
 
-### Flag Import Configurtion
+### Flag Import Configuration
 
 Guild supports different import scenarios:
 
@@ -369,7 +369,7 @@ values separated by a colon ``:``.
   *start*, *end*, and an optional value count.
 
 [`logspace`](#logspace)
-: Specifies an evently spaced sequence along a log-linear scale with
+: Specifies an evenly spaced sequence along a log-linear scale with
   *start*, *end*, an optional value count, and an optional logarithmic
   base.
 
@@ -445,7 +445,7 @@ Search space functions are specified in the format ``NAME[ARGS]``
 where `ARGS` is a list of values separated by a colon.
 
 [`uniform`](#uniform)
-: Specifies a uniform distrbution over a range of values
+: Specifies a uniform distribution over a range of values
 
 [`loguniform`](#loguniform)
 : Specifies a log-uniform distribution over a range of values.

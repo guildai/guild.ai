@@ -195,7 +195,7 @@ modify source code and simplifies the integration of Notebooks.
 ### Implementation
 
 Guild sets global variables when it runs a script by using a simple
-techique:
+technique:
 
 1. Guild removes applicable global assignments from the script AST.
 

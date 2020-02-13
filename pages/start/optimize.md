@@ -201,7 +201,7 @@ function.
 
 !!! tip
     Use sequence functions for multiple flags to expand a grid
-    search to the catesian product of each set of values.
+    search to the Cartesian product of each set of values.
 
 ## Random Search
 
@@ -245,7 +245,7 @@ based on previous results.
 
 By default, Guild attempts to minimize `loss`, which is logged by
 `train.py`. If the script used a different objective, specify it using
-`--mininize` or `--maximize` options for the [run](cmd:run) command.
+`--minimize` or `--maximize` options for the [run](cmd:run) command.
 
 Run 10 trials using the [`gp`](/reference/optimizers.md#gp) optimizer,
 which uses Bayesian optimization with *gaussian processes*:
@@ -287,7 +287,7 @@ To restart a run, you need the target run ID.
 To get the run ID of the `gp` batch, run:
 
 ``` command
-guid select -o train.py+gp
+guild select -o train.py+gp
 ```
 
 Guild prints the ID of the last `gp` batch run. Copy this value for
@@ -361,7 +361,7 @@ Guild starts TensorBoard and opens a new browser tab.
 Select the **HPARAMS** tag and then select **SCATTER PLOT MATRIX
 VIEW**.
 
-TensorBoard displays scatter plots of hypermaraters and metrics.
+TensorBoard displays scatter plots of hyperparameters and metrics.
 
 In the left side panel, *deselect* the following hyperparameters:
 
@@ -375,7 +375,7 @@ In the same panel, *deselect* the following metrics:
 TensorBoard displays a plot of `loss` against `x`. Each point on the
 plot represents a trial. Given the known relationship between `loss`
 and `x` (see plot above), the Bayesian optimizer should spend more
-time exporing values for `x` around `-0.3`. This will appear as a
+time exploring values for `x` around `-0.3`. This will appear as a
 cluster of trials along the bottom of the plot between `-0.4` and
 `-0.2`.
 

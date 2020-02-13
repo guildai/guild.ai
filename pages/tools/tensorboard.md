@@ -19,7 +19,7 @@ To use TensorBoard to view Guild runs, use the
 guild run tensorboard
 ```
 
-Guild manages the TensorBoard log directory by synchonizing with the
+Guild manages the TensorBoard log directory by synchronizing with the
 current set of runs and their summaries. You can leave TensorBoard
 running while you generate more runs or while runs are logging
 summaries. TensorBoard will update automatically.

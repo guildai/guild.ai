@@ -189,7 +189,7 @@ stopping an EC2 remote.
 The following environment variables may be optionally defined:
 
 `AWS_DEFAULT_REGION`
-: The AWS region the remote instance is creatd in. This value may
+: The AWS region the remote instance is created in. This value may
   alternatively be defined in the EC2 remote configuration.
 
 Once an EC2 remote is created, security is managed by the SSH protocol

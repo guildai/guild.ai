@@ -227,7 +227,7 @@ error message.
     that required modules are installed in the environment before
     running the operation.
 
-Use a required module to preemptly verify that the module is available
+Use a required module to preemptively verify that the module is available
 before starting the script.
 
 ### Configuration
