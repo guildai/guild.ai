@@ -475,6 +475,38 @@ train:
       unpack: no
 ```
 
+Create link under a subdirectory:
+
+``` yaml
+train:
+  requires:
+    - file: data.csv
+      path: train-data
+```
+
+Rename the link:
+
+``` yaml
+train:
+  requires:
+    - file: data.csv
+      rename: data.csv train-data.csv
+```
+
+Rename links using a pattern:
+
+``` yaml
+train:
+  requires:
+    - file: data
+      select: .+\.txt
+      rename:
+        # strip `.txt` extension from file
+        pattern: (.+)\.txt$
+        repl: \g<1>
+
+```
+
 ### Other Required Resources
 
 #### Verify required Python modules
