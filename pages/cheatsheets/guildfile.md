@@ -437,11 +437,15 @@ train:
 
 #### Require project files and directories
 
+Resolve a single file, located next to the Guild file:
+
 ``` yaml
 train:
   requires:
     - file: data.csv
 ```
+
+Resolve a directory:
 
 ``` yaml
 train:
@@ -457,13 +461,13 @@ train:
     - file: data.tar.gz
 ```
 
-Link to archive files matching pattern:
+Link to archive files matching a regular expression pattern:
 
 ``` yaml
 train:
   requires:
     - file: data.tar.gz
-      select: train/
+      select: train/.+
 ```
 
 Link to archive without unpacking:
@@ -498,7 +502,7 @@ Rename links using a pattern:
 ``` yaml
 train:
   requires:
-    - file: data
+    - file: data-dir
       select: .+\.txt
       rename:
         # strip `.txt` extension from file
