@@ -477,5 +477,15 @@ In this section you add `iris-svm` to your project. The model defines
 a `train` operation, which runs the Python module `plot_iris_exercise`
 to fit a support vector machine to the Iris data set.
 
+Congratulations --- you completed the introduction to Guild AI!
+
+In the introduction, you cover fundamental concepts and practices:
+
+- [Runs](/runs.md)
+- [Operations](/operations.md)
+- [Hyperparameter optimization](/optimization.md)
+- [Run evaluation and selection](/runs.md)
+- [Environments](/environments.md)
+
 In the [next section](/start/nextsteps.md), you explore other core
 features in *Get Started with Guild AI*.

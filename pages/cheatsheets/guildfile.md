@@ -615,6 +615,59 @@ train:
       - '*.py'
 ```
 
+
+## Models
+
+Simple model definition:
+
+``` yaml
+- model: mnist-cnn
+  description: Train CNN on MNIST
+  operations:
+    prepare-data:
+      description: Prepare MNIST images for training
+      main: mnist_data
+    train:
+      description: Train CNN on prepared MNIST data
+      main: mnist_cnn
+      requires:
+        - operation: prepare-data
+```
+
+#### Share configuration across models
+
+``` yaml
+- config: model-base
+  operations:
+    train: {{ train-mod }}
+    flags:
+      learning-rate: {{ default-learning-rate }}
+      batch-size: {{ default-batch-size }}
+
+- model: cnn
+  extends: model-base
+  params:
+    train-mod: cnn
+    default-learning-rate: 0.1
+    default-batch-size: 1000
+
+- model: reset
+  extends: model-base
+  params:
+    train-mod: resnet
+    default-learning-rate: 0.001
+    default-batch-size: 100
+```
+
+#### Define operation defaults
+
+``` yaml
+- model: m
+  operation-defaults:
+    flags-dest: args
+    flags-import:
+```
+
 ## Miscellaneous
 
 ### Operation Plugins

@@ -2,8 +2,20 @@ tags: concept
 
 # Command Line Interface
 
+> The command line is the ultimate seat of power on your
+> computer. Using the command line, you can perform amazing feats of
+> wizardry and speed, taming your computer and getting it to do
+> precisely what you want.
+
+<div style="text-align:right;padding-right:20px;margin-top:-18px">
+&mdash;David Baumgold in
+<em><a href="https://www.davidbaumgold.com/tutorials/command-line/" target="_blank"
+>Getting to Know the Command Line</a></em>
+</div>
+
+
 Guild's primary interface is via the command line. Guild also supports
-a [Python interface for work in Jupyter Notebooks](/notebooks.md).
+a [Python interface for work in Jupyter Notebooks](/python.md).
 
 As an engineering tool, Guild fits the ecosystem of traditional POSIX
 toolchains. This has a number of benefits:
@@ -36,14 +48,3 @@ suggest reading one of the following guides for your platform.
 *General*
 : [Getting to Know the Command Line
   ->](https://www.davidbaumgold.com/tutorials/command-line/)
-
-> The command line is the ultimate seat of power on your
-> computer. Using the command line, you can perform amazing feats of
-> wizardry and speed, taming your computer and getting it to do
-> precisely what you want.
-
-<div style="text-align:right;padding-right:20px;margin-top:-18px">
-&mdash;David Baumgold in
-<em><a href="https://www.davidbaumgold.com/tutorials/command-line/" target="_blank"
->Getting to Know the Command Line</a></em>
-</div>

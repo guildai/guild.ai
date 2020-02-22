@@ -4,14 +4,16 @@ Needs lot more work
 
 -->
 
-# Reproduce Results
+# Reproducibility
 
 [TOC]
 
+## Overview
+
 Reproducibility is an important topic in machine learning. Guild
 supports reproducibility by automating the steps for setting up and
-training models. Guild captures details about each run so runs can be
-compared with high precision.
+training models. Guild captures details about each run so results can
+be compared over time.
 
 Reproducibility involves control across various levels:
 
@@ -28,7 +30,15 @@ accordingly.
 
 This guide discusses the various elements of reproducibility.
 
-## Runtime Environments
+## Model Implementation
+
+TODO
+
+## Data Set
+
+TODO
+
+## Runtime Environment
 
 A runtime environment plays an important role in reproducing
 results. Guild captures platform attributes such as Python version,

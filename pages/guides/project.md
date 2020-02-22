@@ -21,7 +21,7 @@ The guide covers:
 - Reproducibility
 - Work with Jupyter Notebooks and scripts
 - Factoring project operations
-- Workflow
+- Pipelines
 - Hyperparameter tuning
 
 ## Requirements

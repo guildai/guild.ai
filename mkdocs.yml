@@ -248,11 +248,11 @@ markdown_extensions:
               scalar: /scalars.md
               source-code: /guildfile.md#source-code
               ssh: https://en.wikipedia.org/wiki/Secure_Shell
-              step: /workflow.md#steps
-              steps: /workflow.md#steps
+              step: /pipelines.md#steps
+              steps: /pipelines.md#steps
               summaries: /tools/tensorboard.md#summaries
               user-config: /reference/user-config.md
-              workflow: /workflow.md
+              pipelines: /pipelines.md
 
 pages:
   - index.md
@@ -275,13 +275,14 @@ pages:
           - operations.md
           - flags.md
           - scalars.md
+          - optimization.md
           - dependencies.md
-          - workflow.md
-          - queues.md
+          - pipelines.md
           - environments.md
           - remotes.md
-          - notebooks.md
-          #- publishing.md
+          - queues.md
+          - python.md
+          #- publishing.md TODO
 
       - Tools:
           - tools/compare.md
@@ -290,13 +291,13 @@ pages:
           - tools/diff.md
 
       - Guides:
-          - guides/workflow.md
-          #- guides/add-guild.md
+          - guides/add-guild.md
+          - guides/pipelines.md
           #- guides/dependencies.md
           - guides/backup-restore.md
           - guides/upgrade.md
           - guides/tips-and-techniques.md
-          #- guides/reproducibility.md
+          # - guides/reproducibility.md TODO
 
       - Commands:
           - commands/index.md

@@ -195,12 +195,7 @@ dl {
 }
 
 a.term {
-  color: $light-text-color;
   font-style: italic;
-
-  &:hover {
-    color: $link-color;
-  }
 }
 
 a.ref {

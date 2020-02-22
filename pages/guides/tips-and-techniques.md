@@ -221,12 +221,60 @@ guild import --move --started 'last 7 days' saved-runs
 Use the `--space` option with [check](cmd:check) to show disk space
 used by Guild, including runs and cached resources.
 
-<!-- TODO
-
 ### Debug Output Scalars
 
-### Debug Source Code Copy
+Use the `--test-output-scalars` option with [run](cmd:run) to test
+various output patterns using the [output scalars
+definition](ref:output-scalars) for an operation.
+
+You can test output scalars using two methods:
+
+- Test using run output saved in file
+- Test output typed into the terminal, line-by-line
+
+To test output in a file, specifying the file with the option:
+
+``` command
+guild run train --test-output-scalars sample-output.txt
+```
+
+To test output typed into the terminal, line-by-line, use ``-`` for
+the file name:
+
+``` command
+guild run train --test-output-scalars -
+```
+
+Guild waits for input. Type a line and press `Enter`. Guild applies
+the output scalars to the line of text and prints the results.
+
+You can evaluate output from a specific run by piping its output to
+the last command:
+
+``` command
+guild cat --output <run> | guild run train --test-output-scalars -
+```
+
+### Debug Source Code
+
+Use the `--test-sourcecode` option with [run](cmd:run) to see how
+Guild would apply the [source code copy rules](ref:source-code) to an
+operation.
+
+``` command
+guild run train --test-sourcecode
+```
 
 ### Debug Flag Configuration
 
--->
+
+Use the `--test-flags` option with [run](cmd:run) to see how Guild
+processes flag configuration for an operation.
+
+``` command
+guild run train --test-flags
+```
+
+If the operation is Python based and Guild needs to inspect the Python
+script to detect flags, Guild shows details about its detection
+process.

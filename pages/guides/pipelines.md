@@ -1,6 +1,8 @@
 tags: guide
 
-# Workflow
+# Pipelines
+
+<!-- TODO replace workflow with pipelines -->
 
 [TOC]
 
@@ -79,8 +81,7 @@ The `search` operation defines two [steps](term:step). Each step runs
 order when you run `search`.
 
 !!! highlight
-    Use `steps` to define higher-order operations, or
-    [workflows](term:workflow).
+    Use `steps` to define [pipelines](term:pipline).
 
 Verify that the `search` operation is available:
 

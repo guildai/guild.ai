@@ -10,7 +10,7 @@ the Iris classifier in [Get Started](/start/classifier.md).
 Topics covered:
 
 - Search methods
-- Use of workflow ([steps](ref:steps)) to automate search
+- Use of pipeline ([steps](ref:steps)) to automate search
 
 ## Iris SVM Classifier
 

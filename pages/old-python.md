@@ -1,6 +1,6 @@
 tags: concept
 
-# Notebook Interface
+# Python API
 
 While Guild AI features are primarily provided as a [command line
 interface](term:cli), Guild can also be used as a Python library in a
