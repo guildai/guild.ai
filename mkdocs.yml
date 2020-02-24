@@ -168,6 +168,12 @@ markdown_extensions:
           target: _blank
           href: https://pip.pypa.io/en/stable/reference/pip_install/#requirement-specifiers
 
+        - link_pattern: ref:prs
+          text: pull requests
+          class: ext
+          target: _blank
+          href: https://github.com/guildai/guildai/pulls
+
         - link_pattern: ref:slack
           href: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
           text: Guild AI Slack workspace
@@ -256,6 +262,7 @@ markdown_extensions:
 
 pages:
   - index.md
+  - why-guild.md
   - docs:
       - docs.md
       - install.md

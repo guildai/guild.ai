@@ -2,7 +2,7 @@ title: Next Steps
 
 # Next Steps
 
-<h4 class="promo-next"><a href="/docs/"><img src="/assets/icons/space-rocket-flying-2.svg"
+<h4 class="promo-next"><a href="/guides/add-guild/"><img src="/assets/icons/space-rocket-flying-2.svg"
 height="32" style="margin-top:-6px;margin-right:4px;"> Add Guild to
 Your Project</a></h4>
 

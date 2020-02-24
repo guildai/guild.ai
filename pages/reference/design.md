@@ -114,3 +114,22 @@ making it optional.
   project is started.
 
 -->
+
+
+## Unix Philosophy
+
+Guild maintains the [Unix philosophy
+->](https://en.wikipedia.org/wiki/Unix_philosophy) of keeping things
+small, modular, and composable. This has a big payoff, not just for
+operating systems, but for ML engineering.
+
+- Guild commands do one thing and one thing well
+- Guild commands work together
+- Guild features layer on top of system facilities such as commands,
+  command line arguments, environment variables, standard input and
+  output, and the file system interface
+
+This approach allows Guild to evolve gracefully, adding new features
+without disrupting core functionality. It lets Guild support a wide
+range of ussage scenarios, from getting started to advanced pipeline
+management, all using the same design approach.
