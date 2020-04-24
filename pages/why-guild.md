@@ -64,7 +64,7 @@ platform for ML engineering.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">Guild AI is 100% open source, vendor-independent</h3>
+<h3 class="why">Guild AI is 100% open source</h3>
 
 Guild is free software, released under the [Apache 2 open source
 license
@@ -135,4 +135,22 @@ The growing [community of Guild AI users ->](ref:slack) value:
   operations to confirm them and detect issues before models are
   deployed to production.
 
+- *Continuous Incremental Improvement* --- Start with a process for
+  quickly running and measuring your work and use that to make
+  ongoing, small changes to improve. This method is at the heart of
+  [Test Driven Development
+  ->](https://en.wikipedia.org/wiki/Test-driven_development), which is
+  at the heart of effective software delivery.
+
+</div>
+
+<div class="row"></div>
+
+---
+
+
+<div class="col col-md-12">
+<div class="promo center">
+<a class="btn btn-primary cta" href="/start/"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
+</div>
 </div>

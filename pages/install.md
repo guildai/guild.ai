@@ -34,7 +34,7 @@ If you want the latest pre-release version of Guild AI, use the
 ``--pre`` option:
 
 ``` command
-pip install --pre --user guildai
+pip install --user guildai
 ```
 
 ### Using conda

@@ -11,14 +11,14 @@ If you're familiar with installing Python packages using `pip`, simply
 install the `guildai` package.
 
 ``` command
-pip install guildai --pre
+pip install guildai
 ```
 
 Altnernatively, to install to the [user install directory
 ->](https://pip.pypa.io/en/stable/reference/pip_install/#cmdoption-user):
 
 ``` command
-pip install guildai --pre --user
+pip install guildai --user
 ```
 
 For detailed installation instructions, see [Install Guild
@@ -109,6 +109,11 @@ Create a new project directory:
 ``` command
 mkdir guild-start
 ```
+
+!!! note
+    You can name this directory anything you want. Bear in mind
+    that examples that follow use `guild-start` to denote the project
+    directory for this guide.
 
 Change to the project directory:
 

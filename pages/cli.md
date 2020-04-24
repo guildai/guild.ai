@@ -7,7 +7,7 @@ tags: concept
 > wizardry and speed, taming your computer and getting it to do
 > precisely what you want.
 
-<div style="text-align:right;padding-right:20px;margin-top:-18px">
+<div style="text-align:right;padding-right:20px;margin-top:-18px;margin-bottom:20px">
 &mdash;David Baumgold in
 <em><a href="https://www.davidbaumgold.com/tutorials/command-line/" target="_blank"
 >Getting to Know the Command Line</a></em>

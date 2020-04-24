@@ -26,6 +26,15 @@
 
 - Make sure clicky ID is prod on release.
 
+- Missing section on env variables.
+
+- Put EXAMPLES at top with links to code examples and cheatsheets.
+
+- Need a good guide for Dependencies.
+
+  https://www-pre.guild.ai/dependencies/ is not complete as it fails
+  to talk about how these are used by the user.
+
 ## Post 0.7
 
 - Recruit reviewers

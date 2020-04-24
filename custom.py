@@ -697,10 +697,6 @@ class Backtick(Extension):
 
     >>> print(md.convert("``code sample``"))
     <p><code class="lit">code sample</code></p>
-
-    Guild also replaces hyphens with non-breaking hyphens to ensure
-    that command line options are not broken at hyphens when wrapped.
-
     """
 
     def extendMarkdown(self, md, _globals):
@@ -1330,28 +1326,6 @@ class DeflistToTable(Extension):
             "deflist-to-table",
             DeflistToTableProcessor(md),
             "_end")
-
-class NonbreakingHyphensProcessor(treeprocessors.Treeprocessor):
-
-    def run(self, root):
-        for code in root.iter("code"):
-            code.text = code.text.replace("-", u"\u2011")
-
-class NonbreakingHyphens(Extension):
-    """Replace hyphens in code blocks with a non-breaking hyphen.
-
-    >>> md = markdown.Markdown(extensions=[NonbreakingHyphens()])
-
-    Here's a basic example of a reference:
-
-    >>> out = md.convert("`a-b --foo c -d`")
-    >>> [ord(c) for c in out[9:]] # doctest: +ELLIPSIS
-    [97, 8209, 98, 32, 8209, 8209, 102, 111, 111, 32, 99, 32, 8209, 100, ...]
-
-    """
-
-    def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add("nbhyph", NonbreakingHyphensProcessor(md), "_end")
 
 class PkgConfigListProcessor(treeprocessors.Treeprocessor):
 

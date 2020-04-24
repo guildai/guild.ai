@@ -13,17 +13,22 @@
 `connect-time`
 : Number of seconds to wait for an SSH connection before quitting (integer)
 
-`guild-env`
-: Remote path relative to the remote `user` home directory to a Guild environment (string)
+`venv-path`
+: Path to a virtual environment on the remote host (string)
 
     Guild activates the environment for each remote command.
 
-    Note that Guild environments are standard Python virtual
-    environments so this path may be to any directory created with the
-    `virtualenv` command on the remote.
+    Paths are relative to the remote user home directory.
 
-    For more control over the environment activation, use
-    `venv-activate`.
+    Virtual environments are standard Python virtual environments that
+    are created with `virtualenv`, `guild init`, or the Python `venv`
+    module.
+
+    To strictly control the environment activation, use
+    `venv-activate` instead.
+
+`guild-env`
+: Alias for `venv-path` (see above for details)
 
 `conda-env`
 : Conda environment name on the remote (string)

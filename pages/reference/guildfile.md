@@ -434,6 +434,14 @@ If the Guild file is full format, they are applied as attributes of an
     `perf`) use the value `summary`. See
     [Plugins](/reference/plugins.md) for more information.
 
+`pip-freeze` <div id="operation-plugins"></div>
+: Boolean used to disable `pip freeze` call for operation
+
+    By default, Guild generates a `pip_freeze` run attribute for
+    Python based operations, which is the output of the `pip freeze`
+    command. Set `pip-freeze` to `no` to disable this step for an
+    operation.
+
 ### Flags
 
 Flags are defined as mappings under the `flags` operation
