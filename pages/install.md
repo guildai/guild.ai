@@ -13,6 +13,9 @@ Guild AI has the following requirements:
 - [pip ->](https://pip.pypa.io/en/stable/installing/)
   or [conda ->](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
 
+For a complete list of supported platforms, see [*Requirements -
+Operating Systems*](/reference/requirements/#operating-systems).
+
 ## Install Guild AI
 
 ### Using pip

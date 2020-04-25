@@ -161,6 +161,12 @@ markdown_extensions:
           target: _blank
           href: https://github.com/guildai/guildai/issues
 
+        - link_pattern: ref:pip
+          text: pip
+          class: ext
+          target: _blank
+          href: https://pip.pypa.io
+
         - link_pattern: ref:pip-reqs
           text: pip requirement specification
           class: ext
@@ -197,6 +203,12 @@ markdown_extensions:
           class: ext
           target: _blank
 
+        - link_pattern: ref:venv
+          href: https://docs.python.org/library/venv.html
+          text: venv
+          class: ext
+          target: _blank
+
         - link_pattern: ref:virtualenv
           href: https://virtualenv.pypa.io/en/latest/
           text: virtualenv
@@ -226,10 +238,11 @@ markdown_extensions:
               flags-import: /flags.md#flag-imports
               flags-interface: /flags.md#flags-interface
               full-format: /reference/guildfile.md#full-format
+              get-started: /start/
               grid-search: https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
               guild-compare: /tools/compare.md
               guild-diff: /tools/diff.md
-              guild-home: /environments/#set-guild-home
+              guild-home: /environments/#guild-home
               guild-tensorboard: /tools/tensorboard.md
               guild-view: /tools/view.md
               guildfile: /guildfile.md
@@ -369,6 +382,7 @@ pages:
           - reference/user-config.md
           - reference/plugins.md
           - reference/defaults.md
+          - reference/requirements.md
           - reference/design.md
 
       #- Knowledge Base:
