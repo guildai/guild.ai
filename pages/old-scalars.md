@@ -60,7 +60,7 @@ In this case, the logged scalar values are:
 
 You can modify the way Guild logs output scalars using the
 `output-scalars` operation attribute in a [Guild
-file](ref:guildfile).
+file](ref:guild-file).
 
 Consider the following output:
 

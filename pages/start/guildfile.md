@@ -17,7 +17,7 @@ Unless configured otherwise, Guild uses [default
 rules](/reference/defaults.md) to determine this information.
 
 You can configure this information explicitly using a [Guild
-file](term:guildfile). A Guild file is a human-readable text file
+file](term:guild-file). A Guild file is a human-readable text file
 named `guild.yml` located in a project directory.
 
 ## Create a Guild File

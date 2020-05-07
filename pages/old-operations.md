@@ -19,7 +19,7 @@ specified when calling [run](cmd:run) in the format:
 guild run OPERATION
 ```
 
-Operations are defined in [Guild files](term:guildfile).
+Operations are defined in [Guild files](term:guild-file).
 
 Operations are defined using one of two formats:
 

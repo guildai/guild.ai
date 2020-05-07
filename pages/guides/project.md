@@ -44,7 +44,7 @@ faster and with higher quality.
 
 The approach you take in this guide follows these steps:
 
-1. Use a [Guild file](term:guildfile) to define operation stubs that
+1. Use a [Guild file](term:guild-file) to define operation stubs that
    simulate your real work
 2. Run mock experiments to establish baselines for your work
 3. Fill in stubs with real work
@@ -131,7 +131,7 @@ This guide assumes that the commands below are run *from the
 
 ## Create a Guild File
 
-A [Guild file](term:guildfile) defines project operations. In keeping
+A [Guild file](term:guild-file) defines project operations. In keeping
 with process [described above](experiment-tracking) our first task is
 to answer the question: *what are we trying to achieve and how do we
 measure progress?*

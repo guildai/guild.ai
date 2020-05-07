@@ -5,6 +5,8 @@
   }
 
   .navbar {
+    font-family: $font-family-navbar;
+    font-weightL: 400;
     background-color: $accent-color;
     padding: 20px 15px;
     margin: 0;
@@ -117,7 +119,6 @@
   &:hover {
     color: $color-white;
     font-size: 25px;
-    font-weight: 300;
   }
 }
 
@@ -131,9 +132,8 @@
 
   li > a {
     color: rgba(255,255,255,.8);
-    font-weight: 500;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 19px;
     letter-spacing: 0.2px;
     padding-left: 12px;
     padding-right: 12px;
@@ -373,7 +373,6 @@
 
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
     color: $color-white;
-    font-weight: 500;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {

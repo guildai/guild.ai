@@ -121,7 +121,7 @@ which shows information about a run.
 ## Start a Run
 
 Start a run using [](cmd:run). You can run a script directly or run an
-operation defined in a [Guild file](term:guildfile).
+operation defined in a [Guild file](term:guild-file).
 
 To run a script, specify the path to the script:
 
@@ -132,7 +132,7 @@ guild run train.py
 When running a script directly, Guild inspects the script and attempts
 to identify its input parameters, or [flags](term:flags). If the flags
 that Guild detects are incorrect, you can explicitly define them in a
-[Guild file](ref:guildfile).
+[Guild file](ref:guild-file).
 
 If a project provides a Guild file (i.e. a file named `guild.yml`),
 you can list available operations by running:

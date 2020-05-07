@@ -50,6 +50,10 @@ extra:
     prod: 100935573
     pre: 101236283
 
+  # URL to edit Google fonts used in src/base.html:
+  #
+  # https://fonts.google.com/specimen/Roboto+Condensed?selection.family=Roboto+Condensed:wght@400;700|Roboto+Mono|Roboto+Slab|Roboto:wght@400;500;700&sidebar.open&query=roboto
+
 theme:
   name: null
   custom_dir: src
@@ -245,8 +249,8 @@ markdown_extensions:
               guild-home: /environments/#guild-home
               guild-tensorboard: /tools/tensorboard.md
               guild-view: /tools/view.md
-              guildfile: /guildfile.md
-              guildfiles: /guildfile.md
+              guild-file: /guildfile.md
+              guild-files: /guildfile.md
               main-mod: https://docs.python.org/3/using/cmdline.html#cmdoption-m
               model: /guildfile.md#models
               models: /guildfile.md#models
@@ -397,6 +401,9 @@ pages:
           - cheatsheets/guildfile.md
           - cheatsheets/remotes.md
 
+      - changes.md
+
+  - examples.md
   - faq.md
   - services.md
   - about.md

@@ -14,7 +14,7 @@ In general, Guild must know the following about an operation:
 - [Output scalars](ref:output-scalars)
 
 If this information is not defined explicitly in a [Guild
-file](ref:guildfile), Guild attempts to infer the information using
+file](ref:guild-file), Guild attempts to infer the information using
 rules based on what you run.
 
 ## Python Scripts

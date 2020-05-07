@@ -37,7 +37,7 @@ guild run script.sh flag1=val flag2=val2
 ## Run an Operation
 
 Use the [run](cmd:run) command to run operations defined in a [Guild
-file](ref:guildfile).
+file](ref:guild-file).
 
 #### Show available operations
 

@@ -25,7 +25,7 @@ In many cases, Guild's auto-detect behavior is sufficient and the
 operation works as expected. In cases where the auto-detect behavior
 is incorrect, or when you otherwise want to explicitly configure the
 behavior, Guild gives you full control in a [Guild
-file](ref:guildfile).
+file](ref:guild-file).
 
 *We strongly recommend that you use Guild files for all production
 work.*

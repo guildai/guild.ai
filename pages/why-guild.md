@@ -1,4 +1,4 @@
-title: Why Guild AI
+title: Why Guild
 navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
@@ -29,7 +29,7 @@ With one command, you automatically record:
 - Snapshot of source code
 
 If you need to customize anything related to your script, Guild lets
-you add [external configuration](ref:guildfile) without changing your
+you add [external configuration](ref:guild-file) without changing your
 code.
 
 </div>

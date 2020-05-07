@@ -36,7 +36,7 @@ interface*. Guild supports different interfaces:
 Guild works across platforms and languages using standard interfaces
 when possible. Guild does not require changes to script code to
 support Guild-specific flag configuration. Guild uses script
-inspection and explicit configuration in [Guild files](term:guildfile)
+inspection and explicit configuration in [Guild files](term:guild-file)
 to get flag information.
 
 When Guild does not have explicit configuration (e.g. when a script is
