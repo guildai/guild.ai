@@ -216,6 +216,23 @@ KEY: VALUE
 ``KEY`` must not contain spaces and ``VALUE`` must be parsable as a
 number. Output must not contain leading spaces.
 
+For example, the following script implicitly logs the scalars `loss`
+and `accuracy`:
+
+``` python
+loss, accuracy = train_model()
+
+print("loss: %f" % loss)
+print("accuracy: %f" % accuracy)
+```
+
+^ By default, Guild logs numeric values printed as ``KEY: VALUE`` as
+scalars.
+
+This behavior can be modified by defining `output-scalars` for an
+operation in a Guild file. See [*Scalars*](/scalars.md) for more
+information.
+
 ### Run an Operation
 
 ### Run a Batch

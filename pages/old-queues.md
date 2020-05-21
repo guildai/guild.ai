@@ -30,14 +30,15 @@ guild run queue
 Once running, queues look for staged runs and start them under the
 following conditions:
 
-- The queue is not waiting for a run to complete
+- If started with `wait-for-running`, the queue is not waiting for a
+  run to complete
 - The staged run is compatible with the queue GPU affinity
 
-A queue waits for a run to complete when:
+A queue waits for a run to complete if any of the following conditions
+are met:
 
 - The queue starts the run
-- The queue is started with the `ignore-running` flag equal to `no`
-  (default)
+- The queue is started with the `wait-for-running`
 
 A run matches a queue GPU affinity when:
 
