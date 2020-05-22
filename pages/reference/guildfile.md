@@ -573,8 +573,14 @@ value. Available flag attribute are listed below.
 
         The choice description is used when showing operation help.
 
-    `arg-value`
-    : Value used instead of `value` when the choice is selected
+    `alias`
+    : Alternative value for selecting a choice
+
+       If a choice alias is specified, the choice value is used for
+       the flag value. Aliases are used in help text for the
+       operation.
+
+       The choice value may still be used to select the choice.
 
     `flags`
     : Mapping of flag names to values that are applied when the choice
