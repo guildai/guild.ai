@@ -562,12 +562,29 @@ value. Available flag attribute are listed below.
     When specified as a mapping, valid attributes are:
 
     `value`
-    : The choice value
+    : Choice value
+
+        The choice is 'selected' when the flag value equals this
+        value. This value is used as the flag value unless
+        `arg-value` is specified, in which case that value is used.
 
     `description`
-    : A description of the choice
+    : Description of the choice
 
         The choice description is used when showing operation help.
+
+    `arg-value`
+    : Value used instead of `value` when the choice is selected
+
+    `flags`
+    : Mapping of flag names to values that are applied when the choice
+      is selected
+
+        Use `flags` to define a profile of flag values that is
+        applied when the choice is selected.
+
+        Note that the user may override flag values defined in
+        `flags` by explicitly setting them for a run.
 
 `allow-other` <div id="flag-allow-other"></div>
 : Indicates whether the user may enter a non-choice value when
