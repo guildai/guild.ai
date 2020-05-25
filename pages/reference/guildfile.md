@@ -1324,6 +1324,20 @@ attributes:
     Use this value to perform tasks on a resolved resource. For
     example, to apply patches, compile source, etc.
 
+`warn-if-empty`
+: Log a warning when source doesn't resolve any files (boolean)
+
+    If true (default), Guild logs a warning message if the source
+    fails to resolve files. Set this to `no` to disable warnings.
+
+`fail-if-empty`
+: Stop with an error when source doesn't resolve any files (boolean)
+
+    If true, Guild exits with an error message. By default, Guild logs
+    a warning message (see `warn-if-empty` above). Set this attribute
+    to `yes` to prevent a run from continuing if files aren't resolved
+    by the source.
+
 `help`
 : A message to show the user if the resouce cannot be resolved
   (string)
