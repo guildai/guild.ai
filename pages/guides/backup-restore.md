@@ -164,7 +164,7 @@ location on S3.
 To copy latest the run, use:
 
 ``` command
-guild pull 1 s3
+guild pull s3 1
 ```
 
 As with the earlier commands, the number `1` indicates that we only
