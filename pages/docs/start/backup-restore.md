@@ -104,7 +104,7 @@ This creates a run that we backup in the next step.
 Copy the latest run to the `s3` remote by running:
 
 ``` command
-guild push 1 s3
+guild push s3 1
 ```
 
 The `1` in the command tells Guild to only copy the latest run. `s3`
