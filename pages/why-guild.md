@@ -42,7 +42,7 @@ code.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">It's also the most powerful</h3>
+<h3 class="why">It's powerful</h3>
 
 Don't let Guild's ease-of-use fool you --- Guild is a full-featured
 platform for ML engineering.
