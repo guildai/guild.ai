@@ -226,7 +226,7 @@ available under the Apache 2.0 open source license.
 Start using Guild AI in minutes to track and measure experiments.
 
 </p>
-<a class="btn btn-primary cta" href="/start/"
+<a class="btn btn-primary cta" href="https://my.guild.ai/start"
   >Get Started <i class="fa next"></i></a>
 </div>
 </div>
@@ -239,7 +239,7 @@ Start using Guild AI in minutes to track and measure experiments.
 Learn about Guild AI features by exploring its documentation.
 
 </p>
-<a class="btn btn-primary" href="/docs/">Browse the Docs <i class="fa next"></i></a>
+<a class="btn btn-primary" href="https://my.guild.ai/docs">Browse the Docs <i class="fa next"></i></a>
 </div>
 </div>
 </div>

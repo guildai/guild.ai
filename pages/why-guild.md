@@ -3,13 +3,11 @@ navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
 
-<div id="get-started-fab"></div>
-
 # Why Guild AI?
 
 <div class="row"></div>
-<div class="col-sm-1 mt-3">
-<img src="/assets/icons/send-email.svg" style="width:100%">
+<div class="col-sm-1 mt-4">
+<img src="/assets/icons/send-email.svg">
 </div>
 
 <div class="col-sm-9 mt-3" markdown>
@@ -29,15 +27,15 @@ With one command, you automatically record:
 - Snapshot of source code
 
 If you need to customize anything related to your script, Guild lets
-you add [external configuration](ref:guild-file) without changing your
-code.
+you add [external configuration](my:docs/guildfiles) without changing
+your code.
 
 </div>
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-3">
-<img src="/assets/icons/space-rocket-flying-3.svg" style="width:100%">
+<div class="col-sm-1 mt-4">
+<img src="/assets/icons/space-rocket-flying-3.svg">
 </div>
 
 <div class="col-sm-9 mt-3" markdown>
@@ -58,20 +56,19 @@ platform for ML engineering.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-3">
-<img src="/assets/icons/open-source.svg" style="width:100%">
+<div class="col-sm-1 mt-4">
+<img src="/assets/icons/open-source.svg">
 </div>
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">Guild AI is 100% open source</h3>
+<h3 class="why">Guild AI is open source</h3>
 
 Guild is free software, released under the [Apache 2 open source
-license
-->](https://github.com/guildai/guildai/blob/master/LICENSE.txt). That
+license](https://github.com/guildai/guildai/blob/master/LICENSE.txt). That
 means you don't pay money to use Guild. It also means you have full
 rights to use Guild source code --- review it, change it, share it
-with others. We're also happy to accept [pull requests!](ref:prs)
+with others.
 
 Guild AI is not affiliated with a platform vendor --- so there's no
 bait-and-switch or hidden allegiance. Guild AI developers are
@@ -82,8 +79,8 @@ tools --- *period*.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-3">
-<img src="/assets/icons/database-disable.svg" style="width:100%">
+<div class="col-sm-1 mt-4">
+<img src="/assets/icons/database-disable.svg">
 </div>
 
 <div class="col-sm-9 mt-3" markdown>
@@ -112,15 +109,15 @@ requirements:
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-3">
-<img src="/assets/icons/multiple-chat.svg" style="width:100%">
+<div class="col-sm-1 mt-4">
+<img src="/assets/icons/multiple-chat.svg">
 </div>
 
 <div class="col-sm-9 mt-3" markdown>
 
 <h3 class="why">Community of ML engineers</h3>
 
-The growing [community of Guild AI users ->](ref:slack) value:
+The growing [community of Guild AI users ->](my:) value:
 
 - *Measurement* --- Memory and intuition will only take you so far. To
   systematically improve your models and to avoid costly regressions,
@@ -138,9 +135,9 @@ The growing [community of Guild AI users ->](ref:slack) value:
 - *Continuous Incremental Improvement* --- Start with a process for
   quickly running and measuring your work and use that to make
   ongoing, small changes to improve. This method is at the heart of
-  [Test Driven Development
-  ->](https://en.wikipedia.org/wiki/Test-driven_development), which is
-  at the heart of effective software delivery.
+  [Test Driven
+  Development](https://en.wikipedia.org/wiki/Test-driven_development),
+  which is at the heart of effective software delivery.
 
 </div>
 
@@ -151,6 +148,6 @@ The growing [community of Guild AI users ->](ref:slack) value:
 
 <div class="col col-md-12">
 <div class="promo center">
-<a class="btn btn-primary cta" href="/start/"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
+<a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>
 </div>

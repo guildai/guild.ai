@@ -8,27 +8,78 @@ hide_sidenav: yes
 
 [TOC]
 
-## About Guild AI
+## About
 
 ### What is Guild AI?
 
-Guild AI is software platform used by machine learning engineers to
-control and measure machine learning work so that data scientists,
-engineers, and product managers can make informed decisions about
-model performance and safety.
+Guild AI is an experiment tracking system for machine learning. It's
+used by engineers and researchers to run scripts, compare results, and
+automate machine learning workflow.
 
-Refer to the [Guild AI front page](https://guild.ai) for a complete
-description, features, and links to documentation.
+Guild is a light weight, external tool that doesn't require changes to
+your code. It runs scripts in written in any language or framework on
+Linux, macOS, and Windows.
+
+Refer to [https://guild.ai](https://guild.ai) for details.
 
 Guild AI also refers to the company behind the platform. In cases
 where we differentiate the software from the company, we use *Guild AI
 platform* or *Guild AI software*.
 
-### Is Guild AI open source?
+### When would I use Guild AI?
+
+Guild gives you insight into your machine learning work. Use it when
+you want to:
+
+- Track experiments
+- Tune hyperparameters
+- Automate reproducibility for yourself and others
+- Establish performance baselines for ongoing work and comparison
+- Create an audit trail for ML explainability and regulatory
+  compliance
+
+Use Guild early to measure progress or after the project stabilizes to
+tune hyperparameters and automate reproducibility. When it's time to
+run in production, use Guild to track pipeline artifacts for
+operational control.
+
+### How much does Guild cost?
 
 Guild is 100% open source. It's freely available under the [Apache 2.0
 ->](https://github.com/guildai/guildai/blob/master/LICENSE.txt)
 license.
+
+### How is Guild different from other experiment management systems?
+
+- Guild is an external tool, not an embedded library
+- Guild does not require you to modify your code
+- Guild does not require additional software or systems like databases
+  or containers
+
+### Why not just embed a library for experiment tracking?
+
+When you modify your code to support a library, you take on a new set
+of requirements. Your code not only relies on the new software, it
+relies on the infrastructure and services that software uses:
+
+ - Databases
+ - Servers
+ - Container management systems
+ - Distributed file systems
+ - Non-free (closed-source, paid) back-end services
+
+Simple changes to your code (e.g. a few decorated functions) can lead
+to surprisingly high costs:
+
+ - System installation and maintenance
+ - Hardware and networking
+ - Vendor lock in
+ - Runtime complexity
+ - Non-portability of your models
+
+Non-portable models have a particularly high cost: lost feedback and
+contributions from colleagues who can't run your code because the
+overall system requirements are too high.
 
 ### Is Guild AI affiliated with a closed source platform or vendor?
 
@@ -55,11 +106,16 @@ guild.ai is used in the logo and is also the product domain. Guild AI,
 with a space, is the correct use of the both the product and company
 name.
 
-## Using Guild AI
+## Using
 
-### Guild uses too much magic - can I make it explicit?
+### What's the fatest way to get started?
 
-*Guild AI lets you explicitly configure all aspects of your project.*
+- Follow the steps in [Get Started with Guild AI](my:start)
+- [Ask a question](my:new-topic?category=general)
+
+### Can I customize Guild?
+
+Guild AI lets you explicitly configure all aspects of your project.
 
 Guild AI is designed to start quickly and easily and to evolve to
 support advanced functions as needed. To accomplish this, Guild
@@ -72,91 +128,21 @@ supports a number auto-detect features:
 All of these features can be controlled using explicit project
 configuration.
 
-Refer to [Guild Files](/guildfile.md) for information on configuring
-a project.
+Refer to [Guild Files](my:docs/guildfiles) for information on
+configuring a project.
 
-### My script relies on a file but can't find it!
+### My needs a file but can't find it!
 
 Guild executes each run in the context of a [run
-directory](term:run-dir), which is initially empty. Your script
-typically assumes that it's run from your *project directory*. Any
-files that your script requires *must be explicitly configured using a
-Guild file*.
+directory](my:docs/runs#run-directory), which is initially empty. Your
+script typically assumes that it's run from your *project
+directory*. Any files that your script requires *must be explicitly
+configured using a Guild file*.
 
-Refer to [Dependencies](/dependencies.md) for details on configuring
-required resources for your operations.
+Refer to [Dependencies](my:docs/dependencies) for details on
+configuring required resources for your operations.
 
-
-
-<!--
-
-### What is Guild AI?
-
-Guild AI is an experiment tracking system for machine learning. It's
-used by engineers and researchers to run scripts, compare results, and
-automate machine learning workflow.
-
-Guild is a light weight, external tool that doesn't require changes to
-your code. It runs scripts in written in any language or framework on
-Linux, macOS, and Windows.
-
-### When should I use Guild?
-
-Guild gives you insight into your machine learning work. Use it when
-you want to:
-
-- Establish performance baselines for ongoing work and comparison
-- Tune hyperparameters
-- Simplify reproducibility for yourself and others
-- Create an audit trail for explainability and compliance
-
-You can start using Guild at any stage if your project lifecycle. Use
-it early to measure progress or after the project stabilizes to tune
-hyperparameters and automate reproducibility. When it's time to run in
-production, use Guild to track pipeline artifacts.
-
-### How much does Guild cost?
-
-Guild AI is free, both as in beer and liberty. It's available under
-the [Apache 2.0
-->](https://github.com/guildai/guildai/blob/master/LICENSE.txt)
-license.
-
-While Guild costs time and effort to learn, it's [easy to start
-with](/start.md) and use features incrementally.
-
-### How is Guild different from other experiment management systems?
-
-- Guild is an external tool, not an embedded library
-- Guild is light weight
-- Guild does not require you to modify your code
-- Guild does not require additional software or systems like databases
-  or containers
-
-### Why not just embed a library for experiment tracking?
-
-When you modify your code to support a library, you take on a new set
-of requirements. Your code not only relies on the new software, it
-relies on the infrastructure and services that software uses:
-
- - Databases
- - Servers
- - Container management systems
- - Distributed file systems
- - Non-free (closed-source, paid) back-end services
-
-Simple changes to your code (e.g. a few decorated functions) balloon
-into higher costs:
-
- - System installation and maintenance
- - Hardware and networking
- - Vendor lock in
- - Runtime complexity
- - Non-portability of your models
-
-Non-portable models have a particularly high host: lost feedback and
-contributions from those who find your experiment tracking
-requirements onerous.
+## Implemenetation
 
 ### How does Guild work without requiring code changes?
 
@@ -190,5 +176,3 @@ This has a number of benefits:
 Guild uses SQLite to index results for fast lookup. This is how [Guild
 Compare](ref:guild-compare) and [Guild View](ref:guild-view) both
 perform quickly.
-
--->

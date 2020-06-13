@@ -486,7 +486,7 @@ $(function() {
    var links = [
       {
         "icon": 'Get Started <i class="far fa-arrow-circle-right"></i>',
-        "url": "/start/"
+        "url": "https://my.guild.ai/start"
       }
     ];
     var options = {

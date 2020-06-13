@@ -3,13 +3,6 @@ hide_pagenav: yes
 
 # About Guild AI
 
-<div class="col-sm-1">
-
-<img src="/assets/icons/information-circle.svg" style="width:100%">
-
-</div>
-
-
 <div class="col-sm-9" markdown>
 
 Guild AI is a privately held company headquartered in Chicago. Guild

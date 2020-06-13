@@ -2,17 +2,19 @@
   <div class="container">
     <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
     <div class="row">
-      <div class="col-md-6 col-sm-6 footer-cell">
-        <div class="copyright">Copyright &copy; {{ config.copyright }}</div>
+      <div class="col-md-12 col-sm-12 footer-cell">
+        <div class="copyright">
+          Copyright &copy; {{ config.copyright }}
+
+          <ul class="footer-menu">
+            <li><a href="/about/">About</a></li>
+            <li><a href="mailto:{{ config.extra.contact_email }}">Contact</a></li>
+          </ul>
+
+        </div>
         {% if page.meta.attribution %}
         <div class="attribution">{{ page.meta.attribution }}</div>
         {% endif %}
-      </div>
-      <div class="col-md-6 col-sm-6 footer-cell">
-        <ul class="footer-menu">
-          <li><a href="/about/">About</a></li>
-          <li><a href="{{ config.extra.contact_email }}">Contact</a></li>
-        </ul>
       </div>
     </div>
   </div>

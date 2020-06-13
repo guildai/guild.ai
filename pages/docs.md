@@ -1,6 +1,7 @@
 title: Docs
 navbar_item: yes
 hide_in_sidenav: yes
+external_url: https://my.guild.ai/docs
 
 # Guild AI Documentation
 

@@ -319,31 +319,31 @@
   .feature-icon {
     margin-right: 7px;
     margin-top: 10px;
-    height: 36px;
+    height: 32px;
     position: absolute;
 
     @media screen and (max-width: $break-md) {
-      height: 32px;
+      height: 28px;
     }
   }
 
   h4 {
-    padding-left: 58px;
+    padding-left: 50px;
     margin-top: 10px;
 
     @media screen and (max-width: $break-sm) {
-      padding-left: 50px;
+      padding-left: 42px;
     }
   }
 
   p {
-    padding-left: 58px;
+    padding-left: 50px;
     font-size: $feature-font-size;
     margin-bottom: 46px;
 
     @media screen and (max-width: $break-md) {
       margin-bottom: 36px;
-      padding-left: 50px;
+      padding-left: 42px;
     }
   }
 
@@ -485,7 +485,7 @@ button.jfab_main_btn {
 p.highlight {
   margin: 0 100px 18px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 2;
   color: #666;
 

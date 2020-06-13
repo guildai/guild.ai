@@ -295,12 +295,12 @@
       }
 
       @media screen and (max-width: $break-sm) {
-        font-size: $banner-bullet-font-size * 0.79;
+        font-size: $banner-bullet-font-size * 0.86;
         padding: 4px 6px;
       }
 
       @media screen and (max-width: $break-xs) {
-        font-size: $banner-bullet-font-size * 0.72;
+        font-size: $banner-bullet-font-size * 0.86;
         display: block;
       }
 
