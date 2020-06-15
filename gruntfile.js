@@ -14,8 +14,6 @@ module.exports = function(grunt) {
     ]
   });
 
-  const algoliasearch = require('algoliasearch');
-
   grunt.initConfig({
 
     sass: {
@@ -62,8 +60,6 @@ module.exports = function(grunt) {
             'node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
             'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',
             'node_modules/jquery-fab/jquery-fab.js',
-            'node_modules/algoliasearch/dist/algoliasearchLite.min.js',
-            'node_modules/algoliasearch-helper/dist/algoliasearch.helper.min.js',
             'node_modules/mousetrap/mousetrap.min.js',
             'node_modules/featherlight/release/featherlight.min.js',
             'node_modules/typed.js/lib/typed.min.js',
@@ -189,54 +185,4 @@ module.exports = function(grunt) {
       'exec:serve'
     ]
   );
-
-  var index = function() {
-    const done = this.async();
-
-    const client = algoliasearch(
-      'I1IYALZNSK',
-      'c80940c47c99d45b08a80a592345c43c');
-    const index = client.initIndex('guild.ai');
-
-    const initIndex = function() {
-      const settings = {
-        searchableAttributes: ['title', 'text'],
-        attributesToHighlight: [],
-        attributesToSnippet: ['title:10', 'text:40'],
-        attributesToRetrieve: ['location']
-      };
-      return index.setSettings(settings);
-    };
-
-    const clearIndex = function() {
-      return index.clearIndex();
-    };
-
-    const addObjects = function() {
-      const data = grunt.file.readJSON('./site/search/search_index.json');
-      // Only index top-level docs (i.e. no sections)
-      const objects = data.docs.filter(doc => !doc.location.includes('#'));
-      objects.forEach(doc => {
-        // Truncate text for algolia record max size (10000). See
-        // http://bit.ly/2seV0Pm for details.
-        const maxRecord = 10000;
-        const titleLocationLen = doc.title.length + doc.location.length;
-        const recordOverhead = 2000; // Fudge factor for keeping size under 1K
-        const textSize = maxRecord - titleLocationLen - recordOverhead;
-        doc.text = doc.text.slice(0, textSize);
-        doc.location = doc.location.replace("/docs/", "/")
-      });
-      grunt.file.write("/tmp/guildai-index.json", JSON.stringify(objects));
-      return index.addObjects(objects);
-    };
-
-    initIndex()
-      .then(clearIndex)
-      .then(addObjects)
-      .then(done);
-  };
-
-  grunt.registerTask('index', index);
-
-  grunt.registerTask('build-and-index', ['build', 'index']);
 };

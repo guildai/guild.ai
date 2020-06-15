@@ -1,14 +1,12 @@
 {
   "name": "guild-ai-site",
   "description": "Site source for guild.ai.",
-  "version": "0.0.0",
+  "version": "0.7.0",
   "repository": "https://github.com/tensorhub/guild.ai",
   "license": "UNLICENSED",
   "homepage": "https://github.com/tensorhub/guild.ai",
   "author": "TheThemeio and TensorHub, Inc.",
   "devDependencies": {
-    "algoliasearch": "^3.24.9",
-    "algoliasearch-helper": "^2.23.2",
     "autoprefixer": "^6.7.7",
     "bootstrap": "^3.3.7",
     "cssnano": "^3.0.1",

@@ -17,10 +17,4 @@ charge, free to change, and free to share with others.
 Refer to [Guild AI Services](/services.md) for a list of support and
 professional services that we offer.
 
-### Board of Advisors
-
-- JJ Allaire, Founder RStudio
-- Michael Beckley, CTO Appian
-- Edward Lowe, Chief Data Scientist LoseIt!
-
 </div>

@@ -123,7 +123,7 @@ available under the Apache 2.0 open source license.
 <div class="row img-features">
 
   <div class="col col-sm-6 match-height">
-    <h5>Systematic Measurement and Control</h5>
+    <h5>Control and Measure</h5>
     <img class="md shadow" src="/assets/img/view-feature.png">
     <p>
       Record each operation, including source code, hyperparameters,
@@ -133,27 +133,17 @@ available under the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Notebooks and Beyond</h5>
+    <h5>Go Beyond Notebooks</h5>
     <img class="md shadow" src="/assets/img/plot-feature.png">
     <p>
-      Run your Notebook code in Guild to record summaries over the
+      Run your Notebook code with Guild to record summaries over the
       entire life cycle of your models. Know what changed three hours
       ago, or three years!
     </p>
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Engineering Best Practices</h5>
-    <img class="md shadow" src="/assets/img/compare-feature.png">
-    <p>
-      Integrate Guild features into any environment without
-      reengineering effort. Commands are POSIX compliant and run
-      without external dependencies.
-    </p>
-  </div>
-
-  <div class="col col-sm-6 match-height">
-    <h5>Hyperparameter Tuning</h5>
+    <h5>Tune Hyperparameters</h5>
     <img class="md shadow" src="/assets/img/hparams-2-feature.png">
     <p>
       Apply state-of-the-art tuning algorithms to your models with
@@ -163,7 +153,7 @@ available under the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Detailed Diffing</h5>
+    <h5>Compare and Diff</h5>
     <img class="md shadow" src="/assets/img/diff-feature.png">
     <p>
       Identify fine grained differences across runs to resolve complex
@@ -173,12 +163,22 @@ available under the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Configuration As Code</h5>
+    <h5>Automate Tasks</h5>
     <img class="md shadow" src="/assets/img/code-feature.png">
     <p>
       Guild supports a simple configuration scheme that lets you
       define model operations that perform complex tasks with a single
       command.
+    </p>
+  </div>
+
+  <div class="col col-sm-6 match-height">
+    <h5>Follow Engineering Best Practices</h5>
+    <img class="md shadow" src="/assets/img/compare-feature-3.png">
+    <p>
+      Integrate Guild features into any environment without
+      reengineering effort. Commands are POSIX compliant and run
+      without external dependencies.
     </p>
   </div>
 
