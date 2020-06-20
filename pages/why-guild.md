@@ -5,8 +5,14 @@ hide_pagenav: yes
 
 # Why Guild AI?
 
+<style>
+.icon {
+  text-align: right;
+}
+</style>
+
 <div class="row"></div>
-<div class="col-sm-1 mt-4">
+<div class="col-sm-1 mt-4 icon">
 <img src="/assets/icons/send-email.svg">
 </div>
 
@@ -34,7 +40,7 @@ your code.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4">
+<div class="col-sm-1 mt-4 icon">
 <img src="/assets/icons/space-rocket-flying-3.svg">
 </div>
 
@@ -56,7 +62,7 @@ platform for ML engineering.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4">
+<div class="col-sm-1 mt-4 icon">
 <img src="/assets/icons/open-source.svg">
 </div>
 
@@ -79,7 +85,7 @@ tools --- *period*.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4">
+<div class="col-sm-1 mt-4 icon">
 <img src="/assets/icons/database-disable.svg">
 </div>
 
@@ -109,7 +115,7 @@ requirements:
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4">
+<div class="col-sm-1 mt-4 icon">
 <img src="/assets/icons/multiple-chat.svg">
 </div>
 
@@ -143,10 +149,7 @@ The growing [community of Guild AI users ->](my:) value:
 
 <div class="row"></div>
 
----
-
-
-<div class="col col-md-12">
+<div class="col col-md-12 mt-5">
 <div class="promo center">
 <a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>

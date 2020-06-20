@@ -6,12 +6,17 @@ extra:
   version: 0.7.0
   contact_email: contact@guild.ai
 
-  tagline_width: 30em
-
   # IMPORTANT: sync pages/index.md title with tagline:
   tagline:
 
-    The ML Engineering Platform
+    Open source experiment tracking for machine learning
+
+  tagline_width: 20em
+
+  other_taglines:
+    - The ML Engineering Platform
+    - The ML Engineering Toolkit
+    - Open source tools for ML engineering
 
   subtext_width: 40em
   subtext:

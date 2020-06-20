@@ -2,7 +2,7 @@ layout: front-page
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
-title: The ML Engineering Platform
+title: Open source experiment tracking for machine learning
 
 <div id="get-started-fab"></div>
 
