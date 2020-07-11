@@ -191,7 +191,7 @@ the Apache 2.0 open source license.
     <p>
       ML engineering is the application of automated methods to
       machine learning. In the tradition of release management,
-      continuous integration, and DevOps, it ensure that machine
+      continuous integration, and DevOps, it ensures that machine
       learning efforts are measured, recreatable and
       auditable. Effective ML engineering supports fast development of
       performant models while maintaining the highest levels of
