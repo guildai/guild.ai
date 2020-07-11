@@ -2,9 +2,7 @@ layout: front-page
 hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
-title: Open source experiment tracking for machine learning
-
-<div id="get-started-fab"></div>
+title: The ML Engineering Toolkit
 
 <div class="row logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
@@ -19,10 +17,10 @@ title: Open source experiment tracking for machine learning
 
 <p class="highlight" markdown="1">
 
-Guild AI brings systematic control to ML so you can build better
-models faster and avoid errors. It enables engineering best practices
-for automation, measurement, and governance. Guild AI is freely
-available under the Apache 2.0 open source license.
+Guild AI brings systematic control to machine learning. Build better
+models faster. Reduce errors. Guild supports best practices for ML
+automation, measurement, and governance. It's freely available under
+the Apache 2.0 open source license.
 
 </p>
 
@@ -217,29 +215,8 @@ available under the Apache 2.0 open source license.
 
 ---
 
-<div class="row display-flex">
-<div class="col col-md-6">
-<div class="promo left match-height">
-<h3><img src="/assets/icons/space-rocket-flying.svg"> Get Started</h3>
-<p class="expand">
-
-Start using Guild AI in minutes to track and measure experiments.
-
-</p>
-<a class="btn btn-primary cta" href="https://my.guild.ai/start"
-  >Get Started <i class="fa next"></i></a>
-</div>
-</div>
-
-<div class="col col-md-6">
-<div class="promo left match-height">
-<h3><img src="/assets/icons/book-open-text.svg"> Browse the Docs</h3>
-<p class="expand">
-
-Learn about Guild AI features by exploring its documentation.
-
-</p>
-<a class="btn btn-primary" href="https://my.guild.ai/docs">Browse the Docs <i class="fa next"></i></a>
-</div>
+<div class="col col-md-12 mt-5">
+<div class="promo center">
+<a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>
 </div>

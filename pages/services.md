@@ -1,19 +1,20 @@
+title: Services
 navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
 
-<div id="get-started-fab"></div>
-
 # Guild AI Services
+
+## Open Source
 
 <div class="col col-lg-4" markdown="1">
 ### <i class="fab fa-discourse"></i> Ask a Question
 
-Join the discussion at [my.guild.ai](my:) to get help with Guild.
+Join the discussion at [my.guild.ai](https://my.guild.ai) to get help with Guild.
 This is a great way to connect with others and learn how they're using
 Guild.
 
-[Get Help with Guild](my:)
+[Get Help with Guild](https://my.guild.ai)
 </div>
 
 <div class="col col-lg-4" markdown="1">
@@ -101,3 +102,9 @@ priority support contracts from Guild AI.
 
 For help with any of these services, please send us an email at
 [contact@guild.ai](mailto:contact@guild.ai).
+
+<div class="col col-md-12 mt-5">
+<div class="promo center">
+<a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
+</div>
+</div>

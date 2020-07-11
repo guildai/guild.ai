@@ -9,7 +9,7 @@ extra:
   # IMPORTANT: sync pages/index.md title with tagline:
   tagline:
 
-    Open source experiment tracking for machine learning
+    The ML Engineering Toolkit
 
   tagline_width: 20em
 
@@ -28,7 +28,7 @@ extra:
       icon: hierarchy-10-gray
     - text: Auto ML
       icon: seo-search-graph-gray
-    - text: 100% Open Source
+    - text: Open Source
       icon: programming-flag-gray
 
   navbar:
@@ -51,11 +51,6 @@ extra:
       url: https://github.com/guildai/guildai
       title: Guild AI on GitHub
       icon_class: 'fab fa-github'
-      header: yes
-    - name: slack
-      url: https://join.slack.com/t/guildai/shared_invite/enQtNDgxNDg5ODk2MjI2LWQ5ODI3ZGE2YzljYWViNTA0NjFmNDg4NTI3ZjY2Mjk2YTkzZjAxZWM3M2EyNTcyZWU0YzgzM2IwMTI0ZjFhNTU
-      title: Guild AI on Slack
-      icon_class: 'fab fa-slack-hash'
       header: yes
     - name: twitter
       url:  https://twitter.com/guildai
@@ -122,7 +117,7 @@ markdown_extensions:
 pages:
   - index.md
   - why-guild.md
-  - faq.md
   - services.md
   - docs.md
+  - faq.md
   - about.md
