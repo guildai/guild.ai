@@ -6,6 +6,12 @@ extra:
   version: 0.7.0
   contact_email: contact@guild.ai
 
+  clicky:
+
+    # IMPORTANT: manually apply to src/base.html:
+    prod: 100935573
+    pre: 101236283
+
   # IMPORTANT: sync pages/index.md title with tagline:
   tagline:
 
@@ -57,12 +63,6 @@ extra:
       title: Guild AI on Twitter
       icon_class: 'fab fa-twitter'
       header: yes
-
-  clicky:
-
-    # IMPORTANT: manually apply to src/base.html:
-    prod: 100935573
-    pre: 101236283
 
   # URL to edit Google fonts used in src/base.html:
   #
