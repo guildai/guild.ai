@@ -4,6 +4,8 @@ hide_pagenav: yes
 hide_in_pagenav: yes
 title: The ML Engineering Toolkit
 
+<div id="get-started-fab"></div>
+
 <div class="row logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">
