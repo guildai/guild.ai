@@ -4,7 +4,7 @@
 
 - Windows, Mac OS, Linux
 - make
-- npm
+- npm v11 (NOTE: v12 and beyond is not supported by packages.json)
 - python
 - mkdocs (pip package)
 

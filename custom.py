@@ -13,11 +13,16 @@ import jinja2
 import six
 
 import markdown
+
+from markdown import inlinepatterns
+from markdown import treeprocessors
+
+from markdown.blockprocessors import BlockProcessor
+
 from markdown.extensions import Extension
 from markdown.extensions.toc import slugify
 from markdown.extensions import fenced_code
-from markdown import inlinepatterns
-from markdown import treeprocessors
+
 from markdown.util import etree
 
 import mkdocs.config as _ # pylint: disable=unused-import
@@ -264,8 +269,9 @@ class LinkTemplate(object):
 
     def try_apply(self, link):
         unset = object()
+        link_body = self._link_body(link)
         text_m = (
-            self._text_pattern.match(link.text or "")
+            self._text_pattern.match(link_body or "")
             if self._text_pattern
             else unset)
         link_m = (
@@ -280,10 +286,7 @@ class LinkTemplate(object):
                 m_args = (m_args or ()) + link_m.groups()
             if m_args is not None:
                 args = self._format_args(m_args)
-                self._apply_text(args, link)
-                self._apply_href(args, link)
-                self._apply_class(args, link)
-                self._apply_attrs(("target",), args, link)
+                self._apply_link(args, link_body, link)
 
     def _format_args(self, args):
         for arg, arg_map in self._zip_longest(args, self._arg_maps):
@@ -300,28 +303,65 @@ class LinkTemplate(object):
         else:
             return zip_longest(a, b)
 
-    def _apply_text(self, args, link):
-        if self._text and (not link.text or self._text_pattern):
-            link.text = self._text.format(*args).strip()
+    def _apply_link(self, args, link_body, link):
+        new_link = self._applied_link(args, link_body, link)
+        link.clear()
+        for name, val in new_link.items():
+            link.set(name, val)
+        link.text = new_link.text
+        for child in new_link.getchildren():
+            link.append(child)
+        link.tail = new_link.tail
 
-    def _apply_href(self, args, link):
-        if self._href and (not link.get("href") or self._link_pattern):
-            link.set("href", self._href.format(*args).strip())
+    def _applied_link(self, args, link_body, link):
+        body = self._applied_link_body(args, link_body, link)
+        href = self._applied_link_href(args, link)
+        cls = self._applied_link_class(args, link)
+        target = self._applied_link_attr("target", args, link)
+        tail = link.tail
+        s_parts = ["<a href=\"%s\"" % href]
+        if cls:
+            s_parts.append(" class=\"%s\"" % cls)
+        if target:
+            s_parts.append(" target=\"%s\"" % target)
+        s_parts.append(">%s</a>" % body)
+        applied = etree.fromstring("".join(s_parts))
+        applied.tail = tail
+        return applied
 
-    def _apply_class(self, args, link):
+    def _applied_link_body(self, args, link_body, link):
+        if self._text and (not link_body or self._text_pattern):
+            return self._text.format(*args).strip()
+        return self._link_body(link)
+
+    @staticmethod
+    def _link_body(link):
+        children = "".join([
+            etree.tostring(e).decode() for e in link.getchildren()
+        ])
+        return (link.text or "") + children
+
+    def _applied_link_href(self, args, link):
+        link_href = link.get("href")
+        if self._href and (not link_href or self._link_pattern):
+            return self._href.format(*args).strip()
+        return link_href
+
+    def _applied_link_class(self, args, link):
+        link_class = link.get("class")
         if self._class:
-            cur = link.get("class")
+            cur = link_class
             formatted = self._class.format(*args).strip()
-            link.set("class", " ".join((cur, formatted)) if cur else formatted)
+            return " ".join((cur, formatted)) if cur else formatted
+        return link_class
 
-    def _apply_attrs(self, attrs, args, link):
-        for name in attrs:
-            try:
-                val = self._attrs[name]
-            except KeyError:
-                pass
-            else:
-                link.set(name, val.format(*args).strip())
+    def _applied_link_attr(self, attr_name, args, link):
+        try:
+            val = self._attrs[attr_name]
+        except KeyError:
+            return link.get(attr_name)
+        else:
+            return val.format(*args).strip()
 
 class LinkProcessor(treeprocessors.Treeprocessor):
 
@@ -489,10 +529,26 @@ class Link(Extension):
     >>> print(md.convert("[Open ->](external.html)"))
     <p><a class="ext" href="external.html" target="_blank">Open</a></p>
 
+    If formatting is applied, this fails:
+
+    >>> print(md.convert("[`Open` ->](external.html)"))
+    <p><a href="external.html"><code>Open</code> -&gt;</a></p>
+
+    The failure here is due to the conversion of `>` to `&gt;`, which
+    isn't matched by the pattern above. Patterns must support
+    inadvertent text conversions because the filter is applied _after_
+    inline conversions.
+
     Argument maps are applied to user-provided arguments:
 
     >>> print(md.convert("[](mapped:a)"))
     <p><a href="a">A</a></p>
+
+    >>> print(md.convert("[`foo`](mapped:a)"))
+    <p><a href="a"><code>foo</code></a></p>
+
+    >>> print(md.convert("foo [bar](mapped:a) baz"))
+    <p>foo <a href="a">bar</a> baz</p>
 
     """
 
@@ -641,10 +697,6 @@ class Backtick(Extension):
 
     >>> print(md.convert("``code sample``"))
     <p><code class="lit">code sample</code></p>
-
-    Guild also replaces hyphens with non-breaking hyphens to ensure
-    that command line options are not broken at hyphens when wrapped.
-
     """
 
     def extendMarkdown(self, md, _globals):
@@ -706,7 +758,7 @@ class FigureProcessor(treeprocessors.Treeprocessor):
 
     def run(self, root):
         prev = None
-        for el in root:
+        for el in list(root):
             if (el.tag == "p" and
                 el.text and el.text.startswith("^ ") and
                 prev is not None):
@@ -728,7 +780,7 @@ class FigureProcessor(treeprocessors.Treeprocessor):
                 caption.text = caption.text[2:]
                 break
         else:
-            raise AssertionError()
+            assert False, (target, caption, parent)
 
 class Figure(Extension):
     """Support HTML figure element with captions.
@@ -796,14 +848,15 @@ class CmdHelpContext(object):
     def _init_cmd_url_base(cmd_help):
         prog = cmd_help["usage"]["prog"]
         cmd_path = prog.split(" ")[1:]
-        return "/docs/commands/{}".format("-".join(cmd_path))
+        return "/commands/{}".format("-".join(cmd_path))
 
     def cmd_url(self, cmd):
-        return self._cmd_url_base + "-{}-cmd/".format(cmd)
+        return  "{}-{}/".format(self._cmd_url_base, cmd)
 
 class CmdHelpProcessor(treeprocessors.Treeprocessor):
 
-    _marker_re = re.compile(r"\[CMD-HELP (.+?)\]$")
+    _marker_re = re.compile(r"\[CMD-HELP\s*(.+?)\s*\]$")
+    _cmd_with_src_re = re.compile(r"(.+?)(?:\s+\((.+)\))")
 
     def __init__(self, md, src_path):
         super(CmdHelpProcessor, self).__init__(md)
@@ -836,18 +889,51 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             if el.tag == "p":
                 m = self._marker_re.match(el.text or "")
                 if m:
-                    self._handle_cmd(m.group(1), el, root)
+                    cmd, src = self._parse_marker_arg(m.group(1))
+                    assert src.endswith(".py") and os.path.exists(src), (
+                        "invalid src %r for cmd %r (defined in %r)"
+                        % (src, cmd, el.text)
+                    )
+                    self._handle_cmd(cmd, src, el, root)
 
-    def _handle_cmd(self, cmd, target, parent):
-        cmd_help = self._get_cmd_help(cmd)
+    def _parse_marker_arg(self, arg):
+        """Returns a tuple of cmd, cmd_src for arg
+
+        arg must be in the format `CMD` or `CMD (SRC)`.
+        """
+        m = self._cmd_with_src_re.match(arg)
+        if m:
+            return m.groups()
+        return arg, self._cmd_src(arg)
+
+    def _cmd_src(self, cmd):
+        basename = re.sub(r"[ \-]", "_", cmd)
+        patterns = [
+            os.path.join(self._src_path, "{}.py"),
+            os.path.join(self._src_path, "{}_.py"),
+        ]
+        for p in patterns:
+            path = p.format(basename)
+            if os.path.exists(path):
+                return path
+        assert False, "cannot find source for cmd %r" % cmd
+
+    def _handle_cmd(self, cmd, src, target, parent):
+        cmd_help = self._get_cmd_help(cmd, src)
         ctx = CmdHelpContext(cmd_help)
         rendered = self._template.render(cmd=cmd_help, ctx=ctx)
-        rendered = rendered.replace("\x08", "")
-        help_el = etree.fromstring(rendered)
+        rendered = rendered.replace("<p>\b\n", "<p style=\"white-space: pre\">")
+        try:
+            help_el = etree.fromstring(rendered)
+        except Exception:
+            print("ERROR processing %s cmd" % cmd)
+            print("Rendered:")
+            print(rendered)
+            raise
         _replace_el(parent, target, help_el)
 
-    def _get_cmd_help(self, cmd):
-        cmd_help = self._get_cached_cmd_help(cmd)
+    def _get_cmd_help(self, cmd, src):
+        cmd_help = self._get_cached_cmd_help(cmd, src)
         if cmd_help is None:
             log.info("Generating help for '%s' command", cmd)
             args = ["guild/guild/scripts/guild"] + shlex.split(cmd) + ["--help"]
@@ -858,12 +944,11 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
             self._cache_cmd_help(cmd, cmd_help)
         return cmd_help
 
-    def _get_cached_cmd_help(self, cmd):
+    def _get_cached_cmd_help(self, cmd, src):
         cache_path = self._cached_cmd_help_filename(cmd)
         if not os.path.exists(cache_path):
             return None
-        src_path = self._cmd_source(cmd)
-        if os.path.getmtime(src_path) > os.path.getmtime(cache_path):
+        if os.path.getmtime(src) > os.path.getmtime(cache_path):
             return None
         return json.load(open(cache_path, "r"))
 
@@ -871,18 +956,6 @@ class CmdHelpProcessor(treeprocessors.Treeprocessor):
     def _cached_cmd_help_filename(cmd):
         basename = cmd.replace(" ", "-")
         return "/tmp/guild-ai-cmd-help/{}.json".format(basename)
-
-    def _cmd_source(self, cmd):
-        basename = re.sub(r"[ \-]", "_", cmd)
-        patterns = [
-            os.path.join(self._src_path, "{}.py"),
-            os.path.join(self._src_path, "{}_.py"),
-        ]
-        for p in patterns:
-            path = p.format(basename)
-            if os.path.exists(path):
-                return path
-        raise AssertionError(cmd)
 
     def _cache_cmd_help(self, cmd, cmd_help):
         path = self._cached_cmd_help_filename(cmd)
@@ -1035,12 +1108,12 @@ class PkgHelpProcessor(treeprocessors.Treeprocessor):
         _replace_el(parent, target, help_el)
 
     def _get_models(self, path):
-        gf = guildfile.from_dir(os.path.join(self._src_path, path))
+        gf = guildfile.for_dir(os.path.join(self._src_path, path))
         return [gf.models[name] for name in sorted(gf.models)]
 
     def _get_pkg(self, path):
         pkg_dir = os.path.join(self._src_path, path)
-        gf = guildfile.from_dir(pkg_dir)
+        gf = guildfile.for_dir(pkg_dir)
         if not gf.package:
             raise AssertionError("no package in {}".format(gf.src))
         return gf.package
@@ -1120,7 +1193,7 @@ class CmdHelpUrlProcessor(treeprocessors.Treeprocessor):
                 el.set("class", "cmd")
                 cmd = " ".join(m.groups())
                 el.text = cmd
-                href = "/docs/commands/{}-cmd/".format(cmd.replace(" ", "-"))
+                href = "/commands/{}/".format(cmd.replace(" ", "-"))
                 el.set("href", href)
 
 class CmdHelpUrl(Extension):
@@ -1137,12 +1210,12 @@ class CmdHelpUrl(Extension):
     A link to `run` help:
 
     >>> print(md.convert("``guild run --help``"))
-    <p><a class="cmd" href="/docs/commands/run-cmd/">run</a></p>
+    <p><a class="cmd" href="/commands/run/">run</a></p>
 
     A link to `runs rm` help:
 
     >>> print(md.convert("``guild runs rm --help``"))
-    <p><a class="cmd" href="/docs/commands/runs-rm-cmd/">runs rm</a></p>
+    <p><a class="cmd" href="/commands/runs-rm/">runs rm</a></p>
 
     """
 
@@ -1212,7 +1285,7 @@ class DeflistToTableProcessor(treeprocessors.Treeprocessor):
     @staticmethod
     def _dt_len(row):
         dt, _dd = row.getchildren()
-        return len(" ".join(dt.itertext()))
+        return len(list(dt.itertext())[0])
 
     @staticmethod
     def _apply_col_classes(row, dt_col_class, dd_col_class):
@@ -1254,28 +1327,6 @@ class DeflistToTable(Extension):
             DeflistToTableProcessor(md),
             "_end")
 
-class NonbreakingHyphensProcessor(treeprocessors.Treeprocessor):
-
-    def run(self, root):
-        for code in root.iter("code"):
-            code.text = code.text.replace("-", u"\u2011")
-
-class NonbreakingHyphens(Extension):
-    """Replace hyphens in code blocks with a non-breaking hyphen.
-
-    >>> md = markdown.Markdown(extensions=[NonbreakingHyphens()])
-
-    Here's a basic example of a reference:
-
-    >>> out = md.convert("`a-b --foo c -d`")
-    >>> [ord(c) for c in out[9:]] # doctest: +ELLIPSIS
-    [97, 8209, 98, 32, 8209, 8209, 102, 111, 111, 32, 99, 32, 8209, 100, ...]
-
-    """
-
-    def extendMarkdown(self, md, _globals):
-        md.treeprocessors.add("nbhyph", NonbreakingHyphensProcessor(md), "_end")
-
 class PkgConfigListProcessor(treeprocessors.Treeprocessor):
 
     _marker_re = re.compile(r"\[PKG-CONFIG-LIST (.+?) (.+?)\]$")
@@ -1306,7 +1357,7 @@ class PkgConfigListProcessor(treeprocessors.Treeprocessor):
 
     def _get_sorted_configs(self, path, tag):
         pkg_dir = os.path.join(self._src_path, path)
-        gf = guildfile.from_dir(pkg_dir)
+        gf = guildfile.for_dir(pkg_dir)
         configs = []
         for obj in gf.data:
             try:
@@ -1334,12 +1385,12 @@ class PkgConfigList(Extension):
     Here's a list for config from `pkg-1` with tag `a`:
 
     >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 a]"))
-    <dl><dt>c1</dt><dd>Config c1</dd></dl>
+    <dl><dt><code>c1</code></dt><dd>Config c1</dd></dl>
 
     And tag `b`:
 
     >>> print(md.convert("[PKG-CONFIG-LIST pkg-1 b]"))
-    <dl><dt>c1</dt><dd>Config c1</dd><dt>c2</dt><dd>Config c2</dd></dl>
+    <dl><dt><code>c1</code></dt><dd>Config c1</dd><dt><code>c2</code></dt><dd>Config c2</dd></dl>
 
     And tag `c` (doesn't exit):
 
@@ -1369,7 +1420,8 @@ class Serve(BasePlugin):
             return {
                 "func": builder,
                 "ignore": ignore,
-                "delay": None
+                "delay": None,
+                "mtimes": {},
             }
         server.watcher._tasks = {
             "mkdocs.yml": task(),
@@ -1392,13 +1444,17 @@ class Serve(BasePlugin):
             return any((p.search(path) for p in patterns))
         return ignore
 
+class MarkdownInHtml(Extension):
+    """Enable Markdown in HTML."""
+
+    def extendMarkdown(self, md, _globals):
+        md.preprocessors['html_block'].markdown_in_raw = True
+
 def test():
     import doctest
     import sys
-    failed, _count = doctest.testmod(
-        optionflags=(
-            doctest.REPORT_ONLY_FIRST_FAILURE |
-            doctest.NORMALIZE_WHITESPACE))
+    flags = doctest.NORMALIZE_WHITESPACE
+    failed, _count = doctest.testmod(optionflags=flags)
     if failed:
         sys.exit(1)
 

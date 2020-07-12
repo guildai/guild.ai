@@ -13,12 +13,6 @@ site:
 site-pdb-support:
 	$(mkdocs) build
 
-index: $(grunt)
-	$(grunt) index
-
-build-and-index: $(grunt)
-	$(grunt) build-and-index
-
 serve: $(grunt)
 	$(grunt) serve
 

@@ -1,22 +1,20 @@
-title: About
 hide_sidenav: yes
 hide_pagenav: yes
-hide_in_pagenav: yes
 
-# Guild AI
+# About Guild AI
 
-## Links
+<div class="col-sm-9" markdown>
 
-[Slack channel](alias:guild-slack)
+Guild AI is a privately held company headquartered in Chicago. Guild
+AI was founded by Garrett Smith in 2017 with an investment from JJ
+Allaire to build world class tools and platforms to help machine
+learning and AI developers build better data-driven applications.
 
-[GitHub project](alias:guild-github)
+Guild AI is committed to open source and open science. Guild AI
+provides a [full platform for ML engineers](/index.md) that is free of
+charge, free to change, and free to share with others.
 
-## Contributing
+Refer to [Guild AI Services](/services.md) for a list of support and
+professional services that we offer.
 
-Guild AI does not currently have a contributors policy but we are
-happy to work with you to add features that you need and resolve
-issues.
-
-Before spending time on a pull request, please
-[](alias:open-an-issue) to let us know what problems you'd like to
-solve and we'll help identify next-steps with you!
+</div>

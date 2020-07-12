@@ -27,17 +27,14 @@ $(function() {
 
   // Typed.js
 
-  const typedEl = document.getElementById('typed');
-  if (typedEl !== null) {
-    const typed = new Typed(typedEl, {
+  const typedRunEl = document.getElementById('typed-run');
+  if (typedRunEl !== null) {
+    new Typed(typedRunEl, {
       strings: [
         "guild run train.py",
-        "guild run <span>train.py learning-rate=0.01</span>",
-        "guild run <span>train.py learning-rate=[0.1,0.01,0.001]</span>",
-        "guild run <span>train.py</span> x=[-2.0:2.0] --optimizer bayesian",
-        "guild compare",
-        "guild diff",
-        "guild tensorboard",
+        "guild run <span>train.py</span> lr=0.01",
+        "guild run <span>train.py lr=[1e-3,1e-2]</span>",
+        "guild run <span>train.py</span> lr=[1e-7:1e-1] --optimize",
       ],
       typeSpeed: 45,
       backSpeed: 20,
@@ -46,6 +43,60 @@ $(function() {
       showCursor: false,
       smartBackspace: true
     });
+  }
+
+  const typedRun2El = document.getElementById('typed-run2');
+  if (typedRun2El !== null) {
+    new Typed(typedRun2El, {
+      strings: [
+        "guild run <span>train-mnist lr=0.001</span>",
+        "guild run <span>train-mnist lr=0.001 batch_size=1000</span>",
+        "guild run <span>train-mnist lr=</span>[0.001,0.01,0.1]",
+        "guild run <span>train-mnist lr=[1e-4:1e-1] -o bayesian</span>",
+      ],
+      typeSpeed: 45,
+      backSpeed: 20,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false,
+      smartBackspace: true
+    });
+  }
+
+  const typedVandCEl = document.getElementById('typed-view-and-compare');
+  if (typedVandCEl !== null) {
+    const viewCompareCmds = [
+      'compare',
+      'view',
+      'tensorboard',
+      'diff'
+    ];
+    new Typed(typedVandCEl, {
+      strings: viewCompareCmds.map(function(cmd) {
+        return 'guild ' + cmd;
+      }),
+      typeSpeed: 45,
+      backSpeed: 20,
+      backDelay: 4000,
+      loop: true,
+      showCursor: false,
+      smartBackspace: true,
+      onStringTyped: function(pos) {
+        const selected = viewCompareCmds[pos];
+        setTimeout(function() {
+          viewCompareCmds.forEach(function(cmd) {
+            const el = document.getElementById('view-and-compare-img-' + cmd);
+            if (el !== null) {
+              if (cmd === selected) {
+                el.classList.add("active");
+              } else {
+                el.classList.remove("active");
+              }
+            }
+          });
+        }, 100);
+      }
+    })
   }
 
   // Scroll to page links
@@ -239,8 +290,7 @@ $(function() {
 
   // Equal height
 
-  $('.grid-view > li, .categorized-view > li, .promo.small-icon').matchHeight();
-  $('.promo').matchHeight();
+  $('.match-height').matchHeight();
 
   // Code
 
@@ -288,95 +338,6 @@ $(function() {
     $('.initial-focus').focus();
   });
 
-  // Search
-
-  var client = algoliasearch('I1IYALZNSK', '4863af8e5dd6e8d374f000181f8bd352');
-  var index = client.initIndex('guild.ai');
-  var search = algoliasearchHelper(client, 'guild.ai');
-
-  search.on('result', function(content) {
-    handleSearchResults(content);
-  });
-
-  var hitItem = function(hit) {
-    return ''
-      + '<li>'
-      + '<h6><a href="' + hit.location
-      + '" title="' + hit.location + '">'
-      + hit._snippetResult.title.value
-      + '</a></h6>'
-      + '<p>' + hit._snippetResult.text.value + '</p>'
-      + '</li>';
-  };
-
-  var pageItem = function(index, curPage) {
-    return ''
-      + '<li' + (index === curPage ? ' class="active"' : '') + '>'
-      + '<a href="#nav-page-' + index + '">' + (index + 1) + '</a></li>';
-  };
-
-  var pageNavItem = function(type, active) {
-    return ''
-      + '<li class="' + (active ? '' : 'disabled') + '">'
-      + '<a href="' + (active ? '#nav-' + type : '') + '"'
-      + ' class="' + type +'"'
-      + (active ? '' : ' tabindex="-1"') + '>'
-      + '<i class="fa fa-angle-' + (type === 'previous' ? 'left' : 'right')
-      + '"></i></a></li>';
-  };
-
-  var handleSearchResults = function(content) {
-    $('#search-results').html(function() {
-      return $.map(content.hits, hitItem);
-    });
-    $('#search-pages').html(function() {
-      var items = [];
-      items.push(pageNavItem('previous', content.page > 0));
-      const maxPages = 10;
-      const startPage = Math.max(
-        0, content.page - parseInt(maxPages / 2)
-          - (content.page === content.nbPages - 1 ? 1 : 0));
-      const endPage = Math.min(
-        startPage + parseInt(maxPages / 2) + 1,
-        content.nbPages - 1);
-      for (var i = startPage; i <= endPage; i++) {
-        items.push(pageItem(i, content.page));
-      }
-      items.push(pageNavItem('next', content.page < content.nbPages - 1));
-      return items;
-    });
-  };
-
-  var clearSearch = function() {
-    search.state.query = '';
-    $('#search-input').val('');
-    $('#search-results').empty();
-    $('#search-pages').empty();
-  }
-
-  $('#search-input').on('keyup', function(e) {
-    if (e.key !== 'Escape') {
-      const val = $(this).val().trim();
-      if (!val) {
-        clearSearch();
-      } else if (val != search.state.query) {
-        search.setQuery(val).search();
-      }
-    }
-  });
-
-  $('#search-pages').on('click', 'a', function(e) {
-    const target = $(e.target).closest('a');
-    const href = target.attr('href');
-    if (href.startsWith('#nav-page')) {
-      search.setPage(href.slice(10)).search();
-    } else if (href === '#nav-previous') {
-      search.previousPage().search();
-    } else if (href === '#nav-next') {
-      search.nextPage().search();
-    }
-    return false;
-  });
 
   // Close search and scroll to internal links
   $('#search-results').on('click', 'a', function(e) {
@@ -392,19 +353,6 @@ $(function() {
         trySmoothScroll(relPath, true);
         return false;
       }
-    }
-  });
-
-  $('#search-modal').on('show.bs.modal', function () {
-    clearSearch();
-  });
-
-  Mousetrap.bind(["/"], function() {
-    if (!($('#search-modal').data('bs.modal') || {}).isShown) {
-      $('#search-modal').modal('show');
-    } else {
-      $('#search-input').focus().select();
-      return false;
     }
   });
 
@@ -436,7 +384,7 @@ $(function() {
    var links = [
       {
         "icon": 'Get Started <i class="far fa-arrow-circle-right"></i>',
-        "url": "/docs/start/"
+        "url": "https://my.guild.ai/start"
       }
     ];
     var options = {

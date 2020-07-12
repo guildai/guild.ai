@@ -39,12 +39,7 @@
       }
 
       > li > ol {
-        counter-reset: toc4;
-
-        > li:before {
-          content: counter(toc1) "." counter(toc2) ". " counter(toc3) ". " counter(toc4) ". ";
-          counter-increment: toc4;
-        }
+        display: none
       }
     }
   }

@@ -1,3 +1,3 @@
-This guide is a continuation of [Train an Image
-Classifier](/docs/start/image-classifier/). Complete that guide before
+This guide is a continuation of [*Get Started - Add a
+Classifier*](/start/classifier.md). Complete that guide before
 proceeding below.

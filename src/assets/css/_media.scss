@@ -2,12 +2,14 @@ figure {
   margin: 0 0 $p-margin-bottom;
 
   figcaption {
-    text-align: center;
-    color: $light-gray-text-color;
-    font-size: 16px;
+    color: $gray-text-color;
+    font-size: 15px;
+    font-style: italic;
     line-height: 22px;
-    margin-top: -2px;
+    margin-top: -8px;
     margin-bottom: $p-margin-bottom;
+    margin-left: 8px;
+    margin-right: 8px;
 
     &.under-shadow {
       margin-top: 24px;
@@ -15,10 +17,12 @@ figure {
 
     code {
       font-size: 13px;
+      color: darken($gray-text-color, 15%);
     }
 
     a {
       font-style: italic;
+      color: darken($gray-text-color, 15%);
     }
   }
 }
@@ -26,8 +30,10 @@ figure {
 img.md {
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
+  margin: 0 0 24px;
   display: block;
+  box-shadow: rgba(0,0,0,0.3) 3px 5px 14px;
+  border-radius: 4px;
 }
 
 .lity {
@@ -44,6 +50,10 @@ img.md {
     color: $color-white;
     background: transparent;
     font-size: 20px;
+  }
+
+  .featherlight-image {
+    border-radius: 4px;
   }
 }
 

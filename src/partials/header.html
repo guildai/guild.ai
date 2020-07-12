@@ -1,7 +1,3 @@
-{% block modals %}
-{% include "partials/search-modal.html" %}
-{% endblock %}
-
 <header class="site-header {{ header_class }}">
   <nav class="navbar navbar-default">
     <div class="container">
@@ -20,7 +16,6 @@
         {% set nav_class = "navbar-nav navbar-right" %}
         {% include "partials/nav.html" %}
       </div>
-      {% include "partials/search-header.html" %}
       {% include "partials/social-header.html" %}
     </div>
   </nav>

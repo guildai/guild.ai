@@ -1,17 +1,44 @@
-## To do
+# To do
 
-- [ ] Missing copy on index page
-  - [ ] Something on end-to-end learning
+## 0.7 Working list
 
-- [ ] Features details page
+- We don't link to examples anywhere. These are like cheatsheets.
 
-Maybe use a wizard interface - use it gauge what people click on and
-how long they stay. Confirm that clicky can track this.
+- Be systematic about linking to examples and cheatsheets.
 
-- [ ] Guides
-  - [ ] Merge tutorials into Guides
-  - [ ] /experiments/ (general topic on running ops)
-  - [ ] /random-search/
-  - [ ] /grid-search/
-  - [ ] /bayesian-optimization/
-  - [ ] /reproducibility/
+- Need a flag function reference - move reference material from flags
+  concept (/flags.md) to a reference
+  (e.g. /reference/flag-functions.md)
+
+- Make sure that each page is tagged correctly.
+
+- Major work needed on /guildfile.md - see TODOs in that page.
+
+- About page
+
+- For release:
+
+  - Make sure versions are correct
+  - Replace www-pre links with the real thing
+
+- Go through production www and make sure we copy over any useful
+  content.
+
+- Make sure clicky ID is prod on release.
+
+- Missing section on env variables.
+
+- Put EXAMPLES at top with links to code examples and cheatsheets.
+
+- Need a good guide for Dependencies.
+
+  https://www-pre.guild.ai/dependencies/ is not complete as it fails
+  to talk about how these are used by the user.
+
+## Post 0.7
+
+- Recruit reviewers
+  - What's missing
+  - What's confusing
+  - What's too long or tedious that can be simplified or removed
+- Include "See Also" links

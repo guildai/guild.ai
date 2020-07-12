@@ -65,12 +65,12 @@ ul.md {
 
     &::before {
       position: absolute;
-      content: "\f054";
+      content: "\f0c8";
       font-family: FontAwesome;
       top: 0;
-      left: 2px;
-      font-size: 10px;
-      color: $border-color-darker;
+      left: 5px;
+      font-size: 5.5px;
+      color: $light-text-color;
     }
   }
 }
@@ -97,23 +97,49 @@ ul.md {
 
 div.dl {
 
-  margin: 0 20px $p-margin-bottom;
+  margin: 0 0 $p-margin-bottom;
 
   div.row {
     margin-bottom: $p-margin-bottom_ * 0.5px;
+    border-top: $border-dl;
+    padding: 12px 0 0;
+    margin-left: 0;
+    margin-right: 0;
+
+    &:last-child {
+      border-bottom: $border-dl;
+      padding-bottom: 12px;
+    }
 
     div.dt {
       color: $light-text-color;
+
+      code {
+        word-break: normal;
+      }
     }
 
     div.dd {
 
       p:first-of-type {
-        margin-top: 18px;
+        margin-top: $p-margin-bottom;
+      }
+
+      p:first-child {
+        margin-top: 0;
       }
 
       p:last-child {
-        margin-bottom: 8px;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  div.dl {
+    div.row {
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
       }
     }
   }

@@ -3,11 +3,17 @@
 // Fonts
 $font-family-body: 'Roboto',sans-serif;
 $font-family-title: 'Roboto',sans-serif;
-$font-family-hero: 'Roboto Slab',sans-serif;
+$font-family-hero: 'Roboto Slab',serif;
 $font-family-code: 'Roboto Mono',monospace;
+$font-family-file: 'Roboto',sans-serif;
+
+// Font size
 $default-font-size: 16px;
-$default-line-height: 24px;
+$default-line-height: 25px;
 $pre-font-size: 14px;
+$banner-hero-font-size: 3em;
+$banner-bullet-font-size: 1.65em;
+$file-font-size: 14.5px;
 
 // Spacing
 $p-margin-bottom_:                  18;
@@ -23,14 +29,19 @@ $pale-text-color:                   #ccc;
 $pale-text-color-light:             #d5d5d5;
 $link-color:                        $accent-color;
 
-$bg-color-terminal:                 #333;
+$bg-color-terminal:                 #444;
 $terminal-text-color:               #f5f5f5;
-$bg-color-terminal-img:             #333;
+$bg-color-terminal-img:             #444;
 $bg-color-terminal-button:          #666;
 
-$banner-bg-color:                   #0447a7;
-$banner-overlay-color:              saturate(darken($accent-color, 10%), 25%);
-$banner-overlay-opacity:            0.3;
+$guild-blue:                        #2020a0;
+
+$banner-bg-color:                   saturate(darken($guild-blue, 18%), 10%);
+$banner-overlay-color:              saturate(darken($guild-blue, 5%), 12%);
+$banner-overlay-opacity:            0.6;
+
+$get-started-fab-color:             $guild-blue;
+$get-started-fab-opacity:           0.9;
 
 $border-color-darker:               #aaa;
 $border-color-dark:                 #ddd;
@@ -63,8 +74,8 @@ $color-white:                       #ffffff;
 $color-white-darker:                #ffffff;
 
 // Shadow
-$default-box-shadow:                rgba(0, 0, 0, 0.5) 8px 12px 25px;
-$box-shadow-less:                   rgba(0, 0, 0, 0.4) 5px 8px 18px;
+$default-box-shadow:                rgba(0, 0, 0, 0.3) 3px 5px 14px;
+$box-shadow-less:                   rgba(0, 0, 0, 0.3) 3px 5px 14px;
 
 // Breaks
 $break-xs:                          480px;
@@ -79,6 +90,7 @@ $default-transition:                $default-transition-time
                                     $default-transition-function;
 // Borders
 $default-border-radius:             4px;
+$border-dl:                         1px dotted $border-color-dark;
 
 // _sidebar
 $sidebar-bg-color:                  $bg-color-dark;
@@ -110,7 +122,7 @@ $code-bg-color:                     #f0f0f0;
 $code-border-color:                 $border-color-dark;
 $code-inline-color:                 $light-text-color;
 $code-literal-color:                $light-text-color;
-$code-inline-bg-color:              darken($code-bg-color, 3%);
+$code-inline-bg-color:              $code-bg-color;
 $code-window-bg-color:              #ebebeb;
 $code-window-border-top-color:      #eaeae9;
 $code-window-border-bottom-color:   #dfdfde;
@@ -144,4 +156,4 @@ $tooltip-bg-color:                  $color-dark;
 $search-highlight-bg-color:         #FFF176;
 
 // _promo
-$feature-font-size:                 18px;
+$feature-font-size:                 16px;

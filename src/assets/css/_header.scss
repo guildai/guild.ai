@@ -1,6 +1,11 @@
 .site-header {
 
+  .btn {
+    font-size: 17px;
+  }
+
   .navbar {
+    font-weight: 400;
     background-color: $accent-color;
     padding: 20px 15px;
     margin: 0;
@@ -19,8 +24,12 @@
 
     > img {
       display: inline-block;
-      max-height: 40px;
+      max-height: 42px;
       transition: $default-transition;
+
+      @media screen and (max-width: $break-md) {
+        max-height: 36px;
+      }
     }
 
     .force-middle {
@@ -32,13 +41,18 @@
   }
 
   &.navbar-sm {
+    .btn {
+      font-size: 15px;
+    }
+
     .navbar {
       padding-top: 1px;
       padding-bottom: 1px;
     }
 
     .navbar-brand > img {
-      max-height: 24px;
+      max-height: 28px;
+      margin-top: 2px;
     }
   }
 
@@ -67,7 +81,7 @@
       left: 0;
       right: 0;
       z-index: 99;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     }
   }
 
@@ -105,13 +119,12 @@
   &:hover {
     color: $color-white;
     font-size: 25px;
-    font-weight: 300;
   }
 }
 
 .site-header.navbar-sm .navbar-default .navbar-nav > {
   li > a {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -119,16 +132,17 @@
 
   li > a {
     color: rgba(255,255,255,.8);
-    font-weight: 500;
     text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 0.3px;
+    font-size: 19px;
+    letter-spacing: 0.2px;
+    padding-left: 12px;
+    padding-right: 12px;
     transition: $default-transition;
 
     @media screen and (max-width: $break-md) {
       font-size: 16px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
 
     &:focus,
@@ -180,9 +194,21 @@
   padding-left: 15px;
 
   a {
-    padding: 0 15px;
+    padding: 0 12px;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
+
+    @media screen and (max-width: $break-sm) {
+      padding: 0 10px;
+    }
+  }
+}
+
+.site-header.navbar-sm {
+  .navbar-default .social-icons {
+    a {
+      font-size: 21px;
+    }
   }
 }
 
@@ -306,6 +332,10 @@
   background-color: #292929;
 }
 
+#navbar {
+  padding-top: 2px;
+}
+
 @media screen and (max-width: $break-md) {
 
   .site-header .navbar {
@@ -343,7 +373,6 @@
 
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
     color: $color-white;
-    font-weight: 500;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -361,7 +390,7 @@
     text-align: center;
 
     > img {
-      max-height: 24px;
+      max-height: 28px;
     }
   }
 

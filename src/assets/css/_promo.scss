@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 30px;
 
   &.center {
     align-items: center;
@@ -65,8 +66,7 @@
   > h4 {
     font-weight: 500;
     margin: 0 0 7px;
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 26px;
 
     @media screen and (max-width: $break-sm) {
       font-size: 26px;
@@ -76,11 +76,15 @@
     i {
       margin-right: 3px;
     }
+
+    img {
+      margin-top: -0.15em;
+      height: 24px;
+    }
   }
 
   > p {
     font-size: $feature-font-size;
-    line-height: 26px;
     flex: 1;
   }
 
@@ -309,47 +313,40 @@
 }
 
 .other-features {
-  i {
+
+  margin-bottom: -40px;
+
+  .feature-icon {
     margin-right: 7px;
     margin-top: 10px;
-    color: $gray-text-color;
-    font-size: 36px;
-    float: left;
+    height: 32px;
+    position: absolute;
 
     @media screen and (max-width: $break-md) {
-      margin-top: 0;
+      height: 28px;
     }
   }
 
   h4 {
-    padding-left: 60px;
+    padding-left: 48px;
     margin-top: 10px;
 
-    @media screen and (max-width: $break-md) {
-      margin-top: 30px;
+    @media screen and (max-width: $break-sm) {
+      padding-left: 42px;
     }
   }
 
   p {
-    padding-left: 60px;
+    padding-left: 48px;
     font-size: $feature-font-size;
-    margin-bottom: 30px;
-  }
+    margin-bottom: 40px;
 
-  @media screen and (max-width: $break-sm) {
-    i {
-      margin-right: 10px;
-    }
-
-    h4 {
-      padding-left: 0;
-    }
-
-    p {
-      padding-left: 0;
-      margin-top: 15px;
+    @media screen and (max-width: $break-md) {
+      padding-left: 42px;
+      margin-bottom: 30px;
     }
   }
+
 
   + .promo {
     margin-top: 20px;
@@ -366,6 +363,25 @@ ul.features {
 
   @media screen and (max-width: $break-sm) {
     margin: 30px 10px;
+  }
+}
+
+.img-features {
+  margin: -$p-margin-bottom 0 -$p-margin-bottom;
+
+  .col {
+    padding: 20px 40px;
+  }
+
+  h5 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 0;
+  }
+
+  p {
+    margin: $p-margin-bottom 0.7em 0;
+    color: $gray-text-color;
   }
 }
 
@@ -443,8 +459,8 @@ ul.features {
 }
 
 button.jfab_main_btn {
-  background-color: $banner-overlay-color;
-  opacity: 0.9;
+  background-color: $get-started-fab-color;
+  opacity: $get-started-fab-opacity;
   border-radius: $default-border-radius;
   height: unset;
   width: unset;
@@ -463,5 +479,140 @@ button.jfab_main_btn {
 
   @media screen and (max-width: $break-sm) {
     display: none;
+  }
+}
+
+p.highlight {
+  margin: 0 100px 18px;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 2;
+  color: #666;
+
+  @media screen and (max-width: $break-sm) {
+    margin: 0 40px;
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: $break-xs) {
+    margin: 0 20px;
+    font-size: 16px;
+  }
+}
+
+.feature {
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: $break-sm) {
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  h2:first-child {
+  }
+
+  h2 {
+    font-size: 2em;
+    border: none;
+    margin: 20px 0 0;
+
+    @media screen and (max-width: $break-lg) {
+      font-size: 1.8em;
+    }
+
+    @media screen and (max-width: $break-md) {
+      font-size: 1.6em;
+    }
+
+    @media screen and (max-width: $break-sm) {
+      font-size: 1.4em;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .text-editor {
+    margin: 20px 0;
+
+    .text-body {
+      font-size: 17px;
+
+      @media screen and (max-width: $break-md) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  pre {
+    margin: 30px 0 30px;
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin: 20px;
+
+  }
+
+  img.icon {
+    position: absolute;
+    width: 100%;
+    max-width: 80px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .show-hide {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .view-and-compare-preview {
+    margin-top: 30px;
+  }
+
+  p.caption {
+    margin-top: 18px;
+    text-align: center;
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  pre + p.caption {
+    margin-top: -10px;
+  }
+}
+
+.promo-qa {
+  > div {
+    margin-bottom: 30px;
+  }
+
+  > div:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.promo-next {
+  margin: 30px 0;
+
+  a {
+    color: $link-color;
   }
 }

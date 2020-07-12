@@ -1,9 +1,23 @@
+code, kbd, pre, samp {
+  color: $code-inline-color;
+}
+
 code, kbd, pre, samp, a.cmd, a.pkg {
   font-family: $font-family-code;
-  color: $code-inline-color;
   background: inherit;
-  padding: 0;
+  padding: 0 2px;
   font-size: 0.875em;
+}
+
+a code {
+  color: $link-color;
+}
+
+a.cmd code,
+a.pkg code {
+  // Avoid doubling up on padding when cmds are
+  // accidentally quoted ala [`cmd`]
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -16,18 +30,12 @@ code.lit {
   color: $code-literal-color;
   background-color: $code-inline-bg-color;
   font-weight: inherit;
-  padding: 1px 4px;
-  border-radius: 1px;
+  padding: 1.5px 4px;  // intentionally more padding than non-literal code
+  border-radius: 2px;
 }
 
 table.dl tr td.dt code {
   white-space: nowrap;
-}
-
-a.cmd,
-a.pkg,
-a > code {
-  color: $link-color;
 }
 
 h1 code,
@@ -59,7 +67,7 @@ pre {
   }
 
   box-shadow: $box-shadow-less;
-  margin-bottom: $p-margin-bottom_ + 4px;
+  margin-bottom: $p-margin-bottom_ + 6px;
   margin-top: $p-margin-bottom_ + 2px;
 }
 
