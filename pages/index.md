@@ -3,9 +3,6 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-# IMPORTANT: This title should be consistent with what's shown on my.guild.ai.
-title: Guild AI - The ML Engineering Toolkit
-
 <div id="get-started-fab"></div>
 
 <div class="row logos">
