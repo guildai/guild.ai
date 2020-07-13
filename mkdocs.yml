@@ -23,6 +23,9 @@ extra:
     - The ML Engineering Platform
     - The ML Engineering Toolkit
     - Open source tools for ML engineering
+    - Experiment Tracking for Machine Learning
+    - Open Source Experiment Tracking for Machine Learning
+    - Open Source ML Experiment Tracking
 
   subtext_width: 40em
   subtext:
