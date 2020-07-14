@@ -78,4 +78,8 @@
 h3.why {
   font-size: 32px;
   margin-top: 6px;
+
+  @media screen and (max-width: $break-sm) {
+    font-size: 26px;
+  }
 }

@@ -14,7 +14,7 @@ hide_pagenav: yes
 </style>
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/send-email.svg">
 </div>
 
@@ -41,7 +41,7 @@ your code.
 </div>
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/space-rocket-flying-3.svg">
 </div>
 
@@ -62,7 +62,7 @@ Guild AI is a feature-complete ML engineering toolkit.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/open-source.svg">
 </div>
 
@@ -83,7 +83,7 @@ tools.
 </div>
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/file-code-disable.svg">
 </div>
 
@@ -98,7 +98,7 @@ and stay independent.
 </div>
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/database-disable.svg">
 </div>
 
@@ -124,7 +124,7 @@ Guild is free of complicated requirements.
 
 
 <div class="row"></div>
-<div class="col-sm-1 mt-4 icon">
+<div class="hidden-xs col-sm-1 mt-4 icon">
 <img src="/assets/icons/multiple-chat.svg">
 </div>
 
