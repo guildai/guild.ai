@@ -3,8 +3,6 @@ navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
 
-<div id="get-started-fab"></div>
-
 # Frequently Asked Questions
 
 [TOC]
@@ -171,6 +169,6 @@ This has a number of benefits:
 
 <div class="col col-md-12 mt-5">
 <div class="promo center">
-<a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
+<a class="btn btn-primary cta" href="https://my.guild.ai/start" target="_blank"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>
 </div>

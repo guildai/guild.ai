@@ -4,12 +4,10 @@
       <div class="col-md-12 col-sm-12 footer-cell">
         <div class="copyright">
           Copyright &copy; {{ config.copyright }}
-
           <ul class="footer-menu">
             <li><a href="/about/">About</a></li>
-            <li><a href="mailto:{{ config.extra.contact_email }}">Contact</a></li>
+            <li><a href="mailto:{{ config.extra.contact_email }}" target="_blank">Contact</a></li>
           </ul>
-
         </div>
         {% if page.meta.attribution %}
         <div class="attribution">{{ page.meta.attribution }}</div>

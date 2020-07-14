@@ -1,11 +1,14 @@
 <ul class="nav {{ nav_class }}">
   {% for item in nav %}
   {% set page = item.children[0] if item.children else item %}
-  {% set page_url = page.meta.external_url or page.abs_url %}
   {% if page.meta.navbar_item %}
+  {% set page_url = page.meta.external_url or page.abs_url %}
   <li class="{% if item.active %}active{% endif %}">
     <a href="{{ page_url }}">{{ page.title }}</a>
   </li>
   {% endif %}
   {% endfor %}
+  <li>
+    <a href="https://my.guild.ai/start" target="_blank">Get Started</a>
+  </li>
 </ul>

@@ -3,8 +3,6 @@ navbar_item: yes
 hide_sidenav: yes
 hide_pagenav: yes
 
-<div id="get-started-fab"></div>
-
 # Guild AI Services
 
 ## Open Source
@@ -102,11 +100,11 @@ priority support contracts from Guild AI.
 - Priority bug fixes
 - Priority feature requests and custom development
 
-For help with any of these services, please send us an email at
-[contact@guild.ai](mailto:contact@guild.ai).
+For help with any of these services, send us an email at
+<a href="mailto:contact@guild.ai" target="_blank">contact@guild.ai</a>.
 
 <div class="col col-md-12 mt-5">
 <div class="promo center">
-<a class="btn btn-primary cta" href="https://my.guild.ai/start"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
+<a class="btn btn-primary cta" href="https://my.guild.ai/start" target="_blank"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>
 </div>
