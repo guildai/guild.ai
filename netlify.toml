@@ -18,6 +18,6 @@
 
 [[redirects]]
   from = "https://guild.ai/support"
-  to = "https://my.guild.ai/services"
+  to = "https://guild.ai/services"
   status = 301
   force = true
