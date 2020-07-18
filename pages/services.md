@@ -8,7 +8,7 @@ hide_pagenav: yes
 ## Open Source
 
 <div class="col col-lg-4" markdown="1">
-### <i class="fab fa-discourse"></i> Ask a Question
+### <i class="fab fa-discourse"></i> Get Help
 
 Join the discussion at [my.guild.ai](https://my.guild.ai) to get help with Guild.
 This is a great way to connect with others and learn how they're using
