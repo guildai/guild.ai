@@ -220,58 +220,48 @@ the Apache 2.0 open source license.
 </div>
 </div>
 
-<!--
+<!-- Matomo A/B Test -->
 <script type="text/javascript">
+    var tagline = document.querySelector("h1");
+    var bulletOne = document.querySelector(".tagline-bullets li:first-child");
     var _paq = _paq || [];
     _paq.push(['AbTesting::create', {
-        name: 'tagline', // you can also use '1' (ID of the experiment) to hide the name
+        name: '1',
         percentage: 100,
         includedTargets: [{"attribute":"url","inverted":"0","type":"equals_simple","value":"https:\/\/guild.ai\/"}],
         excludedTargets: [],
+        startDateTime: '2020/07/19 20:37:01 UTC',
         variations: [
             {
                 name: 'original',
                 activate: function (event) {
-                    // usually nothing needs to be done here
                 }
             },
             {
-                name: 'easiest', // you can also use '1' (ID of the variation) to hide the name
+                name: '1',
                 activate: function(event) {
-                    event.redirect('https://guild.ai?v2');
+                    tagline.innerText = "The easiest way to track experiments";
+                    bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
+                }
+            },
+            {
+                name: '2',
+                activate: function(event) {
+                    tagline.innerText = "Open source ML experiment tracking";
+                     bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
                 }
             },                        {
-                name: 'open-source', // you can also use '2' (ID of the variation) to hide the name
+                name: '3',
                 activate: function(event) {
-                    event.redirect('https://guild.ai?v3');
-                }
-            },                        {
-                name: 'fastest', // you can also use '3' (ID of the variation) to hide the name
-                activate: function(event) {
-                    event.redirect('https://guild.ai?v4');
+                    tagline.innerText = "Track experiments without changing your code";
+                    tagline.setAttribute("style", "max-width:15em");
+                    bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
                 }
             }
         ],
         trigger: function () {
-            return true; // here you can further customize which of your visitors will participate in this experiment
+            return true;
         }
     }]);
 </script>
--->
-
-<script type="text/javascript">
-var search = window.location.search;
-var tagline = document.querySelector("h1");
-var bulletOne = document.querySelector(".tagline-bullets li:first-child");
-if (search == "?v2") {
-  tagline.innerText = "The easiest way to track experiments";
-  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-} else if (search == "?v3") {
-  tagline.innerText = "Open source ML experiment tracking";
-  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-} else if (search == "?v4") {
-  tagline.innerText = "Track experiments without changing your code";
-  tagline.setAttribute("style", "max-width:15em");
-  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-}
-</script>
+<!-- Matomo A/B Test -->
