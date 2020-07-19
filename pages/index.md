@@ -220,6 +220,7 @@ the Apache 2.0 open source license.
 </div>
 </div>
 
+<!--
 <script type="text/javascript">
     var _paq = _paq || [];
     _paq.push(['AbTesting::create', {
@@ -256,6 +257,7 @@ the Apache 2.0 open source license.
         }
     }]);
 </script>
+-->
 
 <script type="text/javascript">
 var search = window.location.search;
