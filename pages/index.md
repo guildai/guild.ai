@@ -219,3 +219,57 @@ the Apache 2.0 open source license.
 <a class="btn btn-primary cta" href="https://my.guild.ai/start" target="_blank"><img src="/assets/icons/space-rocket-flying-white.svg" height="24"> Get Started with Guild AI</a>
 </div>
 </div>
+
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['AbTesting::create', {
+        name: 'tagline', // you can also use '1' (ID of the experiment) to hide the name
+        percentage: 100,
+        includedTargets: [{"attribute":"url","inverted":"0","type":"equals_simple","value":"https:\/\/guild.ai\/"}],
+        excludedTargets: [],
+        variations: [
+            {
+                name: 'original',
+                activate: function (event) {
+                    // usually nothing needs to be done here
+                }
+            },
+            {
+                name: 'easiest', // you can also use '1' (ID of the variation) to hide the name
+                activate: function(event) {
+                    event.redirect('https://guild.ai?v2');
+                }
+            },                        {
+                name: 'open-source', // you can also use '2' (ID of the variation) to hide the name
+                activate: function(event) {
+                    event.redirect('https://guild.ai?v3');
+                }
+            },                        {
+                name: 'fastest', // you can also use '3' (ID of the variation) to hide the name
+                activate: function(event) {
+                    event.redirect('https://guild.ai?v4');
+                }
+            }
+        ],
+        trigger: function () {
+            return true; // here you can further customize which of your visitors will participate in this experiment
+        }
+    }]);
+</script>
+
+<script type="text/javascript">
+var search = window.location.search;
+var tagline = document.querySelector("h1");
+var bulletOne = document.querySelector(".tagline-bullets li:first-child");
+if (search == "?v2") {
+  tagline.innerText = "The easiest way to track experiments";
+  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
+} else if (search == "?v3") {
+  tagline.innerText = "Open source ML experiment tracking";
+  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
+} else if (search == "?v4") {
+  tagline.innerText = "Track experiments without changing your code";
+  tagline.setAttribute("style", "max-width:15em");
+  bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
+}
+</script>
