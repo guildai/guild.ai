@@ -3,52 +3,6 @@ hide_sidenav: yes
 hide_pagenav: yes
 hide_in_pagenav: yes
 
-<!-- Matomo A/B Test -->
-<script type="text/javascript">
-    var tagline = document.querySelector("h1");
-    var bulletOne = document.querySelector(".tagline-bullets li:first-child");
-    var _paq = _paq || [];
-    _paq.push(['AbTesting::create', {
-        name: '1',
-        percentage: 100,
-        includedTargets: [{"attribute":"url","inverted":"0","type":"equals_simple","value":"https:\/\/guild.ai\/"}],
-        excludedTargets: [],
-        startDateTime: '2020/07/19 20:37:01 UTC',
-        variations: [
-            {
-                name: 'original',
-                activate: function (event) {
-                }
-            },
-            {
-                name: '1',
-                activate: function(event) {
-                    tagline.innerText = "The easiest way to track experiments";
-                    bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-                }
-            },
-            {
-                name: '2',
-                activate: function(event) {
-                    tagline.innerText = "Open source ML experiment tracking";
-                     bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-                }
-            },                        {
-                name: '3',
-                activate: function(event) {
-                    tagline.innerText = "Track experiments without changing your code";
-                    tagline.setAttribute("style", "max-width:15em");
-                    bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
-                }
-            }
-        ],
-        trigger: function () {
-            return true;
-        }
-    }]);
-</script>
-<!-- Matomo A/B Test -->
-
 <div class="row logos">
   <img src="/assets/img/tensorflow-logo.png" width="150">
   <img src="/assets/img/pytorch-logo.png" width="140">
