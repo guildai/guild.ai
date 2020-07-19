@@ -21,3 +21,9 @@
   to = "https://guild.ai/services"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://guild.ai/features"
+  to = "https://guild.ai"
+  status = 301
+  force = true
