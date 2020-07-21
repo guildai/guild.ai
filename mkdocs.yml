@@ -50,15 +50,15 @@ extra:
       url: /services/
 
   links:
-    - name: my.guild.ai
-      url: https://my.guild.ai
-      title: Guild AI Community
-      icon_class: 'fab fa-discourse'
-      header: yes
     - name: github
       url: https://github.com/guildai/guildai
       title: Guild AI on GitHub
       icon_class: 'fab fa-github'
+      header: yes
+    - name: my.guild.ai
+      url: https://my.guild.ai
+      title: Guild AI Community
+      icon_class: 'fab fa-discourse'
       header: yes
     - name: twitter
       url:  https://twitter.com/guildai
