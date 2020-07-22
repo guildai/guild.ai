@@ -330,20 +330,11 @@
 }
 
 .text-editor.banner {
+  margin: 0 auto;
   width: 100%;
-  max-width: 50em;
-  margin: 45px auto 110px;
 
-  @media screen and (max-width: $break-lg) {
-    margin: 60px auto 90px;
-  }
-
-  @media screen and (max-width: $break-md) {
-    margin: 50px auto 70px;
-  }
-
-  @media screen and (max-width: $break-md) {
-    margin: 40px auto 70px;
+  .text-body {
+    padding: 15px;
   }
 
   .text-body {
@@ -361,5 +352,17 @@
     @media screen and (max-width: $break-sm) {
       font-size: 18px;
     }
+  }
+}
+
+.text-editor-wrapper {
+  width: calc(100% - 10em);
+  margin: 60px auto;
+
+  .caption {
+    margin-top: 1em;
+    font-size: 1.3em;
+    padding: 0 15px;
+    color: $gray-text-color;
   }
 }

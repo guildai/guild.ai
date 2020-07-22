@@ -32,13 +32,16 @@ $(function() {
     new Typed(typedRunEl, {
       strings: [
         "guild run train.py",
-        "guild run <span>train.py</span> lr=0.01",
-        "guild run <span>train.py lr=[1e-3,1e-2]</span>",
-        "guild run <span>train.py</span> lr=[1e-7:1e-1] --optimize",
+        "guild run <span>train.py</span> learning-rate=[0.0001:0.1]",
+        "guild run <span>train.py</span> --optimizer bayesian",
+        "guild compare",
+        "guild tensorboard",
+        "guild push s3",
+        "guild run train.py --remote ec2",
       ],
       typeSpeed: 45,
       backSpeed: 20,
-      backDelay: 2000,
+      backDelay: 2500,
       loop: true,
       showCursor: false,
       smartBackspace: true
