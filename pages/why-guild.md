@@ -18,7 +18,7 @@ hide_pagenav: yes
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">Guild AI is the easiest way to track experiments</h3>
+<h3 id="start" class="why">Guild AI is the easiest way to track experiments</h3>
 
 Just run your script.
 
@@ -45,7 +45,7 @@ your code.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">It's superpowered</h3>
+<h3 id="superpowered" class="why">It's superpowered</h3>
 
 Guild AI is a feature-complete ML engineering toolkit.
 
@@ -66,7 +66,7 @@ Guild AI is a feature-complete ML engineering toolkit.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">100% open source</h3>
+<h3 id="open-source" class="why">100% open source</h3>
 
 Guild AI is available under the [Apache 2 open source
 license](https://github.com/guildai/guildai/blob/master/LICENSE.txt). You
@@ -87,7 +87,7 @@ tools.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">No code change</h3>
+<h3 id="no-code-change" class="why">No code change required</h3>
 
 Don't change your code just to track experiments. Guild adapts to your
 code with smart configuration. Avoid pointless changes to your code
@@ -102,7 +102,7 @@ and stay independent.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">No databases, exotic file systems, or agents</h3>
+<h3 id="no-deps" class="why">No databases, exotic file systems, or agents</h3>
 
 Guild is free of complicated requirements.
 
@@ -128,7 +128,7 @@ Guild is free of complicated requirements.
 
 <div class="col-sm-9 mt-3" markdown>
 
-<h3 class="why">Incredible community of ML engineers</h3>
+<h3 id="community" class="why">Incredible community of ML engineers</h3>
 
 The [community of Guild AI users](https://my.guild.ai) share a common
 vision.

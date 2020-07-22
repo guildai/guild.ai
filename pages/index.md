@@ -170,7 +170,7 @@ the Apache 2.0 open source license.
   </div>
 
   <div class="col col-sm-6 match-height">
-    <h5>Follow Engineering Best Practices</h5>
+    <h5>Best Practices</h5>
     <img class="md shadow" src="/assets/img/compare-feature-3.png">
     <p>
       Integrate Guild features into any environment without
@@ -183,32 +183,23 @@ the Apache 2.0 open source license.
 
 ---
 
-<div class="row promo-qa">
-  <div class="col-md-6">
-    <h3>What is ML Engineering?</h3>
+### Why Guild AI?
 
-    <p>
-      ML engineering is the application of automated methods to
-      machine learning. In the tradition of release management,
-      continuous integration, and DevOps, it ensures that machine
-      learning efforts are measured, recreatable and
-      auditable. Effective ML engineering supports fast development of
-      performant models while maintaining the highest levels of
-      quality.
-    </p>
+<div class="row promo-why-guild">
+  <div class="col-md-6">
+
+    <h4><a href="/why-guild#start"><img src="/assets/icons/send-email.svg"> Start fast &mdash; just run your script</a></h4>
+    <h4><a href="/why-guild#superpowered"><img src="/assets/icons/space-rocket-flying-3.svg"> Superpowered ML engineering toolkit</a></h4>
+    <h4><a href="/why-guild#open-source"><img src="/assets/icons/open-source.svg"> 100% open source</h4>
+
   </div>
 
   <div class="col-md-6">
-    <h3>Why Guild AI?</h3>
 
-    <p>
-      Guild AI is a complete platform for engineers who want to apply
-      to machine learning the same control and automation they use in
-      other areas. This includes experiment tracking, tools for
-      comparison and analysis, hyperparameter tuning, pipeline
-      automation, and network operations on any cloud. Guild AI is
-      open source, cross platform, and vendor independent.
-    </p>
+    <h4><a href="/why-guild#no-code-change"><img src="/assets/icons/file-code-disable.svg"> No code change required</a></h4>
+    <h4><a href="/why-guild#no-deps"><img src="/assets/icons/database-disable.svg">No databases, exotic file systems, or agents</a></h4>
+    <h4><a href="/why-guild#community"><img src="/assets/icons/multiple-chat.svg">Incredible community of ML engineers</a></h4>
+
   </div>
 </div>
 

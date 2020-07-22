@@ -616,3 +616,19 @@ p.highlight {
     color: $link-color;
   }
 }
+
+.promo-why-guild {
+  img {
+    width: 36px;
+    margin-right: 10px;
+    opacity: 0.6;
+  }
+
+  a {
+    color: $link-color;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}
