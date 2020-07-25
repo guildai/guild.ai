@@ -27,3 +27,21 @@
   to = "https://guild.ai"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://guild.ai/optimizers"
+  to = "https://my.guild.ai/reference/optimizers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/remotes"
+  to = "https://my.guild.ai/reference/remotes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://my.guild.ai/terms/requirements-file"
+  to = "https://bit.ly/guild-help-req-files"
+  status = 301
+  force = true
