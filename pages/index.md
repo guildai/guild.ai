@@ -24,7 +24,7 @@ under the Apache 2.0 open source license.</p>
 <div class="row other-features display-flex">
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/folder-check.svg">
+    <img class="feature-icon" src="/assets/icons/folder-check.svg" alt="experiment tracking">
     <h4>Track Experiments</h4>
     <p>
 
@@ -35,7 +35,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/analytics-graph.svg">
+    <img class="feature-icon" src="/assets/icons/analytics-graph.svg" alt="compare and anlayze runs">
     <h4>Compare and Analyze Runs</h4>
     <p>
 
@@ -46,7 +46,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/seo-search-star.svg">
+    <img class="feature-icon" src="/assets/icons/seo-search-star.svg" alt="tune hyperparameters">
     <h4>Tune Hyperparameters</h4>
     <p>
 
@@ -57,7 +57,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/hierarchy.svg">
+    <img class="feature-icon" src="/assets/icons/hierarchy.svg" alt="automate pipelines">
     <h4>Automate Pipelines</h4>
     <p>
 
@@ -67,7 +67,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/cloud-server.svg">
+    <img class="feature-icon" src="/assets/icons/cloud-server.svg" alt="train and backup remotely">
     <h4>Train and Backup Remotely</h4>
     <p>
 
@@ -78,7 +78,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/common-file-text-share.svg">
+    <img class="feature-icon" src="/assets/icons/common-file-text-share.svg" alt="publish and share results">
     <h4>Publish and Share Results</h4>
     <p>
 
@@ -89,7 +89,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/app-window-code.svg">
+    <img class="feature-icon" src="/assets/icons/app-window-code.svg" alt="command line interface">
     <h4>Command Line Interface</h4>
     <p>
 
@@ -100,7 +100,7 @@ under the Apache 2.0 open source license.</p>
   </div>
 
   <div class="col-sm-6">
-    <img class="feature-icon" src="/assets/icons/file-py.svg">
+    <img class="feature-icon" src="/assets/icons/file-py.svg" alt="jupyter notebook integration">
     <h4>Jupyter Notebook Integration</h4>
     <p>
 
@@ -117,7 +117,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Control and Measure</h5>
-    <img class="md shadow" src="/assets/img/view-feature.png">
+    <img class="md shadow" src="/assets/img/view-feature.png" alt="control and measure machine learning experiments">
     <p>
       Record each operation, including source code, hyperparameters,
       results, and generated artifacts. Build with confidence having
@@ -127,7 +127,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Go Beyond Notebooks</h5>
-    <img class="md shadow" src="/assets/img/plot-feature.png">
+    <img class="md shadow" src="/assets/img/plot-feature.png" alt="go beyond notebooks to track experiments">
     <p>
       Run your Notebook code with Guild to record summaries over the
       entire life cycle of your models. Know what changed three hours
@@ -137,7 +137,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Tune Hyperparameters</h5>
-    <img class="md shadow" src="/assets/img/hparams-2-feature.png">
+    <img class="md shadow" src="/assets/img/hparams-2-feature.png" alt="use past experiments to suggest optimal hyperparameter values">
     <p>
       Apply state-of-the-art tuning algorithms to your models with
       simple commands. Easily optimize with upstream changes to data
@@ -147,7 +147,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Compare and Diff</h5>
-    <img class="md shadow" src="/assets/img/diff-feature.png">
+    <img class="md shadow" src="/assets/img/diff-feature.png" alt="compare and diff machine learning experiments">
     <p>
       Identify fine grained differences across runs to resolve complex
       issues and give data scientists the feedback needed to make
@@ -157,7 +157,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Automate Tasks</h5>
-    <img class="md shadow" src="/assets/img/code-feature.png">
+    <img class="md shadow" src="/assets/img/code-feature.png" alt="automate machine learnign experiment tracking">
     <p>
       Guild supports a simple configuration scheme that lets you
       define model operations that perform complex tasks with a single
@@ -167,7 +167,7 @@ under the Apache 2.0 open source license.</p>
 
   <div class="col col-sm-6 match-height">
     <h5>Best Practices</h5>
-    <img class="md shadow" src="/assets/img/compare-feature-3.png">
+    <img class="md shadow" src="/assets/img/compare-feature-3.png" alt="support best practices for machine learning development">
     <p>
       Integrate Guild features into any environment without
       reengineering effort. Commands are POSIX compliant and run
