@@ -31,11 +31,8 @@ extra:
 
   description:
 
-    Guild AI is an open source experiment tracking toolkit for data
-    scientists and engineers. Guild lets you measure results without
-    changing your code. It doesn't rely on external systems like
-    databases and commercial back-ends. It's fast to get started -
-    just run your scripts!
+    Guild AI is an open source experiment tracking toolkit. Use it to
+    build better machine learning models faster.
 
   keywords:
     - Experiment Tracking
