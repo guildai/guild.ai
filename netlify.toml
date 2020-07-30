@@ -1,10 +1,4 @@
 [[redirects]]
-  from = "https://www-pre.guild.ai/*"
-  to = "https://guild.ai"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "https://guild.ai/docs"
   to = "https://my.guild.ai/docs"
   status = 301
