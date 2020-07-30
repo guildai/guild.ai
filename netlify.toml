@@ -71,7 +71,7 @@
   force = true
 
 [[redirects]]
-  from = "https://guild.ai//docs/reference/guild-file/"
+  from = "https://guild.ai/docs/reference/guild-file/"
   to = "https://my.guild.ai/reference/guildfile"
   status = 301
   force = true
