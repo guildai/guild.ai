@@ -45,3 +45,69 @@
   to = "https://bit.ly/guild-help-req-files"
   status = 301
   force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/start/"
+  to = "https://my.guild.ai/start"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/start/optimization/"
+  to = "https://my.guild.ai/start/optimize"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/en/latest"
+  to = "https://guild.ai/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/install"
+  to = "https://my.guild.ai/install"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai//docs/reference/guild-file/"
+  to = "https://my.guild.ai/reference/guildfile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/guides/compare/"
+  to = "https://my.guild.ai/docs/compare"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/runs/"
+  to = "https://my.guild.ai/docs/runs"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/start/reproducibility/"
+  to = "https://my.guild.ai/start/guildfile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/commands/tensorboard-cmd/"
+  to = "https://my.guild.ai/commands/tensorboard"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/start/image-classifier/"
+  to = "https://my.guild.ai/start"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/commands/run-cmd/"
+  to = "https://my.guild.ai/commands/run"
+  status = 301
+  force = true
