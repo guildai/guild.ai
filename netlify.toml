@@ -53,6 +53,12 @@
   force = true
 
 [[redirects]]
+  from = "https://guild.ai/docs/tests/"
+  to = "https://my.guild.ai/docs"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://guild.ai/docs/start/optimization/"
   to = "https://my.guild.ai/start/optimize"
   status = 301
@@ -73,6 +79,12 @@
 [[redirects]]
   from = "https://guild.ai/docs/reference/guild-file/"
   to = "https://my.guild.ai/reference/guildfile"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/reference/guild-home/"
+  to = "https://my.guild.ai/docs/environments"
   status = 301
   force = true
 
@@ -108,12 +120,18 @@
 
 [[redirects]]
   from = "https://guild.ai/docs/start/manage-runs/"
-  to = "https://my.guild.ai/start"
+  to = "https://my.guild.ai/start/runs"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://guild.ai/docs/commands/run-cmd/"
   to = "https://my.guild.ai/commands/run"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://guild.ai/docs/commands/runs-stop-cmd/"
+  to = "https://my.guild.ai/commands/runs-stop"
   status = 301
   force = true
