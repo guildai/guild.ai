@@ -1,4 +1,5 @@
 site_name: Guild AI
+site_url: https://guild.ai
 docs_dir: pages
 copyright: 2018-2020 TensorHub, Inc.
 strict: true
