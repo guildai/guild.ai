@@ -9,9 +9,8 @@ extra:
 
   # IMPORTANT: keep the following in sync:
   #
-  # - pages/index.md - title attr
   # - https://github.com/guildai/guildai - repo description
-  #   (click cog in About section, upper right)
+  #   (from link, click cog in About section, upper right)
   # - short_site_description in my.guild.ai - under Settings, Required
   tagline:
 
@@ -29,6 +28,31 @@ extra:
 
   subtext_width: 40em
   subtext:
+
+  description:
+
+    Guild AI is an open source experiment tracking toolkit for data
+    scientists and engineers. Guild lets you measure results without
+    changing your code. It doesn't rely on external systems like
+    databases and commercial back-ends. It's fast to get started -
+    just run your scripts!
+
+  keywords:
+    - Experiment Tracking
+    - Machine Learning
+    - Data Science
+    - TensorFlow
+    - TensorBoard
+    - Reproducibility
+    - PyTorch
+    - Keras
+    - Sacred
+    - MLflow
+    - Neptune
+    - Weights and Biases
+    - WandB
+    - Comet
+    - Polyaxon
 
   tagline_bullets:
     - text: Compare & Analyze

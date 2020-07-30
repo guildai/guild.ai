@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Guild AI - {{ config.extra.tagline }} {% if page.title != 'Home' %}- {{ page.title }}{% endif %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <title>Guild AI - Open Source Experiment Tracking for Machine Learning {% if page.title != 'Home' %}- {{ page.title }}{% endif %}</title>
+    <meta name="description" content="{{ config.extra.description }}">
+    <meta name="keywords" content="{{ config.extra.keywords|join(', ')}}">
+
+    <meta property="og:title" name="og:title" content="Guild AI - {{ config.extra.tagline }}" data-app="true">
+    <meta property="og:description" name="og:description" content="{{ config.extra.description }}" data-app="true">
+    <meta property="og:type" name="og:type" content="website" data-app="true">
+    <meta property="og:url" name="og:url" content="https://guild.ai/" data-app="true">
+
+    <link rel="icon" href="{{ base_url }}/assets/img/favicon.png">
+    <link rel="canonical" href="https://guild.ai/">
     <link href="{{ base_url }}/assets/css/vendor.min.css" rel="stylesheet">
     <link href="{{ base_url }}/assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="{{ base_url }}/assets/img/favicon.png">
+
     <script src="https://kit.fontawesome.com/47f6d8906a.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url":"https://guild.ai/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://my.guild.ai/search?q={search_term_string}"
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
   </head>
   <body>
     {% block modals %}{% endblock %}
