@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Guild AI - The ML Engineering Toolkit {% if page.title != 'Home' %}- {{ page.title }}{% endif %}</title>
+    <title>Guild AI - Open Source Experiment Tracking for Machine Learning {% if page.title != 'Home' %}- {{ page.title }}{% endif %}</title>
     <link href="{{ base_url }}/assets/css/vendor.min.css" rel="stylesheet">
     <link href="{{ base_url }}/assets/css/theDocs.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -53,20 +53,20 @@
               {
                   name: 'original',
                   activate: function (event) {
+                      tagline.innerText = "The ML Engineering Toolkit";
+                      bulletOne.childNodes[1].nodeValue = "Experiment Tracking";
                   }
               },
               {
                   name: '5',
                 activate: function(event) {
                       tagline.innerText = "The fastest way to track experiments";
-                      bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
                   }
               },
               {
                   name: '6',
                   activate: function(event) {
                       tagline.innerText = "Open source experiment tracking";
-                      bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
                   }
               },
               {
@@ -74,7 +74,6 @@
                   activate: function(event) {
                       tagline.innerText = "Track experiments without changing your code";
                       tagline.setAttribute("style", "max-width:15em");
-                      bulletOne.childNodes[1].nodeValue = "Compare & Analyze";
                   }
               },
               {
@@ -82,6 +81,7 @@
                   activate: function(event) {
                       tagline.innerText = "Build better models faster";
                       tagline.setAttribute("style", "max-width:15em");
+                      bulletOne.childNodes[1].nodeValue = "Experiment Tracking";
                   }
               }
           ],

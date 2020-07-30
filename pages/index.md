@@ -14,29 +14,12 @@ hide_in_pagenav: yes
 
 ---
 
-<!--
-<p class="highlight">Guild AI brings systematic control to machine
-learning. Build better models faster. Reduce errors. Guild supports
-best practices for ML automation, measurement, and governance. It's
-freely available under the Apache 2.0 open source license.</p>
--->
-
 <p class="highlight">Guild AI brings systematic control to machine
 learning to help you build better models faster. It's freely available
 under the Apache 2.0 open source license.</p>
 
 
 ---
-
-<!-- DISABLED
-<div class="text-editor-wrapper">
-  <div class="text-editor banner">
-    <div class="text-body">
-      $ <span id="typed-run"></span><span class="typed-cursor">|</span>
-    </div>
-  </div>
-</div>
--->
 
 <div class="row other-features display-flex">
 

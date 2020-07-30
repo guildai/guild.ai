@@ -15,9 +15,9 @@ extra:
   # - short_site_description in my.guild.ai - under Settings, Required
   tagline:
 
-    The ML Engineering Toolkit
+    Open Source Experiment Tracking for Machine Learning
 
-  tagline_width: 20em
+  tagline_width: 18em
 
   other_taglines:
     - The ML Engineering Platform
@@ -31,13 +31,13 @@ extra:
   subtext:
 
   tagline_bullets:
-    - text: Experiment Tracking
-      icon: folder-check-gray
-    - text: Pipeline Automation
-      icon: hierarchy-10-gray
-    - text: Auto ML
+    - text: Compare & Analyze
+      icon: analytics-graph-white
+    - text: Automate Pipelines
+      icon: hierarchy-white
+    - text: Optimize Models
       icon: seo-search-graph-gray
-    - text: Open Source
+    - text: Platform Independent
       icon: programming-flag-gray
 
   navbar:
