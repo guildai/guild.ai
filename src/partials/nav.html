@@ -1,5 +1,13 @@
 <ul class="nav {{ nav_class }}">
+  {% for link in config.extra.navbar %}
+  <li class="{% if link.url == page.abs_url %}active{% endif %}">
+    <a href="{{ link.url }}" {% if link.ext %}target="_blank"{% endif %}>{{ link.name }}</a>
+  </li>
+  {% endfor %}
+
+  {#
   {% for item in nav %}
+  <p style="color: yellow">xxxxx {{ item.name }} </p>
   {% set page = item.children[0] if item.children else item %}
   {% if page.meta.navbar_item %}
   {% set page_url = page.meta.external_url or page.abs_url %}
@@ -7,8 +15,5 @@
     <a href="{{ page_url }}">{{ page.title }}</a>
   </li>
   {% endif %}
-  {% endfor %}
-  <li>
-    <a href="https://my.guild.ai/start" target="_blank">Get Started</a>
-  </li>
+  #}
 </ul>
