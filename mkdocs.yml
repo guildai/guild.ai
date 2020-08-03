@@ -84,6 +84,16 @@ extra:
       title: Guild AI Community
       icon_class: 'fab fa-discourse'
       header: yes
+    - name: twitter
+      url:  https://twitter.com/guildai
+      title: Guild AI on Twitter
+      icon_class: 'fab fa-twitter'
+      header: yes
+    - name: facebook
+      url:  https://facebook.com/guildai
+      title: Guild AI on Facebook
+      icon_class: 'fab fa-facebook'
+      header: yes
 
   # URL to edit Google fonts used in src/base.html:
   #
