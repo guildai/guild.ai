@@ -14,11 +14,13 @@ extra:
   # - short_site_description in my.guild.ai - under Settings, Required
   tagline:
 
-    Open Source Experiment Tracking for Machine Learning
+    Lightweight Experiment Tracking
 
   tagline_width: 18em
 
   other_taglines:
+    - Build Better Models Faster (used by Comet)
+    - Light Weight Experiment Tracking
     - The ML Engineering Platform
     - The ML Engineering Toolkit
     - Open source tools for ML engineering
@@ -53,13 +55,13 @@ extra:
     - Polyaxon
 
   tagline_bullets:
-    - text: Compare & Analyze
+    - text: Capture & Compare
       icon: analytics-graph-white
     - text: Automate Pipelines
       icon: hierarchy-white
-    - text: Optimize Models
+    - text: Tune Hyperparameter
       icon: seo-search-graph-gray
-    - text: Platform Independent
+    - text: 100% Open Source
       icon: programming-flag-gray
 
   navbar:
