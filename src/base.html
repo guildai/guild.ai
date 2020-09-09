@@ -61,14 +61,13 @@
     })();
   </script>
 
-  {#
   <!-- Matomo A/B Test -->
   <script type="text/javascript">
       var tagline = document.querySelector("h1");
       var bulletOne = document.querySelector(".tagline-bullets li:first-child");
       var _paq = _paq || [];
       _paq.push(['AbTesting::create', {
-          name: '2',
+          name: 'Tagline3',
           percentage: 100,
           includedTargets: [{"attribute":"url","inverted":"0","type":"equals_simple","value":"https:\/\/guild.ai\/"}],
           excludedTargets: [],
@@ -76,35 +75,32 @@
               {
                   name: 'original',
                   activate: function (event) {
-                      tagline.innerText = "The ML Engineering Toolkit";
-                      bulletOne.childNodes[1].nodeValue = "Experiment Tracking";
+                      tagline.innerText = "Systematic Machine Learning";
                   }
               },
               {
-                  name: '5',
-                activate: function(event) {
-                      tagline.innerText = "The fastest way to track experiments";
-                  }
-              },
-              {
-                  name: '6',
+                  name: 'BetterModelsFaster',
                   activate: function(event) {
-                      tagline.innerText = "Open source experiment tracking";
+                      tagline.innerText = "Better Models Faster";
                   }
               },
               {
-                  name: '7',
+                  name: 'RightModelLessTime',
                   activate: function(event) {
-                      tagline.innerText = "Track experiments without changing your code";
-                      tagline.setAttribute("style", "max-width:15em");
+                      tagline.innerText = "The Right Model in Less Time";
                   }
               },
               {
-                  name: '8',
+                  name: 'LightweightExperimentTracking',
                   activate: function(event) {
-                      tagline.innerText = "Build better models faster";
-                      tagline.setAttribute("style", "max-width:15em");
-                      bulletOne.childNodes[1].nodeValue = "Experiment Tracking";
+                      tagline.innerText = "Lightweight Experiment Tracking";
+                      bulletOne.childNodes[1].nodeValue = "Capture & Compare";
+                  }
+              },
+              {
+                  name: 'MeasureCompareImprove',
+                  activate: function(event) {
+                      tagline.innerText = "Improve your models by measuring";
                   }
               }
           ],
@@ -114,6 +110,5 @@
       }]);
   </script>
   <!-- Matomo A/B Test -->
-  #}
 
 </html>

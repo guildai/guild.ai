@@ -7,20 +7,28 @@ extra:
   version: 0.7.0
   contact_email: contact@guild.ai
 
-  # IMPORTANT: keep the following in sync:
+  # IMPORTANT - Consider how tagline effects the following:
   #
-  # - https://github.com/guildai/guildai - repo description
-  #   (from link, click cog in About section, upper right)
+  # - https://github.com/guildai/guildai - repo description (from
+  #   link, click cog in About section, upper right)
+  #
   # - short_site_description in my.guild.ai - under Settings, Required
+  #
+  # - PyPI description - specified in Guild source in
+  # - guildai.dist-info/METADATA as Summary
+  #
   tagline:
 
-    Lightweight Experiment Tracking
+    Systematic Machine Learning
 
   tagline_width: 18em
 
   other_taglines:
-    - Build Better Models Faster (used by Comet)
-    - Light Weight Experiment Tracking
+    - Better Models Faster
+    - The Right Model, Less Time
+    - Systematic Machine Learning
+    - Build Better Models Faster
+    - Lightweight Experiment Tracking
     - The ML Engineering Platform
     - The ML Engineering Toolkit
     - Open source tools for ML engineering
@@ -55,7 +63,7 @@ extra:
     - Polyaxon
 
   tagline_bullets:
-    - text: Capture & Compare
+    - text: Track Experiments
       icon: analytics-graph-white
     - text: Automate Pipelines
       icon: hierarchy-white
