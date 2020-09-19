@@ -67,7 +67,7 @@
       var bulletOne = document.querySelector(".tagline-bullets li:first-child");
       var _paq = _paq || [];
       _paq.push(['AbTesting::create', {
-          name: 'Tagline3',
+          name: 'Tagline4',
           percentage: 100,
           includedTargets: [{"attribute":"url","inverted":"0","type":"equals_simple","value":"https:\/\/guild.ai\/"}],
           excludedTargets: [],
@@ -75,32 +75,32 @@
               {
                   name: 'original',
                   activate: function (event) {
-                      tagline.innerText = "Systematic Machine Learning";
-                  }
-              },
-              {
-                  name: 'BetterModelsFaster',
-                  activate: function(event) {
-                      tagline.innerText = "Better Models Faster";
-                  }
-              },
-              {
-                  name: 'RightModelLessTime',
-                  activate: function(event) {
-                      tagline.innerText = "The Right Model in Less Time";
-                  }
-              },
-              {
-                  name: 'LightweightExperimentTracking',
-                  activate: function(event) {
-                      tagline.innerText = "Lightweight Experiment Tracking";
-                      bulletOne.childNodes[1].nodeValue = "Capture & Compare";
+                      tagline.innerText = "Improve your models by measuring";
                   }
               },
               {
                   name: 'MeasureCompareImprove',
                   activate: function(event) {
-                      tagline.innerText = "Improve your models by measuring";
+                      tagline.innerText = "Measure. Compare. Improve.";
+                  }
+              },
+              {
+                  name: 'BetterModelsByMeasuring',
+                  activate: function(event) {
+                      tagline.innerText = "Better models by measuring";
+                  }
+              },
+              {
+                  name: 'MeasureCompareImprove2',
+                  activate: function(event) {
+                      tagline.innerText = "Measure and compare to improve your models";
+                  }
+              },
+              {
+                  name: 'MeasureCompareImprove3',
+                  activate: function(event) {
+                      tagline.setAttribute("style", "max-width:15em");
+                      tagline.innerText = "Measure, compare, and improve your models";
                   }
               }
           ],
