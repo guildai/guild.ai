@@ -61,6 +61,7 @@
     })();
   </script>
 
+  {#
   <!-- Matomo A/B Test -->
   <script type="text/javascript">
       var tagline = document.querySelector("h1");
@@ -79,15 +80,15 @@
                   }
               },
               {
-                  name: 'MeasureCompareImprove',
-                  activate: function(event) {
-                      tagline.innerText = "Measure. Compare. Improve.";
-                  }
-              },
-              {
                   name: 'BetterModelsByMeasuring',
                   activate: function(event) {
                       tagline.innerText = "Better models by measuring";
+                  }
+              },
+              {
+                  name: 'MeasureCompareImprove',
+                  activate: function(event) {
+                      tagline.innerText = "Measure. Compare. Improve.";
                   }
               },
               {
@@ -110,5 +111,6 @@
       }]);
   </script>
   <!-- Matomo A/B Test -->
+  #}
 
 </html>
