@@ -7,7 +7,8 @@ extra:
   version: 0.7.0
   contact_email: contact@guild.ai
 
-  # IMPORTANT - Consider how tagline effects the following:
+  # Used for page titles. Important for SEO. Mirror this in these
+  # locations:
   #
   # - https://github.com/guildai/guildai - repo description (from
   #   link, click cog in About section, upper right)
@@ -17,6 +18,8 @@ extra:
   # - PyPI description - specified in Guild source in
   # - guildai.dist-info/METADATA as Summary
   #
+  title_base: Experiment tracking, ML developer tools
+
   tagline:
 
     Better models by measuring
