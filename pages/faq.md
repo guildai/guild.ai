@@ -139,7 +139,7 @@ configured using a Guild file*.
 Refer to [*Dependencies*](https://my.guild.ai/docs/dependencies) for
 details on configuring required resources for your operations.
 
-## Implemenetation
+## Implementation
 
 ### How does Guild work without requiring code changes?
 

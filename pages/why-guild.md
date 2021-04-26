@@ -140,7 +140,7 @@ vision.
 - *Automate* --- Manual steps are tedious and error-prone. Automate
   tasks to go faster and avoid costly mistakes.
 
-- *Repeat* --- Engineers work with data scientists in joint-ownsership
+- *Repeat* --- Engineers work with data scientists in joint-ownership
   of code. Anyone can run operations at any time to recreate and
   confirm results.
 
