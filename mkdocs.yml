@@ -22,7 +22,7 @@ extra:
 
   tagline:
 
-    A powerful and lightweight experiment management toolkit
+    Better models by measuring
 
   tagline_width: 18em
 
@@ -79,6 +79,9 @@ extra:
       icon: programming-flag-gray
 
   navbar:
+    - name: Install
+      url: https://my.guild.ai/start
+      ext: yes
     - name: Why Guild
       url: /why-guild/
     - name: FAQ
