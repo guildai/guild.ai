@@ -73,7 +73,7 @@ extra:
       icon: analytics-graph-white
     - text: Automate Pipelines
       icon: hierarchy-white
-    - text: Tune Hyperparameter
+    - text: Tune Hyperparameters
       icon: seo-search-graph-gray
     - text: 100% Open Source
       icon: programming-flag-gray
